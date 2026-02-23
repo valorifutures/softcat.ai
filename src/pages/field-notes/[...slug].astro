@@ -3,7 +3,7 @@ import PostLayout from '../../layouts/PostLayout.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('trading-dispatches');
+  const entries = await getCollection('field-notes');
   return entries.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
@@ -19,8 +19,8 @@ const { Content } = await render(entry);
   date={entry.data.date}
   tags={entry.data.tags}
   summary={entry.data.summary}
-  backLink="/trading-dispatches"
-  backLabel="Trading Dispatches"
+  backLink="/field-notes"
+  backLabel="Field Notes"
 >
   <Content />
 </PostLayout>

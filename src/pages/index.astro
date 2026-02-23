@@ -10,7 +10,7 @@ const workshopEntries = (await getCollection('workshop-log'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
 
-const tradingEntries = (await getCollection('trading-dispatches'))
+const fieldEntries = (await getCollection('field-notes'))
   .filter((e) => !e.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
@@ -36,11 +36,11 @@ const toolEntries = (await getCollection('tools'))
 
   <div class="border-t border-surface-light/30">
     <SectionPreview
-      title="Trading Dispatches"
+      title="Field Notes"
       accent="cyan"
-      href="/trading-dispatches"
-      basePath="/trading-dispatches"
-      entries={tradingEntries}
+      href="/field-notes"
+      basePath="/field-notes"
+      entries={fieldEntries}
     />
   </div>
 

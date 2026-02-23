@@ -12,12 +12,11 @@ const workshopLog = defineCollection({
   }),
 });
 
-const tradingDispatches = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/trading-dispatches' }),
+const fieldNotes = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/field-notes' }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
-    market: z.string().optional(),
     tags: z.array(z.string()).default([]),
     summary: z.string(),
     draft: z.boolean().default(false),
@@ -38,6 +37,6 @@ const tools = defineCollection({
 
 export const collections = {
   'workshop-log': workshopLog,
-  'trading-dispatches': tradingDispatches,
+  'field-notes': fieldNotes,
   tools,
 };
