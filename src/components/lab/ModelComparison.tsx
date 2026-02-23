@@ -13,20 +13,34 @@ interface Model {
 }
 
 const models: Model[] = [
-  { name: 'Claude Opus 4', provider: 'Anthropic', contextWindow: '200K', contextK: 200, inputPrice: '$15', outputPrice: '$75', openSource: false, released: '2025-05', strengths: 'Complex reasoning, coding, agentic tasks' },
-  { name: 'Claude Sonnet 4', provider: 'Anthropic', contextWindow: '200K', contextK: 200, inputPrice: '$3', outputPrice: '$15', openSource: false, released: '2025-05', strengths: 'Best balance of speed and intelligence' },
-  { name: 'Claude Haiku 3.5', provider: 'Anthropic', contextWindow: '200K', contextK: 200, inputPrice: '$0.80', outputPrice: '$4', openSource: false, released: '2024-10', strengths: 'Speed, cost efficiency, high volume' },
+  // Anthropic
+  { name: 'Claude Opus 4.6', provider: 'Anthropic', contextWindow: '200K', contextK: 200, inputPrice: '$5', outputPrice: '$25', openSource: false, released: '2026-02', strengths: 'Most capable Claude, complex reasoning, agentic tasks' },
+  { name: 'Claude Sonnet 4.5', provider: 'Anthropic', contextWindow: '200K', contextK: 200, inputPrice: '$3', outputPrice: '$15', openSource: false, released: '2025-10', strengths: 'Near-Opus intelligence at Sonnet pricing' },
+  { name: 'Claude Haiku 4.5', provider: 'Anthropic', contextWindow: '200K', contextK: 200, inputPrice: '$1', outputPrice: '$5', openSource: false, released: '2025-10', strengths: 'Speed, cost efficiency, high volume' },
+  // OpenAI
+  { name: 'GPT-5', provider: 'OpenAI', contextWindow: '400K', contextK: 400, inputPrice: '$1.25', outputPrice: '$10', openSource: false, released: '2025-11', strengths: 'Massive context, strong all-rounder' },
+  { name: 'GPT-5 Mini', provider: 'OpenAI', contextWindow: '400K', contextK: 400, inputPrice: '$0.25', outputPrice: '$2', openSource: false, released: '2025-11', strengths: 'Budget GPT-5 class, large context' },
+  { name: 'GPT-5 Nano', provider: 'OpenAI', contextWindow: '400K', contextK: 400, inputPrice: '$0.05', outputPrice: '$0.40', openSource: false, released: '2025-08', strengths: 'Cheapest frontier model, on-device capable' },
+  { name: 'GPT-4.1', provider: 'OpenAI', contextWindow: '1M', contextK: 1000, inputPrice: '$2', outputPrice: '$8', openSource: false, released: '2025-04', strengths: 'Million-token context, coding, instruction following' },
   { name: 'GPT-4o', provider: 'OpenAI', contextWindow: '128K', contextK: 128, inputPrice: '$2.50', outputPrice: '$10', openSource: false, released: '2024-05', strengths: 'Multimodal, general purpose' },
-  { name: 'GPT-4o mini', provider: 'OpenAI', contextWindow: '128K', contextK: 128, inputPrice: '$0.15', outputPrice: '$0.60', openSource: false, released: '2024-07', strengths: 'Cheapest GPT-4 class model' },
-  { name: 'o1', provider: 'OpenAI', contextWindow: '200K', contextK: 200, inputPrice: '$15', outputPrice: '$60', openSource: false, released: '2024-12', strengths: 'Deep reasoning, maths, science' },
-  { name: 'Gemini 2.0 Flash', provider: 'Google', contextWindow: '1M', contextK: 1000, inputPrice: '$0.10', outputPrice: '$0.40', openSource: false, released: '2025-02', strengths: 'Massive context, speed, multimodal' },
-  { name: 'Gemini 2.0 Pro', provider: 'Google', contextWindow: '1M', contextK: 1000, inputPrice: '$1.25', outputPrice: '$10', openSource: false, released: '2025-02', strengths: 'Coding, world knowledge' },
-  { name: 'Llama 3.1 405B', provider: 'Meta', contextWindow: '128K', contextK: 128, inputPrice: 'Free*', outputPrice: 'Free*', openSource: true, released: '2024-07', strengths: 'Best open-source, self-hostable' },
-  { name: 'Llama 3.1 70B', provider: 'Meta', contextWindow: '128K', contextK: 128, inputPrice: 'Free*', outputPrice: 'Free*', openSource: true, released: '2024-07', strengths: 'Strong open-source, lower hardware needs' },
-  { name: 'Mistral Large 2', provider: 'Mistral', contextWindow: '128K', contextK: 128, inputPrice: '$2', outputPrice: '$6', openSource: false, released: '2024-07', strengths: 'Multilingual, code, reasoning' },
-  { name: 'DeepSeek R1', provider: 'DeepSeek', contextWindow: '128K', contextK: 128, inputPrice: '$0.55', outputPrice: '$2.19', openSource: true, released: '2025-01', strengths: 'Reasoning, maths, extremely cheap' },
+  { name: 'o3', provider: 'OpenAI', contextWindow: '200K', contextK: 200, inputPrice: '$2', outputPrice: '$8', openSource: false, released: '2025-04', strengths: 'Reasoning, maths, science, coding' },
+  { name: 'o3-mini', provider: 'OpenAI', contextWindow: '200K', contextK: 200, inputPrice: '$1.10', outputPrice: '$4.40', openSource: false, released: '2025-01', strengths: 'Budget reasoning model, structured thinking' },
+  // Google
+  { name: 'Gemini 2.5 Pro', provider: 'Google', contextWindow: '1M', contextK: 1000, inputPrice: '$1.25', outputPrice: '$10', openSource: false, released: '2025-03', strengths: 'Thinking model, coding, huge context' },
+  { name: 'Gemini 2.5 Flash', provider: 'Google', contextWindow: '1M', contextK: 1000, inputPrice: '$0.15', outputPrice: '$0.60', openSource: false, released: '2025-04', strengths: 'Cheap thinking model, massive context' },
+  { name: 'Gemini 2.0 Flash', provider: 'Google', contextWindow: '1M', contextK: 1000, inputPrice: '$0.10', outputPrice: '$0.40', openSource: false, released: '2025-02', strengths: 'Rock-bottom pricing, speed, multimodal' },
+  // Meta
+  { name: 'Llama 4 Scout', provider: 'Meta', contextWindow: '10M', contextK: 10000, inputPrice: 'Free*', outputPrice: 'Free*', openSource: true, released: '2025-04', strengths: '10M context, MoE architecture, self-hostable' },
+  { name: 'Llama 4 Maverick', provider: 'Meta', contextWindow: '1M', contextK: 1000, inputPrice: 'Free*', outputPrice: 'Free*', openSource: true, released: '2025-04', strengths: 'Strong open-source, 1M context, multimodal' },
+  // DeepSeek
+  { name: 'DeepSeek V3', provider: 'DeepSeek', contextWindow: '128K', contextK: 128, inputPrice: '$0.56', outputPrice: '$1.68', openSource: true, released: '2025-03', strengths: 'Cheap, strong general-purpose, open weights' },
+  { name: 'DeepSeek R1', provider: 'DeepSeek', contextWindow: '128K', contextK: 128, inputPrice: '$0.56', outputPrice: '$1.68', openSource: true, released: '2025-01', strengths: 'Open-source reasoning, competes with o1' },
+  // Mistral
+  { name: 'Mistral Large 3', provider: 'Mistral', contextWindow: '256K', contextK: 256, inputPrice: '$2', outputPrice: '$6', openSource: false, released: '2025-03', strengths: 'Multilingual, code, reasoning, larger context' },
+  { name: 'Mistral Small 3.1', provider: 'Mistral', contextWindow: '128K', contextK: 128, inputPrice: '$0.20', outputPrice: '$0.60', openSource: false, released: '2025-03', strengths: 'Very cheap, strong for its size' },
+  // Others
+  { name: 'Qwen 2.5 72B', provider: 'Alibaba', contextWindow: '128K', contextK: 128, inputPrice: 'Free*', outputPrice: 'Free*', openSource: true, released: '2024-09', strengths: 'Strong multilingual, coding, open weights' },
   { name: 'Kimi k1.5', provider: 'Moonshot AI', contextWindow: '128K', contextK: 128, inputPrice: '$0.40', outputPrice: '$1.60', openSource: false, released: '2025-01', strengths: 'Long-context reasoning, competitive pricing' },
-  { name: 'Qwen 2.5 72B', provider: 'Alibaba', contextWindow: '128K', contextK: 128, inputPrice: 'Free*', outputPrice: 'Free*', openSource: true, released: '2024-09', strengths: 'Strong multilingual, coding' },
 ];
 
 type SortKey = 'name' | 'provider' | 'contextK' | 'inputPrice';
