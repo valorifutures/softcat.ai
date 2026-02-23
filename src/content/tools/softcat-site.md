@@ -13,6 +13,6 @@ The site you're looking at. Built with:
 - **GitHub Pages** for free hosting with auto-deploy from Git
 - **Claude Code CLI** for building and maintaining from the terminal
 
-Next up is a Python bot that generates markdown content from various data sources and pushes it to the repo automatically.
+A Python bot running on a local server scans AI feeds, generates markdown via the Anthropic API, and pushes it to the repo. The site rebuilds itself on every push.
 
 The repo is the site. No CMS, no database, no drag-and-drop builder.
