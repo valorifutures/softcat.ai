@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const bots = [
+  {
+    name: 'Model Data',
+    schedule: 'Daily at 06:00 UTC',
+    description: 'Updates AI model pricing and specs from OpenRouter API.',
+    envKey: 'HC_PING_MODEL_DATA',
+  },
+  {
+    name: 'Tool of the Week',
+    schedule: 'Sunday at 10:00 UTC',
+    description: 'Picks an interesting AI tool from RSS feeds and writes it up.',
+    envKey: 'HC_PING_TOOL_OF_WEEK',
+  },
+  {
+    name: 'AI News Digest',
+    schedule: 'Wednesday at 10:00 UTC',
+    description: 'Generates a weekly digest of the most interesting AI news.',
+    envKey: 'HC_PING_AI_DIGEST',
+  },
+];
+
+const services = [
+  {
+    name: 'GitHub Pages',
+    description: 'Static site hosting. Deploys on every push to main.',
+    status: 'operational',
+  },
+  {
+    name: 'Buttondown',
+    description: 'Email newsletter delivery for The Dispatch.',
+    status: 'operational',
+  },
+  {
+    name: 'OpenRouter API',
+    description: 'Model data source for pricing and specs.',
+    status: 'operational',
+  },
+];
+---
+
+<BaseLayout title="/status" description="SOFT CAT system status and bot health.">
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-10">
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright">/status</h1>
+      <p class="font-mono text-xs text-text-muted mt-2">System health and bot activity.</p>
+    </header>
+
+    <div class="space-y-10">
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-green mb-4">Automated bots</h2>
+        <div class="space-y-3">
+          {bots.map((bot) => (
+            <div class="bg-surface border border-surface-light rounded-lg p-4">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-sm font-bold text-text-bright">{bot.name}</span>
+                <span class="font-mono text-xs text-neon-green flex items-center gap-1.5">
+                  <span class="text-neon-green">&#9679;</span> scheduled
+                </span>
+              </div>
+              <p class="font-mono text-xs text-text-muted mb-1">{bot.description}</p>
+              <p class="font-mono text-xs text-text-muted/60">{bot.schedule}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-cyan mb-4">External services</h2>
+        <div class="space-y-3">
+          {services.map((svc) => (
+            <div class="bg-surface border border-surface-light rounded-lg p-4">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-sm font-bold text-text-bright">{svc.name}</span>
+                <span class="font-mono text-xs text-neon-green flex items-center gap-1.5">
+                  <span class="text-neon-green">&#9679;</span> {svc.status}
+                </span>
+              </div>
+              <p class="font-mono text-xs text-text-muted">{svc.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="bg-surface border border-surface-light rounded-lg p-6">
+        <h2 class="font-mono text-sm font-bold text-text-bright mb-3">How this works</h2>
+        <p class="font-mono text-xs text-text-muted leading-relaxed">
+          All three bots run on systemd timers on a dedicated server. Each bot pings
+          <a href="https://healthchecks.io" class="text-neon-cyan hover:underline" target="_blank" rel="noopener">Healthchecks.io</a>
+          on success or failure. If a bot misses its expected window, we get alerted.
+          The site itself is static, hosted on GitHub Pages, and deploys automatically on every push to main.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

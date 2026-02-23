@@ -13,6 +13,7 @@ import subprocess
 from datetime import datetime, date
 from pathlib import Path
 
+import httpx
 import feedparser
 from dotenv import load_dotenv
 from anthropic import Anthropic
@@ -179,30 +180,51 @@ def save_and_push(content: str, entries: list[dict], history: dict):
     print(f"Pushed: {msg}")
 
 
+def ping_healthcheck(status="success"):
+    """Ping Healthchecks.io to report bot status."""
+    url = os.environ.get("HC_PING_AI_DIGEST")
+    if not url:
+        return
+    try:
+        suffix = "/fail" if status == "fail" else ""
+        httpx.get(f"{url}{suffix}", timeout=10)
+    except Exception as e:
+        print(f"Healthcheck ping failed: {e}")
+
+
 def main():
     print(f"[{datetime.now().isoformat()}] AI News Digest bot starting")
 
-    history = load_history()
+    try:
+        history = load_history()
 
-    print("Fetching feeds...")
-    entries = fetch_feed_entries()
-    print(f"Found {len(entries)} entries across {len(FEEDS)} feeds")
+        print("Fetching feeds...")
+        entries = fetch_feed_entries()
+        print(f"Found {len(entries)} entries across {len(FEEDS)} feeds")
 
-    if not entries:
-        print("No entries found. Exiting.")
-        sys.exit(0)
+        if not entries:
+            print("No entries found. Exiting.")
+            ping_healthcheck()
+            sys.exit(0)
 
-    print("Generating digest...")
-    content = generate_digest(entries, history)
+        print("Generating digest...")
+        content = generate_digest(entries, history)
 
-    if not content:
-        print("Nothing to publish. Exiting.")
-        sys.exit(0)
+        if not content:
+            print("Nothing to publish. Exiting.")
+            ping_healthcheck()
+            sys.exit(0)
 
-    print("Saving and pushing...")
-    save_and_push(content, entries, history)
+        print("Saving and pushing...")
+        save_and_push(content, entries, history)
 
-    print("Done.")
+        print("Done.")
+        ping_healthcheck()
+
+    except Exception as e:
+        print(f"Bot failed: {e}")
+        ping_healthcheck("fail")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

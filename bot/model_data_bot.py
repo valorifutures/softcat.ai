@@ -19,8 +19,10 @@ from datetime import datetime, date
 from pathlib import Path
 
 import httpx
+from dotenv import load_dotenv
 
 BOT_DIR = Path(__file__).parent
+load_dotenv(BOT_DIR / ".env")
 REPO_DIR = BOT_DIR.parent
 MODELS_FILE = REPO_DIR / "src" / "data" / "models.json"
 
@@ -195,39 +197,56 @@ def git_commit_and_push():
     print(f"Pushed: {msg}")
 
 
+def ping_healthcheck(status="success"):
+    """Ping Healthchecks.io to report bot status."""
+    url = os.environ.get("HC_PING_MODEL_DATA")
+    if not url:
+        return
+    try:
+        suffix = "/fail" if status == "fail" else ""
+        httpx.get(f"{url}{suffix}", timeout=10)
+    except Exception as e:
+        print(f"Healthcheck ping failed: {e}")
+
+
 def main():
     print(f"[{datetime.now().isoformat()}] Model Data bot starting")
 
-    existing = load_models()
-    print(f"Loaded {len(existing)} existing models")
-
-    print("Fetching from OpenRouter API...")
     try:
+        existing = load_models()
+        print(f"Loaded {len(existing)} existing models")
+
+        print("Fetching from OpenRouter API...")
         api_models = fetch_openrouter()
+
+        if not api_models:
+            print("API returned no models. Bailing out to avoid data loss.")
+            ping_healthcheck("fail")
+            sys.exit(1)
+
+        print(f"Got {len(api_models)} models from OpenRouter")
+
+        print("Merging data...")
+        updated, changed = update_models(existing, api_models)
+
+        if not changed:
+            print("No changes detected. Exiting.")
+            ping_healthcheck()
+            sys.exit(0)
+
+        print(f"Saving {len(updated)} models...")
+        save_models(updated)
+
+        print("Committing and pushing...")
+        git_commit_and_push()
+
+        print("Done.")
+        ping_healthcheck()
+
     except Exception as e:
-        print(f"Failed to fetch OpenRouter API: {e}")
+        print(f"Bot failed: {e}")
+        ping_healthcheck("fail")
         sys.exit(1)
-
-    if not api_models:
-        print("API returned no models. Bailing out to avoid data loss.")
-        sys.exit(1)
-
-    print(f"Got {len(api_models)} models from OpenRouter")
-
-    print("Merging data...")
-    updated, changed = update_models(existing, api_models)
-
-    if not changed:
-        print("No changes detected. Exiting.")
-        sys.exit(0)
-
-    print(f"Saving {len(updated)} models...")
-    save_models(updated)
-
-    print("Committing and pushing...")
-    git_commit_and_push()
-
-    print("Done.")
 
 
 if __name__ == "__main__":
