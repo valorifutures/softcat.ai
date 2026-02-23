@@ -1,0 +1,57 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  date?: Date;
+  tags?: string[];
+  summary?: string;
+  backLink: string;
+  backLabel: string;
+}
+
+const { title, date, tags = [], summary, backLink, backLabel } = Astro.props;
+---
+
+<BaseLayout title={title} description={summary}>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <a
+      href={backLink}
+      class="inline-flex items-center gap-2 text-text-muted hover:text-neon-cyan font-mono text-sm mb-8 transition-colors"
+    >
+      <span>&larr;</span>
+      <span>{backLabel}</span>
+    </a>
+
+    <header class="mb-10">
+      <h1 class="font-mono text-3xl md:text-4xl font-bold text-text-bright mb-4 glow-green">
+        {title}
+      </h1>
+
+      <div class="flex flex-wrap items-center gap-4 text-sm text-text-muted">
+        {date && (
+          <time datetime={date.toISOString()} class="font-mono">
+            {date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+          </time>
+        )}
+        {tags.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span class="px-2 py-0.5 bg-surface-light rounded text-neon-purple font-mono text-xs">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {summary && (
+        <p class="mt-4 text-text-muted text-lg leading-relaxed">{summary}</p>
+      )}
+    </header>
+
+    <div class="prose text-text-primary">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+const navLinks = [
+  { label: 'workshop', href: '/workshop-log' },
+  { label: 'trading', href: '/trading-dispatches' },
+  { label: 'tools', href: '/tools' },
+];
+---
+
+<header class="border-b border-surface-light/50">
+  <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 group">
+      <span class="font-mono font-bold text-lg text-text-bright group-hover:text-neon-green transition-colors">
+        SOFT CAT
+      </span>
+      <span class="font-mono text-neon-green glow-green text-sm">.ai</span>
+    </a>
+
+    <div class="flex items-center gap-6">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </nav>
+</header>

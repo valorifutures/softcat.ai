@@ -1,0 +1,105 @@
+---
+interface Entry {
+  id: string;
+  data: {
+    title: string;
+    date?: Date;
+    summary?: string;
+    description?: string;
+    tags?: string[];
+  };
+}
+
+interface Props {
+  title: string;
+  accent: 'green' | 'cyan' | 'purple';
+  href: string;
+  entries: Entry[];
+  basePath: string;
+}
+
+const { title, accent, href, entries, basePath } = Astro.props;
+
+const accentColors = {
+  green: {
+    dot: 'text-neon-green',
+    title: 'text-neon-green',
+    link: 'hover:text-neon-green hover:border-neon-green/30',
+    tag: 'text-neon-green',
+  },
+  cyan: {
+    dot: 'text-neon-cyan',
+    title: 'text-neon-cyan',
+    link: 'hover:text-neon-cyan hover:border-neon-cyan/30',
+    tag: 'text-neon-cyan',
+  },
+  purple: {
+    dot: 'text-neon-purple',
+    title: 'text-neon-purple',
+    link: 'hover:text-neon-purple hover:border-neon-purple/30',
+    tag: 'text-neon-purple',
+  },
+};
+
+const colors = accentColors[accent];
+---
+
+<section class="max-w-5xl mx-auto px-6 py-10">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="font-mono text-lg font-bold text-text-bright flex items-center gap-2">
+      <span class={colors.dot}>&#9632;</span>
+      {title}
+    </h2>
+    <a
+      href={href}
+      class={`font-mono text-xs text-text-muted ${colors.link} transition-colors border-b border-transparent`}
+    >
+      view all &rarr;
+    </a>
+  </div>
+
+  {entries.length === 0 ? (
+    <div class="bg-surface border border-surface-light rounded-lg p-6 text-center">
+      <p class="font-mono text-sm text-text-muted">
+        <span class={colors.dot}>&#9679;</span> awaiting first transmission...
+      </p>
+    </div>
+  ) : (
+    <div class="grid gap-4">
+      {entries.map((entry) => (
+        <a
+          href={`${basePath}/${entry.id}`}
+          class="block bg-surface border border-surface-light rounded-lg p-5 card-glow group"
+        >
+          <div class="flex items-start justify-between gap-4">
+            <div class="min-w-0">
+              <h3 class="font-mono text-sm font-bold text-text-bright group-hover:text-neon-green transition-colors truncate">
+                {entry.data.title}
+              </h3>
+              <p class="text-sm text-text-muted mt-1 line-clamp-2">
+                {entry.data.summary || entry.data.description}
+              </p>
+            </div>
+            {entry.data.date && (
+              <time
+                datetime={entry.data.date.toISOString()}
+                class="font-mono text-xs text-text-muted shrink-0"
+              >
+                {entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}
+              </time>
+            )}
+          </div>
+          {entry.data.tags && entry.data.tags.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              {entry.data.tags.map((tag) => (
+                <span class="px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono text-text-muted">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </a>
+      ))}
+    </div>
+  )}
+</section>

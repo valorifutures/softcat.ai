@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import SectionPreview from '../components/SectionPreview.astro';
+import { getCollection } from 'astro:content';
+
+const workshopEntries = (await getCollection('workshop-log'))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+const tradingEntries = (await getCollection('trading-dispatches'))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+const toolEntries = (await getCollection('tools'))
+  .filter((e) => !e.data.draft)
+  .slice(0, 3);
+---
+
+<BaseLayout>
+  <Hero />
+  <About />
+
+  <div class="border-t border-surface-light/30 mt-8">
+    <SectionPreview
+      title="Workshop Log"
+      accent="green"
+      href="/workshop-log"
+      basePath="/workshop-log"
+      entries={workshopEntries}
+    />
+  </div>
+
+  <div class="border-t border-surface-light/30">
+    <SectionPreview
+      title="Trading Dispatches"
+      accent="cyan"
+      href="/trading-dispatches"
+      basePath="/trading-dispatches"
+      entries={tradingEntries}
+    />
+  </div>
+
+  <div class="border-t border-surface-light/30">
+    <SectionPreview
+      title="Tools & Experiments"
+      accent="purple"
+      href="/tools"
+      basePath="/tools"
+      entries={toolEntries}
+    />
+  </div>
+</BaseLayout>
