@@ -1,0 +1,9 @@
+[Unit]
+Description=Run SOFT CAT AI News Digest every Wednesday at 10:00
+
+[Timer]
+OnCalendar=Wed 10:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
