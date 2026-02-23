@@ -8,11 +8,11 @@ draft: false
 
 Every startup is an "AI agent" company now. Most of them are a chatbot that calls an API and pretends that's autonomy. It's not.
 
-A real agent makes decisions, takes actions, handles errors, and knows when to stop. Most of the demos I've seen fail the "what happens when something goes wrong" test. They either crash, loop forever, or confidently do the wrong thing.
+A real agent makes decisions, takes actions, handles errors, and knows when to stop. Most of the demos we've seen fail the "what happens when something goes wrong" test. They either crash, loop forever, or confidently do the wrong thing.
 
 ## But
 
-The underlying capability is real. Claude with tool use can genuinely reason about multi-step tasks. Give it the right tools and clear constraints and it'll work through problems methodically. I've built agent loops that surprised me with how well they handled edge cases.
+The underlying capability is real. Claude with tool use can genuinely reason about multi-step tasks. Give it the right tools and clear constraints and it'll work through problems methodically. We've built agent loops that surprised us with how well they handled edge cases.
 
 ## The gap
 

@@ -12,7 +12,7 @@ Anthropic's Model Context Protocol (MCP) is one of those things that sounds bori
 
 You run an MCP server that exposes tools. Claude connects to it and can call those tools during a conversation. Want Claude to query your database? Run a Postgres MCP server. Want it to search your files? There's one for that too.
 
-## What I tested
+## What we tested
 
 Set up three MCP servers: filesystem access, web search, and a custom one that reads from an SQLite database. Claude Code picks them up automatically and uses them when relevant.
 

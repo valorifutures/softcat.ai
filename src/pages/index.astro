@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import SectionPreview from '../components/SectionPreview.astro';
+import Dispatch from '../components/Dispatch.astro';
 import { getCollection } from 'astro:content';
 
 const workshopEntries = (await getCollection('workshop-log'))
@@ -52,5 +53,9 @@ const toolEntries = (await getCollection('tools'))
       basePath="/tools"
       entries={toolEntries}
     />
+  </div>
+
+  <div class="border-t border-surface-light/30">
+    <Dispatch />
   </div>
 </BaseLayout>

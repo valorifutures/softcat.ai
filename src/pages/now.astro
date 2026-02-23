@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="/now" description="What Valori is currently working on.">
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-10">
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright">/now</h1>
+      <p class="font-mono text-xs text-text-muted mt-2">Last updated: 2026-02-23</p>
+    </header>
+
+    <div class="space-y-10">
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-green mb-3">Currently building</h2>
+        <ul class="space-y-2 font-mono text-sm text-text-primary">
+          <li class="flex items-start gap-2">
+            <span class="text-neon-green mt-0.5">&#9656;</span>
+            <span>Interactive lab tools for softcat.ai (7 shipped, more planned)</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-green mt-0.5">&#9656;</span>
+            <span>Automated model data pipeline pulling from OpenRouter API daily</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-cyan mb-3">Currently testing</h2>
+        <ul class="space-y-2 font-mono text-sm text-text-primary">
+          <li class="flex items-start gap-2">
+            <span class="text-neon-cyan mt-0.5">&#9656;</span>
+            <span>Claude Opus 4.6 for agentic coding workflows</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-cyan mt-0.5">&#9656;</span>
+            <span>Gemini 2.5 Flash for cheap reasoning tasks</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-purple mb-3">Currently reading</h2>
+        <ul class="space-y-2 font-mono text-sm text-text-primary">
+          <li class="flex items-start gap-2">
+            <span class="text-neon-purple mt-0.5">&#9656;</span>
+            <span>Anthropic's research on model evaluations and safety</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-purple mt-0.5">&#9656;</span>
+            <span>MCP (Model Context Protocol) specification and tooling</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-amber mb-3">Infrastructure</h2>
+        <ul class="space-y-2 font-mono text-sm text-text-primary">
+          <li class="flex items-start gap-2">
+            <span class="text-neon-amber mt-0.5">&#9656;</span>
+            <span>3 bots running on systemd timers: tool of the week, AI digest, model data</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-amber mt-0.5">&#9656;</span>
+            <span>Site deploys automatically on every push to main</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

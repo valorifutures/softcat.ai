@@ -12,10 +12,10 @@ The thing that actually changes how you work is context window size. A model wit
 
 ## Real world example
 
-I gave Claude my whole project. Every file, every config, every test. It could answer questions about how things connected, suggest changes that were consistent with the existing patterns, and catch bugs that spanned multiple files. Try that with a 4k context window.
+We gave Claude our whole project. Every file, every config, every test. It could answer questions about how things connected, suggest changes that were consistent with the existing patterns, and catch bugs that spanned multiple files. Try that with a 4k context window.
 
 ## The next frontier
 
 The models that win won't just be smarter. They'll be the ones that can hold an entire workday in context. Your morning conversation, the code you wrote, the emails you read, the meeting notes. Persistent, long-running context is the unlock nobody talks about enough.
 
-Benchmarks measure intelligence. Context windows measure usefulness. I know which one I care about more.
+Benchmarks measure intelligence. Context windows measure usefulness. We know which one we care about more.

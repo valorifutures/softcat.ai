@@ -1,9 +1,9 @@
 ---
 const navLinks = [
-  { label: 'workshop', href: '/workshop-log' },
-  { label: 'field notes', href: '/field-notes' },
-  { label: 'tools', href: '/tools' },
-  { label: 'lab', href: '/lab' },
+  { label: 'workshop', href: '/workshop-log', title: 'Build logs and write-ups' },
+  { label: 'field notes', href: '/field-notes', title: 'Observations and opinions' },
+  { label: 'tools', href: '/tools', title: 'Things we use' },
+  { label: 'lab', href: '/lab', title: 'Interactive experiments' },
 ];
 ---
 
@@ -20,6 +20,7 @@ const navLinks = [
       {navLinks.map((link) => (
         <a
           href={link.href}
+          title={link.title}
           class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors"
         >
           {link.label}

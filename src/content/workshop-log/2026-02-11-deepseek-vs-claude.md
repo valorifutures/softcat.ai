@@ -6,7 +6,7 @@ summary: "Ran both models through the same set of coding and reasoning tasks. Re
 draft: false
 ---
 
-DeepSeek R1 made a splash when it dropped. The benchmarks looked incredible. But benchmarks are benchmarks. I wanted to see how it holds up on actual work.
+DeepSeek R1 made a splash when it dropped. The benchmarks looked incredible. But benchmarks are benchmarks. We wanted to see how it holds up on actual work.
 
 ## The test
 
@@ -26,4 +26,4 @@ The bash script was a draw. Both produced working solutions with slightly differ
 
 ## The real difference
 
-Claude is more consistent. It rarely produces garbage. DeepSeek has higher highs but also some odd failures where it misreads the prompt entirely. For production use I'd still pick Claude. For research and reasoning experiments, DeepSeek is worth having in the toolkit.
+Claude is more consistent. It rarely produces garbage. DeepSeek has higher highs but also some odd failures where it misreads the prompt entirely. For production use we'd still pick Claude. For research and reasoning experiments, DeepSeek is worth having in the toolkit.

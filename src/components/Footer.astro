@@ -3,10 +3,16 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-surface-light/50 mt-auto">
-  <div class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between text-text-muted text-sm font-mono">
-    <span>&copy; {year} SOFT CAT .ai</span>
-    <span class="text-xs">
-      <span class="text-neon-green">&#9679;</span> systems nominal
-    </span>
+  <div class="max-w-5xl mx-auto px-6 py-6 space-y-3">
+    <div class="flex items-center justify-between text-text-muted text-sm font-mono">
+      <span>&copy; {year} SOFT CAT .ai</span>
+      <span class="flex items-center gap-3 text-xs">
+        <a href="/feed.xml" class="hover:text-neon-amber transition-colors" title="RSS Feed">RSS</a>
+        <a href="/now" class="hover:text-neon-green transition-colors"><span class="text-neon-green">&#9679;</span> systems nominal</a>
+      </span>
+    </div>
+    <div class="font-mono text-xs text-text-muted/60">
+      SOFT CAT .ai is an independent project by <a href="/valori" class="hover:text-neon-cyan transition-colors">Valori</a>. Not affiliated with Softcat plc.
+    </div>
   </div>
 </footer>
