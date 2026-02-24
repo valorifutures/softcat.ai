@@ -79,3 +79,51 @@ def send_rejection(name: str, email: str, reason: str = "") -> None:
         "html": body,
     })
     logger.info(f"Rejection email sent to {email}")
+
+
+def notify_access_request(name: str, email: str, user_id: str) -> None:
+    """Email owner about a new access request."""
+    if not RESEND_API_KEY:
+        logger.warning("RESEND_API_KEY not set, skipping access notification")
+        return
+
+    import resend
+    resend.api_key = RESEND_API_KEY
+
+    resend.Emails.send({
+        "from": FROM_EMAIL,
+        "to": OWNER_EMAIL,
+        "subject": f"New spawn access request: {name}",
+        "html": (
+            f"<p><b>{name}</b> ({email}) wants access to the agent builder.</p>"
+            f"<p>User ID: <code>{user_id}</code></p>"
+            f"<p>Approve:</p>"
+            f"<pre>curl -X POST https://api.softcat.ai/api/spawn/admin/approve/{user_id} "
+            f"-H 'Authorization: Bearer $ADMIN_TOKEN'</pre>"
+        ),
+    })
+    logger.info(f"Access request notification sent for {email}")
+
+
+def send_magic_link(name: str, email: str, magic_url: str) -> None:
+    """Email a magic login link to an approved user."""
+    if not RESEND_API_KEY:
+        logger.warning("RESEND_API_KEY not set, skipping magic link")
+        return
+
+    import resend
+    resend.api_key = RESEND_API_KEY
+
+    resend.Emails.send({
+        "from": FROM_EMAIL,
+        "to": email,
+        "subject": "Your SOFT CAT login link",
+        "html": (
+            f"<p>Hi {name},</p>"
+            f"<p>You've been approved to build agents on SOFT CAT.</p>"
+            f"<p><a href='{magic_url}'>Click here to log in</a></p>"
+            f"<p>This link expires in 24 hours and can only be used once.</p>"
+            f"<p>-- SOFT CAT</p>"
+        ),
+    })
+    logger.info(f"Magic link sent to {email}")

@@ -36,3 +36,23 @@ class RequestSubmission(BaseModel):
     name: str = Field(min_length=1, max_length=200)
     email: str = Field(min_length=5, max_length=200)
     description: str = Field(min_length=20, max_length=2000)
+
+
+# --- Spawn GUI models ---
+
+class AccessRequest(BaseModel):
+    name: str = Field(min_length=1, max_length=200)
+    email: str = Field(min_length=5, max_length=200)
+
+
+class MagicLinkLogin(BaseModel):
+    token: str
+
+
+class SpawnRequest(BaseModel):
+    description: str = Field(default="", max_length=2000)
+    designer_session_id: str | None = None
+
+
+class DesignerMessage(BaseModel):
+    message: str = Field(min_length=1, max_length=2000)

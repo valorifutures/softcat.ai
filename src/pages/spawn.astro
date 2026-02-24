@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AgentSpawner from '../components/AgentSpawner.tsx';
+---
+
+<BaseLayout title="Build an Agent" description="Design and build AI agents in real-time with SOFT CAT.">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <header class="mb-8">
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">Build an Agent</h1>
+      <p class="text-text-muted mt-2">Describe what you want. Watch it get built. Download and run.</p>
+    </header>
+
+    <div class="bg-surface border border-surface-light rounded-xl p-8 md:p-10 card-glow">
+      <div class="font-mono text-xs text-text-muted mb-6 flex items-center gap-2">
+        <span class="text-neon-green">&#9632;</span>
+        <span>spawn.md</span>
+      </div>
+
+      <AgentSpawner client:load />
+    </div>
+  </div>
+</BaseLayout>
