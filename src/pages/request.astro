@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AgentRequestForm from '../components/AgentRequestForm.tsx';
+---
+
+<BaseLayout title="Request an Agent" description="Request a custom AI agent built by SOFT CAT. Describe what you want, we build it, you download it.">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <header class="mb-12">
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">Request an Agent</h1>
+      <p class="text-text-muted mt-2 max-w-xl">
+        Describe what you want your AI agent to do. We review every request, build it using the
+        S.O.F.T pipeline, and email you a download link. Your first agent is free.
+      </p>
+    </header>
+
+    <div class="bg-surface border border-surface-light rounded-xl p-8 md:p-10 card-glow">
+      <div class="font-mono text-xs text-text-muted mb-6 flex items-center gap-2">
+        <span class="text-neon-cyan">&#9632;</span>
+        <span>request.md</span>
+      </div>
+
+      <AgentRequestForm client:load />
+    </div>
+
+    <div class="mt-12 space-y-6">
+      <div class="bg-surface border border-surface-light rounded-lg p-6">
+        <h2 class="font-mono text-sm font-bold text-text-bright mb-3">How it works</h2>
+        <ol class="space-y-2 text-sm text-text-muted font-mono">
+          <li class="flex gap-3">
+            <span class="text-neon-green shrink-0">1.</span>
+            <span>You describe the agent you want</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-neon-green shrink-0">2.</span>
+            <span>We review your request and run it through the S.O.F.T pipeline</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-neon-green shrink-0">3.</span>
+            <span>You get an email with a download link (zip file)</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-neon-green shrink-0">4.</span>
+            <span>Unzip, add your API key, and run it</span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="bg-surface border border-surface-light rounded-lg p-6">
+        <h2 class="font-mono text-sm font-bold text-text-bright mb-3">What you get</h2>
+        <ul class="space-y-1.5 text-sm text-text-muted font-mono">
+          <li class="flex gap-2"><span class="text-neon-cyan">-</span> A Python agent script tailored to your description</li>
+          <li class="flex gap-2"><span class="text-neon-cyan">-</span> A prompt template tuned for the task</li>
+          <li class="flex gap-2"><span class="text-neon-cyan">-</span> Configuration and dependencies ready to install</li>
+          <li class="flex gap-2"><span class="text-neon-cyan">-</span> A README with setup instructions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
