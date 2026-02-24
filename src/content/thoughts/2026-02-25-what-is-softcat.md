@@ -86,6 +86,4 @@ It's also not a hosted platform. Agents run on your machine, on your cron, with 
 
 The core pipeline works. We use it daily. The focus now is on making it easier to share and discover agent patterns. Community templates, better output routing, and tighter integration with tools like MCP are all on the roadmap.
 
-SOFT CAT is open source at [github.com/valorifutures/softcat-cli](https://github.com/valorifutures/softcat-cli).
-
 If you've been building agents and getting stuck at the "ok but how do I actually run this every day" stage, this is for you.
