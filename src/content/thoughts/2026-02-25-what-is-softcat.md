@@ -6,13 +6,13 @@ summary: "The mantra, the site, and the CLI that turns plain English into deploy
 draft: false
 ---
 
-SOFT CAT stands for **Smart Outputs From Trained Conversational AI Technology**. It's the principle behind everything we do here: use AI to produce useful, reliable outputs — not demos, not experiments, but things that actually run.
+SOFT CAT stands for **Smart Outputs From Trained Conversational AI Technology**. It's the principle behind everything we do here: use AI to produce useful, reliable outputs. Not demos, not experiments, but things that actually run.
 
 The name covers three things:
 
-- **SOFT CAT** the idea — AI should produce smart outputs, autonomously, on a schedule, without babysitting.
-- **softcat.ai** the site — where we document what we build, powered by its own AI agents.
-- **The softcat CLI** — a command line tool that turns plain English into deployed, scheduled, self-monitoring AI agents.
+- **SOFT CAT** the idea. AI should produce smart outputs, autonomously, on a schedule, without babysitting.
+- **softcat.ai** the site. Where we document what we build, powered by its own AI agents.
+- **The softcat CLI**. A command line tool that turns plain English into deployed, scheduled, self-monitoring AI agents.
 
 This post is mostly about the CLI, because that's the part that makes the rest possible.
 
@@ -24,7 +24,7 @@ The softcat CLI takes a plain English description of what you want an agent to d
 softcat spawn "watch HackerNews for AI agent news, summarise the top 5 daily"
 ```
 
-That one command runs a seven-stage pipeline — one for each letter in the name:
+That one command runs a seven-stage pipeline, one for each letter in the name:
 
 - **Scan** parses your description using Claude to extract intent, data sources, schedule, and output format
 - **Orchestrate** selects the right model, dependencies, and tools
