@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
+import FeaturedPost from '../components/FeaturedPost.astro';
 import SectionPreview from '../components/SectionPreview.astro';
 import Dispatch from '../components/Dispatch.astro';
 import { getCollection } from 'astro:content';
@@ -11,10 +12,12 @@ const newsEntries = (await getCollection('news-and-updates'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
 
-const thoughtEntries = (await getCollection('thoughts'))
+const allThoughts = (await getCollection('thoughts'))
   .filter((e) => !e.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const pinnedThoughts = allThoughts.filter((e) => e.data.pinned);
+const thoughtEntries = allThoughts.filter((e) => !e.data.pinned).slice(0, 3);
 
 const toolEntries = (await getCollection('tools'))
   .filter((e) => !e.data.draft)
@@ -24,6 +27,12 @@ const toolEntries = (await getCollection('tools'))
 <BaseLayout>
   <Hero />
   <About />
+
+  {pinnedThoughts.length > 0 && (
+    <div class="border-t border-surface-light/30 mt-8">
+      <FeaturedPost entries={pinnedThoughts} />
+    </div>
+  )}
 
   <div class="border-t border-surface-light/30 mt-8">
     <SectionPreview

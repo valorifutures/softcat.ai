@@ -4,6 +4,7 @@ date: 2026-02-25
 tags: [softcat, agents, announcement]
 summary: "The mantra, the site, and the CLI that turns plain English into deployed AI agents."
 draft: false
+pinned: true
 ---
 
 SOFT CAT stands for **Smart Outputs From Trained Conversational AI Technology**. It's the principle behind everything we do here: use AI to produce useful, reliable outputs. Not demos, not experiments, but things that actually run.

@@ -20,6 +20,7 @@ const thoughts = defineCollection({
     tags: z.array(z.string()).default([]),
     summary: z.string(),
     draft: z.boolean().default(false),
+    pinned: z.boolean().default(false),
   }),
 });
 

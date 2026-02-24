@@ -1,0 +1,52 @@
+---
+interface Entry {
+  id: string;
+  data: {
+    title: string;
+    summary?: string;
+    tags?: string[];
+  };
+}
+
+interface Props {
+  entries: Entry[];
+}
+
+const { entries } = Astro.props;
+---
+
+{entries.length > 0 && (
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <h2 class="font-mono text-xs text-text-muted mb-4 flex items-center gap-2">
+      <span class="text-neon-cyan">&#9733;</span>
+      <span>pinned</span>
+    </h2>
+
+    <div class="grid gap-4">
+      {entries.map((entry) => (
+        <a
+          href={`/thoughts/${entry.id}`}
+          class="block bg-surface border border-neon-cyan/20 border-l-2 border-l-neon-cyan rounded-lg p-6 card-glow group"
+        >
+          <h3 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-cyan transition-colors">
+            {entry.data.title}
+          </h3>
+          {entry.data.summary && (
+            <p class="text-sm text-text-muted mt-2 leading-relaxed">
+              {entry.data.summary}
+            </p>
+          )}
+          {entry.data.tags && entry.data.tags.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              {entry.data.tags.map((tag) => (
+                <span class="px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono text-neon-cyan/60">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </a>
+      ))}
+    </div>
+  </section>
+)}
