@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const news = (await getCollection('news-and-updates')).filter((e) => !e.data.draft);
+const thoughts = (await getCollection('thoughts')).filter((e) => !e.data.draft);
+const tools = (await getCollection('tools')).filter((e) => !e.data.draft);
+
+const allEntries = [...news, ...thoughts, ...tools];
+
+const tagCounts = new Map<string, number>();
+for (const entry of allEntries) {
+  for (const tag of entry.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+
+const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+---
+
+<BaseLayout title="Tags" description="Browse all content on SOFT CAT .ai by tag.">
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-12">
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-cyan">Tags</h1>
+      <p class="text-text-muted mt-2">Browse all content by tag. {tags.length} tags across {allEntries.length} posts.</p>
+    </header>
+
+    {tags.length === 0 ? (
+      <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
+        <p class="font-mono text-sm text-text-muted">
+          <span class="text-neon-cyan">&#9679;</span> no tags yet...
+        </p>
+      </div>
+    ) : (
+      <div class="flex flex-wrap gap-2">
+        {tags.map(([tag, count]) => (
+          <a
+            href={`/tags/${tag}`}
+            class="px-2.5 py-1 bg-surface border border-surface-light rounded font-mono text-sm text-text-muted hover:text-neon-cyan hover:border-neon-cyan/40 transition-colors"
+          >
+            {tag} <span class="text-text-muted/50">({count})</span>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>

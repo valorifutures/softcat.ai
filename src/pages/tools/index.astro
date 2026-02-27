@@ -45,7 +45,13 @@ const entries = (await getCollection('tools'))
             {entry.data.tags.length > 0 && (
               <div class="flex flex-wrap gap-1.5 mt-3">
                 {entry.data.tags.map((tag) => (
-                  <span class="px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono text-text-muted">{tag}</span>
+                  <a
+                    href={`/tags/${tag}`}
+                    class="px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono text-text-muted hover:text-neon-cyan transition-colors"
+                    onclick="event.stopPropagation()"
+                  >
+                    {tag}
+                  </a>
                 ))}
               </div>
             )}

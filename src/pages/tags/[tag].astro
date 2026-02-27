@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const news = (await getCollection('news-and-updates')).filter((e) => !e.data.draft);
+  const thoughts = (await getCollection('thoughts')).filter((e) => !e.data.draft);
+  const tools = (await getCollection('tools')).filter((e) => !e.data.draft);
+
+  const allTags = new Set([
+    ...news.flatMap((e) => e.data.tags),
+    ...thoughts.flatMap((e) => e.data.tags),
+    ...tools.flatMap((e) => e.data.tags),
+  ]);
+
+  return [...allTags].map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      newsEntries: news.filter((e) => e.data.tags.includes(tag)),
+      thoughtEntries: thoughts.filter((e) => e.data.tags.includes(tag)),
+      toolEntries: tools.filter((e) => e.data.tags.includes(tag)),
+    },
+  }));
+}
+
+const { tag, newsEntries, thoughtEntries, toolEntries } = Astro.props;
+const total = newsEntries.length + thoughtEntries.length + toolEntries.length;
+---
+
+<BaseLayout title={`#${tag}`} description={`All SOFT CAT .ai content tagged ${tag}.`}>
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-12">
+      <a href="/tags" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; all tags</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-cyan">#{tag}</h1>
+      <p class="text-text-muted mt-2">{total} {total === 1 ? 'post' : 'posts'} tagged {tag}.</p>
+    </header>
+
+    <div class="space-y-10">
+      {newsEntries.length > 0 && (
+        <section>
+          <h2 class="font-mono text-xs text-neon-green uppercase tracking-widest mb-4">News & Updates</h2>
+          <div class="grid gap-4">
+            {newsEntries
+              .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+              .map((entry) => (
+                <a
+                  href={`/news-and-updates/${entry.id}`}
+                  class="block bg-surface border border-surface-light rounded-lg p-5 card-glow group"
+                >
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="min-w-0">
+                      <h3 class="font-mono text-sm font-bold text-text-bright group-hover:text-neon-green transition-colors">
+                        {entry.data.title}
+                      </h3>
+                      <p class="text-sm text-text-muted mt-1">{entry.data.summary}</p>
+                    </div>
+                    <time
+                      datetime={entry.data.date.toISOString()}
+                      class="font-mono text-xs text-text-muted shrink-0"
+                    >
+                      {entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
+                    </time>
+                  </div>
+                  {entry.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                      {entry.data.tags.map((t) => (
+                        <a
+                          href={`/tags/${t}`}
+                          class={`px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono transition-colors ${t === tag ? 'text-neon-cyan' : 'text-text-muted hover:text-neon-cyan'}`}
+                          onclick="event.stopPropagation()"
+                        >
+                          {t}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </a>
+              ))}
+          </div>
+        </section>
+      )}
+
+      {thoughtEntries.length > 0 && (
+        <section>
+          <h2 class="font-mono text-xs text-neon-cyan uppercase tracking-widest mb-4">Thoughts</h2>
+          <div class="grid gap-4">
+            {thoughtEntries
+              .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+              .map((entry) => (
+                <a
+                  href={`/thoughts/${entry.id}`}
+                  class="block bg-surface border border-surface-light rounded-lg p-5 card-glow group"
+                >
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="min-w-0">
+                      <h3 class="font-mono text-sm font-bold text-text-bright group-hover:text-neon-cyan transition-colors">
+                        {entry.data.title}
+                      </h3>
+                      <p class="text-sm text-text-muted mt-1">{entry.data.summary}</p>
+                    </div>
+                    <time
+                      datetime={entry.data.date.toISOString()}
+                      class="font-mono text-xs text-text-muted shrink-0"
+                    >
+                      {entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
+                    </time>
+                  </div>
+                  {entry.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-1.5 mt-3">
+                      {entry.data.tags.map((t) => (
+                        <a
+                          href={`/tags/${t}`}
+                          class={`px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono transition-colors ${t === tag ? 'text-neon-cyan' : 'text-text-muted hover:text-neon-cyan'}`}
+                          onclick="event.stopPropagation()"
+                        >
+                          {t}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </a>
+              ))}
+          </div>
+        </section>
+      )}
+
+      {toolEntries.length > 0 && (
+        <section>
+          <h2 class="font-mono text-xs text-neon-purple uppercase tracking-widest mb-4">Tools & Experiments</h2>
+          <div class="grid gap-4">
+            {toolEntries.map((entry) => (
+              <a
+                href={`/tools/${entry.id}`}
+                class="block bg-surface border border-surface-light rounded-lg p-5 card-glow group"
+              >
+                <div class="flex items-start justify-between gap-4">
+                  <div class="min-w-0">
+                    <h3 class="font-mono text-sm font-bold text-text-bright group-hover:text-neon-purple transition-colors">
+                      {entry.data.title}
+                    </h3>
+                    <p class="text-sm text-text-muted mt-1">{entry.data.description}</p>
+                  </div>
+                  <span class={`shrink-0 px-2 py-0.5 rounded text-xs font-mono ${
+                    entry.data.status === 'active' ? 'bg-neon-green/10 text-neon-green' :
+                    entry.data.status === 'experimental' ? 'bg-neon-amber/10 text-neon-amber' :
+                    'bg-surface-light text-text-muted'
+                  }`}>
+                    {entry.data.status}
+                  </span>
+                </div>
+                {entry.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    {entry.data.tags.map((t) => (
+                      <a
+                        href={`/tags/${t}`}
+                        class={`px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono transition-colors ${t === tag ? 'text-neon-cyan' : 'text-text-muted hover:text-neon-cyan'}`}
+                        onclick="event.stopPropagation()"
+                      >
+                        {t}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </div>
+</BaseLayout>
