@@ -188,13 +188,14 @@ body {
   opacity: 0.7;
 }
 
-@keyframes drift-left-right {
-  0%, 100% { transform: translateX(-8%); }
-  50% { transform: translateX(8%); }
+@keyframes reveal-left-right {
+  0% { clip-path: inset(0 100% 0 0); }
+  80% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
 }
 
 .home-banner-drift {
-  animation: drift-left-right 20s ease-in-out infinite;
+  animation: reveal-left-right 6s ease-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
