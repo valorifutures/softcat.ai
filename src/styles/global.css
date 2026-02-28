@@ -167,6 +167,56 @@ body {
   z-index: 1;
 }
 
+/* Section banner */
+.section-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  height: 120px;
+}
+
+.section-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+.section-banner:hover img {
+  opacity: 0.7;
+}
+
+/* Fade edges into void */
+.section-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 50%,
+    var(--color-void) 100%
+  );
+  pointer-events: none;
+}
+
+.section-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-void) 0%,
+    transparent 15%,
+    transparent 85%,
+    var(--color-void) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* Glow line divider */
 .glow-divider {
   height: 1px;

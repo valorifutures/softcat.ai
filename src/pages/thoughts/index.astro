@@ -14,6 +14,9 @@ const entries = (await getCollection('thoughts'))
       <h1 class="font-mono text-3xl font-bold text-text-bright glow-cyan">Thoughts</h1>
       <p class="text-text-muted mt-2">Observations, opinions, and hot takes on AI developments.</p>
     </header>
+    <div class="section-banner mb-6">
+      <img src="/images/banners/thoughts.jpg" alt="" loading="eager" />
+    </div>
     <div class="glow-divider mb-10" style="--divider-color: rgba(0, 212, 255, 0.15)"></div>
 
     {entries.length === 0 ? (
