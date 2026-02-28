@@ -24,40 +24,37 @@ const entries = (await getCollection('news-and-updates'))
     ) : (
       <div class="grid gap-5">
         {entries.map((entry, index) => (
-          <a
-            href={`/news-and-updates/${entry.id}`}
-            class="block relative glass-card rounded-xl p-6 md:p-7 card-glow card-glow-green card-lift group animate-stagger"
+          <div
+            class="relative glass-card rounded-xl card-glow card-glow-green card-lift group animate-stagger border-l-2 border-l-neon-green/40 overflow-hidden"
             style={`--stagger-index: ${index}`}
           >
-            <div class="flex items-start justify-between gap-4">
-              <div class="min-w-0">
-                <h2 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-green transition-colors">
-                  {entry.data.title}
-                </h2>
-                <p class="text-sm text-text-muted mt-2 leading-relaxed">{entry.data.summary}</p>
+            <a href={`/news-and-updates/${entry.id}`} class="block p-6 md:p-7">
+              <div class="flex items-start justify-between gap-4">
+                <div class="min-w-0">
+                  <h2 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-green transition-colors">
+                    {entry.data.title}
+                  </h2>
+                  <p class="text-sm text-text-muted mt-2 leading-relaxed">{entry.data.summary}</p>
+                </div>
+                <time
+                  datetime={entry.data.date.toISOString()}
+                  class="font-mono text-xs text-text-muted shrink-0"
+                >
+                  {entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
+                </time>
               </div>
-              <time
-                datetime={entry.data.date.toISOString()}
-                class="font-mono text-xs text-text-muted shrink-0"
-              >
-                {entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
-              </time>
-            </div>
+            </a>
             {entry.data.tags.length > 0 && (
-              <div class="flex flex-wrap gap-2 mt-4">
+              <div class="flex flex-wrap gap-2 px-6 md:px-7 pb-5">
                 {entry.data.tags.map((tag) => (
-                  <a
-                    href={`/tags/${tag}`}
-                    class="tag-badge"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href={`/tags/${tag}`} class="tag-badge">
                     <span class="tag-dot tag-dot-green"></span>
                     {tag}
                   </a>
                 ))}
               </div>
             )}
-          </a>
+          </div>
         ))}
       </div>
     )}
