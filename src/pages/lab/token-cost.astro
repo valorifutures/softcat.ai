@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TokenCostCalculator from '../../components/lab/TokenCostCalculator';
+---
+
+<BaseLayout title="Token Cost Calculator" description="Estimate the API cost of your prompts across AI models using real pricing data.">
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-8">
+      <a href="/lab" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; lab</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">$ Token Cost Calculator</h1>
+      <p class="text-text-muted mt-2">Paste your prompt and expected output. Pick a model. See the cost before you commit.</p>
+    </header>
+    <TokenCostCalculator client:load />
+  </div>
+</BaseLayout>
