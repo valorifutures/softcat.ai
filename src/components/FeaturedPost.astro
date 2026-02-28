@@ -22,11 +22,12 @@ const { entries } = Astro.props;
       <span>pinned</span>
     </h2>
 
-    <div class="grid gap-4">
-      {entries.map((entry) => (
+    <div class="grid gap-5">
+      {entries.map((entry, index) => (
         <a
           href={`/thoughts/${entry.id}`}
-          class="block bg-surface border border-neon-cyan/20 border-l-2 border-l-neon-cyan rounded-lg p-6 card-glow group"
+          class="block relative glass-card border-l-2 border-l-neon-cyan rounded-xl p-6 md:p-7 card-glow card-glow-cyan card-lift group animate-stagger"
+          style={`--stagger-index: ${index}`}
         >
           <h3 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-cyan transition-colors">
             {entry.data.title}
@@ -37,9 +38,10 @@ const { entries } = Astro.props;
             </p>
           )}
           {entry.data.tags && entry.data.tags.length > 0 && (
-            <div class="flex flex-wrap gap-1.5 mt-3">
+            <div class="flex flex-wrap gap-2 mt-4">
               {entry.data.tags.map((tag) => (
-                <span class="px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono text-neon-cyan/60">
+                <span class="tag-badge">
+                  <span class="tag-dot tag-dot-cyan"></span>
                   {tag}
                 </span>
               ))}

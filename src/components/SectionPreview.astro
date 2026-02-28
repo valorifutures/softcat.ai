@@ -24,20 +24,26 @@ const accentColors = {
   green: {
     dot: 'text-neon-green',
     title: 'text-neon-green',
+    titleHover: 'group-hover:text-neon-green',
+    cardGlow: 'card-glow-green',
+    tagDot: 'tag-dot-green',
     link: 'hover:text-neon-green hover:border-neon-green/30',
-    tag: 'text-neon-green',
   },
   cyan: {
     dot: 'text-neon-cyan',
     title: 'text-neon-cyan',
+    titleHover: 'group-hover:text-neon-cyan',
+    cardGlow: 'card-glow-cyan',
+    tagDot: 'tag-dot-cyan',
     link: 'hover:text-neon-cyan hover:border-neon-cyan/30',
-    tag: 'text-neon-cyan',
   },
   purple: {
     dot: 'text-neon-purple',
     title: 'text-neon-purple',
+    titleHover: 'group-hover:text-neon-purple',
+    cardGlow: 'card-glow-purple',
+    tagDot: 'tag-dot-purple',
     link: 'hover:text-neon-purple hover:border-neon-purple/30',
-    tag: 'text-neon-purple',
   },
 };
 
@@ -65,18 +71,19 @@ const colors = accentColors[accent];
       </p>
     </div>
   ) : (
-    <div class="grid gap-4">
-      {entries.map((entry) => (
+    <div class="grid gap-5">
+      {entries.map((entry, index) => (
         <a
           href={`${basePath}/${entry.id}`}
-          class="block bg-surface border border-surface-light rounded-lg p-5 card-glow group"
+          class={`block relative glass-card rounded-xl p-6 card-glow ${colors.cardGlow} card-lift group animate-stagger`}
+          style={`--stagger-index: ${index}`}
         >
           <div class="flex items-start justify-between gap-4">
             <div class="min-w-0">
-              <h3 class="font-mono text-sm font-bold text-text-bright group-hover:text-neon-green transition-colors truncate">
+              <h3 class={`font-mono text-base font-bold text-text-bright ${colors.titleHover} transition-colors truncate`}>
                 {entry.data.title}
               </h3>
-              <p class="text-sm text-text-muted mt-1 line-clamp-2">
+              <p class="text-sm text-text-muted mt-2 leading-relaxed line-clamp-2">
                 {entry.data.summary || entry.data.description}
               </p>
             </div>
@@ -90,9 +97,10 @@ const colors = accentColors[accent];
             )}
           </div>
           {entry.data.tags && entry.data.tags.length > 0 && (
-            <div class="flex flex-wrap gap-1.5 mt-3">
+            <div class="flex flex-wrap gap-2 mt-4">
               {entry.data.tags.map((tag) => (
-                <span class="px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono text-text-muted">
+                <span class="tag-badge">
+                  <span class={`tag-dot ${colors.tagDot}`}></span>
                   {tag}
                 </span>
               ))}
