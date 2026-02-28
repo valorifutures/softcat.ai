@@ -1,4 +1,6 @@
 ---
+import { tagDotClass } from '../utils/tagColor';
+
 interface Entry {
   id: string;
   data: {
@@ -103,7 +105,7 @@ const colors = accentColors[accent];
             <div class="flex flex-wrap gap-2 mt-4">
               {entry.data.tags.map((tag) => (
                 <span class="tag-badge">
-                  <span class={`tag-dot ${colors.tagDot}`}></span>
+                  <span class={`tag-dot ${tagDotClass(tag)}`}></span>
                   {tag}
                 </span>
               ))}

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { tagDotClass } from '../../utils/tagColor';
 import { getCollection } from 'astro:content';
 
 const news = (await getCollection('news-and-updates')).filter((e) => !e.data.draft);
@@ -37,8 +38,9 @@ const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeC
         {tags.map(([tag, count]) => (
           <a
             href={`/tags/${tag}`}
-            class="px-2.5 py-1 bg-surface border border-surface-light rounded font-mono text-sm text-text-muted hover:text-neon-cyan hover:border-neon-cyan/40 transition-colors"
+            class="tag-badge"
           >
+            <span class={`tag-dot ${tagDotClass(tag)}`}></span>
             {tag} <span class="text-text-muted/50">({count})</span>
           </a>
         ))}

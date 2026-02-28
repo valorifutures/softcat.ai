@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { tagDotClass } from '../utils/tagColor';
 
 interface Props {
   title: string;
@@ -37,9 +38,10 @@ const { title, date, tags = [], summary, backLink, backLabel } = Astro.props;
         {tags.length > 0 && (
           <div class="flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <span class="px-2 py-0.5 bg-surface-light rounded text-neon-purple font-mono text-xs">
+              <a href={`/tags/${tag}`} class="tag-badge">
+                <span class={`tag-dot ${tagDotClass(tag)}`}></span>
                 {tag}
-              </span>
+              </a>
             ))}
           </div>
         )}

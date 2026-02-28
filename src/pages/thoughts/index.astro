@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { tagDotClass } from '../../utils/tagColor';
 
 const entries = (await getCollection('thoughts'))
   .filter((e) => !e.data.draft)
@@ -52,7 +53,7 @@ const entries = (await getCollection('thoughts'))
               <div class="flex flex-wrap gap-2 px-6 md:px-7 pb-5">
                 {entry.data.tags.map((tag) => (
                   <a href={`/tags/${tag}`} class="tag-badge">
-                    <span class="tag-dot tag-dot-cyan"></span>
+                    <span class={`tag-dot ${tagDotClass(tag)}`}></span>
                     {tag}
                   </a>
                 ))}

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { tagDotClass } from '../utils/tagColor';
 
 const terms = [
   {
@@ -205,7 +206,7 @@ const letters = Object.keys(grouped).sort();
                     <div class="flex flex-wrap gap-2 mt-4">
                       {item.tags.map((tag) => (
                         <a href={`/tags/${tag}`} class="tag-badge">
-                          <span class="tag-dot tag-dot-purple"></span>
+                          <span class={`tag-dot ${tagDotClass(tag)}`}></span>
                           {tag}
                         </a>
                       ))}

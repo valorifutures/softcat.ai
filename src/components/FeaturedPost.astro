@@ -1,4 +1,6 @@
 ---
+import { tagDotClass } from '../utils/tagColor';
+
 interface Entry {
   id: string;
   data: {
@@ -41,7 +43,7 @@ const { entries } = Astro.props;
             <div class="flex flex-wrap gap-2 mt-4">
               {entry.data.tags.map((tag) => (
                 <span class="tag-badge">
-                  <span class="tag-dot tag-dot-cyan"></span>
+                  <span class={`tag-dot ${tagDotClass(tag)}`}></span>
                   {tag}
                 </span>
               ))}

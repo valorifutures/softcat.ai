@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { tagDotClass } from '../../utils/tagColor';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -67,9 +68,10 @@ const total = newsEntries.length + thoughtEntries.length + toolEntries.length;
                       {entry.data.tags.map((t) => (
                         <a
                           href={`/tags/${t}`}
-                          class={`px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono transition-colors ${t === tag ? 'text-neon-cyan' : 'text-text-muted hover:text-neon-cyan'}`}
+                          class="tag-badge"
                           onclick="event.stopPropagation()"
                         >
+                          <span class={`tag-dot ${tagDotClass(t)}`}></span>
                           {t}
                         </a>
                       ))}
@@ -111,9 +113,10 @@ const total = newsEntries.length + thoughtEntries.length + toolEntries.length;
                       {entry.data.tags.map((t) => (
                         <a
                           href={`/tags/${t}`}
-                          class={`px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono transition-colors ${t === tag ? 'text-neon-cyan' : 'text-text-muted hover:text-neon-cyan'}`}
+                          class="tag-badge"
                           onclick="event.stopPropagation()"
                         >
+                          <span class={`tag-dot ${tagDotClass(t)}`}></span>
                           {t}
                         </a>
                       ))}
