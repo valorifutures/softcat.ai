@@ -59,32 +59,34 @@ body {
 
 /* Section-specific card glow */
 .card-glow-green:hover {
-  border-color: rgba(0, 255, 159, 0.3);
-  box-shadow: 0 0 20px rgba(0, 255, 159, 0.07), 0 0 60px rgba(0, 255, 159, 0.03);
+  border-color: rgba(0, 255, 159, 0.35);
+  box-shadow: 0 0 20px rgba(0, 255, 159, 0.1), 0 0 60px rgba(0, 255, 159, 0.04), inset 0 1px 0 rgba(0, 255, 159, 0.06);
 }
 
 .card-glow-cyan:hover {
-  border-color: rgba(0, 212, 255, 0.3);
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.07), 0 0 60px rgba(0, 212, 255, 0.03);
+  border-color: rgba(0, 212, 255, 0.35);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1), 0 0 60px rgba(0, 212, 255, 0.04), inset 0 1px 0 rgba(0, 212, 255, 0.06);
 }
 
 .card-glow-purple:hover {
-  border-color: rgba(180, 74, 255, 0.3);
-  box-shadow: 0 0 20px rgba(180, 74, 255, 0.07), 0 0 60px rgba(180, 74, 255, 0.03);
+  border-color: rgba(180, 74, 255, 0.35);
+  box-shadow: 0 0 20px rgba(180, 74, 255, 0.1), 0 0 60px rgba(180, 74, 255, 0.04), inset 0 1px 0 rgba(180, 74, 255, 0.06);
 }
 
 /* Glassmorphism card */
 .glass-card {
   background: linear-gradient(
     135deg,
-    rgba(18, 18, 26, 0.8) 0%,
-    rgba(26, 26, 46, 0.6) 100%
+    rgba(18, 18, 26, 0.85) 0%,
+    rgba(26, 26, 46, 0.7) 50%,
+    rgba(18, 18, 26, 0.85) 100%
   );
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Top edge shimmer */
 .glass-card::before {
   content: '';
   position: absolute;
@@ -95,11 +97,87 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.12) 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.12) 70%,
     transparent 100%
   );
   border-radius: inherit;
   pointer-events: none;
+}
+
+/* Bottom inner glow on hover */
+.glass-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: var(--card-accent, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.glass-card:hover::after {
+  opacity: 1;
+}
+
+/* Section accent lines */
+.card-glow-green { --card-accent: rgba(0, 255, 159, 0.3); }
+.card-glow-cyan { --card-accent: rgba(0, 212, 255, 0.3); }
+.card-glow-purple { --card-accent: rgba(180, 74, 255, 0.3); }
+
+/* Ambient glow orb — place behind card grids */
+.ambient-glow {
+  position: relative;
+}
+
+.ambient-glow::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--glow-color, rgba(0, 255, 159, 0.03));
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-glow::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  right: -5%;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: var(--glow-color-alt, rgba(180, 74, 255, 0.025));
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-glow > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Glow line divider */
+.glow-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--divider-color, rgba(255, 255, 255, 0.06)) 20%,
+    var(--divider-color, rgba(255, 255, 255, 0.1)) 50%,
+    var(--divider-color, rgba(255, 255, 255, 0.06)) 80%,
+    transparent 100%
+  );
 }
 
 /* Card hover lift */
@@ -145,6 +223,7 @@ body {
   height: 5px;
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 0 4px currentColor;
 }
 
 .tag-dot-green { background-color: var(--color-neon-green); }

@@ -9,11 +9,12 @@ const entries = (await getCollection('thoughts'))
 
 <BaseLayout title="Thoughts" description="Observations, opinions, and hot takes on AI developments.">
   <div class="max-w-4xl mx-auto px-6 py-16">
-    <header class="mb-12">
+    <header class="mb-8">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
       <h1 class="font-mono text-3xl font-bold text-text-bright glow-cyan">Thoughts</h1>
       <p class="text-text-muted mt-2">Observations, opinions, and hot takes on AI developments.</p>
     </header>
+    <div class="glow-divider mb-10" style="--divider-color: rgba(0, 212, 255, 0.15)"></div>
 
     {entries.length === 0 ? (
       <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
@@ -22,7 +23,7 @@ const entries = (await getCollection('thoughts'))
         </p>
       </div>
     ) : (
-      <div class="grid gap-5">
+      <div class="grid gap-5 ambient-glow" style="--glow-color: rgba(0, 212, 255, 0.035); --glow-color-alt: rgba(180, 74, 255, 0.025)">
         {entries.map((entry, index) => (
           <div
             class="relative glass-card rounded-xl card-glow card-glow-cyan card-lift group animate-stagger border-l-2 border-l-neon-cyan/40 overflow-hidden"
