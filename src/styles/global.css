@@ -188,6 +188,19 @@ body {
   opacity: 0.7;
 }
 
+@keyframes drift-left-right {
+  0%, 100% { transform: translateX(-8%); }
+  50% { transform: translateX(8%); }
+}
+
+.home-banner-drift {
+  animation: drift-left-right 20s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-banner-drift { animation: none; }
+}
+
 /* Fade edges into void */
 .section-banner::after {
   content: '';
