@@ -63,11 +63,14 @@ const tools = [
 
 <BaseLayout title="Lab" description="Interactive AI tools built by SOFT CAT.">
   <div class="max-w-5xl mx-auto px-6 py-16">
-    <header class="mb-12">
+    <header class="mb-8">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
       <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">Lab</h1>
       <p class="text-text-muted mt-2">Interactive tools for working with AI. All client-side, nothing leaves your browser.</p>
     </header>
+    <div class="relative overflow-hidden rounded-xl h-[100px] mb-10">
+      <img src="/images/banners/lab.png" alt="" loading="eager" class="w-full h-full object-cover mix-blend-screen opacity-70" />
+    </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {tools.map((tool) => (
