@@ -190,12 +190,12 @@ body {
 
 @keyframes reveal-left-right {
   0% { clip-path: inset(0 100% 0 0); }
-  50% { clip-path: inset(0 0 0 0); }
+  44% { clip-path: inset(0 0 0 0); }
   100% { clip-path: inset(0 0 0 0); }
 }
 
 .home-banner-drift {
-  animation: reveal-left-right 10s ease-out infinite;
+  animation: reveal-left-right 18s ease-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
