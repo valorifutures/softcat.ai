@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const terms = [
+  {
+    term: 'Agentic loop',
+    definition: 'The cycle where an AI model takes an action, observes the result, then decides what to do next. It repeats until the task is done or a limit is hit. This is how autonomous AI agents handle multi-step tasks.',
+    tags: ['agents', 'architecture'],
+  },
+  {
+    term: 'Attention mechanism',
+    definition: 'The core operation inside a transformer model. It lets the model weigh how much each word in an input relates to every other word. This is what gives modern LLMs their ability to track long-range dependencies in text.',
+    tags: ['architecture', 'transformers'],
+  },
+  {
+    term: 'Benchmark',
+    definition: 'A standardised test used to compare model performance. Common ones include MMLU for knowledge and HumanEval for coding. Results are useful but easy to overfit to, so treat leaderboards with scepticism.',
+    tags: ['evaluation', 'models'],
+  },
+  {
+    term: 'Chain of thought',
+    definition: 'A prompting approach where the model is encouraged to reason step by step before giving a final answer. It consistently improves performance on complex tasks. You trigger it with phrases like "think step by step" or by showing worked examples.',
+    tags: ['prompting', 'reasoning'],
+  },
+  {
+    term: 'Context window',
+    definition: 'The maximum amount of text a model can hold in its working memory at once. Older models capped out at a few thousand tokens. Modern ones handle hundreds of thousands, which changes what\'s possible with long documents.',
+    tags: ['models', 'concept'],
+  },
+  {
+    term: 'Embeddings',
+    definition: 'A way of representing text as numbers so a computer can work with meaning, not just characters. Similar concepts end up near each other in this numerical space. Embeddings power search, RAG, and clustering.',
+    tags: ['vectors', 'concept'],
+  },
+  {
+    term: 'Fine-tuning',
+    definition: 'Training an existing model on new data to change its behaviour. You start from a foundation model, then update its weights on domain-specific examples. It\'s more efficient than training from scratch but still expensive.',
+    tags: ['training', 'models'],
+  },
+  {
+    term: 'Foundation model',
+    definition: 'A large model trained on massive data that can be adapted for many tasks. GPT-4, Claude, and Gemini are all foundation models. The idea is you train once at scale, then specialise.',
+    tags: ['models', 'concept'],
+  },
+  {
+    term: 'Grounding',
+    definition: 'Connecting model outputs to real, verifiable information. Ungrounded models just predict plausible-sounding text. Grounded models check facts against documents or databases before answering.',
+    tags: ['rag', 'technique'],
+  },
+  {
+    term: 'Hallucination',
+    definition: 'When a model generates confident-sounding text that is factually wrong. It\'s not lying, it\'s pattern-matching in a way that produces false outputs. RAG and grounding techniques help reduce it.',
+    tags: ['concept', 'safety'],
+  },
+  {
+    term: 'In-context learning',
+    definition: 'Teaching a model how to behave by giving examples in the prompt itself, without changing any weights. You show the model a few examples of what you want, and it adapts. No training required.',
+    tags: ['prompting', 'technique'],
+  },
+  {
+    term: 'Inference',
+    definition: 'Running a trained model to generate outputs. Training is when you teach the model. Inference is when you use it. Inference cost and speed are the main constraints for production AI systems.',
+    tags: ['infrastructure', 'concept'],
+  },
+  {
+    term: 'Knowledge graph',
+    definition: 'A structured representation of facts as entities and relationships. "Albert Einstein worked at Princeton" is a knowledge graph triple. They\'re used to give models explicit, queryable world knowledge.',
+    tags: ['data', 'concept'],
+  },
+  {
+    term: 'Latency',
+    definition: 'How long it takes from sending a prompt to receiving the first token. Lower latency matters most for interactive use. Batch processing can tolerate higher latency for cost savings.',
+    tags: ['infrastructure', 'performance'],
+  },
+  {
+    term: 'LLM',
+    definition: 'Short for Large Language Model. A neural network trained to predict and generate text at scale. The "large" refers to both parameter count and training data volume. GPT, Claude, and Gemini are all LLMs.',
+    tags: ['models', 'concept'],
+  },
+  {
+    term: 'MCP',
+    definition: 'Model Context Protocol. An open standard from Anthropic that lets LLMs connect to external tools and data sources in a standardised way. Think of it like USB for AI: one interface that works with many services.',
+    tags: ['infrastructure', 'agents'],
+  },
+  {
+    term: 'Mixture of Experts',
+    definition: 'An architecture where only a subset of the model\'s parameters activate for each input. Instead of running the whole network for every token, inputs get routed to specialist "experts". It scales efficiently.',
+    tags: ['architecture', 'models'],
+  },
+  {
+    term: 'Multi-modal',
+    definition: 'A model that handles more than one type of input or output, like text plus images. GPT-4o and Gemini are multi-modal. The capability opens up tasks like image description, chart reading, and document parsing.',
+    tags: ['models', 'concept'],
+  },
+  {
+    term: 'Prompt engineering',
+    definition: 'The practice of crafting inputs to get better outputs from a model. It ranges from simple phrasing tweaks to complex multi-shot examples and structured instructions. A good prompt often beats a bigger model.',
+    tags: ['prompting', 'technique'],
+  },
+  {
+    term: 'Quantization',
+    definition: 'Compressing a model by reducing the precision of its numbers, from 32-bit floats to 8-bit or 4-bit integers. It cuts memory use and inference cost with modest quality loss. Quantized models run on consumer hardware.',
+    tags: ['infrastructure', 'performance'],
+  },
+  {
+    term: 'RAG',
+    definition: 'Retrieval-Augmented Generation. A pattern where you fetch relevant documents at query time and include them in the prompt. The model uses that context to answer questions. It reduces hallucination and keeps knowledge current.',
+    tags: ['rag', 'technique'],
+  },
+  {
+    term: 'RLHF',
+    definition: 'Reinforcement Learning from Human Feedback. A training method where humans rate model outputs, and those ratings guide further training. It\'s how most chat models get aligned to human preferences.',
+    tags: ['training', 'safety'],
+  },
+  {
+    term: 'Sampling',
+    definition: 'The process of picking the next token during generation. Models output a probability distribution across all possible tokens. Sampling controls how that distribution is used, from always picking the most likely token to more random choices.',
+    tags: ['concept', 'inference'],
+  },
+  {
+    term: 'System prompt',
+    definition: 'Instructions given to a model before the user\'s message, usually hidden from the user. It sets the model\'s persona, constraints, and context. Most AI products run on carefully tuned system prompts.',
+    tags: ['prompting', 'concept'],
+  },
+  {
+    term: 'Temperature',
+    definition: 'A parameter that controls how random model outputs are. Low temperature (near 0) makes outputs more deterministic. High temperature (above 1) makes them more varied and creative. Most production uses stay between 0.2 and 0.8.',
+    tags: ['inference', 'concept'],
+  },
+  {
+    term: 'Tokenisation',
+    definition: 'The process of splitting text into tokens, the chunks a model actually processes. A token is roughly 3-4 characters in English. "Tokenisation" is two tokens. Prices and context limits are measured in tokens, not words.',
+    tags: ['concept', 'infrastructure'],
+  },
+  {
+    term: 'Tool use',
+    definition: 'The ability of a model to call external functions or APIs to complete a task. Instead of just generating text, the model can query a database, run code, or browse the web. It\'s the key capability behind agentic AI.',
+    tags: ['agents', 'technique'],
+  },
+  {
+    term: 'Vector database',
+    definition: 'A database built for storing and searching embeddings. You store vectors at index time and retrieve the most similar ones at query time. Most RAG systems use a vector database to find relevant context.',
+    tags: ['rag', 'infrastructure'],
+  },
+  {
+    term: 'Vibe coding',
+    definition: 'Writing software by describing what you want to an AI and iterating on the output. You focus on the goal rather than the implementation. The term is casual but the workflow is now mainstream for rapid prototyping.',
+    tags: ['technique', 'concept'],
+  },
+  {
+    term: 'Zero-shot',
+    definition: 'Asking a model to do something without any examples in the prompt. If the task is clearly described, good models handle it. Zero-shot is the baseline before you start adding few-shot examples.',
+    tags: ['prompting', 'technique'],
+  },
+].sort((a, b) => a.term.localeCompare(b.term));
+
+// Group by first letter
+const grouped = terms.reduce((acc, term) => {
+  const letter = term.term[0].toUpperCase();
+  if (!acc[letter]) acc[letter] = [];
+  acc[letter].push(term);
+  return acc;
+}, {} as Record<string, typeof terms>);
+
+const letters = Object.keys(grouped).sort();
+---
+
+<BaseLayout
+  title="AI Glossary"
+  description="Plain-English definitions for 30 AI terms: RAG, vibe coding, agentic loop, context window, tokenisation, RLHF, and more."
+>
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <header class="mb-10">
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-purple">AI Glossary</h1>
+      <p class="text-text-muted mt-2">Plain-English definitions for the terms that keep coming up. {terms.length} entries, sorted alphabetically.</p>
+    </header>
+
+    <div class="glow-divider mb-8" style="--divider-color: rgba(180, 74, 255, 0.15)"></div>
+
+    <!-- Alphabet jump nav -->
+    <nav class="flex flex-wrap gap-2 mb-10" aria-label="Jump to letter">
+      {letters.map((letter) => (
+        <a
+          href={`#letter-${letter}`}
+          class="font-mono text-xs text-text-muted hover:text-neon-purple transition-colors px-2 py-1 bg-surface border border-surface-light rounded hover:border-neon-purple/30"
+        >
+          {letter}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Grouped term listings -->
+    <div class="space-y-12 ambient-glow" style="--glow-color: rgba(180, 74, 255, 0.035); --glow-color-alt: rgba(0, 212, 255, 0.025)">
+      {letters.map((letter) => (
+        <section id={`letter-${letter}`}>
+          <h2 class="font-mono text-xl font-bold text-neon-purple glow-purple mb-4">{letter}</h2>
+          <div class="space-y-4">
+            {grouped[letter].map((item) => (
+              <div class="glass-card rounded-xl card-glow card-glow-purple border-l-2 border-l-neon-purple/40 overflow-hidden relative">
+                <div class="p-5 md:p-6">
+                  <h3 class="font-mono text-base font-bold text-text-bright mb-2">{item.term}</h3>
+                  <p class="text-sm text-text-muted leading-relaxed">{item.definition}</p>
+                  {item.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mt-4">
+                      {item.tags.map((tag) => (
+                        <a href={`/tags/${tag}`} class="tag-badge">
+                          <span class="tag-dot tag-dot-purple"></span>
+                          {tag}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- Back to top -->
+    <div class="mt-12 pt-8 border-t border-surface-light/50 text-center">
+      <a href="#" class="font-mono text-xs text-text-muted hover:text-neon-purple transition-colors">&uarr; back to top</a>
+    </div>
+  </div>
+</BaseLayout>
