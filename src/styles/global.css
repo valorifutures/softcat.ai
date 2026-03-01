@@ -47,6 +47,10 @@ body {
   text-shadow: 0 0 10px rgba(180, 74, 255, 0.5), 0 0 20px rgba(180, 74, 255, 0.2);
 }
 
+.glow-amber {
+  text-shadow: 0 0 10px rgba(255, 184, 0, 0.5), 0 0 20px rgba(255, 184, 0, 0.2);
+}
+
 /* Card base transition */
 .card-glow {
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
@@ -71,6 +75,11 @@ body {
 .card-glow-purple:hover {
   border-color: rgba(180, 74, 255, 0.35);
   box-shadow: 0 0 20px rgba(180, 74, 255, 0.1), 0 0 60px rgba(180, 74, 255, 0.04), inset 0 1px 0 rgba(180, 74, 255, 0.06);
+}
+
+.card-glow-amber:hover {
+  border-color: rgba(255, 184, 0, 0.35);
+  box-shadow: 0 0 20px rgba(255, 184, 0, 0.1), 0 0 60px rgba(255, 184, 0, 0.04), inset 0 1px 0 rgba(255, 184, 0, 0.06);
 }
 
 /* Glassmorphism card */
@@ -128,6 +137,7 @@ body {
 .card-glow-green { --card-accent: rgba(0, 255, 159, 0.3); }
 .card-glow-cyan { --card-accent: rgba(0, 212, 255, 0.3); }
 .card-glow-purple { --card-accent: rgba(180, 74, 255, 0.3); }
+.card-glow-amber { --card-accent: rgba(255, 184, 0, 0.3); }
 
 /* Ambient glow orb — place behind card grids */
 .ambient-glow {

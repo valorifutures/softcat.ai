@@ -37,8 +37,21 @@ const tools = defineCollection({
   }),
 });
 
+const prompts = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/prompts' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    tags: z.array(z.string()).default([]),
+    category: z.string(),
+    prompt: z.string(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   'news-and-updates': newsAndUpdates,
   'thoughts': thoughts,
   tools,
+  prompts,
 };
