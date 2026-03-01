@@ -22,6 +22,11 @@ const thoughtEntries = allThoughts.filter((e) => !e.data.pinned).slice(0, 3);
 const toolEntries = (await getCollection('tools'))
   .filter((e) => !e.data.draft)
   .slice(0, 3);
+
+const promptEntries = (await getCollection('prompts'))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title))
+  .slice(0, 3);
 ---
 
 <BaseLayout>
@@ -61,6 +66,16 @@ const toolEntries = (await getCollection('tools'))
       href="/tools"
       basePath="/tools"
       entries={toolEntries}
+    />
+  </div>
+
+  <div class="border-t border-surface-light/30">
+    <SectionPreview
+      title="Prompt Library"
+      accent="amber"
+      href="/prompts"
+      basePath="/prompts"
+      entries={promptEntries}
     />
   </div>
 
