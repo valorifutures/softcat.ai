@@ -19,6 +19,9 @@ pnpm-debug.log*
 bot/.env
 bot/venv/
 
+# Python bytecode
+__pycache__/
+
 # macOS-specific files
 .DS_Store
 
