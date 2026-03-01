@@ -1,7 +1,7 @@
 ---
 title: "Scale killed the LLM star"
 date: 2026-02-27
-tags: [efficiency, edge-computing, model-optimization]
+tags: [efficiency, edge-computing, model-optimisation]
 summary: "The race for bigger models is over, and efficiency just won."
 draft: false
 pinned: false
@@ -11,7 +11,7 @@ Google's Nano-Banana 2 does 4K image synthesis in under a second on your phone. 
 
 ## The Great Downsizing
 
-We spent years in a dick-measuring contest over parameter counts. Bigger meant better, and better meant more zeros on the end of your model spec. But while everyone was building data center-sized models, a quiet revolution happened. Teams figured out how to compress all that capability into something that fits in your pocket.
+We spent years in a dick-measuring contest over parameter counts. Bigger meant better, and better meant more zeros on the end of your model spec. But while everyone was building data centre-sized models, a quiet revolution happened. Teams figured out how to compress all that capability into something that fits in your pocket.
 
 Nano-Banana 2 isn't just fast. It's embarrassingly fast for something that good. Sub-second 4K generation used to require a server farm. Now it runs on the same chip that plays your music. That's not incremental progress, that's a paradigm shift.
 

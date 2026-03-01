@@ -1,8 +1,8 @@
 [Unit]
-Description=Run SOFT CAT AI News Digest every Wednesday at 10:00
+Description=Run SOFT CAT AI News Digest daily at 07:00
 
 [Timer]
-OnCalendar=Wed 10:00
+OnCalendar=*-*-* 07:00
 Persistent=true
 
 [Install]

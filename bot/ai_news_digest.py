@@ -89,7 +89,7 @@ def generate_digest(entries: list[dict], history: dict) -> str | None:
 
     today = date.today().isoformat()
 
-    prompt = f"""You are writing a weekly AI news digest for SOFT CAT .ai. Pick the 3-5 most interesting or important stories from the feed below and write a digest post.
+    prompt = f"""You are writing a daily AI news digest for SOFT CAT .ai. Pick the 3-5 most interesting or important stories from the feed below and write a digest post.
 
 ## House style (follow this exactly):
 {style_guide}
@@ -127,6 +127,7 @@ Same format.
 ```
 
 Rules:
+- Use British English throughout ("optimising" not "optimizing", "centre" not "center", "analyse" not "analyze")
 - Pick stories that actually matter, not fluff
 - Have an opinion. "This is interesting because..." or "Not sure this changes much because..."
 - No em dashes anywhere

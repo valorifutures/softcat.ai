@@ -13,7 +13,7 @@ We've been building agents wrong. The industry keeps obsessing over model capabi
 
 Most agent frameworks are just fancy prompt chains with APIs bolted on. They can't remember what happened yesterday. They can't learn from mistakes. They restart fresh every time like digital goldfish. Real work requires persistence, shared context, and the ability to pick up where you left off.
 
-The smart teams are realizing this. They're building agent workstations with proper memory systems, tool persistence, and multi-agent coordination. These aren't just better prompts, they're operating environments designed for autonomous work.
+The smart teams are realising this. They're building agent workstations with proper memory systems, tool persistence, and multi-agent coordination. These aren't just better prompts, they're operating environments designed for autonomous work.
 
 ## Beyond the inference trap
 

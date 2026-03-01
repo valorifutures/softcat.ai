@@ -1,5 +1,5 @@
 ---
-title: "The Pentagon standoff proves AI safety theater is dead"
+title: "The Pentagon standoff proves AI safety theatre is dead"
 date: 2026-02-24
 tags: [ai-safety, defense, anthropic, regulation]
 summary: "Corporate AI ethics policies crumble the moment real money and government contracts show up."
@@ -17,7 +17,7 @@ This isn't unique to Anthropic. Every AI lab has some version of responsible use
 
 ## The real safety conversation starts now
 
-Maybe this is actually good news. We can stop pretending that voluntary corporate ethics will save us from bad AI outcomes. The Pentagon standoff strips away the safety theater and forces us to have the real conversation about who controls AI development and deployment.
+Maybe this is actually good news. We can stop pretending that voluntary corporate ethics will save us from bad AI outcomes. The Pentagon standoff strips away the safety theatre and forces us to have the real conversation about who controls AI development and deployment.
 
 Government contracts don't care about your constitutional AI framework. Military applications don't pause for red team evaluations. When national security meets artificial intelligence, the safety discussion moves from blog posts to classified briefings.
 

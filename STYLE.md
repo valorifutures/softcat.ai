@@ -22,6 +22,9 @@ This is the mantra. Every piece of content on this site must reflect it. All con
 - Keep paragraphs short. Two to three sentences max.
 - Use bullet points for lists, not long prose.
 
+## Language
+- Use **British English** throughout. "Optimising" not "optimizing". "Colour" not "color". "Analyse" not "analyze".
+
 ## Words to avoid
 - "Leveraging", "utilising", "comprehensive", "robust", "seamless"
 - "In order to" (just say "to")

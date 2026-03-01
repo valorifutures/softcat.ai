@@ -11,7 +11,7 @@ We're watching the wrong leaderboard. Everyone's tracking MMLU scores and benchm
 
 ## Follow the money, not the models
 
-Meta, Oracle, Microsoft, Google, and OpenAI are each dropping billions on infrastructure deals. This isn't about having the smartest algorithms anymore. It's about securing enough compute to train at scale, enough power to run inference, and enough data center capacity to serve millions of users without falling over. The model quality gap is narrowing fast, but infrastructure advantages compound over years.
+Meta, Oracle, Microsoft, Google, and OpenAI are each dropping billions on infrastructure deals. This isn't about having the smartest algorithms anymore. It's about securing enough compute to train at scale, enough power to run inference, and enough data centre capacity to serve millions of users without falling over. The model quality gap is narrowing fast, but infrastructure advantages compound over years.
 
 ## The new platform lock-in
 

@@ -11,7 +11,7 @@ We're watching the death of the ephemeral AI assistant. Every major release now 
 
 ## The infrastructure follows the paradigm
 
-This shift rewrites the entire stack. Instead of optimizing for token throughput, we're building for state persistence. Memory management becomes as critical as model weights. The economics change too, from pay-per-prompt to subscription models that can amortize the cost of maintaining context across sessions.
+This shift rewrites the entire stack. Instead of optimising for token throughput, we're building for state persistence. Memory management becomes as critical as model weights. The economics change too, from pay-per-prompt to subscription models that can amortize the cost of maintaining context across sessions.
 
 Look at the recent agent releases. They all solve the same core problem: how do you maintain coherent state across interactions? The technical approaches vary, but the goal is identical.
 
