@@ -19,6 +19,11 @@
       "date": "2026-02-26",
       "file": "2026-02-26-multi-agent-systems-are-just-microservices-with-extra-steps.md",
       "title": "Multi-agent systems are just microservices with extra steps"
+    },
+    {
+      "date": "2026-02-27",
+      "file": "2026-02-27-scale-killed-the-llm-star.md",
+      "title": "Scale killed the LLM star"
     }
   ]
 }
