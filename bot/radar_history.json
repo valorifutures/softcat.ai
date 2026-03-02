@@ -1,0 +1,19 @@
+{
+  "scans": [
+    {
+      "date": "2026-02-24",
+      "file": "2026-02-24.json",
+      "products": ["Modelence App Builder", "Stitch by Google", "Anima", "Liner Write", "Orchids 1.0"]
+    },
+    {
+      "date": "2026-02-27",
+      "file": "2026-02-27.json",
+      "products": ["Cursor Cloud Agents", "OpenHunt", "Google Developer Knowledge API", "ClawCare", "CodeLeash", "Gatekeeper"]
+    },
+    {
+      "date": "2026-02-28",
+      "file": "2026-02-28.json",
+      "products": ["EverMind EverMemOS", "AgentWeb", "Mission Control"]
+    }
+  ]
+}
