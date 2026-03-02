@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RadarFeaturedCard from '../../components/RadarFeaturedCard.astro';
+import RadarPickCard from '../../components/RadarPickCard.astro';
+
+import manifest from '../../data/radar/index.json';
+
+const allDayFiles = import.meta.glob('../../data/radar/????-??-??.json', { eager: true });
+const latestKey = Object.keys(allDayFiles).find((k) => k.includes(manifest.latest));
+const dayData = latestKey ? (allDayFiles[latestKey] as any).default : null;
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr + 'T00:00:00Z');
+  return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+const archiveDates = manifest.dates.filter((d) => d !== manifest.latest).slice(0, 7);
+---
+
+<BaseLayout title="The Radar" description="Daily AI product launches curated from Product Hunt. What's new, what's good, what's worth your time.">
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <header class="mb-8">
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-red">The Radar</h1>
+      <p class="text-text-muted mt-2">Daily AI product launches curated from Product Hunt. What's new, what's good, what's worth your time.</p>
+    </header>
+
+    <div class="glow-divider mb-10" style="--divider-color: rgba(255, 51, 102, 0.15)"></div>
+
+    {!dayData ? (
+      <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
+        <p class="font-mono text-sm text-text-muted">
+          <span class="text-neon-red">&#9679;</span> awaiting first transmission...
+        </p>
+      </div>
+    ) : (
+      <div>
+        <div class="flex items-center justify-between mb-8">
+          <div class="font-mono text-sm text-text-muted">
+            <span class="text-neon-red">&#9632;</span>
+            <span class="ml-2">{formatDate(dayData.date)}</span>
+          </div>
+          <span class="font-mono text-xs text-text-muted">
+            {dayData.featured.length + dayData.picks.length} products
+          </span>
+        </div>
+
+        {dayData.featured.length > 0 && (
+          <section class="mb-12">
+            <h2 class="font-mono text-xs text-neon-red uppercase tracking-widest mb-6">Today's picks</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 ambient-glow" style="--glow-color: rgba(255, 51, 102, 0.035); --glow-color-alt: rgba(0, 212, 255, 0.025)">
+              {dayData.featured.map((item: any, index: number) => (
+                <RadarFeaturedCard item={item} index={index} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {dayData.picks.length > 0 && (
+          <section class="mb-12">
+            <h2 class="font-mono text-xs text-neon-red/70 uppercase tracking-widest mb-6">Also on the radar</h2>
+            <div class="grid gap-4">
+              {dayData.picks.map((item: any, index: number) => (
+                <RadarPickCard item={item} index={dayData.featured.length + index} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {archiveDates.length > 0 && (
+          <nav class="border-t border-surface-light/30 pt-8">
+            <h2 class="font-mono text-xs text-text-muted uppercase tracking-widest mb-4">Previous days</h2>
+            <div class="flex flex-wrap gap-2">
+              {archiveDates.map((d) => (
+                <a
+                  href={`/radar/${d}`}
+                  class="font-mono text-xs px-3 py-1.5 rounded bg-surface border border-surface-light text-text-muted hover:text-neon-red hover:border-neon-red/30 transition-colors"
+                >
+                  {new Date(d + 'T00:00:00Z').toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}
+                </a>
+              ))}
+            </div>
+          </nav>
+        )}
+
+        <div class="mt-12 text-center">
+          <p class="font-mono text-xs text-text-muted/60">
+            Data sourced from Product Hunt. Curated daily by the SOFT CAT pipeline.
+          </p>
+        </div>
+      </div>
+    )}
+  </div>
+</BaseLayout>

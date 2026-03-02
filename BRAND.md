@@ -21,6 +21,7 @@
 | **Neon Cyan** | `#00d4ff` | Secondary accent. Thoughts, links |
 | **Neon Purple** | `#b44aff` | Tertiary accent. Tools, glossary, code |
 | **Neon Amber** | `#ffb800` | Warning, experimental, highlights |
+| **Neon Red** | `#ff3366` | The Radar, curated picks, spotlight |
 | **Text Primary** | `#e0e0e8` | Body copy |
 | **Text Muted** | `#6b6b80` | Secondary text, timestamps, meta |
 | **Text Bright** | `#ffffff` | Headings, emphasis |
@@ -41,6 +42,7 @@
 | Thoughts | Cyan | `#00d4ff` | Cyan left border |
 | Tools | Purple | `#b44aff` | Purple left border |
 | Models / Data | Amber | `#ffb800` | — |
+| The Radar | Red | `#ff3366` | Red top/left border |
 
 ## Visual Effects
 - **Glassmorphism**: Semi-transparent gradient backgrounds with `backdrop-filter: blur(12px)`

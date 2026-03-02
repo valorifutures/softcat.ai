@@ -1,4 +1,4 @@
-const colors = ['green', 'cyan', 'purple', 'amber'] as const;
+const colors = ['green', 'cyan', 'purple', 'amber', 'red'] as const;
 
 export function tagColor(tag: string): (typeof colors)[number] {
   let h = 0x9e3779b9;

@@ -11,6 +11,7 @@
   --color-neon-cyan: #00d4ff;
   --color-neon-purple: #b44aff;
   --color-neon-amber: #ffb800;
+  --color-neon-red: #ff3366;
 
   /* Text */
   --color-text-primary: #e0e0e8;
@@ -51,6 +52,10 @@ body {
   text-shadow: 0 0 10px rgba(255, 184, 0, 0.5), 0 0 20px rgba(255, 184, 0, 0.2);
 }
 
+.glow-red {
+  text-shadow: 0 0 10px rgba(255, 51, 102, 0.5), 0 0 20px rgba(255, 51, 102, 0.2);
+}
+
 /* Card base transition */
 .card-glow {
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
@@ -80,6 +85,11 @@ body {
 .card-glow-amber:hover {
   border-color: rgba(255, 184, 0, 0.35);
   box-shadow: 0 0 20px rgba(255, 184, 0, 0.1), 0 0 60px rgba(255, 184, 0, 0.04), inset 0 1px 0 rgba(255, 184, 0, 0.06);
+}
+
+.card-glow-red:hover {
+  border-color: rgba(255, 51, 102, 0.35);
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.1), 0 0 60px rgba(255, 51, 102, 0.04), inset 0 1px 0 rgba(255, 51, 102, 0.06);
 }
 
 /* Glassmorphism card */
@@ -138,6 +148,7 @@ body {
 .card-glow-cyan { --card-accent: rgba(0, 212, 255, 0.3); }
 .card-glow-purple { --card-accent: rgba(180, 74, 255, 0.3); }
 .card-glow-amber { --card-accent: rgba(255, 184, 0, 0.3); }
+.card-glow-red { --card-accent: rgba(255, 51, 102, 0.3); }
 
 /* Ambient glow orb — place behind card grids */
 .ambient-glow {
@@ -304,6 +315,7 @@ body {
 .tag-dot-cyan { background-color: var(--color-neon-cyan); }
 .tag-dot-purple { background-color: var(--color-neon-purple); }
 .tag-dot-amber { background-color: var(--color-neon-amber); }
+.tag-dot-red { background-color: var(--color-neon-red); }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {

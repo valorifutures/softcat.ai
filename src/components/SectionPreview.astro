@@ -14,7 +14,7 @@ interface Entry {
 
 interface Props {
   title: string;
-  accent: 'green' | 'cyan' | 'purple' | 'amber';
+  accent: 'green' | 'cyan' | 'purple' | 'amber' | 'red';
   href: string;
   entries: Entry[];
   basePath: string;
@@ -58,6 +58,15 @@ const accentColors = {
     borderLeft: 'border-l-neon-amber/40',
     tagDot: 'tag-dot-amber',
     link: 'hover:text-neon-amber hover:border-neon-amber/30',
+  },
+  red: {
+    dot: 'text-neon-red',
+    title: 'text-neon-red',
+    titleHover: 'group-hover:text-neon-red',
+    cardGlow: 'card-glow-red',
+    borderLeft: 'border-l-neon-red/40',
+    tagDot: 'tag-dot-red',
+    link: 'hover:text-neon-red hover:border-neon-red/30',
   },
 };
 
