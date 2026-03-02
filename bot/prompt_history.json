@@ -1,0 +1,16 @@
+{
+  "prompts": [
+    {
+      "date": "2026-03-02",
+      "file": "api-response-validator.md",
+      "title": "API Response Validator",
+      "category": "api-design"
+    },
+    {
+      "date": "2026-03-02",
+      "file": "multi-agent-architecture-designer.md",
+      "title": "Multi-Agent Architecture Designer",
+      "category": "agent-design"
+    }
+  ]
+}
