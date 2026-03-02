@@ -1,0 +1,46 @@
+{
+  "date": "2026-02-28",
+  "featured": [
+    {
+      "id": "ph-evermind",
+      "name": "EverMind EverMemOS",
+      "tagline": "Persistent memory infrastructure for AI agents. Plus an $80k dev competition.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Memory is the unsolved problem in agent stacks. EverMind tackles it with a dedicated memory OS for agents. They are backing it with an $80k developer competition running until April 4th, looking for plugins (VSCode, Chrome, Slack) and core optimisations. Serious money behind a real gap.",
+      "ph_url": "https://www.dailycal.org/affiliate_links/ai-keeps-forgetting-evermind-just-launched-the-fix-and-an-80-000-developer-competition/article_d6455670-e5cb-46e2-ab02-600b6ac15a6f.html",
+      "upvotes": 0,
+      "maker": "EverMind",
+      "featured": true,
+      "added_at": "2026-02-28T06:00:00Z"
+    },
+    {
+      "id": "ph-agentweb",
+      "name": "AgentWeb",
+      "tagline": "Free business directory API for AI agents. 11M+ businesses across 195 countries.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Clean data layer for AI agents that need real-world business info. Phone numbers, emails, hours, addresses. No more scraping Google or parsing random websites. Full-text and geo search included. Free tier is generous.",
+      "ph_url": "https://news.ycombinator.com/item?id=47178812",
+      "upvotes": 0,
+      "maker": "AgentWeb",
+      "featured": true,
+      "added_at": "2026-02-28T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-mission-control",
+      "name": "Mission Control",
+      "tagline": "Open-source task management built for AI coding agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Task board designed for working with Claude Code, Cursor, and Windsurf. Gives you visibility into what agents are doing, role-specific instructions, and clear work items. If you are running multiple agents on a codebase, this helps keep track.",
+      "ph_url": "https://news.ycombinator.com/item?id=47165602",
+      "upvotes": 0,
+      "maker": "Mission Control",
+      "featured": false,
+      "added_at": "2026-02-28T06:30:00Z"
+    }
+  ]
+}

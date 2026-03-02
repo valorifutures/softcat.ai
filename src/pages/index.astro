@@ -6,6 +6,7 @@ import FeaturedPost from '../components/FeaturedPost.astro';
 import SectionPreview from '../components/SectionPreview.astro';
 import Dispatch from '../components/Dispatch.astro';
 import { getCollection } from 'astro:content';
+import radarManifest from '../data/radar/index.json';
 
 const newsEntries = (await getCollection('news-and-updates'))
   .filter((e) => !e.data.draft)
@@ -27,6 +28,11 @@ const promptEntries = (await getCollection('prompts'))
   .filter((e) => !e.data.draft)
   .sort((a, b) => a.data.title.localeCompare(b.data.title))
   .slice(0, 3);
+
+const radarDayFiles = import.meta.glob('../data/radar/????-??-??.json', { eager: true });
+const radarLatestKey = Object.keys(radarDayFiles).find((k) => k.includes(radarManifest.latest));
+const radarData = radarLatestKey ? (radarDayFiles[radarLatestKey] as any).default : null;
+const radarPreviewItems = radarData ? radarData.featured.slice(0, 3) : [];
 ---
 
 <BaseLayout>
@@ -77,6 +83,56 @@ const promptEntries = (await getCollection('prompts'))
       basePath="/prompts"
       entries={promptEntries}
     />
+  </div>
+
+  <div class="border-t border-surface-light/30">
+    <section class="max-w-5xl mx-auto px-6 py-10">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="font-mono text-lg font-bold text-text-bright flex items-center gap-2">
+          <span class="text-neon-red">&#9632;</span>
+          The Radar
+        </h2>
+        <a
+          href="/radar"
+          class="font-mono text-xs text-text-muted hover:text-neon-red hover:border-neon-red/30 transition-colors border-b border-transparent"
+        >
+          view all &rarr;
+        </a>
+      </div>
+      {radarPreviewItems.length === 0 ? (
+        <div class="bg-surface border border-surface-light rounded-lg p-6 text-center">
+          <p class="font-mono text-sm text-text-muted">
+            <span class="text-neon-red">&#9679;</span> awaiting first transmission...
+          </p>
+        </div>
+      ) : (
+        <div class="grid gap-5">
+          {radarPreviewItems.map((item: any, index: number) => (
+            <a
+              href={item.ph_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block relative glass-card rounded-xl p-6 card-glow card-glow-red card-lift group animate-stagger border-l-2 border-l-neon-red/40 overflow-hidden"
+              style={`--stagger-index: ${index}`}
+            >
+              <div class="flex items-start justify-between gap-4">
+                <div class="min-w-0">
+                  <h3 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-red transition-colors truncate">
+                    {item.name}
+                  </h3>
+                  <p class="text-sm text-text-muted mt-2 leading-relaxed line-clamp-2">
+                    {item.why_radar}
+                  </p>
+                </div>
+                <span class="font-mono text-xs text-neon-red shrink-0 flex items-center gap-1">
+                  &#9650; {item.upvotes}
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
   </div>
 
   <div class="border-t border-surface-light/30">

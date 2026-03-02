@@ -1,0 +1,72 @@
+{
+  "date": "2026-02-24",
+  "featured": [
+    {
+      "id": "ph-modelence",
+      "name": "Modelence App Builder",
+      "tagline": "Build real apps, not prototypes.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Most AI app builders stop at the demo. Modelence ships with bundled auth, database management, and monitoring out of the box. Open source, production-focused. If you are tired of gluing services together after the prototype stage, this is worth a look.",
+      "ph_url": "https://www.producthunt.com/products/modelence-app-builder",
+      "upvotes": 125,
+      "maker": "Modelence",
+      "featured": true,
+      "added_at": "2026-02-24T06:00:00Z"
+    },
+    {
+      "id": "ph-stitch-google",
+      "name": "Stitch by Google",
+      "tagline": "Turn napkin sketches into production-ready UI in seconds.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Google entering design-to-code is a big signal. Stitch uses an agent called Hatter to handle multi-step design workflows. Transforms rough sketches or text descriptions into editable designs and production code. Free, includes App Store asset generation, and ships with native MCP export.",
+      "ph_url": "https://www.producthunt.com/products/stitch-by-google",
+      "upvotes": 117,
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-02-24T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-anima",
+      "name": "Anima",
+      "tagline": "AI that turns designs into pixel-perfect frontend.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Unlike generic code generators, Anima respects your existing design system. Works from rough ideas through Figma files and generates frontend code that matches your brand guidelines. Design accuracy over speed.",
+      "ph_url": "https://www.producthunt.com/products/anima-app",
+      "upvotes": 116,
+      "maker": "Anima",
+      "featured": false,
+      "added_at": "2026-02-24T06:30:00Z"
+    },
+    {
+      "id": "ph-liner-write",
+      "name": "Liner Write",
+      "tagline": "Cursor for professional writing.",
+      "logo_url": "",
+      "category": "AI Writing",
+      "why_radar": "AI writing agent for business-critical content. Proposals, reports, business plans. Backed by Liner Deep Research with 95%+ accuracy on SimpleQA benchmarks. Tackles the hallucination problem head-on, which matters when the output goes to clients.",
+      "ph_url": "https://www.producthunt.com/products/liner-write",
+      "upvotes": 100,
+      "maker": "Liner",
+      "featured": false,
+      "added_at": "2026-02-24T06:30:00Z"
+    },
+    {
+      "id": "ph-orchids",
+      "name": "Orchids 1.0",
+      "tagline": "Build any app using your existing AI subscriptions.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Instead of yet another platform subscription, Orchids lets you plug in your existing ChatGPT, Claude, or Gemini accounts. Multi-provider orchestration layer. Practical if you already pay for three different AI services.",
+      "ph_url": "https://www.producthunt.com/products/orchids",
+      "upvotes": 95,
+      "maker": "Orchids",
+      "featured": false,
+      "added_at": "2026-02-24T06:30:00Z"
+    }
+  ]
+}
