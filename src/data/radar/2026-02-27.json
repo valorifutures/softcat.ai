@@ -1,0 +1,85 @@
+{
+  "date": "2026-02-27",
+  "featured": [
+    {
+      "id": "ph-cursor-cloud-agents",
+      "name": "Cursor Cloud Agents",
+      "tagline": "Autonomous coding agents that run on isolated VMs.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Cursor moved from copilot to colleague. Cloud agents run on virtual machines, test their own code, record video demos, and ship PRs. Agents work in parallel while you sleep. This is where the coding agent battle gets serious.",
+      "ph_url": "https://www.cnbc.com/2026/02/24/cursor-announces-major-update-as-ai-coding-agent-battle-heats-up.html",
+      "upvotes": 0,
+      "maker": "Anysphere",
+      "featured": true,
+      "added_at": "2026-02-27T06:00:00Z"
+    },
+    {
+      "id": "ph-openhunt",
+      "name": "OpenHunt",
+      "tagline": "AI-native product discovery. The post-algorithm alternative to Product Hunt.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Autonomous agents analyse submitted products from multiple angles before humans vote. An attempt to replace upvote gaming with structured AI analysis. Early experiment, but the idea of agent-curated discovery is worth tracking.",
+      "ph_url": "https://www.producthunt.com/products/openhunt",
+      "upvotes": 0,
+      "maker": "OpenHunt",
+      "featured": true,
+      "added_at": "2026-02-27T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-google-dev-knowledge",
+      "name": "Google Developer Knowledge API",
+      "tagline": "MCP server giving AI tools direct access to Google documentation.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Public preview. Makes Google's developer docs directly queryable by AI agents via Model Context Protocol. This is Google saying the docs are for machines now, not just humans.",
+      "ph_url": "https://www.infoq.com/news/2026/02/google-documentation-ai-agents/",
+      "upvotes": 0,
+      "maker": "Google",
+      "featured": false,
+      "added_at": "2026-02-27T06:30:00Z"
+    },
+    {
+      "id": "ph-clawcare",
+      "name": "ClawCare",
+      "tagline": "Security scanner and runtime guard for AI agent skills.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Built after an agent nearly exposed AWS secrets during a routine task. Scans skills for credential leaks, dangerous patterns, and runtime policy violations before they can cause damage. Anyone running agents with environment access should pay attention.",
+      "ph_url": "https://news.ycombinator.com/item?id=47177594",
+      "upvotes": 0,
+      "maker": "ClawCare",
+      "featured": false,
+      "added_at": "2026-02-27T06:30:00Z"
+    },
+    {
+      "id": "ph-codeleash",
+      "name": "CodeLeash",
+      "tagline": "Test-driven development framework for AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Not another orchestrator. CodeLeash focuses on preventing the mess when LLM projects scale. Testing, validation, and regression prevention so agents do not break subtle details. Built for production quality, not demos.",
+      "ph_url": "https://news.ycombinator.com/item?id=47176287",
+      "upvotes": 0,
+      "maker": "CodeLeash",
+      "featured": false,
+      "added_at": "2026-02-27T06:30:00Z"
+    },
+    {
+      "id": "ph-gatekeeper",
+      "name": "Gatekeeper",
+      "tagline": "Policy engine and sandbox for AI coding agents.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Evaluates patterns of agent actions, not just individual commands. Tracks sequences like 'read .env then call external API' to catch data exfiltration. Open source, works with Claude Code, Cline, Aider, and OpenClaw.",
+      "ph_url": "https://news.ycombinator.com/item?id=47154105",
+      "upvotes": 0,
+      "maker": "Gatekeeper",
+      "featured": false,
+      "added_at": "2026-02-27T06:30:00Z"
+    }
+  ]
+}
