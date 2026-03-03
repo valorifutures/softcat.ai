@@ -35,7 +35,24 @@ const olderDate = dateIndex < manifest.dates.length - 1 ? manifest.dates[dateInd
       <p class="text-text-muted mt-2">{formatDate(date!)}</p>
     </header>
 
-    <div class="glow-divider mb-10" style="--divider-color: rgba(255, 51, 102, 0.15)"></div>
+    <div class="glow-divider mb-6" style="--divider-color: rgba(255, 51, 102, 0.15)"></div>
+
+    <nav class="flex items-center justify-between mb-10">
+      {olderDate ? (
+        <a href={`/radar/${olderDate}`} class="font-mono text-sm text-text-muted hover:text-neon-red transition-colors flex items-center gap-2 bg-surface border border-surface-light rounded-lg px-4 py-2 hover:border-neon-red/30">
+          &larr; {olderDate}
+        </a>
+      ) : <span />}
+      {newerDate ? (
+        <a href={`/radar/${newerDate}`} class="font-mono text-sm text-text-muted hover:text-neon-red transition-colors flex items-center gap-2 bg-surface border border-surface-light rounded-lg px-4 py-2 hover:border-neon-red/30">
+          {newerDate} &rarr;
+        </a>
+      ) : (
+        <a href="/radar" class="font-mono text-sm text-text-muted hover:text-neon-red transition-colors flex items-center gap-2 bg-surface border border-surface-light rounded-lg px-4 py-2 hover:border-neon-red/30">
+          latest &rarr;
+        </a>
+      )}
+    </nav>
 
     {!dayData ? (
       <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
@@ -79,21 +96,5 @@ const olderDate = dateIndex < manifest.dates.length - 1 ? manifest.dates[dateInd
       </div>
     )}
 
-    <nav class="flex items-center justify-between border-t border-surface-light/30 pt-8 mt-12">
-      {olderDate ? (
-        <a href={`/radar/${olderDate}`} class="font-mono text-xs text-text-muted hover:text-neon-red transition-colors">
-          &larr; {olderDate}
-        </a>
-      ) : <span />}
-      {newerDate ? (
-        <a href={`/radar/${newerDate}`} class="font-mono text-xs text-text-muted hover:text-neon-red transition-colors">
-          {newerDate} &rarr;
-        </a>
-      ) : (
-        <a href="/radar" class="font-mono text-xs text-text-muted hover:text-neon-red transition-colors">
-          latest &rarr;
-        </a>
-      )}
-    </nav>
   </div>
 </BaseLayout>
