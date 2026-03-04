@@ -15,6 +15,7 @@ function formatDate(dateStr: string): string {
 }
 
 const archiveDates = manifest.dates.filter((d) => d !== manifest.latest).slice(0, 7);
+const olderDate = manifest.dates.length > 1 ? manifest.dates[1] : null;
 ---
 
 <BaseLayout title="The Radar" description="AI tools, launches, and products worth knowing about. Curated daily by the SOFT CAT pipeline.">
@@ -25,7 +26,16 @@ const archiveDates = manifest.dates.filter((d) => d !== manifest.latest).slice(0
       <p class="text-text-muted mt-2">AI tools, launches, and products worth knowing about. Curated daily by the SOFT CAT pipeline.</p>
     </header>
 
-    <div class="glow-divider mb-10" style="--divider-color: rgba(255, 51, 102, 0.15)"></div>
+    <div class="glow-divider mb-6" style="--divider-color: rgba(255, 51, 102, 0.15)"></div>
+
+    {olderDate && (
+      <nav class="flex items-center justify-between mb-10">
+        <a href={`/radar/${olderDate}`} class="font-mono text-sm text-text-muted hover:text-neon-red transition-colors flex items-center gap-2 bg-surface border border-surface-light rounded-lg px-4 py-2 hover:border-neon-red/30">
+          &larr; {olderDate}
+        </a>
+        <span class="font-mono text-xs text-neon-red/50">latest</span>
+      </nav>
+    )}
 
     {!dayData ? (
       <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
