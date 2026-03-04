@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Privacy" description="How SOFT CAT .ai handles your data.">
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-10">
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-amber">Privacy</h1>
+    </header>
+
+    <div class="space-y-8 text-text-primary leading-relaxed">
+      <p>
+        We keep things simple. This site is static and we collect as little data as possible.
+      </p>
+
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-amber mb-3">What we collect</h2>
+        <ul class="space-y-2 font-mono text-sm">
+          <li class="flex items-start gap-2">
+            <span class="text-neon-amber mt-0.5">&#9656;</span>
+            <span>Nothing. No cookies, no trackers, no analytics.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-cyan mb-3">Third-party services</h2>
+        <ul class="space-y-2 font-mono text-sm">
+          <li class="flex items-start gap-2">
+            <span class="text-neon-cyan mt-0.5">&#9656;</span>
+            <span><strong class="text-text-bright">GitHub Pages</strong> hosts this site. GitHub may collect basic server logs. See their <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" class="text-neon-cyan hover:underline" target="_blank" rel="noopener noreferrer">privacy statement</a>.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-neon-cyan mt-0.5">&#9656;</span>
+            <span><strong class="text-text-bright">Giscus</strong> powers comments on some pages. It uses GitHub Discussions and requires a GitHub account to comment. See the <a href="https://github.com/giscus/giscus/blob/main/PRIVACY-POLICY.md" class="text-neon-cyan hover:underline" target="_blank" rel="noopener noreferrer">Giscus privacy policy</a>.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-green mb-3">Lab tools</h2>
+        <p>
+          All lab tools run entirely in your browser. No data leaves your machine.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-purple mb-3">Contact</h2>
+        <p>
+          Questions about privacy? Email <a href="mailto:workshop@softcat.ai" class="text-neon-cyan hover:underline">workshop@softcat.ai</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
