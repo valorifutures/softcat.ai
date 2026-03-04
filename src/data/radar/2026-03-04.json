@@ -1,0 +1,59 @@
+{
+  "date": "2026-03-04",
+  "featured": [
+    {
+      "id": "ph-symtorch",
+      "name": "SymTorch",
+      "tagline": "PyTorch library that translates deep learning models into human-readable equations.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Finally, someone's tackling the black box problem properly. Instead of just explaining what your model does, SymTorch shows you the actual maths it learned. This could be the bridge between deep learning's power and symbolic AI's interpretability.",
+      "ph_url": "https://www.marktechpost.com/2026/03/03/meet-symtorch-a-pytorch-library-that-translates-deep-learning-models-into-human-readable-equations/",
+      "upvotes": 0,
+      "maker": "University of Cambridge",
+      "featured": true,
+      "added_at": "2026-03-04T06:00:00Z"
+    },
+    {
+      "id": "ph-gemini-31-flash-lite",
+      "name": "Gemini 3.1 Flash-Lite",
+      "tagline": "Google's most cost-efficient model with adjustable thinking levels for high-scale production.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google's doubling down on the efficiency game with adjustable reasoning levels. Smart move when everyone's burning cash on inference costs. The tripled pricing compared to the predecessor suggests they've learned something about sustainable AI economics.",
+      "ph_url": "https://www.marktechpost.com/2026/03/03/google-drops-gemini-3-1-flash-lite-a-cost-efficient-powerhouse-with-adjustable-thinking-levels-designed-for-high-scale-production-ai/",
+      "upvotes": 0,
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-03-04T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-gpt-53-instant",
+      "name": "GPT-5.3 Instant",
+      "tagline": "OpenAI's model designed for smoother conversations and reduced hallucinations.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "OpenAI's trying to fix the 'please calm down' problem that's been annoying users for months. Less cringe, better search integration, more natural responses. Incremental but necessary improvements to keep ChatGPT competitive.",
+      "ph_url": "https://techcrunch.com/2026/03/03/chatgpts-new-gpt-5-3-instant-model-will-stop-telling-you-to-calm-down/",
+      "upvotes": 0,
+      "maker": "OpenAI",
+      "featured": false,
+      "added_at": "2026-03-04T06:30:00Z"
+    },
+    {
+      "id": "ph-claude-code-voice",
+      "name": "Claude Code Voice Mode",
+      "tagline": "Voice capability for Anthropic's AI coding assistant.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Anthropic's catching up to the voice trend in coding tools. Makes sense when you're debugging or pair programming to just talk through the problems. Could be particularly useful for code reviews and explaining complex logic.",
+      "ph_url": "https://techcrunch.com/2026/03/03/claude-code-rolls-out-a-voice-mode-capability/",
+      "upvotes": 0,
+      "maker": "Anthropic",
+      "featured": false,
+      "added_at": "2026-03-04T06:45:00Z"
+    }
+  ]
+}

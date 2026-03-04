@@ -1,0 +1,72 @@
+{
+  "date": "2026-03-03",
+  "featured": [
+    {
+      "id": "ph-opensandbox",
+      "name": "OpenSandbox",
+      "tagline": "Unified API for secure AI agent execution environments.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Alibaba's tackling the messy execution layer that's been holding back autonomous agents. A standardised sandbox API across languages could finally make agent deployment less of a security nightmare. The Apache 2.0 licence means we might actually see adoption beyond Alibaba's own ecosystem.",
+      "ph_url": "https://www.marktechpost.com/2026/03/03/alibaba-releases-opensandbox-to-provide-software-developers-with-a-unified-secure-and-scalable-api-for-autonomous-ai-agent-execution/",
+      "upvotes": 0,
+      "maker": "Alibaba",
+      "featured": true,
+      "added_at": "2026-03-03T06:00:00Z"
+    },
+    {
+      "id": "ph-nullclaw",
+      "name": "NullClaw",
+      "tagline": "678KB AI agent framework running on 1MB RAM in Zig.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, someone's building agents without Python's bloat. This Zig framework boots in 2 milliseconds and proves you don't need gigabytes of overhead for intelligent systems. It's the kind of extreme optimisation that makes embedded AI agents actually viable.",
+      "ph_url": "https://www.marktechpost.com/2026/03/02/meet-nullclaw-the-678-kb-zig-ai-agent-framework-running-on-1-mb-ram-and-booting-in-two-milliseconds/",
+      "upvotes": 0,
+      "maker": "NullClaw Team",
+      "featured": true,
+      "added_at": "2026-03-03T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-qwen35-small",
+      "name": "Qwen 3.5 Small",
+      "tagline": "Family of 0.8B to 9B parameter models for on-device AI.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Alibaba's doubling down on small models while everyone else chases parameter counts. The 'More Intelligence, Less Compute' approach might be exactly what edge deployment needs. These could actually run on your phone without melting the battery.",
+      "ph_url": "https://www.marktechpost.com/2026/03/02/alibaba-just-released-qwen-3-5-small-models-a-family-of-0-8b-to-9b-parameters-built-for-on-device-applications/",
+      "upvotes": 0,
+      "maker": "Alibaba Qwen Team",
+      "featured": false,
+      "added_at": "2026-03-03T06:30:00Z"
+    },
+    {
+      "id": "ph-firered-ocr-2b",
+      "name": "FireRed-OCR-2B",
+      "tagline": "OCR model that fixes structural hallucinations in tables and LaTeX.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Document parsing has been a mess of broken pipelines and wonky outputs. FireRedTeam's treating it as an end-to-end vision problem with GRPO training to stop the model making up table rows. This could actually make OCR reliable enough for production use.",
+      "ph_url": "https://www.marktechpost.com/2026/03/01/fireredteam-releases-firered-ocr-2b-utilizing-grpo-to-solve-structural-hallucinations-in-tables-and-latex-for-software-developers/",
+      "upvotes": 0,
+      "maker": "FireRedTeam",
+      "featured": false,
+      "added_at": "2026-03-03T06:45:00Z"
+    },
+    {
+      "id": "ph-copaw",
+      "name": "CoPaw",
+      "tagline": "High-performance personal agent workstation for multi-channel AI workflows.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Alibaba's building the missing infrastructure layer between LLM inference and proper agentic systems. CoPaw tackles the orchestration problem that's been holding back multi-agent workflows. Open-source agent workstations might be the next developer battleground.",
+      "ph_url": "https://www.marktechpost.com/2026/03/01/alibaba-team-open-sources-copaw-a-high-performance-personal-agent-workstation-for-developers-to-scale-multi-channel-ai-workflows-and-memory/",
+      "upvotes": 0,
+      "maker": "Alibaba Team",
+      "featured": false,
+      "added_at": "2026-03-03T07:00:00Z"
+    }
+  ]
+}

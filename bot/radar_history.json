@@ -3,17 +3,55 @@
     {
       "date": "2026-02-24",
       "file": "2026-02-24.json",
-      "products": ["Modelence App Builder", "Stitch by Google", "Anima", "Liner Write", "Orchids 1.0"]
+      "products": [
+        "Modelence App Builder",
+        "Stitch by Google",
+        "Anima",
+        "Liner Write",
+        "Orchids 1.0"
+      ]
     },
     {
       "date": "2026-02-27",
       "file": "2026-02-27.json",
-      "products": ["Cursor Cloud Agents", "OpenHunt", "Google Developer Knowledge API", "ClawCare", "CodeLeash", "Gatekeeper"]
+      "products": [
+        "Cursor Cloud Agents",
+        "OpenHunt",
+        "Google Developer Knowledge API",
+        "ClawCare",
+        "CodeLeash",
+        "Gatekeeper"
+      ]
     },
     {
       "date": "2026-02-28",
       "file": "2026-02-28.json",
-      "products": ["EverMind EverMemOS", "AgentWeb", "Mission Control"]
+      "products": [
+        "EverMind EverMemOS",
+        "AgentWeb",
+        "Mission Control"
+      ]
+    },
+    {
+      "date": "2026-03-03",
+      "file": "2026-03-03.json",
+      "products": [
+        "OpenSandbox",
+        "NullClaw",
+        "Qwen 3.5 Small",
+        "FireRed-OCR-2B",
+        "CoPaw"
+      ]
+    },
+    {
+      "date": "2026-03-04",
+      "file": "2026-03-04.json",
+      "products": [
+        "SymTorch",
+        "Gemini 3.1 Flash-Lite",
+        "GPT-5.3 Instant",
+        "Claude Code Voice Mode"
+      ]
     }
   ]
 }
