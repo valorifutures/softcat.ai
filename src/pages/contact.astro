@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact" description="Get in touch with the Valori team.">
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-10">
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">Contact</h1>
+    </header>
+
+    <div class="space-y-8 text-text-primary leading-relaxed">
+      <p>
+        We read everything. If you have a question, suggestion, or just want to say hello, drop us a line.
+      </p>
+
+      <div class="bg-surface border border-surface-light rounded-lg p-6">
+        <h2 class="font-mono text-sm font-bold text-neon-green mb-3">Email</h2>
+        <a href="mailto:workshop@softcat.ai" class="font-mono text-sm text-neon-cyan hover:underline">workshop@softcat.ai</a>
+      </div>
+
+      <div>
+        <h2 class="font-mono text-sm font-bold text-neon-cyan mb-3">GitHub</h2>
+        <p>
+          Found a bug or have a feature request? Open an issue on the
+          <a href="https://github.com/valorifutures/softcat.ai" class="text-neon-cyan hover:underline" target="_blank" rel="noopener noreferrer">repo</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
