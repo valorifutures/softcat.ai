@@ -1,3 +1,4 @@
+---
 title: "Production Monitoring Strategy Designer"
 description: "Creates comprehensive monitoring and observability strategies for AI systems in production."
 category: "monitoring"
