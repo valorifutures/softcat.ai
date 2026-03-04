@@ -4,7 +4,6 @@ interface Props {
     name: string;
     category: string;
     why_radar: string;
-    upvotes: number;
     ph_url: string;
   };
   index: number;
@@ -33,9 +32,6 @@ const { item, index } = Astro.props;
         </div>
         <p class="text-sm text-text-muted leading-relaxed">{item.why_radar}</p>
       </div>
-      <span class="font-mono text-xs text-neon-red shrink-0 flex items-center gap-1">
-        &#9650; {item.upvotes}
-      </span>
     </div>
   </div>
 </a>

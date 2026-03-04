@@ -6,7 +6,6 @@ interface Props {
     category: string;
     why_radar: string;
     maker: string;
-    upvotes: number;
     ph_url: string;
   };
   index: number;
@@ -34,6 +33,5 @@ const { item, index } = Astro.props;
   <p class="text-sm text-text-muted leading-relaxed mb-4">{item.why_radar}</p>
   <div class="flex items-center justify-between">
     <span class="font-mono text-xs text-text-muted">by {item.maker}</span>
-    <span class="font-mono text-xs text-neon-red flex items-center gap-1">&#9650; {item.upvotes}</span>
   </div>
 </a>

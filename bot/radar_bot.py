@@ -140,8 +140,7 @@ Return ONLY valid JSON. No markdown fences. No commentary. Match this schema exa
       "logo_url": "",
       "category": "One of the categories above",
       "why_radar": "2-3 sentence editorial in SOFT CAT voice. Why this matters. Your take.",
-      "ph_url": "URL to the product page, Product Hunt listing, or source article",
-      "upvotes": 0,
+      "ph_url": "URL to the product page or source article",
       "maker": "Company or maker name",
       "featured": true,
       "added_at": "{today}T06:00:00Z"
@@ -156,7 +155,6 @@ Return ONLY valid JSON. No markdown fences. No commentary. Match this schema exa
       "category": "One of the categories above",
       "why_radar": "2-3 sentence editorial in SOFT CAT voice.",
       "ph_url": "URL to the product page or source article",
-      "upvotes": 0,
       "maker": "Company or maker name",
       "featured": false,
       "added_at": "{today}T06:30:00Z"
