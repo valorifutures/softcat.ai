@@ -8,7 +8,7 @@ const entries = (await getCollection('thoughts'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<BaseLayout title="Thoughts" description="Observations, opinions, and hot takes on AI developments.">
+<BaseLayout title="Thoughts" description="Observations, opinions, and hot takes on AI developments." breadcrumbs={[{name: 'Thoughts', url: '/thoughts'}]}>
   <div class="max-w-4xl mx-auto px-6 py-16">
     <header class="mb-8">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>

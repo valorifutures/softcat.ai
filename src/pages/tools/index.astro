@@ -7,7 +7,7 @@ const entries = (await getCollection('tools'))
   .filter((e) => !e.data.draft);
 ---
 
-<BaseLayout title="Tools & Experiments" description="Micro-tools, AI finds, and experiments.">
+<BaseLayout title="Tools & Experiments" description="Micro-tools, AI finds, and experiments." breadcrumbs={[{name: 'Tools & Experiments', url: '/tools'}]}>
   <div class="max-w-4xl mx-auto px-6 py-16">
     <header class="mb-8">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
