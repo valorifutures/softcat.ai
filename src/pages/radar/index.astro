@@ -57,6 +57,10 @@ const olderDate = manifest.dates.length > 1 ? manifest.dates[1] : null;
           </span>
         </div>
 
+        {dayData.featured.length + dayData.picks.length === 0 && (
+          <p class="font-mono text-sm text-text-muted py-8 text-center">Nothing on the radar today. Check back tomorrow.</p>
+        )}
+
         {dayData.featured.length > 0 && (
           <section class="mb-12">
             <h2 class="font-mono text-xs text-neon-red uppercase tracking-widest mb-6">Today's picks</h2>

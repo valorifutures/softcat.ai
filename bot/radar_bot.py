@@ -286,7 +286,9 @@ def main():
         print(f"Found {len(entries)} entries across {len(FEEDS)} feeds")
 
         if not entries:
-            print("No entries found. Exiting.")
+            print("No entries found — writing empty state.")
+            empty_data = {"date": date.today().isoformat(), "featured": [], "picks": []}
+            save_and_push(empty_data, history)
             ping_healthcheck()
             sys.exit(0)
 
@@ -294,7 +296,9 @@ def main():
         radar_data = generate_radar(entries, history)
 
         if not radar_data:
-            print("Nothing to publish. Exiting.")
+            print("Claude returned 0 picks — writing empty state.")
+            empty_data = {"date": date.today().isoformat(), "featured": [], "picks": []}
+            save_and_push(empty_data, history)
             ping_healthcheck()
             sys.exit(0)
 

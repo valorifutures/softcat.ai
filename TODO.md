@@ -3,6 +3,7 @@
 ## Quick wins
 - [x] Mobile nav — hamburger menu for small screens
 - [x] Sitemap.xml — Astro has built-in support
+- [ ] Giscus comments — GitHub Discussions-powered, no database. Dark theme, thoughts + news pages.
 - [ ] Tags page — browse content by tag
 - [ ] Pagefind search — client-side search across all content
 
@@ -12,7 +13,6 @@
 - [ ] Embeddings visualizer — 2D/3D plot of text similarity
 
 ## Community / engagement
-- [ ] Giscus comments — GitHub Discussions-powered, no database
 - [ ] Plausible or Umami analytics — privacy-friendly visitor stats
 
 ## Content

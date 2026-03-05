@@ -69,7 +69,8 @@ Rules:
 - Each must be completable in one PR by an AI worker with no human input
 - Do NOT require new npm dependencies, server changes, API keys, or changes to service/bot/.github
 - Rotate between categories. Prioritise things that drive traffic and engagement.
-- Check TODO.md first for ready-to-go ideas.' \
+- Check TODO.md first for ready-to-go ideas.
+- Check src/content/prompts/ for existing prompts. Suggest new prompt entries for uncovered categories (testing, API design, security auditing, DevOps, agent building, migration, monitoring, accessibility, etc.).' \
     --model sonnet \
     --max-budget-usd 0.50 \
     --permission-mode bypassPermissions \
