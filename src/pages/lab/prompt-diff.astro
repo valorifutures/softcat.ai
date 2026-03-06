@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PromptDiff from '../../components/lab/PromptDiff';
+---
+
+<BaseLayout title="Prompt Diff" description="Compare two prompt versions side-by-side. See word-level changes, token delta, and cost difference at a glance.">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <header class="mb-8">
+      <a href="/lab" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; lab</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-cyan">~Δ Prompt Diff</h1>
+      <p class="text-text-muted mt-2">Paste two prompt versions and see exactly what changed. Word-level diff, token delta, and cost comparison.</p>
+    </header>
+    <PromptDiff client:load />
+  </div>
+</BaseLayout>
