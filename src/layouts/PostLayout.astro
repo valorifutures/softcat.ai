@@ -10,9 +10,10 @@ interface Props {
   backLink: string;
   backLabel: string;
   showComments?: boolean;
+  readingTime?: number;
 }
 
-const { title, date, tags = [], summary, backLink, backLabel, showComments = false } = Astro.props;
+const { title, date, tags = [], summary, backLink, backLabel, showComments = false, readingTime } = Astro.props;
 
 const articleSchema: Record<string, unknown> = {
   "@context": "https://schema.org",
@@ -58,6 +59,9 @@ if (tags.length > 0) articleSchema["keywords"] = tags.join(", ");
           <time datetime={date.toISOString()} class="font-mono">
             {date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
           </time>
+        )}
+        {readingTime && (
+          <span class="font-mono">&middot; {readingTime} min read</span>
         )}
         {tags.length > 0 && (
           <div class="flex flex-wrap gap-2">
