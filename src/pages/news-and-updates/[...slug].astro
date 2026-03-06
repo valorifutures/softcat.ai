@@ -12,6 +12,8 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const words = entry.body?.trim().split(/\s+/).length ?? 0;
+const readingTime = Math.max(1, Math.ceil(words / 200));
 ---
 
 <PostLayout
@@ -21,6 +23,7 @@ const { Content } = await render(entry);
   summary={entry.data.summary}
   backLink="/news-and-updates"
   backLabel="News & Updates"
+  readingTime={readingTime}
 >
   <Content />
 </PostLayout>
