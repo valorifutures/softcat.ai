@@ -213,6 +213,9 @@ Rules:
 
 def save_and_push(radar_data: dict, history: dict):
     """Save radar JSON, update manifest, commit and push."""
+    os.chdir(REPO_DIR)
+    subprocess.run(["git", "pull", "--rebase"], check=True)
+
     today = date.today().isoformat()
     filename = f"{today}.json"
 
@@ -242,8 +245,6 @@ def save_and_push(radar_data: dict, history: dict):
     save_history(history)
 
     # Git commit and push
-    os.chdir(REPO_DIR)
-    subprocess.run(["git", "pull", "--rebase"], check=True)
     subprocess.run([
         "git", "add",
         f"src/data/radar/{filename}",

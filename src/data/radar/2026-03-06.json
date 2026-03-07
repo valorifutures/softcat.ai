@@ -1,0 +1,79 @@
+{
+  "date": "2026-03-06",
+  "featured": [
+    {
+      "id": "ph-localcowork",
+      "name": "LocalCowork",
+      "tagline": "Privacy-first agent workflows powered by LFM2-24B-A2B running entirely on-device.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, someone gets it. Enterprise workflows that never touch the cloud, never leak data, and never depend on API uptime. Liquid AI's approach of optimising for local tool dispatch could be the architecture that makes AI agents genuinely enterprise-ready.",
+      "ph_url": "https://www.marktechpost.com/2026/03/05/liquid-ai-releases-localcowork-powered-by-lfm2-24b-a2b-to-execute-privacy-first-agent-workflows-locally-via-model-context-protocol-mcp/",
+      "maker": "Liquid AI",
+      "featured": true,
+      "added_at": "2026-03-06T06:00:00Z"
+    },
+    {
+      "id": "ph-symphony",
+      "name": "Symphony",
+      "tagline": "Open-source framework for orchestrating autonomous AI coding agents through structured implementation runs.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "OpenAI goes full circle. They helped create the autonomous coding agent space, now they're open-sourcing the infrastructure to manage it properly. Building this on Elixir and BEAM shows they're thinking about reliability and concurrency first, which is exactly what you need when agents are touching your production code.",
+      "ph_url": "https://www.marktechpost.com/2026/03/05/openai-releases-symphony-an-open-source-agentic-framework-for-orchestrating-autonomous-ai-agents-through-structured-scalable-implementation-runs/",
+      "maker": "OpenAI",
+      "featured": true,
+      "added_at": "2026-03-06T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-gws",
+      "name": "gws",
+      "tagline": "CLI tool providing unified interface to Google Workspace APIs for humans and AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Google finally admits that REST endpoints and OAuth flows are a pain. This CLI approach makes Workspace APIs actually usable for quick automation and agent integration. Smart move making it agent-friendly from day one.",
+      "ph_url": "https://www.marktechpost.com/2026/03/05/google-ai-releases-a-cli-tool-gws-for-workspace-apis-providing-a-unified-interface-for-humans-and-ai-agents/",
+      "maker": "Google AI",
+      "featured": false,
+      "added_at": "2026-03-06T06:30:00Z"
+    },
+    {
+      "id": "ph-cursor-automations",
+      "name": "Cursor Automations",
+      "tagline": "Agentic coding tool that automatically launches agents triggered by code changes, Slack messages, or timers.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Cursor keeps pushing the boundary of what coding tools can do. Automations that respond to external triggers feel like the natural evolution of AI coding assistants. This could be the missing piece that makes AI agents truly integrated into development workflows.",
+      "ph_url": "https://techcrunch.com/2026/03/05/cursor-is-rolling-out-a-new-system-for-agentic-coding/",
+      "maker": "Cursor",
+      "featured": false,
+      "added_at": "2026-03-06T06:45:00Z"
+    },
+    {
+      "id": "ph-luma-agents",
+      "name": "Luma Agents",
+      "tagline": "Creative AI agents powered by Unified Intelligence models for end-to-end multimedia content generation.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Luma's betting that creative workflows need coordination between text, images, video, and audio rather than separate tools for each. Their 'Unified Intelligence' approach could solve the fragmentation problem that makes AI creative work feel so disjointed.",
+      "ph_url": "https://techcrunch.com/2026/03/05/exclusive-luma-launches-creative-ai-agents-powered-by-its-new-unified-intelligence-models/",
+      "maker": "Luma",
+      "featured": false,
+      "added_at": "2026-03-06T07:00:00Z"
+    },
+    {
+      "id": "ph-gpt-5-4",
+      "name": "GPT-5.4",
+      "tagline": "OpenAI's most capable frontier model combining coding, reasoning, and computer use in Pro and Thinking versions.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "OpenAI's consolidation play. Instead of separate models for different tasks, GPT-5.4 promises to do everything in one package. The real test will be whether unified capability actually beats specialised models in practice.",
+      "ph_url": "https://techcrunch.com/2026/03/05/openai-launches-gpt-5-4-with-pro-and-thinking-versions/",
+      "maker": "OpenAI",
+      "featured": false,
+      "added_at": "2026-03-06T07:15:00Z"
+    }
+  ]
+}

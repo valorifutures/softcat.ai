@@ -1,0 +1,43 @@
+{
+  "date": "2026-03-05",
+  "featured": [
+    {
+      "id": "ph-yuan-3-ultra",
+      "name": "Yuan 3.0 Ultra",
+      "tagline": "Trillion-parameter multimodal MoE foundation model with 68.8B activated parameters.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "YuanLab's latest is properly massive but surprisingly efficient. A trillion total parameters with only 68.8B active at inference time shows MoE architectures are finally maturing. Open-source release means we can actually dig into how they're achieving 49% better training efficiency.",
+      "ph_url": "https://www.marktechpost.com/2026/03/04/yuanlab-ai-releases-yuan-3-0-ultra-a-flagship-multimodal-moe-foundation-model-built-for-stronger-intelligence-and-unrivaled-efficiency/",
+      "maker": "YuanLab AI",
+      "featured": true,
+      "added_at": "2026-03-05T06:00:00Z"
+    },
+    {
+      "id": "ph-langwatch",
+      "name": "LangWatch",
+      "tagline": "Open-source evaluation layer for AI agents with end-to-end tracing and systematic testing.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Finally, proper tooling for the non-deterministic nightmare that is agent development. LangWatch tackles the fundamental problem that you can't debug what you can't trace. This fills a massive gap in the agent development stack.",
+      "ph_url": "https://www.marktechpost.com/2026/03/04/langwatch-open-sources-the-missing-evaluation-layer-for-ai-agents-to-enable-end-to-end-tracing-simulation-and-systematic-testing/",
+      "maker": "LangWatch",
+      "featured": true,
+      "added_at": "2026-03-05T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-mem-robots",
+      "name": "MEM for Robots",
+      "tagline": "Multi-scale memory system giving Gemma 3-4B VLAs 15-minute context for complex tasks.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Physical Intelligence cracked the memory problem for robotic agents. Extending context to 15 minutes transforms what's possible for long-horizon tasks. This is how you get robots that can actually complete multi-step jobs without forgetting what they're doing.",
+      "ph_url": "https://www.marktechpost.com/2026/03/03/physical-intelligence-team-unveils-mem-for-robots-a-multi-scale-memory-system-giving-gemma-3-4b-vlas-15-minute-context-for-complex-tasks/",
+      "maker": "Physical Intelligence",
+      "featured": false,
+      "added_at": "2026-03-05T06:30:00Z"
+    }
+  ]
+}

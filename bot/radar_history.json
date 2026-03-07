@@ -52,6 +52,27 @@
         "GPT-5.3 Instant",
         "Claude Code Voice Mode"
       ]
+    },
+    {
+      "date": "2026-03-05",
+      "file": "2026-03-05.json",
+      "products": [
+        "Yuan 3.0 Ultra",
+        "LangWatch",
+        "MEM for Robots"
+      ]
+    },
+    {
+      "date": "2026-03-06",
+      "file": "2026-03-06.json",
+      "products": [
+        "LocalCowork",
+        "Symphony",
+        "gws",
+        "Cursor Automations",
+        "Luma Agents",
+        "GPT-5.4"
+      ]
     }
   ]
 }
