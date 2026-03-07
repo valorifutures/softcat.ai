@@ -1,0 +1,67 @@
+{
+  "date": "2026-03-07",
+  "featured": [
+    {
+      "id": "ph-tensorflow-2-21",
+      "name": "TensorFlow 2.21 with LiteRT",
+      "tagline": "Production-ready on-device inference framework replacing TensorFlow Lite.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Google finally graduates LiteRT from preview to replace TensorFlow Lite entirely. The new universal on-device inference stack promises faster GPU performance and NPU acceleration. This matters for anyone deploying models at the edge where latency and efficiency actually count.",
+      "ph_url": "https://www.marktechpost.com/2026/03/06/google-launches-tensorflow-2-21-and-litert-faster-gpu-performance-new-npu-acceleration-and-seamless-pytorch-edge-deployment-upgrades/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-03-07T06:00:00Z"
+    },
+    {
+      "id": "ph-codex-security",
+      "name": "Codex Security",
+      "tagline": "AI security agent for context-aware vulnerability detection and patch generation.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "OpenAI's first proper security product analyses entire codebases, validates vulnerabilities, and suggests fixes. It's in research preview for enterprise customers through the web interface. Security tooling desperately needs this level of contextual awareness instead of pattern matching nonsense.",
+      "ph_url": "https://www.marktechpost.com/2026/03/06/openai-introduces-codex-security-in-research-preview-for-context-aware-vulnerability-detection-validation-and-patch-generation-across-codebases/",
+      "maker": "OpenAI",
+      "featured": true,
+      "added_at": "2026-03-07T06:15:00Z"
+    },
+    {
+      "id": "ph-phi-4-reasoning-vision",
+      "name": "Phi-4-Reasoning-Vision-15B",
+      "tagline": "Compact multimodal model for math, science, and GUI understanding.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Microsoft's 15B parameter multimodal model brings reasoning capabilities to image and text tasks. It's specifically tuned for scientific reasoning and interface understanding. Compact models that can actually reason about what they see are exactly what we need for practical applications.",
+      "ph_url": "https://www.marktechpost.com/2026/03/06/microsoft-releases-phi-4-reasoning-vision-15b-a-compact-multimodal-model-for-math-science-and-gui-understanding/",
+      "maker": "Microsoft",
+      "featured": true,
+      "added_at": "2026-03-07T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-android-bench",
+      "name": "Android Bench",
+      "tagline": "Evaluation framework and leaderboard for LLMs in Android development.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Google's new benchmark specifically measures how well LLMs handle Android development tasks. General coding benchmarks miss the nuances of mobile development. Finally, someone's building evaluation tools that match real-world use cases instead of academic exercises.",
+      "ph_url": "https://www.marktechpost.com/2026/03/06/google-ai-releases-android-bench-an-evaluation-framework-and-leaderboard-for-llms-in-android-development/",
+      "maker": "Google",
+      "featured": false,
+      "added_at": "2026-03-07T07:00:00Z"
+    },
+    {
+      "id": "ph-amazon-connect-health",
+      "name": "Amazon Connect Health",
+      "tagline": "AI agent platform for healthcare with patient scheduling and documentation.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "AWS launches healthcare-specific AI agents for patient scheduling, documentation, and verification. Healthcare desperately needs this kind of automation but regulation moves glacially. We'll see if this actually makes it through compliance hurdles to help real patients.",
+      "ph_url": "https://techcrunch.com/2026/03/05/aws-amazon-connect-health-ai-agent-platform-health-care-providers/",
+      "maker": "AWS",
+      "featured": false,
+      "added_at": "2026-03-07T07:15:00Z"
+    }
+  ]
+}

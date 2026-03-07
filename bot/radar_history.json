@@ -73,6 +73,17 @@
         "Luma Agents",
         "GPT-5.4"
       ]
+    },
+    {
+      "date": "2026-03-07",
+      "file": "2026-03-07.json",
+      "products": [
+        "TensorFlow 2.21 with LiteRT",
+        "Codex Security",
+        "Phi-4-Reasoning-Vision-15B",
+        "Android Bench",
+        "Amazon Connect Health"
+      ]
     }
   ]
 }
