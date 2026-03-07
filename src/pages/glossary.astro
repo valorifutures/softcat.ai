@@ -164,12 +164,35 @@ const grouped = terms.reduce((acc, term) => {
 }, {} as Record<string, typeof terms>);
 
 const letters = Object.keys(grouped).sort();
+
+const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+const glossarySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'SOFT CAT AI Glossary',
+  url: 'https://softcat.ai/glossary',
+  itemListElement: terms.map((item) => ({
+    '@type': 'DefinedTerm',
+    '@id': `https://softcat.ai/glossary#${slugify(item.term)}`,
+    name: item.term,
+    description: item.definition,
+    inDefinedTermSet: {
+      '@type': 'DefinedTermSet',
+      name: 'SOFT CAT AI Glossary',
+      url: 'https://softcat.ai/glossary',
+    },
+  })),
+};
 ---
 
 <BaseLayout
   title="AI Glossary"
   description="Plain-English definitions for 30 AI terms: RAG, vibe coding, agentic loop, context window, tokenisation, RLHF, and more."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(glossarySchema)} />
+  </Fragment>
   <div class="max-w-4xl mx-auto px-6 py-16">
     <header class="mb-10">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
