@@ -59,7 +59,7 @@
     "provider": "Anthropic",
     "family": "Claude 4",
     "released": "2025-10",
-    "contextK": 1000,
+    "contextK": 200,
     "inputPrice": 3,
     "outputPrice": 15,
     "openSource": false,
