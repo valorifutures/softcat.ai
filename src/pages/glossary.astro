@@ -221,7 +221,7 @@ const glossarySchema = {
           <h2 class="font-mono text-xl font-bold text-neon-purple glow-purple mb-4">{letter}</h2>
           <div class="space-y-4">
             {grouped[letter].map((item) => (
-              <div class="glass-card rounded-xl card-glow card-glow-purple border-l-2 border-l-neon-purple/40 overflow-hidden relative">
+              <div id={slugify(item.term)} class="glass-card rounded-xl card-glow card-glow-purple border-l-2 border-l-neon-purple/40 overflow-hidden relative">
                 <div class="p-5 md:p-6">
                   <h3 class="font-mono text-base font-bold text-text-bright mb-2">{item.term}</h3>
                   <p class="text-sm text-text-muted leading-relaxed">{item.definition}</p>
