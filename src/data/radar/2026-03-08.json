@@ -2,30 +2,54 @@
   "date": "2026-03-08",
   "featured": [
     {
-      "id": "ph-localcowork",
-      "name": "LocalCowork",
-      "tagline": "Privacy-first agent workflows powered by LFM2-24B-A2B running entirely on-device.",
+      "id": "ph-safeagent",
+      "name": "SafeAgent",
+      "tagline": "Exactly-once execution guard for AI agent side effects.",
       "logo_url": "",
-      "category": "AI Agents",
-      "why_radar": "Liquid AI's answer to the privacy problem plaguing most AI agents. Running everything locally via Model Context Protocol means no data leaves your machine, which is exactly what enterprise customers have been demanding. The fact they've optimised LFM2-24B-A2B specifically for low-latency tool dispatch shows serious engineering focus.",
-      "ph_url": "https://www.marktechpost.com/2026/03/05/liquid-ai-releases-localcowork-powered-by-lfm2-24b-a2b-to-execute-privacy-first-agent-workflows-locally-via-model-context-protocol-mcp/",
-      "maker": "Liquid AI",
+      "category": "AI Infrastructure",
+      "why_radar": "Every developer running AI agents in production has felt this pain. The moment your agent starts calling external APIs or executing commands, you need idempotency guarantees. SafeAgent solves the unglamorous but critical problem of making sure your agent doesn't accidentally charge your customer twice or send duplicate emails when things go wrong.",
+      "ph_url": "https://news.ycombinator.com/item?id=47294291",
+      "maker": "Unknown",
       "featured": true,
       "added_at": "2026-03-08T06:00:00Z"
+    },
+    {
+      "id": "ph-beam-protocol",
+      "name": "Beam Protocol",
+      "tagline": "SMTP for AI agents with natural language agent-to-agent communication.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "We're finally seeing the infrastructure layer for multi-agent systems emerge. Beam Protocol tackles the unsexy but essential problem of how agents actually talk to each other without breaking. Think of it as the plumbing that makes agent swarms possible rather than just a marketing buzzword.",
+      "ph_url": "https://github.com/Beam-directory/beam-protocol",
+      "maker": "Beam Directory",
+      "featured": true,
+      "added_at": "2026-03-08T06:15:00Z"
     }
   ],
   "picks": [
     {
-      "id": "ph-amazon-connect-health",
-      "name": "Amazon Connect Health",
-      "tagline": "AI agent platform specifically designed for healthcare providers and patient workflows.",
+      "id": "ph-beecon",
+      "name": "Beecon",
+      "tagline": "Infrastructure as Intent, open source IaC built for AI agents.",
       "logo_url": "",
-      "category": "AI Platforms",
-      "why_radar": "AWS finally builds something healthcare-specific rather than expecting providers to cobble together general tools. Patient scheduling, documentation, and verification are exactly the sort of repetitive tasks that agents should handle. Healthcare's regulatory complexity makes vertical solutions like this inevitable.",
-      "ph_url": "https://techcrunch.com/2026/03/05/aws-amazon-connect-health-ai-agent-platform-health-care-providers/",
-      "maker": "AWS",
+      "category": "AI Infrastructure",
+      "why_radar": "Instead of writing YAML configs, you tell Beecon what you want in plain English and it figures out the infrastructure. It's the logical next step from infrastructure as code to infrastructure as conversation. Early days, but this is where DevOps is heading.",
+      "ph_url": "https://beecon.sh",
+      "maker": "Beecon",
       "featured": false,
       "added_at": "2026-03-08T06:30:00Z"
+    },
+    {
+      "id": "ph-agentic-context-engine",
+      "name": "Agentic Context Engine",
+      "tagline": "LLM agents that write Python to analyse execution traces at scale.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Debugging distributed systems is hard enough without AI agents in the mix. This tool lets agents write their own analysis code to understand what went wrong in your traces. It's like having a junior engineer who never gets tired of digging through logs, except this one writes better Python.",
+      "ph_url": "https://github.com/kayba-ai/agentic-context-engine/tree/main",
+      "maker": "Kayba AI",
+      "featured": false,
+      "added_at": "2026-03-08T06:45:00Z"
     }
   ]
 }
