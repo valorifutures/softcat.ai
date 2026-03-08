@@ -10,6 +10,7 @@ import os
 import sys
 import json
 import subprocess
+import time
 from datetime import datetime, date
 from pathlib import Path
 
@@ -33,6 +34,15 @@ FEEDS = [
     "https://buttondown.com/ainews/rss",
     "https://the-decoder.com/feed/",
     "https://www.artificialintelligence-news.com/feed/",
+]
+
+# HackerNews Algolia API search terms
+HN_SEARCH_TERMS = [
+    "AI agent",
+    "autonomous agent",
+    "LLM agent",
+    "agent framework",
+    "AI automation",
 ]
 
 # Valid categories for radar products
@@ -87,6 +97,50 @@ def fetch_feed_entries() -> list[dict]:
     return entries
 
 
+def fetch_hn_entries() -> list[dict]:
+    """Pull recent AI stories from HackerNews via Algolia API."""
+    since = int(time.time()) - 86400  # last 24 hours
+    seen_ids = set()
+    hits = []
+
+    for term in HN_SEARCH_TERMS:
+        try:
+            resp = httpx.get(
+                "https://hn.algolia.com/api/v1/search",
+                params={
+                    "query": term,
+                    "tags": "story",
+                    "numericFilters": f"created_at_i>{since}",
+                    "hitsPerPage": 20,
+                },
+                timeout=15,
+            )
+            resp.raise_for_status()
+            for hit in resp.json().get("hits", []):
+                oid = hit.get("objectID")
+                if oid and oid not in seen_ids:
+                    seen_ids.add(oid)
+                    hits.append(hit)
+        except Exception as e:
+            print(f"HN search failed for '{term}': {e}")
+
+    # Rank by engagement and take top 10
+    hits.sort(key=lambda h: (h.get("points", 0) + h.get("num_comments", 0)), reverse=True)
+    entries = []
+    for h in hits[:10]:
+        entries.append({
+            "title": h.get("title", ""),
+            "link": h.get("url") or f"https://news.ycombinator.com/item?id={h['objectID']}",
+            "summary": h.get("title", ""),
+            "source": "HackerNews",
+            "published": h.get("created_at", ""),
+            "hn_url": f"https://news.ycombinator.com/item?id={h['objectID']}",
+            "points": h.get("points", 0),
+            "comments": h.get("num_comments", 0),
+        })
+    return entries
+
+
 def get_past_product_names(history: dict) -> list[str]:
     """Collect all previously featured product names for deduplication."""
     names = []
@@ -95,7 +149,7 @@ def get_past_product_names(history: dict) -> list[str]:
     return names
 
 
-def generate_radar(entries: list[dict], history: dict) -> dict | None:
+def generate_radar(entries: list[dict], hn_entries: list[dict], history: dict) -> dict | None:
     """Use Claude to extract product launches and generate radar JSON."""
     client = Anthropic()
     style_guide = STYLE_GUIDE.read_text()
@@ -108,9 +162,14 @@ def generate_radar(entries: list[dict], history: dict) -> dict | None:
         for e in entries[:40]
     )
 
+    hn_text = "\n\n".join(
+        f"**{e['title']}** ({e['points']} pts, {e['comments']} comments)\nHN: {e['hn_url']}\nLink: {e['link']}"
+        for e in hn_entries[:10]
+    ) if hn_entries else "No HN stories found."
+
     today = date.today().isoformat()
 
-    prompt = f"""You are curating "The Radar" for SOFT CAT .ai. Your job is to find genuine AI product and tool LAUNCHES from the feed below. Not news articles. Not opinion pieces. Not funding announcements. Actual products or tools that someone can go and use or try.
+    prompt = f"""You are curating "The Radar" for SOFT CAT .ai. Your job is to find genuine AI product and tool LAUNCHES from the feeds below. Not news articles. Not opinion pieces. Not funding announcements. Actual products or tools that someone can go and use or try.
 
 ## House style (follow this exactly):
 {style_guide}
@@ -118,11 +177,14 @@ def generate_radar(entries: list[dict], history: dict) -> dict | None:
 ## Products already covered (do NOT repeat these):
 {past_names_text}
 
-## Feed entries:
+## RSS feed entries:
 {feed_text}
 
+## HackerNews top AI stories (last 24h):
+{hn_text}
+
 ## Your task:
-1. Extract any genuine product or tool launches from the entries above
+1. Extract any genuine product or tool launches from ALL sources above (RSS feeds AND HackerNews)
 2. For each product, write a "why_radar" editorial note (2-3 sentences, opinionated, in the SOFT CAT voice)
 3. Pick the top 2-3 most interesting as "featured", the rest as "picks"
 4. Categorise each into one of: {', '.join(CATEGORIES)}
@@ -159,21 +221,57 @@ Return ONLY valid JSON. No markdown fences. No commentary. Match this schema exa
       "featured": false,
       "added_at": "{today}T06:30:00Z"
     }}
-  ]
+  ],
+  "hn_top5": [
+    {{
+      "title": "Story title",
+      "points": 123,
+      "comments": 45,
+      "summary": "2-3 sentence summary. What is it, why it matters.",
+      "hn_url": "https://news.ycombinator.com/item?id=..."
+    }}
+  ],
+  "discord_summary": "A ready-to-post Discord message under 1800 chars. Format below."
 }}
 
-Rules:
+## discord_summary format:
+The discord_summary field should be a single string, ready to post as-is. Use this layout:
+
+Daily AI Intel - [DATE]
+
+**HackerNews**
+
+1. **[Title]** ([points] pts, [comments] comments)
+[2-3 sentence summary.]
+<HN URL>
+
+2. ...up to 5 stories...
+
+---
+
+**Radar Picks**
+
+1. **[Product Name]** - [tagline]
+[why_radar text]
+<URL>
+
+2. ...featured + picks combined, top 3-4...
+
+Keep discord_summary under 1800 characters. Wrap all URLs in angle brackets.
+
+## Rules:
 - Use British English throughout
-- No em dashes in why_radar text
+- No em dashes in any text
+- No semicolons (except in code)
 - Keep why_radar to 2-3 short sentences
-- If you find fewer than 2 genuine product launches, return exactly: {{"skip": true}}
-- Do NOT include news articles, opinion pieces, or funding rounds
+- If you find fewer than 2 genuine product launches, still include hn_top5 and discord_summary but set featured and picks to empty arrays
+- Do NOT include news articles, opinion pieces, or funding rounds in featured/picks
 - Do NOT repeat products from the "already covered" list
 - Be selective. Quality over quantity. 2-6 products is the sweet spot."""
 
     response = client.messages.create(
         model="claude-sonnet-4-20250514",
-        max_tokens=3000,
+        max_tokens=4096,
         messages=[{"role": "user", "content": prompt}],
     )
 
@@ -193,20 +291,14 @@ Rules:
         print(f"Raw output: {content[:500]}")
         return None
 
-    # Check if Claude said skip
-    if data.get("skip"):
-        print("Claude found fewer than 2 product launches. Skipping.")
-        return None
-
     # Validate basic structure
-    if "featured" not in data or "picks" not in data:
-        print("Missing featured or picks in response.")
+    if "featured" not in data and "picks" not in data and "discord_summary" not in data:
+        print("Missing expected fields in response.")
         return None
 
-    total = len(data.get("featured", [])) + len(data.get("picks", []))
-    if total < 2:
-        print(f"Only {total} products found. Skipping.")
-        return None
+    # Ensure arrays exist even if empty
+    data.setdefault("featured", [])
+    data.setdefault("picks", [])
 
     return data
 
@@ -264,6 +356,30 @@ def save_and_push(radar_data: dict, history: dict):
     print(f"Pushed: {msg}")
 
 
+def post_to_discord(radar_data: dict):
+    """Post the daily summary to Discord via webhook."""
+    webhook_url = os.environ.get("DISCORD_WEBHOOK_RADAR")
+    if not webhook_url:
+        print("No DISCORD_WEBHOOK_RADAR set, skipping Discord post.")
+        return
+
+    summary = radar_data.get("discord_summary", "")
+    if not summary:
+        print("No discord_summary in radar data, skipping Discord post.")
+        return
+
+    try:
+        resp = httpx.post(
+            webhook_url,
+            json={"content": summary, "username": "SOFT CAT Radar"},
+            timeout=15,
+        )
+        resp.raise_for_status()
+        print("Discord summary posted.")
+    except Exception as e:
+        print(f"Discord post failed: {e}")
+
+
 def ping_healthcheck(status="success"):
     """Ping Healthchecks.io to report bot status."""
     url = os.environ.get("HC_PING_RADAR")
@@ -286,7 +402,11 @@ def main():
         entries = fetch_feed_entries()
         print(f"Found {len(entries)} entries across {len(FEEDS)} feeds")
 
-        if not entries:
+        print("Fetching HackerNews...")
+        hn_entries = fetch_hn_entries()
+        print(f"Found {len(hn_entries)} HN stories")
+
+        if not entries and not hn_entries:
             print("No entries found — writing empty state.")
             empty_data = {"date": date.today().isoformat(), "featured": [], "picks": []}
             save_and_push(empty_data, history)
@@ -294,7 +414,7 @@ def main():
             sys.exit(0)
 
         print("Generating radar...")
-        radar_data = generate_radar(entries, history)
+        radar_data = generate_radar(entries, hn_entries, history)
 
         if not radar_data:
             print("Claude returned 0 picks — writing empty state.")
@@ -303,8 +423,19 @@ def main():
             ping_healthcheck()
             sys.exit(0)
 
+        # Post to Discord before stripping extra fields
+        print("Posting to Discord...")
+        post_to_discord(radar_data)
+
+        # Strip Discord-only fields before saving to site JSON
+        site_data = {
+            "date": radar_data["date"],
+            "featured": radar_data.get("featured", []),
+            "picks": radar_data.get("picks", []),
+        }
+
         print("Saving and pushing...")
-        save_and_push(radar_data, history)
+        save_and_push(site_data, history)
 
         print("Done.")
         ping_healthcheck()
