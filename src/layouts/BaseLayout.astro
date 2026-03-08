@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SearchOverlay from '../components/SearchOverlay.tsx';
 import '../styles/global.css';
 
 interface Props {
@@ -78,6 +79,7 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
   </head>
   <body class="flex flex-col min-h-screen">
     <Header />
+    <SearchOverlay client:idle />
     <main class="flex-1">
       <slot />
     </main>

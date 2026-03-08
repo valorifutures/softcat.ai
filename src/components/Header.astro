@@ -31,17 +31,35 @@ const navLinks = [
           {link.label}
         </a>
       ))}
+      <button
+        id="search-trigger"
+        class="font-mono text-sm text-text-muted hover:text-neon-green transition-colors flex items-center gap-1.5"
+        aria-label="Search"
+        title="Search (Ctrl+K)"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <kbd class="hidden lg:inline text-[10px] px-1 py-0.5 rounded border border-surface-light/50 text-text-muted/50">&#8984;K</kbd>
+      </button>
     </div>
 
-    <!-- Mobile hamburger -->
-    <button
-      id="menu-toggle"
-      class="md:hidden font-mono text-text-muted hover:text-neon-cyan transition-colors p-1"
-      aria-label="Toggle menu"
-      aria-expanded="false"
-    >
-      <span id="menu-icon" class="text-lg">&#9776;</span>
-    </button>
+    <!-- Mobile search + hamburger -->
+    <div class="flex md:hidden items-center gap-2">
+      <button
+        id="search-trigger-mobile"
+        class="font-mono text-text-muted hover:text-neon-green transition-colors p-1"
+        aria-label="Search"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <button
+        id="menu-toggle"
+        class="font-mono text-text-muted hover:text-neon-cyan transition-colors p-1"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span id="menu-icon" class="text-lg">&#9776;</span>
+      </button>
+    </div>
   </nav>
 
   <!-- Mobile menu -->
@@ -71,4 +89,9 @@ const navLinks = [
     icon.innerHTML = open ? '&#9776;' : '&#10005;';
     toggle.setAttribute('aria-expanded', String(!open));
   });
+
+  // Wire up search buttons
+  const openSearch = () => (window as any).__searchOpen?.();
+  document.getElementById('search-trigger')?.addEventListener('click', openSearch);
+  document.getElementById('search-trigger-mobile')?.addEventListener('click', openSearch);
 </script>
