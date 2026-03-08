@@ -61,8 +61,6 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 - `/thoughts` — opinion pieces
 - `/tools` — tool writeups
 - `/lab` — 7 interactive tools (token counter, prompt builder, markdown preview, model comparison, prompt workbench, chat playground, model explorer)
-- `/spawn` — hosted agent builder GUI
-- `/request` — agent request form
 - `/now` — what we're working on
 - `/status` — system health
 - `/valori` — about the team
@@ -71,8 +69,8 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
 1. NEVER push directly to main. Always create a branch and PR.
 2. ALWAYS run `npm run build` and verify it exits 0 before committing.
-3. NEVER modify: `service/`, `bot/`, `.github/workflows/deploy.yml`, `package.json`, `package-lock.json`, `.env` files.
+3. NEVER modify: `bot/`, `.github/workflows/deploy.yml`, `package.json`, `package-lock.json`, `.env` files.
 4. NEVER add npm dependencies. Work with what's already installed.
-5. NEVER delete existing content or pages.
+5. NEVER delete existing content or pages without explicit approval.
 6. Keep PRs focused. One issue = one PR. Small, reviewable changes.
 7. Content must follow STYLE.md exactly. Read it before writing.
