@@ -1,0 +1,31 @@
+{
+  "date": "2026-03-08",
+  "featured": [
+    {
+      "id": "ph-localcowork",
+      "name": "LocalCowork",
+      "tagline": "Privacy-first agent workflows powered by LFM2-24B-A2B running entirely on-device.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Liquid AI's answer to the privacy problem plaguing most AI agents. Running everything locally via Model Context Protocol means no data leaves your machine, which is exactly what enterprise customers have been demanding. The fact they've optimised LFM2-24B-A2B specifically for low-latency tool dispatch shows serious engineering focus.",
+      "ph_url": "https://www.marktechpost.com/2026/03/05/liquid-ai-releases-localcowork-powered-by-lfm2-24b-a2b-to-execute-privacy-first-agent-workflows-locally-via-model-context-protocol-mcp/",
+      "maker": "Liquid AI",
+      "featured": true,
+      "added_at": "2026-03-08T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-amazon-connect-health",
+      "name": "Amazon Connect Health",
+      "tagline": "AI agent platform specifically designed for healthcare providers and patient workflows.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "AWS finally builds something healthcare-specific rather than expecting providers to cobble together general tools. Patient scheduling, documentation, and verification are exactly the sort of repetitive tasks that agents should handle. Healthcare's regulatory complexity makes vertical solutions like this inevitable.",
+      "ph_url": "https://techcrunch.com/2026/03/05/aws-amazon-connect-health-ai-agent-platform-health-care-providers/",
+      "maker": "AWS",
+      "featured": false,
+      "added_at": "2026-03-08T06:30:00Z"
+    }
+  ]
+}

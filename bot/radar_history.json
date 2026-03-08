@@ -84,6 +84,14 @@
         "Android Bench",
         "Amazon Connect Health"
       ]
+    },
+    {
+      "date": "2026-03-08",
+      "file": "2026-03-08.json",
+      "products": [
+        "LocalCowork",
+        "Amazon Connect Health"
+      ]
     }
   ]
 }
