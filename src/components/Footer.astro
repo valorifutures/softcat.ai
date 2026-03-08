@@ -3,7 +3,15 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-surface-light/50 mt-auto">
-  <div class="max-w-5xl mx-auto px-6 py-6 space-y-3">
+  <div class="max-w-5xl mx-auto px-6 py-6 space-y-4">
+    <button
+      data-search-trigger
+      class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg border border-surface-light/40 bg-surface/50 hover:border-neon-green/30 transition-all group cursor-pointer"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-muted/40 group-hover:text-neon-green transition-colors shrink-0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <span class="font-mono text-xs text-text-muted/40 group-hover:text-text-muted transition-colors">Search everything...</span>
+      <kbd class="ml-auto hidden sm:inline font-mono text-[10px] px-1.5 py-0.5 rounded border border-surface-light/40 text-text-muted/30">Ctrl+K</kbd>
+    </button>
     <div class="flex items-center justify-between text-text-muted text-sm font-mono">
       <span>&copy; {year} SOFT CAT .ai</span>
       <span class="flex items-center gap-3 text-xs">
