@@ -5,19 +5,106 @@ import { tagDotClass } from '../../utils/tagColor';
 
 const entries = (await getCollection('tools'))
   .filter((e) => !e.data.draft);
+
+const labTools = [
+  {
+    name: 'Token Counter',
+    description: 'Estimate token counts for Claude, GPT, and Llama models.',
+    href: '/lab/token-counter',
+    icon: '#',
+  },
+  {
+    name: 'Prompt Builder',
+    description: 'Structured templates for common AI tasks. Fill in the blanks, export the prompt.',
+    href: '/lab/prompt-builder',
+    icon: '>_',
+  },
+  {
+    name: 'Markdown Preview',
+    description: 'Write markdown, see it rendered live in the SOFT CAT house style.',
+    href: '/lab/markdown-preview',
+    icon: 'M↓',
+  },
+  {
+    name: 'Model Comparison',
+    description: 'Interactive table of AI models. Filter, sort, compare specs and pricing.',
+    href: '/lab/model-comparison',
+    icon: '⊞',
+  },
+  {
+    name: 'Prompt Workbench',
+    description: 'Full prompt IDE. System/user/assistant sections, variables, templates, export.',
+    href: '/lab/prompt-workbench',
+    icon: '⚙',
+  },
+  {
+    name: 'Chat Playground',
+    description: 'Chat with AI models using your own API key. Side-by-side model comparison.',
+    href: '/lab/chat-playground',
+    icon: '◈',
+  },
+  {
+    name: 'Model Explorer',
+    description: 'Visual map of the AI model landscape. Timeline, capabilities, pricing calculator.',
+    href: '/lab/model-explorer',
+    icon: '◉',
+  },
+  {
+    name: 'Token Cost Calculator',
+    description: 'Paste a prompt, pick a model, see the exact API cost before you commit to a stack.',
+    href: '/lab/token-cost',
+    icon: '$',
+  },
+  {
+    name: 'Prompt Diff',
+    description: 'Compare two prompt versions. See the diff, token delta, and cost difference at a glance.',
+    href: '/lab/prompt-diff',
+    icon: '~Δ',
+  },
+];
 ---
 
-<BaseLayout title="Tools & Experiments" description="Micro-tools, AI finds, and experiments." breadcrumbs={[{name: 'Tools & Experiments', url: '/tools'}]}>
+<BaseLayout title="Tools" description="Interactive AI tools and write-ups." breadcrumbs={[{name: 'Tools', url: '/tools'}]}>
   <div class="max-w-4xl mx-auto px-6 py-16">
     <header class="mb-8">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-purple">Tools & Experiments</h1>
-      <p class="text-text-muted mt-2">Micro-tools, AI finds, and experiments.</p>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-purple">Tools</h1>
+      <p class="text-text-muted mt-2">Interactive tools and write-ups. All client-side, nothing leaves your browser.</p>
     </header>
     <div class="section-banner mb-6" style="height: 180px" aria-hidden="true">
       <img src="/images/banners/tools.png" alt="" loading="eager" class="home-banner-drift" style="object-fit: contain" />
     </div>
-    <div class="glow-divider mb-10" style="--divider-color: rgba(180, 74, 255, 0.15)"></div>
+
+    <!-- Interactive tools -->
+    <h2 class="font-mono text-lg font-bold text-text-bright flex items-center gap-2 mb-5">
+      <span class="text-neon-green">&#9632;</span>
+      Interactive
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+      {labTools.map((tool) => (
+        <a
+          href={tool.href}
+          class="block bg-surface border border-surface-light rounded-lg p-6 card-glow card-glow-green group"
+        >
+          <div class="flex items-start gap-4">
+            <span class="font-mono text-lg text-neon-green shrink-0 mt-0.5">{tool.icon}</span>
+            <div>
+              <h3 class="font-mono text-sm font-bold text-text-bright group-hover:text-neon-green transition-colors">
+                {tool.name}
+              </h3>
+              <p class="text-sm text-text-muted mt-1">{tool.description}</p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Tool write-ups -->
+    <div class="glow-divider mb-8" style="--divider-color: rgba(180, 74, 255, 0.15)"></div>
+    <h2 class="font-mono text-lg font-bold text-text-bright flex items-center gap-2 mb-5">
+      <span class="text-neon-purple">&#9632;</span>
+      Write-ups
+    </h2>
 
     {entries.length === 0 ? (
       <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">

@@ -80,7 +80,6 @@ export const GET: APIRoute = async () => {
 
   // Static pages
   const pages = [
-    { title: 'Lab', summary: 'Interactive AI tools and experiments', url: '/lab', type: 'page' },
     { title: 'The Radar', summary: 'Daily AI product launches worth knowing about', url: '/radar', type: 'page' },
   ];
   entries.push(...pages);

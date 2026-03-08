@@ -42,8 +42,8 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 - `src/layouts/BaseLayout.astro` — wraps every page (Header + Footer + slot)
 - `src/layouts/PostLayout.astro` — wraps blog-style content
 - `src/components/` — shared Astro components
-- `src/components/lab/` — Preact TSX components for interactive lab tools
-- `src/pages/lab/` — lab tool pages (each wraps a Preact component)
+- `src/components/lab/` — Preact TSX components for interactive tools
+- `src/pages/lab/` — interactive tool pages (each wraps a Preact component, back-link to `/tools`)
 
 ## Design Conventions
 
@@ -59,8 +59,7 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 - `/` — homepage with hero, about, section previews
 - `/news-and-updates` — AI news digest posts
 - `/thoughts` — opinion pieces
-- `/tools` — tool writeups
-- `/lab` — 7 interactive tools (token counter, prompt builder, markdown preview, model comparison, prompt workbench, chat playground, model explorer)
+- `/tools` — merged tools page: interactive tools (9 Preact apps at `/lab/*`) + tool write-ups. `/lab` redirects here.
 - `/now` — what we're working on
 - `/status` — system health
 - `/valori` — about the team
