@@ -82,8 +82,6 @@ export const GET: APIRoute = async () => {
   const pages = [
     { title: 'Lab', summary: 'Interactive AI tools and experiments', url: '/lab', type: 'page' },
     { title: 'The Radar', summary: 'Daily AI product launches worth knowing about', url: '/radar', type: 'page' },
-    { title: 'Agent Builder', summary: 'Build a custom AI agent live', url: '/spawn', type: 'page' },
-    { title: 'Request an Agent', summary: 'Request a custom AI agent build', url: '/request', type: 'page' },
   ];
   entries.push(...pages);
 
