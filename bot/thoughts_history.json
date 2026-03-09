@@ -59,6 +59,11 @@
       "date": "2026-03-08",
       "file": "2026-03-08-runtime-validation-is-the-new-unit-testing.md",
       "title": "Runtime validation is the new unit testing"
+    },
+    {
+      "date": "2026-03-09",
+      "file": "2026-03-09-production-fragility-is-the-real-ai-alignment-problem.md",
+      "title": "Production fragility is the real AI alignment problem"
     }
   ]
 }
