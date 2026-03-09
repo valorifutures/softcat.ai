@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PromptBattle from '../../components/lab/PromptBattle';
+---
+
+<BaseLayout title="Prompt Battle" description="A/B test two prompt variants. Paste responses, pick a winner, track your score.">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <header class="mb-8">
+      <a href="/tools" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; tools</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-purple">⚔ Prompt Battle</h1>
+      <p class="text-text-muted mt-2">Write two prompt variants, paste the responses, pick a winner. Track which prompt is winning across rounds.</p>
+    </header>
+    <PromptBattle client:load />
+  </div>
+</BaseLayout>
