@@ -1,0 +1,79 @@
+{
+  "date": "2026-03-09",
+  "featured": [
+    {
+      "id": "ph-autoresearch",
+      "name": "AutoResearch",
+      "tagline": "630-line Python tool for AI agents to run autonomous ML experiments on single GPUs.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Karpathy's stripped down nanochat core lets AI agents iterate on their own training loops without human babysitting. This isn't just another research framework, it's the blueprint for self-improving systems that can run on commodity hardware. The minimalist approach makes it actually usable rather than academic theatre.",
+      "ph_url": "https://www.marktechpost.com/2026/03/08/andrej-karpathy-open-sources-autoresearch-a-630-line-python-tool-letting-ai-agents-run-autonomous-ml-experiments-on-single-gpus/",
+      "maker": "Andrej Karpathy",
+      "featured": true,
+      "added_at": "2026-03-09T06:00:00Z"
+    },
+    {
+      "id": "ph-uni-1",
+      "name": "Uni-1",
+      "tagline": "Image model that combines understanding and generation whilst reasoning through prompts.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Luma's taking a swing at OpenAI and Google with a model that thinks whilst it creates. The single architecture for both comprehension and generation is elegant engineering, and early benchmarks suggest it's not just marketing fluff. This could be the template for next-gen multimodal systems.",
+      "ph_url": "https://the-decoder.com/luma-ais-new-uni-1-image-model-tops-nano-banana-2-and-gpt-image-1-5-on-logic-based-benchmarks/",
+      "maker": "Luma AI",
+      "featured": true,
+      "added_at": "2026-03-09T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-mcp2cli",
+      "name": "Mcp2cli",
+      "tagline": "One CLI for every API with 96-99% fewer tokens than native MCP.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Turning every API into a command line interface whilst slashing token usage is proper systems thinking. This bridges the gap between human workflow and AI tooling without the usual bloat. Sometimes the best abstractions are the ones that make complexity disappear.",
+      "ph_url": "https://github.com/knowsuchagency/mcp2cli",
+      "maker": "knowsuchagency",
+      "featured": false,
+      "added_at": "2026-03-09T06:30:00Z"
+    },
+    {
+      "id": "ph-trawl",
+      "name": "Trawl",
+      "tagline": "Scrape any site with natural language fields instead of CSS selectors.",
+      "logo_url": "",
+      "category": "Data Tools",
+      "why_radar": "Finally, someone who understands that writing CSS selectors for web scraping is pure masochism. Natural language field definitions make data extraction accessible to humans who have better things to do than parse DOM structures. This is how scraping should have worked from day one.",
+      "ph_url": "https://github.com/akdavidsson/trawl",
+      "maker": "akdavidsson",
+      "featured": false,
+      "added_at": "2026-03-09T06:45:00Z"
+    },
+    {
+      "id": "ph-agentcheck",
+      "name": "Agentcheck",
+      "tagline": "Check what an AI agent can access before you run it.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Trust but verify applies to AI agents too, especially when they're poking around your system. This fills a glaring gap in the agent ecosystem where people are running code they haven't properly audited. Basic security hygiene shouldn't be optional in the age of autonomous systems.",
+      "ph_url": "https://github.com/Pringled/agentcheck",
+      "maker": "Pringled",
+      "featured": false,
+      "added_at": "2026-03-09T07:00:00Z"
+    },
+    {
+      "id": "ph-avakill",
+      "name": "AvaKill",
+      "tagline": "Deterministic safety firewall for AI agents with sub-millisecond response.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Rule-based safety without machine learning overhead is refreshingly pragmatic. When you need to stop an agent dead in its tracks, deterministic systems beat probabilistic ones every time. The sub-millisecond latency makes this actually deployable in production workflows.",
+      "ph_url": "https://github.com/log-bell/avakill",
+      "maker": "log-bell",
+      "featured": false,
+      "added_at": "2026-03-09T07:15:00Z"
+    }
+  ]
+}

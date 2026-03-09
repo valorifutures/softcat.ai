@@ -102,6 +102,18 @@
         "Beecon",
         "Agentic Context Engine"
       ]
+    },
+    {
+      "date": "2026-03-09",
+      "file": "2026-03-09.json",
+      "products": [
+        "AutoResearch",
+        "Uni-1",
+        "Mcp2cli",
+        "Trawl",
+        "Agentcheck",
+        "AvaKill"
+      ]
     }
   ]
 }
