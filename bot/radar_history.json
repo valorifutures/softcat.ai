@@ -114,6 +114,17 @@
         "Agentcheck",
         "AvaKill"
       ]
+    },
+    {
+      "date": "2026-03-10",
+      "file": "2026-03-10.json",
+      "products": [
+        "DeerFlow 2.0",
+        "Context Hub",
+        "Claude Code Review",
+        "DenchClaw",
+        "Hebbs"
+      ]
     }
   ]
 }
