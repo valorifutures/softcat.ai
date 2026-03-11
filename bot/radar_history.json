@@ -125,6 +125,18 @@
         "DenchClaw",
         "Hebbs"
       ]
+    },
+    {
+      "date": "2026-03-11",
+      "file": "2026-03-11.json",
+      "products": [
+        "Gemini Embedding 2",
+        "Fish Audio S2",
+        "Nemotron-Terminal",
+        "Ash",
+        "Aegis",
+        "Railyard"
+      ]
     }
   ]
 }
