@@ -23,6 +23,18 @@
       "file": "production-monitoring-strategy-designer.md",
       "title": "Production Monitoring Strategy Designer",
       "category": "monitoring"
+    },
+    {
+      "date": "2026-03-11",
+      "file": "multi-modal-rag-architecture-builder.md",
+      "title": "Multi-Modal RAG Architecture Builder",
+      "category": "architecture"
+    },
+    {
+      "date": "2026-03-11",
+      "file": "git-workflow-security-auditor.md",
+      "title": "Git Workflow Security Auditor",
+      "category": "git-workflows"
     }
   ]
 }
