@@ -80,5 +80,20 @@
     "output_files": [
       "src/content/thoughts/2026-03-13-streaming-agents-prove-planning-is-dead.md"
     ]
+  },
+  {
+    "bot": "prompt_bot",
+    "timestamp": "2026-03-13T13:05:36.219093+00:00",
+    "status": "success",
+    "duration_s": 33.5,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 2,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0344,
+    "input_tokens": 5216,
+    "output_tokens": 1249,
+    "output_files": []
   }
 ]
