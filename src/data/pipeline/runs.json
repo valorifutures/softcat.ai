@@ -46,5 +46,22 @@
     "output_tokens": 0,
     "output_files": [],
     "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 128."
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-03-13T13:04:21.339501+00:00",
+    "status": "success",
+    "duration_s": 39.2,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0679,
+    "input_tokens": 11288,
+    "output_tokens": 2266,
+    "output_files": [
+      "src/data/radar/2026-03-13.json"
+    ]
   }
 ]
