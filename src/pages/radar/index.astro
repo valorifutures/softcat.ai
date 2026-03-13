@@ -26,7 +26,7 @@ const olderDate = manifest.dates.length > 1 ? manifest.dates[1] : null;
       <p class="text-text-muted mt-2">AI tools, launches, and products worth knowing about. Curated daily by the SOFT CAT pipeline.</p>
     </header>
     <div class="section-banner mb-6" style="height: 180px; --banner-accent: rgba(218, 94, 116, 0.12); --banner-accent-mid: rgba(218, 94, 116, 0.04)" aria-hidden="true"></div>
-    <div class="glow-divider mb-6" style="--divider-color: rgba(255, 51, 102, 0.15)"></div>
+    <div class="glow-divider mb-6" style="--divider-color: rgba(218, 94, 116, 0.15)"></div>
 
     {olderDate && (
       <nav class="flex items-center justify-between mb-10">
@@ -62,7 +62,7 @@ const olderDate = manifest.dates.length > 1 ? manifest.dates[1] : null;
         {dayData.featured.length > 0 && (
           <section class="mb-12">
             <h2 class="font-mono text-xs text-neon-red uppercase tracking-widest mb-6">Today's picks</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 ambient-glow" style="--glow-color: rgba(255, 51, 102, 0.035); --glow-color-alt: rgba(0, 212, 255, 0.025)">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 ambient-glow" style="--glow-color: rgba(218, 94, 116, 0.035); --glow-color-alt: rgba(90, 184, 212, 0.025)">
               {dayData.featured.map((item: any, index: number) => (
                 <RadarFeaturedCard item={item} index={index} />
               ))}

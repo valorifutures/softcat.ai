@@ -35,7 +35,7 @@ const olderDate = dateIndex < manifest.dates.length - 1 ? manifest.dates[dateInd
       <p class="text-text-muted mt-2">{formatDate(date!)}</p>
     </header>
 
-    <div class="glow-divider mb-6" style="--divider-color: rgba(255, 51, 102, 0.15)"></div>
+    <div class="glow-divider mb-6" style="--divider-color: rgba(218, 94, 116, 0.15)"></div>
 
     <nav class="flex items-center justify-between mb-10">
       {olderDate ? (
@@ -75,7 +75,7 @@ const olderDate = dateIndex < manifest.dates.length - 1 ? manifest.dates[dateInd
         {dayData.featured.length > 0 && (
           <section class="mb-12">
             <h2 class="font-mono text-xs text-neon-red uppercase tracking-widest mb-6">Today's picks</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 ambient-glow" style="--glow-color: rgba(255, 51, 102, 0.035); --glow-color-alt: rgba(0, 212, 255, 0.025)">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 ambient-glow" style="--glow-color: rgba(218, 94, 116, 0.035); --glow-color-alt: rgba(90, 184, 212, 0.025)">
               {dayData.featured.map((item: any, index: number) => (
                 <RadarFeaturedCard item={item} index={index} />
               ))}
