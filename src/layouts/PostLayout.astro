@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import ProvenanceBadge from '../components/ProvenanceBadge.astro';
 import { tagDotClass } from '../utils/tagColor';
 
 interface Props {
@@ -11,9 +12,13 @@ interface Props {
   backLabel: string;
   showComments?: boolean;
   readingTime?: number;
+  generated_by?: string;
+  model?: string;
+  generation_time_s?: number;
+  cost_usd?: number;
 }
 
-const { title, date, tags = [], summary, backLink, backLabel, showComments = false, readingTime } = Astro.props;
+const { title, date, tags = [], summary, backLink, backLabel, showComments = false, readingTime, generated_by, model, generation_time_s, cost_usd } = Astro.props;
 
 const articleSchema: Record<string, unknown> = {
   "@context": "https://schema.org",
@@ -78,6 +83,8 @@ if (tags.length > 0) articleSchema["keywords"] = tags.join(", ");
       {summary && (
         <p class="mt-4 text-text-muted text-lg leading-relaxed">{summary}</p>
       )}
+
+      <ProvenanceBadge generated_by={generated_by} model={model} generation_time_s={generation_time_s} cost_usd={cost_usd} />
     </header>
 
     <div class="prose text-text-primary">

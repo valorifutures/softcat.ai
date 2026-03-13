@@ -1,0 +1,87 @@
+---
+import allRuns from '../data/pipeline/runs.json';
+import allBots from '../data/pipeline/bots.json';
+
+const botMap = Object.fromEntries(allBots.map((b) => [b.id, b]));
+
+// Sort runs by timestamp descending, take last 5
+const runs = [...allRuns]
+  .sort((a, b) => b.timestamp.localeCompare(a.timestamp))
+  .slice(0, 5);
+
+const latest = runs[0] ?? null;
+
+function relativeTime(isoStr: string): string {
+  const now = new Date();
+  const then = new Date(isoStr);
+  const diffMs = now.getTime() - then.getTime();
+  const mins = Math.floor(diffMs / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
+
+function describeRun(run: typeof latest): string {
+  const bot = botMap[run!.bot];
+  const name = bot?.name ?? run!.bot;
+  if (run!.status === 'error') return `${name} failed`;
+  if (run!.items_published === 0) return `${name} scanned ${run!.items_found} entries, nothing new`;
+  if (run!.bot === 'radar_bot') return `${name} surfaced ${run!.items_published} products`;
+  if (run!.bot === 'model_bot') return `${name} updated ${run!.items_published} models`;
+  if (run!.items_published === 1) return `${name} published 1 piece`;
+  return `${name} published ${run!.items_published} pieces`;
+}
+
+// 7-day summary stats
+const sevenDaysAgo = new Date(Date.now() - 7 * 86400000).toISOString();
+const recentRuns = allRuns.filter((r) => r.timestamp >= sevenDaysAgo);
+const totalRuns = recentRuns.length;
+const successRuns = recentRuns.filter((r) => r.status === 'success').length;
+const successRate = totalRuns > 0 ? Math.round((successRuns / totalRuns) * 100) : 0;
+const totalCost = recentRuns.reduce((sum, r) => sum + (r.cost_usd ?? 0), 0);
+const totalPublished = recentRuns.reduce((sum, r) => sum + (r.items_published ?? 0), 0);
+---
+
+<section class="max-w-5xl mx-auto px-6 py-6">
+  {latest ? (
+    <div class="flex flex-col gap-4">
+      <!-- Latest activity line -->
+      <div class="flex items-center gap-3 font-mono text-sm">
+        <span class={`w-2 h-2 rounded-full shrink-0 ${latest.status === 'error' ? 'bg-neon-red' : 'bg-neon-green'}`}></span>
+        <span class="text-text-muted">
+          {describeRun(latest)}
+          <span class="text-text-muted/60 ml-2">{relativeTime(latest.timestamp)}</span>
+        </span>
+      </div>
+
+      <!-- 7-day stat chips -->
+      {totalRuns > 0 && (
+        <div class="flex flex-wrap gap-3 font-mono text-xs text-text-muted/70">
+          <span class="px-2.5 py-1 rounded bg-surface border border-surface-light">
+            {totalRuns} runs this week
+          </span>
+          <span class="px-2.5 py-1 rounded bg-surface border border-surface-light">
+            {successRate}% success
+          </span>
+          {totalCost > 0 && (
+            <span class="px-2.5 py-1 rounded bg-surface border border-surface-light">
+              ${totalCost.toFixed(2)} total cost
+            </span>
+          )}
+          {totalPublished > 0 && (
+            <span class="px-2.5 py-1 rounded bg-surface border border-surface-light">
+              {totalPublished} items published
+            </span>
+          )}
+        </div>
+      )}
+    </div>
+  ) : (
+    <div class="font-mono text-sm text-text-muted/60">
+      <span class="text-neon-green">&#9679;</span> Pipeline starting up. First run data will appear here.
+    </div>
+  )}
+</section>

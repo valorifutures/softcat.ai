@@ -1,36 +1,30 @@
 <section class="max-w-5xl mx-auto px-6 py-16">
   <div class="bg-surface border border-surface-light rounded-xl p-8 md:p-10 card-glow">
     <div class="font-mono text-xs text-text-muted mb-4 flex items-center gap-2">
-      <span class="text-neon-purple">&#9632;</span>
-      <span>about.md</span>
+      <span class="text-neon-green">&#9632;</span>
+      <span>pipeline.md</span>
     </div>
 
     <h2 class="font-mono text-2xl font-bold text-text-bright mb-4">
-      What is this website?
+      How this site builds itself
     </h2>
 
     <div class="space-y-4 text-text-primary leading-relaxed max-w-2xl">
       <p>
-        <strong class="text-text-bright">SOFT CAT</strong>:
-        <span class="text-neon-green">S</span>mart
-        <span class="text-neon-green">O</span>utputs
-        <span class="text-neon-green">F</span>rom
-        <span class="text-neon-green">T</span>rained
-        <span class="text-neon-cyan">C</span>onversational
-        <span class="text-neon-cyan">A</span>I
-        <span class="text-neon-cyan">T</span>echnology.
-        Where trained AI becomes useful output.
+        Every morning, a pipeline wakes up and builds today's site. Bots scan RSS feeds
+        and the HackerNews API. Claude Sonnet reads the raw material and writes the content.
+        The output gets committed to GitHub, which triggers a deploy to production.
       </p>
       <p>
-        Built and maintained by <a href="/valori" class="text-neon-cyan hover:underline">Valori</a>, a small collective of AI practitioners
-        who build things, break things, and write down what happens.
-        No names. No faces. No thought leadership. Just the work.
+        No human writes the articles, picks the radar items, or generates the prompts.
+        The bots do. We built the pipeline, set the rules, and let it run.
+        What you're reading is the output.
       </p>
       <p>
-        The interesting stuff happens off-screen: testing models, building agents,
-        running experiments, tinkering with infrastructure. An automated pipeline
-        watches the feeds and turns raw material into content.
-        The site grows itself. We do the fun stuff.
+        The interesting part isn't the content. It's the infrastructure.
+        Head to <a href="/pipeline" class="text-neon-green hover:underline">/pipeline</a>
+        to see the full machinery: which bots ran, what they found, what they rejected,
+        and what it cost.
       </p>
     </div>
 
@@ -38,22 +32,22 @@
       <div class="flex items-start gap-3">
         <span class="text-neon-green font-mono text-lg mt-0.5">&#9656;</span>
         <div>
-          <div class="font-mono text-sm text-text-bright">News & Updates</div>
-          <div class="text-xs text-text-muted mt-1">Latest AI news and updates</div>
+          <div class="font-mono text-sm text-text-bright">6 bots</div>
+          <div class="text-xs text-text-muted mt-1">Running on systemd timers, daily</div>
         </div>
       </div>
       <div class="flex items-start gap-3">
         <span class="text-neon-cyan font-mono text-lg mt-0.5">&#9656;</span>
         <div>
-          <div class="font-mono text-sm text-text-bright">Thoughts</div>
-          <div class="text-xs text-text-muted mt-1">Observations and hot takes on AI</div>
+          <div class="font-mono text-sm text-text-bright">5 RSS feeds + HN API</div>
+          <div class="text-xs text-text-muted mt-1">Scanned every morning for raw material</div>
         </div>
       </div>
       <div class="flex items-start gap-3">
         <span class="text-neon-purple font-mono text-lg mt-0.5">&#9656;</span>
         <div>
-          <div class="font-mono text-sm text-text-bright">Tools & Experiments</div>
-          <div class="text-xs text-text-muted mt-1">Micro-tools and AI finds</div>
+          <div class="font-mono text-sm text-text-bright">Fully static</div>
+          <div class="text-xs text-text-muted mt-1">Astro + GitHub Pages, no server runtime</div>
         </div>
       </div>
     </div>

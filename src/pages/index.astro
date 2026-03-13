@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import ActivityTicker from '../components/ActivityTicker.astro';
 import About from '../components/About.astro';
 import FeaturedPost from '../components/FeaturedPost.astro';
 import SectionPreview from '../components/SectionPreview.astro';
@@ -37,6 +38,7 @@ const radarPreviewItems = radarData ? radarData.featured.slice(0, 3) : [];
 
 <BaseLayout>
   <Hero />
+  <ActivityTicker />
   <About />
 
   {pinnedThoughts.length > 0 && (
