@@ -9,13 +9,13 @@ interface SearchEntry {
   date?: string;
 }
 
-const TYPE_META: Record<string, { label: string; color: string }> = {
-  news: { label: 'news', color: '#00ff9f' },
-  thought: { label: 'thought', color: '#00d4ff' },
-  tool: { label: 'tool', color: '#b44aff' },
-  prompt: { label: 'prompt', color: '#ffb800' },
-  radar: { label: 'radar', color: '#ff3366' },
-  page: { label: 'page', color: '#adadc4' },
+const TYPE_META: Record<string, { label: string; text: string; border: string; bg: string }> = {
+  news: { label: 'news', text: 'text-neon-green', border: 'border-neon-green/25', bg: 'bg-neon-green/10' },
+  thought: { label: 'thought', text: 'text-neon-cyan', border: 'border-neon-cyan/25', bg: 'bg-neon-cyan/10' },
+  tool: { label: 'tool', text: 'text-neon-purple', border: 'border-neon-purple/25', bg: 'bg-neon-purple/10' },
+  prompt: { label: 'prompt', text: 'text-neon-amber', border: 'border-neon-amber/25', bg: 'bg-neon-amber/10' },
+  radar: { label: 'radar', text: 'text-neon-red', border: 'border-neon-red/25', bg: 'bg-neon-red/10' },
+  page: { label: 'page', text: 'text-text-muted', border: 'border-text-muted/25', bg: 'bg-text-muted/10' },
 };
 
 function fuzzyMatch(query: string, text: string): number {
@@ -151,7 +151,7 @@ export default function SearchOverlay() {
 
       {/* Modal */}
       <div class="relative w-full max-w-xl mx-4 rounded-xl border border-surface-light/50 bg-surface shadow-2xl overflow-hidden"
-        style="box-shadow: 0 0 60px rgba(0, 255, 159, 0.06), 0 25px 50px rgba(0, 0, 0, 0.5)"
+        style="box-shadow: 0 0 30px rgba(78, 203, 143, 0.04), 0 25px 50px rgba(0, 0, 0, 0.5)"
       >
         {/* Input */}
         <div class="flex items-center gap-3 px-4 py-3 border-b border-surface-light/50">
@@ -203,13 +203,7 @@ export default function SearchOverlay() {
                   }`}
                 >
                   <span
-                    class="shrink-0 mt-0.5 text-[10px] px-1.5 py-0.5 rounded-full border"
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      color: meta.color,
-                      borderColor: meta.color + '40',
-                      backgroundColor: meta.color + '10',
-                    }}
+                    class={`shrink-0 mt-0.5 text-[10px] font-mono px-1.5 py-0.5 rounded-full border ${meta.text} ${meta.border} ${meta.bg}`}
                   >
                     {meta.label}
                   </span>
