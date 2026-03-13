@@ -13,5 +13,38 @@
     "input_tokens": 0,
     "output_tokens": 0,
     "output_files": []
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-03-13T13:02:38.453831+00:00",
+    "status": "success",
+    "duration_s": 21.9,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0331,
+    "input_tokens": 7731,
+    "output_tokens": 658,
+    "output_files": [
+      "src/content/news-and-updates/2026-03-13-ai-digest.md"
+    ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-03-13T13:03:23.428732+00:00",
+    "status": "error",
+    "duration_s": 44.3,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 128."
   }
 ]
