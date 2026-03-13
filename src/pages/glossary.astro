@@ -200,7 +200,7 @@ const glossarySchema = {
       <p class="text-text-muted mt-2">Plain-English definitions for the terms that keep coming up. {terms.length} entries, sorted alphabetically.</p>
     </header>
 
-    <div class="glow-divider mb-8" style="--divider-color: rgba(180, 74, 255, 0.15)"></div>
+    <div class="glow-divider mb-8" style="--divider-color: rgba(155, 122, 204, 0.15)"></div>
 
     <!-- Alphabet jump nav -->
     <nav class="flex flex-wrap gap-2 mb-10" aria-label="Jump to letter">
@@ -215,7 +215,7 @@ const glossarySchema = {
     </nav>
 
     <!-- Grouped term listings -->
-    <div class="space-y-12 ambient-glow" style="--glow-color: rgba(180, 74, 255, 0.035); --glow-color-alt: rgba(0, 212, 255, 0.025)">
+    <div class="space-y-12 ambient-glow" style="--glow-color: rgba(155, 122, 204, 0.035); --glow-color-alt: rgba(90, 184, 212, 0.025)">
       {letters.map((letter) => (
         <section id={`letter-${letter}`}>
           <h2 class="font-mono text-xl font-bold text-neon-purple glow-purple mb-4">{letter}</h2>
