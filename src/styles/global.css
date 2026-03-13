@@ -2,16 +2,16 @@
 
 @theme {
   /* Background layers */
-  --color-void: #0a0a0f;
-  --color-surface: #12121a;
-  --color-surface-light: #1a1a2e;
+  --color-void: #0c0c14;
+  --color-surface: #14141e;
+  --color-surface-light: #1e1e30;
 
-  /* Neon accents */
-  --color-neon-green: #00ff9f;
-  --color-neon-cyan: #00d4ff;
-  --color-neon-purple: #b44aff;
-  --color-neon-amber: #ffb800;
-  --color-neon-red: #ff3366;
+  /* Neon accents — desaturated premium palette */
+  --color-neon-green: #4ecb8f;
+  --color-neon-cyan: #5ab8d4;
+  --color-neon-purple: #9b7acc;
+  --color-neon-amber: #d4a54a;
+  --color-neon-red: #da5e74;
 
   /* Text */
   --color-text-primary: #ededf2;
@@ -29,31 +29,31 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   background-image:
-    linear-gradient(rgba(0, 255, 159, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 159, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(78, 203, 143, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78, 203, 143, 0.02) 1px, transparent 1px);
   background-size: 50px 50px;
   min-height: 100vh;
 }
 
-/* Glow utilities */
+/* Glow utilities — single layer, refined */
 .glow-green {
-  text-shadow: 0 0 10px rgba(0, 255, 159, 0.5), 0 0 20px rgba(0, 255, 159, 0.2);
+  text-shadow: 0 0 8px rgba(78, 203, 143, 0.4);
 }
 
 .glow-cyan {
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.2);
+  text-shadow: 0 0 8px rgba(90, 184, 212, 0.4);
 }
 
 .glow-purple {
-  text-shadow: 0 0 10px rgba(180, 74, 255, 0.5), 0 0 20px rgba(180, 74, 255, 0.2);
+  text-shadow: 0 0 8px rgba(155, 122, 204, 0.4);
 }
 
 .glow-amber {
-  text-shadow: 0 0 10px rgba(255, 184, 0, 0.5), 0 0 20px rgba(255, 184, 0, 0.2);
+  text-shadow: 0 0 8px rgba(212, 165, 74, 0.4);
 }
 
 .glow-red {
-  text-shadow: 0 0 10px rgba(255, 51, 102, 0.5), 0 0 20px rgba(255, 51, 102, 0.2);
+  text-shadow: 0 0 8px rgba(218, 94, 116, 0.4);
 }
 
 /* Card base transition */
@@ -62,50 +62,50 @@ body {
 }
 
 .card-glow:hover {
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.02);
 }
 
-/* Section-specific card glow */
+/* Section-specific card glow — refined, single shadow */
 .card-glow-green:hover {
-  border-color: rgba(0, 255, 159, 0.35);
-  box-shadow: 0 0 20px rgba(0, 255, 159, 0.1), 0 0 60px rgba(0, 255, 159, 0.04), inset 0 1px 0 rgba(0, 255, 159, 0.06);
+  border-color: rgba(78, 203, 143, 0.3);
+  box-shadow: 0 0 12px rgba(78, 203, 143, 0.08);
 }
 
 .card-glow-cyan:hover {
-  border-color: rgba(0, 212, 255, 0.35);
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1), 0 0 60px rgba(0, 212, 255, 0.04), inset 0 1px 0 rgba(0, 212, 255, 0.06);
+  border-color: rgba(90, 184, 212, 0.3);
+  box-shadow: 0 0 12px rgba(90, 184, 212, 0.08);
 }
 
 .card-glow-purple:hover {
-  border-color: rgba(180, 74, 255, 0.35);
-  box-shadow: 0 0 20px rgba(180, 74, 255, 0.1), 0 0 60px rgba(180, 74, 255, 0.04), inset 0 1px 0 rgba(180, 74, 255, 0.06);
+  border-color: rgba(155, 122, 204, 0.3);
+  box-shadow: 0 0 12px rgba(155, 122, 204, 0.08);
 }
 
 .card-glow-amber:hover {
-  border-color: rgba(255, 184, 0, 0.35);
-  box-shadow: 0 0 20px rgba(255, 184, 0, 0.1), 0 0 60px rgba(255, 184, 0, 0.04), inset 0 1px 0 rgba(255, 184, 0, 0.06);
+  border-color: rgba(212, 165, 74, 0.3);
+  box-shadow: 0 0 12px rgba(212, 165, 74, 0.08);
 }
 
 .card-glow-red:hover {
-  border-color: rgba(255, 51, 102, 0.35);
-  box-shadow: 0 0 20px rgba(255, 51, 102, 0.1), 0 0 60px rgba(255, 51, 102, 0.04), inset 0 1px 0 rgba(255, 51, 102, 0.06);
+  border-color: rgba(218, 94, 116, 0.3);
+  box-shadow: 0 0 12px rgba(218, 94, 116, 0.08);
 }
 
 /* Glassmorphism card */
 .glass-card {
   background: linear-gradient(
     135deg,
-    rgba(18, 18, 26, 0.85) 0%,
-    rgba(26, 26, 46, 0.7) 50%,
-    rgba(18, 18, 26, 0.85) 100%
+    rgba(20, 20, 30, 0.85) 0%,
+    rgba(30, 30, 48, 0.7) 50%,
+    rgba(20, 20, 30, 0.85) 100%
   );
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Top edge shimmer */
+/* Top edge highlight — static, no shimmer */
 .glass-card::before {
   content: '';
   position: absolute;
@@ -116,9 +116,9 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.12) 30%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(255, 255, 255, 0.12) 70%,
+    rgba(255, 255, 255, 0.06) 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.06) 70%,
     transparent 100%
   );
   border-radius: inherit;
@@ -144,11 +144,11 @@ body {
 }
 
 /* Section accent lines */
-.card-glow-green { --card-accent: rgba(0, 255, 159, 0.3); }
-.card-glow-cyan { --card-accent: rgba(0, 212, 255, 0.3); }
-.card-glow-purple { --card-accent: rgba(180, 74, 255, 0.3); }
-.card-glow-amber { --card-accent: rgba(255, 184, 0, 0.3); }
-.card-glow-red { --card-accent: rgba(255, 51, 102, 0.3); }
+.card-glow-green { --card-accent: rgba(78, 203, 143, 0.25); }
+.card-glow-cyan { --card-accent: rgba(90, 184, 212, 0.25); }
+.card-glow-purple { --card-accent: rgba(155, 122, 204, 0.25); }
+.card-glow-amber { --card-accent: rgba(212, 165, 74, 0.25); }
+.card-glow-red { --card-accent: rgba(218, 94, 116, 0.25); }
 
 /* Ambient glow orb — place behind card grids */
 .ambient-glow {
@@ -163,7 +163,7 @@ body {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: var(--glow-color, rgba(0, 255, 159, 0.03));
+  background: var(--glow-color, rgba(78, 203, 143, 0.02));
   filter: blur(100px);
   pointer-events: none;
   z-index: 0;
@@ -177,7 +177,7 @@ body {
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  background: var(--glow-color-alt, rgba(180, 74, 255, 0.025));
+  background: var(--glow-color-alt, rgba(155, 122, 204, 0.015));
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
@@ -293,8 +293,8 @@ body {
 
 .tag-badge:hover {
   color: var(--color-neon-cyan);
-  border-color: rgba(0, 212, 255, 0.2);
-  background: rgba(0, 212, 255, 0.05);
+  border-color: rgba(90, 184, 212, 0.2);
+  background: rgba(90, 184, 212, 0.05);
 }
 
 .tag-dot {
@@ -374,7 +374,7 @@ body {
 .prose a {
   color: var(--color-neon-cyan);
   text-decoration: underline;
-  text-decoration-color: rgba(0, 212, 255, 0.3);
+  text-decoration-color: rgba(90, 184, 212, 0.3);
   text-underline-offset: 3px;
   transition: text-decoration-color 0.2s;
 }

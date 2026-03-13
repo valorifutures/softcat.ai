@@ -2,7 +2,7 @@
 
 ## What This Site Is
 
-SOFT CAT .ai (softcat.ai) is a neon cyberpunk AI site built with Astro 5.17 + Preact + Tailwind 4.2.
+SOFT CAT .ai (softcat.ai) is a dark premium AI site built with Astro 5.17 + Preact + Tailwind 4.2.
 It deploys via GitHub Actions to GitHub Pages on every push to `main`.
 The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
@@ -18,7 +18,7 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 - **Framework**: Astro 5.17 (static site generator)
 - **UI**: Preact components (`.tsx`) for interactive bits, Astro components (`.astro`) for everything else
 - **Styling**: Tailwind CSS 4.2 via Vite plugin. Theme defined in `src/styles/global.css`.
-- **Colors**: void (#0a0a0f), surface (#12121a), surface-light (#1a1a2e), neon-green (#00ff9f), neon-cyan (#00d4ff), neon-purple (#b44aff), neon-amber (#ffb800)
+- **Colors**: void (#0c0c14), surface (#14141e), surface-light (#1e1e30), neon-green (#4ecb8f), neon-cyan (#5ab8d4), neon-purple (#9b7acc), neon-amber (#d4a54a), neon-red (#da5e74)
 - **Fonts**: Inter (sans), JetBrains Mono (mono). Mono used for headings and UI elements.
 - **Build**: `npm run build` outputs to `dist/`. Must pass before any PR.
 
