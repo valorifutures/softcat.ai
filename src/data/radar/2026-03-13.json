@@ -1,0 +1,79 @@
+{
+  "date": "2026-03-13",
+  "featured": [
+    {
+      "id": "ph-openjarvis",
+      "name": "OpenJarvis",
+      "tagline": "Local-first framework for building on-device personal AI agents with tools, memory, and learning.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Stanford's take on local-first AI agents finally gives us a proper framework for building personal assistants that don't phone home. The focus on memory and learning makes this more than just another local LLM wrapper. We need more infrastructure like this to break the cloud dependency.",
+      "ph_url": "https://www.marktechpost.com/2026/03/12/stanford-researchers-release-openjarvis-a-local-first-framework-for-building-on-device-personal-ai-agents-with-tools-memory-and-learning/",
+      "maker": "Stanford Scaling Intelligence Lab",
+      "featured": true,
+      "added_at": "2026-03-13T06:00:00Z"
+    },
+    {
+      "id": "ph-nemotron-3-super",
+      "name": "Nemotron 3 Super",
+      "tagline": "120B parameter open-source hybrid Mamba-Attention MoE model delivering 5x higher throughput for agentic AI.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "NVIDIA's biggest open model yet bridges the gap between lightweight and frontier models with proper agentic focus. The 5x throughput claim and hybrid architecture could actually make 120B parameters usable in production. Finally, a model designed for agents rather than chat.",
+      "ph_url": "https://www.marktechpost.com/2026/03/11/nvidia-releases-nemotron-3-super-a-120b-parameter-open-source-hybrid-mamba-attention-moe-model-delivering-5x-higher-throughput-for-agentic-ai/",
+      "maker": "NVIDIA",
+      "featured": true,
+      "added_at": "2026-03-13T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-axe",
+      "name": "Axe",
+      "tagline": "A 12MB binary that replaces your AI framework.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Sometimes the best tool is the smallest one. A 12MB replacement for bloated AI frameworks is exactly what edge computing needs. No dependencies, no Python overhead, just inference.",
+      "ph_url": "https://github.com/jrswab/axe",
+      "maker": "jrswab",
+      "featured": false,
+      "added_at": "2026-03-13T06:30:00Z"
+    },
+    {
+      "id": "ph-onecli",
+      "name": "OneCLI",
+      "tagline": "Vault for AI Agents in Rust.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Agent security is becoming critical as these systems handle more sensitive data. A Rust-based vault specifically for AI agents shows someone's thinking seriously about credential management. The timing is perfect as agent deployments scale.",
+      "ph_url": "https://github.com/onecli/onecli",
+      "maker": "OneCLI Team",
+      "featured": false,
+      "added_at": "2026-03-13T06:45:00Z"
+    },
+    {
+      "id": "ph-logclaw",
+      "name": "LogClaw",
+      "tagline": "Open-source AI SRE that auto-creates tickets from logs.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Finally, an AI SRE tool that doesn't require enterprise contracts. Auto-generating tickets from logs is exactly the kind of boring-but-essential automation we need more of. Open source means you can actually see how it makes decisions.",
+      "ph_url": "https://logclaw.ai",
+      "maker": "LogClaw Team",
+      "featured": false,
+      "added_at": "2026-03-13T07:00:00Z"
+    },
+    {
+      "id": "ph-multimind-ai",
+      "name": "MultiMind AI",
+      "tagline": "Run an Agent Council of LLMs that debate and synthesise answers.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Multi-agent debate systems are showing real promise for better reasoning. Having LLMs argue with each other before reaching consensus could be more reliable than single-model outputs. The council approach feels like a natural evolution of ensemble methods.",
+      "ph_url": "https://github.com/JitseLambrichts/MultiMind-AI",
+      "maker": "Jitse Lambrichts",
+      "featured": false,
+      "added_at": "2026-03-13T07:15:00Z"
+    }
+  ]
+}
