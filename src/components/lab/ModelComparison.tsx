@@ -10,6 +10,9 @@ interface Model {
   openSource: boolean;
   released: string;
   strengths: string;
+  coding: number;
+  reasoning_score: number;
+  speed: number;
 }
 
 const models: Model[] = modelsData as Model[];
@@ -17,7 +20,18 @@ const models: Model[] = modelsData as Model[];
 const ctxDisplay = (k: number) => k >= 1000 ? `${k / 1000}M` : `${k}K`;
 const priceDisplay = (p: number) => p === 0 ? 'Free*' : `$${p}`;
 
-type SortKey = 'name' | 'provider' | 'contextK' | 'inputPrice';
+type SortKey = 'name' | 'provider' | 'contextK' | 'inputPrice' | 'coding' | 'reasoning_score' | 'speed';
+
+function MiniBar({ score, color }: { score: number; color: string }) {
+  return (
+    <div class="flex items-center gap-1.5">
+      <div class="w-16 h-1 bg-surface-light rounded-full overflow-hidden">
+        <div class={`h-full rounded-full ${color}`} style={{ width: `${score}%` }} />
+      </div>
+      <span class="font-mono text-xs text-text-muted">{score}</span>
+    </div>
+  );
+}
 
 export default function ModelComparison() {
   const [search, setSearch] = useState('');
@@ -38,7 +52,7 @@ export default function ModelComparison() {
     })
     .sort((a, b) => {
       const dir = sortAsc ? 1 : -1;
-      if (sortBy === 'contextK' || sortBy === 'inputPrice') return (a[sortBy] - b[sortBy]) * dir;
+      if (sortBy === 'contextK' || sortBy === 'inputPrice' || sortBy === 'coding' || sortBy === 'reasoning_score' || sortBy === 'speed') return (a[sortBy] - b[sortBy]) * dir;
       return a[sortBy].localeCompare(b[sortBy]) * dir;
     });
 
@@ -89,6 +103,9 @@ export default function ModelComparison() {
               <th class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan" onClick={() => toggleSort('contextK')}>Context{sortIcon('contextK')}</th>
               <th class="py-2 px-3 font-mono text-xs text-text-muted">Input /1M</th>
               <th class="py-2 px-3 font-mono text-xs text-text-muted">Output /1M</th>
+              <th class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan" onClick={() => toggleSort('coding')}>Coding{sortIcon('coding')}</th>
+              <th class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan" onClick={() => toggleSort('reasoning_score')}>Reasoning{sortIcon('reasoning_score')}</th>
+              <th class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan" onClick={() => toggleSort('speed')}>Speed{sortIcon('speed')}</th>
               <th class="py-2 px-3 font-mono text-xs text-text-muted">Strengths</th>
             </tr>
           </thead>
@@ -103,6 +120,9 @@ export default function ModelComparison() {
                 <td class="py-2.5 px-3 font-mono text-sm text-neon-cyan">{ctxDisplay(m.contextK)}</td>
                 <td class="py-2.5 px-3 font-mono text-sm text-text-primary">{priceDisplay(m.inputPrice)}</td>
                 <td class="py-2.5 px-3 font-mono text-sm text-text-primary">{priceDisplay(m.outputPrice)}</td>
+                <td class="py-2.5 px-3"><MiniBar score={m.coding} color="bg-neon-green" /></td>
+                <td class="py-2.5 px-3"><MiniBar score={m.reasoning_score} color="bg-neon-cyan" /></td>
+                <td class="py-2.5 px-3"><MiniBar score={m.speed} color="bg-neon-amber" /></td>
                 <td class="py-2.5 px-3 text-sm text-text-muted max-w-xs">{m.strengths}</td>
               </tr>
             ))}

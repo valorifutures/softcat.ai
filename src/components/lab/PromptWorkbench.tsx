@@ -9,6 +9,14 @@ interface SavedPrompt {
   timestamp: number;
 }
 
+interface ModelInfo {
+  id: string;
+  name: string;
+  provider: string;
+  inputPrice: number;
+  outputPrice: number;
+}
+
 const builtInTemplates: Record<string, Omit<SavedPrompt, 'timestamp'>> = {
   'RAG System': {
     name: 'RAG System',
@@ -45,17 +53,41 @@ const builtInTemplates: Record<string, Omit<SavedPrompt, 'timestamp'>> = {
     assistant: '',
     vars: { persona: 'a grumpy but brilliant Unix sysadmin from the 1990s', message: '' },
   },
+  'Text Analysis': {
+    name: 'Text Analysis',
+    system: 'You are an analytical assistant. Be thorough and structured in your analysis.',
+    user: 'Analyse the following text:\n\n"{{text}}"\n\nFocus on: {{focus}}',
+    assistant: '',
+    vars: { text: '', focus: 'tone, key arguments, and potential biases' },
+  },
+  'Data Transformation': {
+    name: 'Data Transformation',
+    system: 'You are a data engineer. Write efficient, correct transformations.',
+    user: 'Transform the following {{input_format}} data to {{output_format}}:\n\n```\n{{data}}\n```\n\nAdditional rules: {{rules}}',
+    assistant: '',
+    vars: { input_format: 'JSON', output_format: 'CSV', data: '', rules: 'none' },
+  },
+  'Explain Concept': {
+    name: 'Explain Concept',
+    system: 'You are a technical educator. Explain concepts clearly with practical examples. Target audience: {{audience}}.',
+    user: 'Explain {{concept}} in {{depth}}.\n\nInclude a practical example.',
+    assistant: '',
+    vars: { concept: '', depth: 'moderate detail', audience: 'intermediate developers' },
+  },
 };
 
 function estimateTokens(text: string): number {
-  return Math.ceil(text.length / 4);
+  if (!text) return 0;
+  const alphaCount = (text.match(/[a-zA-Z]/g) || []).length;
+  const nonAlphaRatio = 1 - alphaCount / text.length;
+  return Math.ceil(text.length / (nonAlphaRatio > 0.2 ? 3.2 : 4.3));
 }
 
 function fillTemplate(template: string, vars: Record<string, string>): string {
   return template.replace(/\{\{(\w+)\}\}/g, (_, key) => vars[key] || `{{${key}}}`);
 }
 
-export default function PromptWorkbench() {
+export default function PromptWorkbench({ models }: { models: ModelInfo[] }) {
   const [system, setSystem] = useState('');
   const [user, setUser] = useState('');
   const [assistant, setAssistant] = useState('');
@@ -64,6 +96,9 @@ export default function PromptWorkbench() {
   const [promptName, setPromptName] = useState('');
   const [copied, setCopied] = useState('');
   const [activeTab, setActiveTab] = useState<'editor' | 'templates' | 'saved'>('editor');
+  const [exportModelId, setExportModelId] = useState(models.length > 0 ? models[0].id : '');
+
+  const selectedModel = models.find((m) => m.id === exportModelId) || models[0] || { id: '', name: 'Unknown', inputPrice: 0, outputPrice: 0 };
 
   useEffect(() => {
     try {
@@ -127,11 +162,16 @@ export default function PromptWorkbench() {
   -H "Content-Type: application/json" \\
   -H "x-api-key: YOUR_API_KEY" \\
   -H "anthropic-version: 2023-06-01" \\
-  -d '${JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 4096, system: filledSystem, messages })}'`;
+  -d '${JSON.stringify({ model: selectedModel.id, max_tokens: 4096, system: filledSystem, messages })}'`;
     }
     navigator.clipboard.writeText(text);
     setCopied(format);
     setTimeout(() => setCopied(''), 2000);
+  };
+
+  const openInPlayground = () => {
+    localStorage.setItem('softcat-workbench-handoff', JSON.stringify({ system: filledSystem }));
+    window.location.href = '/lab/chat-playground';
   };
 
   return (
@@ -263,10 +303,19 @@ export default function PromptWorkbench() {
             <div class="font-mono text-sm">
               <span class="text-text-muted">Total: </span>
               <span class="text-text-bright font-bold">~{tokens.total} tokens</span>
-              <span class="text-text-muted ml-2">(~${((tokens.total / 1_000_000) * 3).toFixed(4)} on Sonnet)</span>
+              <span class="text-text-muted ml-2">(~${((tokens.total / 1_000_000) * selectedModel.inputPrice).toFixed(4)} on {selectedModel.name})</span>
             </div>
 
-            <div class="flex gap-2">
+            <div class="flex items-center gap-2">
+              <select
+                value={exportModelId}
+                onChange={(e) => setExportModelId((e.target as HTMLSelectElement).value)}
+                class="bg-void border border-surface-light rounded px-2 py-1.5 font-mono text-xs text-text-primary focus:outline-none focus:border-neon-green/50"
+              >
+                {models.map((m) => (
+                  <option value={m.id}>{m.name} ({m.provider})</option>
+                ))}
+              </select>
               {['text', 'json', 'curl'].map((fmt) => (
                 <button
                   onClick={() => exportAs(fmt)}
@@ -279,6 +328,12 @@ export default function PromptWorkbench() {
                   {copied === fmt ? 'copied!' : fmt}
                 </button>
               ))}
+              <button
+                onClick={openInPlayground}
+                class="px-3 py-1.5 rounded font-mono text-xs transition-all bg-void border border-surface-light text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan/30"
+              >
+                open in playground
+              </button>
             </div>
           </div>
 

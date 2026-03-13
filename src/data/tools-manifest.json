@@ -1,68 +1,29 @@
 [
   {
-    "id": "token-counter",
-    "name": "Token Counter",
-    "description": "Estimate token counts for Claude, GPT, and Llama models.",
-    "stat": "50+ models supported",
-    "href": "/lab/token-counter",
-    "icon": "#",
-    "category": "cost",
-    "addedDate": "2026-02-01"
-  },
-  {
-    "id": "prompt-builder",
-    "name": "Prompt Builder",
-    "description": "Structured templates for common AI tasks. Fill in the blanks, export the prompt.",
-    "stat": "6 preset templates",
-    "href": "/lab/prompt-builder",
-    "icon": ">_",
-    "category": "prompts",
-    "addedDate": "2026-02-01"
-  },
-  {
-    "id": "markdown-preview",
-    "name": "Markdown Preview",
-    "description": "Write markdown, see it rendered live in the SOFT CAT house style.",
-    "stat": "Live split-pane editor",
-    "href": "/lab/markdown-preview",
-    "icon": "M↓",
-    "category": "prompts",
-    "addedDate": "2026-02-01"
-  },
-  {
-    "id": "model-comparison",
-    "name": "Model Comparison",
-    "description": "Interactive table of AI models. Filter, sort, compare specs and pricing.",
-    "stat": "50+ models, sortable",
-    "href": "/lab/model-comparison",
-    "icon": "⊞",
+    "id": "chat-playground",
+    "name": "Chat Playground",
+    "description": "Chat with any AI model via OpenRouter. Side-by-side comparison, streaming, cost tracking.",
+    "stat": "21 models, live cost tracking",
+    "href": "/lab/chat-playground",
+    "icon": "◈",
     "category": "models",
-    "addedDate": "2026-02-01"
+    "addedDate": "2026-02-01",
+    "featured": true
   },
   {
     "id": "prompt-workbench",
     "name": "Prompt Workbench",
-    "description": "Full prompt IDE. System/user/assistant sections, variables, templates, export.",
-    "stat": "5 built-in templates",
+    "description": "Full prompt IDE. System/user/assistant prefill, variables, 8 templates, save/load, multi-format export.",
+    "stat": "8 templates, localStorage persistence",
     "href": "/lab/prompt-workbench",
     "icon": "⚙",
     "category": "prompts",
     "addedDate": "2026-02-01"
   },
   {
-    "id": "chat-playground",
-    "name": "Chat Playground",
-    "description": "Chat with AI models using your own API key. Side-by-side model comparison.",
-    "stat": "BYOK via OpenRouter",
-    "href": "/lab/chat-playground",
-    "icon": "◈",
-    "category": "models",
-    "addedDate": "2026-02-01"
-  },
-  {
     "id": "model-explorer",
     "name": "Model Explorer",
-    "description": "Visual map of the AI model landscape. Timeline, capabilities, pricing calculator.",
+    "description": "Visual map of the AI model landscape. Timeline, capability bars, pricing calculator.",
     "stat": "Card, timeline & pricing views",
     "href": "/lab/model-explorer",
     "icon": "◉",
@@ -70,10 +31,20 @@
     "addedDate": "2026-02-01"
   },
   {
+    "id": "model-comparison",
+    "name": "Model Comparison",
+    "description": "Sortable table of AI models with capability scores, pricing, and context windows.",
+    "stat": "21 models, coding/reasoning/speed bars",
+    "href": "/lab/model-comparison",
+    "icon": "⊞",
+    "category": "models",
+    "addedDate": "2026-02-01"
+  },
+  {
     "id": "token-cost",
     "name": "Token Cost Calculator",
-    "description": "Paste a prompt, pick a model, see the exact API cost before you commit to a stack.",
-    "stat": "Real-time cost estimates",
+    "description": "Estimate API costs per prompt or full conversation. Breakdown by turn, model comparison.",
+    "stat": "Single prompt + conversation mode",
     "href": "/lab/token-cost",
     "icon": "$",
     "category": "cost",
@@ -82,28 +53,18 @@
   {
     "id": "prompt-diff",
     "name": "Prompt Diff",
-    "description": "Compare two prompt versions. See the diff, token delta, and cost difference at a glance.",
-    "stat": "Word-level LCS diff",
+    "description": "Compare two prompt versions with word-level diff, token delta, and cost difference.",
+    "stat": "LCS diff + load saved prompts",
     "href": "/lab/prompt-diff",
     "icon": "~Δ",
     "category": "prompts",
     "addedDate": "2026-02-01"
   },
   {
-    "id": "prompt-battle",
-    "name": "Prompt Battle",
-    "description": "A/B test two prompt variants. Paste responses, pick a winner, track your score.",
-    "stat": "Scoreboard + round history",
-    "href": "/lab/prompt-battle",
-    "icon": "⚔",
-    "category": "prompts",
-    "addedDate": "2026-02-01"
-  },
-  {
     "id": "json-validator",
     "name": "JSON Output Validator",
-    "description": "Validate AI model JSON output against a schema. Check types, required fields, and structure.",
-    "stat": "Recursive schema checks",
+    "description": "Validate AI model JSON output against a schema. Presets for tool_use, function calls, classification.",
+    "stat": "4 preset schemas, enum + pattern checks",
     "href": "/lab/json-validator",
     "icon": "{}",
     "category": "validation",

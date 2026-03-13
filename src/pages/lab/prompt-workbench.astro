@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PromptWorkbench from '../../components/lab/PromptWorkbench';
+import modelsData from '../../data/models.json';
+const models = modelsData.filter((m: any) => m.inputPrice > 0).map((m: any) => ({ id: m.id, name: m.name, provider: m.provider, inputPrice: m.inputPrice, outputPrice: m.outputPrice }));
 ---
 
 <BaseLayout title="Prompt Workbench" description="Full prompt IDE with templates, variables, token counting, and multi-format export.">
@@ -10,6 +12,6 @@ import PromptWorkbench from '../../components/lab/PromptWorkbench';
       <h1 class="font-mono text-3xl font-bold text-text-bright glow-amber">Prompt Workbench</h1>
       <p class="text-text-muted mt-2">Build, test, and export prompts with templates, variables, and token estimates.</p>
     </header>
-    <PromptWorkbench client:load />
+    <PromptWorkbench client:load models={models} />
   </div>
 </BaseLayout>
