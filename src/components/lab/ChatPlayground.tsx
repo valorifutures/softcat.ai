@@ -1,44 +1,54 @@
 import { useState, useRef, useEffect } from 'preact/hooks';
+import { estimateTokens } from '../../utils/tokens';
 
 interface Message {
   role: 'user' | 'assistant' | 'system';
   content: string;
 }
 
+interface MessageCost {
+  input: number;
+  output: number;
+  total: number;
+}
+
 interface ChatPane {
   id: string;
   model: string;
   messages: Message[];
+  messageCosts: Record<number, MessageCost>;
   loading: boolean;
   error: string;
 }
 
-const models = [
-  { id: 'anthropic/claude-sonnet-4', name: 'Claude Sonnet 4', provider: 'Anthropic' },
-  { id: 'anthropic/claude-haiku-4', name: 'Claude Haiku 4', provider: 'Anthropic' },
-  { id: 'openai/gpt-4o', name: 'GPT-4o', provider: 'OpenAI' },
-  { id: 'openai/gpt-4o-mini', name: 'GPT-4o Mini', provider: 'OpenAI' },
-  { id: 'google/gemini-2.0-flash-001', name: 'Gemini 2.0 Flash', provider: 'Google' },
-  { id: 'google/gemini-2.0-pro-001', name: 'Gemini 2.0 Pro', provider: 'Google' },
-  { id: 'deepseek/deepseek-r1', name: 'DeepSeek R1', provider: 'DeepSeek' },
-  { id: 'meta-llama/llama-3.1-70b-instruct', name: 'Llama 3.1 70B', provider: 'Meta' },
-  { id: 'mistralai/mistral-large-2411', name: 'Mistral Large 2', provider: 'Mistral' },
-  { id: 'qwen/qwen-2.5-72b-instruct', name: 'Qwen 2.5 72B', provider: 'Alibaba' },
-];
-
-function createPane(model: string): ChatPane {
-  return { id: crypto.randomUUID(), model, messages: [], loading: false, error: '' };
+interface ModelInfo {
+  id: string;
+  name: string;
+  provider: string;
+  inputPrice: number;
+  outputPrice: number;
 }
 
-export default function ChatPlayground() {
+function createPane(model: string): ChatPane {
+  return { id: crypto.randomUUID(), model, messages: [], messageCosts: {}, loading: false, error: '' };
+}
+
+function formatCost(usd: number): string {
+  if (usd < 0.0001) return '<$0.0001';
+  if (usd < 0.01) return `$${usd.toFixed(4)}`;
+  return `$${usd.toFixed(3)}`;
+}
+
+export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
   const [apiKey, setApiKey] = useState('');
   const [keyVisible, setKeyVisible] = useState(false);
   const [systemPrompt, setSystemPrompt] = useState('');
   const [input, setInput] = useState('');
-  const [panes, setPanes] = useState<ChatPane[]>([createPane('anthropic/claude-sonnet-4')]);
+  const [panes, setPanes] = useState<ChatPane[]>([createPane(models[0]?.id || 'anthropic/claude-sonnet-4')]);
   const [mode, setMode] = useState<'single' | 'compare'>('single');
   const [maxTokens, setMaxTokens] = useState(2048);
   const [temperature, setTemperature] = useState(0.7);
+  const [sessionCost, setSessionCost] = useState(0);
   const bottomRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   // Load API key from localStorage
@@ -46,6 +56,18 @@ export default function ChatPlayground() {
     try {
       const saved = localStorage.getItem('softcat-openrouter-key');
       if (saved) setApiKey(saved);
+    } catch {}
+  }, []);
+
+  // Check for workbench handoff on mount
+  useEffect(() => {
+    try {
+      const handoff = localStorage.getItem('softcat-workbench-handoff');
+      if (handoff) {
+        const parsed = JSON.parse(handoff);
+        if (parsed.system) setSystemPrompt(parsed.system);
+        localStorage.removeItem('softcat-workbench-handoff');
+      }
     } catch {}
   }, []);
 
@@ -63,7 +85,8 @@ export default function ChatPlayground() {
   const switchMode = (newMode: 'single' | 'compare') => {
     setMode(newMode);
     if (newMode === 'compare' && panes.length < 2) {
-      setPanes([panes[0], createPane('openai/gpt-4o')]);
+      const secondModel = models.length > 1 ? models[1].id : models[0]?.id || 'openai/gpt-4o';
+      setPanes([panes[0], createPane(secondModel)]);
     } else if (newMode === 'single' && panes.length > 1) {
       setPanes([panes[0]]);
     }
@@ -71,6 +94,16 @@ export default function ChatPlayground() {
 
   const updatePane = (id: string, update: Partial<ChatPane>) => {
     setPanes((prev) => prev.map((p) => (p.id === id ? { ...p, ...update } : p)));
+  };
+
+  const addMessageCost = (paneId: string, msgIndex: number, cost: MessageCost) => {
+    setPanes((prev) =>
+      prev.map((p) => {
+        if (p.id !== paneId) return p;
+        return { ...p, messageCosts: { ...p.messageCosts, [msgIndex]: cost } };
+      }),
+    );
+    setSessionCost((prev) => prev + cost.total);
   };
 
   const sendMessage = async () => {
@@ -166,6 +199,21 @@ export default function ChatPlayground() {
         }
       }
 
+      // Estimate cost after streaming completes
+      const modelInfo = models.find((m) => m.id === model);
+      if (modelInfo) {
+        const allText = apiMessages.map((m) => m.content).join(' ');
+        const inputTokens = estimateTokens(allText);
+        const outputTokens = estimateTokens(assistantContent);
+        // Prices are per million tokens
+        const inputCost = (inputTokens / 1_000_000) * modelInfo.inputPrice;
+        const outputCost = (outputTokens / 1_000_000) * modelInfo.outputPrice;
+        const totalCost = inputCost + outputCost;
+        // The assistant message index is messages.length (user messages array + the new assistant msg)
+        const assistantMsgIndex = messages.length; // 0-indexed, this is the position of the assistant reply
+        addMessageCost(paneId, assistantMsgIndex, { input: inputCost, output: outputCost, total: totalCost });
+      }
+
       updatePane(paneId, { loading: false });
     } catch (err: any) {
       updatePane(paneId, { loading: false, error: err.message || 'Request failed' });
@@ -173,7 +221,8 @@ export default function ChatPlayground() {
   };
 
   const clearAll = () => {
-    setPanes((prev) => prev.map((p) => ({ ...p, messages: [], error: '' })));
+    setPanes((prev) => prev.map((p) => ({ ...p, messages: [], messageCosts: {}, error: '' })));
+    setSessionCost(0);
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -264,6 +313,14 @@ export default function ChatPlayground() {
           </select>
         </div>
 
+        {/* Session cost pill */}
+        {sessionCost > 0 && (
+          <div class="flex items-center gap-1.5 bg-surface border border-surface-light rounded-full px-3 py-1">
+            <span class="font-mono text-xs text-text-muted">session:</span>
+            <span class="font-mono text-xs text-neon-amber">{formatCost(sessionCost)}</span>
+          </div>
+        )}
+
         <button
           onClick={clearAll}
           class="px-3 py-1.5 rounded font-mono text-xs bg-surface border border-surface-light text-text-muted hover:text-red-400 transition-colors ml-auto"
@@ -315,16 +372,25 @@ export default function ChatPlayground() {
                 </div>
               )}
               {pane.messages.map((msg, i) => (
-                <div key={i} class={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div
-                    class={`max-w-[85%] rounded-lg px-3 py-2 font-mono text-sm whitespace-pre-wrap ${
-                      msg.role === 'user'
-                        ? 'bg-neon-green/10 border border-neon-green/20 text-text-primary'
-                        : 'bg-void border border-surface-light text-text-primary'
-                    }`}
-                  >
-                    {msg.content}
+                <div key={i}>
+                  <div class={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                    <div
+                      class={`max-w-[85%] rounded-lg px-3 py-2 font-mono text-sm whitespace-pre-wrap ${
+                        msg.role === 'user'
+                          ? 'bg-neon-green/10 border border-neon-green/20 text-text-primary'
+                          : 'bg-void border border-surface-light text-text-primary'
+                      }`}
+                    >
+                      {msg.content}
+                    </div>
                   </div>
+                  {msg.role === 'assistant' && pane.messageCosts[i] && (
+                    <div class="flex justify-start mt-0.5 ml-1">
+                      <span class="font-mono text-xs text-text-muted">
+                        cost: <span class="text-neon-amber">{formatCost(pane.messageCosts[i].total)}</span>
+                      </span>
+                    </div>
+                  )}
                 </div>
               ))}
               {pane.error && (

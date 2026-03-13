@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import modelsData from '../../data/models.json';
+import { estimateTokens } from '../../utils/tokens';
 
 interface Model {
   id: string;
@@ -7,6 +8,13 @@ interface Model {
   provider: string;
   inputPrice: number;
   outputPrice: number;
+}
+
+interface SavedPrompt {
+  name: string;
+  system: string;
+  user: string;
+  assistant: string;
 }
 
 const models: Model[] = (modelsData as Model[]).filter((m) => m.inputPrice > 0);
@@ -58,10 +66,6 @@ function tokenize(text: string): string[] {
   return text.split(/(\s+)/).filter((s) => s.length > 0);
 }
 
-function estimateTokens(text: string): number {
-  return Math.ceil(text.length / 4);
-}
-
 function formatCost(cost: number): string {
   if (cost === 0) return '$0.0000';
   if (cost < 0.0001) return '<$0.0001';
@@ -88,6 +92,64 @@ function DiffView({ tokens }: { tokens: DiffToken[] }) {
           );
         }
       })}
+    </div>
+  );
+}
+
+function SavedPromptPicker({ onSelect, label }: { onSelect: (text: string) => void; label: string }) {
+  const [open, setOpen] = useState(false);
+  const [prompts, setPrompts] = useState<SavedPrompt[]>([]);
+
+  function loadPrompts() {
+    try {
+      const raw = localStorage.getItem('softcat-workbench');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          setPrompts(parsed as SavedPrompt[]);
+        }
+      }
+    } catch {
+      setPrompts([]);
+    }
+  }
+
+  function handleClick() {
+    if (!open) loadPrompts();
+    setOpen(!open);
+  }
+
+  function handleSelect(p: SavedPrompt) {
+    const parts = [p.system, p.user, p.assistant].filter((s) => s && s.trim().length > 0);
+    onSelect(parts.join('\n\n'));
+    setOpen(false);
+  }
+
+  return (
+    <div class="relative inline-block">
+      <button
+        onClick={handleClick}
+        class="px-2 py-1 bg-surface border border-surface-light rounded font-mono text-xs text-text-muted hover:text-neon-purple hover:border-neon-purple/40 transition-colors"
+      >
+        Load from Workbench
+      </button>
+      {open && (
+        <div class="absolute z-20 top-full left-0 mt-1 w-64 bg-surface border border-surface-light rounded-lg shadow-lg max-h-48 overflow-y-auto">
+          {prompts.length === 0 ? (
+            <div class="px-3 py-2 font-mono text-xs text-text-muted">No saved prompts found</div>
+          ) : (
+            prompts.map((p, i) => (
+              <button
+                key={i}
+                onClick={() => handleSelect(p)}
+                class="w-full text-left px-3 py-2 font-mono text-xs text-text-primary hover:bg-surface-light/40 transition-colors border-b border-surface-light/30 last:border-0"
+              >
+                {p.name || `Prompt ${i + 1}`}
+              </button>
+            ))
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -145,9 +207,12 @@ export default function PromptDiff() {
       {/* Inputs */}
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="space-y-2">
-          <label class="font-mono text-xs text-text-muted uppercase tracking-wider block">
-            Prompt A
-          </label>
+          <div class="flex items-center gap-3">
+            <label class="font-mono text-xs text-text-muted uppercase tracking-wider">
+              Prompt A
+            </label>
+            <SavedPromptPicker label="A" onSelect={setPromptA} />
+          </div>
           <textarea
             value={promptA}
             onInput={(e) => setPromptA((e.target as HTMLTextAreaElement).value)}
@@ -156,9 +221,12 @@ export default function PromptDiff() {
           />
         </div>
         <div class="space-y-2">
-          <label class="font-mono text-xs text-text-muted uppercase tracking-wider block">
-            Prompt B
-          </label>
+          <div class="flex items-center gap-3">
+            <label class="font-mono text-xs text-text-muted uppercase tracking-wider">
+              Prompt B
+            </label>
+            <SavedPromptPicker label="B" onSelect={setPromptB} />
+          </div>
           <textarea
             value={promptB}
             onInput={(e) => setPromptB((e.target as HTMLTextAreaElement).value)}
@@ -241,7 +309,8 @@ export default function PromptDiff() {
       )}
 
       <p class="font-mono text-xs text-text-muted">
-        Token counts use 1 token per 4 characters. Costs are input-only estimates based on public API rates in USD per million tokens.
+        Token estimates are approximate (~+/-15% vs real tokenizers).
+        Costs are input-only estimates based on public API rates in USD per million tokens.
       </p>
     </div>
   );

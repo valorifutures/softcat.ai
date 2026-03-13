@@ -6,6 +6,25 @@ interface ValidationResult {
   message: string;
 }
 
+const presetSchemas: { name: string; schema: string }[] = [
+  {
+    name: 'Tool Use Response',
+    schema: JSON.stringify({"type":"object","required":["id","type","name","input"],"properties":{"id":{"type":"string"},"type":{"type":"string","enum":["tool_use"]},"name":{"type":"string"},"input":{"type":"object"}}}, null, 2),
+  },
+  {
+    name: 'Function Call',
+    schema: JSON.stringify({"type":"object","required":["name","arguments"],"properties":{"name":{"type":"string"},"arguments":{"type":"object"}}}, null, 2),
+  },
+  {
+    name: 'Classification',
+    schema: JSON.stringify({"type":"object","required":["label","confidence"],"properties":{"label":{"type":"string"},"confidence":{"type":"number"},"reasoning":{"type":"string"}}}, null, 2),
+  },
+  {
+    name: 'Extraction',
+    schema: JSON.stringify({"type":"object","required":["entities"],"properties":{"entities":{"type":"array","items":{"type":"object","required":["name","type","value"],"properties":{"name":{"type":"string"},"type":{"type":"string"},"value":{"type":"string"}}}}}}, null, 2),
+  },
+];
+
 function validateJsonAgainstSchema(
   data: unknown,
   schema: Record<string, unknown>,
@@ -30,6 +49,30 @@ function validateJsonAgainstSchema(
       return results;
     } else {
       results.push({ path: currentPath, status: 'pass', message: `Type: ${expectedType}` });
+    }
+  }
+
+  // Enum validation
+  if (schema.enum && Array.isArray(schema.enum)) {
+    const allowed = schema.enum as unknown[];
+    if (!allowed.some((v) => v === data)) {
+      results.push({ path: currentPath, status: 'fail', message: `Value "${String(data)}" not in enum [${allowed.map((v) => JSON.stringify(v)).join(', ')}]` });
+    } else {
+      results.push({ path: currentPath, status: 'pass', message: `Enum: valid` });
+    }
+  }
+
+  // Pattern validation
+  if (schema.pattern && typeof schema.pattern === 'string' && typeof data === 'string') {
+    try {
+      const regex = new RegExp(schema.pattern as string);
+      if (!regex.test(data)) {
+        results.push({ path: currentPath, status: 'fail', message: `Value "${data}" does not match pattern /${schema.pattern}/` });
+      } else {
+        results.push({ path: currentPath, status: 'pass', message: `Pattern: matches /${schema.pattern}/` });
+      }
+    } catch {
+      results.push({ path: currentPath, status: 'warn', message: `Invalid regex pattern: ${schema.pattern}` });
     }
   }
 
@@ -135,6 +178,17 @@ export default function JsonValidator() {
           <label class="font-mono text-xs text-text-muted uppercase tracking-wider block">
             JSON Schema <span class="normal-case font-sans">(optional)</span>
           </label>
+          <div class="flex flex-wrap gap-2 mb-2">
+            {presetSchemas.map((preset) => (
+              <button
+                key={preset.name}
+                onClick={() => setSchemaText(preset.schema)}
+                class="px-2 py-1 bg-surface border border-surface-light rounded font-mono text-xs text-text-muted hover:text-neon-purple hover:border-neon-purple/40 transition-colors"
+              >
+                {preset.name}
+              </button>
+            ))}
+          </div>
           <textarea
             value={schemaText}
             onInput={(e) => setSchemaText((e.target as HTMLTextAreaElement).value)}
@@ -222,7 +276,7 @@ export default function JsonValidator() {
       )}
 
       <p class="font-mono text-xs text-text-muted">
-        Validates JSON syntax and checks against a JSON Schema (type, required, properties, items). Everything runs in your browser.
+        Validates JSON syntax and checks against a JSON Schema (type, required, properties, items, enum, pattern). Everything runs in your browser.
       </p>
     </div>
   );
