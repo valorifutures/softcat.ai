@@ -11,6 +11,7 @@ import sys
 import json
 import hashlib
 import subprocess
+import time as _time
 from datetime import datetime, date
 from pathlib import Path
 
@@ -18,6 +19,8 @@ import httpx
 import feedparser
 from dotenv import load_dotenv
 from anthropic import Anthropic
+
+from pipeline_log import log_run
 
 # Paths
 BOT_DIR = Path(__file__).parent
@@ -125,6 +128,8 @@ Rules:
         max_tokens=1024,
         messages=[{"role": "user", "content": prompt}],
     )
+    # Store usage for pipeline logging
+    pick_and_write._last_usage = response.usage
 
     content = response.content[0].text.strip()
 
@@ -178,7 +183,7 @@ def git_commit_and_push(filename: str):
     """Commit the new file and push."""
     os.chdir(REPO_DIR)
 
-    subprocess.run(["git", "add", f"src/content/tools/{filename}", "bot/history.json"], check=True)
+    subprocess.run(["git", "add", f"src/content/tools/{filename}", "bot/history.json", "src/data/pipeline/runs.json"], check=True)
 
     msg = f"bot: add tool of the week ({filename.replace('.md', '')})"
     subprocess.run(["git", "commit", "-m", msg], check=True)
@@ -201,6 +206,7 @@ def ping_healthcheck(status="success"):
 
 def main():
     print(f"[{datetime.now().isoformat()}] Tool of the Week bot starting")
+    t0 = _time.time()
 
     try:
         history = load_history()
@@ -211,6 +217,8 @@ def main():
 
         if not entries:
             print("No entries found. Exiting.")
+            log_run("tool_bot", status="success", duration_s=_time.time() - t0,
+                    feeds_scanned=len(FEEDS), items_found=0, items_published=0)
             ping_healthcheck()
             sys.exit(0)
 
@@ -219,17 +227,34 @@ def main():
 
         if not filename:
             print("Nothing to publish. Exiting.")
+            log_run("tool_bot", status="success", duration_s=_time.time() - t0,
+                    feeds_scanned=len(FEEDS), items_found=len(entries), items_published=0)
             ping_healthcheck()
             sys.exit(0)
 
+        usage = getattr(pick_and_write, "_last_usage", None)
+        cost = None
+        in_tok = out_tok = 0
+        if usage:
+            cost = (usage.input_tokens * 3 + usage.output_tokens * 15) / 1_000_000
+            in_tok, out_tok = usage.input_tokens, usage.output_tokens
+
         print("Committing and pushing...")
         git_commit_and_push(filename)
+
+        log_run("tool_bot", status="success", duration_s=_time.time() - t0,
+                feeds_scanned=len(FEEDS), items_found=len(entries), items_published=1,
+                model="claude-sonnet-4-20250514", cost_usd=cost,
+                input_tokens=in_tok, output_tokens=out_tok,
+                output_files=[f"src/content/tools/{filename}"])
 
         print("Done.")
         ping_healthcheck()
 
     except Exception as e:
         print(f"Bot failed: {e}")
+        log_run("tool_bot", status="error", duration_s=_time.time() - t0,
+                error_msg=str(e))
         ping_healthcheck("fail")
         sys.exit(1)
 

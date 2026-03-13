@@ -12,6 +12,7 @@ import re
 import sys
 import json
 import subprocess
+import time as _time
 from datetime import datetime
 from pathlib import Path
 
@@ -19,6 +20,8 @@ import httpx
 import feedparser
 from dotenv import load_dotenv
 from anthropic import Anthropic
+
+from pipeline_log import log_run
 
 # Paths
 BOT_DIR = Path(__file__).parent
@@ -161,6 +164,8 @@ Rules:
         max_tokens=3000,
         messages=[{"role": "user", "content": prompt}],
     )
+    # Store usage for pipeline logging
+    generate_prompts._last_usage = response.usage
 
     content = response.content[0].text.strip()
 
@@ -249,7 +254,7 @@ def save_and_push(prompts: list[str], history: dict, *, push: bool = True):
 
     # Commit and push
     os.chdir(REPO_DIR)
-    git_add = files_created + ["bot/prompt_history.json"]
+    git_add = files_created + ["bot/prompt_history.json", "src/data/pipeline/runs.json"]
     subprocess.run(["git", "add"] + git_add, check=True)
     msg = f"bot: add {len(prompts)} prompt(s) to library"
     subprocess.run(["git", "commit", "-m", msg], check=True)
@@ -278,6 +283,7 @@ def main():
     args = parser.parse_args()
 
     print(f"[{datetime.now().isoformat()}] Prompt Library bot starting")
+    t0 = _time.time()
 
     try:
         history = load_history()
@@ -288,6 +294,8 @@ def main():
 
         if not entries:
             print("No entries found. Exiting.")
+            log_run("prompt_bot", status="success", duration_s=_time.time() - t0,
+                    feeds_scanned=len(FEEDS), items_found=0, items_published=0)
             ping_healthcheck()
             sys.exit(0)
 
@@ -300,17 +308,34 @@ def main():
 
         if not prompts:
             print("Nothing to publish. Exiting.")
+            log_run("prompt_bot", status="success", duration_s=_time.time() - t0,
+                    feeds_scanned=len(FEEDS), items_found=len(entries), items_published=0)
             ping_healthcheck()
             sys.exit(0)
 
+        usage = getattr(generate_prompts, "_last_usage", None)
+        cost = None
+        in_tok = out_tok = 0
+        if usage:
+            cost = (usage.input_tokens * 3 + usage.output_tokens * 15) / 1_000_000
+            in_tok, out_tok = usage.input_tokens, usage.output_tokens
+
         print(f"Generated {len(prompts)} prompt(s). Saving...")
         save_and_push(prompts, history, push=not args.no_push)
+
+        log_run("prompt_bot", status="success", duration_s=_time.time() - t0,
+                feeds_scanned=len(FEEDS), items_found=len(entries),
+                items_published=len(prompts),
+                model="claude-sonnet-4-20250514", cost_usd=cost,
+                input_tokens=in_tok, output_tokens=out_tok)
 
         print("Done.")
         ping_healthcheck()
 
     except Exception as e:
         print(f"Bot failed: {e}")
+        log_run("prompt_bot", status="error", duration_s=_time.time() - t0,
+                error_msg=str(e))
         ping_healthcheck("fail")
         sys.exit(1)
 

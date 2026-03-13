@@ -12,6 +12,7 @@ import re
 import sys
 import json
 import subprocess
+import time as _time
 from datetime import datetime, date
 from pathlib import Path
 
@@ -19,6 +20,8 @@ import httpx
 import feedparser
 from dotenv import load_dotenv
 from anthropic import Anthropic
+
+from pipeline_log import log_run
 
 # Paths
 BOT_DIR = Path(__file__).parent
@@ -160,7 +163,7 @@ Rules:
         if content.endswith("```"):
             content = content[:-3].strip()
 
-    return content
+    return content, response.usage
 
 
 def extract_title(content: str) -> str:
@@ -190,7 +193,7 @@ def save_and_push(content: str, history: dict, *, push: bool = True):
 
     # Commit and push
     os.chdir(REPO_DIR)
-    subprocess.run(["git", "add", f"src/content/thoughts/{filename}", "bot/thoughts_history.json"], check=True)
+    subprocess.run(["git", "add", f"src/content/thoughts/{filename}", "bot/thoughts_history.json", "src/data/pipeline/runs.json"], check=True)
     msg = f"bot: add thought ({slug_date})"
     subprocess.run(["git", "commit", "-m", msg], check=True)
     if push:
@@ -222,6 +225,7 @@ def main():
         os.environ["THOUGHT_DATE"] = args.date
 
     print(f"[{datetime.now().isoformat()}] AI Thoughts bot starting")
+    t0 = _time.time()
 
     try:
         history = load_history()
@@ -232,25 +236,43 @@ def main():
 
         if not entries:
             print("No entries found. Exiting.")
+            log_run("thoughts_bot", status="success", duration_s=_time.time() - t0,
+                    feeds_scanned=len(FEEDS), items_found=0, items_published=0)
             ping_healthcheck()
             sys.exit(0)
 
         print("Generating thought piece...")
-        content = generate_thought(entries, history)
+        result = generate_thought(entries, history)
 
-        if not content:
+        if not result:
             print("Nothing to publish. Exiting.")
+            log_run("thoughts_bot", status="success", duration_s=_time.time() - t0,
+                    feeds_scanned=len(FEEDS), items_found=len(entries), items_published=0)
             ping_healthcheck()
             sys.exit(0)
 
+        content, usage = result
+        cost = (usage.input_tokens * 3 + usage.output_tokens * 15) / 1_000_000
+
         print("Saving and pushing...")
         save_and_push(content, history, push=not args.no_push)
+
+        slug_date = os.environ.get("THOUGHT_DATE", date.today().isoformat())
+        title = extract_title(content)
+        slug = slugify(title)
+        log_run("thoughts_bot", status="success", duration_s=_time.time() - t0,
+                feeds_scanned=len(FEEDS), items_found=len(entries), items_published=1,
+                model="claude-sonnet-4-20250514", cost_usd=cost,
+                input_tokens=usage.input_tokens, output_tokens=usage.output_tokens,
+                output_files=[f"src/content/thoughts/{slug_date}-{slug}.md"])
 
         print("Done.")
         ping_healthcheck()
 
     except Exception as e:
         print(f"Bot failed: {e}")
+        log_run("thoughts_bot", status="error", duration_s=_time.time() - t0,
+                error_msg=str(e))
         ping_healthcheck("fail")
         sys.exit(1)
 
