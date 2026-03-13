@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-13T13:01:00.848860+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 344,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  }
+]
