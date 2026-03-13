@@ -1,6 +1,13 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const pipelineMeta = {
+  generated_by: z.string().optional(),
+  model: z.string().optional(),
+  generation_time_s: z.number().optional(),
+  cost_usd: z.number().optional(),
+};
+
 const newsAndUpdates = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/news-and-updates' }),
   schema: z.object({
@@ -9,6 +16,7 @@ const newsAndUpdates = defineCollection({
     tags: z.array(z.string()).default([]),
     summary: z.string(),
     draft: z.boolean().default(false),
+    ...pipelineMeta,
   }),
 });
 
@@ -21,6 +29,7 @@ const thoughts = defineCollection({
     summary: z.string(),
     draft: z.boolean().default(false),
     pinned: z.boolean().default(false),
+    ...pipelineMeta,
   }),
 });
 
@@ -46,6 +55,7 @@ const prompts = defineCollection({
     category: z.string(),
     prompt: z.string(),
     draft: z.boolean().default(false),
+    ...pipelineMeta,
   }),
 });
 

@@ -15,11 +15,14 @@ import os
 import sys
 import json
 import subprocess
+import time as _time
 from datetime import datetime, date
 from pathlib import Path
 
 import httpx
 from dotenv import load_dotenv
+
+from pipeline_log import log_run
 
 BOT_DIR = Path(__file__).parent
 load_dotenv(BOT_DIR / ".env")
@@ -182,7 +185,7 @@ def update_models(existing, api_models):
 def git_commit_and_push():
     os.chdir(REPO_DIR)
     subprocess.run(["git", "pull", "--rebase"], check=True)
-    subprocess.run(["git", "add", "src/data/models.json"], check=True)
+    subprocess.run(["git", "add", "src/data/models.json", "src/data/pipeline/runs.json"], check=True)
 
     # Check if there are actually staged changes after pull
     result = subprocess.run(["git", "diff", "--cached", "--quiet"])
@@ -211,6 +214,7 @@ def ping_healthcheck(status="success"):
 
 def main():
     print(f"[{datetime.now().isoformat()}] Model Data bot starting")
+    t0 = _time.time()
 
     try:
         existing = load_models()
@@ -221,6 +225,8 @@ def main():
 
         if not api_models:
             print("API returned no models. Bailing out to avoid data loss.")
+            log_run("model_bot", status="error", duration_s=_time.time() - t0,
+                    error_msg="OpenRouter API returned no models")
             ping_healthcheck("fail")
             sys.exit(1)
 
@@ -231,6 +237,8 @@ def main():
 
         if not changed:
             print("No changes detected. Exiting.")
+            log_run("model_bot", status="success", duration_s=_time.time() - t0,
+                    items_found=len(api_models), items_published=0)
             ping_healthcheck()
             sys.exit(0)
 
@@ -240,11 +248,17 @@ def main():
         print("Committing and pushing...")
         git_commit_and_push()
 
+        log_run("model_bot", status="success", duration_s=_time.time() - t0,
+                items_found=len(api_models), items_published=len(updated),
+                output_files=["src/data/models.json"])
+
         print("Done.")
         ping_healthcheck()
 
     except Exception as e:
         print(f"Bot failed: {e}")
+        log_run("model_bot", status="error", duration_s=_time.time() - t0,
+                error_msg=str(e))
         ping_healthcheck("fail")
         sys.exit(1)
 

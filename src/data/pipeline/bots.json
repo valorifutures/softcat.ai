@@ -1,0 +1,104 @@
+[
+  {
+    "id": "news_bot",
+    "name": "AI News Digest",
+    "description": "Pulls 5 RSS feeds, picks the most interesting stories, writes an opinionated daily digest.",
+    "script": "bot/ai_news_digest.py",
+    "schedule": "Daily at 07:00 UTC",
+    "schedule_cron": "0 7 * * *",
+    "feeds": [
+      "marktechpost.com",
+      "techcrunch.com/ai",
+      "ainews (Buttondown)",
+      "the-decoder.com",
+      "artificialintelligence-news.com"
+    ],
+    "model": "claude-sonnet-4-20250514",
+    "output_section": "news-and-updates",
+    "accent": "green"
+  },
+  {
+    "id": "thoughts_bot",
+    "name": "AI Thoughts",
+    "description": "Reads the same feeds for inspiration, generates an original opinion piece with a clear point of view.",
+    "script": "bot/ai_thoughts_bot.py",
+    "schedule": "Daily at 08:00 UTC",
+    "schedule_cron": "0 8 * * *",
+    "feeds": [
+      "marktechpost.com",
+      "techcrunch.com/ai",
+      "ainews (Buttondown)",
+      "the-decoder.com",
+      "artificialintelligence-news.com"
+    ],
+    "model": "claude-sonnet-4-20250514",
+    "output_section": "thoughts",
+    "accent": "cyan"
+  },
+  {
+    "id": "radar_bot",
+    "name": "The Radar",
+    "description": "Scans RSS feeds and HackerNews Algolia API for genuine AI product launches, writes editorial picks.",
+    "script": "bot/radar_bot.py",
+    "schedule": "Daily at 09:30 UTC",
+    "schedule_cron": "30 9 * * *",
+    "feeds": [
+      "marktechpost.com",
+      "techcrunch.com/ai",
+      "ainews (Buttondown)",
+      "the-decoder.com",
+      "artificialintelligence-news.com",
+      "HackerNews Algolia API"
+    ],
+    "model": "claude-sonnet-4-20250514",
+    "output_section": "radar",
+    "accent": "red"
+  },
+  {
+    "id": "tool_bot",
+    "name": "Tool of the Week",
+    "description": "Picks one interesting AI tool from RSS feeds and writes a short review.",
+    "script": "bot/tool_of_the_week.py",
+    "schedule": "Sunday at 10:00 UTC",
+    "schedule_cron": "0 10 * * 0",
+    "feeds": [
+      "marktechpost.com",
+      "techcrunch.com/ai",
+      "bensbites.com",
+      "ainews (Buttondown)"
+    ],
+    "model": "claude-sonnet-4-20250514",
+    "output_section": "tools",
+    "accent": "purple"
+  },
+  {
+    "id": "prompt_bot",
+    "name": "Prompt Library",
+    "description": "Generates 2 new copy-ready prompt templates per run, inspired by current AI trends.",
+    "script": "bot/prompt_library_bot.py",
+    "schedule": "Wednesday at 09:00 UTC",
+    "schedule_cron": "0 9 * * 3",
+    "feeds": [
+      "marktechpost.com",
+      "techcrunch.com/ai",
+      "ainews (Buttondown)",
+      "the-decoder.com",
+      "artificialintelligence-news.com"
+    ],
+    "model": "claude-sonnet-4-20250514",
+    "output_section": "prompts",
+    "accent": "amber"
+  },
+  {
+    "id": "model_bot",
+    "name": "Model Data",
+    "description": "Fetches AI model pricing and specs from the OpenRouter API, updates the models comparison page.",
+    "script": "bot/model_data_bot.py",
+    "schedule": "Daily at 06:00 UTC",
+    "schedule_cron": "0 6 * * *",
+    "feeds": [],
+    "model": "",
+    "output_section": "models",
+    "accent": "green"
+  }
+]

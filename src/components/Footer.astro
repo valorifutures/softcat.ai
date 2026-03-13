@@ -1,5 +1,9 @@
 ---
 const year = new Date().getFullYear();
+const builtAt = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+  + ' at '
+  + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })
+  + ' UTC';
 ---
 
 <footer class="border-t border-surface-light/50 mt-auto">
@@ -15,14 +19,16 @@ const year = new Date().getFullYear();
     <div class="flex items-center justify-between text-text-muted text-sm font-mono">
       <span>&copy; {year} SOFT CAT .ai</span>
       <span class="flex items-center gap-3 text-xs">
+        <a href="/prompts" class="hover:text-neon-amber transition-colors">prompts</a>
         <a href="/glossary" class="hover:text-neon-purple transition-colors">glossary</a>
         <a href="/tags" class="hover:text-neon-cyan transition-colors">tags</a>
         <a href="/privacy" class="hover:text-neon-amber transition-colors">privacy</a>
         <a href="/contact" class="hover:text-neon-green transition-colors">contact</a>
       </span>
     </div>
-    <div class="font-mono text-xs text-text-muted/60">
-      SOFT CAT .ai is an independent project by <a href="/valori" class="hover:text-neon-cyan transition-colors">Valori</a>. Not affiliated with Softcat plc.
+    <div class="flex items-center justify-between font-mono text-xs text-text-muted/60">
+      <span>SOFT CAT .ai is an independent project by <a href="/valori" class="hover:text-neon-cyan transition-colors">Valori</a>. Not affiliated with Softcat plc.</span>
+      <span class="hidden sm:inline text-text-muted/40">Last rebuilt: {builtAt}</span>
     </div>
   </div>
 </footer>

@@ -19,6 +19,8 @@ import feedparser
 from dotenv import load_dotenv
 from anthropic import Anthropic
 
+from pipeline_log import log_run as _log_run
+
 # Paths
 BOT_DIR = Path(__file__).parent
 REPO_DIR = BOT_DIR.parent
@@ -300,7 +302,7 @@ Keep discord_summary under 1800 characters. Wrap all URLs in angle brackets.
     data.setdefault("featured", [])
     data.setdefault("picks", [])
 
-    return data
+    return data, response.usage
 
 
 def save_and_push(radar_data: dict, history: dict):
@@ -342,6 +344,7 @@ def save_and_push(radar_data: dict, history: dict):
         f"src/data/radar/{filename}",
         "src/data/radar/index.json",
         "bot/radar_history.json",
+        "src/data/pipeline/runs.json",
     ], check=True)
 
     # Only commit if there are staged changes
@@ -394,6 +397,7 @@ def ping_healthcheck(status="success"):
 
 def main():
     print(f"[{datetime.now().isoformat()}] Radar bot starting")
+    t0 = time.time()
 
     try:
         history = load_history()
@@ -406,22 +410,36 @@ def main():
         hn_entries = fetch_hn_entries()
         print(f"Found {len(hn_entries)} HN stories")
 
+        total_found = len(entries) + len(hn_entries)
+
         if not entries and not hn_entries:
             print("No entries found — writing empty state.")
             empty_data = {"date": date.today().isoformat(), "featured": [], "picks": []}
             save_and_push(empty_data, history)
+            _log_run("radar_bot", status="success", duration_s=time.time() - t0,
+                     feeds_scanned=len(FEEDS) + len(HN_SEARCH_TERMS),
+                     items_found=0, items_published=0)
             ping_healthcheck()
             sys.exit(0)
 
         print("Generating radar...")
-        radar_data = generate_radar(entries, hn_entries, history)
+        result = generate_radar(entries, hn_entries, history)
 
-        if not radar_data:
+        if not result:
             print("Claude returned 0 picks — writing empty state.")
             empty_data = {"date": date.today().isoformat(), "featured": [], "picks": []}
             save_and_push(empty_data, history)
+            _log_run("radar_bot", status="success", duration_s=time.time() - t0,
+                     feeds_scanned=len(FEEDS) + len(HN_SEARCH_TERMS),
+                     items_found=total_found, items_published=0,
+                     model="claude-sonnet-4-20250514")
             ping_healthcheck()
             sys.exit(0)
+
+        radar_data, usage = result
+        cost = (usage.input_tokens * 3 + usage.output_tokens * 15) / 1_000_000
+        published = len(radar_data.get("featured", [])) + len(radar_data.get("picks", []))
+        rejected = total_found - published
 
         # Post to Discord before stripping extra fields
         print("Posting to Discord...")
@@ -437,11 +455,21 @@ def main():
         print("Saving and pushing...")
         save_and_push(site_data, history)
 
+        today = date.today().isoformat()
+        _log_run("radar_bot", status="success", duration_s=time.time() - t0,
+                 feeds_scanned=len(FEEDS) + len(HN_SEARCH_TERMS),
+                 items_found=total_found, items_rejected=rejected, items_published=published,
+                 model="claude-sonnet-4-20250514", cost_usd=cost,
+                 input_tokens=usage.input_tokens, output_tokens=usage.output_tokens,
+                 output_files=[f"src/data/radar/{today}.json"])
+
         print("Done.")
         ping_healthcheck()
 
     except Exception as e:
         print(f"Bot failed: {e}")
+        _log_run("radar_bot", status="error", duration_s=time.time() - t0,
+                 error_msg=str(e))
         ping_healthcheck("fail")
         sys.exit(1)
 

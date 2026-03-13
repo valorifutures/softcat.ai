@@ -24,6 +24,10 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
   backLink="/news-and-updates"
   backLabel="News & Updates"
   readingTime={readingTime}
+  generated_by={entry.data.generated_by}
+  model={entry.data.model}
+  generation_time_s={entry.data.generation_time_s}
+  cost_usd={entry.data.cost_usd}
 >
   <Content />
 </PostLayout>
