@@ -1,120 +1,86 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ToolShowcase from '../../components/lab/ToolShowcase';
 import { getCollection } from 'astro:content';
 import { tagDotClass } from '../../utils/tagColor';
+import toolsManifest from '../../data/tools-manifest.json';
 
 const entries = (await getCollection('tools'))
   .filter((e) => !e.data.draft);
 
-const labTools = [
-  {
-    name: 'Token Counter',
-    description: 'Estimate token counts for Claude, GPT, and Llama models.',
-    href: '/lab/token-counter',
-    icon: '#',
-  },
-  {
-    name: 'Prompt Builder',
-    description: 'Structured templates for common AI tasks. Fill in the blanks, export the prompt.',
-    href: '/lab/prompt-builder',
-    icon: '>_',
-  },
-  {
-    name: 'Markdown Preview',
-    description: 'Write markdown, see it rendered live in the SOFT CAT house style.',
-    href: '/lab/markdown-preview',
-    icon: 'M↓',
-  },
-  {
-    name: 'Model Comparison',
-    description: 'Interactive table of AI models. Filter, sort, compare specs and pricing.',
-    href: '/lab/model-comparison',
-    icon: '⊞',
-  },
-  {
-    name: 'Prompt Workbench',
-    description: 'Full prompt IDE. System/user/assistant sections, variables, templates, export.',
-    href: '/lab/prompt-workbench',
-    icon: '⚙',
-  },
-  {
-    name: 'Chat Playground',
-    description: 'Chat with AI models using your own API key. Side-by-side model comparison.',
-    href: '/lab/chat-playground',
-    icon: '◈',
-  },
-  {
-    name: 'Model Explorer',
-    description: 'Visual map of the AI model landscape. Timeline, capabilities, pricing calculator.',
-    href: '/lab/model-explorer',
-    icon: '◉',
-  },
-  {
-    name: 'Token Cost Calculator',
-    description: 'Paste a prompt, pick a model, see the exact API cost before you commit to a stack.',
-    href: '/lab/token-cost',
-    icon: '$',
-  },
-  {
-    name: 'Prompt Diff',
-    description: 'Compare two prompt versions. See the diff, token delta, and cost difference at a glance.',
-    href: '/lab/prompt-diff',
-    icon: '~Δ',
-  },
-  {
-    name: 'Prompt Battle',
-    description: 'A/B test two prompt variants. Paste responses, pick a winner, track your score.',
-    href: '/lab/prompt-battle',
-    icon: '⚔',
-  },
-  {
-    name: 'JSON Output Validator',
-    description: 'Validate AI model JSON output against a schema. Check types, required fields, and structure.',
-    href: '/lab/json-validator',
-    icon: '{}',
-  },
-];
+// Pick featured tool: first tool with "featured: true" in manifest, or fallback to first tool
+const featured = toolsManifest.find((t: any) => t.featured) || toolsManifest[0];
+
+const categoryColors: Record<string, { text: string; bg: string; border: string; glowVar: string; hex: string }> = {
+  prompts: { text: 'text-neon-amber', bg: 'bg-neon-amber/10', border: 'border-neon-amber/30', glowVar: 'rgba(212, 165, 74, 0.12)', hex: '#d4a54a' },
+  models: { text: 'text-neon-cyan', bg: 'bg-neon-cyan/10', border: 'border-neon-cyan/30', glowVar: 'rgba(90, 184, 212, 0.12)', hex: '#5ab8d4' },
+  cost: { text: 'text-neon-green', bg: 'bg-neon-green/10', border: 'border-neon-green/30', glowVar: 'rgba(78, 203, 143, 0.12)', hex: '#4ecb8f' },
+  validation: { text: 'text-neon-purple', bg: 'bg-neon-purple/10', border: 'border-neon-purple/30', glowVar: 'rgba(155, 122, 204, 0.12)', hex: '#9b7acc' },
+};
+
+const featuredColor = categoryColors[featured.category] || categoryColors.models;
 ---
 
 <BaseLayout title="Tools" description="Interactive AI tools and write-ups." breadcrumbs={[{name: 'Tools', url: '/tools'}]}>
   <div class="max-w-4xl mx-auto px-6 py-16">
-    <header class="mb-8">
+    <header class="mb-10">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
       <h1 class="font-mono text-3xl font-bold text-text-bright glow-purple">Tools</h1>
-      <p class="text-text-muted mt-2">Interactive tools and write-ups. All client-side, nothing leaves your browser.</p>
+      <p class="text-text-muted mt-2">Interactive tools built for people who work with AI. All client-side, nothing leaves your browser.</p>
     </header>
-    <div class="section-banner mb-6" style="height: 180px; --banner-accent: rgba(155, 122, 204, 0.12); --banner-accent-mid: rgba(155, 122, 204, 0.04)" aria-hidden="true"></div>
 
-    <!-- Interactive tools -->
-    <h2 class="font-mono text-lg font-bold text-text-bright flex items-center gap-2 mb-5">
-      <span class="text-neon-green">&#9632;</span>
-      Interactive
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-      {labTools.map((tool) => (
-        <a
-          href={tool.href}
-          class="block bg-surface border border-surface-light rounded-lg p-6 card-glow card-glow-green group"
-        >
-          <div class="flex items-start gap-4">
-            <span class="font-mono text-lg text-neon-green shrink-0 mt-0.5">{tool.icon}</span>
-            <div>
-              <h3 class="font-mono text-sm font-bold text-text-bright group-hover:text-neon-green transition-colors">
-                {tool.name}
-              </h3>
-              <p class="text-sm text-text-muted mt-1">{tool.description}</p>
+    <!-- Featured tool spotlight -->
+    <div class="mb-10">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="font-mono text-xs text-text-muted tracking-wider uppercase">Featured</span>
+        <div class="flex-1 h-px bg-surface-light/50"></div>
+      </div>
+      <a
+        href={featured.href}
+        class="tool-card group block relative overflow-hidden rounded-xl border border-surface-light/50 hover:border-surface-light transition-all"
+        style={`--tool-accent: ${featuredColor.hex}; background: radial-gradient(ellipse at 30% 50%, ${featuredColor.glowVar} 0%, transparent 60%), linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(30, 30, 48, 0.7) 100%);`}
+      >
+        <div class="p-8 md:p-10 flex items-start gap-6">
+          <span class={`tool-icon font-mono text-3xl ${featuredColor.text} shrink-0 mt-1`}>
+            {featured.icon}
+          </span>
+          <div class="min-w-0">
+            <h2 class="tool-card-title font-mono text-xl font-bold text-text-bright transition-colors">
+              {featured.name}
+            </h2>
+            <p class="text-text-muted mt-2 leading-relaxed max-w-lg">
+              {featured.description}
+            </p>
+            <div class="flex items-center gap-4 mt-4">
+              <span class={`font-mono text-xs ${featuredColor.text} opacity-70`}>
+                ▸ {featured.stat}
+              </span>
+              <span class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg ${featuredColor.bg} border ${featuredColor.border} font-mono text-xs ${featuredColor.text} group-hover:opacity-100 opacity-80 transition-opacity`}>
+                Try it &rarr;
+              </span>
             </div>
           </div>
-        </a>
-      ))}
+        </div>
+      </a>
+    </div>
+
+    <!-- Interactive tools -->
+    <div class="mb-12">
+      <div class="flex items-center gap-2 mb-6">
+        <span class="font-mono text-xs text-text-muted tracking-wider uppercase">Interactive</span>
+        <span class="font-mono text-xs text-text-muted/50">{toolsManifest.length}</span>
+        <div class="flex-1 h-px bg-surface-light/50"></div>
+      </div>
+      <ToolShowcase client:load tools={toolsManifest} />
     </div>
 
     <!-- Tool write-ups -->
     <div class="glow-divider mb-8" style="--divider-color: rgba(155, 122, 204, 0.15)"></div>
-    <h2 class="font-mono text-lg font-bold text-text-bright flex items-center gap-2 mb-5">
-      <span class="text-neon-purple">&#9632;</span>
-      Write-ups
-    </h2>
+    <div class="flex items-center gap-2 mb-6">
+      <span class="font-mono text-xs text-text-muted tracking-wider uppercase">Write-ups</span>
+      {entries.length > 0 && <span class="font-mono text-xs text-text-muted/50">{entries.length}</span>}
+      <div class="flex-1 h-px bg-surface-light/50"></div>
+    </div>
 
     {entries.length === 0 ? (
       <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
