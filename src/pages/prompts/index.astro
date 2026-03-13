@@ -15,9 +15,7 @@ const entries = (await getCollection('prompts'))
       <h1 class="font-mono text-3xl font-bold text-text-bright glow-amber">Prompt Library</h1>
       <p class="text-text-muted mt-2">Copy-ready prompts for common developer tasks.</p>
     </header>
-    <div class="section-banner mb-6" style="height: 180px" aria-hidden="true">
-      <img src="/images/banners/prompts.png" alt="" loading="eager" class="home-banner-drift" style="object-fit: contain" />
-    </div>
+    <div class="section-banner mb-6" style="height: 180px; --banner-accent: rgba(212, 165, 74, 0.12); --banner-accent-mid: rgba(212, 165, 74, 0.04)" aria-hidden="true"></div>
     <div class="glow-divider mb-10" style="--divider-color: rgba(255, 184, 0, 0.15)"></div>
 
     {entries.length === 0 ? (
