@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'preact/hooks';
+import { estimateTokens } from '../../utils/tokens';
 
 interface Message {
   role: 'user' | 'assistant' | 'system';
@@ -26,15 +27,6 @@ interface ModelInfo {
   provider: string;
   inputPrice: number;
   outputPrice: number;
-}
-
-// Approximate token estimator. For code-heavy text (>20% non-alpha chars),
-// uses chars/3.2; otherwise chars/4.3. This is a rough heuristic — actual
-// tokenisation varies by model and encoding.
-function estimateTokens(text: string): number {
-  const nonAlpha = text.replace(/[a-zA-Z\s]/g, '').length;
-  const ratio = nonAlpha / (text.length || 1);
-  return Math.ceil(ratio > 0.2 ? text.length / 3.2 : text.length / 4.3);
 }
 
 function createPane(model: string): ChatPane {

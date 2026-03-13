@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'preact/hooks';
+import { estimateTokens } from '../../utils/tokens';
 
 interface SavedPrompt {
   name: string;
@@ -75,13 +76,6 @@ const builtInTemplates: Record<string, Omit<SavedPrompt, 'timestamp'>> = {
     vars: { concept: '', depth: 'moderate detail', audience: 'intermediate developers' },
   },
 };
-
-function estimateTokens(text: string): number {
-  if (!text) return 0;
-  const alphaCount = (text.match(/[a-zA-Z]/g) || []).length;
-  const nonAlphaRatio = 1 - alphaCount / text.length;
-  return Math.ceil(text.length / (nonAlphaRatio > 0.2 ? 3.2 : 4.3));
-}
 
 function fillTemplate(template: string, vars: Record<string, string>): string {
   return template.replace(/\{\{(\w+)\}\}/g, (_, key) => vars[key] || `{{${key}}}`);

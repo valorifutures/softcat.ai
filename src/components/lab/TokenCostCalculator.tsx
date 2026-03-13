@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import modelsData from '../../data/models.json';
+import { estimateTokens } from '../../utils/tokens';
 
 interface Model {
   id: string;
@@ -12,18 +13,6 @@ interface Model {
 const models: Model[] = (modelsData as Model[]).filter(
   (m) => m.inputPrice > 0 || m.outputPrice > 0
 );
-
-// Improved token estimator: code/structured text (~3.2 chars/token) vs prose (~4.3 chars/token).
-// If >20% of characters are non-alphabetic, treat as code/structured; otherwise treat as prose.
-function estimateTokens(text: string): number {
-  if (text.length === 0) return 0;
-  const alphaCount = (text.match(/[a-zA-Z]/g) || []).length;
-  const alphaRatio = alphaCount / text.length;
-  if (alphaRatio < 0.8) {
-    return Math.ceil(text.length / 3.2);
-  }
-  return Math.ceil(text.length / 4.3);
-}
 
 function formatCost(cost: number): string {
   if (cost === 0) return '$0.0000';
