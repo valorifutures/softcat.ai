@@ -2,8 +2,10 @@
 
 ## What This Site Is
 
-SOFT CAT .ai (softcat.ai) is a dark premium AI site built with Astro 5.17 + Preact + Tailwind 4.2.
-It deploys via GitHub Actions to GitHub Pages on every push to `main`.
+SOFT CAT .ai (softcat.ai) is a living demonstration of automated AI infrastructure in production.
+Six bots build the site daily. The content is the output. The real story is the machinery.
+Built with Astro 5.17 + Preact + Tailwind 4.2. Dark premium aesthetic.
+Deploys via GitHub Actions to GitHub Pages on every push to `main`.
 The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
 ## Identity
@@ -56,13 +58,24 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
 ## Existing Pages
 
-- `/` — homepage with hero, about, section previews
-- `/news-and-updates` — AI news digest posts
-- `/thoughts` — opinion pieces
+- `/` — homepage with hero, activity ticker, about, section previews
+- `/news-and-updates` — AI news digest posts (bot-generated daily)
+- `/thoughts` — opinion pieces (bot-generated daily)
 - `/tools` — merged tools page: interactive tools (9 Preact apps at `/lab/*`) + tool write-ups. `/lab` redirects here.
-- `/now` — what we're working on
-- `/status` — system health
+- `/radar` — daily AI product launches (bot-generated)
+- `/prompts` — copy-ready AI prompts (bot-generated weekly)
+- `/pipeline` — the machinery dashboard: bot roster, run history, costs, feed sources
+- `/now` — redirects to /pipeline
+- `/status` — redirects to /pipeline
 - `/valori` — about the team
+
+## Pipeline Architecture
+
+- `src/data/pipeline/bots.json` — bot manifest (name, schedule, feeds, model, accent)
+- `src/data/pipeline/runs.json` — append-only run log (populated by bots via `bot/pipeline_log.py`)
+- Bots log every run: duration, feeds scanned, items found/rejected/published, model, cost, output files
+- Pipeline page and activity ticker read runs.json at build time
+- Content frontmatter supports optional pipeline metadata: `generated_by`, `model`, `generation_time_s`, `cost_usd`
 
 ## Safety Rules
 
