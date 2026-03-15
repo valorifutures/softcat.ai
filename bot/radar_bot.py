@@ -308,7 +308,12 @@ Keep discord_summary under 1800 characters. Wrap all URLs in angle brackets.
 def save_and_push(radar_data: dict, history: dict):
     """Save radar JSON, update manifest, commit and push."""
     os.chdir(REPO_DIR)
+    # Stash any dirty files (e.g. runs.json from other bots) so rebase can proceed
+    stash_result = subprocess.run(["git", "stash", "--include-untracked"], capture_output=True, text=True)
+    stashed = "No local changes" not in stash_result.stdout
     subprocess.run(["git", "pull", "--rebase"], check=True)
+    if stashed:
+        subprocess.run(["git", "stash", "pop"], check=True)
 
     today = date.today().isoformat()
     filename = f"{today}.json"
