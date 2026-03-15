@@ -1,0 +1,79 @@
+{
+  "date": "2026-03-15",
+  "featured": [
+    {
+      "id": "ph-deep-agents",
+      "name": "Deep Agents",
+      "tagline": "Structured runtime for planning, memory, and context isolation in multi-step AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "LangChain's answer to the multi-step agent problem. Most agents break down when tasks get stateful and complex. Deep Agents tackles this with proper isolation and memory management, something the ecosystem desperately needs.",
+      "ph_url": "https://www.marktechpost.com/2026/03/15/langchain-releases-deep-agents-a-structured-runtime-for-planning-memory-and-context-isolation-in-multi-step-ai-agents/",
+      "maker": "LangChain",
+      "featured": true,
+      "added_at": "2026-03-15T06:00:00Z"
+    },
+    {
+      "id": "ph-glm-ocr",
+      "name": "GLM-OCR",
+      "tagline": "0.9B multimodal OCR model for document parsing and key information extraction.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Zhipu AI's compact OCR model that handles real documents, not demo screenshots. At 0.9B parameters, it's actually usable for production workflows without melting your infrastructure. The focus on structured extraction makes this practical for business use.",
+      "ph_url": "https://www.marktechpost.com/2026/03/15/zhipu-ai-introduces-glm-ocr-a-0-9b-multimodal-ocr-model-for-document-parsing-and-key-information-extraction-kie/",
+      "maker": "Zhipu AI",
+      "featured": true,
+      "added_at": "2026-03-15T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-gstack",
+      "name": "gstack",
+      "tagline": "Open-source Claude Code system for planning, code review, QA, and shipping.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Garry Tan's opinionated take on AI-assisted development workflows. Eight distinct skills that separate planning from execution. It's Claude Code packaged into something resembling a proper engineering process.",
+      "ph_url": "https://www.marktechpost.com/2026/03/14/garry-tan-releases-gstack-an-open-source-claude-code-system-for-planning-code-review-qa-and-shipping/",
+      "maker": "Garry Tan",
+      "featured": false,
+      "added_at": "2026-03-15T06:30:00Z"
+    },
+    {
+      "id": "ph-aletheia",
+      "name": "Aletheia",
+      "tagline": "AI agent for autonomous professional research discoveries beyond math competitions.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Google DeepMind's attempt to move from Olympic-level math problems to actual research. The jump from competition formats to open-ended discovery is massive. If they've cracked iterative reasoning for real research, this changes everything.",
+      "ph_url": "https://www.marktechpost.com/2026/03/13/google-deepmind-introduces-aletheia-the-ai-agent-moving-from-math-competitions-to-fully-autonomous-professional-research-discoveries/",
+      "maker": "Google DeepMind",
+      "featured": false,
+      "added_at": "2026-03-15T06:45:00Z"
+    },
+    {
+      "id": "ph-gitagent",
+      "name": "GitAgent",
+      "tagline": "Open standard that turns any Git repo into an AI agent.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "An interesting approach to making codebases AI-readable. Instead of cramming everything into context windows, GitAgent creates a standard for repos to describe themselves. Could solve the 'AI doesn't understand my project structure' problem.",
+      "ph_url": "https://www.gitagent.sh/",
+      "maker": "GitAgent",
+      "featured": false,
+      "added_at": "2026-03-15T07:00:00Z"
+    },
+    {
+      "id": "ph-keyid",
+      "name": "KeyID",
+      "tagline": "Free email and phone infrastructure for AI agents with MCP support.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "AI agents need real communication channels, not just API calls. KeyID provides the boring infrastructure that makes agent-to-human communication possible. The MCP integration shows they understand the ecosystem.",
+      "ph_url": "https://keyid.ai/",
+      "maker": "KeyID",
+      "featured": false,
+      "added_at": "2026-03-15T07:15:00Z"
+    }
+  ]
+}

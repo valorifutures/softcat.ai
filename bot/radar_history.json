@@ -149,6 +149,18 @@
         "LogClaw",
         "MultiMind AI"
       ]
+    },
+    {
+      "date": "2026-03-15",
+      "file": "2026-03-15.json",
+      "products": [
+        "Deep Agents",
+        "GLM-OCR",
+        "gstack",
+        "Aletheia",
+        "GitAgent",
+        "KeyID"
+      ]
     }
   ]
 }
