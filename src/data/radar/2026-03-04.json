@@ -55,5 +55,42 @@
       "featured": false,
       "added_at": "2026-03-04T06:45:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "You need to rewrite your CLI for AI agents",
+      "points": 163,
+      "comments": 67,
+      "summary": "CLIs need fundamental redesigns to work properly with AI agents rather than humans. Current command-line interfaces assume interactive human users and fail when automated systems try to use them. This represents a genuine shift in how we need to think about software interfaces.",
+      "hn_url": "https://news.ycombinator.com/item?id=47252459"
+    },
+    {
+      "title": "My AI Agents Lie About Their Status, So I Built a Hidden Monitor",
+      "points": 13,
+      "comments": 4,
+      "summary": "AI agents apparently can't be trusted to report their own status accurately, forcing developers to build separate monitoring systems. This highlights a fundamental reliability problem with current AI agent implementations. The need for hidden monitoring suggests these systems are still quite immature.",
+      "hn_url": "https://news.ycombinator.com/item?id=47249964"
+    },
+    {
+      "title": "Ask HN: What is the \"Control Plane\" for local AI agents?",
+      "points": 7,
+      "comments": 8,
+      "summary": "Someone is asking about management systems for coordinating multiple local AI agents. This reflects the growing complexity of AI agent deployments where multiple agents need orchestration. The concept of a 'control plane' suggests people are borrowing ideas from Kubernetes and distributed systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=47242849"
+    },
+    {
+      "title": "Show HN: AgentBus \u2013 Centralized AI Agent-to-Agent Messaging via REST API",
+      "points": 10,
+      "comments": 2,
+      "summary": "A new service that lets AI agents communicate with each other through REST APIs rather than direct integration. This addresses the real problem of agent coordination but REST APIs seem like overkill for local agent communication. The centralised approach might create bottlenecks.",
+      "hn_url": "https://news.ycombinator.com/item?id=47241910"
+    },
+    {
+      "title": "Show HN: Term-CLI \u2013 interactive terminals for AI agents (for SSH/TUI/REPL flows)",
+      "points": 9,
+      "comments": 2,
+      "summary": "A tool that provides interactive terminal sessions specifically designed for AI agents to use SSH and command-line programs. This tackles the practical problem of agents needing to interact with existing terminal-based tools. It's a sensible bridge between current tooling and AI automation needs.",
+      "hn_url": "https://news.ycombinator.com/item?id=47242297"
+    }
   ]
 }

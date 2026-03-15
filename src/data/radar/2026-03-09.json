@@ -75,5 +75,42 @@
       "featured": false,
       "added_at": "2026-03-09T07:15:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: DenchClaw \u2013 Local CRM on Top of OpenClaw",
+      "points": 147,
+      "comments": 124,
+      "summary": "DenchClaw is a local CRM system built on top of OpenClaw that promises to keep your customer data under your own control. The project appears to be targeting businesses tired of cloud-based CRM lock-in and privacy concerns. It's an interesting approach, though the execution and feature completeness remain to be seen.",
+      "hn_url": "https://news.ycombinator.com/item?id=47309953"
+    },
+    {
+      "title": "Show HN: Mcp2cli \u2013 One CLI for every API, 96-99% fewer tokens than native MCP",
+      "points": 145,
+      "comments": 105,
+      "summary": "Mcp2cli claims to provide a unified command-line interface for any API while using 96-99% fewer tokens than native MCP implementations. This sounds like a bold efficiency claim that could significantly reduce API costs if it delivers on its promises. The high token reduction figure is impressive but needs real-world validation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47305149"
+    },
+    {
+      "title": "Show HN: The Mog Programming Language",
+      "points": 163,
+      "comments": 82,
+      "summary": "The Mog Programming Language is yet another new programming language entry in an already crowded field. Without clear differentiation or compelling use cases, it's unclear why developers would adopt Mog over established alternatives. The website and community response suggest it might have some interesting features worth exploring.",
+      "hn_url": "https://news.ycombinator.com/item?id=47312728"
+    },
+    {
+      "title": "AI agents are coming for government. How one big city is letting them in",
+      "points": 14,
+      "comments": 0,
+      "summary": "Boston is experimenting with AI agents in government operations, with the city's CIO discussing how they're implementing these systems. This represents a significant shift towards automation in public services that could either improve efficiency or create new problems. The lack of comments suggests this story hasn't captured much public attention yet.",
+      "hn_url": "https://news.ycombinator.com/item?id=47312667"
+    },
+    {
+      "title": "The Missing Layer in AI Agent Architecture",
+      "points": 7,
+      "comments": 1,
+      "summary": "Wundergraph argues that current AI agent architectures are missing a crucial layer, specifically criticising MCP as insufficient for enterprise needs. The article appears to be positioning their own solution as the answer to these architectural problems. With minimal engagement, it reads more like corporate blog content than genuine technical insight.",
+      "hn_url": "https://news.ycombinator.com/item?id=47315759"
+    }
   ]
 }

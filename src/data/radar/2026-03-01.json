@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-01",
+  "featured": [],
+  "picks": [],
+  "hn_top5": [
+    {
+      "title": "Show HN: Logira \u2013 eBPF runtime auditing for AI agent runs",
+      "points": 26,
+      "comments": 3,
+      "summary": "Logira uses eBPF to monitor what AI agents actually do at runtime, which is desperately needed given how unpredictable these systems can be. The tool tracks system calls and network activity to create proper audit trails. It's a sensible approach to AI safety that focuses on observable behaviour rather than promises.",
+      "hn_url": "https://news.ycombinator.com/item?id=47211914"
+    },
+    {
+      "title": "Show HN: I'm 15. I mass published 134K lines to hold AI agents accountable",
+      "points": 6,
+      "comments": 23,
+      "summary": "A 15-year-old has published 134,000 lines of code aimed at making AI agents more accountable and transparent. The project appears ambitious but the massive line count suggests either auto-generated code or an overly complex approach. Young developers often overengineer solutions, though the accountability focus is commendable.",
+      "hn_url": "https://news.ycombinator.com/item?id=47211441"
+    },
+    {
+      "title": "Show HN: I built a tool that turns any API into a CLI for agents",
+      "points": 6,
+      "comments": 9,
+      "summary": "This tool automatically converts any API into a command-line interface that AI agents can use more easily. It's solving a real problem since agents struggle with inconsistent API formats and documentation. The concept is solid but success depends entirely on how well it handles the messy reality of poorly designed APIs.",
+      "hn_url": "https://news.ycombinator.com/item?id=47208636"
+    },
+    {
+      "title": "I built AI agents that do the grunt work solo founders hate",
+      "points": 5,
+      "comments": 8,
+      "summary": "Someone has built AI agents to handle tedious tasks that solo founders typically avoid, like data entry and customer support. This is exactly the kind of practical AI application that actually makes sense. The real test will be whether these agents can handle edge cases without constant human supervision.",
+      "hn_url": "https://news.ycombinator.com/item?id=47203220"
+    },
+    {
+      "title": "Show HN: Ductwork \u2013 A Go platform for running AI agents on autopilot",
+      "points": 5,
+      "comments": 4,
+      "summary": "Ductwork is a Go-based platform for running AI agents automatically without human intervention. Go is a sensible choice for this kind of infrastructure work given its reliability and performance characteristics. The success will depend on how well it handles agent failures and resource management.",
+      "hn_url": "https://news.ycombinator.com/item?id=47211499"
+    }
+  ]
+}

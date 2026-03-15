@@ -42,5 +42,42 @@
       "featured": false,
       "added_at": "2026-02-28T06:30:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "Don't trust AI agents",
+      "points": 344,
+      "comments": 194,
+      "summary": "AI agents are fundamentally untrustworthy and pose serious security risks that developers are ignoring. The author argues for a zero-trust security model when dealing with AI systems, emphasising that current safeguards are inadequate. This is a necessary wake-up call for an industry rushing headlong into AI deployment without proper security considerations.",
+      "hn_url": "https://news.ycombinator.com/item?id=47194611"
+    },
+    {
+      "title": "Show HN: Now I Get It \u2013 Translate scientific papers into interactive webpages",
+      "points": 305,
+      "comments": 136,
+      "summary": "This tool converts dense scientific papers into interactive, digestible web pages that actually make sense to normal humans. It's a brilliant solution to the problem of academic papers being deliberately obscure and inaccessible. Finally, someone is using technology to democratise scientific knowledge instead of making it more complicated.",
+      "hn_url": "https://news.ycombinator.com/item?id=47195123"
+    },
+    {
+      "title": "Garbage In, Garbage Out: The Degradation of Human Requirements in the LLM Era",
+      "points": 9,
+      "comments": 4,
+      "summary": "The rise of LLMs is making people lazy about defining clear requirements, leading to worse software outcomes. When humans stop thinking critically about what they actually want, they get rubbish results from AI systems. This is a predictable consequence of over-relying on tools that seem magical but still require human intelligence to use properly.",
+      "hn_url": "https://news.ycombinator.com/item?id=47196746"
+    },
+    {
+      "title": "Show HN: Mowgli \u2013 Figma for the agent era, with Claude Code and design export",
+      "points": 6,
+      "comments": 4,
+      "summary": "Another design tool trying to ride the AI wave by integrating Claude for code generation and design export. The 'Figma for agents' positioning feels like buzzword bingo rather than solving a real problem. The low engagement suggests the market isn't particularly excited about yet another AI-powered design platform.",
+      "hn_url": "https://news.ycombinator.com/item?id=47197662"
+    },
+    {
+      "title": "Anthropic vs. DoD: \"Any lawful use\" is a fight about control",
+      "points": 2,
+      "comments": 8,
+      "summary": "Anthropic's partnership with the Department of Defence is sparking debate about AI ethics and corporate responsibility. The 'any lawful use' clause is concerning because it essentially gives military applications a blank cheque. This highlights the growing tension between AI companies' stated values and their commercial interests.",
+      "hn_url": "https://news.ycombinator.com/item?id=47197243"
+    }
   ]
 }

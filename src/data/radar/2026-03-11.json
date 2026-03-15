@@ -75,5 +75,42 @@
       "featured": false,
       "added_at": "2026-03-11T07:15:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Klaus \u2013 OpenClaw on a VM, batteries included",
+      "points": 159,
+      "comments": 93,
+      "summary": "Klaus offers OpenClaw running on a virtual machine with everything pre-configured for automation tasks. It's essentially a plug-and-play solution for those who want computer automation without the hassle of setting up their own environment. The high engagement suggests there's real demand for simplified automation tools.",
+      "hn_url": "https://news.ycombinator.com/item?id=47337249"
+    },
+    {
+      "title": "Show HN: Open-source browser for AI agents",
+      "points": 155,
+      "comments": 53,
+      "summary": "Someone built an open-source browser specifically designed for AI agents to interact with web content. This addresses a real need since standard browsers aren't optimised for programmatic control by AI systems. The decent comment engagement shows developers are interested in better tooling for AI automation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47336171"
+    },
+    {
+      "title": "Google to provide Pentagon with AI agents",
+      "points": 74,
+      "comments": 81,
+      "summary": "Google has secured a contract to supply the Pentagon with AI agents for unclassified military work. This marks another significant step in AI's integration into government operations and military applications. The high comment-to-upvote ratio suggests this news is generating considerable debate about AI in defence.",
+      "hn_url": "https://news.ycombinator.com/item?id=47333433"
+    },
+    {
+      "title": "Launch HN: Sentrial (YC W26) \u2013 Catch AI agent failures before your users do",
+      "points": 31,
+      "comments": 14,
+      "summary": "Sentrial is a YC-backed startup that monitors AI agents for failures and issues before they affect end users. It's essentially quality assurance tooling for AI systems, which makes sense as more companies deploy agents in production. The modest engagement suggests this is a niche but important problem space.",
+      "hn_url": "https://news.ycombinator.com/item?id=47337659"
+    },
+    {
+      "title": "Show HN: Ink \u2013 Deploy full-stack apps from AI agents via MCP or Skills",
+      "points": 29,
+      "comments": 5,
+      "summary": "Ink allows AI agents to deploy full-stack applications through standardised protocols like MCP or Skills. It's trying to bridge the gap between AI capabilities and actual software deployment. The low engagement might indicate the concept is either too early or too technical for broader interest.",
+      "hn_url": "https://news.ycombinator.com/item?id=47337028"
+    }
   ]
 }

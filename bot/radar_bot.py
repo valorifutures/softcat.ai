@@ -455,6 +455,7 @@ def main():
             "date": radar_data["date"],
             "featured": radar_data.get("featured", []),
             "picks": radar_data.get("picks", []),
+            "hn_top5": radar_data.get("hn_top5", []),
         }
 
         print("Saving and pushing...")

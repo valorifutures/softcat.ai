@@ -75,5 +75,42 @@
       "featured": false,
       "added_at": "2026-03-13T07:15:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "Launch HN: Spine Swarm (YC S23) \u2013 AI agents that collaborate on a visual canvas",
+      "points": 106,
+      "comments": 69,
+      "summary": "Spine Swarm promises AI agents that work together on visual canvases, which sounds impressive but feels like another attempt to reinvent collaborative software with AI buzzwords. The concept might have merit for specific workflows, but most teams probably don't need their AI agents to draw pretty pictures together.",
+      "hn_url": "https://news.ycombinator.com/item?id=47364116"
+    },
+    {
+      "title": "Show HN: Context Gateway \u2013 Compress agent context before it hits the LLM",
+      "points": 89,
+      "comments": 56,
+      "summary": "Context Gateway tackles the real problem of bloated prompts eating up tokens and costs when using large language models. This is actually useful since most developers stuff way too much context into their prompts without thinking about efficiency.",
+      "hn_url": "https://news.ycombinator.com/item?id=47367526"
+    },
+    {
+      "title": "Show HN: Simple plugin to get Claude Code to listen to you",
+      "points": 18,
+      "comments": 7,
+      "summary": "This plugin lets you talk to Claude instead of typing, which is handy for lazy developers who can't be bothered to use their keyboards. Voice coding sounds futuristic but usually ends up being slower and more error-prone than just typing properly.",
+      "hn_url": "https://news.ycombinator.com/item?id=47371284"
+    },
+    {
+      "title": "Show HN: Hardened OpenClaw on AWS with Terraform",
+      "points": 9,
+      "comments": 5,
+      "summary": "Someone has hardened OpenClaw deployment on AWS using Terraform, which is practical infrastructure work that most people will ignore. It's the kind of unglamorous but necessary tooling that keeps systems running properly.",
+      "hn_url": "https://news.ycombinator.com/item?id=47370299"
+    },
+    {
+      "title": "Show HN: HAL \u2013 Harmful Action Limiter: Lean command guard for AI coding agents.",
+      "points": 3,
+      "comments": 9,
+      "summary": "HAL tries to prevent AI coding agents from doing harmful things by acting as a command guard. With only 3 points and 9 comments, it seems the community isn't convinced this lightweight approach will stop determined AI misbehaviour.",
+      "hn_url": "https://news.ycombinator.com/item?id=47365089"
+    }
   ]
 }

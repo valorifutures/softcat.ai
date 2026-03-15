@@ -1,0 +1,42 @@
+{
+  "date": "2026-02-26",
+  "featured": [],
+  "picks": [],
+  "hn_top5": [
+    {
+      "title": "Show HN: Mission Control \u2013 Open-source task management for AI agents",
+      "points": 45,
+      "comments": 21,
+      "summary": "Someone's built yet another task management system, this time specifically for AI agents. It's open source and probably does exactly what you'd expect from the name. The lukewarm reception suggests the world doesn't desperately need another project management tool.",
+      "hn_url": "https://news.ycombinator.com/item?id=47165602"
+    },
+    {
+      "title": "Show HN: OpenSwarm \u2013 Multi\u2011Agent Claude CLI Orchestrator for Linear/GitHub",
+      "points": 34,
+      "comments": 17,
+      "summary": "OpenSwarm promises to orchestrate multiple Claude AI agents through a command line interface for GitHub and Linear integration. It's getting more attention than similar projects, which suggests it might actually solve real developer workflow problems. The multi-agent approach could be genuinely useful if it works as advertised.",
+      "hn_url": "https://news.ycombinator.com/item?id=47160980"
+    },
+    {
+      "title": "How AI skills are quietly automating my workday",
+      "points": 20,
+      "comments": 18,
+      "summary": "A Medium article detailing someone's personal experience with AI automating their daily work tasks. The modest engagement suggests it's either not particularly groundbreaking or the insights aren't novel enough to capture widespread interest. These productivity posts are becoming increasingly common as AI tools mature.",
+      "hn_url": "https://news.ycombinator.com/item?id=47168343"
+    },
+    {
+      "title": "Show HN: Claude/Gemini/Codex 10-100x faster with pand\u014d (CAD for code)",
+      "points": 11,
+      "comments": 5,
+      "summary": "Pand\u014d claims to make AI coding assistants dramatically faster by treating code like computer-aided design. The bold speed improvement claims and minimal discussion suggest either revolutionary innovation or typical startup hyperbole. The low engagement points towards scepticism from the developer community.",
+      "hn_url": "https://news.ycombinator.com/item?id=47169180"
+    },
+    {
+      "title": "Show HN: Librarian \u2013 Cut token costs by up to 85% for LangGraph and OpenClaw",
+      "points": 8,
+      "comments": 7,
+      "summary": "Librarian offers to slash token costs for popular AI frameworks by up to 85%. Cost reduction tools are becoming essential as AI usage scales, so this addresses a real pain point. The modest traction suggests it's early days or the solution isn't proven yet.",
+      "hn_url": "https://news.ycombinator.com/item?id=47169742"
+    }
+  ]
+}

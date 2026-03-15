@@ -68,5 +68,42 @@
       "featured": false,
       "added_at": "2026-02-24T06:30:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "1Password pricing increasing up to 33% in March",
+      "points": 146,
+      "comments": 209,
+      "summary": "1Password is jacking up prices by a third in March, which is frankly outrageous for what amounts to encrypted storage with a nice interface. The 146 points and 209 comments suggest users are rightfully furious about yet another subscription service deciding to squeeze customers.",
+      "hn_url": "https://news.ycombinator.com/item?id=47139951"
+    },
+    {
+      "title": "1Password Raising Prices ~33%",
+      "points": 85,
+      "comments": 4,
+      "summary": "Another post about the same 1Password price hike, though this one got less traction. The fact that it's being posted multiple times shows just how annoyed people are about losing one of the last reasonably-priced password managers.",
+      "hn_url": "https://news.ycombinator.com/item?id=47140133"
+    },
+    {
+      "title": "NIST Seeking Public Comment on AI Agent Security (Deadline: March 9, 2026)",
+      "points": 49,
+      "comments": 19,
+      "summary": "NIST wants public input on AI agent security by March 2026, which is refreshingly proactive for a government agency. At least someone in authority is thinking about the risks before AI agents start wreaking havoc on critical systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=47131689"
+    },
+    {
+      "title": "Ask HN: How are you controlling AI agents that take real actions?",
+      "points": 9,
+      "comments": 20,
+      "summary": "Someone's asking the sensible question of how to actually control AI agents that can take real actions in the world. The low score but decent comment count suggests this is an important topic that hasn't gained the attention it deserves.",
+      "hn_url": "https://news.ycombinator.com/item?id=47134506"
+    },
+    {
+      "title": "Show HN: Pilo \u2013 open-source agentic web automation engine by Mozilla",
+      "points": 18,
+      "comments": 3,
+      "summary": "Mozilla has released an open-source web automation engine for AI agents, which is exactly the kind of thing we need more of. It's disappointing that such a potentially useful tool from a respected organisation is getting so little attention.",
+      "hn_url": "https://news.ycombinator.com/item?id=47139110"
+    }
   ]
 }

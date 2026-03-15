@@ -1,0 +1,42 @@
+{
+  "date": "2026-02-25",
+  "featured": [],
+  "picks": [],
+  "hn_top5": [
+    {
+      "title": "Show HN: A real-time strategy game that AI agents can play",
+      "points": 220,
+      "comments": 78,
+      "summary": "Someone built a real-time strategy game specifically designed for AI agents to play against each other. It's essentially a glorified tech demo for watching bots wage digital warfare. The concept is mildly entertaining but feels more like a research project than actual gaming innovation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47149586"
+    },
+    {
+      "title": "Launch HN: TeamOut (YC W22) \u2013 AI agent for planning company retreats",
+      "points": 55,
+      "comments": 61,
+      "summary": "TeamOut is a YC-backed startup using AI to plan corporate retreats and team outings. They're betting that HR departments are desperate enough to outsource basic event planning to algorithms. The idea screams 'solution in search of a problem' given how straightforward retreat planning actually is.",
+      "hn_url": "https://news.ycombinator.com/item?id=47151598"
+    },
+    {
+      "title": "Show HN: CivBench a long-horizon AI benchmark for multi-agent games",
+      "points": 12,
+      "comments": 24,
+      "summary": "CivBench is another AI benchmark focused on testing agents in complex, long-term strategy scenarios using civilisation-style games. It's yet another academic attempt to measure AI progress through gaming environments. The approach is sensible but hardly groundbreaking in the crowded field of AI evaluation metrics.",
+      "hn_url": "https://news.ycombinator.com/item?id=47152571"
+    },
+    {
+      "title": "Show HN: Limits \u2013 Control layer for AI agents that take real actions",
+      "points": 9,
+      "comments": 2,
+      "summary": "Limits offers a control layer to prevent AI agents from taking unwanted real-world actions. It's addressing genuine safety concerns about AI systems that can actually affect physical systems. The low engagement suggests either poor timing or that the market isn't ready for this type of safety tooling.",
+      "hn_url": "https://news.ycombinator.com/item?id=47146354"
+    },
+    {
+      "title": "Andrej Karpathy: agentic AI coding has changed the world unrecognizably",
+      "points": 8,
+      "comments": 3,
+      "summary": "Karpathy claims that AI-powered coding has fundamentally transformed software development beyond recognition. He's probably overstating the case, as most developers are still writing code the same way with slightly better autocomplete. The hyperbole is typical of AI evangelists who see revolutionary change in incremental improvements.",
+      "hn_url": "https://news.ycombinator.com/item?id=47156513"
+    }
+  ]
+}

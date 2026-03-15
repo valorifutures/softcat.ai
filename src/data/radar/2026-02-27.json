@@ -81,5 +81,42 @@
       "featured": false,
       "added_at": "2026-02-27T06:30:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Badge that shows how well your codebase fits in an LLM's context window",
+      "points": 88,
+      "comments": 41,
+      "summary": "A developer has created a badge that measures how much of your codebase can fit into an LLM's context window. It's a practical tool for gauging whether AI coding assistants can actually understand your entire project. The badge provides a quick visual indicator of your code's AI-friendliness.",
+      "hn_url": "https://news.ycombinator.com/item?id=47181471"
+    },
+    {
+      "title": "An AI agent coding skeptic tries AI agent coding, in excessive detail",
+      "points": 59,
+      "comments": 10,
+      "summary": "A previously sceptical developer documents their experience trying AI agent coding tools in exhaustive detail. The post offers an honest, thorough examination of what these tools can and cannot do in practice. It's likely to be valuable reading for anyone considering whether AI agents are ready for serious coding work.",
+      "hn_url": "https://news.ycombinator.com/item?id=47183527"
+    },
+    {
+      "title": "Show HN: CodeLeash: framework for quality agent development, NOT an orchestrator",
+      "points": 12,
+      "comments": 4,
+      "summary": "CodeLeash is a new framework focused specifically on building quality AI agents rather than orchestrating them. The developer emphasises it's not another orchestration tool in an already crowded space. With minimal engagement so far, it's unclear whether this distinction resonates with developers.",
+      "hn_url": "https://news.ycombinator.com/item?id=47176287"
+    },
+    {
+      "title": "Show HN: Crewship \u2013 Deploy AI agents to production in one command",
+      "points": 11,
+      "comments": 3,
+      "summary": "Crewship promises to deploy AI agents to production with a single command. It's targeting the deployment pain point that many AI agent developers face. The low engagement suggests either limited interest or that the market is already saturated with similar tools.",
+      "hn_url": "https://news.ycombinator.com/item?id=47180745"
+    },
+    {
+      "title": "Codified Context for AI Agents in a Complex Codebase",
+      "points": 3,
+      "comments": 6,
+      "summary": "This academic paper addresses how AI agents can better understand and navigate complex codebases through codified context. It's an important problem as AI agents struggle with large, interconnected software projects. The minimal discussion suggests the academic approach hasn't yet captured developer interest.",
+      "hn_url": "https://news.ycombinator.com/item?id=47183318"
+    }
   ]
 }

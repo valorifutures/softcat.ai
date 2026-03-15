@@ -306,5 +306,22 @@
     "output_files": [
       "src/content/tools/2026-03-15-glmocr.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-03-15T10:23:42.807707+00:00",
+    "status": "success",
+    "duration_s": 47.3,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0693,
+    "input_tokens": 11181,
+    "output_tokens": 2381,
+    "output_files": [
+      "src/data/radar/2026-03-15.json"
+    ]
   }
 ]

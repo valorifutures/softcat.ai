@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-14",
+  "featured": [],
+  "picks": [],
+  "hn_top5": [
+    {
+      "title": "2026 tech layoffs reach 45,000 in March",
+      "points": 161,
+      "comments": 134,
+      "summary": "Tech companies have axed 45,000 jobs in March 2026, with over 9,200 positions lost specifically to AI and automation. The industry continues its ruthless pursuit of efficiency at the expense of human workers. This trend shows no signs of slowing as companies prioritise AI adoption over maintaining their workforce.",
+      "hn_url": "https://news.ycombinator.com/item?id=47380405"
+    },
+    {
+      "title": "Show HN: GitAgent \u2013 An open standard that turns any Git repo into an AI agent",
+      "points": 116,
+      "comments": 26,
+      "summary": "GitAgent proposes turning any Git repository into an AI agent through an open standard. It's an interesting concept that could automate repository management and code interactions. The moderate engagement suggests developers are cautiously optimistic but not yet convinced of its practical value.",
+      "hn_url": "https://news.ycombinator.com/item?id=47376584"
+    },
+    {
+      "title": "Show HN: KeyID \u2013 Free email and phone infrastructure for AI agents (MCP)",
+      "points": 9,
+      "comments": 8,
+      "summary": "KeyID offers free email and phone infrastructure specifically designed for AI agents using MCP protocol. The low engagement indicates this is either too niche or the market isn't ready for dedicated AI agent communication tools. It feels like a solution searching for a problem that doesn't quite exist yet.",
+      "hn_url": "https://news.ycombinator.com/item?id=47378241"
+    },
+    {
+      "title": "Show HN: AgentArmor \u2013 open-source 8-layer security framework for AI agents",
+      "points": 10,
+      "comments": 4,
+      "summary": "AgentArmor presents an eight-layer security framework for AI agents as an open-source project. With minimal community interest, it appears the AI security market is still immature. The project addresses real concerns but lacks the visibility to gain meaningful traction.",
+      "hn_url": "https://news.ycombinator.com/item?id=47374958"
+    },
+    {
+      "title": "Ask HN: How do you use Coding Agents/CLIs out of coding?",
+      "points": 4,
+      "comments": 5,
+      "summary": "Someone asked about using coding agents and CLIs outside of programming contexts. The question generated little discussion, suggesting most people haven't found compelling non-coding applications yet. It's a reasonable question that deserves more exploration than it received.",
+      "hn_url": "https://news.ycombinator.com/item?id=47376451"
+    }
+  ]
+}

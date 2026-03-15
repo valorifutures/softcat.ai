@@ -75,5 +75,42 @@
       "featured": false,
       "added_at": "2026-03-06T07:15:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Moongate \u2013 Ultima Online server emulator in .NET 10 with Lua scripting",
+      "points": 287,
+      "comments": 164,
+      "summary": "Someone built a modern Ultima Online server emulator using .NET 10 with Lua scripting support. This lets nostalgic gamers run their own private servers of the classic MMORPG with modern tooling. It's impressive technical work that will delight the dedicated UO community.",
+      "hn_url": "https://news.ycombinator.com/item?id=47275236"
+    },
+    {
+      "title": "Ask HN: How are you using multi-agent AI systems in your daily workflow?",
+      "points": 16,
+      "comments": 13,
+      "summary": "The HN crowd is discussing how they integrate multi-agent AI systems into their work routines. Most responses are likely theoretical rather than practical implementations. The low engagement suggests few people are actually using these systems meaningfully yet.",
+      "hn_url": "https://news.ycombinator.com/item?id=47270020"
+    },
+    {
+      "title": "Show HN: Deterministic browser control for AI agents (~90% on Mind2Web)",
+      "points": 12,
+      "comments": 7,
+      "summary": "A developer created a browser control system specifically for AI agents that achieves 90% accuracy on the Mind2Web benchmark. This addresses the real problem of AI agents struggling to reliably interact with web interfaces. The low comment count suggests the technical achievement might be flying under the radar.",
+      "hn_url": "https://news.ycombinator.com/item?id=47275862"
+    },
+    {
+      "title": "Show HN: NERDs \u2013 Entity-centered long-term memory for LLM agents",
+      "points": 13,
+      "comments": 5,
+      "summary": "NERDs provides persistent memory for AI agents by organizing information around entities rather than simple chat history. This tackles the fundamental limitation of LLMs forgetting context over long conversations. The concept is promising but needs more real-world validation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47277446"
+    },
+    {
+      "title": "Show HN: Steadwing \u2013 Your Autonomous On-Call Engineer",
+      "points": 12,
+      "comments": 5,
+      "summary": "Steadwing claims to be an autonomous on-call engineer that handles incidents without human intervention. The promise sounds too good to be true for complex production systems. Most engineering teams won't trust critical incidents to an AI system anytime soon.",
+      "hn_url": "https://news.ycombinator.com/item?id=47270724"
+    }
   ]
 }

@@ -68,5 +68,42 @@
       "featured": false,
       "added_at": "2026-03-03T07:00:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "Launch HN: Cekura (YC F24) \u2013 Testing and monitoring for voice and chat AI agents",
+      "points": 89,
+      "comments": 21,
+      "summary": "Cekura is a YC-backed startup that tests and monitors AI voice and chat agents. They're solving the obvious problem that AI agents are unreliable and need proper quality assurance before deployment. It's a sensible business idea targeting the growing market of companies building conversational AI.",
+      "hn_url": "https://news.ycombinator.com/item?id=47232903"
+    },
+    {
+      "title": "Do AI Agents Make Money in 2026? Or Is It Just Mac Minis and Vibes?",
+      "points": 35,
+      "comments": 44,
+      "summary": "This article questions whether AI agents will actually generate meaningful revenue by 2026 or if it's all just hype and expensive hardware. The author seems sceptical that current AI agent implementations can move beyond demos to real profit-making applications. It's a fair critique of an industry that's heavy on promises but light on proven business models.",
+      "hn_url": "https://news.ycombinator.com/item?id=47226958"
+    },
+    {
+      "title": "Show HN: Construct Computer \u2013 Agentic Cloud OS for Daily Work",
+      "points": 21,
+      "comments": 8,
+      "summary": "Construct Computer claims to be a cloud operating system designed for AI agents to handle daily work tasks. It's another entry in the crowded field of AI automation tools, though the execution and actual utility remain unclear. The low engagement suggests the market isn't particularly excited about yet another AI agent platform.",
+      "hn_url": "https://news.ycombinator.com/item?id=47231734"
+    },
+    {
+      "title": "Show HN: WordPress for Voice Agents \u2013 Unpod.ai",
+      "points": 11,
+      "comments": 10,
+      "summary": "Unpod.ai positions itself as WordPress for voice agents, presumably making it easier to build conversational AI applications. The concept of democratising voice agent creation is sound, but the comparison to WordPress feels like marketing speak. Given the minimal traction, it's likely too early or not compelling enough for mainstream adoption.",
+      "hn_url": "https://news.ycombinator.com/item?id=47235057"
+    },
+    {
+      "title": "Show HN: OctopusGarden \u2013 An autonomous software factory (specs in, code out)",
+      "points": 8,
+      "comments": 5,
+      "summary": "OctopusGarden promises to be an autonomous software factory that takes specifications and outputs working code. It's an ambitious goal that many have attempted before, and the low engagement suggests the implementation isn't convincing enough yet. The idea of fully automated software development remains more aspirational than practical.",
+      "hn_url": "https://news.ycombinator.com/item?id=47226107"
+    }
   ]
 }

@@ -75,5 +75,42 @@
       "featured": false,
       "added_at": "2026-03-15T07:15:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: OpenClaw-superpowers \u2013 Self-modifying skill library for OpenClaw agents",
+      "points": 8,
+      "comments": 0,
+      "summary": "Someone's built a self-modifying skill library for OpenClaw agents that apparently gives them 'superpowers'. The GitHub link suggests it's another attempt to make AI agents more capable through dynamic skill acquisition. Zero comments indicates the community isn't particularly excited about yet another AI agent framework.",
+      "hn_url": "https://news.ycombinator.com/item?id=47384832"
+    },
+    {
+      "title": "A persistent AI I built to stop LLMs from resetting",
+      "points": 2,
+      "comments": 3,
+      "summary": "A developer created persistent AI to solve the annoying problem of LLMs forgetting everything between conversations. This addresses a real pain point that anyone using ChatGPT or similar tools has experienced. The low engagement suggests either the solution isn't particularly novel or the post lacks detail.",
+      "hn_url": "https://news.ycombinator.com/item?id=47382912"
+    },
+    {
+      "title": "Ask HN: How do you prompt AI to talk to you?",
+      "points": 4,
+      "comments": 1,
+      "summary": "Someone's asking the community for tips on how to prompt AI effectively for conversation. This is a basic question that suggests the poster is new to working with language models. The minimal engagement reflects that most HN users have moved beyond beginner prompting questions.",
+      "hn_url": "https://news.ycombinator.com/item?id=47383282"
+    },
+    {
+      "title": "You Need Deterministic Gates for Probabilistic AI Agents",
+      "points": 3,
+      "comments": 1,
+      "summary": "An article arguing that AI agents need deterministic control mechanisms despite their probabilistic nature. The core idea makes sense since you want reliable behaviour in production systems, not random outputs. The contradictory URL title suggests some confusion about the actual argument being made.",
+      "hn_url": "https://news.ycombinator.com/item?id=47385309"
+    },
+    {
+      "title": "Show HN: Lfg \u2013 WoW raid frames for AI agents on a $25 LED",
+      "points": 3,
+      "comments": 1,
+      "summary": "A bizarre project that displays AI agent status using World of Warcraft-style raid frames on a cheap LED display. It's a creative way to monitor multiple AI agents simultaneously, borrowing familiar UI patterns from gaming. The novelty factor is high but practical applications seem limited.",
+      "hn_url": "https://news.ycombinator.com/item?id=47382898"
+    }
   ]
 }

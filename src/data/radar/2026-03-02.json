@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-02",
+  "featured": [],
+  "picks": [],
+  "hn_top5": [
+    {
+      "title": "Show HN: I built a sub-500ms latency voice agent from scratch",
+      "points": 570,
+      "comments": 155,
+      "summary": "Someone built a voice AI agent that responds in under 500 milliseconds, which is genuinely impressive given most voice assistants feel sluggish. The achievement demonstrates serious technical skill in optimising latency across the entire pipeline. This is the kind of performance breakthrough that could make voice interfaces actually pleasant to use.",
+      "hn_url": "https://news.ycombinator.com/item?id=47224295"
+    },
+    {
+      "title": "A case for Go as the best language for AI agents",
+      "points": 202,
+      "comments": 295,
+      "summary": "A developer argues that Go is superior to Python for building AI agents, citing better concurrency and deployment characteristics. The claim is bold but overlooks Go's weaker ML ecosystem compared to Python's mature tooling. The argument has merit for production systems but ignores the reality of where most AI development happens.",
+      "hn_url": "https://news.ycombinator.com/item?id=47222270"
+    },
+    {
+      "title": "Show HN: Kelos \u2013 Define your AI coding agent workflow as YAML on Kubernetes",
+      "points": 4,
+      "comments": 5,
+      "summary": "Kelos lets you define AI coding workflows using YAML configuration files that run on Kubernetes. It's an interesting approach to making AI agent workflows more declarative and reproducible. The low engagement suggests the market isn't crying out for yet another agent orchestration tool.",
+      "hn_url": "https://news.ycombinator.com/item?id=47218469"
+    },
+    {
+      "title": "Show HN: Parallax \u2013 Coordinate adversarial AI agents over durable streams",
+      "points": 5,
+      "comments": 1,
+      "summary": "Parallax coordinates multiple adversarial AI agents using persistent data streams, presumably for testing or simulation purposes. The concept of pitting AI agents against each other is intriguing for stress testing systems. The minimal traction indicates it's either too niche or too early stage to gain attention.",
+      "hn_url": "https://news.ycombinator.com/item?id=47225510"
+    },
+    {
+      "title": "Show HN: Agd \u2013 a content-addressed DAG for tracking what AI agents do",
+      "points": 4,
+      "comments": 2,
+      "summary": "Agd creates a content-addressed directed acyclic graph to track AI agent actions and decisions. It's essentially version control for AI behaviour, which could be valuable for debugging and auditing agent decisions. The lack of interest suggests developers aren't yet feeling the pain this tool aims to solve.",
+      "hn_url": "https://news.ycombinator.com/item?id=47224560"
+    }
+  ]
+}

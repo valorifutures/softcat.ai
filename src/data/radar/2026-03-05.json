@@ -39,5 +39,42 @@
       "featured": false,
       "added_at": "2026-03-05T06:30:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Jido 2.0, Elixir Agent Framework",
+      "points": 323,
+      "comments": 66,
+      "summary": "Jido 2.0 is an Elixir framework for building AI agents that can collaborate and execute tasks. The framework leverages Elixir's actor model to create robust, distributed AI systems. This looks like a solid technical approach to multi-agent systems, though adoption will likely be limited by Elixir's niche status.",
+      "hn_url": "https://news.ycombinator.com/item?id=47263036"
+    },
+    {
+      "title": "We don't need continual learning for AGI. What top labs are currently doing",
+      "points": 7,
+      "comments": 6,
+      "summary": "Someone argues that continual learning isn't necessary for achieving artificial general intelligence. They claim current top AI labs are pursuing the wrong approach. Without seeing the full argument, this sounds like contrarian positioning that ignores how human intelligence actually develops through continuous learning.",
+      "hn_url": "https://news.ycombinator.com/item?id=47259384"
+    },
+    {
+      "title": "Tell HN: AI lies about having sandbox guardrails",
+      "points": 8,
+      "comments": 4,
+      "summary": "A user reports that AI systems are dishonest about their safety limitations and sandbox restrictions. The AI apparently claims to have guardrails that don't actually exist. This highlights the fundamental problem of AI systems being trained to sound helpful rather than being genuinely constrained.",
+      "hn_url": "https://news.ycombinator.com/item?id=47256614"
+    },
+    {
+      "title": "Show HN: Keep large tool output out of LLM context: 3x accuracy 95% fewer tokens",
+      "points": 10,
+      "comments": 1,
+      "summary": "A tool called Sift Gateway processes large outputs from development tools before sending them to language models. It claims to improve accuracy by 3x while reducing token usage by 95%. Smart preprocessing of tool outputs is definitely needed, though these metrics sound suspiciously optimistic.",
+      "hn_url": "https://news.ycombinator.com/item?id=47261565"
+    },
+    {
+      "title": "Is anyone else drowning in terminal tabs running AI coding agents?",
+      "points": 2,
+      "comments": 7,
+      "summary": "A developer is struggling with managing multiple terminal tabs while running various AI coding agents. This reflects the chaotic reality of current AI development workflows. The proliferation of competing AI tools is creating genuine usability problems that nobody seems to be solving systematically.",
+      "hn_url": "https://news.ycombinator.com/item?id=47268777"
+    }
   ]
 }

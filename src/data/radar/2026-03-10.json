@@ -63,5 +63,42 @@
       "featured": false,
       "added_at": "2026-03-10T07:00:00Z"
     }
+  ],
+  "hn_top5": [
+    {
+      "title": "AI Agent hacked McKinsey's chatbot and gained full read-write access in 2 hours",
+      "points": 35,
+      "comments": 4,
+      "summary": "McKinsey's chatbot got completely compromised in just two hours by an AI agent, giving the attacker full system access. This is exactly why rushing AI into production without proper security testing is monumentally stupid. The consulting giant that charges millions for digital transformation advice couldn't even secure their own chatbot properly.",
+      "hn_url": "https://news.ycombinator.com/item?id=47324045"
+    },
+    {
+      "title": "Amazon wins court order to block Perplexity's AI shopping agent",
+      "points": 29,
+      "comments": 9,
+      "summary": "Amazon successfully blocked Perplexity's AI shopping agent through legal action, probably because it was scraping their data or bypassing their APIs. This is the inevitable clash between old tech giants protecting their walled gardens and new AI companies trying to build useful tools. Amazon's legal team moves faster than their delivery drivers when their business model is threatened.",
+      "hn_url": "https://news.ycombinator.com/item?id=47327309"
+    },
+    {
+      "title": "Show HN: Ash, an Agent Sandbox for Mac",
+      "points": 16,
+      "comments": 16,
+      "summary": "Someone built Ash, a sandbox environment for AI agents on Mac, which sounds like a decent development tool. The real test will be whether it can actually contain AI agents safely or if it becomes another security nightmare waiting to happen.",
+      "hn_url": "https://news.ycombinator.com/item?id=47324461"
+    },
+    {
+      "title": "Show HN: I built a multiplayer strategy game for AI agents",
+      "points": 9,
+      "comments": 4,
+      "summary": "A developer created a multiplayer strategy game specifically designed for AI agents to compete against each other. It's an interesting concept that could become a proper testing ground for AI capabilities, assuming the game mechanics are actually challenging enough.",
+      "hn_url": "https://news.ycombinator.com/item?id=47328876"
+    },
+    {
+      "title": "Show HN: Aegis \u2013 A security-first programming language for AI agents",
+      "points": 4,
+      "comments": 9,
+      "summary": "Aegis is a new programming language focused on security for AI agents, which addresses a genuine need given how terrible most AI security is currently. Whether another programming language is the solution rather than better practices with existing tools remains to be seen.",
+      "hn_url": "https://news.ycombinator.com/item?id=47325921"
+    }
   ]
 }
