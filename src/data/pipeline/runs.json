@@ -159,5 +159,68 @@
     "output_files": [
       "src/content/news-and-updates/2026-03-14-ai-digest.md"
     ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-03-14T08:00:22.970387+00:00",
+    "status": "success",
+    "duration_s": 18.7,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0209,
+    "input_tokens": 5065,
+    "output_tokens": 383,
+    "output_files": [
+      "src/content/thoughts/2026-03-14-research-loops-are-just-adhd-for-algorithms.md"
+    ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-03-14T09:30:50.087011+00:00",
+    "status": "error",
+    "duration_s": 46.5,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 128."
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-15T04:00:02.130456+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 344,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-15T06:00:01.746329+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 344,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
