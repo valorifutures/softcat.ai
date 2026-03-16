@@ -161,6 +161,18 @@
         "GitAgent",
         "KeyID"
       ]
+    },
+    {
+      "date": "2026-03-16",
+      "file": "2026-03-16.json",
+      "products": [
+        "Attention Residuals",
+        "Granite 4.0 1B Speech",
+        "OpenViking",
+        "Goal.md",
+        "AgentMailr",
+        "Buxo.ai"
+      ]
     }
   ]
 }
