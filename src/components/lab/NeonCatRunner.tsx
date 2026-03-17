@@ -56,6 +56,17 @@ interface GameState {
   meowBuffer: string;
   rainbowTimer: number;
   particles: Particle[];
+  scenery: SceneryItem[];
+  sceneryOffset: number;
+}
+
+interface SceneryItem {
+  x: number;
+  type: 'building' | 'tree' | 'antenna' | 'house';
+  w: number;
+  h: number;
+  color: string;
+  details: number; // seed for variation
 }
 
 interface Particle {
@@ -258,6 +269,165 @@ function drawBackground(ctx: CanvasRenderingContext2D) {
   for (let y = 0; y < GAME_H; y += 50) {
     ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(GAME_W, y); ctx.stroke();
   }
+}
+
+function generateScenery(): SceneryItem[] {
+  const items: SceneryItem[] = [];
+  const colors = [C.surfaceLight, 'rgba(78, 203, 143, 0.12)', 'rgba(90, 184, 212, 0.10)', 'rgba(155, 122, 204, 0.10)'];
+  let x = 0;
+  // Generate enough scenery to tile across ~3x the screen width
+  while (x < GAME_W * 3) {
+    const typeRoll = Math.random();
+    let item: SceneryItem;
+    if (typeRoll < 0.35) {
+      // Building
+      const w = rand(40, 70);
+      const h = rand(60, 150);
+      item = { x, type: 'building', w, h, color: colors[randInt(0, 3)], details: Math.random() };
+    } else if (typeRoll < 0.55) {
+      // House
+      const w = rand(35, 55);
+      const h = rand(30, 50);
+      item = { x, type: 'house', w, h, color: colors[randInt(0, 3)], details: Math.random() };
+    } else if (typeRoll < 0.8) {
+      // Tree
+      const w = rand(16, 28);
+      const h = rand(40, 80);
+      item = { x, type: 'tree', w, h, color: 'rgba(78, 203, 143, 0.15)', details: Math.random() };
+    } else {
+      // Antenna tower
+      const w = rand(8, 14);
+      const h = rand(80, 140);
+      item = { x, type: 'antenna', w, h, color: 'rgba(90, 184, 212, 0.12)', details: Math.random() };
+    }
+    items.push(item);
+    x += item.w + rand(30, 90);
+  }
+  return items;
+}
+
+function drawScenery(ctx: CanvasRenderingContext2D, scenery: SceneryItem[], offset: number) {
+  const parallaxOffset = offset * 0.3; // Slower than foreground for depth
+  const totalW = scenery.length > 0 ? scenery[scenery.length - 1].x + 120 : GAME_W * 3;
+
+  ctx.save();
+
+  for (const item of scenery) {
+    // Wrap x position for infinite scrolling
+    let drawX = ((item.x - parallaxOffset) % totalW + totalW) % totalW - 80;
+    if (drawX > GAME_W + 80) continue;
+
+    const baseY = GROUND_Y;
+
+    if (item.type === 'building') {
+      // Building silhouette
+      ctx.fillStyle = item.color;
+      ctx.fillRect(drawX, baseY - item.h, item.w, item.h);
+
+      // Window grid
+      ctx.fillStyle = 'rgba(78, 203, 143, 0.06)';
+      const windowW = 5;
+      const windowH = 6;
+      const cols = Math.floor((item.w - 8) / 10);
+      const rows = Math.floor((item.h - 12) / 14);
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          // Some windows "lit" based on details seed
+          if (Math.sin(item.details * 100 + r * 7 + c * 13) > 0.2) {
+            ctx.fillStyle = 'rgba(78, 203, 143, 0.08)';
+          } else {
+            ctx.fillStyle = 'rgba(155, 122, 204, 0.06)';
+          }
+          ctx.fillRect(drawX + 6 + c * 10, baseY - item.h + 8 + r * 14, windowW, windowH);
+        }
+      }
+
+      // Roofline accent
+      ctx.strokeStyle = 'rgba(78, 203, 143, 0.08)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(drawX, baseY - item.h);
+      ctx.lineTo(drawX + item.w, baseY - item.h);
+      ctx.stroke();
+
+    } else if (item.type === 'house') {
+      // House body
+      ctx.fillStyle = item.color;
+      ctx.fillRect(drawX, baseY - item.h, item.w, item.h);
+
+      // Pitched roof (triangle)
+      ctx.fillStyle = 'rgba(155, 122, 204, 0.08)';
+      ctx.beginPath();
+      ctx.moveTo(drawX - 4, baseY - item.h);
+      ctx.lineTo(drawX + item.w / 2, baseY - item.h - 18);
+      ctx.lineTo(drawX + item.w + 4, baseY - item.h);
+      ctx.closePath();
+      ctx.fill();
+
+      // Door
+      ctx.fillStyle = 'rgba(90, 184, 212, 0.08)';
+      ctx.fillRect(drawX + item.w / 2 - 4, baseY - 16, 8, 16);
+
+      // Window
+      ctx.fillStyle = 'rgba(212, 165, 74, 0.07)';
+      ctx.fillRect(drawX + 6, baseY - item.h + 10, 7, 7);
+      if (item.w > 40) {
+        ctx.fillRect(drawX + item.w - 13, baseY - item.h + 10, 7, 7);
+      }
+
+    } else if (item.type === 'tree') {
+      // Trunk
+      ctx.fillStyle = 'rgba(78, 203, 143, 0.08)';
+      const trunkW = item.w * 0.25;
+      ctx.fillRect(drawX + item.w / 2 - trunkW / 2, baseY - item.h * 0.4, trunkW, item.h * 0.4);
+
+      // Canopy (layered triangles)
+      ctx.fillStyle = item.color;
+      const layers = item.details > 0.5 ? 3 : 2;
+      for (let i = 0; i < layers; i++) {
+        const layerW = item.w * (1 - i * 0.15);
+        const layerH = item.h * 0.35;
+        const layerY = baseY - item.h * 0.4 - i * layerH * 0.55;
+        ctx.beginPath();
+        ctx.moveTo(drawX + item.w / 2 - layerW / 2, layerY);
+        ctx.lineTo(drawX + item.w / 2, layerY - layerH);
+        ctx.lineTo(drawX + item.w / 2 + layerW / 2, layerY);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+    } else if (item.type === 'antenna') {
+      // Tower pole
+      ctx.strokeStyle = item.color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(drawX + item.w / 2, baseY);
+      ctx.lineTo(drawX + item.w / 2, baseY - item.h);
+      ctx.stroke();
+
+      // Cross beams
+      ctx.lineWidth = 1;
+      const beams = Math.floor(item.h / 30);
+      for (let i = 1; i <= beams; i++) {
+        const by = baseY - (item.h * i / (beams + 1));
+        const bw = item.w * (1 - i / (beams + 2));
+        ctx.beginPath();
+        ctx.moveTo(drawX + item.w / 2 - bw, by);
+        ctx.lineTo(drawX + item.w / 2 + bw, by);
+        ctx.stroke();
+      }
+
+      // Blinking light at top
+      if (Math.sin(Date.now() * 0.003 + item.details * 10) > 0.3) {
+        ctx.fillStyle = 'rgba(218, 94, 116, 0.3)';
+        ctx.beginPath();
+        ctx.arc(drawX + item.w / 2, baseY - item.h, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  ctx.restore();
 }
 
 function drawGround(ctx: CanvasRenderingContext2D, offset: number) {
@@ -593,6 +763,8 @@ function createGameState(): GameState {
     meowBuffer: '',
     rainbowTimer: 0,
     particles: [],
+    scenery: generateScenery(),
+    sceneryOffset: 0,
   };
 }
 
@@ -653,6 +825,7 @@ function updateGame(state: GameState, dt: number, input: InputState, sound: Retu
   state.speed = Math.min(MAX_SPEED, state.speed + SPEED_INCREASE * effectiveDt);
   state.distance += effectiveSpeed * effectiveDt;
   state.groundOffset += effectiveSpeed * effectiveDt;
+  state.sceneryOffset = state.groundOffset;
 
   // Spawn obstacles
   state.obstacleTimer -= effectiveDt;
@@ -881,6 +1054,7 @@ export default function NeonCatRunner() {
           ctx.scale(dpr * scale, dpr * scale);
 
           drawBackground(ctx);
+          drawScenery(ctx, state.scenery, state.sceneryOffset);
           drawGround(ctx, state.groundOffset);
 
           // Draw tokens
@@ -944,6 +1118,7 @@ export default function NeonCatRunner() {
 
     if (phase === 'ready') {
       drawBackground(ctx);
+      drawScenery(ctx, gameRef.current.scenery, 0);
       drawGround(ctx, 0);
       drawCat(ctx, GROUND_Y - CAT_H, false, true, 0, false);
     }
