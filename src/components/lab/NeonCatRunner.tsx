@@ -1244,6 +1244,15 @@ export default function NeonCatRunner() {
     soundRef.current.setMuted(next);
   }, [muted]);
 
+  // ─── Overlay tap handler (overlays block canvas touch events) ──
+  const handleOverlayTap = useCallback(() => {
+    soundRef.current.setMuted(soundRef.current.isMuted()); // Ensure AudioContext is unlocked
+    if (phase === 'boot') { setBootLines(BOOT_LINES.map(l => l.text)); setPhase('ready'); }
+    else if (phase === 'ready') { gameRef.current = createGameState(); setPhase('playing'); }
+    else if (phase === 'paused') { setPhase('playing'); }
+    else if (phase === 'gameover') { gameRef.current = createGameState(); setPhase('playing'); }
+  }, [phase]);
+
   // ─── Render ────────────────────────────────────────────
   const overlayBase = 'absolute inset-0 flex flex-col items-center justify-center font-mono';
 
@@ -1266,7 +1275,7 @@ export default function NeonCatRunner() {
 
       {/* Boot sequence overlay */}
       {phase === 'boot' && (
-        <div class={`${overlayBase} bg-void/95 items-start p-6 md:p-12`}>
+        <div class={`${overlayBase} bg-void/95 items-start p-6 md:p-12 cursor-pointer`} onClick={handleOverlayTap}>
           <div class="text-sm md:text-base max-w-lg">
             {bootLines.map((line, i) => (
               <div key={i} class={`mb-1 ${i === 0 ? 'text-neon-green' : 'text-text-muted'}`}>
@@ -1276,24 +1285,24 @@ export default function NeonCatRunner() {
             <span class="text-neon-green animate-pulse">_</span>
           </div>
           <div class="mt-6 text-xs text-text-muted">
-            press any key to skip
+            tap or press any key to skip
           </div>
         </div>
       )}
 
       {/* Ready overlay */}
       {phase === 'ready' && (
-        <div class={`${overlayBase} bg-void/70`}>
-          <div class="text-2xl md:text-3xl text-text-bright font-bold glow-green mb-2">
+        <div class={`${overlayBase} bg-void/70 cursor-pointer px-4`} onClick={handleOverlayTap}>
+          <div class="text-lg md:text-3xl text-text-bright font-bold glow-green mb-1 md:mb-2">
             NEON CAT RUNNER
           </div>
-          <div class="text-sm text-text-muted mb-6">
+          <div class="text-xs md:text-sm text-text-muted mb-3 md:mb-6">
             collect tokens &middot; dodge obstacles &middot; don't hallucinate
           </div>
-          <div class="text-neon-green animate-pulse text-sm">
-            [SPACE] or [TAP] to start
+          <div class="text-neon-green animate-pulse text-xs md:text-sm">
+            [TAP] or [SPACE] to start
           </div>
-          <div class="mt-4 text-xs text-text-muted">
+          <div class="mt-2 md:mt-4 text-xs text-text-muted hidden md:block">
             SPACE / UP = jump &nbsp;&middot;&nbsp; DOWN = slide &nbsp;&middot;&nbsp; ESC = pause
           </div>
           {highScore > 0 && (
@@ -1306,7 +1315,7 @@ export default function NeonCatRunner() {
 
       {/* Paused overlay */}
       {phase === 'paused' && (
-        <div class={`${overlayBase} bg-void/80`}>
+        <div class={`${overlayBase} bg-void/80 cursor-pointer`} onClick={handleOverlayTap}>
           <div class="text-xl md:text-2xl text-neon-cyan font-bold glow-cyan mb-2">
             MODEL SUSPENDED
           </div>
@@ -1318,12 +1327,12 @@ export default function NeonCatRunner() {
 
       {/* Game over overlay */}
       {phase === 'gameover' && (
-        <div class={`${overlayBase} bg-void/85`}>
-          <div class="text-xl md:text-2xl text-neon-red font-bold mb-1" style="text-shadow: 0 0 12px rgba(218,94,116,0.5)">
+        <div class={`${overlayBase} bg-void/85 px-4`} onClick={handleOverlayTap}>
+          <div class="text-base md:text-2xl text-neon-red font-bold mb-1" style="text-shadow: 0 0 12px rgba(218,94,116,0.5)">
             TRAINING HALTED
           </div>
-          <div class="text-3xl md:text-4xl text-text-bright font-bold my-3">
-            {displayScore} <span class="text-lg text-neon-amber">tokens</span>
+          <div class="text-2xl md:text-4xl text-text-bright font-bold my-2 md:my-3">
+            {displayScore} <span class="text-sm md:text-lg text-neon-amber">tokens</span>
           </div>
           {displayStreak > 1 && (
             <div class="text-sm text-neon-green mb-1">
@@ -1335,7 +1344,7 @@ export default function NeonCatRunner() {
               NEW HIGH SCORE
             </div>
           )}
-          <div class="text-sm text-text-muted italic mb-6 max-w-xs text-center">
+          <div class="text-xs md:text-sm text-text-muted italic mb-3 md:mb-6 max-w-xs text-center">
             {commentary}
           </div>
           <div class="flex gap-4">
