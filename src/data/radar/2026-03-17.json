@@ -1,0 +1,116 @@
+{
+  "date": "2026-03-17",
+  "featured": [
+    {
+      "id": "ph-mistral-small-4",
+      "name": "Mistral Small 4",
+      "tagline": "119B-parameter MoE model unifying instruct, reasoning, and multimodal workloads.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Mistral's first attempt at a unified model that handles instruction following, reasoning, and multimodal tasks in one deployment. This consolidation approach could be the future of model releases rather than juggling multiple specialised variants. The 119B parameter count suggests they're going big to make it work.",
+      "ph_url": "https://www.marktechpost.com/2026/03/16/mistral-ai-releases-mistral-small-4-a-119b-parameter-moe-model-that-unifies-instruct-reasoning-and-multimodal-workloads/",
+      "maker": "Mistral AI",
+      "featured": true,
+      "added_at": "2026-03-17T06:00:00Z"
+    },
+    {
+      "id": "ph-waxal-dataset",
+      "name": "WAXAL",
+      "tagline": "Multilingual African speech dataset for training ASR and TTS models.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Google tackles the massive underrepresentation of African languages in speech AI training data. This addresses a real problem where most ASR systems fail spectacularly on anything outside English and major European languages. Could unlock speech tech for a billion people who've been waiting for models that actually understand them.",
+      "ph_url": "https://www.marktechpost.com/2026/03/17/google-ai-releases-waxal-a-multilingual-african-speech-dataset-for-training-automatic-speech-recognition-and-text-to-speech-models/",
+      "maker": "Google AI",
+      "featured": true,
+      "added_at": "2026-03-17T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-voygr-maps",
+      "name": "Voygr",
+      "tagline": "Maps API designed specifically for agents and AI applications.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, someone built mapping APIs with AI agents in mind instead of retrofitting human-focused tools. Traditional maps APIs weren't designed for the way agents consume location data. This could become essential infrastructure as location-aware agents become mainstream.",
+      "ph_url": "https://news.ycombinator.com/item?id=47401042",
+      "maker": "Voygr",
+      "featured": false,
+      "added_at": "2026-03-17T06:30:00Z"
+    },
+    {
+      "id": "ph-picsart-agent-marketplace",
+      "name": "Picsart AI Agent Marketplace",
+      "tagline": "Creator platform for hiring specialised AI assistants through an agent marketplace.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Picsart is betting that creators want specialist AI workers rather than one generic assistant. The marketplace model makes sense when different creative tasks need different AI expertise. We'll see if creators actually want to manage multiple AI employees or prefer one smart generalist.",
+      "ph_url": "https://techcrunch.com/2026/03/16/picsart-now-allows-creators-to-hire-ai-assistants-through-agent-marketplace/",
+      "maker": "Picsart",
+      "featured": false,
+      "added_at": "2026-03-17T06:45:00Z"
+    },
+    {
+      "id": "ph-memories-ai",
+      "name": "Memories AI",
+      "tagline": "Visual memory layer for wearables and robotics with large visual memory model.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Building the memory stack that physical AI actually needs rather than retrofitting text-based systems. The visual memory model approach could solve the hard problem of robots and wearables remembering and retrieving from continuous video streams. This is infrastructure that becomes critical as AI moves into physical devices.",
+      "ph_url": "https://techcrunch.com/2026/03/16/memories-ai-is-building-the-visual-memory-layer-for-wearables-and-robotics/",
+      "maker": "Memories AI",
+      "featured": false,
+      "added_at": "2026-03-17T07:00:00Z"
+    },
+    {
+      "id": "ph-apideck-cli",
+      "name": "Apideck CLI",
+      "tagline": "AI-agent interface with lower context consumption than MCP.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "MCP's context consumption problem is real and this addresses it head-on with a CLI approach. If you're building agents that need to interact with APIs without burning through context windows, this could be essential. Smart move to position against MCP's known weakness.",
+      "ph_url": "https://www.apideck.com/blog/mcp-server-eating-context-window-cli-alternative",
+      "maker": "Apideck",
+      "featured": false,
+      "added_at": "2026-03-17T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Claude Code skills that build complete Godot games",
+      "points": 247,
+      "comments": 155,
+      "summary": "Custom Claude skills that can generate complete Godot game projects from prompts. Shows the potential of specialised AI coding tools for game development workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47400868"
+    },
+    {
+      "title": "Nvidia Launches Vera CPU, Purpose-Built for Agentic AI",
+      "points": 156,
+      "comments": 92,
+      "summary": "Nvidia announces a new CPU architecture specifically designed for AI agent workloads. Represents a shift from GPU-centric AI infrastructure to more balanced compute architectures.",
+      "hn_url": "https://news.ycombinator.com/item?id=47404074"
+    },
+    {
+      "title": "Apideck CLI \u2013 An AI-agent interface with much lower context consumption than MCP",
+      "points": 128,
+      "comments": 108,
+      "summary": "Alternative to Model Context Protocol that reduces context window usage when agents interact with APIs. Addresses a real performance bottleneck in current agent architectures.",
+      "hn_url": "https://news.ycombinator.com/item?id=47400261"
+    },
+    {
+      "title": "Launch HN: Voygr (YC W26) \u2013 A better maps API for agents and AI apps",
+      "points": 73,
+      "comments": 57,
+      "summary": "Maps API designed specifically for AI agents rather than human interfaces. Could become essential infrastructure as location-aware agents become mainstream.",
+      "hn_url": "https://news.ycombinator.com/item?id=47401042"
+    },
+    {
+      "title": "Launch HN: Chamber (YC W26) \u2013 An AI Teammate for GPU Infrastructure",
+      "points": 24,
+      "comments": 6,
+      "summary": "AI assistant for managing GPU infrastructure and compute resources. Tackles the operational complexity of running AI workloads at scale.",
+      "hn_url": "https://news.ycombinator.com/item?id=47401766"
+    }
+  ]
+}

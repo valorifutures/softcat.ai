@@ -173,6 +173,18 @@
         "AgentMailr",
         "Buxo.ai"
       ]
+    },
+    {
+      "date": "2026-03-17",
+      "file": "2026-03-17.json",
+      "products": [
+        "Mistral Small 4",
+        "WAXAL",
+        "Voygr",
+        "Picsart AI Agent Marketplace",
+        "Memories AI",
+        "Apideck CLI"
+      ]
     }
   ]
 }
