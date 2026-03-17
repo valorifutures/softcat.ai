@@ -1189,15 +1189,18 @@ export default function NeonCatRunner() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    let swipedDown = false;
+
     function onTouchStart(e: TouchEvent) {
       e.preventDefault();
       const touch = e.touches[0];
       touchStartRef.current = { y: touch.clientY, time: Date.now() };
+      swipedDown = false;
 
       if (phase === 'boot') { setBootLines(BOOT_LINES.map(l => l.text)); setPhase('ready'); }
       else if (phase === 'ready') { gameRef.current = createGameState(); setPhase('playing'); }
       else if (phase === 'paused') { setPhase('playing'); }
-      else if (phase === 'playing') { inputRef.current.jumpPressed = true; }
+      // Don't trigger jump here — wait for touchend to distinguish tap from swipe
     }
 
     function onTouchMove(e: TouchEvent) {
@@ -1205,14 +1208,18 @@ export default function NeonCatRunner() {
       if (!touchStartRef.current) return;
       const touch = e.touches[0];
       if (touch.clientY - touchStartRef.current.y > 30) {
+        swipedDown = true;
         inputRef.current.slideHeld = true;
-        inputRef.current.jumpPressed = false; // Cancel jump if swiping down
       }
     }
 
     function onTouchEnd(e: TouchEvent) {
       e.preventDefault();
+      if (phase === 'playing' && !swipedDown) {
+        inputRef.current.jumpPressed = true;
+      }
       inputRef.current.slideHeld = false;
+      swipedDown = false;
       touchStartRef.current = null;
     }
 
