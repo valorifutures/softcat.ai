@@ -387,5 +387,52 @@
     "output_files": [
       "src/content/thoughts/2026-03-16-governance-systems-are-just-enterprise-bureaucracy-with-llm-.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-03-16T09:30:48.883636+00:00",
+    "status": "success",
+    "duration_s": 47.8,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0724,
+    "input_tokens": 11261,
+    "output_tokens": 2574,
+    "output_files": [
+      "src/data/radar/2026-03-16.json"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-17T04:00:01.696200+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 345,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-17T06:00:01.974695+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 345,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
