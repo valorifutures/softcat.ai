@@ -109,6 +109,11 @@
       "date": "2026-03-17",
       "file": "2026-03-17-residual-connections-are-holding-transformers-back.md",
       "title": "Residual connections are holding transformers back"
+    },
+    {
+      "date": "2026-03-18",
+      "file": "2026-03-18-context-databases-are-just-filesystems-pretending-to-be-revo.md",
+      "title": "Context databases are just filesystems pretending to be revolutionary"
     }
   ]
 }
