@@ -47,6 +47,18 @@
       "file": "llm-response-quality-validator.md",
       "title": "LLM Response Quality Validator",
       "category": "testing"
+    },
+    {
+      "date": "2026-03-18",
+      "file": "agent-runtime-security-hardening.md",
+      "title": "Agent Runtime Security Hardening",
+      "category": "security"
+    },
+    {
+      "date": "2026-03-18",
+      "file": "model-performance-regression-detector.md",
+      "title": "Model Performance Regression Detector",
+      "category": "testing"
     }
   ]
 }
