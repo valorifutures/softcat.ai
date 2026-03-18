@@ -50,15 +50,15 @@
     },
     {
       "date": "2026-03-18",
-      "file": "agent-runtime-security-hardening.md",
-      "title": "Agent Runtime Security Hardening",
+      "file": "ai-agent-runtime-environment-validator.md",
+      "title": "AI Agent Runtime Environment Validator",
       "category": "security"
     },
     {
       "date": "2026-03-18",
-      "file": "model-performance-regression-detector.md",
-      "title": "Model Performance Regression Detector",
-      "category": "testing"
+      "file": "enterprise-ai-agent-governance-framework.md",
+      "title": "Enterprise AI Agent Governance Framework",
+      "category": "agent-design"
     }
   ]
 }
