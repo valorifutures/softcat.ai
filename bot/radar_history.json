@@ -185,6 +185,16 @@
         "Memories AI",
         "Apideck CLI"
       ]
+    },
+    {
+      "date": "2026-03-18",
+      "file": "2026-03-18.json",
+      "products": [
+        "OpenShell",
+        "Unsloth Studio",
+        "EnterpriseOps-Gym",
+        "FireClaw"
+      ]
     }
   ]
 }
