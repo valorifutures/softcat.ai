@@ -12,7 +12,7 @@ interface Obstacle {
   y: number;
   w: number;
   h: number;
-  type: 'rate-limit' | 'hallucination' | 'overfit';
+  type: 'rate-limit' | 'hallucination' | 'overfit' | 'guardrail';
 }
 
 interface Token {
@@ -558,6 +558,58 @@ function drawCat(ctx: CanvasRenderingContext2D, y: number, sliding: boolean, gro
 }
 
 function drawObstacle(ctx: CanvasRenderingContext2D, obs: Obstacle) {
+  // Guardrail gets its own drawing style
+  if (obs.type === 'guardrail') {
+    ctx.save();
+    const color = C.red;
+
+    // Faint neon fill
+    ctx.globalAlpha = 0.07;
+    ctx.fillStyle = color;
+    ctx.fillRect(obs.x, obs.y, obs.w, obs.h);
+
+    // Hazard stripes (diagonal lines)
+    ctx.globalAlpha = 0.15;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1;
+    const step = 12;
+    for (let i = -obs.h; i < obs.w + obs.h; i += step) {
+      ctx.beginPath();
+      ctx.moveTo(obs.x + i, obs.y + obs.h);
+      ctx.lineTo(obs.x + i + obs.h, obs.y);
+      ctx.stroke();
+    }
+
+    // Side rails
+    ctx.globalAlpha = 0.4;
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 6;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(obs.x, obs.y);
+    ctx.lineTo(obs.x, obs.y + obs.h);
+    ctx.moveTo(obs.x + obs.w, obs.y);
+    ctx.lineTo(obs.x + obs.w, obs.y + obs.h);
+    ctx.stroke();
+
+    // "GUARDRAIL" label (vertical, repeated)
+    ctx.shadowBlur = 4;
+    ctx.globalAlpha = 0.5;
+    ctx.fillStyle = color;
+    ctx.font = 'bold 8px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center';
+    const labelY = obs.y + obs.h - 30;
+    ctx.save();
+    ctx.translate(obs.x + obs.w / 2, labelY);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('GUARDRAIL', 0, 3);
+    ctx.restore();
+
+    ctx.restore();
+    return;
+  }
+
   const colors: Record<string, string> = {
     'rate-limit': C.red,
     'hallucination': C.purple,
@@ -838,8 +890,10 @@ function updateGame(state: GameState, dt: number, input: InputState, sound: Retu
       // Ground obstacle — jump over
       obs = { x: GAME_W + 20, y: GROUND_Y - 45, w: 30, h: 45, type };
     } else if (type === 'hallucination') {
-      // Air obstacle — slide under
-      obs = { x: GAME_W + 20, y: GROUND_Y - CAT_H - 10, w: 40, h: 22, type };
+      // Air obstacle — slide under, with guardrail above blocking jumps
+      const hallY = GROUND_Y - CAT_H - 10;
+      obs = { x: GAME_W + 20, y: hallY, w: 40, h: 22, type };
+      state.obstacles.push({ x: GAME_W + 20, y: 0, w: 40, h: hallY, type: 'guardrail' });
     } else {
       // Tall obstacle — must jump early
       obs = { x: GAME_W + 20, y: GROUND_Y - 65, w: 25, h: 65, type };
