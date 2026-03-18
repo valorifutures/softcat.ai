@@ -839,7 +839,7 @@ function updateGame(state: GameState, dt: number, input: InputState, sound: Retu
       obs = { x: GAME_W + 20, y: GROUND_Y - 45, w: 30, h: 45, type };
     } else if (type === 'hallucination') {
       // Air obstacle — slide under
-      obs = { x: GAME_W + 20, y: GROUND_Y - CAT_H - 20, w: 40, h: 22, type };
+      obs = { x: GAME_W + 20, y: GROUND_Y - CAT_H - 10, w: 40, h: 22, type };
     } else {
       // Tall obstacle — must jump early
       obs = { x: GAME_W + 20, y: GROUND_Y - 65, w: 25, h: 65, type };
@@ -1356,13 +1356,13 @@ export default function NeonCatRunner() {
           </div>
           <div class="flex gap-4">
             <button
-              onClick={() => { gameRef.current = createGameState(); setPhase('playing'); }}
+              onClick={(e) => { e.stopPropagation(); gameRef.current = createGameState(); setPhase('playing'); }}
               class="px-5 py-2 bg-surface border border-neon-green/40 rounded-lg font-mono text-sm text-neon-green hover:bg-neon-green/10 hover:border-neon-green/70 transition-all"
             >
               &gt; retry
             </button>
             <button
-              onClick={shareScore}
+              onClick={(e) => { e.stopPropagation(); shareScore(); }}
               class="px-5 py-2 bg-surface border border-neon-cyan/40 rounded-lg font-mono text-sm text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan/70 transition-all"
             >
               &gt; share
