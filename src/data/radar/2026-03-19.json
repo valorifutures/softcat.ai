@@ -1,0 +1,128 @@
+{
+  "date": "2026-03-19",
+  "featured": [
+    {
+      "id": "ph-mamba-3",
+      "name": "Mamba-3",
+      "tagline": "State space model with 2x smaller states and enhanced MIMO decoding efficiency.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Carnegie Mellon and Princeton researchers are pushing beyond Transformers with a model that cuts memory requirements while boosting inference efficiency. State space models could finally challenge the Transformer monopoly at scale. The 2x state compression is clever engineering that actually matters for deployment.",
+      "ph_url": "https://www.marktechpost.com/2026/03/18/meet-mamba-3-a-new-state-space-model-frontier-with-2x-smaller-states-and-enhanced-mimo-decoding-hardware-efficiency/",
+      "maker": "Carnegie Mellon University, Princeton University, Together",
+      "featured": true,
+      "added_at": "2026-03-19T06:00:00Z"
+    },
+    {
+      "id": "ph-qianfan-ocr",
+      "name": "Qianfan-OCR",
+      "tagline": "4B-parameter unified document intelligence model for end-to-end document parsing.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Baidu finally cracked the document parsing problem with a single model that goes straight from image to Markdown. Most OCR pipelines are still chaining multiple models together like it's 2019. This unified approach could kill the traditional multi-stage document processing stack.",
+      "ph_url": "https://www.marktechpost.com/2026/03/18/baidu-qianfan-team-releases-qianfan-ocr-a-4b-parameter-unified-document-intelligence-model/",
+      "maker": "Baidu Qianfan Team",
+      "featured": true,
+      "added_at": "2026-03-19T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-rebel-audio",
+      "name": "Rebel Audio",
+      "tagline": "All-in-one AI podcasting tool for recording, editing, clipping, and publishing.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Another AI podcasting platform joins the crowded creator tools space. The all-in-one pitch sounds familiar, but first-time creators might appreciate not juggling multiple apps. Success will depend on whether the AI editing actually works or just creates more work.",
+      "ph_url": "https://techcrunch.com/2026/03/18/rebel-audio-is-a-new-ai-podcasting-tool-aimed-at-first-time-creators/",
+      "maker": "Rebel Audio",
+      "featured": false,
+      "added_at": "2026-03-19T06:30:00Z"
+    },
+    {
+      "id": "ph-multiverse-compressed",
+      "name": "Multiverse Compressed Models",
+      "tagline": "Compressed versions of models from OpenAI, Meta, DeepSeek and Mistral via app and API.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Multiverse Computing is bringing quantum-inspired compression techniques to mainstream AI deployment. If their compressed models actually maintain performance while cutting resource requirements, this could matter for edge deployment. The proof will be in real-world benchmarks, not just demos.",
+      "ph_url": "https://techcrunch.com/2026/03/19/multiverse-computing-pushes-its-compressed-ai-models-into-the-mainstream/",
+      "maker": "Multiverse Computing",
+      "featured": false,
+      "added_at": "2026-03-19T06:30:00Z"
+    },
+    {
+      "id": "ph-google-stitch",
+      "name": "Google Stitch",
+      "tagline": "AI design platform that converts plain text into clickable user interfaces.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Google Labs is pushing text-to-UI generation beyond simple wireframes to actual clickable prototypes. Voice input adds another layer of accessibility for non-designers. This could genuinely democratise interface design if it moves past the usual AI design tool limitations.",
+      "ph_url": "https://the-decoder.com/google-labs-turns-stitch-into-a-full-ai-design-platform-that-converts-plain-text-into-user-interfaces/",
+      "maker": "Google Labs",
+      "featured": false,
+      "added_at": "2026-03-19T06:30:00Z"
+    },
+    {
+      "id": "ph-sashiko",
+      "name": "Sashiko",
+      "tagline": "Agentic AI code review system for the Linux kernel.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Google engineers are applying AI agents to Linux kernel code review, one of the most demanding codebases in existence. If it can handle kernel-level complexity and maintainer standards, it might actually be useful for enterprise code review. This is a proper stress test for AI coding tools.",
+      "ph_url": "https://www.phoronix.com/news/Sashiko-Linux-AI-Code-Review",
+      "maker": "Google Engineers",
+      "featured": false,
+      "added_at": "2026-03-19T06:30:00Z"
+    },
+    {
+      "id": "ph-lucidshark",
+      "name": "LucidShark",
+      "tagline": "Quality pipeline for AI coding agents.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Finally, someone is tackling the quality control problem for AI-generated code at scale. As coding agents become more common, we need better ways to validate their output before it hits production. This addresses a real infrastructure gap that most teams are solving with ad-hoc scripts.",
+      "ph_url": "https://lucidshark.com",
+      "maker": "LucidShark",
+      "featured": false,
+      "added_at": "2026-03-19T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Warranty Void If Regenerated",
+      "points": 325,
+      "comments": 185,
+      "summary": "A critical examination of how AI-generated content is reshaping software warranties and liability. The piece explores what happens when AI systems modify or regenerate code that was originally under warranty.",
+      "hn_url": "https://news.ycombinator.com/item?id=47431237"
+    },
+    {
+      "title": "Google Engineers Launch \"Sashiko\" for Agentic AI Code Review of the Linux Kernel",
+      "points": 93,
+      "comments": 46,
+      "summary": "Google engineers have released Sashiko, an AI agent designed specifically for reviewing Linux kernel code. This represents one of the most ambitious applications of AI code review to date, targeting the complexity of kernel-level development.",
+      "hn_url": "https://news.ycombinator.com/item?id=47427647"
+    },
+    {
+      "title": "A BEAM-native personal autonomous AI agent built on Elixir/OTP",
+      "points": 22,
+      "comments": 0,
+      "summary": "AlexClaw is a personal AI agent built using Elixir and the BEAM virtual machine. It leverages OTP's fault-tolerance patterns to create more reliable autonomous agent behaviour.",
+      "hn_url": "https://news.ycombinator.com/item?id=47431883"
+    },
+    {
+      "title": "Show HN: LucidShark - Quality pipeline for AI coding agents",
+      "points": 9,
+      "comments": 1,
+      "summary": "A new tool focused on quality control for AI-generated code. LucidShark provides pipeline infrastructure to validate and test code produced by AI coding agents before deployment.",
+      "hn_url": "https://news.ycombinator.com/item?id=47424142"
+    },
+    {
+      "title": "Show HN: VMetal \u2013 run a GPU cloud on bare metal without OpenStack",
+      "points": 9,
+      "comments": 0,
+      "summary": "VMetal offers a simpler approach to GPU cloud infrastructure by bypassing OpenStack complexity. The platform focuses on bare metal GPU access for AI workloads without traditional cloud orchestration overhead.",
+      "hn_url": "https://news.ycombinator.com/item?id=47433599"
+    }
+  ]
+}
