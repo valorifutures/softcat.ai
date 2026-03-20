@@ -660,5 +660,52 @@
     "output_files": [
       "src/content/thoughts/2026-03-19-security-frameworks-are-just-theatre-for-the-real-problem.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-03-19T09:30:56.421898+00:00",
+    "status": "success",
+    "duration_s": 51.4,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 60,
+    "items_published": 7,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0721,
+    "input_tokens": 11028,
+    "output_tokens": 2602,
+    "output_files": [
+      "src/data/radar/2026-03-19.json"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-20T04:00:02.307687+00:00",
+    "status": "success",
+    "duration_s": 0.5,
+    "feeds_scanned": 0,
+    "items_found": 350,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-20T06:00:02.213431+00:00",
+    "status": "success",
+    "duration_s": 0.5,
+    "feeds_scanned": 0,
+    "items_found": 350,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
