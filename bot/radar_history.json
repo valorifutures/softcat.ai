@@ -208,6 +208,17 @@
         "Sashiko",
         "LucidShark"
       ]
+    },
+    {
+      "date": "2026-03-20",
+      "file": "2026-03-20.json",
+      "products": [
+        "LiteParse",
+        "Colab MCP Server",
+        "MAI-Image-2",
+        "Composer 2",
+        "Altimate Code"
+      ]
     }
   ]
 }
