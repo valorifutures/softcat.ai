@@ -1,0 +1,90 @@
+{
+  "date": "2026-03-21",
+  "featured": [
+    {
+      "id": "ph-nemotron-cascade-2",
+      "name": "Nemotron-Cascade 2",
+      "tagline": "Open 30B MoE model with 3B active parameters delivering frontier-level reasoning.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "NVIDIA's latest open-weight model achieves Gold Medal performance in competitive programming with just 3B active parameters. This 'intelligence density' approach could reshape how we think about model efficiency versus capability. The MoE architecture makes frontier-level reasoning accessible to smaller deployments.",
+      "ph_url": "https://www.marktechpost.com/2026/03/20/nvidia-releases-nemotron-cascade-2-an-open-30b-moe-with-3b-active-parameters-delivering-better-reasoning-and-strong-agentic-capabilities/",
+      "maker": "NVIDIA",
+      "featured": true,
+      "added_at": "2026-03-21T06:00:00Z"
+    },
+    {
+      "id": "ph-opencode",
+      "name": "OpenCode",
+      "tagline": "Open source AI coding agent for autonomous development workflows.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "An interesting push towards fully autonomous coding agents rather than just code completion. The open source approach means we can actually see what's under the hood, which is refreshing in a world of black box coding assistants. Getting significant HackerNews attention suggests developers are ready for the next step beyond Copilot-style tools.",
+      "ph_url": "https://opencode.ai/",
+      "maker": "Unknown",
+      "featured": true,
+      "added_at": "2026-03-21T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-clawteam",
+      "name": "ClawTeam",
+      "tagline": "Open-source multi-agent swarm orchestration framework with OpenAI function calling.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "HKUDS is pushing agent swarm intelligence with leader-worker coordination and shared task boards. The automatic dependency resolution and OpenAI function calling integration makes this more than just another multi-agent experiment. Worth watching as agent orchestration becomes a key battleground.",
+      "ph_url": "https://www.marktechpost.com/2026/03/20/a-coding-implementation-showcasing-clawteams-multi-agent-swarm-orchestration-with-openai-function-calling/",
+      "maker": "HKUDS",
+      "featured": false,
+      "added_at": "2026-03-21T06:30:00Z"
+    },
+    {
+      "id": "ph-wordpress-ai-agents",
+      "name": "WordPress.com AI Agents",
+      "tagline": "AI agents that can write and publish WordPress posts autonomously.",
+      "logo_url": "",
+      "category": "AI Writing",
+      "why_radar": "WordPress opening up to autonomous AI publishing could flood the web with machine-generated content. The democratisation of publishing through AI agents lowers barriers but raises questions about content quality and authenticity. This feels like a significant shift in how the web gets populated.",
+      "ph_url": "https://techcrunch.com/2026/03/20/wordpress-com-now-lets-ai-agents-write-and-publish-posts-and-more/",
+      "maker": "WordPress.com",
+      "featured": false,
+      "added_at": "2026-03-21T06:45:00Z"
+    },
+    {
+      "id": "ph-rover",
+      "name": "Rover",
+      "tagline": "Turn any web interface into an AI agent with one script tag.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "The promise of adding AI agent capabilities to any website with a single script tag is compelling. If this actually works reliably, it could be a game changer for web automation. The simplicity of the approach is either brilliant or too good to be true.",
+      "ph_url": "https://github.com/rtrvr-ai/rover",
+      "maker": "rtrvr-ai",
+      "featured": false,
+      "added_at": "2026-03-21T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "OpenCode \u2013 Open source AI coding agent",
+      "points": 769,
+      "comments": 344,
+      "summary": "Open source autonomous coding agent that goes beyond code completion to handle full development workflows. Strong community interest suggests developers want transparency in their AI coding tools.",
+      "hn_url": "https://news.ycombinator.com/item?id=47460525"
+    },
+    {
+      "title": "Launch HN: Sitefire (YC W26) \u2013 Automating actions to improve AI visibility",
+      "points": 33,
+      "comments": 26,
+      "summary": "YC startup focused on automating SEO and content optimisation for AI-driven visibility. Part of the growing trend of AI tools helping businesses adapt to an AI-dominated search landscape.",
+      "hn_url": "https://news.ycombinator.com/item?id=47457472"
+    },
+    {
+      "title": "Show HN: LiteParse, a fast open-source document parser for AI agents",
+      "points": 11,
+      "comments": 0,
+      "summary": "Fast document parsing tool specifically designed for AI agent workflows. Addresses the common bottleneck of getting structured data from PDFs and documents into AI pipelines.",
+      "hn_url": "https://news.ycombinator.com/item?id=47457128"
+    }
+  ]
+}
