@@ -741,5 +741,53 @@
     "output_files": [
       "src/content/thoughts/2026-03-20-infrastructure-abstractions-are-the-real-ai-safety-problem.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-03-20T09:30:46.863985+00:00",
+    "status": "success",
+    "duration_s": 46.3,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0657,
+    "input_tokens": 11036,
+    "output_tokens": 2170,
+    "output_files": [
+      "src/data/radar/2026-03-20.json"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-21T04:00:02.532364+00:00",
+    "status": "error",
+    "duration_s": 0.5,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 128."
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-21T06:00:01.994087+00:00",
+    "status": "success",
+    "duration_s": 0.5,
+    "feeds_scanned": 0,
+    "items_found": 350,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
