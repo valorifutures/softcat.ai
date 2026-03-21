@@ -124,6 +124,11 @@
       "date": "2026-03-20",
       "file": "2026-03-20-infrastructure-abstractions-are-the-real-ai-safety-problem.md",
       "title": "Infrastructure abstractions are the real AI safety problem"
+    },
+    {
+      "date": "2026-03-21",
+      "file": "2026-03-21-agent-swarms-are-just-distributed-systems-with-commitment-is.md",
+      "title": "Agent swarms are just distributed systems with commitment issues"
     }
   ]
 }
