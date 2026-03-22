@@ -823,5 +823,52 @@
     "output_files": [
       "src/content/thoughts/2026-03-21-agent-swarms-are-just-distributed-systems-with-commitment-is.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-03-21T09:30:48.861957+00:00",
+    "status": "success",
+    "duration_s": 43.8,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0615,
+    "input_tokens": 11138,
+    "output_tokens": 1872,
+    "output_files": [
+      "src/data/radar/2026-03-21.json"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-22T04:00:01.855884+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 352,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-22T06:00:01.496765+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 352,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
