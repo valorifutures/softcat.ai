@@ -921,5 +921,22 @@
     "output_files": [
       "src/content/thoughts/2026-03-22-confidence-scores-are-just-anxiety-for-algorithms.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-03-22T09:30:49.255290+00:00",
+    "status": "success",
+    "duration_s": 43.7,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0613,
+    "input_tokens": 11101,
+    "output_tokens": 1867,
+    "output_files": [
+      "src/data/radar/2026-03-22.json"
+    ]
   }
 ]
