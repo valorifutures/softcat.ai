@@ -887,5 +887,22 @@
     "output_files": [
       "src/content/tools/2026-03-22-liteparse.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-03-22T07:00:26.235903+00:00",
+    "status": "success",
+    "duration_s": 25.2,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0313,
+    "input_tokens": 7593,
+    "output_tokens": 570,
+    "output_files": [
+      "src/content/news-and-updates/2026-03-22-ai-digest.md"
+    ]
   }
 ]
