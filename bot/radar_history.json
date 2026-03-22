@@ -230,6 +230,17 @@
         "WordPress.com AI Agents",
         "Rover"
       ]
+    },
+    {
+      "date": "2026-03-22",
+      "file": "2026-03-22.json",
+      "products": [
+        "ClawRun",
+        "Vessel Browser",
+        "Research Claw",
+        "Autoskill",
+        "MotionCanvas Agent Skills"
+      ]
     }
   ]
 }
