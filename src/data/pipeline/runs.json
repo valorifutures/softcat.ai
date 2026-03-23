@@ -938,5 +938,52 @@
     "output_files": [
       "src/data/radar/2026-03-22.json"
     ]
+  },
+  {
+    "bot": "tool_bot",
+    "timestamp": "2026-03-22T10:00:18.422274+00:00",
+    "status": "success",
+    "duration_s": 16.4,
+    "feeds_scanned": 4,
+    "items_found": 30,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.018,
+    "input_tokens": 4326,
+    "output_tokens": 334,
+    "output_files": [
+      "src/content/tools/2026-03-22-google-colab-mcp-server.md"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-23T04:00:02.253510+00:00",
+    "status": "success",
+    "duration_s": 0.5,
+    "feeds_scanned": 0,
+    "items_found": 349,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-23T06:00:02.158984+00:00",
+    "status": "success",
+    "duration_s": 0.5,
+    "feeds_scanned": 0,
+    "items_found": 349,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
