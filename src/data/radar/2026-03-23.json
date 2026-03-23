@@ -1,0 +1,104 @@
+{
+  "date": "2026-03-23",
+  "featured": [
+    {
+      "id": "ph-mimo-ai-models",
+      "name": "MiMo AI Models",
+      "tagline": "Three specialised AI models for agents, robots, and voice interfaces.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Xiaomi's making a proper play for the AI agent stack with three purpose-built models. They're targeting software control, robotics, and voice - the trinity of autonomous systems. Smart positioning against the generic LLM crowd.",
+      "ph_url": "https://the-decoder.com/xiaomi-launches-three-mimo-ai-models-to-power-agents-robots-and-voice/",
+      "maker": "Xiaomi",
+      "featured": true,
+      "added_at": "2026-03-23T06:00:00Z"
+    },
+    {
+      "id": "ph-agent-kernel",
+      "name": "Agent Kernel",
+      "tagline": "Three Markdown files that make any AI agent stateful.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "The simplicity is brilliant - just three markdown files to give agents persistent memory. No complex databases, no vendor lock-in. Sometimes the best infrastructure is the kind you barely notice.",
+      "ph_url": "https://github.com/oguzbilgic/agent-kernel",
+      "maker": "oguzbilgic",
+      "featured": true,
+      "added_at": "2026-03-23T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-agentverse-social",
+      "name": "AgentVerse",
+      "tagline": "Open social network for AI agents to interact and collaborate.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "AI agents talking to other AI agents without human intervention - we're entering properly autonomous territory. The social layer could be where agent swarms finally click. Worth watching how the interaction protocols develop.",
+      "ph_url": "https://nickakre.github.io/agentverse-social/",
+      "maker": "nickakre",
+      "featured": false,
+      "added_at": "2026-03-23T06:30:00Z"
+    },
+    {
+      "id": "ph-multihead",
+      "name": "MultiHead",
+      "tagline": "Turn one GPU into a team of specialised AI agents.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "GPU sharing for agent teams makes economic sense when you're running multiple specialised models. The resource optimisation angle is clever. Could be game-changing for smaller teams running agent swarms on limited hardware.",
+      "ph_url": "https://github.com/axsar/multihead",
+      "maker": "axsar",
+      "featured": false,
+      "added_at": "2026-03-23T06:45:00Z"
+    },
+    {
+      "id": "ph-shep-ai-cli",
+      "name": "Shep AI CLI",
+      "tagline": "Local UI for managing parallel AI coding agents.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Managing multiple coding agents in parallel is the new bottleneck as teams scale up AI development. Local control means no API costs or data leaks. The tooling layer is finally catching up to agent complexity.",
+      "ph_url": "https://github.com/shep-ai/cli",
+      "maker": "shep-ai",
+      "featured": false,
+      "added_at": "2026-03-23T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Agent Kernel \u2013 Three Markdown files that make any AI agent stateful",
+      "points": 8,
+      "comments": 1,
+      "summary": "A minimal approach to giving AI agents persistent memory using just three markdown files. No complex databases or infrastructure required - elegant simplicity for agent state management.",
+      "hn_url": "https://news.ycombinator.com/item?id=47486287"
+    },
+    {
+      "title": "Show HN: AgentVerse \u2013 Open social network for AI agents",
+      "points": 4,
+      "comments": 1,
+      "summary": "An open platform where AI agents can interact and collaborate with each other autonomously. Creates a social layer for agent-to-agent communication without human intervention.",
+      "hn_url": "https://news.ycombinator.com/item?id=47484562"
+    },
+    {
+      "title": "MultiHead: Turn one GPU into a team of specialized AI agents",
+      "points": 4,
+      "comments": 0,
+      "summary": "Resource optimisation tool that allows multiple specialised AI agents to share a single GPU efficiently. Addresses the hardware bottleneck for teams running agent swarms on limited resources.",
+      "hn_url": "https://news.ycombinator.com/item?id=47478864"
+    },
+    {
+      "title": "Local UI for managing parallel AI coding agents",
+      "points": 4,
+      "comments": 0,
+      "summary": "Management interface for coordinating multiple AI coding agents working in parallel. Provides local control to avoid API costs and data privacy concerns.",
+      "hn_url": "https://news.ycombinator.com/item?id=47481574"
+    },
+    {
+      "title": "Ask HN: How are you securing LLM code agents?",
+      "points": 3,
+      "comments": 4,
+      "summary": "Community discussion about security practices for LLM-powered coding agents. Highlights growing concerns about agent security as they become more autonomous and capable.",
+      "hn_url": "https://news.ycombinator.com/item?id=47476589"
+    }
+  ]
+}

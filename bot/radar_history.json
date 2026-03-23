@@ -241,6 +241,17 @@
         "Autoskill",
         "MotionCanvas Agent Skills"
       ]
+    },
+    {
+      "date": "2026-03-23",
+      "file": "2026-03-23.json",
+      "products": [
+        "MiMo AI Models",
+        "Agent Kernel",
+        "AgentVerse",
+        "MultiHead",
+        "Shep AI CLI"
+      ]
     }
   ]
 }
