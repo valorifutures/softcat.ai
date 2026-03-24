@@ -1,0 +1,104 @@
+{
+  "date": "2026-03-24",
+  "featured": [
+    {
+      "id": "ph-uni-1",
+      "name": "Uni-1",
+      "tagline": "Autoregressive transformer that reasons through intentions before generating images.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Luma Labs just shifted the entire image generation paradigm from pixel probability to structured reasoning. Instead of diffusion's spray-and-pray approach, Uni-1 actually thinks through what it wants to create before making pixels. This could be the breakthrough that makes AI image generation actually reliable.",
+      "ph_url": "https://www.marktechpost.com/2026/03/23/luma-labs-launches-uni-1-the-autoregressive-transformer-model-that-reasons-through-intentions-before-generating-images/",
+      "maker": "Luma Labs",
+      "featured": true,
+      "added_at": "2026-03-24T06:00:00Z"
+    },
+    {
+      "id": "ph-cq",
+      "name": "Cq",
+      "tagline": "Stack Overflow for AI coding agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Mozilla's tackling the fundamental problem of agent knowledge sharing. When your AI coding assistant hits a wall, it can now crowdsource solutions from other agents' experiences. This could be the missing piece that transforms isolated AI coders into a collaborative network.",
+      "ph_url": "https://blog.mozilla.ai/cq-stack-overflow-for-agents/",
+      "maker": "Mozilla AI",
+      "featured": true,
+      "added_at": "2026-03-24T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-proofshot",
+      "name": "ProofShot",
+      "tagline": "Give AI coding agents eyes to verify the UI they build.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Finally, a solution to the blind spot in AI coding. Agents can now actually see what they've built instead of crossing their fingers and hoping the UI works. This visual feedback loop could be what separates functional AI-generated interfaces from the broken mess we usually get.",
+      "ph_url": "https://proofshot.argil.io/",
+      "maker": "Argil",
+      "featured": false,
+      "added_at": "2026-03-24T06:30:00Z"
+    },
+    {
+      "id": "ph-primer",
+      "name": "Primer",
+      "tagline": "Build software with AI agents one milestone at a time.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Breaking down complex builds into manageable chunks is exactly what AI agents need to avoid the chaos of monolithic generation. The milestone approach mirrors how humans actually manage large projects. Smart constraint that could make AI development actually usable.",
+      "ph_url": "https://github.com/armgabrielyan/primer",
+      "maker": "Arm Gabrielyan",
+      "featured": false,
+      "added_at": "2026-03-24T06:45:00Z"
+    },
+    {
+      "id": "ph-agen",
+      "name": "Agen",
+      "tagline": "Spin up unlimited parallel AI coding agents in the cloud.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "The bottleneck in AI coding isn't intelligence, it's compute access and parallel execution. Agen's cloud-native approach to scaling coding agents could unlock the kind of massive parallel development that makes Enterprise-scale AI coding actually viable. Worth watching if they can nail the orchestration.",
+      "ph_url": "https://agenhq.com",
+      "maker": "Agen HQ",
+      "featured": false,
+      "added_at": "2026-03-24T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Cq \u2013 Stack Overflow for AI coding agents",
+      "points": 140,
+      "comments": 51,
+      "summary": "Mozilla AI's new platform lets coding agents share knowledge and solutions with each other. When one agent solves a tricky problem, others can learn from that experience instead of reinventing solutions.",
+      "hn_url": "https://news.ycombinator.com/item?id=47491466"
+    },
+    {
+      "title": "Mark Zuckerberg Is Building an AI Agent to Help Him Be CEO",
+      "points": 42,
+      "comments": 52,
+      "summary": "Meta's CEO is reportedly developing a personal AI agent to assist with running the company. The move comes as Meta plans major organisational changes including flatter hierarchies and potential job cuts.",
+      "hn_url": "https://news.ycombinator.com/item?id=47491355"
+    },
+    {
+      "title": "LLMs learn what programmers create, not how programmers work",
+      "points": 28,
+      "comments": 10,
+      "summary": "Discussion about the fundamental limitations of current AI coding tools. The core issue is that LLMs are trained on finished code rather than the iterative process and decision-making that goes into creating it.",
+      "hn_url": "https://news.ycombinator.com/item?id=47494696"
+    },
+    {
+      "title": "Show HN: ProofShot \u2013 Give AI coding agents eyes to verify the UI they build",
+      "points": 21,
+      "comments": 18,
+      "summary": "A visual verification tool that lets AI coding agents see and validate the user interfaces they generate. Addresses the blind spot where agents build UI without knowing if it actually works or looks correct.",
+      "hn_url": "https://news.ycombinator.com/item?id=47499672"
+    },
+    {
+      "title": "I used bond convexity math to build a kill switch for rogue AI agents",
+      "points": 7,
+      "comments": 1,
+      "summary": "Novel approach to AI safety using financial mathematics concepts. The creator applied bond convexity principles to create dynamic control mechanisms for potentially dangerous AI agent behaviour.",
+      "hn_url": "https://news.ycombinator.com/item?id=47494909"
+    }
+  ]
+}
