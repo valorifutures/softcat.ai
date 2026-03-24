@@ -1018,5 +1018,52 @@
     "output_files": [
       "src/content/thoughts/2026-03-23-production-deployment-is-the-new-frontier-research.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-03-23T09:30:41.190969+00:00",
+    "status": "success",
+    "duration_s": 36.6,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.062,
+    "input_tokens": 11152,
+    "output_tokens": 1900,
+    "output_files": [
+      "src/data/radar/2026-03-23.json"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-24T04:00:01.735101+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 349,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-03-24T06:00:02.336951+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 349,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
