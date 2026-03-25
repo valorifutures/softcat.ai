@@ -263,6 +263,18 @@
         "Primer",
         "Agen"
       ]
+    },
+    {
+      "date": "2026-03-25",
+      "file": "2026-03-25.json",
+      "products": [
+        "PivotRL",
+        "TurboQuant",
+        "TinyLoRA",
+        "OpenSpace",
+        "LeWorldModel",
+        "Talat"
+      ]
     }
   ]
 }
