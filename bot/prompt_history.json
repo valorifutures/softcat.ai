@@ -59,6 +59,18 @@
       "file": "enterprise-ai-agent-governance-framework.md",
       "title": "Enterprise AI Agent Governance Framework",
       "category": "agent-design"
+    },
+    {
+      "date": "2026-03-25",
+      "file": "kv-cache-memory-optimiser.md",
+      "title": "KV Cache Memory Optimiser",
+      "category": "performance"
+    },
+    {
+      "date": "2026-03-25",
+      "file": "agent-skill-evolution-validator.md",
+      "title": "Agent Skill Evolution Validator",
+      "category": "testing"
     }
   ]
 }
