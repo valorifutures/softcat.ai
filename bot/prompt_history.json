@@ -62,13 +62,13 @@
     },
     {
       "date": "2026-03-25",
-      "file": "kv-cache-memory-optimiser.md",
+      "file": "kv-cache-memory-optimiser-2.md",
       "title": "KV Cache Memory Optimiser",
-      "category": "performance"
+      "category": "architecture"
     },
     {
       "date": "2026-03-25",
-      "file": "agent-skill-evolution-validator.md",
+      "file": "agent-skill-evolution-validator-2.md",
       "title": "Agent Skill Evolution Validator",
       "category": "testing"
     }

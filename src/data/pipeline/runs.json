@@ -1180,5 +1180,20 @@
     "output_files": [
       "src/content/thoughts/2026-03-25-parameter-efficiency-is-just-premature-optimisation-disguise.md"
     ]
+  },
+  {
+    "bot": "prompt_bot",
+    "timestamp": "2026-03-25T09:00:26.748529+00:00",
+    "status": "success",
+    "duration_s": 24.9,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 2,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0285,
+    "input_tokens": 5233,
+    "output_tokens": 855,
+    "output_files": []
   }
 ]
