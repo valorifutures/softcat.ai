@@ -1177,6 +1177,42 @@
         "https://techcrunch.com/2026/03/24/mirage-raises-75m-to-continue-building-models-for-its-ai-video-editing-app-captions/",
         "https://techcrunch.com/2026/03/24/agile-robots-becomes-the-latest-robotics-company-to-partner-with-google-deepmind/"
       ]
+    },
+    {
+      "date": "2026-03-26",
+      "file": "2026-03-26-ai-digest.md",
+      "links": [
+        "https://www.marktechpost.com/2026/03/25/how-to-build-a-vision-guided-web-ai-agent-with-molmoweb-4b-using-multimodal-reasoning-and-action-prediction/",
+        "https://www.marktechpost.com/2026/03/25/nvidia-ai-introduces-pivotrl-a-new-ai-framework-achieving-high-agentic-accuracy-with-4x-fewer-rollout-turns-efficiently/",
+        "https://www.marktechpost.com/2026/03/25/google-introduces-turboquant-a-new-compression-algorithm-that-reduces-llm-key-value-cache-memory-by-6x-and-delivers-up-to-8x-speedup-all-with-zero-accuracy-loss/",
+        "https://www.marktechpost.com/2026/03/24/paged-attention-in-large-language-models-llms/",
+        "https://www.marktechpost.com/2026/03/24/a-coding-implementation-to-design-self-evolving-skill-engine-with-openspace-for-skill-learning-token-efficiency-and-collective-intelligence/",
+        "https://www.marktechpost.com/2026/03/24/this-ai-paper-introduces-tinylora-a-13-parameter-fine-tuning-method-that-reaches-91-8-percent-gsm8k-on-qwen2-5-7b/",
+        "https://www.marktechpost.com/2026/03/23/yann-lecuns-new-leworldmodel-lewm-research-targets-jepa-collapse-in-pixel-based-predictive-world-modeling/",
+        "https://www.marktechpost.com/2026/03/23/meta-ais-new-hyperagents-dont-just-solve-tasks-they-rewrite-the-rules-of-how-they-learn/",
+        "https://www.marktechpost.com/2026/03/23/luma-labs-launches-uni-1-the-autoregressive-transformer-model-that-reasons-through-intentions-before-generating-images/",
+        "https://www.marktechpost.com/2026/03/23/how-to-design-a-production-ready-ai-agent-that-automates-google-colab-workflows-using-colab-mcp-mcp-tools-fastmcp-and-kernel-execution/",
+        "https://techcrunch.com/2026/03/25/the-least-surprising-chapter-of-the-manus-story-is-whats-happening-right-now/",
+        "https://techcrunch.com/2026/03/25/deccan-ai-raises-25m-as-ai-training-push-relies-on-india-based-workforce/",
+        "https://techcrunch.com/2026/03/25/the-ai-skills-gap-is-here-says-ai-company-and-power-users-are-pulling-ahead/",
+        "https://techcrunch.com/2026/03/25/google-turboquant-ai-memory-compression-silicon-valley-pied-piper/",
+        "https://techcrunch.com/2026/03/25/melania-trump-wants-a-robot-to-homeschool-your-child/",
+        "https://techcrunch.com/2026/03/25/bernie-sanders-and-aoc-propose-a-ban-on-data-center-construction/",
+        "https://techcrunch.com/2026/03/25/google-launches-lyria-3-pro-music-generation-model/",
+        "https://techcrunch.com/2026/03/25/reddit-bots-new-human-verification-requirements/",
+        "https://techcrunch.com/2026/03/25/harvey-confirms-11b-valuation-sequoia-triples-down/",
+        "https://techcrunch.com/2026/03/25/granola-raises-125m-hits-1-5b-valuation-as-it-expands-from-meeting-notetaker-to-enterprise-ai-app/",
+        "https://techcrunch.com/2026/03/25/meta-launches-new-initiative-to-support-entrepreneurship-drive-ai-adoption/",
+        "https://techcrunch.com/2026/03/25/meta-turns-to-ai-to-make-shopping-easier-on-instagram-and-facebook/",
+        "https://techcrunch.com/2026/03/25/with-sift-stack-two-ex-spacex-engineers-are-bringing-the-software-that-helped-launch-rockets-to-the-factory-floor/",
+        "https://techcrunch.com/2026/03/25/lucid-bots-raises-20m-to-keep-up-with-demand-for-its-window-washing-drones/",
+        "https://techcrunch.com/2026/03/24/with-3-5b-in-fresh-capital-kleiner-perkins-is-going-all-in-on-ai/",
+        "https://buttondown.com/ainews/archive/ainews-we-have-moved-please-help-us-move/",
+        "https://buttondown.com/ainews/archive/ainews-grok-3-3-mini-now-api-available/",
+        "https://buttondown.com/ainews/archive/ainews-gemini-25-flash-completes-the-total/",
+        "https://buttondown.com/ainews/archive/ainews-openai-o3-o4-mini-and-codex-cli/",
+        "https://buttondown.com/ainews/archive/ainews-sota-video-gen-veo-2-and-kling-2-are-ga/"
+      ]
     }
   ]
 }
