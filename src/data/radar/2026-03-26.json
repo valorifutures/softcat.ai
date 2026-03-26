@@ -1,0 +1,116 @@
+{
+  "date": "2026-03-26",
+  "featured": [
+    {
+      "id": "ph-covo-audio",
+      "name": "Covo-Audio",
+      "tagline": "7B parameter end-to-end speech language model for real-time audio conversations.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Tencent's take on unified speech processing cuts through the noise of fragmented audio pipelines. A 7B model that handles continuous audio input and output in one architecture is exactly what conversational AI needs to feel less robotic.",
+      "ph_url": "https://www.marktechpost.com/2026/03/26/tencent-ai-open-sources-covo-audio-a-7b-speech-language-model-and-inference-pipeline-for-real-time-audio-conversations-and-reasoning/",
+      "maker": "Tencent AI Lab",
+      "featured": true,
+      "added_at": "2026-03-26T06:00:00Z"
+    },
+    {
+      "id": "ph-lyria-3-pro",
+      "name": "Lyria 3 Pro",
+      "tagline": "Google's upgraded music generation model creating longer, more customisable tracks.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google finally pushes AI music beyond the 30-second demo phase with full three-minute tracks. The claim about training on properly licensed data feels like a direct shot at competitors who've been less careful about rights.",
+      "ph_url": "https://techcrunch.com/2026/03/25/google-launches-lyria-3-pro-music-generation-model/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-03-26T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-molmoweb",
+      "name": "MolmoWeb",
+      "tagline": "Fully open web agent that navigates websites using only screenshots.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "AI2 proves you don't need massive models for capable web agents. Working purely from screenshots without DOM parsing is both impressive and practical for real-world deployment.",
+      "ph_url": "https://the-decoder.com/ai2s-fully-open-web-agent-molmoweb-navigates-the-web-using-only-screenshots/",
+      "maker": "AI2",
+      "featured": false,
+      "added_at": "2026-03-26T06:30:00Z"
+    },
+    {
+      "id": "ph-optio",
+      "name": "Optio",
+      "tagline": "Orchestrate AI coding agents in Kubernetes to go from ticket to pull request.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Finally, someone's treating AI coding agents as the distributed systems they actually are. Running them in K8s makes sense when you need reliability and scale for production code generation.",
+      "ph_url": "https://github.com/jonwiggins/optio",
+      "maker": "jonwiggins",
+      "featured": false,
+      "added_at": "2026-03-26T06:30:00Z"
+    },
+    {
+      "id": "ph-extractor",
+      "name": "Robust LLM Extractor",
+      "tagline": "TypeScript library for reliable data extraction from websites using LLMs.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Web scraping meets structured extraction in a way that doesn't break every time a site updates. The TypeScript approach suggests they're serious about production use rather than just another demo.",
+      "ph_url": "https://github.com/lightfeed/extractor",
+      "maker": "lightfeed",
+      "featured": false,
+      "added_at": "2026-03-26T06:30:00Z"
+    },
+    {
+      "id": "ph-ghostdesk",
+      "name": "GhostDesk",
+      "tagline": "MCP server giving AI agents a full virtual Linux desktop environment.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Giving AI agents their own Linux desktop is either brilliant or terrifying, depending on your perspective. The MCP integration suggests they're thinking about proper tool protocols rather than ad-hoc solutions.",
+      "ph_url": "https://github.com/YV17labs/GhostDesk",
+      "maker": "YV17labs",
+      "featured": false,
+      "added_at": "2026-03-26T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Optio \u2013 Orchestrate AI coding agents in K8s to go from ticket to PR",
+      "points": 51,
+      "comments": 29,
+      "summary": "A Kubernetes-based orchestration platform for AI coding agents that automates the entire development workflow from issue tracking to pull request creation. The approach treats AI agents as distributed microservices, which makes sense for production-scale code generation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47520220"
+    },
+    {
+      "title": "Show HN: Robust LLM Extractor for Websites in TypeScript",
+      "points": 37,
+      "comments": 25,
+      "summary": "A TypeScript library that uses LLMs to extract structured data from websites reliably. It aims to solve the brittleness of traditional web scraping by leveraging language models to understand page content semantically.",
+      "hn_url": "https://news.ycombinator.com/item?id=47526486"
+    },
+    {
+      "title": "Tired of AI When will this era end?",
+      "points": 27,
+      "comments": 16,
+      "summary": "A discussion thread expressing fatigue with the current AI hype cycle. Community members debate whether we're in a bubble and when the AI enthusiasm might plateau or shift focus.",
+      "hn_url": "https://news.ycombinator.com/item?id=47522856"
+    },
+    {
+      "title": "Show HN: Nit \u2013 I rebuilt Git in Zig to save AI agents 71% on tokens",
+      "points": 21,
+      "comments": 26,
+      "summary": "A Git reimplementation in Zig designed specifically to reduce token usage when AI agents work with version control. The project claims significant token savings by optimising output formatting for LLM consumption.",
+      "hn_url": "https://news.ycombinator.com/item?id=47526276"
+    },
+    {
+      "title": "Show HN: GhostDesk \u2013 MCP server giving AI agents a full virtual Linux desktop",
+      "points": 4,
+      "comments": 0,
+      "summary": "An MCP server implementation that provides AI agents with access to a complete virtual Linux desktop environment. It enables agents to interact with graphical applications and perform complex desktop tasks programmatically.",
+      "hn_url": "https://news.ycombinator.com/item?id=47522716"
+    }
+  ]
+}

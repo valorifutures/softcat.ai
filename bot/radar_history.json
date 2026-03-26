@@ -275,6 +275,18 @@
         "LeWorldModel",
         "Talat"
       ]
+    },
+    {
+      "date": "2026-03-26",
+      "file": "2026-03-26.json",
+      "products": [
+        "Covo-Audio",
+        "Lyria 3 Pro",
+        "MolmoWeb",
+        "Optio",
+        "Robust LLM Extractor",
+        "GhostDesk"
+      ]
     }
   ]
 }
