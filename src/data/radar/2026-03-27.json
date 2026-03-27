@@ -1,0 +1,116 @@
+{
+  "date": "2026-03-27",
+  "featured": [
+    {
+      "id": "ph-tribe-v2",
+      "name": "TRIBE v2",
+      "tagline": "Brain encoding model that predicts fMRI responses across video, audio, and text stimuli.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Meta's cracked the code on unified brain encoding across multiple modalities. This isn't just neuroscience research, it's the foundation for building AI that actually understands how humans process information. The implications for brain-computer interfaces and AI alignment are massive.",
+      "ph_url": "https://www.marktechpost.com/2026/03/26/meta-releases-tribe-v2-a-brain-encoding-model-that-predicts-fmri-responses-across-video-audio-and-text-stimuli/",
+      "maker": "Meta",
+      "featured": true,
+      "added_at": "2026-03-27T06:00:00Z"
+    },
+    {
+      "id": "ph-gemini-31-flash-live",
+      "name": "Gemini 3.1 Flash Live",
+      "tagline": "Real-time multimodal voice model for low-latency audio, video, and tool use.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google's answer to OpenAI's Advanced Voice Mode, but with proper multimodal support and developer API access. The native streaming architecture means no more clunky pipeline setups. This is how voice AI should work.",
+      "ph_url": "https://www.marktechpost.com/2026/03/26/google-releases-gemini-3-1-flash-live-a-real-time-multimodal-voice-model-for-low-latency-audio-video-and-tool-use-for-ai-agents/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-03-27T06:15:00Z"
+    },
+    {
+      "id": "ph-cohere-transcribe",
+      "name": "Cohere Transcribe",
+      "tagline": "State-of-the-art automatic speech recognition model for enterprise speech intelligence.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Cohere's moving beyond text generation into speech recognition territory. This signals the consolidation of AI capabilities under single providers rather than fragmented specialist tools. Enterprise customers get one throat to choke instead of managing multiple ASR vendors.",
+      "ph_url": "https://www.marktechpost.com/2026/03/26/cohere-ai-releases-cohere-transcribe-a-sota-automatic-speech-recognition-asr-model-powering-enterprise-speech-intelligence/",
+      "maker": "Cohere",
+      "featured": true,
+      "added_at": "2026-03-27T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-voxtral",
+      "name": "Voxtral",
+      "tagline": "Open-weight text-to-speech model supporting nine languages with voice cloning.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Mistral's first TTS model can clone voices from just three seconds of audio across nine languages. The open-weight approach means developers can finally build voice applications without vendor lock-in or usage limits.",
+      "ph_url": "https://the-decoder.com/mistrals-first-open-weight-tts-model-voxtral-clones-voices-from-three-seconds-of-audio-across-nine-languages/",
+      "maker": "Mistral",
+      "featured": false,
+      "added_at": "2026-03-27T07:00:00Z"
+    },
+    {
+      "id": "ph-wit",
+      "name": "Wit",
+      "tagline": "Prevents merge conflicts when multiple AI agents edit the same repository.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "As AI agents start collaborating on codebases, merge conflicts become a nightmare. Wit solves the coordination problem that nobody saw coming until teams started deploying multiple coding agents simultaneously.",
+      "ph_url": "https://github.com/amaar-mc/wit",
+      "maker": "Amaar MC",
+      "featured": false,
+      "added_at": "2026-03-27T07:15:00Z"
+    },
+    {
+      "id": "ph-sentinelgate",
+      "name": "SentinelGate",
+      "tagline": "Open-source MCP proxy providing access control for AI agents.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "AI agents need proper access controls before they can be trusted in production environments. SentinelGate fills the security gap that MCP left wide open, giving enterprises the guardrails they need.",
+      "ph_url": "https://github.com/Sentinel-Gate/Sentinelgate",
+      "maker": "Sentinel Gate",
+      "featured": false,
+      "added_at": "2026-03-27T07:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: I put an AI agent on a $7/month VPS with IRC as its transport layer",
+      "points": 235,
+      "comments": 73,
+      "summary": "Developer built a practical AI agent deployment using IRC as the communication protocol on cheap hosting. Proves you don't need expensive infrastructure to run useful AI agents in production.",
+      "hn_url": "https://news.ycombinator.com/item?id=47536761"
+    },
+    {
+      "title": "Show HN: Wit \u2013 Stops merge conflicts when multiple AI agents edit the same repo",
+      "points": 6,
+      "comments": 2,
+      "summary": "Tool designed to prevent merge conflicts when multiple AI coding agents work on the same repository. Addresses a coordination problem that's becoming common as teams deploy multiple AI agents.",
+      "hn_url": "https://news.ycombinator.com/item?id=47531538"
+    },
+    {
+      "title": "I Built a Lisp for AI Agents",
+      "points": 6,
+      "comments": 2,
+      "summary": "Custom Lisp implementation designed specifically for AI agent workflows. Shows developers are building domain-specific languages to better control AI agent behaviour and reasoning.",
+      "hn_url": "https://news.ycombinator.com/item?id=47531058"
+    },
+    {
+      "title": "Show HN: SentinelGate \u2013 Access control for AI agents (open-source MCP proxy)",
+      "points": 6,
+      "comments": 0,
+      "summary": "Open-source proxy that adds access controls to Model Context Protocol connections. Fills a critical security gap for enterprises deploying AI agents with external tool access.",
+      "hn_url": "https://news.ycombinator.com/item?id=47530881"
+    },
+    {
+      "title": "Ran 100 AI agents through the Community Notes algorithm: the model dominates",
+      "points": 5,
+      "comments": 2,
+      "summary": "Experiment showing how AI agents perform when subjected to Twitter's Community Notes fact-checking system. Results suggest AI models can game collaborative moderation systems at scale.",
+      "hn_url": "https://news.ycombinator.com/item?id=47534542"
+    }
+  ]
+}
