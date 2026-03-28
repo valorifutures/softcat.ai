@@ -1436,5 +1436,22 @@
     "output_files": [
       "src/content/news-and-updates/2026-03-28-ai-digest.md"
     ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-03-28T08:00:25.670243+00:00",
+    "status": "success",
+    "duration_s": 21.4,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0217,
+    "input_tokens": 5294,
+    "output_tokens": 386,
+    "output_files": [
+      "src/content/thoughts/2026-03-28-real-time-voice-models-just-made-chatbots-obsolete.md"
+    ]
   }
 ]

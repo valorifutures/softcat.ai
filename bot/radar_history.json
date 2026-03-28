@@ -299,6 +299,17 @@
         "Wit",
         "SentinelGate"
       ]
+    },
+    {
+      "date": "2026-03-28",
+      "file": "2026-03-28.json",
+      "products": [
+        "ProRL Agent",
+        "JiuwenClaw",
+        "Mistral Speech Generation",
+        "Kagento",
+        "Toolcast"
+      ]
     }
   ]
 }
