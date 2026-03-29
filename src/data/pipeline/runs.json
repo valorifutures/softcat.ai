@@ -1516,5 +1516,21 @@
     "output_tokens": 0,
     "output_files": [],
     "error_msg": "Command '['git', 'push']' returned non-zero exit status 128."
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-03-29T07:00:48.310495+00:00",
+    "status": "error",
+    "duration_s": 47.8,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 128."
   }
 ]
