@@ -1,0 +1,128 @@
+{
+  "date": "2026-03-31",
+  "featured": [
+    {
+      "id": "ph-qwen35-omni",
+      "name": "Qwen3.5-Omni",
+      "tagline": "Native multimodal model for text, audio, video, and realtime interaction.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Alibaba's answer to Gemini 3.1 Pro represents a shift from duct-taped multimodal systems to proper end-to-end architectures. The 'native omnimodal' approach could finally deliver on the promise of seamless cross-modal reasoning. We'll see if it lives up to the marketing or joins the graveyard of overhyped multimodal models.",
+      "ph_url": "https://www.marktechpost.com/2026/03/30/alibaba-qwen-team-releases-qwen3-5-omni-a-native-multimodal-model-for-text-audio-video-and-realtime-interaction/",
+      "maker": "Alibaba Qwen Team",
+      "featured": true,
+      "added_at": "2026-03-31T06:00:00Z"
+    },
+    {
+      "id": "ph-aio-sandbox",
+      "name": "AIO Sandbox",
+      "tagline": "All-in-one runtime for AI agents with browser, shell, shared filesystem, and MCP.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Finally, someone tackled the unglamorous but critical problem of agent execution environments. While everyone obsesses over model reasoning, the real bottleneck is giving these things a safe place to actually run code. AIO Sandbox packages browser, shell, and filesystem into one coherent runtime, which is exactly what agentic AI needed.",
+      "ph_url": "https://www.marktechpost.com/2026/03/29/agent-infra-releases-aio-sandbox-an-all-in-one-runtime-for-ai-agents-with-browser-shell-shared-filesystem-and-mcp/",
+      "maker": "Agent-Infra",
+      "featured": true,
+      "added_at": "2026-03-31T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-harrier-oss",
+      "name": "Harrier-OSS-v1",
+      "tagline": "Family of multilingual embedding models hitting SOTA on Multilingual MTEB v2.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Microsoft's trio of embedding models (270M, 0.6B, 27B) claims SOTA on multilingual benchmarks. Embeddings are the unsexy foundation of every RAG system, so having better multilingual representations could actually matter. The three-size approach is sensible for different compute budgets.",
+      "ph_url": "https://www.marktechpost.com/2026/03/30/microsoft-ai-releases-harrier-oss-v1-a-new-family-of-multilingual-embedding-models-hitting-sota-on-multilingual-mteb-v2/",
+      "maker": "Microsoft AI",
+      "featured": false,
+      "added_at": "2026-03-31T06:30:00Z"
+    },
+    {
+      "id": "ph-voiceagentrag",
+      "name": "VoiceAgentRAG",
+      "tagline": "Dual-agent memory router that cuts voice RAG retrieval latency by 316x.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Salesforce attacked the fundamental physics problem of voice AI: you need answers in 200ms, but vector databases take seconds. Their dual-agent memory router approach could finally make voice RAG systems feel natural instead of awkward. The 316x speedup claim is bold but this addresses a real constraint.",
+      "ph_url": "https://www.marktechpost.com/2026/03/30/salesforce-ai-research-releases-voiceagentrag-a-dual-agent-memory-router-that-cuts-voice-rag-retrieval-latency-by-316x/",
+      "maker": "Salesforce AI Research",
+      "featured": false,
+      "added_at": "2026-03-31T06:45:00Z"
+    },
+    {
+      "id": "ph-a-evolve",
+      "name": "A-Evolve",
+      "tagline": "Universal infrastructure for automated agentic AI development with state mutation.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Amazon's attempt at the 'PyTorch moment for agents' is ambitious but necessary. Manual agent harness engineering is holding back the field, so automated evolution of agent states could unlock real progress. Whether this becomes the standard or joins the graveyard of infrastructure frameworks remains to be seen.",
+      "ph_url": "https://www.marktechpost.com/2026/03/29/meet-a-evolve-the-pytorch-moment-for-agentic-ai-systems-replacing-manual-tuning-with-automated-state-mutation-and-self-correction/",
+      "maker": "Amazon Research",
+      "featured": false,
+      "added_at": "2026-03-31T07:00:00Z"
+    },
+    {
+      "id": "ph-context-1",
+      "name": "Context-1",
+      "tagline": "20B agentic search model for multi-hop retrieval and context management.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Chroma's 20B parameter model tackles the context window problem from a different angle than just 'make it bigger'. Their focus on agentic search and multi-hop retrieval could be more practical than cramming millions of tokens into a prompt. Smart positioning against the brute force approach.",
+      "ph_url": "https://www.marktechpost.com/2026/03/29/chroma-releases-context-1-a-20b-agentic-search-model-for-multi-hop-retrieval-context-management-and-scalable-synthetic-task-generation/",
+      "maker": "Chroma",
+      "featured": false,
+      "added_at": "2026-03-31T07:15:00Z"
+    },
+    {
+      "id": "ph-phantom",
+      "name": "Phantom",
+      "tagline": "Open-source AI agent on its own VM that rewrites its config.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Self-modifying agents that rewrite their own configuration files feel like the next logical step in agent evolution. The fact that it runs in its own VM shows proper security thinking. This could be either brilliant or catastrophic, which makes it genuinely interesting.",
+      "ph_url": "https://github.com/ghostwright/phantom",
+      "maker": "ghostwright",
+      "featured": false,
+      "added_at": "2026-03-31T07:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: I turned a sketch into a 3D-print pegboard for my kid with an AI agent",
+      "points": 39,
+      "comments": 8,
+      "summary": "Someone built an AI agent that can take a hand-drawn sketch and turn it into a 3D-printable pegboard design. It's a practical demonstration of how agents can bridge the gap between human creativity and digital fabrication.",
+      "hn_url": "https://news.ycombinator.com/item?id=47580910"
+    },
+    {
+      "title": "Show HN: Phantom \u2013 Open-source AI agent on its own VM that rewrites its config",
+      "points": 18,
+      "comments": 14,
+      "summary": "An open-source AI agent that runs in its own virtual machine and can rewrite its own configuration files. This represents a significant step towards truly autonomous self-modifying systems, with proper isolation for safety.",
+      "hn_url": "https://news.ycombinator.com/item?id=47574045"
+    },
+    {
+      "title": "Agentic AI and the next intelligence explosion",
+      "points": 17,
+      "comments": 3,
+      "summary": "Research paper exploring how agentic AI systems could trigger rapid recursive improvement and intelligence explosion. The paper examines the technical pathways and potential timelines for such scenarios.",
+      "hn_url": "https://news.ycombinator.com/item?id=47580059"
+    },
+    {
+      "title": "Show HN: We scored 50k PRs with AI \u2013 what we learned about code complexity",
+      "points": 11,
+      "comments": 0,
+      "summary": "A tool that uses AI to analyse and score pull requests for code complexity across 50,000 PRs. The insights could help development teams better understand and manage technical debt patterns.",
+      "hn_url": "https://news.ycombinator.com/item?id=47574711"
+    },
+    {
+      "title": "Show HN: Memv \u2013 Memory for AI Agents",
+      "points": 4,
+      "comments": 3,
+      "summary": "A memory system designed specifically for AI agents to maintain context and state across interactions. Addresses the fundamental problem of agent persistence and long-term memory management.",
+      "hn_url": "https://news.ycombinator.com/item?id=47576968"
+    }
+  ]
+}

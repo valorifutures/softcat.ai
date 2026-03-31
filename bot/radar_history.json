@@ -310,6 +310,19 @@
         "Kagento",
         "Toolcast"
       ]
+    },
+    {
+      "date": "2026-03-31",
+      "file": "2026-03-31.json",
+      "products": [
+        "Qwen3.5-Omni",
+        "AIO Sandbox",
+        "Harrier-OSS-v1",
+        "VoiceAgentRAG",
+        "A-Evolve",
+        "Context-1",
+        "Phantom"
+      ]
     }
   ]
 }
