@@ -323,6 +323,17 @@
         "Context-1",
         "Phantom"
       ]
+    },
+    {
+      "date": "2026-04-01",
+      "file": "2026-04-01.json",
+      "products": [
+        "TRL v1.0",
+        "Veo 3.1 Lite",
+        "LFM2.5-350M",
+        "Pardus Browser",
+        "CAI Cybersecurity Framework"
+      ]
     }
   ]
 }
