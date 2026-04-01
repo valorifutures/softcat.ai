@@ -74,15 +74,15 @@
     },
     {
       "date": "2026-04-01",
-      "file": "model-response-bias-detector.md",
-      "title": "Model Response Bias Detector",
-      "category": "testing"
+      "file": "llm-fine-tuning-evaluation-framework.md",
+      "title": "LLM Fine-tuning Evaluation Framework",
+      "category": "evaluation"
     },
     {
       "date": "2026-04-01",
-      "file": "voice-agent-response-latency-optimiser.md",
-      "title": "Voice Agent Response Latency Optimiser",
-      "category": "performance"
+      "file": "multimodal-agent-capability-mapper.md",
+      "title": "Multimodal Agent Capability Mapper",
+      "category": "agent-design"
     }
   ]
 }
