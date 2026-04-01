@@ -71,6 +71,18 @@
       "file": "agent-skill-evolution-validator-2.md",
       "title": "Agent Skill Evolution Validator",
       "category": "testing"
+    },
+    {
+      "date": "2026-04-01",
+      "file": "model-response-bias-detector.md",
+      "title": "Model Response Bias Detector",
+      "category": "testing"
+    },
+    {
+      "date": "2026-04-01",
+      "file": "voice-agent-response-latency-optimiser.md",
+      "title": "Voice Agent Response Latency Optimiser",
+      "category": "performance"
     }
   ]
 }
