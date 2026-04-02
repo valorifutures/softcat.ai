@@ -1803,5 +1803,52 @@
     "input_tokens": 5412,
     "output_tokens": 1093,
     "output_files": []
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-01T09:31:11.942763+00:00",
+    "status": "success",
+    "duration_s": 67.1,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0649,
+    "input_tokens": 11105,
+    "output_tokens": 2107,
+    "output_files": [
+      "src/data/radar/2026-04-01.json"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-02T04:00:01.938328+00:00",
+    "status": "success",
+    "duration_s": 0.5,
+    "feeds_scanned": 0,
+    "items_found": 350,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-02T06:00:01.789248+00:00",
+    "status": "success",
+    "duration_s": 0.5,
+    "feeds_scanned": 0,
+    "items_found": 350,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
