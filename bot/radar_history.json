@@ -334,6 +334,18 @@
         "Pardus Browser",
         "CAI Cybersecurity Framework"
       ]
+    },
+    {
+      "date": "2026-04-02",
+      "file": "2026-04-02.json",
+      "products": [
+        "Granite 4.0 3B Vision",
+        "GLM-5V-Turbo",
+        "Baton",
+        "Harrier-OSS-v1",
+        "Castra",
+        "OpenHarness"
+      ]
     }
   ]
 }

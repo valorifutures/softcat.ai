@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-02",
+  "featured": [
+    {
+      "id": "ph-granite-4-vision",
+      "name": "Granite 4.0 3B Vision",
+      "tagline": "Enterprise-grade vision language model for document data extraction.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "IBM's taking a different approach with this specialised adapter model rather than building another massive multimodal monster. The focus on enterprise document extraction suggests they're targeting the unglamorous but lucrative business automation market. Smart positioning when everyone else is chasing consumer AGI.",
+      "ph_url": "https://www.marktechpost.com/2026/04/01/ibm-releases-granite-4-0-3b-vision-a-new-vision-language-model-for-enterprise-grade-document-data-extraction/",
+      "maker": "IBM",
+      "featured": true,
+      "added_at": "2026-04-02T06:00:00Z"
+    },
+    {
+      "id": "ph-glm-5v-turbo",
+      "name": "GLM-5V-Turbo",
+      "tagline": "Native multimodal vision coding model optimised for agentic workflows.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Zhipu AI is specifically targeting the vision-to-code gap that most VLMs struggle with. The emphasis on OpenClaw optimisation and agentic engineering workflows suggests this could actually be useful for developers building AI agents that need to understand and generate code from visual inputs. Finally, a model that doesn't just describe screenshots but writes the bloody code.",
+      "ph_url": "https://www.marktechpost.com/2026/04/01/z-ai-launches-glm-5v-turbo-a-native-multimodal-vision-coding-model-optimized-for-openclaw-and-high-capacity-agentic-engineering-workflows-everywhere/",
+      "maker": "Zhipu AI",
+      "featured": true,
+      "added_at": "2026-04-02T06:15:00Z"
+    },
+    {
+      "id": "ph-baton-desktop",
+      "name": "Baton",
+      "tagline": "Desktop app for developing with AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "The Show HN crowd seems interested, which usually means it's solving a real developer pain point. Building AI agents is still messy and fragmented across different tools and platforms. If Baton can provide a unified development environment for agent building, it could become the IDE equivalent for the agentic era.",
+      "ph_url": "https://getbaton.dev/",
+      "maker": "Baton Team",
+      "featured": true,
+      "added_at": "2026-04-02T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-harrier-oss-v1",
+      "name": "Harrier-OSS-v1",
+      "tagline": "Family of multilingual embedding models hitting SOTA on multilingual MTEB v2.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Microsoft's embedding models are hitting state-of-the-art on multilingual benchmarks. The three-scale approach (270M, 0.6B, 27B) shows they're thinking about deployment constraints. Embeddings are the unglamorous backbone of RAG systems, so SOTA multilingual performance matters for anyone building beyond English.",
+      "ph_url": "https://www.marktechpost.com/2026/03/30/microsoft-ai-releases-harrier-oss-v1-a-new-family-of-multilingual-embedding-models-hitting-sota-on-multilingual-mteb-v2/",
+      "maker": "Microsoft AI",
+      "featured": false,
+      "added_at": "2026-04-02T06:45:00Z"
+    },
+    {
+      "id": "ph-castra",
+      "name": "Castra",
+      "tagline": "Strip orchestration rights from your LLMs for security.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Someone's finally building tooling to prevent LLMs from going rogue. As AI agents get more autonomous, controlling what they can and can't orchestrate becomes critical. The fact this showed up on HN suggests developers are waking up to the security implications of giving models too much control.",
+      "ph_url": "https://github.com/amangsingh/castra",
+      "maker": "Amang Singh",
+      "featured": false,
+      "added_at": "2026-04-02T07:00:00Z"
+    },
+    {
+      "id": "ph-openharness",
+      "name": "OpenHarness",
+      "tagline": "Open-source terminal coding agent for any LLM.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Terminal-native coding agents are the logical evolution of command-line development. Making it work with any LLM provider means developers aren't locked into one ecosystem. The open-source approach could make this the de facto standard for terminal AI assistance.",
+      "ph_url": "https://github.com/zhijiewong/openharness",
+      "maker": "Zhijie Wong",
+      "featured": false,
+      "added_at": "2026-04-02T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Baton \u2013 A desktop app for developing with AI agents",
+      "points": 61,
+      "comments": 52,
+      "summary": "Desktop development environment specifically designed for building AI agents. The community interest suggests this addresses real pain points in agent development workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47599771"
+    },
+    {
+      "title": "Ask HN: Client took over development by vibe coding. What to do?",
+      "points": 51,
+      "comments": 31,
+      "summary": "Developer asking for advice when clients start using AI tools to bypass professional development processes. Highlights the ongoing tension between AI-assisted coding and traditional software development practices.",
+      "hn_url": "https://news.ycombinator.com/item?id=47599303"
+    },
+    {
+      "title": "Anthropic Races to Contain Leak of Code Behind Claude AI Agent",
+      "points": 21,
+      "comments": 8,
+      "summary": "Anthropic dealing with a significant leak of Claude Code source code that has been cloned thousands of times on GitHub. Shows the challenges of keeping proprietary AI systems secure.",
+      "hn_url": "https://news.ycombinator.com/item?id=47601315"
+    },
+    {
+      "title": "Show HN: Castra \u2013 Strip orchestration rights from your LLMs",
+      "points": 7,
+      "comments": 9,
+      "summary": "Security tool for controlling what AI models can orchestrate in production environments. Addresses growing concerns about AI agent autonomy and security boundaries.",
+      "hn_url": "https://news.ycombinator.com/item?id=47601608"
+    },
+    {
+      "title": "Show HN: OpenHarness Open-source terminal coding agent for any LLM",
+      "points": 6,
+      "comments": 1,
+      "summary": "Terminal-native coding agent that works with multiple LLM providers. Represents the evolution of command-line development tools in the AI era.",
+      "hn_url": "https://news.ycombinator.com/item?id=47600371"
+    }
+  ]
+}
