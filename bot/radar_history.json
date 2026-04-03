@@ -346,6 +346,18 @@
         "Castra",
         "OpenHarness"
       ]
+    },
+    {
+      "date": "2026-04-03",
+      "file": "2026-04-03.json",
+      "products": [
+        "Falcon Perception",
+        "Trinity Large Thinking",
+        "Gemma 4",
+        "MAI-Transcribe-1",
+        "Sakana Marlin",
+        "MindsDB Anton"
+      ]
     }
   ]
 }
