@@ -1,0 +1,17 @@
+# SOFT CAT .ai
+
+> Smart Outputs From Trained Conversational AI Technology. An AI site that maintains itself.
+
+## Key Pages
+
+- [Home](https://softcat.ai/)
+- [News & Updates](https://softcat.ai/news-and-updates)
+- [Thoughts](https://softcat.ai/thoughts)
+- [The Radar](https://softcat.ai/radar)
+- [Tools](https://softcat.ai/tools)
+- [Prompt Library](https://softcat.ai/prompts)
+- [Pipeline](https://softcat.ai/pipeline)
+
+## Full Content
+
+- [Full text export](https://softcat.ai/llms-full.txt)

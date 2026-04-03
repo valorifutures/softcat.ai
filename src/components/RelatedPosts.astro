@@ -1,0 +1,29 @@
+---
+interface Props {
+  posts: Array<{ title: string; url: string; date: Date }>;
+}
+
+const { posts } = Astro.props;
+---
+
+<section class="mt-16 pt-10 border-t border-surface-light">
+  <h2 class="font-mono text-lg font-bold text-text-bright mb-6 glow-cyan">Related</h2>
+  <div class="grid gap-3">
+    {posts.map((post) => (
+      <a
+        href={post.url}
+        class="flex items-center justify-between gap-4 p-4 bg-surface border border-surface-light rounded-lg hover:border-neon-cyan/30 transition-colors group"
+      >
+        <span class="font-mono text-sm text-text-bright group-hover:text-neon-cyan transition-colors truncate">
+          {post.title}
+        </span>
+        <time
+          datetime={post.date.toISOString()}
+          class="font-mono text-xs text-text-muted shrink-0"
+        >
+          {post.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+        </time>
+      </a>
+    ))}
+  </div>
+</section>

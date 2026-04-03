@@ -1,11 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PromptFilter from '../../components/PromptFilter.tsx';
 import { getCollection } from 'astro:content';
-import { tagDotClass } from '../../utils/tagColor';
 
 const entries = (await getCollection('prompts'))
   .filter((e) => !e.data.draft)
   .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const prompts = entries.map((e) => ({
+  id: e.id,
+  title: e.data.title,
+  description: e.data.description,
+  category: e.data.category,
+  tags: e.data.tags,
+}));
 ---
 
 <BaseLayout title="Prompt Library" description="Copy-ready prompts for common developer tasks. Code review, debugging, refactoring, summarisation, and more.">
@@ -25,38 +33,7 @@ const entries = (await getCollection('prompts'))
         </p>
       </div>
     ) : (
-      <div class="grid gap-5 ambient-glow" style="--glow-color: rgba(212, 165, 74, 0.035); --glow-color-alt: rgba(90, 184, 212, 0.025)">
-        {entries.map((entry, index) => (
-          <div
-            class="relative glass-card rounded-xl card-glow card-glow-amber card-lift group animate-stagger border-l-2 border-l-neon-amber/40 overflow-hidden"
-            style={`--stagger-index: ${index}`}
-          >
-            <a href={`/prompts/${entry.id}`} class="block p-6 md:p-7">
-              <div class="flex items-start justify-between gap-4">
-                <div class="min-w-0">
-                  <h2 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-amber transition-colors">
-                    {entry.data.title}
-                  </h2>
-                  <p class="text-sm text-text-muted mt-2 leading-relaxed">{entry.data.description}</p>
-                </div>
-                <span class="shrink-0 px-2 py-0.5 rounded text-xs font-mono bg-neon-amber/10 text-neon-amber">
-                  {entry.data.category}
-                </span>
-              </div>
-            </a>
-            {entry.data.tags.length > 0 && (
-              <div class="flex flex-wrap gap-2 px-6 md:px-7 pb-5">
-                {entry.data.tags.map((tag) => (
-                  <span class="tag-badge">
-                    <span class={`tag-dot ${tagDotClass(tag)}`}></span>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      <PromptFilter client:load prompts={prompts} />
     )}
   </div>
 </BaseLayout>

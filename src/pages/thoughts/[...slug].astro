@@ -1,5 +1,6 @@
 ---
 import PostLayout from '../../layouts/PostLayout.astro';
+import RelatedPosts from '../../components/RelatedPosts.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -14,6 +15,23 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const words = entry.body?.trim().split(/\s+/).length ?? 0;
 const readingTime = Math.max(1, Math.ceil(words / 200));
+
+const allEntries = (await getCollection('thoughts')).filter((e) => !e.data.draft && e.id !== entry.id);
+const relatedPosts = allEntries
+  .filter((e) => e.data.tags.some((t) => entry.data.tags.includes(t)))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3)
+  .map((e) => ({ title: e.data.title, url: `/thoughts/${e.id}`, date: e.data.date }));
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://softcat.ai" },
+    { "@type": "ListItem", "position": 2, "name": "Thoughts", "item": "https://softcat.ai/thoughts" },
+    { "@type": "ListItem", "position": 3, "name": entry.data.title, "item": `https://softcat.ai/thoughts/${entry.id}` },
+  ],
+};
 ---
 
 <PostLayout
@@ -29,5 +47,9 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
   generation_time_s={entry.data.generation_time_s}
   cost_usd={entry.data.cost_usd}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
   <Content />
+  {relatedPosts.length > 0 && <RelatedPosts posts={relatedPosts} />}
 </PostLayout>

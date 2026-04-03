@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContextWindowViz from '../../components/lab/ContextWindowViz';
+---
+
+<BaseLayout title="Context Window Visualiser" description="Compare context window sizes across 8 major AI models with interactive usage simulation.">
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-8">
+      <a href="/tools" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; tools</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">Context Window Visualiser</h1>
+      <p class="text-text-muted mt-2">See how context window sizes compare across models. Simulate usage to spot capacity limits.</p>
+    </header>
+    <ContextWindowViz client:load />
+  </div>
+</BaseLayout>
