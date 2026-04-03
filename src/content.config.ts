@@ -59,9 +59,23 @@ const prompts = defineCollection({
   }),
 });
 
+const glossary = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/glossary' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    tags: z.array(z.string()).default([]),
+    date: z.coerce.date(),
+    related: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+    ...pipelineMeta,
+  }),
+});
+
 export const collections = {
   'news-and-updates': newsAndUpdates,
   'thoughts': thoughts,
   tools,
   prompts,
+  glossary,
 };

@@ -1,0 +1,64 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('glossary');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://softcat.ai" },
+    { "@type": "ListItem", "position": 2, "name": "Glossary", "item": "https://softcat.ai/glossary" },
+    { "@type": "ListItem", "position": 3, "name": entry.data.title, "item": `https://softcat.ai/glossary/${entry.id}` },
+  ],
+};
+
+const allEntries = (await getCollection('glossary')).filter((e) => !e.data.draft && e.id !== entry.id);
+const relatedByTag = allEntries
+  .filter((e) => e.data.tags.some((t) => entry.data.tags.includes(t)))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title))
+  .slice(0, 5);
+---
+
+<PostLayout
+  title={entry.data.title}
+  date={entry.data.date}
+  tags={entry.data.tags}
+  summary={entry.data.description}
+  backLink="/glossary"
+  backLabel="Glossary"
+  generated_by={entry.data.generated_by}
+  model={entry.data.model}
+  generation_time_s={entry.data.generation_time_s}
+  cost_usd={entry.data.cost_usd}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+  <Content />
+  {relatedByTag.length > 0 && (
+    <section class="mt-12 pt-8 border-t border-surface-light">
+      <h2 class="font-mono text-sm font-bold text-text-bright mb-4 glow-cyan">Related terms</h2>
+      <div class="flex flex-wrap gap-2">
+        {relatedByTag.map((e) => (
+          <a
+            href={`/glossary/${e.id}`}
+            class="px-3 py-1.5 bg-surface border border-surface-light rounded-lg font-mono text-xs text-text-muted hover:text-neon-cyan hover:border-neon-cyan/30 transition-colors"
+          >
+            {e.data.title}
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+</PostLayout>

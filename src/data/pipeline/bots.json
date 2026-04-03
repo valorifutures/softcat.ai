@@ -90,6 +90,24 @@
     "accent": "amber"
   },
   {
+    "id": "glossary_scout",
+    "name": "Glossary Scout",
+    "description": "Scans AI news from the past 7 days for new terminology, tools, and techniques worth defining. Raises GitHub issues tagged glossary for the Builder to action.",
+    "script": "scripts/glossary-scout.sh",
+    "schedule": "Monday at 09:00 UTC",
+    "schedule_cron": "0 9 * * 1",
+    "feeds": [
+      "Hacker News",
+      "arXiv (cs.AI)",
+      "r/MachineLearning",
+      "model release notes",
+      "AI newsletters"
+    ],
+    "model": "claude-sonnet-4-20250514",
+    "output_section": "glossary",
+    "accent": "cyan"
+  },
+  {
     "id": "model_bot",
     "name": "Model Data",
     "description": "Fetches AI model pricing and specs from the OpenRouter API, updates the models comparison page.",

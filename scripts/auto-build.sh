@@ -34,19 +34,32 @@ git pull --ff-only origin main 2>/dev/null || true
 
 # Find the oldest open auto-improve issue (sort by number via jq since gh doesn't support --sort)
 ISSUE_JSON=$(gh issue list --label "auto-improve" --state open --json number,title,body,labels -R valorifutures/softcat.ai 2>/dev/null || echo "[]")
-ISSUE_NUMBER=$(echo "$ISSUE_JSON" | jq -r 'sort_by(.number) | .[0].number // empty')
-ISSUE_TITLE=$(echo "$ISSUE_JSON" | jq -r 'sort_by(.number) | .[0].title // empty')
-ISSUE_BODY=$(echo "$ISSUE_JSON" | jq -r 'sort_by(.number) | .[0].body // empty')
+ISSUE_COUNT=$(echo "$ISSUE_JSON" | jq 'length')
 
-if [ -z "$ISSUE_NUMBER" ]; then
+if [ "$ISSUE_COUNT" -eq 0 ]; then
     echo "[$(date)] No open auto-improve issues. Nothing to build." >> "$LOG_FILE"
     exit 0
 fi
 
-# Skip if a PR already exists for this issue
-EXISTING_PR=$(gh pr list --state open --search "auto/${ISSUE_NUMBER}" -R valorifutures/softcat.ai --json number --jq 'length' 2>/dev/null || echo "0")
-if [ "$EXISTING_PR" -gt 0 ]; then
-    echo "[$(date)] PR already exists for issue #${ISSUE_NUMBER}, skipping" >> "$LOG_FILE"
+# Find the oldest issue that doesn't already have a PR open
+ISSUE_NUMBER=""
+ISSUE_TITLE=""
+ISSUE_BODY=""
+for i in $(seq 0 $((ISSUE_COUNT - 1))); do
+    CANDIDATE=$(echo "$ISSUE_JSON" | jq -r "sort_by(.number) | .[$i].number // empty")
+    if [ -z "$CANDIDATE" ]; then continue; fi
+    EXISTING_PR=$(gh pr list --state open --search "auto/${CANDIDATE}" -R valorifutures/softcat.ai --json number --jq 'length' 2>/dev/null || echo "0")
+    if [ "$EXISTING_PR" -eq 0 ]; then
+        ISSUE_NUMBER="$CANDIDATE"
+        ISSUE_TITLE=$(echo "$ISSUE_JSON" | jq -r "sort_by(.number) | .[$i].title // empty")
+        ISSUE_BODY=$(echo "$ISSUE_JSON" | jq -r "sort_by(.number) | .[$i].body // empty")
+        break
+    fi
+    echo "[$(date)] Issue #${CANDIDATE} already has PR, trying next" >> "$LOG_FILE"
+done
+
+if [ -z "$ISSUE_NUMBER" ]; then
+    echo "[$(date)] All open issues already have PRs. Nothing to build." >> "$LOG_FILE"
     exit 0
 fi
 
