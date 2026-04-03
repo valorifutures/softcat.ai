@@ -1965,5 +1965,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-03-open-source-reasoning-models-just-made-the-api-economy-irrel.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-03T09:30:58.819029+00:00",
+    "status": "success",
+    "duration_s": 57.5,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0708,
+    "input_tokens": 11239,
+    "output_tokens": 2471,
+    "output_files": [
+      "src/data/radar/2026-04-03.json"
+    ]
   }
 ]
