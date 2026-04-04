@@ -358,6 +358,17 @@
         "Sakana Marlin",
         "MindsDB Anton"
       ]
+    },
+    {
+      "date": "2026-04-04",
+      "file": "2026-04-04.json",
+      "products": [
+        "VOID",
+        "AlphaEvolve",
+        "Travel Hacking Toolkit",
+        "Dangerously",
+        "agenteval"
+      ]
     }
   ]
 }
