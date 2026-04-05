@@ -369,6 +369,17 @@
         "Dangerously",
         "agenteval"
       ]
+    },
+    {
+      "date": "2026-04-05",
+      "file": "2026-04-05.json",
+      "products": [
+        "AutoAgent",
+        "Hybro Hub",
+        "Tokencap",
+        "DocMason",
+        "Gremlin in the Machine"
+      ]
     }
   ]
 }
