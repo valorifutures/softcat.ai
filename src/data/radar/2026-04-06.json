@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-06",
+  "featured": [
+    {
+      "id": "ph-autokernel",
+      "name": "AutoKernel",
+      "tagline": "Open-source framework that applies autonomous LLM agents to GPU kernel optimisation for PyTorch models.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "GPU kernel optimisation is one of the most specialised and painful parts of ML engineering. Having an LLM agent automatically write, test, and iterate on CUDA kernels could democratise performance optimisation that currently requires years of expertise.",
+      "ph_url": "https://www.marktechpost.com/2026/04/06/rightnow-ai-releases-autokernel-an-open-source-framework-that-applies-an-autonomous-agent-loop-to-gpu-kernel-optimization-for-arbitrary-pytorch-models/",
+      "maker": "RightNow AI",
+      "featured": true,
+      "added_at": "2026-04-06T06:00:00Z"
+    },
+    {
+      "id": "ph-maxtoki",
+      "name": "MaxToki",
+      "tagline": "AI foundation model that predicts how cells age and what interventions might slow the process.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Most biology models see cells as frozen snapshots, but MaxToki understands cellular dynamics over time. This temporal understanding could unlock genuine breakthroughs in ageing research rather than just pattern matching on static data.",
+      "ph_url": "https://www.marktechpost.com/2026/04/05/meet-maxtoki-the-ai-that-predicts-how-your-cells-age-and-what-to-do-about-it/",
+      "maker": "Unknown",
+      "featured": true,
+      "added_at": "2026-04-06T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-cabinet",
+      "name": "Cabinet",
+      "tagline": "Knowledge base combined with LLM, positioned as Paperclip meets Obsidian.",
+      "logo_url": "",
+      "category": "AI Writing",
+      "why_radar": "The knowledge management space is crowded, but the Paperclip reference suggests this might actually understand context across your entire knowledge base rather than just doing RAG over documents.",
+      "ph_url": "https://runcabinet.com",
+      "maker": "Unknown",
+      "featured": false,
+      "added_at": "2026-04-06T06:30:00Z"
+    },
+    {
+      "id": "ph-apex-protocol",
+      "name": "Apex Protocol",
+      "tagline": "Open MCP-based standard for AI agent trading systems.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Building on Model Context Protocol for financial trading could standardise how AI agents interact with markets. Whether this democratises algorithmic trading or just creates more sophisticated ways to lose money remains to be seen.",
+      "ph_url": "https://apexstandard.org/",
+      "maker": "Unknown",
+      "featured": false,
+      "added_at": "2026-04-06T06:45:00Z"
+    },
+    {
+      "id": "ph-onepilot",
+      "name": "Onepilot",
+      "tagline": "Deploy AI coding agents to remote servers directly from your iPhone.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "The idea of managing production deployments from your phone sounds either brilliant or terrifying. If they've solved the security and interface challenges, this could genuinely change how we think about mobile development workflows.",
+      "ph_url": "https://onepilotapp.com",
+      "maker": "Unknown",
+      "featured": false,
+      "added_at": "2026-04-06T07:00:00Z"
+    },
+    {
+      "id": "ph-termhub",
+      "name": "TermHub",
+      "tagline": "Open-source terminal control gateway built specifically for AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "AI agents need secure, controlled access to terminal operations without breaking everything. An open-source gateway that handles permissions and sandboxing could become essential infrastructure as agents get more autonomous.",
+      "ph_url": "https://github.com/duo121/termhub",
+      "maker": "duo121",
+      "featured": false,
+      "added_at": "2026-04-06T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Cabinet \u2013 Kb+LLM (Like Paperclip+Obsidian)",
+      "points": 16,
+      "comments": 11,
+      "summary": "A knowledge base system that combines LLM capabilities with note-taking, positioned as a hybrid of Microsoft's old Paperclip assistant and modern knowledge management tools like Obsidian.",
+      "hn_url": "https://news.ycombinator.com/item?id=47649336"
+    },
+    {
+      "title": "Apex Protocol \u2013 An open MCP-based standard for AI agent trading",
+      "points": 12,
+      "comments": 4,
+      "summary": "An open standard built on Model Context Protocol that aims to standardise how AI agents interact with trading systems and financial markets.",
+      "hn_url": "https://news.ycombinator.com/item?id=47655618"
+    },
+    {
+      "title": "Onepilot \u2013 Deploy AI coding agents to remote servers from your iPhone",
+      "points": 9,
+      "comments": 4,
+      "summary": "A mobile application that allows developers to deploy and manage AI coding agents on remote servers directly from iOS devices.",
+      "hn_url": "https://news.ycombinator.com/item?id=47652046"
+    },
+    {
+      "title": "Show HN: ACE \u2013 A dynamic benchmark measuring the cost to break AI agents",
+      "points": 8,
+      "comments": 3,
+      "summary": "A security testing framework that measures how much it costs to successfully exploit or break AI agent systems, providing metrics for adversarial robustness.",
+      "hn_url": "https://news.ycombinator.com/item?id=47654123"
+    },
+    {
+      "title": "AI agents promise to 'run the business,' but who is liable if things go wrong?",
+      "points": 6,
+      "comments": 0,
+      "summary": "Analysis of the legal and liability questions that arise as AI agents become more autonomous in business operations and decision-making processes.",
+      "hn_url": "https://news.ycombinator.com/item?id=47655920"
+    }
+  ]
+}
