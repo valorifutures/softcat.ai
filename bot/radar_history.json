@@ -392,6 +392,18 @@
         "Onepilot",
         "TermHub"
       ]
+    },
+    {
+      "date": "2026-04-07",
+      "file": "2026-04-07.json",
+      "products": [
+        "EUPE",
+        "Google AI Dictation",
+        "Hippo",
+        "OnCell.ai",
+        "Meta-agent",
+        "Feynman"
+      ]
     }
   ]
 }

@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-07",
+  "featured": [
+    {
+      "id": "ph-eupe",
+      "name": "EUPE",
+      "tagline": "Compact vision encoder family under 100M parameters that rivals specialist models across image understanding tasks.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Meta's answer to the edge AI vision problem. Most vision encoders are bloated beasts that lose their magic when you shrink them for mobile. EUPE proves you can have your cake and eat it too.",
+      "ph_url": "https://www.marktechpost.com/2026/04/06/meta-ai-releases-eupe-a-compact-vision-encoder-family-under-100m-parameters-that-rivals-specialist-models-across-image-understanding-dense-prediction-and-vlm-tasks/",
+      "maker": "Meta AI",
+      "featured": true,
+      "added_at": "2026-04-07T06:00:00Z"
+    },
+    {
+      "id": "ph-google-dictation-app",
+      "name": "Google AI Dictation",
+      "tagline": "Offline-first dictation app using Gemma AI models for iOS.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google quietly drops an offline dictation app that works without phoning home. Using their own Gemma models locally is the kind of practical AI deployment we need more of. Privacy-first speech recognition shouldn't be revolutionary, but here we are.",
+      "ph_url": "https://techcrunch.com/2026/04/06/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-04-07T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-hippo-memory",
+      "name": "Hippo",
+      "tagline": "Biologically inspired memory system for AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, someone's building agent memory that actually works like a brain instead of a database. The hippocampus approach to AI memory could solve the context window problem that's been haunting long-running agents.",
+      "ph_url": "https://github.com/kitfunso/hippo-memory",
+      "maker": "kitfunso",
+      "featured": false,
+      "added_at": "2026-04-07T07:00:00Z"
+    },
+    {
+      "id": "ph-oncell-ai",
+      "name": "OnCell.ai",
+      "tagline": "Per-user isolated environments for AI agents.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Proper isolation for AI agents is the unsexy infrastructure problem nobody talks about until something goes wrong. OnCell's approach to per-user sandboxing could be what makes agent deployment actually viable in production.",
+      "ph_url": "https://oncell.ai",
+      "maker": "OnCell",
+      "featured": false,
+      "added_at": "2026-04-07T07:30:00Z"
+    },
+    {
+      "id": "ph-meta-agent",
+      "name": "Meta-agent",
+      "tagline": "Self-improving agent harness from live traces.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Agents that learn from their own execution traces is the recursive improvement loop we've all been waiting for. Meta-agent's approach to self-modification from live data could be the difference between static tools and actually intelligent systems.",
+      "ph_url": "https://github.com/canvas-org/meta-agent",
+      "maker": "Canvas",
+      "featured": false,
+      "added_at": "2026-04-07T08:00:00Z"
+    },
+    {
+      "id": "ph-feynman-ai",
+      "name": "Feynman",
+      "tagline": "Open-source AI research agent for automated scientific discovery.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "An AI agent that actually does research instead of just pretending to. Feynman's approach to automated scientific discovery could accelerate the pace of AI research itself. Meta, but the good kind.",
+      "ph_url": "https://www.feynman.is/",
+      "maker": "Feynman Team",
+      "featured": false,
+      "added_at": "2026-04-07T08:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Hippo, biologically inspired memory for AI agents",
+      "points": 93,
+      "comments": 17,
+      "summary": "An open-source memory system for AI agents based on how the hippocampus actually works. Instead of cramming everything into context windows, it mimics biological memory formation and retrieval patterns.",
+      "hn_url": "https://news.ycombinator.com/item?id=47667672"
+    },
+    {
+      "title": "Wikipedia's AI agent row likely just the beginning of the bot-ocalypse",
+      "points": 53,
+      "comments": 58,
+      "summary": "Wikipedia editors are fighting AI agents trying to edit articles automatically. This is probably just the start of a much bigger battle over who gets to control information online.",
+      "hn_url": "https://news.ycombinator.com/item?id=47665902"
+    },
+    {
+      "title": "Per-user isolated environments for AI agents",
+      "points": 9,
+      "comments": 0,
+      "summary": "OnCell.ai provides sandboxed environments for each user's AI agents. Solves the isolation problem that makes multi-tenant agent deployment risky in production.",
+      "hn_url": "https://news.ycombinator.com/item?id=47671792"
+    },
+    {
+      "title": "Meta-agent: self-improving agent harnesses from live traces",
+      "points": 9,
+      "comments": 0,
+      "summary": "An agent system that learns and improves from watching its own execution traces. Self-modifying AI that gets better by analysing what it actually does in practice.",
+      "hn_url": "https://news.ycombinator.com/item?id=47665630"
+    },
+    {
+      "title": "How are you orchestrating multi-agent AI workflows in production?",
+      "points": 4,
+      "comments": 3,
+      "summary": "Community discussion about real-world multi-agent deployment challenges. The comments reveal how early we still are in making agent orchestration actually work reliably.",
+      "hn_url": "https://news.ycombinator.com/item?id=47660705"
+    }
+  ]
+}
