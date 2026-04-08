@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-08",
+  "featured": [
+    {
+      "id": "ph-glm-5-1",
+      "name": "GLM-5.1",
+      "tagline": "754B parameter open-weight agentic model for autonomous coding tasks.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, an open model built specifically for agents, not benchmarks. GLM-5.1 handles 8-hour autonomous execution and tops SWE-Bench Pro, which matters more than yet another chat model. This is what we've been waiting for in truly agentic AI.",
+      "ph_url": "https://www.marktechpost.com/2026/04/08/z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution/",
+      "maker": "Z.AI",
+      "featured": true,
+      "added_at": "2026-04-08T06:00:00Z"
+    },
+    {
+      "id": "ph-output-ai",
+      "name": "Output.ai",
+      "tagline": "Open-source framework extracted from 500+ production AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Built from real production experience, not theory. When a framework emerges from 500 deployed agents, it's worth paying attention to. This could become the Rails of agent development.",
+      "ph_url": "https://output.ai/",
+      "maker": "Output.ai",
+      "featured": true,
+      "added_at": "2026-04-08T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-google-ai-dictation-offline",
+      "name": "Google AI Dictation",
+      "tagline": "Offline-first AI dictation app using Gemma models.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google quietly shipping an offline-first dictation app shows the shift towards edge AI is real. Using Gemma models locally means no cloud dependency, which is exactly where mobile AI should be heading.",
+      "ph_url": "https://techcrunch.com/2026/04/07/google-quietly-releases-an-offline-first-ai-dictation-app-on-ios/",
+      "maker": "Google",
+      "featured": false,
+      "added_at": "2026-04-08T06:30:00Z"
+    },
+    {
+      "id": "ph-marimo-pair",
+      "name": "Marimo Pair",
+      "tagline": "Reactive Python notebooks as environments for AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Turning notebooks into agent environments is brilliant. Marimo's reactive approach means agents can work in living documents that update as they compute. This bridges the gap between exploration and automation.",
+      "ph_url": "https://github.com/marimo-team/marimo-pair",
+      "maker": "Marimo Team",
+      "featured": false,
+      "added_at": "2026-04-08T06:45:00Z"
+    },
+    {
+      "id": "ph-dinobase",
+      "name": "Dinobase",
+      "tagline": "Purpose-built database for AI agents.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Agents need different data patterns than humans. A database built specifically for agent workflows could solve the persistent memory problem that's holding back long-running autonomous systems.",
+      "ph_url": "https://github.com/DinobaseHQ/dinobase",
+      "maker": "DinobaseHQ",
+      "featured": false,
+      "added_at": "2026-04-08T07:00:00Z"
+    },
+    {
+      "id": "ph-frontend-visualqa",
+      "name": "Frontend-VisualQA",
+      "tagline": "Give coding agents eyes to verify their own UI work.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Coding agents that can actually see what they've built changes everything. No more blind UI generation. This visual feedback loop is essential for autonomous frontend development.",
+      "ph_url": "https://github.com/yutori-ai/frontend-visualqa",
+      "maker": "Yutori AI",
+      "featured": false,
+      "added_at": "2026-04-08T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Output.ai - OSS framework we extracted from 500+ production AI agents",
+      "points": 39,
+      "comments": 7,
+      "summary": "Open-source framework built from real production experience with 500+ AI agents. Provides battle-tested patterns for building reliable agent systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=47676157"
+    },
+    {
+      "title": "Show HN: Marimo pair \u2013 Reactive Python notebooks as environments for agents",
+      "points": 25,
+      "comments": 1,
+      "summary": "Turns reactive notebooks into environments where AI agents can work with living documents. Bridges the gap between data exploration and automation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47678844"
+    },
+    {
+      "title": "GLM-5.1 matches Opus 4.6 in agentic performance, at ~1/3 actual cost",
+      "points": 16,
+      "comments": 2,
+      "summary": "New 754B parameter model specifically built for agent tasks achieves competitive performance at significantly lower cost. Built for autonomous execution rather than chat.",
+      "hn_url": "https://news.ycombinator.com/item?id=47682384"
+    },
+    {
+      "title": "Show HN: I built a database for AI agents",
+      "points": 11,
+      "comments": 10,
+      "summary": "Purpose-built database designed for AI agent workflows and persistent memory needs. Addresses data patterns that differ from traditional human-facing applications.",
+      "hn_url": "https://news.ycombinator.com/item?id=47678048"
+    },
+    {
+      "title": "Show HN: Frontend-VisualQA \u2014 give coding agents eyes to verify their own UI work",
+      "points": 10,
+      "comments": 0,
+      "summary": "Tool that lets coding agents visually verify the UI they generate. Provides visual feedback loop for autonomous frontend development.",
+      "hn_url": "https://news.ycombinator.com/item?id=47678328"
+    }
+  ]
+}

@@ -404,6 +404,18 @@
         "Meta-agent",
         "Feynman"
       ]
+    },
+    {
+      "date": "2026-04-08",
+      "file": "2026-04-08.json",
+      "products": [
+        "GLM-5.1",
+        "Output.ai",
+        "Google AI Dictation",
+        "Marimo Pair",
+        "Dinobase",
+        "Frontend-VisualQA"
+      ]
     }
   ]
 }
