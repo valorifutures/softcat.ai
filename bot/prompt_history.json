@@ -83,6 +83,18 @@
       "file": "multimodal-agent-capability-mapper.md",
       "title": "Multimodal Agent Capability Mapper",
       "category": "agent-design"
+    },
+    {
+      "date": "2026-04-08",
+      "file": "gpu-kernel-performance-profiler.md",
+      "title": "GPU Kernel Performance Profiler",
+      "category": "performance"
+    },
+    {
+      "date": "2026-04-08",
+      "file": "multi-agent-communication-protocol-designer.md",
+      "title": "Multi-Agent Communication Protocol Designer",
+      "category": "agent-design"
     }
   ]
 }
