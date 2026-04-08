@@ -2307,5 +2307,52 @@
     "output_files": [
       "src/content/thoughts/2026-04-07-compact-models-are-just-flagship-models-admitting-defeat.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-07T09:30:56.108711+00:00",
+    "status": "success",
+    "duration_s": 54.0,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.066,
+    "input_tokens": 11272,
+    "output_tokens": 2143,
+    "output_files": [
+      "src/data/radar/2026-04-07.json"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-08T04:00:02.525671+00:00",
+    "status": "success",
+    "duration_s": 0.4,
+    "feeds_scanned": 0,
+    "items_found": 352,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-08T06:00:02.357568+00:00",
+    "status": "success",
+    "duration_s": 0.5,
+    "feeds_scanned": 0,
+    "items_found": 352,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
