@@ -86,15 +86,15 @@
     },
     {
       "date": "2026-04-08",
-      "file": "gpu-kernel-performance-profiler.md",
-      "title": "GPU Kernel Performance Profiler",
-      "category": "performance"
+      "file": "agentic-model-integration-validator.md",
+      "title": "Agentic Model Integration Validator",
+      "category": "agent-design"
     },
     {
       "date": "2026-04-08",
-      "file": "multi-agent-communication-protocol-designer.md",
-      "title": "Multi-Agent Communication Protocol Designer",
-      "category": "agent-design"
+      "file": "mixed-precision-training-validator.md",
+      "title": "Mixed Precision Training Validator",
+      "category": "performance"
     }
   ]
 }
