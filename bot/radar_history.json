@@ -416,6 +416,18 @@
         "Dinobase",
         "Frontend-VisualQA"
       ]
+    },
+    {
+      "date": "2026-04-09",
+      "file": "2026-04-09.json",
+      "products": [
+        "PaperOrchestra",
+        "OSGym",
+        "Poke",
+        "Astropad Workbench",
+        "TUI-use",
+        "BotCTL"
+      ]
     }
   ]
 }

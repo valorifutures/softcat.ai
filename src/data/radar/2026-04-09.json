@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-09",
+  "featured": [
+    {
+      "id": "ph-paperorchestra",
+      "name": "PaperOrchestra",
+      "tagline": "Multi-agent framework for automated AI research paper writing.",
+      "logo_url": "",
+      "category": "AI Writing",
+      "why_radar": "Google's attempt to automate the most tedious part of academia. Multi-agent systems orchestrating the entire research writing pipeline could democratise publication or flood journals with synthetic papers. The jury's still out on whether this helps real researchers or just creates more noise.",
+      "ph_url": "https://www.marktechpost.com/2026/04/08/google-ai-research-introduces-paperorchestra-a-multi-agent-framework-for-automated-ai-research-paper-writing/",
+      "maker": "Google AI Research",
+      "featured": true,
+      "added_at": "2026-04-09T06:00:00Z"
+    },
+    {
+      "id": "ph-osgym",
+      "name": "OSGym",
+      "tagline": "OS infrastructure framework managing 1,000+ replicas at $0.23/day for computer use agent research.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "The infrastructure problem for computer-use agents finally gets a proper solution. Managing thousands of OS instances for pennies per day could unlock serious research into agents that actually use computers like humans. This is the unglamorous plumbing that makes breakthrough agent research possible.",
+      "ph_url": "https://www.marktechpost.com/2026/04/08/meet-osgym-a-new-os-infrastructure-framework-that-manages-1000-replicas-at-0-23-day-for-computer-use-agent-research/",
+      "maker": "Research Community",
+      "featured": true,
+      "added_at": "2026-04-09T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-poke",
+      "name": "Poke",
+      "tagline": "AI agents as easy as sending a text message.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Text-based agent interaction strips away all the complexity that keeps normal people from using AI agents. No apps, no setup, just SMS your tasks. Simple execution beats sophisticated interfaces every time.",
+      "ph_url": "https://techcrunch.com/2026/04/08/poke-makes-ai-agents-as-easy-as-sending-a-text/",
+      "maker": "Poke",
+      "featured": false,
+      "added_at": "2026-04-09T06:30:00Z"
+    },
+    {
+      "id": "ph-workbench",
+      "name": "Astropad Workbench",
+      "tagline": "Remote desktop for AI agents, not IT support.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, remote desktop designed for monitoring AI agents rather than helping your mum with Windows updates. Low-latency streaming from Mac Minis to mobile devices could make agent oversight actually practical. Remote work, but for robots.",
+      "ph_url": "https://techcrunch.com/2026/04/08/astropads-workbench-reimagines-remote-desktop-for-ai-agents-not-it-support/",
+      "maker": "Astropad",
+      "featured": false,
+      "added_at": "2026-04-09T06:45:00Z"
+    },
+    {
+      "id": "ph-tui-use",
+      "name": "TUI-use",
+      "tagline": "Let AI agents control interactive terminal programs.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Teaching agents to navigate text-based interfaces opens up decades of Unix tooling. TUI programs are everywhere in developer workflows, and this bridges the gap between conversational AI and the command line. Simple concept, massive implications for terminal productivity.",
+      "ph_url": "https://github.com/onesuper/tui-use",
+      "maker": "onesuper",
+      "featured": false,
+      "added_at": "2026-04-09T07:00:00Z"
+    },
+    {
+      "id": "ph-botctl",
+      "name": "BotCTL",
+      "tagline": "Process manager for autonomous AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Someone finally built systemd for AI agents. Managing autonomous agents at scale needs proper process control, logging, and restart policies. This fills the operational gap between proof-of-concept agents and production deployment.",
+      "ph_url": "https://botctl.dev/",
+      "maker": "BotCTL",
+      "featured": false,
+      "added_at": "2026-04-09T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: TUI-use: Let AI agents control interactive terminal programs",
+      "points": 43,
+      "comments": 35,
+      "summary": "A tool that enables AI agents to interact with text-based user interfaces in terminals. Bridges conversational AI with command-line tools and opens up decades of Unix tooling to agent automation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47692661"
+    },
+    {
+      "title": "Process Manager for Autonomous AI Agents",
+      "points": 33,
+      "comments": 7,
+      "summary": "BotCTL provides systemd-like process management for AI agents. Handles deployment, monitoring, and lifecycle management for autonomous agents in production environments.",
+      "hn_url": "https://news.ycombinator.com/item?id=47699814"
+    },
+    {
+      "title": "Show HN: Itsumo: Make yourself fun and interesting academic language lessons",
+      "points": 8,
+      "comments": 0,
+      "summary": "An AI-powered platform for creating engaging academic language learning content. Uses AI to generate personalised lessons that make language learning more interactive and enjoyable.",
+      "hn_url": "https://news.ycombinator.com/item?id=47694112"
+    },
+    {
+      "title": "QVeris: AI agents discover, inspect and call 10k capabilities via one protocol",
+      "points": 8,
+      "comments": 0,
+      "summary": "A unified protocol that allows AI agents to discover and interact with thousands of different capabilities and services. Standardises how agents find and use external tools and APIs.",
+      "hn_url": "https://news.ycombinator.com/item?id=47689773"
+    },
+    {
+      "title": "Show HN: ZeroID \u2013 Open-source identity for AI agents based on OIDF standards",
+      "points": 7,
+      "comments": 5,
+      "summary": "An open-source identity management system specifically designed for AI agents. Built on OpenID Foundation standards to provide secure authentication and authorisation for autonomous systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=47690618"
+    }
+  ]
+}
