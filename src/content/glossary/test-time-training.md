@@ -14,7 +14,7 @@ related:
 draft: false
 ---
 
-Test-Time Training (TTT) is a method where a model continues learning during inference itself, running gradient updates using the specific input it has been given as training data. Unlike standard inference where model weights are frozen, TTT lets the model adapt to new context without a full retraining cycle, giving it a form of working memory that is active for the duration of a session. NVIDIA highlighted this approach in March 2026 as a solution to long-context memory that maintains constant inference latency regardless of how much context is provided.
+Test-Time Training (TTT) is a method where a model continues learning during inference itself, running gradient updates using the specific input it has been given as training data. Unlike standard inference where model weights are frozen, TTT lets the model adapt to new context without a full retraining cycle, giving it a form of working memory that is active for the duration of a session. [NVIDIA highlighted this approach in March 2026](https://developer.nvidia.com/blog/reimagining-llm-memory-using-context-as-training-data-unlocks-models-that-learn-at-test-time) as a solution to long-context memory that maintains constant inference latency regardless of how much context is provided.
 
 In practice, a TTT-enabled model can be handed a 500-page technical manual at inference time and update its own weights to better answer questions about that document, without any offline fine-tuning step.
 
