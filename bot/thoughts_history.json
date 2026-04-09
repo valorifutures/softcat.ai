@@ -219,6 +219,11 @@
       "date": "2026-04-08",
       "file": "2026-04-08-tool-calling-just-turned-function-composition-into-a-runtime.md",
       "title": "Tool calling just turned function composition into a runtime circus"
+    },
+    {
+      "date": "2026-04-09",
+      "file": "2026-04-09-multi-agent-frameworks-are-just-microservices-with-hallucina.md",
+      "title": "Multi-agent frameworks are just microservices with hallucination problems"
     }
   ]
 }
