@@ -4,12 +4,15 @@ import RadarFeaturedCard from '../../components/RadarFeaturedCard.astro';
 import RadarPickCard from '../../components/RadarPickCard.astro';
 
 import manifest from '../../data/radar/index.json';
+import { RADAR_VISIBLE_DAYS } from '../../utils/radar';
 
 export function getStaticPaths() {
-  return manifest.dates.map((date) => ({
+  return manifest.dates.slice(0, RADAR_VISIBLE_DAYS).map((date) => ({
     params: { date },
   }));
 }
+
+const visibleDates = manifest.dates.slice(0, RADAR_VISIBLE_DAYS);
 
 const { date } = Astro.params;
 
@@ -22,9 +25,9 @@ function formatDate(dateStr: string): string {
   return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 }
 
-const dateIndex = manifest.dates.indexOf(date!);
-const newerDate = dateIndex > 0 ? manifest.dates[dateIndex - 1] : null;
-const olderDate = dateIndex < manifest.dates.length - 1 ? manifest.dates[dateIndex + 1] : null;
+const dateIndex = visibleDates.indexOf(date!);
+const newerDate = dateIndex > 0 ? visibleDates[dateIndex - 1] : null;
+const olderDate = dateIndex >= 0 && dateIndex < visibleDates.length - 1 ? visibleDates[dateIndex + 1] : null;
 ---
 
 <BaseLayout title={`The Radar — ${date}`} description={`AI product launches from Product Hunt on ${date}.`}>
