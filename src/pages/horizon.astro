@@ -1,0 +1,449 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Load all five horizon lane collections.
+const pastEntries = await getCollection('horizonPast');
+const nowEntries = await getCollection('horizonNow');
+const nextEntries = await getCollection('horizonNext');
+const debateEntries = await getCollection('horizonDebates');
+const scenarioEntries = await getCollection('horizonScenarios');
+
+// Sort Now by date descending so the most recent signal lands at the top.
+const sortedNow = [...nowEntries].sort((a, b) =>
+  b.data.date.localeCompare(a.data.date),
+);
+
+// Sort Past by date descending and group by year for the timeline.
+const sortedPast = [...pastEntries].sort((a, b) =>
+  b.data.date.localeCompare(a.data.date),
+);
+const pastByYear: Record<string, typeof sortedPast> = {};
+for (const entry of sortedPast) {
+  const year = entry.data.date.slice(0, 4);
+  if (!pastByYear[year]) pastByYear[year] = [];
+  pastByYear[year].push(entry);
+}
+const pastYears = Object.keys(pastByYear).sort((a, b) => b.localeCompare(a));
+
+// Confidence -> palette accent name. Used for borders, glow classes,
+// and the small confidence badge on each card.
+function confidenceAccent(c: string): 'green' | 'cyan' | 'amber' | 'purple' {
+  switch (c) {
+    case 'confirmed':
+      return 'green';
+    case 'emerging':
+      return 'cyan';
+    case 'contested':
+      return 'amber';
+    case 'speculative':
+      return 'purple';
+    default:
+      return 'cyan';
+  }
+}
+
+// Computed stats for the "Where are we now?" snapshot card. Recomputed at
+// build time so the snapshot stays in sync with the data without anyone
+// hand-editing copy each time the bot proposes a new entry.
+const nowConfidenceCounts = sortedNow.reduce(
+  (acc, e) => {
+    acc[e.data.confidence] = (acc[e.data.confidence] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>,
+);
+const nowSignalCounts = sortedNow.reduce(
+  (acc, e) => {
+    acc[e.data.signal_type] = (acc[e.data.signal_type] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>,
+);
+const nowThemeCounts = sortedNow.reduce(
+  (acc, e) => {
+    for (const t of e.data.themes) {
+      acc[t] = (acc[t] || 0) + 1;
+    }
+    return acc;
+  },
+  {} as Record<string, number>,
+);
+const topThemes = Object.entries(nowThemeCounts)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 3)
+  .map(([t]) => t);
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr + 'T00:00:00Z');
+  return d.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+}
+
+function formatYear(dateStr: string): string {
+  return dateStr.slice(0, 4);
+}
+---
+
+<BaseLayout
+  title="Horizon Map"
+  description="A living map of what has happened in AI, what is changing now, and what credible futures may come next."
+>
+  <!-- ============================================================ -->
+  <!-- HERO                                                          -->
+  <!-- ============================================================ -->
+  <section class="max-w-5xl mx-auto px-6 pt-16 pb-8">
+    <header class="mb-10">
+      <a
+        href="/"
+        class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block"
+        >&larr; home</a
+      >
+      <h1
+        class="font-mono text-4xl md:text-5xl font-bold text-text-bright glow-cyan"
+      >
+        AI Horizon Map
+      </h1>
+      <p class="text-text-muted mt-3 text-lg max-w-3xl">
+        A living map of what has happened, what is changing now, and what
+        credible futures may come next.
+      </p>
+    </header>
+
+    <!-- Horizon band: past behind, now in middle (highlighted), next ahead. -->
+    <div class="relative mb-4">
+      <svg
+        viewBox="0 0 1000 100"
+        class="w-full h-auto"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="horizon-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="rgba(155, 122, 204, 0.18)" />
+            <stop offset="35%" stop-color="rgba(78, 203, 143, 0.10)" />
+            <stop offset="50%" stop-color="rgba(78, 203, 143, 0.30)" />
+            <stop offset="65%" stop-color="rgba(78, 203, 143, 0.10)" />
+            <stop offset="100%" stop-color="rgba(90, 184, 212, 0.18)" />
+          </linearGradient>
+        </defs>
+        <rect
+          x="0"
+          y="20"
+          width="1000"
+          height="60"
+          fill="url(#horizon-gradient)"
+          rx="6"
+        />
+        <line
+          x1="0"
+          y1="50"
+          x2="1000"
+          y2="50"
+          stroke="rgba(255, 255, 255, 0.08)"
+          stroke-width="1"
+        />
+      </svg>
+      <div class="absolute inset-0 flex justify-between items-center px-8">
+        <span
+          class="font-mono text-xs text-neon-purple/80 uppercase tracking-widest"
+          >Past</span
+        >
+        <span
+          class="font-mono text-xs text-neon-green uppercase tracking-widest glow-green"
+          >Now</span
+        >
+        <span
+          class="font-mono text-xs text-neon-cyan/80 uppercase tracking-widest"
+          >Next</span
+        >
+      </div>
+    </div>
+
+    <p class="font-mono text-xs text-text-muted/60 text-center">
+      {sortedPast.length} past turning points · {sortedNow.length} now signals · {nextEntries.length} next forecasts
+    </p>
+  </section>
+
+  <div class="glow-divider mb-12 max-w-5xl mx-auto" style="--divider-color: rgba(90, 184, 212, 0.15)"></div>
+
+  <!-- ============================================================ -->
+  <!-- NOW SNAPSHOT                                                  -->
+  <!-- ============================================================ -->
+  <section class="max-w-5xl mx-auto px-6 mb-12">
+    <div class="relative glass-card rounded-xl p-6 card-glow-cyan card-lift">
+      <h2
+        class="font-mono text-xs text-neon-cyan uppercase tracking-widest mb-4"
+      >
+        Where are we now?
+      </h2>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm font-mono text-text-muted"
+      >
+        <div>
+          <span class="text-text-bright text-base">{sortedNow.length}</span> patterns tracked across the field
+        </div>
+        <div>
+          <span class="text-neon-green">{nowConfidenceCounts.confirmed || 0} confirmed</span>,
+          <span class="text-neon-cyan">{nowConfidenceCounts.emerging || 0} emerging</span>
+        </div>
+        <div>
+          <span class="text-text-bright text-base">{nowSignalCounts.inflection || 0}</span> inflections,
+          <span class="text-text-bright text-base">{nowSignalCounts.trend || 0}</span> trends
+        </div>
+        <div>
+          Top themes: <span class="text-text-bright">{topThemes.join(', ')}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- NOW LANE                                                      -->
+  <!-- ============================================================ -->
+  <section class="max-w-5xl mx-auto px-6 mb-16">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="font-mono text-2xl font-bold text-text-bright glow-cyan">
+        Now
+      </h2>
+      <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
+        what is changing
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {sortedNow.map((entry, i) => {
+        const accent = confidenceAccent(entry.data.confidence);
+        return (
+          <article
+            class={`relative glass-card rounded-xl p-6 card-glow-${accent} card-lift animate-stagger`}
+            style={`--stagger-index: ${i}`}
+          >
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h3
+                class={`font-mono text-base md:text-lg font-bold text-text-bright glow-${accent} leading-snug`}
+              >
+                {entry.data.title}
+              </h3>
+              <span
+                class={`shrink-0 font-mono text-[10px] px-2 py-1 rounded uppercase tracking-wider tag-dot tag-dot-${accent} bg-surface-light text-text-muted`}
+                style="display: inline-flex; align-items: center; gap: 0.4rem; width: auto; height: auto; box-shadow: none;"
+              >
+                <span class={`tag-dot tag-dot-${accent}`} aria-hidden="true"></span>
+                {entry.data.confidence}
+              </span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              {entry.data.themes.map((t) => (
+                <span class="tag-badge"><span class="tag-dot tag-dot-cyan" aria-hidden="true"></span>{t}</span>
+              ))}
+            </div>
+
+            <p class="text-sm text-text-muted leading-relaxed mb-4">
+              {entry.data.why_it_matters}
+            </p>
+
+            {entry.data.implication && (
+              <div class="border-l-2 border-l-neon-cyan/30 pl-3 mb-4">
+                <p class="text-xs text-text-primary italic leading-relaxed">
+                  {entry.data.implication}
+                </p>
+              </div>
+            )}
+
+            <div class="flex items-center justify-between font-mono text-[11px] text-text-muted/70 pt-3 border-t border-surface-light/50">
+              <span>{formatDate(entry.data.date)}</span>
+              {entry.data.evidence && entry.data.evidence.length > 0 && (
+                <span>
+                  {entry.data.evidence.length} {entry.data.evidence.length === 1 ? 'source' : 'sources'}
+                </span>
+              )}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PAST LANE                                                     -->
+  <!-- ============================================================ -->
+  <section class="max-w-5xl mx-auto px-6 mb-16">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="font-mono text-2xl font-bold text-text-bright glow-purple">
+        Past
+      </h2>
+      <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
+        what mattered, and when
+      </span>
+    </div>
+
+    <div class="space-y-10">
+      {pastYears.map((year) => (
+        <div>
+          <h3 class="font-mono text-sm text-neon-purple/80 uppercase tracking-widest mb-4 sticky top-0">
+            {year}
+          </h3>
+          <div class="space-y-4">
+            {pastByYear[year].map((entry) => (
+              <article class="glass-card rounded-lg p-5 card-glow-purple card-lift">
+                <div class="flex items-baseline justify-between gap-4 mb-2">
+                  <h4 class="font-mono text-base text-text-bright font-semibold">
+                    {entry.data.title}
+                  </h4>
+                  <span class="shrink-0 font-mono text-[11px] text-text-muted/70">
+                    {formatDate(entry.data.date)}
+                  </span>
+                </div>
+                <p class="text-sm text-text-muted leading-relaxed mb-3">
+                  {entry.data.why_it_matters}
+                </p>
+                <div class="flex flex-wrap gap-1.5">
+                  {entry.data.themes.map((t) => (
+                    <span class="tag-badge"><span class="tag-dot tag-dot-purple" aria-hidden="true"></span>{t}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- NEXT LANE                                                     -->
+  <!-- ============================================================ -->
+  <section class="max-w-5xl mx-auto px-6 mb-16">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="font-mono text-2xl font-bold text-text-bright glow-cyan">
+        Next
+      </h2>
+      <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
+        what credible futures may come
+      </span>
+    </div>
+
+    {nextEntries.length === 0 ? (
+      <div class="bg-surface border border-dashed border-surface-light rounded-lg p-8 text-center">
+        <p class="font-mono text-sm text-text-muted/80">
+          <span class="text-neon-cyan">●</span> forecasts coming soon
+        </p>
+        <p class="text-xs text-text-muted/60 mt-2">
+          The Next lane will hold 12-15 forecasts with confidence labels and freshness timestamps. Currently being seeded.
+        </p>
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Future renderer for Next entries */}
+      </div>
+    )}
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- COMPARE VIEW                                                  -->
+  <!-- ============================================================ -->
+  <section class="max-w-5xl mx-auto px-6 mb-16">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="font-mono text-2xl font-bold text-text-bright glow-amber">
+        Compare View
+      </h2>
+      <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
+        three credible futures, side by side
+      </span>
+    </div>
+
+    {scenarioEntries.length === 0 ? (
+      <div class="bg-surface border border-dashed border-surface-light rounded-lg p-8 text-center">
+        <p class="font-mono text-sm text-text-muted/80">
+          <span class="text-neon-amber">●</span> scenario triplets coming soon
+        </p>
+        <p class="text-xs text-text-muted/60 mt-2">
+          Pick a topic, see optimistic / pragmatic / sceptical futures with timeframes, assumptions, blockers, and implications. The most-citeable module on the page, by design.
+        </p>
+      </div>
+    ) : (
+      <div>{/* Future renderer for scenarios */}</div>
+    )}
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DEBATE ZONE                                                   -->
+  <!-- ============================================================ -->
+  <section class="max-w-5xl mx-auto px-6 mb-16">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="font-mono text-2xl font-bold text-text-bright glow-amber">
+        Debate Zone
+      </h2>
+      <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
+        where smart people genuinely disagree
+      </span>
+    </div>
+
+    {debateEntries.length === 0 ? (
+      <div class="bg-surface border border-dashed border-surface-light rounded-lg p-8 text-center">
+        <p class="font-mono text-sm text-text-muted/80">
+          <span class="text-neon-amber">●</span> debates coming soon
+        </p>
+        <p class="text-xs text-text-muted/60 mt-2">
+          Hand-curated for/against pairs with supporting evidence on both sides. Not "who is right" but "where the field is split".
+        </p>
+      </div>
+    ) : (
+      <div>{/* Future renderer for debates */}</div>
+    )}
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- WEEKLY SHIFT LOG                                              -->
+  <!-- ============================================================ -->
+  <section class="max-w-5xl mx-auto px-6 mb-16">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="font-mono text-2xl font-bold text-text-bright glow-green">
+        Weekly Shift Log
+      </h2>
+      <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
+        what changed, last 7 days
+      </span>
+    </div>
+
+    <div class="bg-surface border border-dashed border-surface-light rounded-lg p-8 text-center">
+      <p class="font-mono text-sm text-text-muted/80">
+        <span class="text-neon-green">●</span> shift log coming soon
+      </p>
+      <p class="text-xs text-text-muted/60 mt-2">
+        Auto-derived from <code class="text-neon-green/80">git log -- src/data/horizon/</code> at build time. Will populate once the horizon bot starts proposing changes.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER CTA                                                    -->
+  <!-- ============================================================ -->
+  <section class="max-w-5xl mx-auto px-6 mb-20">
+    <div class="glow-divider mb-10" style="--divider-color: rgba(255, 255, 255, 0.08)"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="glass-card rounded-xl p-6 card-glow-cyan">
+        <h3 class="font-mono text-sm text-neon-cyan uppercase tracking-widest mb-2">
+          Track a theme
+        </h3>
+        <p class="text-sm text-text-muted leading-relaxed">
+          Filter the map by what you actually care about. Theme filters and URL persistence land in the next iteration.
+        </p>
+      </div>
+      <div class="glass-card rounded-xl p-6 card-glow-purple">
+        <h3 class="font-mono text-sm text-neon-purple uppercase tracking-widest mb-2">
+          Explore the machinery
+        </h3>
+        <p class="text-sm text-text-muted leading-relaxed">
+          The horizon map is built and maintained by the same six bots that run the rest of the site.
+          <a href="/pipeline" class="text-neon-cyan hover:underline">See how it works</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
