@@ -55,7 +55,9 @@ CATEGORIES = [
 ]
 
 # Rolling archive depth
-MAX_ARCHIVE_DAYS = 30
+# Bumped 30 -> 365 to keep radar entries alive long enough for the horizon bot
+# to consider them for promotion to past.json (60-day eligibility window).
+MAX_ARCHIVE_DAYS = 365
 
 load_dotenv(BOT_DIR / ".env")
 
