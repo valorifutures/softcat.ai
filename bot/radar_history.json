@@ -428,6 +428,17 @@
         "TUI-use",
         "BotCTL"
       ]
+    },
+    {
+      "date": "2026-04-10",
+      "file": "2026-04-10.json",
+      "products": [
+        "Muse Spark",
+        "Relvy",
+        "Bouncer",
+        "Postagent",
+        "AgentDM"
+      ]
     }
   ]
 }
