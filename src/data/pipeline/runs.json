@@ -2612,5 +2612,22 @@
     "output_tokens": 0,
     "output_files": [],
     "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 128."
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-04-11T07:00:27.164081+00:00",
+    "status": "success",
+    "duration_s": 20.5,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.033,
+    "input_tokens": 7792,
+    "output_tokens": 642,
+    "output_files": [
+      "src/content/news-and-updates/2026-04-11-ai-digest.md"
+    ]
   }
 ]
