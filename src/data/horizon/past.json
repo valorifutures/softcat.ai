@@ -88,6 +88,17 @@
     "added": "2026-04-10"
   },
   {
+    "id": "past-2022-whisper-open-release",
+    "lane": "past",
+    "title": "Whisper releases as open-weight speech recognition",
+    "date": "2022-09-21",
+    "themes": ["models", "infrastructure"],
+    "signal_type": "event",
+    "confidence": "confirmed",
+    "why_it_matters": "OpenAI released Whisper as open-weight automatic speech recognition matching commercial systems on many languages. It seeded a wave of locally-runnable transcription that did not need to call a cloud API.",
+    "added": "2026-04-11"
+  },
+  {
     "id": "past-2022-chatgpt-launch",
     "lane": "past",
     "title": "ChatGPT launch",
@@ -154,6 +165,17 @@
     "added": "2026-04-10"
   },
   {
+    "id": "past-2024-gpt-4o-real-time-multimodal-ai",
+    "lane": "past",
+    "title": "GPT-4o brings real-time multimodal AI",
+    "date": "2024-05-13",
+    "themes": ["models", "interfaces"],
+    "signal_type": "inflection",
+    "confidence": "confirmed",
+    "why_it_matters": "OpenAI's GPT-4o unified text, audio and vision in a single model with conversational latency. It moved the assistant interface from turn-by-turn typing toward real-time spoken interaction across modalities.",
+    "added": "2026-04-11"
+  },
+  {
     "id": "past-2024-o1-reasoning-shift",
     "lane": "past",
     "title": "o1 reasoning shift",
@@ -174,6 +196,17 @@
     "confidence": "confirmed",
     "why_it_matters": "Anthropic open-sourced MCP, a standard for connecting AI assistants to tools and data. It gave the agent era shared plumbing instead of endless bespoke integrations.",
     "added": "2026-04-10"
+  },
+  {
+    "id": "past-2024-gemini-2-agentic-era",
+    "lane": "past",
+    "title": "Gemini 2 frames the agentic era",
+    "date": "2024-12-11",
+    "themes": ["agents", "models"],
+    "signal_type": "inflection",
+    "confidence": "confirmed",
+    "why_it_matters": "Google's Gemini 2.0 launch foregrounded agentic capability — multimodal reasoning, tool use, and long-running task execution — as the explicit framing for what the next generation of frontier models would compete on.",
+    "added": "2026-04-11"
   },
   {
     "id": "past-2025-deepseek-r1",
