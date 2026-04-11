@@ -1,1 +1,212 @@
-[]
+[
+  {
+    "id": "next-open-weight-reasoning-reaches-practical-frontier-parity",
+    "lane": "next",
+    "title": "Open-weight reasoning reaches practical frontier parity",
+    "themes": [
+      "models"
+    ],
+    "signal_type": "forecast",
+    "confidence": "emerging",
+    "why_it_matters": "Within 18 months, at least one open-weight reasoning model will sit within striking distance of the best closed APIs on public reasoning and coding evals at materially lower cost. The DeepSeek-R1 to Gemma 4 arc suggests the open curve is steepening faster than frontier labs can preserve a clean capability moat.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-protocols-beat-bespoke-agent-plumbing",
+    "lane": "next",
+    "title": "Protocols beat bespoke agent plumbing",
+    "themes": [
+      "agents",
+      "infrastructure"
+    ],
+    "signal_type": "forecast",
+    "confidence": "emerging",
+    "why_it_matters": "By April 2027, most serious enterprise agent stacks will expose tools and data through an MCP/A2A-style protocol layer rather than mostly bespoke connectors. Once agents need many tools, shared plumbing becomes cheaper and more governable than custom glue.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-agent-security-becomes-a-platform-layer",
+    "lane": "next",
+    "title": "Agent security becomes a platform layer",
+    "themes": [
+      "agents",
+      "security"
+    ],
+    "signal_type": "forecast",
+    "confidence": "emerging",
+    "why_it_matters": "Within 18 months, sandboxing, approval gates and audit logs will be standard features in serious agent platforms. Tool-connected agents turn prompt injection from a content problem into an operational-security problem.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-coding-agents-own-the-easy-middle",
+    "lane": "next",
+    "title": "Coding agents own the easy middle",
+    "themes": [
+      "code",
+      "agents"
+    ],
+    "signal_type": "forecast",
+    "confidence": "emerging",
+    "why_it_matters": "Within 12 months, AI agents will produce most greenfield boilerplate, test scaffolding and straightforward refactors in fast-moving software teams. The capability is already good enough for bounded software work, while the hard part remains review, architecture and production judgement.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-computer-use-agents-find-narrow-fit",
+    "lane": "next",
+    "title": "Computer-use agents find narrow fit",
+    "themes": [
+      "agents",
+      "interfaces"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "Within 12 months, browser and desktop agents will stick in a small set of repetitive back-office workflows but remain too brittle for broad consumer autopilot. The capability curve is real, but permissions, exception handling and reliability are still improving slower than the demos.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-search-becomes-an-assistant-surface",
+    "lane": "next",
+    "title": "Search becomes an assistant surface",
+    "themes": [
+      "search",
+      "interfaces"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "By late 2027, planning, shopping and research queries will more often begin in assistant-style surfaces than in a blank search box for power users. Search is already absorbing reasoning, follow-up dialogue, personal context and agentic steps.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-memory-beats-model-delta",
+    "lane": "next",
+    "title": "Memory beats model delta",
+    "themes": [
+      "models",
+      "interfaces"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "Within 12 months, assistant retention will depend more on memory, projects and connectors than on small differences in base-model quality. Once models are all good enough, continuity starts to matter more than eloquence.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-enterprise-ai-stays-multi-model",
+    "lane": "next",
+    "title": "Enterprise AI stays multi-model",
+    "themes": [
+      "enterprise",
+      "models"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "Within 24 months, most large enterprises will run at least three model families in production rather than standardise on one provider. Bedrock, Vertex and Azure are all training buyers to purchase optionality instead of allegiance.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-local-inference-becomes-the-private-default",
+    "lane": "next",
+    "title": "Local inference becomes the private default",
+    "themes": [
+      "infrastructure",
+      "models"
+    ],
+    "signal_type": "forecast",
+    "confidence": "speculative",
+    "why_it_matters": "Within 24 months, many privacy-sensitive or offline AI features in mainstream apps will default to local inference, with cloud models reserved for heavier reasoning. The model-size curve is falling fast enough that latency, privacy and cost can outweigh raw frontier quality.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-robotics-pays-off-at-work-before-home",
+    "lane": "next",
+    "title": "Robotics pays off at work before home",
+    "themes": [
+      "robotics",
+      "work"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "By 2028, AI-driven robots will create clearer economic value in warehouses, factories and structured commercial settings than in ordinary homes. Manipulation is improving quickly, but the home is still the messiest possible deployment environment.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-vibe-coding-goes-corporate",
+    "lane": "next",
+    "title": "Vibe coding goes corporate",
+    "themes": [
+      "code",
+      "work",
+      "enterprise"
+    ],
+    "signal_type": "forecast",
+    "confidence": "speculative",
+    "why_it_matters": "Within 18 months, non-engineers in medium and large firms will ship useful internal tools through conversational builders and agentic IDEs. The interface to software is getting easier faster than organisations can redesign review, integration and security.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-education-adapts-assessment-before-credentialing",
+    "lane": "next",
+    "title": "Education adapts assessment before credentialing",
+    "themes": [
+      "education",
+      "society"
+    ],
+    "signal_type": "forecast",
+    "confidence": "speculative",
+    "why_it_matters": "Within 24 months, schools and employers will rely more on supervised, oral and process-based assessment because AI tutoring is easier to absorb than AI credentialing. Teaching is easier to displace than trusted signalling.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-ai-video-becomes-normal-pre-production",
+    "lane": "next",
+    "title": "AI video becomes normal pre-production",
+    "themes": [
+      "creativity",
+      "work"
+    ],
+    "signal_type": "forecast",
+    "confidence": "speculative",
+    "why_it_matters": "Within 18 months, AI video will be routine for pitches, previs, explainers and ad variants but not a clean substitute for premium live-action production. The tools are improving fast, but taste, control, rights and production workflows still matter.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-labelling-outruns-licensing",
+    "lane": "next",
+    "title": "Labelling outruns licensing",
+    "themes": [
+      "regulation",
+      "creativity"
+    ],
+    "signal_type": "forecast",
+    "confidence": "emerging",
+    "why_it_matters": "Within 24 months, more jurisdictions and platforms will enforce synthetic-media labelling or provenance rules than will settle training-data licensing rules. Transparency is easier to operationalise than copyright economics.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  },
+  {
+    "id": "next-regulation-stays-regionally-forked",
+    "lane": "next",
+    "title": "Regulation stays regionally forked",
+    "themes": [
+      "regulation",
+      "society"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "By 2028, AI regulation will still be regionally split, with the EU more rule-heavy, the UK lighter-touch, and no clean global settlement on copyright or frontier-model duties. The compliance machinery is diverging faster than international consensus is forming.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11"
+  }
+]
