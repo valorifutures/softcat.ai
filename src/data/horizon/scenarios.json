@@ -1,1 +1,136 @@
-[]
+[
+  {
+    "id": "scenario-agi",
+    "topic": "AGI",
+    "themes": [
+      "models",
+      "society"
+    ],
+    "optimistic": {
+      "timeframe": "by end of 2028",
+      "assumptions": "Reasoning, memory, tool use and self-improvement keep compounding until frontier systems can transfer robustly across most cognitive domains at roughly human level.",
+      "blockers": "The last 20% of reliability, autonomy and world-model grounding proves far harder than scaling advocates expect.",
+      "implication": "Build for an agent-native world now: outcome-based products, tiny oversight teams, and businesses that assume intelligence becomes abundant before trust does."
+    },
+    "pragmatic": {
+      "timeframe": "2032-2035",
+      "assumptions": "Systems become extraordinary co-workers first, and only later cross the threshold into genuinely general autonomous competence across domains.",
+      "blockers": "Deployment friction, safety constraints and evaluation gaps keep real-world capability behind benchmark capability for years.",
+      "implication": "Design around hybrid intelligence: let machines dominate bounded cognition while humans keep accountability, cross-functional judgement and final authority."
+    },
+    "sceptical": {
+      "timeframe": "not before the 2040s",
+      "assumptions": "Human-level general intelligence depends on embodiment, durable goals, social learning and world models that current architectures do not naturally supply.",
+      "blockers": "Digital-only systems start generalising across messy real-world domains with minimal scaffolding and without brittle failure modes.",
+      "implication": "Optimise for augmentation, governance and competitive advantage from AI tools, not for AGI-timing theatre."
+    }
+  },
+  {
+    "id": "scenario-agentic-work",
+    "topic": "Agentic Work",
+    "themes": [
+      "agents",
+      "enterprise",
+      "work"
+    ],
+    "optimistic": {
+      "timeframe": "by end of 2027",
+      "assumptions": "Tool use, memory, permissions, evaluation and error recovery improve fast enough that agents can own large volumes of queue-based knowledge work without human approval loops.",
+      "blockers": "Identity, auditability, exception handling and liability stay unresolved long enough to stop organisations trusting unattended execution.",
+      "implication": "Build narrow, high-volume domain agents now and wrap them in approval tiers, rollback paths and outcome-level monitoring."
+    },
+    "pragmatic": {
+      "timeframe": "2029-2031",
+      "assumptions": "Agents become dependable in structured workflows first, while open-ended office work remains mostly supervised because tacit context is still hard to encode.",
+      "blockers": "Enterprise data stays fragmented and process owners fail to redesign workflows around machine delegation.",
+      "implication": "Sell partial autonomy, not full replacement: hand-offs, triage, drafting, reconciliation and escalation will land before lights-out execution."
+    },
+    "sceptical": {
+      "timeframe": "mid-2030s or later",
+      "assumptions": "Most knowledge work hides politics, ambiguity, negotiation and accountability that cannot be cleanly reduced to tools plus prompts.",
+      "blockers": "Agents prove they can recover from ambiguity, manage cross-system state and own consequences in messy live environments.",
+      "implication": "Treat agents as force multipliers for people and focus on better interfaces, memory and review rather than labour-substitution bets."
+    }
+  },
+  {
+    "id": "scenario-robotics",
+    "topic": "Robotics",
+    "themes": [
+      "robotics",
+      "infrastructure",
+      "work"
+    ],
+    "optimistic": {
+      "timeframe": "by 2030",
+      "assumptions": "Vision-language-action models, dexterity, battery performance and manufacturing scale improve together quickly enough to make general-purpose robots commercially routine and cheap.",
+      "blockers": "Reliability in cluttered environments, safety certification and service economics fail to move from demo quality to fleet quality.",
+      "implication": "Start designing robot-ready workflows, facilities and software now, because the integration layer will matter as much as the hardware."
+    },
+    "pragmatic": {
+      "timeframe": "2033-2036",
+      "assumptions": "General-purpose robotics lands first in warehouses, factories, logistics and other structured commercial environments before the home catches up.",
+      "blockers": "Unit economics stay weak because teleoperation, maintenance and failure recovery remain too expensive.",
+      "implication": "Build for structured environments and mixed fleets, where robot coordination, observability and process redesign create the first durable value."
+    },
+    "sceptical": {
+      "timeframe": "not before the late 2030s",
+      "assumptions": "True general-purpose robotics is a full-stack systems problem, and manipulation, safety and upkeep are much harder than the current curve implies.",
+      "blockers": "On-device robot models plus mass manufacturing crack reliability and cost at the same time.",
+      "implication": "Treat humanoids as long-duration options and keep investing in fixed automation, sensors and workflow software that pays off sooner."
+    }
+  },
+  {
+    "id": "scenario-software-automation",
+    "topic": "Software Automation",
+    "themes": [
+      "code",
+      "enterprise",
+      "work"
+    ],
+    "optimistic": {
+      "timeframe": "by end of 2028",
+      "assumptions": "Long-horizon coding agents become strong enough at planning, editing, testing, migration and repository memory that humans mostly specify, review and steer.",
+      "blockers": "Security, reproducibility, architecture drift and repo-specific context keep agents from owning production changes at scale.",
+      "implication": "Rebuild engineering around evaluation, review policy and product judgement, because typing and boilerplate stop being the scarce skill."
+    },
+    "pragmatic": {
+      "timeframe": "2030-2032",
+      "assumptions": "AI takes over most routine implementation and maintenance, but humans still dominate architecture, incident response, stakeholder translation and high-risk decisions.",
+      "blockers": "Firms fail to trust generated changes in production and never build the testing and governance needed for deeper automation.",
+      "implication": "Prepare for smaller engineering teams with stronger QA, clearer specs and codebases designed to be legible to agents."
+    },
+    "sceptical": {
+      "timeframe": "not before the mid-2030s",
+      "assumptions": "Production software is mainly about ambiguous requirements, coordination, risk and long-tail maintenance rather than writing lines of code.",
+      "blockers": "Agents start reliably running the full loop from ticket to monitored deploy across large, messy codebases.",
+      "implication": "Invest in developer leverage and system clarity, not in simple headcount-reduction stories."
+    }
+  },
+  {
+    "id": "scenario-education-disruption",
+    "topic": "Education Disruption",
+    "themes": [
+      "education",
+      "work",
+      "society"
+    ],
+    "optimistic": {
+      "timeframe": "by 2030",
+      "assumptions": "AI tutoring becomes dramatically better and cheaper than conventional content delivery, and assessment adapts fast enough to preserve trust in learning outcomes.",
+      "blockers": "Credentialing inertia, safeguarding, procurement cycles and political resistance keep institutions tied to legacy delivery models.",
+      "implication": "Build assessment, coaching, learning-record and teacher-orchestration products rather than more static content libraries."
+    },
+    "pragmatic": {
+      "timeframe": "2032-2035",
+      "assumptions": "AI transforms tutoring, practice and feedback quickly, but schools, universities and employers retain the institutional shell of courses, cohorts and credentials.",
+      "blockers": "Demonstrated learning gains become so overwhelming that institutions are forced to redesign faster than expected.",
+      "implication": "Plug into existing institutions instead of trying to replace them; the winning tools will fit classrooms, campuses and compliance."
+    },
+    "sceptical": {
+      "timeframe": "not this generation",
+      "assumptions": "Education is not primarily content delivery; it is socialisation, signalling, childcare, norm formation and supervised practice, so AI enhances learning without replacing structured learning.",
+      "blockers": "Employers stop trusting conventional credentials and start trusting AI-mediated mastery records instead.",
+      "implication": "Focus on teacher augmentation, administrative relief and better evidence of skill, not on betting against the institution itself."
+    }
+  }
+]

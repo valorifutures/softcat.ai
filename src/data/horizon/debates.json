@@ -1,1 +1,124 @@
-[]
+[
+  {
+    "id": "debate-will-open-weight-models-catch-the-frontier-permanently",
+    "question": "Will open-weight models catch the frontier permanently, or only in specific niches?",
+    "themes": [
+      "models",
+      "infrastructure"
+    ],
+    "for": {
+      "argument": "The pattern is no longer \u201copen follows years later\u201d; it is \u201copen absorbs frontier ideas fast enough to matter commercially\u201d. Stable Diffusion proved that closed advantages can leak into public ecosystems, LLaMA broke the sense that only a few labs could play, and DeepSeek-R1 showed that open reasoning can arrive with real teeth. If open gets to 90\u201395% of frontier capability at a fraction of the cost, permanent practical parity is enough to change who wins distribution.",
+      "supporting": [
+        "past-2022-stable-diffusion-release",
+        "past-2023-llama-open-weight-era",
+        "past-2025-deepseek-r1",
+        "next-open-weight-reasoning-reaches-practical-frontier-parity"
+      ]
+    },
+    "against": {
+      "argument": "The frontier does not stand still while open catches up. Closed labs still control the best compute, the richest feedback loops, the strongest product distribution and the hardest-to-copy post-training tricks, which lets them keep moving the goalposts from text to multimodal, from answers to agents, and from fluency to reasoning. Open will be formidable in cost-sensitive niches, but the top layer of capability will remain structurally concentrated.",
+      "supporting": [
+        "past-2023-gpt-4-release",
+        "past-2024-claude-credible-alternative",
+        "past-2024-o1-reasoning-shift"
+      ]
+    }
+  },
+  {
+    "id": "debate-is-reasoning-a-real-paradigm-shift",
+    "question": "Is reasoning a real paradigm shift, or expensive pre-processing wearing a new hat?",
+    "themes": [
+      "models",
+      "interfaces"
+    ],
+    "for": {
+      "argument": "o1 made it plausible that test-time compute is not just extra verbosity but a new way to buy capability on hard tasks. Once models can spend inference budget deliberately, the product question changes from \u201chow fluent is it?\u201d to \u201chow much thinking is this worth?\u201d. That creates a genuinely new optimisation space for models, interfaces and pricing, and it is why reasoning now feels like a separate frontier rather than a mere feature.",
+      "supporting": [
+        "past-2024-o1-reasoning-shift",
+        "past-2025-deepseek-r1",
+        "next-open-weight-reasoning-reaches-practical-frontier-parity"
+      ]
+    },
+    "against": {
+      "argument": "A lot of the current reasoning story may be packaging rather than paradigm. Bigger inference budgets, hidden chain-of-thought and better scaffolding can lift benchmark scores without solving the messy problems users actually care about, such as reliability, context management and action in the real world. If the gains are costly, slow and narrow, \u201creasoning\u201d could turn out to be an expensive wrapper around familiar techniques.",
+      "supporting": [
+        "past-2022-instructgpt-rlhf",
+        "past-2023-gpt-4-release",
+        "next-memory-beats-model-delta",
+        "next-computer-use-agents-find-narrow-fit"
+      ]
+    }
+  },
+  {
+    "id": "debate-will-local-inference-replace-cloud-inference-for-the",
+    "question": "Will local inference replace cloud inference for the majority of routine AI interactions within 24 months?",
+    "themes": [
+      "infrastructure",
+      "enterprise"
+    ],
+    "for": {
+      "argument": "Routine, high-frequency AI use wants low latency, predictable cost and privacy by default. Once a model is good enough to summarise, transcribe, draft, organise and personalise locally, shipping every interaction to the cloud starts to look like a design relic rather than a necessity. Cloud will still do the heavy lifting, but local could become the default surface most people touch first.",
+      "supporting": [
+        "past-2022-stable-diffusion-release",
+        "next-local-inference-becomes-the-private-default",
+        "next-regulation-stays-regionally-forked"
+      ]
+    },
+    "against": {
+      "argument": "The average user will not choose local over cloud on principle; they will choose whatever works best. The strongest models, freshest world knowledge, richest tool access and fastest product-improvement cycles are still cloud-shaped advantages, and platform owners have economic reasons to keep the smart layer centralised. Local will grow quickly, but mostly as a complement to cloud rather than its replacement.",
+      "supporting": [
+        "past-2023-gpt-4-release",
+        "past-2024-claude-credible-alternative",
+        "next-enterprise-ai-stays-multi-model"
+      ]
+    }
+  },
+  {
+    "id": "debate-is-agent-infrastructure-becoming-a-real-software-category",
+    "question": "Is agent infrastructure becoming a real software category, or are we prematurely standardising a messy phase?",
+    "themes": [
+      "agents",
+      "security"
+    ],
+    "for": {
+      "argument": "When a field starts inventing shared protocols, permission layers, eval harnesses and operational controls, that usually means the pattern is becoming real. Agents that touch tools, data and workflows need governable plumbing, and that need does not disappear even if today\u2019s demos are messy. The category may still be early, but the infrastructure demand looks structural rather than faddish.",
+      "supporting": [
+        "past-2024-model-context-protocol",
+        "next-protocols-beat-bespoke-agent-plumbing",
+        "next-agent-security-becomes-a-platform-layer"
+      ]
+    },
+    "against": {
+      "argument": "Every platform shift produces a premature standards rush before anyone knows what the durable primitive actually is. Many so-called agent frameworks are still thin wrappers around brittle model calls, and the winning abstractions may end up bundled into the major model platforms instead of living as an independent layer. What looks like category formation could still be the noisy middle stage before consolidation.",
+      "supporting": [
+        "next-memory-beats-model-delta",
+        "next-computer-use-agents-find-narrow-fit"
+      ]
+    }
+  },
+  {
+    "id": "debate-will-vibe-coding-broaden-software-creation",
+    "question": "Will vibe coding broaden software creation, or mainly create a larger QA and governance burden?",
+    "themes": [
+      "code",
+      "work"
+    ],
+    "for": {
+      "argument": "Vibe coding lowers the hardest barrier for many would-be builders: getting from intent to working software. That means domain experts can finally ship internal tools without having to become full-time engineers, which is how real capability usually spreads inside organisations. If guardrails improve, the organisational effect could look less like chaos and more like the spreadsheet moment for software creation.",
+      "supporting": [
+        "past-2021-github-copilot-preview",
+        "past-2025-vibe-coding",
+        "next-coding-agents-own-the-easy-middle",
+        "next-vibe-coding-goes-corporate"
+      ]
+    },
+    "against": {
+      "argument": "Most software cost arrives after the prototype: security, integrations, ownership, maintenance and change control. Vibe coding widens the front door, but it also makes it easier to generate brittle systems that create hidden review and governance debt. In companies, that may mean more shadow IT and more QA burden rather than a clean productivity windfall.",
+      "supporting": [
+        "past-2025-vibe-coding",
+        "next-agent-security-becomes-a-platform-layer",
+        "next-computer-use-agents-find-narrow-fit"
+      ]
+    }
+  }
+]
