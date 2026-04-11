@@ -2646,5 +2646,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-11-knowledge-distillation-is-just-academic-procrastination-disg.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-11T09:30:53.698156+00:00",
+    "status": "success",
+    "duration_s": 47.0,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0679,
+    "input_tokens": 11134,
+    "output_tokens": 2299,
+    "output_files": [
+      "src/data/radar/2026-04-11.json"
+    ]
   }
 ]
