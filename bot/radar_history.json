@@ -439,6 +439,18 @@
         "Postagent",
         "AgentDM"
       ]
+    },
+    {
+      "date": "2026-04-11",
+      "file": "2026-04-11.json",
+      "products": [
+        "VimRAG",
+        "AITune",
+        "Twill.ai",
+        "Maki",
+        "Collabmem",
+        "Claude Code Ultraplan"
+      ]
     }
   ]
 }

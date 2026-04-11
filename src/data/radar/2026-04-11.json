@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-11",
+  "featured": [
+    {
+      "id": "ph-vimrag",
+      "name": "VimRAG",
+      "tagline": "Multimodal RAG framework with memory graph for massive visual contexts.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Alibaba's Tongyi Lab has cracked one of RAG's biggest problems: handling visual data at scale. While traditional RAG buckles under token-heavy images and videos, VimRAG uses a memory graph to navigate massive visual contexts efficiently. This could finally make multimodal RAG practical for real applications.",
+      "ph_url": "https://www.marktechpost.com/2026/04/10/alibabas-tongyi-lab-releases-vimrag-a-multimodal-rag-framework-that-uses-a-memory-graph-to-navigate-massive-visual-contexts/",
+      "maker": "Alibaba Tongyi Lab",
+      "featured": true,
+      "added_at": "2026-04-11T06:00:00Z"
+    },
+    {
+      "id": "ph-aitune",
+      "name": "AITune",
+      "tagline": "Automatically finds the fastest inference backend for any PyTorch model.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "NVIDIA has finally solved the deployment nightmare between research and production. AITune automatically tests TensorRT, Torch-TensorRT, and TorchAO to find the fastest backend for your specific model and hardware. No more manual optimisation guesswork or painful backend selection.",
+      "ph_url": "https://www.marktechpost.com/2026/04/10/nvidia-releases-aitune-an-open-source-inference-toolkit-that-automatically-finds-the-fastest-inference-backend-for-any-pytorch-model/",
+      "maker": "NVIDIA",
+      "featured": true,
+      "added_at": "2026-04-11T06:15:00Z"
+    },
+    {
+      "id": "ph-twill-ai",
+      "name": "Twill.ai",
+      "tagline": "Delegate to cloud agents, get back pull requests.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "YC S25's Twill promises the holy grail: describe what you want, get back actual code in PRs. The execution model of cloud agents handling the heavy lifting while you review the output feels like the natural evolution of AI coding tools. Whether it can handle real complexity remains to be seen.",
+      "ph_url": "https://twill.ai",
+      "maker": "Twill.ai",
+      "featured": true,
+      "added_at": "2026-04-11T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-maki",
+      "name": "Maki",
+      "tagline": "The efficient coder AI agent.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Another coding agent enters the fray, promising efficiency over everything else. The market is absolutely saturated with AI coding tools, so Maki needs to prove its efficiency claims with real benchmarks. The name suggests Japanese origins, which could mean different architectural choices.",
+      "ph_url": "https://maki.sh/",
+      "maker": "Maki",
+      "featured": false,
+      "added_at": "2026-04-11T06:45:00Z"
+    },
+    {
+      "id": "ph-collabmem",
+      "name": "Collabmem",
+      "tagline": "Memory system for long-term collaboration with AI.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Memory persistence is becoming critical as we move beyond single-session AI interactions. Collabmem tackles the hard problem of maintaining context across extended collaborations. The open-source approach on GitHub suggests they're building for developers first.",
+      "ph_url": "https://github.com/visionscaper/collabmem",
+      "maker": "Visionscaper",
+      "featured": false,
+      "added_at": "2026-04-11T07:00:00Z"
+    },
+    {
+      "id": "ph-ultraplan",
+      "name": "Claude Code Ultraplan",
+      "tagline": "Moves task planning to the cloud for Claude Code.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Anthropic is pushing the boundaries of where AI processing happens. Moving task planning to the cloud while keeping execution local is clever architecture. This could be the blueprint for more sophisticated AI workflows that balance capability with control.",
+      "ph_url": "https://the-decoder.com/claude-codes-new-ultraplan-feature-moves-task-planning-to-the-cloud/",
+      "maker": "Anthropic",
+      "featured": false,
+      "added_at": "2026-04-11T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Launch HN: Twill.ai (YC S25) \u2013 Delegate to cloud agents, get back PRs",
+      "points": 67,
+      "comments": 63,
+      "summary": "YC startup promises to automate software development by letting you delegate tasks to AI agents that return actual pull requests. The concept of cloud-based agents handling complex coding workflows while developers review outputs represents a significant shift in AI-assisted development.",
+      "hn_url": "https://news.ycombinator.com/item?id=47720418"
+    },
+    {
+      "title": "Show HN: Collabmem \u2013 a memory system for long-term collaboration with AI",
+      "points": 8,
+      "comments": 1,
+      "summary": "Open-source memory system designed to maintain context across extended AI collaborations. Addresses the critical problem of AI tools forgetting previous conversations and losing valuable context over time.",
+      "hn_url": "https://news.ycombinator.com/item?id=47726056"
+    },
+    {
+      "title": "Maki \u2013 the efficient coder (AI agent)",
+      "points": 6,
+      "comments": 3,
+      "summary": "New AI coding agent positioning itself on efficiency rather than features. Enters an increasingly crowded market of AI development tools with promises of streamlined coding workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47725243"
+    },
+    {
+      "title": "Show HN: HyperFlow \u2013 A self-improving agent framework built on LangGraph",
+      "points": 5,
+      "comments": 0,
+      "summary": "Agent framework that builds on LangGraph with self-improvement capabilities. Represents the growing trend of meta-AI systems that can enhance their own performance over time.",
+      "hn_url": "https://news.ycombinator.com/item?id=47727255"
+    },
+    {
+      "title": "A3: Kubernetes for autonomous AI agent fleets",
+      "points": 4,
+      "comments": 0,
+      "summary": "Infrastructure concept applying Kubernetes orchestration principles to managing fleets of AI agents. Tackles the operational challenges of running multiple autonomous agents at scale.",
+      "hn_url": "https://news.ycombinator.com/item?id=47728094"
+    }
+  ]
+}
