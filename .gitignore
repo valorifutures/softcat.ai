@@ -27,3 +27,6 @@ __pycache__/
 
 # jetbrains setting folder
 .idea/
+
+# gstack skill workspace (per-project state, never committed)
+.gstack/
