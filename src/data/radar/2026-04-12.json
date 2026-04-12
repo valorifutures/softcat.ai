@@ -1,0 +1,66 @@
+{
+  "date": "2026-04-12",
+  "featured": [
+    {
+      "id": "ph-minimax-m2-7",
+      "name": "MiniMax M2.7",
+      "tagline": "Self-evolving agent model that scores 56.22% on SWE-Pro and 57.0% on Terminal Bench.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "MiniMax just open-sourced their most capable model yet, and it's the first to actively participate in its own development cycle. The benchmarks are solid but the self-evolution angle is what makes this interesting. We're seeing models that can improve themselves rather than just follow instructions.",
+      "ph_url": "https://www.marktechpost.com/2026/04/12/minimax-just-open-sourced-minimax-m2-7-a-self-evolving-agent-model-that-scores-56-22-on-swe-pro-and-57-0-on-terminal-bench-2/",
+      "maker": "MiniMax",
+      "featured": true,
+      "added_at": "2026-04-12T06:00:00Z"
+    },
+    {
+      "id": "ph-liquid-lfm25-vl-450m",
+      "name": "LFM2.5-VL-450M",
+      "tagline": "450M-parameter vision-language model with sub-250ms edge inference and bounding box prediction.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Liquid AI has cracked the code on proper edge vision models with this 450M parameter update. Sub-250ms inference on Jetson Orin hardware with bounding box prediction and function calling is properly useful. Most vision models are still too heavy for real edge deployment, but this one actually works where it matters.",
+      "ph_url": "https://www.marktechpost.com/2026/04/11/liquid-ai-releases-lfm2-5-vl-450m-a-450m-parameter-vision-language-model-with-bounding-box-prediction-multilingual-support-and-sub-250ms-edge-inference/",
+      "maker": "Liquid AI",
+      "featured": true,
+      "added_at": "2026-04-12T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-graft-framework",
+      "name": "Graft",
+      "tagline": "Go AI agent framework with Temporal, Hatchet, and Trigger.dev support.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "A proper Go framework for building AI agents with workflow orchestration baked in. Most agent frameworks are Python-heavy, so having something built for Go's concurrency model is refreshing. The Temporal integration suggests they're thinking seriously about reliability and state management.",
+      "ph_url": "https://github.com/delavalom/graft",
+      "maker": "delavalom",
+      "featured": false,
+      "added_at": "2026-04-12T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "How We Broke Top AI Agent Benchmarks: And What Comes Next",
+      "points": 371,
+      "comments": 94,
+      "summary": "Berkeley researchers expose fundamental flaws in current AI agent benchmarks, showing how they can be gamed. This matters because the entire industry is optimising for metrics that don't reflect real-world agent capability. The post outlines what trustworthy agent evaluation actually looks like.",
+      "hn_url": "https://news.ycombinator.com/item?id=47733217"
+    },
+    {
+      "title": "Ask HN: Do you trust AI agents with API keys / private keys?",
+      "points": 5,
+      "comments": 5,
+      "summary": "Community discussion about the security implications of giving AI agents access to sensitive credentials. A practical question that every team building with agents faces. The answers reveal how early we still are in figuring out agent security patterns.",
+      "hn_url": "https://news.ycombinator.com/item?id=47736831"
+    },
+    {
+      "title": "Show HN: MCP is for tools. A2A is for agents. What's for websites?",
+      "points": 4,
+      "comments": 0,
+      "summary": "A proposal for standardising how AI agents interact with websites, building on existing protocols like MCP and A2A. The creator is trying to solve the missing piece in agent-web interaction. Early stage but addresses a real gap in the agent ecosystem.",
+      "hn_url": "https://news.ycombinator.com/item?id=47736402"
+    }
+  ]
+}

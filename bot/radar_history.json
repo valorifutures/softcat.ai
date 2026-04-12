@@ -451,6 +451,15 @@
         "Collabmem",
         "Claude Code Ultraplan"
       ]
+    },
+    {
+      "date": "2026-04-12",
+      "file": "2026-04-12.json",
+      "products": [
+        "MiniMax M2.7",
+        "LFM2.5-VL-450M",
+        "Graft"
+      ]
     }
   ]
 }
