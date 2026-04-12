@@ -2745,5 +2745,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-12-edge-inference-is-just-cloud-denial-pretending-to-be-innovat.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-12T09:30:46.530787+00:00",
+    "status": "success",
+    "duration_s": 39.9,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 64,
+    "items_published": 3,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0589,
+    "input_tokens": 11388,
+    "output_tokens": 1647,
+    "output_files": [
+      "src/data/radar/2026-04-12.json"
+    ]
   }
 ]
