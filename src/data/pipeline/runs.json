@@ -2762,5 +2762,52 @@
     "output_files": [
       "src/data/radar/2026-04-12.json"
     ]
+  },
+  {
+    "bot": "tool_bot",
+    "timestamp": "2026-04-12T10:00:17.267790+00:00",
+    "status": "success",
+    "duration_s": 15.2,
+    "feeds_scanned": 4,
+    "items_found": 30,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0184,
+    "input_tokens": 4387,
+    "output_tokens": 352,
+    "output_files": [
+      "src/content/tools/2026-04-12-nvidia-aitune.md"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-13T04:00:01.857852+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 349,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-13T06:00:01.471382+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 349,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
