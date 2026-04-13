@@ -460,6 +460,17 @@
         "LFM2.5-VL-450M",
         "Graft"
       ]
+    },
+    {
+      "date": "2026-04-13",
+      "file": "2026-04-13.json",
+      "products": [
+        "MMX-CLI",
+        "OpenClaw",
+        "Revdiff",
+        "Nb",
+        "Moat"
+      ]
     }
   ]
 }
