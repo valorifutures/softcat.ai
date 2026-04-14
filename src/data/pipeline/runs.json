@@ -2843,5 +2843,52 @@
     "output_files": [
       "src/content/thoughts/2026-04-13-command-line-interfaces-just-became-the-universal-agent-prot.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-13T09:30:48.713375+00:00",
+    "status": "success",
+    "duration_s": 42.1,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0638,
+    "input_tokens": 11120,
+    "output_tokens": 2028,
+    "output_files": [
+      "src/data/radar/2026-04-13.json"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-14T04:00:01.567714+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 350,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-14T06:00:02.211458+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 350,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
