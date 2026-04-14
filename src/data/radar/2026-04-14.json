@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-14",
+  "featured": [
+    {
+      "id": "ph-audio-flamingo-next",
+      "name": "Audio Flamingo Next (AF-Next)",
+      "tagline": "Open large audio-language model from NVIDIA and University of Maryland.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Finally, an open model that can actually reason over speech, environmental sounds, and music at length. While vision models have been scaling rapidly, audio understanding has lagged behind. This could be the breakthrough that brings audio-language models into real-world deployment.",
+      "ph_url": "https://www.marktechpost.com/2026/04/14/nvidia-and-the-university-of-maryland-researchers-released-audio-flamingo-next-af-next-a-super-powerful-and-open-large-audio-language-model/",
+      "maker": "NVIDIA and University of Maryland",
+      "featured": true,
+      "added_at": "2026-04-14T06:00:00Z"
+    },
+    {
+      "id": "ph-gaia-framework",
+      "name": "GAIA",
+      "tagline": "Open-source framework for building AI agents that run on local hardware.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Local agent execution is the holy grail for privacy-conscious deployments. Most agent frameworks assume cloud APIs, but GAIA lets you run everything on your own hardware. This is exactly what enterprises need when they want agent capabilities without shipping sensitive data to third parties.",
+      "ph_url": "https://amd-gaia.ai/docs",
+      "maker": "AMD",
+      "featured": true,
+      "added_at": "2026-04-14T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-vantage-protocol",
+      "name": "Vantage",
+      "tagline": "LLM-based protocol for measuring collaboration, creativity, and critical thinking.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Standardised tests can measure knowledge but not soft skills. Google's Vantage attempts to quantify the unmeasurable: creativity, collaboration, critical thinking. If it works, this could revolutionise how we assess both humans and AI systems on the skills that actually matter.",
+      "ph_url": "https://www.marktechpost.com/2026/04/13/google-ai-research-proposes-vantage-an-llm-based-protocol-for-measuring-collaboration-creativity-and-critical-thinking/",
+      "maker": "Google AI Research",
+      "featured": false,
+      "added_at": "2026-04-14T06:30:00Z"
+    },
+    {
+      "id": "ph-context-surgeon",
+      "name": "Context Surgeon",
+      "tagline": "Let AI agents edit their own context window.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Context window management is one of the biggest practical challenges in agent development. Instead of crude truncation, Context Surgeon lets agents surgically remove irrelevant information. This could be the difference between agents that work in demos and agents that work in production.",
+      "ph_url": "https://github.com/jackfruitsandwich/context-surgeon",
+      "maker": "jackfruitsandwich",
+      "featured": false,
+      "added_at": "2026-04-14T06:30:00Z"
+    },
+    {
+      "id": "ph-snapstate",
+      "name": "SnapState",
+      "tagline": "Persistent state for AI agent workflows.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Agent workflows crash, restart, and lose context constantly. SnapState tackles one of the most annoying problems in agent development: keeping state persistent across restarts. Simple concept, but essential for any agent that needs to run longer than a few minutes.",
+      "ph_url": "https://snapstate.dev",
+      "maker": "SnapState",
+      "featured": false,
+      "added_at": "2026-04-14T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "GAIA \u2013 Open-source framework for building AI agents that run on local hardware",
+      "points": 128,
+      "comments": 30,
+      "summary": "AMD's open framework lets you build AI agents that run entirely on local hardware instead of cloud APIs. Perfect for privacy-conscious deployments where you can't ship sensitive data to third parties.",
+      "hn_url": "https://news.ycombinator.com/item?id=47756772"
+    },
+    {
+      "title": "N-Day-Bench \u2013 Can LLMs find real vulnerabilities in real codebases?",
+      "points": 67,
+      "comments": 18,
+      "summary": "Benchmark testing whether large language models can actually discover genuine security vulnerabilities in real-world code. Tests the gap between AI security hype and practical capability.",
+      "hn_url": "https://news.ycombinator.com/item?id=47758347"
+    },
+    {
+      "title": "Multi-Agentic Software Development Is a Distributed Systems Problem",
+      "points": 33,
+      "comments": 8,
+      "summary": "Analysis arguing that building multi-agent systems for software development requires treating them as distributed systems. Covers coordination, failure modes, and consistency challenges.",
+      "hn_url": "https://news.ycombinator.com/item?id=47761625"
+    },
+    {
+      "title": "Show HN: ParseBench \u2013 Document parsing benchmark for AI agents",
+      "points": 9,
+      "comments": 5,
+      "summary": "Benchmark for testing how well AI agents can parse and extract information from documents. Addresses a key capability needed for real-world agent deployments.",
+      "hn_url": "https://news.ycombinator.com/item?id=47752197"
+    },
+    {
+      "title": "Human scientists trounce the best AI agents on complex tasks",
+      "points": 7,
+      "comments": 0,
+      "summary": "Research showing that human scientists significantly outperform current AI agents on complex scientific tasks. Reality check on agent capabilities versus the hype.",
+      "hn_url": "https://news.ycombinator.com/item?id=47761190"
+    }
+  ]
+}
