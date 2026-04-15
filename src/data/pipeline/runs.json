@@ -3020,5 +3020,20 @@
     "input_tokens": 5459,
     "output_tokens": 1229,
     "output_files": []
+  },
+  {
+    "bot": "prompt_bot",
+    "timestamp": "2026-04-15T09:00:52.629473+00:00",
+    "status": "success",
+    "duration_s": 51.0,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 2,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0501,
+    "input_tokens": 5459,
+    "output_tokens": 2250,
+    "output_files": []
   }
 ]

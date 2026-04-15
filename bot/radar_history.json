@@ -482,6 +482,18 @@
         "Context Surgeon",
         "SnapState"
       ]
+    },
+    {
+      "date": "2026-04-15",
+      "file": "2026-04-15.json",
+      "products": [
+        "Gemini Robotics-ER 1.6",
+        "Chrome Skills",
+        "TinyFish AI",
+        "LangAlpha",
+        "Plain",
+        "Kelet"
+      ]
     }
   ]
 }
