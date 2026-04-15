@@ -95,6 +95,18 @@
       "file": "mixed-precision-training-validator.md",
       "title": "Mixed Precision Training Validator",
       "category": "performance"
+    },
+    {
+      "date": "2026-04-15",
+      "file": "web-agent-browser-automation-validator.md",
+      "title": "Web Agent Browser Automation Validator",
+      "category": "testing"
+    },
+    {
+      "date": "2026-04-15",
+      "file": "ai-agent-memory-state-migrator.md",
+      "title": "AI Agent Memory State Migrator",
+      "category": "migration"
     }
   ]
 }
