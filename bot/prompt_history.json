@@ -98,15 +98,15 @@
     },
     {
       "date": "2026-04-15",
-      "file": "web-agent-browser-automation-validator.md",
-      "title": "Web Agent Browser Automation Validator",
+      "file": "ai-agent-web-interaction-validator.md",
+      "title": "AI Agent Web Interaction Validator",
       "category": "testing"
     },
     {
       "date": "2026-04-15",
-      "file": "ai-agent-memory-state-migrator.md",
-      "title": "AI Agent Memory State Migrator",
-      "category": "migration"
+      "file": "multi-modal-ai-pipeline-architecture-designer.md",
+      "title": "Multi-Modal AI Pipeline Architecture Designer",
+      "category": "architecture"
     }
   ]
 }
