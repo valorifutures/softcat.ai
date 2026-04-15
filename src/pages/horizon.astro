@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HorizonFilter from '../components/HorizonFilter.tsx';
 import { getCollection } from 'astro:content';
+import shiftsData from '../data/horizon/shifts.json';
 
 // Load all five horizon lane collections.
 const pastEntries = await getCollection('horizonPast');
@@ -85,6 +86,33 @@ for (const e of nextEntries) for (const t of e.data.themes) allThemeSet.add(t);
 for (const e of debateEntries) for (const t of e.data.themes) allThemeSet.add(t);
 for (const e of scenarioEntries) for (const t of e.data.themes) allThemeSet.add(t);
 const allThemes = Array.from(allThemeSet).sort();
+
+// Weekly shift log: horizon_bot refreshes src/data/horizon/shifts.json on
+// every run from `git log -- src/data/horizon/`. We take the last 7 days and
+// render them as a compact activity feed. Empty array = show the "quiet week"
+// state, not the old "coming soon" placeholder.
+type Shift = {
+  date: string;
+  lane: string;
+  verb: string;
+  subject: string;
+  sha: string;
+};
+const allShifts: Shift[] = shiftsData as Shift[];
+const SHIFT_WINDOW_DAYS = 7;
+const shiftCutoff = new Date();
+shiftCutoff.setUTCDate(shiftCutoff.getUTCDate() - SHIFT_WINDOW_DAYS);
+const shiftCutoffISO = shiftCutoff.toISOString().slice(0, 10);
+const recentShifts = allShifts
+  .filter((s) => s.date >= shiftCutoffISO)
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+function laneAccent(lane: string): 'purple' | 'cyan' | 'amber' | 'green' {
+  if (lane === 'past') return 'purple';
+  if (lane === 'now' || lane === 'next') return 'cyan';
+  if (lane === 'debates' || lane === 'scenarios') return 'amber';
+  return 'green';
+}
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr + 'T00:00:00Z');
@@ -660,14 +688,40 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
       </span>
     </div>
 
-    <div class="bg-surface border border-dashed border-surface-light rounded-lg p-8 text-center">
-      <p class="font-mono text-sm text-text-muted/80">
-        <span class="text-neon-green">●</span> shift log coming soon
-      </p>
-      <p class="text-xs text-text-muted/60 mt-2">
-        Auto-derived from <code class="text-neon-green/80">git log -- src/data/horizon/</code> at build time. Will populate once the horizon bot starts proposing changes.
-      </p>
-    </div>
+    {recentShifts.length === 0 ? (
+      <div class="bg-surface border border-dashed border-surface-light rounded-lg p-8 text-center">
+        <p class="font-mono text-sm text-text-muted/80">
+          <span class="text-neon-green">●</span> quiet week
+        </p>
+        <p class="text-xs text-text-muted/60 mt-2">
+          No changes to any lane in the last {SHIFT_WINDOW_DAYS} days. The
+          shift log is derived from <code class="text-neon-green/80">git log -- src/data/horizon/</code> by the horizon bot.
+        </p>
+      </div>
+    ) : (
+      <ul class="space-y-2 font-mono text-sm">
+        {recentShifts.map((s) => {
+          const accent = laneAccent(s.lane);
+          return (
+            <li class="flex items-start gap-3 py-2 border-b border-surface-light/40 last:border-b-0">
+              <span class="shrink-0 text-text-muted/60 tabular-nums w-[5.5rem]">
+                {s.date}
+              </span>
+              <span class={`shrink-0 inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider bg-surface-light text-neon-${accent}`}>
+                <span class={`tag-dot tag-dot-${accent}`} aria-hidden="true"></span>
+                {s.lane}
+              </span>
+              <span class="shrink-0 text-[11px] text-text-muted/70 w-[4rem]">
+                {s.verb}
+              </span>
+              <span class="text-text-muted leading-snug">
+                {s.subject}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    )}
   </section>
 
   <!-- ============================================================ -->
