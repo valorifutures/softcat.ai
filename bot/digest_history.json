@@ -1887,6 +1887,42 @@
         "https://buttondown.com/ainews/archive/ainews-openai-o3-o4-mini-and-codex-cli/",
         "https://buttondown.com/ainews/archive/ainews-sota-video-gen-veo-2-and-kling-2-are-ga/"
       ]
+    },
+    {
+      "date": "2026-04-15",
+      "file": "2026-04-15-ai-digest.md",
+      "links": [
+        "https://www.marktechpost.com/2026/04/14/google-launches-skills-in-chrome-turning-reusable-ai-prompts-into-one-click-browser-workflows/",
+        "https://www.marktechpost.com/2026/04/14/a-coding-implementation-of-crawl4ai-for-web-crawling-markdown-generation-javascript-execution-and-llm-based-structured-extraction/",
+        "https://www.marktechpost.com/2026/04/14/tinyfish-ai-releases-full-web-infrastructure-platform-for-ai-agents/",
+        "https://www.marktechpost.com/2026/04/14/nvidia-and-the-university-of-maryland-researchers-released-audio-flamingo-next-af-next-a-super-powerful-and-open-large-audio-language-model/",
+        "https://www.marktechpost.com/2026/04/13/google-adk-multi-agent-pipeline-tutorial-data-loading-statistical-testing-visualization-and-report-generation-in-python/",
+        "https://www.marktechpost.com/2026/04/13/google-ai-research-proposes-vantage-an-llm-based-protocol-for-measuring-collaboration-creativity-and-critical-thinking/",
+        "https://www.marktechpost.com/2026/04/13/a-step-by-step-coding-tutorial-on-nvidia-physicsnemo-darcy-flow-fnos-pinns-surrogate-models-and-inference-benchmarking/",
+        "https://www.marktechpost.com/2026/04/13/an-implementation-guide-to-building-a-duckdb-python-analytics-pipeline-with-sql-dataframes-parquet-udfs-and-performance-profiling/",
+        "https://www.marktechpost.com/2026/04/12/minimax-releases-mmx-cli-a-command-line-interface-that-gives-ai-agents-native-access-to-image-video-speech-music-vision-and-search/",
+        "https://www.marktechpost.com/2026/04/12/a-hands-on-coding-tutorial-for-microsoft-vibevoice-covering-speaker-aware-asr-real-time-tts-and-speech-to-speech-pipelines/",
+        "https://techcrunch.com/2026/04/14/anthropics-rise-is-giving-some-openai-investors-second-thoughts/",
+        "https://techcrunch.com/2026/04/14/anthropic-co-founder-confirms-the-company-briefed-the-trump-administration-on-mythos/",
+        "https://techcrunch.com/2026/04/14/max-hodaks-science-corp-is-preparing-to-place-its-first-sensor-in-a-human-brain/",
+        "https://techcrunch.com/2026/04/14/google-adds-ai-skills-to-chrome-to-help-you-save-favorite-workflows/",
+        "https://techcrunch.com/2026/04/14/join-the-first-strictlyvc-of-2026-in-sf-with-leaders-from-tdk-ventures-and-replits-co-founder/",
+        "https://techcrunch.com/2026/04/14/google-brings-its-gemini-personal-intelligence-feature-to-india/",
+        "https://techcrunch.com/2026/04/14/how-vibe-coding-app-anything-is-rebuilding-after-getting-booted-from-the-app-store-twice/",
+        "https://techcrunch.com/2026/04/13/openai-has-bought-ai-personal-finance-startup-hiro/",
+        "https://techcrunch.com/2026/04/13/microsoft-is-working-on-yet-another-openclaw-like-agent/",
+        "https://techcrunch.com/2026/04/13/stanford-report-highlights-growing-disconnect-between-ai-insiders-and-everyone-else/",
+        "https://techcrunch.com/2026/04/13/vercel-ceo-guillermo-rauch-signals-ipo-readiness-as-ai-agents-fuel-revenue-surge/",
+        "https://techcrunch.com/2026/04/13/the-largest-orbital-compute-cluster-is-open-for-business/",
+        "https://techcrunch.com/2026/04/12/trump-officials-may-be-encouraging-banks-to-test-anthropics-mythos-model/",
+        "https://techcrunch.com/2026/04/12/apple-reportedly-testing-four-designs-for-upcoming-smart-glasses/",
+        "https://techcrunch.com/2026/04/12/artificial-intelligence-definition-glossary-hallucinations-guide-to-common-ai-terms/",
+        "https://buttondown.com/ainews/archive/ainews-we-have-moved-please-help-us-move/",
+        "https://buttondown.com/ainews/archive/ainews-grok-3-3-mini-now-api-available/",
+        "https://buttondown.com/ainews/archive/ainews-gemini-25-flash-completes-the-total/",
+        "https://buttondown.com/ainews/archive/ainews-openai-o3-o4-mini-and-codex-cli/",
+        "https://buttondown.com/ainews/archive/ainews-sota-video-gen-veo-2-and-kling-2-are-ga/"
+      ]
     }
   ]
 }

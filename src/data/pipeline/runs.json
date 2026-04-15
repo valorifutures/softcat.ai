@@ -2924,5 +2924,52 @@
     "output_files": [
       "src/content/thoughts/2026-04-14-physics-simulators-just-became-the-new-gpus.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-14T09:30:46.338422+00:00",
+    "status": "success",
+    "duration_s": 39.7,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0635,
+    "input_tokens": 11082,
+    "output_tokens": 2020,
+    "output_files": [
+      "src/data/radar/2026-04-14.json"
+    ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-15T04:00:01.545244+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 344,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-15T06:00:02.162513+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 344,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
   }
 ]
