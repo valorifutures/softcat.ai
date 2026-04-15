@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HorizonFilter from '../components/HorizonFilter.tsx';
 import { getCollection } from 'astro:content';
 
 // Load all five horizon lane collections.
@@ -73,6 +74,17 @@ const topThemes = Object.entries(nowThemeCounts)
   .sort((a, b) => b[1] - a[1])
   .slice(0, 3)
   .map(([t]) => t);
+
+// Union of themes actually used across every filterable card. Drives the
+// filter chip row; themes with zero entries are hidden so the UI never
+// offers a dead-end selection.
+const allThemeSet = new Set<string>();
+for (const e of pastEntries) for (const t of e.data.themes) allThemeSet.add(t);
+for (const e of nowEntries) for (const t of e.data.themes) allThemeSet.add(t);
+for (const e of nextEntries) for (const t of e.data.themes) allThemeSet.add(t);
+for (const e of debateEntries) for (const t of e.data.themes) allThemeSet.add(t);
+for (const e of scenarioEntries) for (const t of e.data.themes) allThemeSet.add(t);
+const allThemes = Array.from(allThemeSet).sort();
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr + 'T00:00:00Z');
@@ -235,6 +247,13 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
   </section>
 
   <!-- ============================================================ -->
+  <!-- FILTER                                                        -->
+  <!-- ============================================================ -->
+  <section class="max-w-5xl mx-auto px-6 mb-10">
+    <HorizonFilter client:load allThemes={allThemes} />
+  </section>
+
+  <!-- ============================================================ -->
   <!-- NOW LANE                                                      -->
   <!-- ============================================================ -->
   <section class="max-w-5xl mx-auto px-6 mb-16">
@@ -247,11 +266,21 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
       </span>
     </div>
 
+    <div
+      data-horizon-empty="now"
+      class="bg-surface border border-dashed border-surface-light rounded-lg p-6 text-center mb-5"
+      style="display: none"
+    >
+      <p class="font-mono text-xs text-text-muted/70">no Now signals match the active theme filter</p>
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {sortedNow.map((entry, i) => {
         const accent = confidenceAccent(entry.data.confidence);
         return (
           <article
+            data-horizon-card
+            data-horizon-lane="now"
+            data-themes={entry.data.themes.join(',')}
             class={`relative glass-card rounded-xl p-6 card-glow-${accent} card-lift animate-stagger`}
             style={`--stagger-index: ${i}`}
           >
@@ -324,11 +353,22 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
         </p>
       </div>
     ) : (
+      <>
+      <div
+        data-horizon-empty="next"
+        class="bg-surface border border-dashed border-surface-light rounded-lg p-6 text-center mb-5"
+        style="display: none"
+      >
+        <p class="font-mono text-xs text-text-muted/70">no Next forecasts match the active theme filter</p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {sortedNext.map((entry, i) => {
           const accent = confidenceAccent(entry.data.confidence);
           return (
             <article
+              data-horizon-card
+              data-horizon-lane="next"
+              data-themes={entry.data.themes.join(',')}
               class={`relative glass-card rounded-xl p-6 card-glow-${accent} card-lift animate-stagger`}
               style={`--stagger-index: ${i}`}
             >
@@ -364,6 +404,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
           );
         })}
       </div>
+      </>
     )}
   </section>
 
@@ -390,9 +431,22 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
         </p>
       </div>
     ) : (
+      <>
+      <div
+        data-horizon-empty="scenarios"
+        class="bg-surface border border-dashed border-surface-light rounded-lg p-6 text-center mb-5"
+        style="display: none"
+      >
+        <p class="font-mono text-xs text-text-muted/70">no scenarios match the active theme filter</p>
+      </div>
       <div class="space-y-10">
         {scenarioEntries.map((entry) => (
-          <article class="bg-surface border border-surface-light rounded-xl p-6">
+          <article
+            data-horizon-card
+            data-horizon-lane="scenarios"
+            data-themes={entry.data.themes.join(',')}
+            class="bg-surface border border-surface-light rounded-xl p-6"
+          >
             <div class="flex flex-wrap items-baseline justify-between gap-3 mb-5">
               <h3 class="font-mono text-xl font-bold text-text-bright glow-amber">
                 {entry.data.topic}
@@ -439,6 +493,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
           </article>
         ))}
       </div>
+      </>
     )}
   </section>
 
@@ -465,9 +520,22 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
         </p>
       </div>
     ) : (
+      <>
+      <div
+        data-horizon-empty="debates"
+        class="bg-surface border border-dashed border-surface-light rounded-lg p-6 text-center mb-5"
+        style="display: none"
+      >
+        <p class="font-mono text-xs text-text-muted/70">no debates match the active theme filter</p>
+      </div>
       <div class="space-y-8">
         {debateEntries.map((entry) => (
-          <article class="bg-surface border border-surface-light rounded-xl p-6">
+          <article
+            data-horizon-card
+            data-horizon-lane="debates"
+            data-themes={entry.data.themes.join(',')}
+            class="bg-surface border border-surface-light rounded-xl p-6"
+          >
             <div class="flex flex-wrap items-baseline justify-between gap-3 mb-5">
               <h3 class="font-mono text-lg md:text-xl font-bold text-text-bright glow-amber leading-snug">
                 {entry.data.question}
@@ -517,6 +585,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
           </article>
         ))}
       </div>
+      </>
     )}
   </section>
 
@@ -533,15 +602,27 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
       </span>
     </div>
 
+    <div
+      data-horizon-empty="past"
+      class="bg-surface border border-dashed border-surface-light rounded-lg p-6 text-center mb-5"
+      style="display: none"
+    >
+      <p class="font-mono text-xs text-text-muted/70">no Past turning points match the active theme filter</p>
+    </div>
     <div class="space-y-10">
       {pastYears.map((year) => (
-        <div>
+        <div data-horizon-past-year={year}>
           <h3 class="font-mono text-sm text-neon-purple/80 uppercase tracking-widest mb-4 sticky top-0">
             {year}
           </h3>
           <div class="space-y-4">
             {pastByYear[year].map((entry) => (
-              <article class="glass-card rounded-lg p-5 card-glow-purple card-lift">
+              <article
+                data-horizon-card
+                data-horizon-lane="past"
+                data-themes={entry.data.themes.join(',')}
+                class="glass-card rounded-lg p-5 card-glow-purple card-lift"
+              >
                 <div class="flex items-baseline justify-between gap-4 mb-2">
                   <h4 class="font-mono text-base text-text-bright font-semibold">
                     {entry.data.title}
@@ -600,7 +681,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
           Track a theme
         </h3>
         <p class="text-sm text-text-muted leading-relaxed">
-          Filter the map by what you actually care about. Theme filters and URL persistence land in the next iteration.
+          Filter the map by what you actually care about. Picked themes sync to the URL, so you can bookmark or share a slice.
         </p>
       </div>
       <div class="glass-card rounded-xl p-6 card-glow-purple">

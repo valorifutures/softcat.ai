@@ -78,7 +78,7 @@ const glossary = defineCollection({
 // All horizon data flows through Astro Content Collections + Zod (Issue 3).
 // Build fails on schema violations automatically; cross-reference integrity
 // (dangling related[], evidence.ref, etc.) is enforced by the build-time
-// validator at scripts/validate-horizon-refs.ts (Step 4.5, lands separately).
+// validator at scripts/validate-horizon-refs.mjs — run manually or via CI.
 // ============================================================================
 
 const HORIZON_THEMES = [
@@ -112,7 +112,7 @@ const isoDate = z
 // NOW month is constrained to 01-12. NEXT excludes lane-prefix collisions
 // like next-past-foo via negative lookahead.
 // Global uniqueness across all lanes is enforced by the build-time validator
-// at scripts/validate-horizon-refs.ts (Step 4.5, lands separately).
+// at scripts/validate-horizon-refs.mjs.
 const PAST_ID = /^past-\d{4}-[a-z][a-z0-9]*(-[a-z0-9]+)*$/;
 const NOW_ID = /^now-\d{4}-(0[1-9]|1[0-2])-[a-z][a-z0-9]*(-[a-z0-9]+)*$/;
 const NEXT_ID = /^next-(?!past-|now-|next-)[a-z][a-z0-9]*(-[a-z0-9]+)*$/;
@@ -199,8 +199,8 @@ const horizonNext = defineCollection({
       lane: z.literal('next'),
       date: isoDate.optional(), // optional for next
       // Issue 8 / Outside #6: confidence freshness mandatory on Next.
-      // Validator (Step 4.5) WARNS at >90 days, no fail in v1. TODOS.md #1
-      // tracks the future escalation to hard fail at 180 days.
+      // Validator WARNS at >90 days, no fail in v1. TODOS.md #1 tracks the
+      // future escalation to hard fail at 180 days.
       confidence_last_reviewed: isoDate,
     })
     .strict(),
