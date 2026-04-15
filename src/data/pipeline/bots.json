@@ -100,5 +100,21 @@
     "model": "",
     "output_section": "models",
     "accent": "green"
+  },
+  {
+    "id": "horizon_bot",
+    "name": "Horizon",
+    "description": "Proposes Now-lane entries and Past-promotion candidates from the archive, flags stale Next forecasts with fresh supporting evidence. Writes proposals to a staging file for Valori review; never writes canonical lane data.",
+    "script": "bot/horizon_bot.py",
+    "schedule": "Daily at 10:00 UTC",
+    "schedule_cron": "0 10 * * *",
+    "feeds": [
+      "src/data/radar/",
+      "src/content/thoughts/",
+      "src/content/news-and-updates/"
+    ],
+    "model": "claude-sonnet-4-20250514",
+    "output_section": "horizon",
+    "accent": "cyan"
   }
 ]
