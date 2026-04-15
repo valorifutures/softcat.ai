@@ -239,14 +239,16 @@ def main():
             cost = (usage.input_tokens * 3 + usage.output_tokens * 15) / 1_000_000
             in_tok, out_tok = usage.input_tokens, usage.output_tokens
 
-        print("Committing and pushing...")
-        git_commit_and_push(filename)
-
+        # Log BEFORE commit so the runs.json entry lands in the same commit
+        # as this bot's data changes, not the next bot's commit (issue #97).
         log_run("tool_bot", status="success", duration_s=_time.time() - t0,
                 feeds_scanned=len(FEEDS), items_found=len(entries), items_published=1,
                 model="claude-sonnet-4-20250514", cost_usd=cost,
                 input_tokens=in_tok, output_tokens=out_tok,
                 output_files=[f"src/content/tools/{filename}"])
+
+        print("Committing and pushing...")
+        git_commit_and_push(filename)
 
         print("Done.")
         ping_healthcheck()

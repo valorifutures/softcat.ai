@@ -228,15 +228,17 @@ def main():
         # Sonnet pricing: $3/M input, $15/M output
         cost = (usage.input_tokens * 3 + usage.output_tokens * 15) / 1_000_000
 
-        print("Saving and pushing...")
-        save_and_push(content, entries, history)
-
+        # Log BEFORE commit so the runs.json entry lands in the same commit
+        # as this bot's data changes, not the next bot's commit (issue #97).
         slug_date = date.today().strftime("%Y-%m-%d")
         log_run("news_bot", status="success", duration_s=_time.time() - t0,
                 feeds_scanned=len(FEEDS), items_found=len(entries), items_published=1,
                 model="claude-sonnet-4-20250514", cost_usd=cost,
                 input_tokens=usage.input_tokens, output_tokens=usage.output_tokens,
                 output_files=[f"src/content/news-and-updates/{slug_date}-ai-digest.md"])
+
+        print("Saving and pushing...")
+        save_and_push(content, entries, history)
 
         print("Done.")
         ping_healthcheck()

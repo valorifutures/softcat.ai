@@ -254,9 +254,8 @@ def main():
         content, usage = result
         cost = (usage.input_tokens * 3 + usage.output_tokens * 15) / 1_000_000
 
-        print("Saving and pushing...")
-        save_and_push(content, history, push=not args.no_push)
-
+        # Log BEFORE commit so the runs.json entry lands in the same commit
+        # as this bot's data changes, not the next bot's commit (issue #97).
         slug_date = os.environ.get("THOUGHT_DATE", date.today().isoformat())
         title = extract_title(content)
         slug = slugify(title)
@@ -265,6 +264,9 @@ def main():
                 model="claude-sonnet-4-20250514", cost_usd=cost,
                 input_tokens=usage.input_tokens, output_tokens=usage.output_tokens,
                 output_files=[f"src/content/thoughts/{slug_date}-{slug}.md"])
+
+        print("Saving and pushing...")
+        save_and_push(content, history, push=not args.no_push)
 
         print("Done.")
         ping_healthcheck()

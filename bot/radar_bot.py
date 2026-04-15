@@ -422,10 +422,10 @@ def main():
         if not entries and not hn_entries:
             print("No entries found — writing empty state.")
             empty_data = {"date": date.today().isoformat(), "featured": [], "picks": []}
-            save_and_push(empty_data, history)
             _log_run("radar_bot", status="success", duration_s=time.time() - t0,
                      feeds_scanned=len(FEEDS) + len(HN_SEARCH_TERMS),
                      items_found=0, items_published=0)
+            save_and_push(empty_data, history)
             ping_healthcheck()
             sys.exit(0)
 
@@ -435,11 +435,11 @@ def main():
         if not result:
             print("Claude returned 0 picks — writing empty state.")
             empty_data = {"date": date.today().isoformat(), "featured": [], "picks": []}
-            save_and_push(empty_data, history)
             _log_run("radar_bot", status="success", duration_s=time.time() - t0,
                      feeds_scanned=len(FEEDS) + len(HN_SEARCH_TERMS),
                      items_found=total_found, items_published=0,
                      model="claude-sonnet-4-20250514")
+            save_and_push(empty_data, history)
             ping_healthcheck()
             sys.exit(0)
 
@@ -460,9 +460,8 @@ def main():
             "hn_top5": radar_data.get("hn_top5", []),
         }
 
-        print("Saving and pushing...")
-        save_and_push(site_data, history)
-
+        # Log BEFORE commit so the runs.json entry lands in the same commit
+        # as this bot's data changes, not the next bot's commit (issue #97).
         today = date.today().isoformat()
         _log_run("radar_bot", status="success", duration_s=time.time() - t0,
                  feeds_scanned=len(FEEDS) + len(HN_SEARCH_TERMS),
@@ -470,6 +469,9 @@ def main():
                  model="claude-sonnet-4-20250514", cost_usd=cost,
                  input_tokens=usage.input_tokens, output_tokens=usage.output_tokens,
                  output_files=[f"src/data/radar/{today}.json"])
+
+        print("Saving and pushing...")
+        save_and_push(site_data, history)
 
         print("Done.")
         ping_healthcheck()
