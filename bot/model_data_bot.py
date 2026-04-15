@@ -9,6 +9,18 @@ and pushes if anything changed.
 Auto-updated fields: contextK, inputPrice, outputPrice, multimodal
 Manual fields (preserved): family, reasoning, coding, reasoning_score,
     speed, description, strengths, openSource, released
+
+Trust model (issue #96):
+  - Every change is gated by MAX_AUTO_DELTA. Anything larger is rejected
+    from the auto-commit and written to a staging file for Valori review.
+    OpenRouter sometimes reports beta/max values (e.g. Claude Sonnet's 1M
+    beta context instead of the 200K default), and has had stale pricing
+    for Mistral Small. A 6x swing should never auto-land.
+  - Per-model `lockedFields` let us freeze a field that OpenRouter keeps
+    getting wrong without editing bot code.
+  - On start we reset models.json from HEAD if it has drifted. Stops a
+    prior failed commit from leaving uncommitted garbage that silently
+    becomes the new baseline and makes later runs log `0 published`.
 """
 
 import os
@@ -28,6 +40,16 @@ BOT_DIR = Path(__file__).parent
 load_dotenv(BOT_DIR / ".env")
 REPO_DIR = BOT_DIR.parent
 MODELS_FILE = REPO_DIR / "src" / "data" / "models.json"
+STAGING_DIR = Path.home() / ".softcat-bot-staging"
+SUSPECTS_FILE = STAGING_DIR / "model-bot-suspects.json"
+
+# Sanity guardrail: reject any auto-update where a numeric field swings by
+# more than this fraction of the current value (up or down). Suspect changes
+# are written to SUSPECTS_FILE for human review instead of landing.
+MAX_AUTO_DELTA = 0.5
+
+# Fields eligible for the delta check. Non-numeric fields skip the guardrail.
+GUARDED_NUMERIC_FIELDS = {"contextK", "inputPrice", "outputPrice"}
 
 # OpenRouter model IDs we track. Add new IDs here to have the bot
 # pick them up automatically. Remove IDs to stop tracking.
@@ -127,11 +149,26 @@ def derive_provider(model_id):
     return PROVIDER_MAP.get(prefix, prefix.title())
 
 
+def _is_suspect(field, old, new):
+    """True when a numeric field swings more than MAX_AUTO_DELTA either way."""
+    if field not in GUARDED_NUMERIC_FIELDS:
+        return False
+    if not isinstance(old, (int, float)) or not isinstance(new, (int, float)):
+        return False
+    if old == 0:
+        return new != 0  # going from 0 to anything is a big relative move
+    return abs(new - old) / abs(old) > MAX_AUTO_DELTA
+
+
 def update_models(existing, api_models):
-    """Merge API data into existing models. Returns (models, changed)."""
-    existing_by_id = {m["id"]: m for m in existing if "id" in m}
+    """Merge API data into existing models.
+
+    Returns (models, changed, suspects) where suspects is a list of rejected
+    field changes (delta > MAX_AUTO_DELTA) that should go to human review,
+    not the commit."""
     changed = False
     updated = []
+    suspects = []
 
     # Update existing models
     for model in existing:
@@ -141,6 +178,7 @@ def update_models(existing, api_models):
         if api_model:
             copy = model.copy()
             auto = extract_auto_fields(api_model)
+            locked = set(copy.get("lockedFields") or [])
 
             # Skip price updates for open-source models (we show "Free*" for self-hosting)
             if copy.get("openSource"):
@@ -148,10 +186,27 @@ def update_models(existing, api_models):
                 auto.pop("outputPrice", None)
 
             for key, value in auto.items():
-                if copy.get(key) != value:
-                    print(f"  Updated {copy['name']}.{key}: {copy.get(key)} -> {value}")
-                    copy[key] = value
-                    changed = True
+                old = copy.get(key)
+                if old == value:
+                    continue
+                if key in locked:
+                    print(f"  Locked {copy['name']}.{key}: {old} -> {value} (kept {old})")
+                    continue
+                if _is_suspect(key, old, value):
+                    print(f"  SUSPECT {copy['name']}.{key}: {old} -> {value} (> "
+                          f"{int(MAX_AUTO_DELTA * 100)}% delta, not landing)")
+                    suspects.append({
+                        "id": model_id,
+                        "name": copy.get("name", model_id),
+                        "field": key,
+                        "current": old,
+                        "proposed": value,
+                        "source": "openrouter",
+                    })
+                    continue
+                print(f"  Updated {copy['name']}.{key}: {old} -> {value}")
+                copy[key] = value
+                changed = True
             updated.append(copy)
         else:
             # No API data for this model, keep as-is
@@ -179,12 +234,65 @@ def update_models(existing, api_models):
             updated.append(new_model)
             changed = True
 
-    return updated, changed
+    return updated, changed, suspects
+
+
+def reset_drifted_baseline():
+    """Discard any uncommitted drift in models.json before we start so a
+    previously failed commit does not become the new silent baseline."""
+    os.chdir(REPO_DIR)
+    result = subprocess.run(
+        ["git", "diff", "--quiet", "HEAD", "--", "src/data/models.json"],
+    )
+    if result.returncode != 0:
+        print("[model_bot] models.json drifted from HEAD; resetting before run.")
+        subprocess.run(
+            ["git", "checkout", "HEAD", "--", "src/data/models.json"],
+            check=True,
+        )
+
+
+def write_suspects(suspects):
+    STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "generated_at": datetime.now().astimezone().isoformat(),
+        "threshold": MAX_AUTO_DELTA,
+        "suspects": suspects,
+    }
+    SUSPECTS_FILE.write_text(json.dumps(payload, indent=2) + "\n")
+    print(f"[model_bot] Wrote {len(suspects)} suspect(s) to {SUSPECTS_FILE}")
+
+
+def post_suspects_to_discord(suspects):
+    webhook = os.environ.get("DISCORD_WEBHOOK_MODEL_DATA")
+    if not webhook or not suspects:
+        return
+    lines = [f"**Model bot:** {len(suspects)} suspect change(s) rejected "
+             f"(> {int(MAX_AUTO_DELTA * 100)}% delta):"]
+    for s in suspects[:10]:
+        lines.append(f"- {s['name']}.{s['field']}: "
+                     f"{s['current']} -> {s['proposed']}")
+    lines.append(f"Review: `{SUSPECTS_FILE}`")
+    try:
+        httpx.post(webhook, json={"content": "\n".join(lines),
+                                   "username": "SOFT CAT Model Data"},
+                   timeout=15)
+    except Exception as e:
+        print(f"[model_bot] Discord post failed: {e}")
 
 
 def git_commit_and_push():
     os.chdir(REPO_DIR)
+    # Stash any stray uncommitted files (from other bots mid-run, etc.) so
+    # pull --rebase cannot fail on dirty worktree, then restore them after.
+    stash_result = subprocess.run(
+        ["git", "stash", "--include-untracked", "--keep-index"],
+        capture_output=True, text=True,
+    )
+    stashed = "No local changes" not in stash_result.stdout
     subprocess.run(["git", "pull", "--rebase"], check=True)
+    if stashed:
+        subprocess.run(["git", "stash", "pop"], check=True)
     subprocess.run(["git", "add", "src/data/models.json", "src/data/pipeline/runs.json"], check=True)
 
     # Check if there are actually staged changes after pull
@@ -217,6 +325,9 @@ def main():
     t0 = _time.time()
 
     try:
+        # Self-heal: clear any uncommitted drift before we read baseline.
+        reset_drifted_baseline()
+
         existing = load_models()
         print(f"Loaded {len(existing)} existing models")
 
@@ -233,10 +344,16 @@ def main():
         print(f"Got {len(api_models)} models from OpenRouter")
 
         print("Merging data...")
-        updated, changed = update_models(existing, api_models)
+        updated, changed, suspects = update_models(existing, api_models)
+
+        if suspects:
+            write_suspects(suspects)
+            post_suspects_to_discord(suspects)
 
         if not changed:
             print("No changes detected. Exiting.")
+            # Log BEFORE any commit step so the runs.json entry lands with
+            # any concurrent bot's commit instead of a future one (#97).
             log_run("model_bot", status="success", duration_s=_time.time() - t0,
                     items_found=len(api_models), items_published=0)
             ping_healthcheck()
@@ -245,12 +362,15 @@ def main():
         print(f"Saving {len(updated)} models...")
         save_models(updated)
 
-        print("Committing and pushing...")
-        git_commit_and_push()
-
+        # Log BEFORE commit so the runs.json entry lands in the same commit
+        # as models.json (#97 fix). If commit fails, the log still reflects
+        # what we tried to ship and surfaces the problem on the dashboard.
         log_run("model_bot", status="success", duration_s=_time.time() - t0,
                 items_found=len(api_models), items_published=len(updated),
                 output_files=["src/data/models.json"])
+
+        print("Committing and pushing...")
+        git_commit_and_push()
 
         print("Done.")
         ping_healthcheck()

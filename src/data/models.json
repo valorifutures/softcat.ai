@@ -69,7 +69,10 @@
     "reasoning_score": 93,
     "speed": 70,
     "description": "Near-Opus intelligence at Sonnet pricing. Strong at coding, analysis, and general tasks.",
-    "strengths": "Near-Opus intelligence at Sonnet pricing"
+    "strengths": "Near-Opus intelligence at Sonnet pricing",
+    "lockedFields": [
+      "contextK"
+    ]
   },
   {
     "id": "deepseek/deepseek-r1",
