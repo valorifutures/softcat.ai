@@ -3052,5 +3052,37 @@
     "output_files": [
       "src/data/models.json"
     ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-16T06:00:02.327713+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 345,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-04-16T07:00:36.411363+00:00",
+    "status": "success",
+    "duration_s": 29.7,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.03,
+    "input_tokens": 6934,
+    "output_tokens": 613,
+    "output_files": [
+      "src/content/news-and-updates/2026-04-16-ai-digest.md"
+    ]
   }
 ]
