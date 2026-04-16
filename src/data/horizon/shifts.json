@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "date": "2026-04-11",
+    "lane": "debates",
+    "verb": "updated",
+    "subject": "horizon: seed Next/Debates/Scenarios + wire renderers (#94)",
+    "sha": "976239e681"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "next",
+    "verb": "updated",
+    "subject": "horizon: seed Next/Debates/Scenarios + wire renderers (#94)",
+    "sha": "976239e681"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "scenarios",
+    "verb": "updated",
+    "subject": "horizon: seed Next/Debates/Scenarios + wire renderers (#94)",
+    "sha": "976239e681"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "Horizon Now seed (6 patterns) + static renderer at /horizon (#98)",
+    "sha": "986f943c77"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "debates",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "next",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "now-archive",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "now",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "past",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "scenarios",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  }
+]
