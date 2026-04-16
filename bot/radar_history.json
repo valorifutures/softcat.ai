@@ -494,6 +494,18 @@
         "Plain",
         "Kelet"
       ]
+    },
+    {
+      "date": "2026-04-16",
+      "file": "2026-04-16.json",
+      "products": [
+        "Gemini 3.1 Flash TTS",
+        "Adobe Firefly AI Assistant",
+        "DeepL Voice Translation",
+        "Gemini for Mac",
+        "Libretto",
+        "OpenAI Agents SDK Update"
+      ]
     }
   ]
 }
