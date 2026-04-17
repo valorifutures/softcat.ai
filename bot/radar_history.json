@@ -506,6 +506,18 @@
         "Libretto",
         "OpenAI Agents SDK Update"
       ]
+    },
+    {
+      "date": "2026-04-17",
+      "file": "2026-04-17.json",
+      "products": [
+        "Qwen3.6-35B-A3B",
+        "GPT-Rosalind",
+        "Kampala",
+        "Parcae",
+        "Agent-cache",
+        "Agent Armor"
+      ]
     }
   ]
 }
