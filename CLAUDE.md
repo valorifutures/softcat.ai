@@ -81,7 +81,7 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
 1. NEVER push directly to main. Always create a branch and PR.
 2. ALWAYS run `npm run build` and verify it exits 0 before committing.
-3. NEVER modify: `bot/`, `.github/workflows/deploy.yml`, `package.json`, `package-lock.json`, `.env` files.
+3. NEVER modify: `.github/workflows/deploy.yml`, `package.json`, `package-lock.json`, `.env` files.
 4. NEVER add npm dependencies. Work with what's already installed.
 5. NEVER delete existing content or pages without explicit approval.
 6. Keep PRs focused. One issue = one PR. Small, reviewable changes.
