@@ -109,9 +109,14 @@ const recentShifts = allShifts
 
 function laneAccent(lane: string): 'purple' | 'cyan' | 'amber' | 'green' {
   if (lane === 'past') return 'purple';
-  if (lane === 'now' || lane === 'next') return 'cyan';
+  if (lane === 'now' || lane === 'now-archive' || lane === 'next') return 'cyan';
   if (lane === 'debates' || lane === 'scenarios') return 'amber';
   return 'green';
+}
+
+function displayLane(lane: string): string {
+  if (lane === 'now-archive') return 'now';
+  return lane;
 }
 
 function formatDate(dateStr: string): string {
@@ -221,17 +226,20 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
         />
       </svg>
       <div class="absolute inset-0 flex justify-between items-center px-8">
-        <span
-          class="font-mono text-xs text-neon-purple/80 uppercase tracking-widest"
-          >Past</span
+        <a
+          href="#past"
+          class="font-mono text-xs text-neon-purple/80 uppercase tracking-widest hover:text-neon-purple transition-colors"
+          >Past</a
         >
-        <span
-          class="font-mono text-xs text-neon-green uppercase tracking-widest glow-green"
-          >Now</span
+        <a
+          href="#now"
+          class="font-mono text-xs text-neon-green uppercase tracking-widest glow-green hover:text-neon-green transition-colors"
+          >Now</a
         >
-        <span
-          class="font-mono text-xs text-neon-cyan/80 uppercase tracking-widest"
-          >Next</span
+        <a
+          href="#next"
+          class="font-mono text-xs text-neon-cyan/80 uppercase tracking-widest hover:text-neon-cyan transition-colors"
+          >Next</a
         >
       </div>
     </div>
@@ -286,7 +294,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
   <!-- ============================================================ -->
   <section class="max-w-5xl mx-auto px-6 mb-16">
     <div class="flex items-baseline justify-between mb-6">
-      <h2 class="font-mono text-2xl font-bold text-text-bright glow-cyan">
+      <h2 id="now" class="font-mono text-2xl font-bold text-text-bright glow-cyan">
         Now
       </h2>
       <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
@@ -363,7 +371,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
   <!-- ============================================================ -->
   <section class="max-w-5xl mx-auto px-6 mb-16">
     <div class="flex items-baseline justify-between mb-6">
-      <h2 class="font-mono text-2xl font-bold text-text-bright glow-cyan">
+      <h2 id="next" class="font-mono text-2xl font-bold text-text-bright glow-cyan">
         Next
       </h2>
       <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
@@ -441,7 +449,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
   <!-- ============================================================ -->
   <section class="max-w-5xl mx-auto px-6 mb-16">
     <div class="flex items-baseline justify-between mb-6">
-      <h2 class="font-mono text-2xl font-bold text-text-bright glow-amber">
+      <h2 id="compare" class="font-mono text-2xl font-bold text-text-bright glow-amber">
         Compare View
       </h2>
       <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
@@ -530,7 +538,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
   <!-- ============================================================ -->
   <section class="max-w-5xl mx-auto px-6 mb-16">
     <div class="flex items-baseline justify-between mb-6">
-      <h2 class="font-mono text-2xl font-bold text-text-bright glow-amber">
+      <h2 id="debates" class="font-mono text-2xl font-bold text-text-bright glow-amber">
         Debate Zone
       </h2>
       <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
@@ -622,7 +630,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
   <!-- ============================================================ -->
   <section class="max-w-5xl mx-auto px-6 mb-16">
     <div class="flex items-baseline justify-between mb-6">
-      <h2 class="font-mono text-2xl font-bold text-text-bright glow-purple">
+      <h2 id="past" class="font-mono text-2xl font-bold text-text-bright glow-purple">
         Past
       </h2>
       <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
@@ -680,7 +688,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
   <!-- ============================================================ -->
   <section class="max-w-5xl mx-auto px-6 mb-16">
     <div class="flex items-baseline justify-between mb-6">
-      <h2 class="font-mono text-2xl font-bold text-text-bright glow-green">
+      <h2 id="shifts" class="font-mono text-2xl font-bold text-text-bright glow-green">
         Weekly Shift Log
       </h2>
       <span class="font-mono text-xs text-text-muted/70 uppercase tracking-widest">
@@ -702,21 +710,24 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
       <ul class="space-y-2 font-mono text-sm">
         {recentShifts.map((s) => {
           const accent = laneAccent(s.lane);
+          const lane = displayLane(s.lane);
           return (
-            <li class="flex items-start gap-3 py-2 border-b border-surface-light/40 last:border-b-0">
-              <span class="shrink-0 text-text-muted/60 tabular-nums w-[5.5rem]">
-                {s.date}
-              </span>
-              <span class={`shrink-0 inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider bg-surface-light text-neon-${accent}`}>
-                <span class={`tag-dot tag-dot-${accent}`} aria-hidden="true"></span>
-                {s.lane}
-              </span>
-              <span class="shrink-0 text-[11px] text-text-muted/70 w-[4rem]">
-                {s.verb}
-              </span>
-              <span class="text-text-muted leading-snug">
+            <li class="py-2 border-b border-surface-light/40 last:border-b-0 md:flex md:items-start md:gap-3">
+              <div class="flex items-center gap-3 flex-wrap shrink-0">
+                <span class="shrink-0 text-text-muted/60 tabular-nums">
+                  {s.date}
+                </span>
+                <span class={`shrink-0 inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider bg-surface-light text-neon-${accent}`}>
+                  <span class={`tag-dot tag-dot-${accent}`} aria-hidden="true"></span>
+                  {lane}
+                </span>
+                <span class="text-[11px] text-text-muted/70">
+                  {s.verb}
+                </span>
+              </div>
+              <p class="text-text-muted leading-snug mt-1 md:mt-0">
                 {s.subject}
-              </span>
+              </p>
             </li>
           );
         })}
