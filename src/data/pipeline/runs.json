@@ -3135,5 +3135,52 @@
     "output_files": [
       "src/data/horizon/shifts.json"
     ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-17T04:00:02.209432+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 345,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-17T06:00:01.798017+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 345,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-04-17T07:00:39.711136+00:00",
+    "status": "success",
+    "duration_s": 33.9,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0305,
+    "input_tokens": 6782,
+    "output_tokens": 674,
+    "output_files": [
+      "src/content/news-and-updates/2026-04-17-ai-digest.md"
+    ]
   }
 ]
