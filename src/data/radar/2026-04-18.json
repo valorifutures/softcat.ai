@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-18",
+  "featured": [
+    {
+      "id": "ph-claude-design",
+      "name": "Claude Design",
+      "tagline": "Quick visual creation tool for non-designers.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Anthropic takes direct aim at Figma with a design tool that lets founders and PMs mock up ideas without hiring designers. This feels like the start of the SaaSpocalypse everyone's been predicting, where AI labs eat traditional software businesses from the inside out.",
+      "ph_url": "https://techcrunch.com/2026/04/17/anthropic-launches-claude-design-a-new-product-for-creating-quick-visuals/",
+      "maker": "Anthropic",
+      "featured": true,
+      "added_at": "2026-04-18T06:00:00Z"
+    },
+    {
+      "id": "ph-paper-lantern",
+      "name": "Paper Lantern",
+      "tagline": "On-demand techniques from 2M+ papers for coding agents.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Finally, someone's built a way to inject actual research into coding agents instead of relying on stale training data. This could be the difference between agents that write boilerplate and ones that implement cutting-edge algorithms.",
+      "ph_url": "https://www.paperlantern.ai/code",
+      "maker": "Paper Lantern",
+      "featured": true,
+      "added_at": "2026-04-18T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-ai-subroutines",
+      "name": "AI Subroutines",
+      "tagline": "Run automation scripts inside your browser tab.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Zero-token deterministic automation that runs locally in your browser. Smart approach to avoid the chaos of cloud-based agents whilst still getting useful automation done.",
+      "ph_url": "https://www.rtrvr.ai/blog/ai-subroutines-zero-token-deterministic-automation",
+      "maker": "RTRVR",
+      "featured": false,
+      "added_at": "2026-04-18T06:30:00Z"
+    },
+    {
+      "id": "ph-isitagentready",
+      "name": "Is It Agent Ready",
+      "tagline": "Scan your website to see how ready it is for AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Simple but brilliant idea. As agents become more common, websites need to be machine-readable, not just human-readable. This tool spots the gaps before your customers' agents give up trying.",
+      "ph_url": "https://isitagentready.com",
+      "maker": "Unknown",
+      "featured": false,
+      "added_at": "2026-04-18T06:45:00Z"
+    },
+    {
+      "id": "ph-agents-ml",
+      "name": "Agents.ml",
+      "tagline": "Public identity page and A2A card for your AI agent.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Agent-to-agent communication is coming whether we're ready or not. Having a standardised way for agents to discover and interact with each other feels like essential plumbing for the agentic future.",
+      "ph_url": "https://agents.ml",
+      "maker": "Agents.ml",
+      "featured": false,
+      "added_at": "2026-04-18T07:00:00Z"
+    },
+    {
+      "id": "ph-wingman",
+      "name": "Wingman",
+      "tagline": "Autonomous agent for citizen developers to control daily applications.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Emergent's take on making app creation accessible to non-technical users through vibe-coding. The autonomous agent approach could finally bridge the gap between wanting automation and actually building it.",
+      "ph_url": "https://www.artificialintelligence-news.com/news/citizen-developers-now-have-their-own-wingman/",
+      "maker": "Emergent",
+      "featured": false,
+      "added_at": "2026-04-18T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Scan your website to see how ready it is for AI agents",
+      "points": 105,
+      "comments": 167,
+      "summary": "A tool that analyses websites for agent compatibility. As AI agents become more prevalent, this addresses the practical question of whether your site can actually be navigated by autonomous systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=47805998"
+    },
+    {
+      "title": "Show HN: AI Subroutines \u2013 Run automation scripts inside your browser tab",
+      "points": 5,
+      "comments": 1,
+      "summary": "Zero-token deterministic automation that runs locally in browsers. Interesting approach to avoid cloud dependencies whilst still enabling useful automation workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47810533"
+    },
+    {
+      "title": "Easy code and work AI agent system: auto, asynchronous, concurrency, efficiently",
+      "points": 4,
+      "comments": 2,
+      "summary": "A GitHub project for building AI agent systems with focus on automation and efficiency. Limited details but seems to target the growing need for better agent orchestration.",
+      "hn_url": "https://news.ycombinator.com/item?id=47809313"
+    },
+    {
+      "title": "Show HN: Paper Lantern \u2013 on-demand techniques from 2M+ papers for coding agents",
+      "points": 3,
+      "comments": 4,
+      "summary": "A system that injects research techniques from academic papers into coding agents. Could bridge the gap between academic AI research and practical coding assistance.",
+      "hn_url": "https://news.ycombinator.com/item?id=47809920"
+    },
+    {
+      "title": "Show HN: Agents.ml \u2013 a public identity page and A2A card for your AI agent",
+      "points": 2,
+      "comments": 1,
+      "summary": "Platform for creating public profiles and communication cards for AI agents. Addresses the emerging need for agent-to-agent discovery and interaction protocols.",
+      "hn_url": "https://news.ycombinator.com/item?id=47810052"
+    }
+  ]
+}

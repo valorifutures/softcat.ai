@@ -518,6 +518,18 @@
         "Agent-cache",
         "Agent Armor"
       ]
+    },
+    {
+      "date": "2026-04-18",
+      "file": "2026-04-18.json",
+      "products": [
+        "Claude Design",
+        "Paper Lantern",
+        "AI Subroutines",
+        "Is It Agent Ready",
+        "Agents.ml",
+        "Wingman"
+      ]
     }
   ]
 }
