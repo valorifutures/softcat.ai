@@ -3376,5 +3376,22 @@
     "output_files": [
       "src/content/tools/2026-04-19-autodiagnose.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-04-19T07:00:36.991847+00:00",
+    "status": "success",
+    "duration_s": 30.3,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0329,
+    "input_tokens": 7748,
+    "output_tokens": 641,
+    "output_files": [
+      "src/content/news-and-updates/2026-04-19-ai-digest.md"
+    ]
   }
 ]
