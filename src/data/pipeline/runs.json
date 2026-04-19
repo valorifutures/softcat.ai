@@ -3410,5 +3410,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-19-testing-frameworks-just-became-ai.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-19T09:30:53.269554+00:00",
+    "status": "success",
+    "duration_s": 46.6,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0686,
+    "input_tokens": 11197,
+    "output_tokens": 2333,
+    "output_files": [
+      "src/data/radar/2026-04-19.json"
+    ]
   }
 ]

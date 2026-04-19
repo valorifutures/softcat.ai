@@ -530,6 +530,18 @@
         "Agents.ml",
         "Wingman"
       ]
+    },
+    {
+      "date": "2026-04-19",
+      "file": "2026-04-19.json",
+      "products": [
+        "NVIDIA Ising",
+        "Grok Speech APIs",
+        "Auto-Diagnose",
+        "Google A2UI 0.9",
+        "Salesforce Headless 360",
+        "SmolVM"
+      ]
     }
   ]
 }

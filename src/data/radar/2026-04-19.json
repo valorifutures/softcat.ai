@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-19",
+  "featured": [
+    {
+      "id": "ph-nvidia-ising",
+      "name": "NVIDIA Ising",
+      "tagline": "First open quantum AI model family for hybrid quantum-classical systems.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "NVIDIA just dropped the first open quantum AI model family, bridging that stubborn gap between lab quantum processors and actual applications. This isn't just another research paper - it's a proper toolkit for hybrid quantum-classical systems that developers can actually use.",
+      "ph_url": "https://www.marktechpost.com/2026/04/19/nvidia-releases-ising/",
+      "maker": "NVIDIA",
+      "featured": true,
+      "added_at": "2026-04-19T06:00:00Z"
+    },
+    {
+      "id": "ph-xai-grok-speech-apis",
+      "name": "Grok Speech APIs",
+      "tagline": "Standalone speech-to-text and text-to-speech APIs from xAI.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "xAI is taking the Grok Voice tech from Tesla vehicles and Starlink support and turning it into proper enterprise APIs. This puts them squarely in competition with OpenAI and ElevenLabs in the speech space, which should make pricing interesting.",
+      "ph_url": "https://www.marktechpost.com/2026/04/18/xai-launches-standalone-grok-speech-to-text-and-text-to-speech-apis-targeting-enterprise-voice-developers/",
+      "maker": "xAI",
+      "featured": true,
+      "added_at": "2026-04-19T06:15:00Z"
+    },
+    {
+      "id": "ph-google-auto-diagnose",
+      "name": "Auto-Diagnose",
+      "tagline": "LLM-powered system to automatically diagnose integration test failures at scale.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Google built this to solve their own integration test hell and now they're sharing it. If you've ever spent hours hunting through thousands of lines of test logs, this might actually save your sanity.",
+      "ph_url": "https://www.marktechpost.com/2026/04/17/google-ai-releases-auto-diagnose-an-large-language-model-llm-based-system-to-diagnose-integration-test-failures-at-scale/",
+      "maker": "Google AI",
+      "featured": true,
+      "added_at": "2026-04-19T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-google-a2ui",
+      "name": "Google A2UI 0.9",
+      "tagline": "Generative UI standard for AI agents across web, mobile, and other platforms.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Google's trying to standardise how AI agents generate UI elements on the fly. It's framework-agnostic and could actually make agent interfaces less terrible, which would be a proper win.",
+      "ph_url": "https://the-decoder.com/google-launches-generative-ui-standard-for-ai-agents/",
+      "maker": "Google",
+      "featured": false,
+      "added_at": "2026-04-19T07:00:00Z"
+    },
+    {
+      "id": "ph-salesforce-headless-360",
+      "name": "Salesforce Headless 360",
+      "tagline": "Turn Salesforce's entire platform into infrastructure for AI agents via APIs.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Benioff's betting that APIs are the new UI and browsers are dead. Headless 360 opens up all of Salesforce to AI agents directly, which could be massive if the agent economy actually takes off.",
+      "ph_url": "https://the-decoder.com/salesforce-ceo-marc-benioff-says-apis-are-the-new-ui-for-ai-agents/",
+      "maker": "Salesforce",
+      "featured": false,
+      "added_at": "2026-04-19T07:15:00Z"
+    },
+    {
+      "id": "ph-smolvm",
+      "name": "SmolVM",
+      "tagline": "Open-source isolated runtime for AI agents.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Finally, someone built a proper sandbox for AI agents that doesn't require trusting them with your entire system. Open source too, which means we can actually see how the isolation works.",
+      "ph_url": "https://github.com/CelestoAI/SmolVM",
+      "maker": "CelestoAI",
+      "featured": false,
+      "added_at": "2026-04-19T07:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: How Are You-elderly fall detection app I built solo with AI in 6 months",
+      "points": 2,
+      "comments": 10,
+      "summary": "Solo developer built an elderly fall detection app using AI in six months. Shows what's possible for individual makers leveraging AI to tackle real-world problems quickly.",
+      "hn_url": "https://news.ycombinator.com/item?id=47819553"
+    },
+    {
+      "title": "Open-source isolated runtime for AI agents",
+      "points": 4,
+      "comments": 3,
+      "summary": "SmolVM provides a secure sandbox environment for running AI agents safely. Essential infrastructure as AI agents become more autonomous and potentially risky.",
+      "hn_url": "https://news.ycombinator.com/item?id=47817395"
+    },
+    {
+      "title": "Sandboxes and Worktrees: My Secure Agentic AI Setup in 2026",
+      "points": 3,
+      "comments": 0,
+      "summary": "Developer shares their practical setup for safely running AI coding agents using sandboxes and Git worktrees. Real-world approach to agent security that other devs can actually implement.",
+      "hn_url": "https://news.ycombinator.com/item?id=47820711"
+    },
+    {
+      "title": "Show HN: GAI, A flexible and idiomatic GO Agent framework",
+      "points": 3,
+      "comments": 0,
+      "summary": "New Go framework for building AI agents with idiomatic Go patterns. Fills a gap for developers who want to build agents in Go rather than Python.",
+      "hn_url": "https://news.ycombinator.com/item?id=47816285"
+    },
+    {
+      "title": "AI agent called every pub in Ireland to index the cost of a Guinness",
+      "points": 2,
+      "comments": 0,
+      "summary": "Someone built an AI agent that rang every pub in Ireland to create a Guinness price index. Brilliant example of using agents for data collection at scale.",
+      "hn_url": "https://news.ycombinator.com/item?id=47821139"
+    }
+  ]
+}
