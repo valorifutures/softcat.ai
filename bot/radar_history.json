@@ -542,6 +542,17 @@
         "Salesforce Headless 360",
         "SmolVM"
       ]
+    },
+    {
+      "date": "2026-04-20",
+      "file": "2026-04-20.json",
+      "products": [
+        "GPT-5.4-Cyber",
+        "Claude Opus 4.7",
+        "OpenMythos",
+        "PrfaaS",
+        "Nyx"
+      ]
     }
   ]
 }
