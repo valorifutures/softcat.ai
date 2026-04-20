@@ -274,6 +274,11 @@
       "date": "2026-04-19",
       "file": "2026-04-19-testing-frameworks-just-became-ai.md",
       "title": "Testing frameworks just became AI"
+    },
+    {
+      "date": "2026-04-20",
+      "file": "2026-04-20-cross-datacenter-inference-just-split-the-monolith-that-neve.md",
+      "title": "Cross-datacenter inference just split the monolith that never should have been one"
     }
   ]
 }
