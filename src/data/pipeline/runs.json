@@ -3444,5 +3444,67 @@
     "output_files": [
       "src/content/tools/2026-04-19-google-autodiagnose.md"
     ]
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-04-19T10:00:14.951157+00:00",
+    "status": "success",
+    "duration_s": 13.2,
+    "feeds_scanned": 0,
+    "items_found": 56,
+    "items_rejected": 0,
+    "items_published": 10,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.021,
+    "input_tokens": 2588,
+    "output_tokens": 880,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-20T04:00:01.755780+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 342,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-20T06:00:01.351547+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 342,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-04-20T07:00:36.552538+00:00",
+    "status": "success",
+    "duration_s": 29.9,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0319,
+    "input_tokens": 7600,
+    "output_tokens": 605,
+    "output_files": [
+      "src/content/news-and-updates/2026-04-20-ai-digest.md"
+    ]
   }
 ]
