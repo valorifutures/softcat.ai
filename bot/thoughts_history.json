@@ -279,6 +279,11 @@
       "date": "2026-04-20",
       "file": "2026-04-20-cross-datacenter-inference-just-split-the-monolith-that-neve.md",
       "title": "Cross-datacenter inference just split the monolith that never should have been one"
+    },
+    {
+      "date": "2026-04-21",
+      "file": "2026-04-21-agent-swarms-are-just-distributed-systems-we-forgot-how-to-d.md",
+      "title": "Agent swarms are just distributed systems we forgot how to debug"
     }
   ]
 }
