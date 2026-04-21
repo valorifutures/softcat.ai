@@ -553,6 +553,18 @@
         "PrfaaS",
         "Nyx"
       ]
+    },
+    {
+      "date": "2026-04-21",
+      "file": "2026-04-21.json",
+      "products": [
+        "Kimi K2.6",
+        "OpenAI Codex Chronicle",
+        "OpenMythos",
+        "Mediator.ai",
+        "Kachilu Browser",
+        "MCPfinder"
+      ]
     }
   ]
 }

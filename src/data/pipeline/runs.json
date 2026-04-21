@@ -3619,5 +3619,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-21-agent-swarms-are-just-distributed-systems-we-forgot-how-to-d.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-21T09:30:55.993513+00:00",
+    "status": "success",
+    "duration_s": 49.3,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0679,
+    "input_tokens": 11112,
+    "output_tokens": 2304,
+    "output_files": [
+      "src/data/radar/2026-04-21.json"
+    ]
   }
 ]
