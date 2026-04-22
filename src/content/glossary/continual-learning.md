@@ -14,7 +14,7 @@ related:
 draft: false
 ---
 
-Continual learning is the practice of training AI models to acquire new tasks or information over time without degrading performance on what they already know, a failure mode called catastrophic forgetting. Standard fine-tuning tends to overwrite existing capabilities when trained on new data. Continual learning techniques such as sparse updates, memory replay, and skill isolation let models accumulate knowledge incrementally instead. A March 2026 paper introduced a Continual Meta-Learning Framework for LLM agents that jointly evolves policies and reusable skills with minimal downtime between updates.
+Continual learning is the practice of training AI models to acquire new tasks or information over time without degrading performance on what they already know, a failure mode called catastrophic forgetting. Standard fine-tuning tends to overwrite existing capabilities when trained on new data. Continual learning techniques such as sparse updates, memory replay, and skill isolation let models accumulate knowledge incrementally instead. Recent research on continual meta-learning for LLM agents explores jointly evolving policies and reusable skills with minimal downtime between updates.
 
 In practice, a customer support agent built with continual learning can be updated with new product knowledge each week without losing its grasp of older product lines or general language ability.
 

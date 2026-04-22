@@ -14,7 +14,7 @@ related:
 draft: false
 ---
 
-Sparse attention is a technique for making transformer models more efficient by having each token attend only to a relevant subset of other tokens, rather than every token in the sequence. Standard full attention scales quadratically with context length, which becomes prohibitively expensive as documents grow. Sparse attention achieves near-linear scaling instead. A March 2026 paper demonstrated end-to-end processing at 100 million tokens using this approach.
+Sparse attention is a technique for making transformer models more efficient by having each token attend only to a relevant subset of other tokens, rather than every token in the sequence. Standard full attention scales quadratically with context length, which becomes prohibitively expensive as documents grow. Sparse attention achieves near-linear scaling instead. [A March 2026 paper](https://arxiv.org/abs/2603.23516) demonstrated end-to-end processing at 100 million tokens using this approach.
 
 In practice, sparse attention allows a model to summarise or reason over an entire book, codebase, or legal document in a single pass without the cost blowing out proportionally.
 
