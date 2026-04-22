@@ -4,16 +4,30 @@
     "lane": "now",
     "title": "Open-weight reasoning models match the frontier and undercut the price",
     "date": "2026-04-10",
-    "themes": ["models", "infrastructure", "enterprise"],
+    "themes": [
+      "models",
+      "infrastructure",
+      "enterprise"
+    ],
     "signal_type": "inflection",
     "confidence": "confirmed",
     "why_it_matters": "GLM-5.1 (Z.AI) ships as a 754B open-weight agentic model that hits SOTA on SWE-Bench Pro and sustains 8-hour autonomous execution at roughly a third of frontier API cost. Three distinct moats collapse into one release: open weights, frontier capability, agentic competence. Direct continuation of the DeepSeek-R1 thread from January.",
     "implication": "If your stack still routes reasoning through a paid API by default, the math has changed. Self-hosted frontier reasoning is no longer a research curiosity.",
     "evidence": [
-      { "type": "radar", "ref": "2026-04-08", "label": "GLM-5.1 (Z.AI), 754B open-weight agentic model, SWE-Bench Pro SOTA" },
-      { "type": "thought", "ref": "2026-04-03-open-source-reasoning-models-just-made-the-api-economy-irrel", "label": "Open source reasoning models just made the API economy irrelevant" }
+      {
+        "type": "radar",
+        "ref": "2026-04-08",
+        "label": "GLM-5.1 (Z.AI), 754B open-weight agentic model, SWE-Bench Pro SOTA"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-04-03-open-source-reasoning-models-just-made-the-api-economy-irrel",
+        "label": "Open source reasoning models just made the API economy irrelevant"
+      }
     ],
-    "related": ["past-2025-deepseek-r1"],
+    "related": [
+      "past-2025-deepseek-r1"
+    ],
     "added": "2026-04-10"
   },
   {
@@ -21,16 +35,36 @@
     "lane": "now",
     "title": "The agent production-ops layer is crystallising",
     "date": "2026-04-10",
-    "themes": ["agents", "infrastructure", "enterprise"],
+    "themes": [
+      "agents",
+      "infrastructure",
+      "enterprise"
+    ],
     "signal_type": "trend",
     "confidence": "emerging",
     "why_it_matters": "Three independent launches in three days, each targeting a different layer of the agent production stack: BotCTL (process management, billed as systemd for agents), OnCell.ai (per-user isolation), Relvy (automated on-call runbooks, YC F24). These are problems that only matter once agents are actually being deployed in production, which means agents are actually being deployed in production.",
     "implication": "Building on agents in production now means picking from a real toolkit, not duct-taping cron jobs and shell scripts. The stack is shipping faster than the frameworks.",
     "evidence": [
-      { "type": "radar", "ref": "2026-04-09", "label": "BotCTL, process manager for autonomous AI agents" },
-      { "type": "radar", "ref": "2026-04-07", "label": "OnCell.ai, per-user isolated environments for AI agents" },
-      { "type": "radar", "ref": "2026-04-10", "label": "Relvy (YC F24), automated on-call runbooks via agents" },
-      { "type": "thought", "ref": "2026-03-23-production-deployment-is-the-new-frontier-research", "label": "Production deployment is the new frontier research" }
+      {
+        "type": "radar",
+        "ref": "2026-04-09",
+        "label": "BotCTL, process manager for autonomous AI agents"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-07",
+        "label": "OnCell.ai, per-user isolated environments for AI agents"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-10",
+        "label": "Relvy (YC F24), automated on-call runbooks via agents"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-03-23-production-deployment-is-the-new-frontier-research",
+        "label": "Production deployment is the new frontier research"
+      }
     ],
     "added": "2026-04-10"
   },
@@ -39,19 +73,44 @@
     "lane": "now",
     "title": "Tool-calling and agent-messaging protocols are hardening into infrastructure",
     "date": "2026-04-10",
-    "themes": ["agents", "infrastructure"],
+    "themes": [
+      "agents",
+      "infrastructure"
+    ],
     "signal_type": "trend",
     "confidence": "emerging",
     "why_it_matters": "AgentDM (agent-to-agent over MCP and A2A), QVeris (10k capabilities discoverable via one protocol), Postagent (Postman-style CLI for agents), and ZeroID (OIDF-based agent identity) all landed within two days. The pattern is the same shape MCP started in late 2024. Agent infrastructure stops being framework wars and starts being shared plumbing.",
     "implication": "If you are picking an agent framework today, prefer the ones that compose over the protocol layer (MCP, A2A) rather than locking you into a single vendor's tool surface.",
     "evidence": [
-      { "type": "radar", "ref": "2026-04-09", "label": "AgentDM, agent-to-agent messaging over MCP and A2A" },
-      { "type": "radar", "ref": "2026-04-09", "label": "QVeris, 10k capabilities discoverable via one protocol" },
-      { "type": "radar", "ref": "2026-04-10", "label": "Postagent, Postman-style CLI for AI agents" },
-      { "type": "radar", "ref": "2026-04-09", "label": "ZeroID, OIDF-based identity for AI agents" },
-      { "type": "thought", "ref": "2026-04-08-tool-calling-just-turned-function-composition-into-a-runtime", "label": "Tool calling just turned function composition into a runtime circus" }
+      {
+        "type": "radar",
+        "ref": "2026-04-09",
+        "label": "AgentDM, agent-to-agent messaging over MCP and A2A"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-09",
+        "label": "QVeris, 10k capabilities discoverable via one protocol"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-10",
+        "label": "Postagent, Postman-style CLI for AI agents"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-09",
+        "label": "ZeroID, OIDF-based identity for AI agents"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-04-08-tool-calling-just-turned-function-composition-into-a-runtime",
+        "label": "Tool calling just turned function composition into a runtime circus"
+      }
     ],
-    "related": ["past-2024-model-context-protocol"],
+    "related": [
+      "past-2024-model-context-protocol"
+    ],
     "added": "2026-04-10"
   },
   {
@@ -59,16 +118,36 @@
     "lane": "now",
     "title": "OS-as-environment is becoming the standard for agent training",
     "date": "2026-04-10",
-    "themes": ["agents", "infrastructure", "code"],
+    "themes": [
+      "agents",
+      "infrastructure",
+      "code"
+    ],
     "signal_type": "inflection",
     "confidence": "emerging",
     "why_it_matters": "OSGym ships infrastructure to manage 1,000+ OS replicas at $0.23 per day for computer-use agent research. That is not a product launch, it is a capability. Parallel rollouts on real operating systems become economically viable. Astropad Workbench and TUI-use round out the pattern: agents need bodies, and the bodies are computers.",
     "implication": "Computer-use agents are about to be cheap to train. If your product touches workflows that humans currently do in a browser or terminal, expect competitive pressure within six months.",
     "evidence": [
-      { "type": "radar", "ref": "2026-04-09", "label": "OSGym, 1,000+ OS replicas at $0.23 per day for computer-use agent research" },
-      { "type": "radar", "ref": "2026-04-09", "label": "Astropad Workbench, low-latency remote desktop for AI agents" },
-      { "type": "radar", "ref": "2026-04-09", "label": "TUI-use, agents controlling interactive terminal programs" },
-      { "type": "thought", "ref": "2026-03-29-rollout-infrastructure-just-became-the-new-model-training", "label": "Rollout infrastructure just became the new model training" }
+      {
+        "type": "radar",
+        "ref": "2026-04-09",
+        "label": "OSGym, 1,000+ OS replicas at $0.23 per day for computer-use agent research"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-09",
+        "label": "Astropad Workbench, low-latency remote desktop for AI agents"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-09",
+        "label": "TUI-use, agents controlling interactive terminal programs"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-03-29-rollout-infrastructure-just-became-the-new-model-training",
+        "label": "Rollout infrastructure just became the new model training"
+      }
     ],
     "added": "2026-04-10"
   },
@@ -77,17 +156,41 @@
     "lane": "now",
     "title": "Local-first inference moves from edge case to default for new launches",
     "date": "2026-04-10",
-    "themes": ["models", "infrastructure", "interfaces"],
+    "themes": [
+      "models",
+      "infrastructure",
+      "interfaces"
+    ],
     "signal_type": "trend",
     "confidence": "emerging",
     "why_it_matters": "Four launches in five days defaulting to local-first inference rather than cloud: Google's offline AI dictation app on iOS using Gemma, Imbue's Bouncer (on-device LLM for Twitter feed control), QVAC SDK (universal JS for local AI), and Meta's EUPE (sub-100M-parameter vision encoder family). Notable that Google itself is shipping offline-first using its own models. That is the shift, not any single launch.",
     "implication": "The economics are flipping. Default to local for new launches unless you have a specific reason to go cloud-first. Users increasingly notice the difference.",
     "evidence": [
-      { "type": "radar", "ref": "2026-04-08", "label": "Google AI Dictation, offline-first iOS app using Gemma" },
-      { "type": "radar", "ref": "2026-04-10", "label": "Bouncer (Imbue), on-device LLM for Twitter feed control" },
-      { "type": "radar", "ref": "2026-04-10", "label": "QVAC SDK, universal JavaScript SDK for local AI" },
-      { "type": "radar", "ref": "2026-04-07", "label": "EUPE (Meta), sub-100M-parameter vision encoder family" },
-      { "type": "thought", "ref": "2026-04-04-token-taxes-are-just-cloud-computing", "label": "Token taxes are just cloud computing's final power grab" }
+      {
+        "type": "radar",
+        "ref": "2026-04-08",
+        "label": "Google AI Dictation, offline-first iOS app using Gemma"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-10",
+        "label": "Bouncer (Imbue), on-device LLM for Twitter feed control"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-10",
+        "label": "QVAC SDK, universal JavaScript SDK for local AI"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-07",
+        "label": "EUPE (Meta), sub-100M-parameter vision encoder family"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-04-04-token-taxes-are-just-cloud-computing",
+        "label": "Token taxes are just cloud computing's final power grab"
+      }
     ],
     "added": "2026-04-10"
   },
@@ -96,16 +199,130 @@
     "lane": "now",
     "title": "Multimodal reasoning becomes a frontier-race table-stakes capability",
     "date": "2026-04-10",
-    "themes": ["models", "interfaces", "creativity"],
+    "themes": [
+      "models",
+      "interfaces",
+      "creativity"
+    ],
     "signal_type": "trend",
     "confidence": "emerging",
     "why_it_matters": "Meta Superintelligence Lab released Muse Spark, a multimodal reasoning model with thought compression and parallel agents. Frontend-VisualQA (Yutori AI) gave coding agents visual verification of their own UI work. EUPE shows compact vision encoders can rival specialists. Multimodal reasoning is no longer a frontier-lab talking point. It is becoming a baseline capability across the stack.",
     "implication": "Vision is no longer a separate capability you bolt onto a model. Plan for it as a baseline assumption when designing agent workflows.",
     "evidence": [
-      { "type": "radar", "ref": "2026-04-10", "label": "Muse Spark (Meta Superintelligence Lab), multimodal reasoning with thought compression" },
-      { "type": "radar", "ref": "2026-04-08", "label": "Frontend-VisualQA (Yutori AI), visual verification for coding agents" },
-      { "type": "radar", "ref": "2026-04-07", "label": "EUPE (Meta), compact vision encoders rivalling specialists" }
+      {
+        "type": "radar",
+        "ref": "2026-04-10",
+        "label": "Muse Spark (Meta Superintelligence Lab), multimodal reasoning with thought compression"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-08",
+        "label": "Frontend-VisualQA (Yutori AI), visual verification for coding agents"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-07",
+        "label": "EUPE (Meta), compact vision encoders rivalling specialists"
+      }
     ],
     "added": "2026-04-10"
+  },
+  {
+    "id": "now-2026-04-browser-automation-agent-infrastructure",
+    "lane": "now",
+    "title": "Browser automation becomes standard agent infrastructure",
+    "date": "2026-04-22",
+    "themes": [
+      "agents",
+      "infrastructure",
+      "interfaces"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "The web is where most work happens, and agents that can't navigate it properly are just expensive toys. Browser automation is shifting from nice-to-have to essential infrastructure for any agent system that needs to interact with real-world workflows.",
+    "implication": "Expect every major agent platform to ship browser automation tooling within months, not years.",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-04-21",
+        "label": "Kachilu Browser"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-04-15-browser-automation-just-became-the-missing-piece-of-the-ai-agent-puzzle",
+        "label": "Browser automation just became the missing piece of the AI agent puzzle"
+      },
+      {
+        "type": "news",
+        "ref": "2026-04-15-ai-digest-browser-battles-and-cyber-capabilities",
+        "label": "Google turns Chrome into an AI workflow hub"
+      }
+    ],
+    "added": "2026-04-22"
+  },
+  {
+    "id": "now-2026-04-agent-debugging-distributed-systems",
+    "lane": "now",
+    "title": "Agent debugging inherits all the worst parts of distributed systems",
+    "date": "2026-04-22",
+    "themes": [
+      "agents",
+      "infrastructure"
+    ],
+    "signal_type": "warning",
+    "confidence": "emerging",
+    "why_it_matters": "Multi-agent systems are recreating every painful debugging lesson from microservices without learning from decades of distributed systems knowledge. We're about to hit a wall where agent systems become unmaintainable.",
+    "implication": "Start building observability and debugging tools now, or watch agent systems collapse under their own complexity.",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-04-17",
+        "label": "Agent-cache"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-04-21-agent-swarms-are-just-distributed-systems-we-forgot-how-to-debug",
+        "label": "Agent swarms are just distributed systems we forgot how to debug"
+      },
+      {
+        "type": "news",
+        "ref": "2026-04-21-ai-digest-agent-swarms-and-security-access",
+        "label": "Open-source agent swarms challenge closed models"
+      }
+    ],
+    "added": "2026-04-22"
+  },
+  {
+    "id": "now-2026-04-developer-tooling-beyond-chat-demos",
+    "lane": "now",
+    "title": "Developer tooling moves decisively beyond chat demos",
+    "date": "2026-04-22",
+    "themes": [
+      "infrastructure",
+      "code",
+      "enterprise"
+    ],
+    "signal_type": "inflection",
+    "confidence": "confirmed",
+    "why_it_matters": "The industry is finally shipping proper SDKs, debugging tools, and production-ready infrastructure instead of just impressive demos. This marks the transition from AI as novelty to AI as serious development platform.",
+    "implication": "Prepare for a wave of production AI applications as the tooling gap finally closes.",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-04-16",
+        "label": "OpenAI Agents SDK Update"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-18",
+        "label": "Is It Agent Ready"
+      },
+      {
+        "type": "news",
+        "ref": "2026-04-22-ai-digest-tools-get-serious",
+        "label": "OpenAI and Hugging Face ship proper developer tools while the industry moves beyond chat demos"
+      }
+    ],
+    "added": "2026-04-22"
   }
 ]
