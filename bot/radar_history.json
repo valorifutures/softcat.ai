@@ -565,6 +565,17 @@
         "Kachilu Browser",
         "MCPfinder"
       ]
+    },
+    {
+      "date": "2026-04-22",
+      "file": "2026-04-22.json",
+      "products": [
+        "Spectrum",
+        "ml-intern",
+        "Euphony",
+        "Simula",
+        "CrabTrap"
+      ]
     }
   ]
 }

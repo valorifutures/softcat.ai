@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-22",
+  "featured": [
+    {
+      "id": "ph-spectrum",
+      "name": "Spectrum",
+      "tagline": "Open-source TypeScript framework that deploys AI agents directly to iMessage, WhatsApp, and Telegram.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, someone tackled the real problem with AI agents: most people never actually use them. Spectrum lets you deploy agents where people already live instead of forcing them to download yet another chat app. The open-source TypeScript approach means developers can actually ship this stuff without vendor lock-in.",
+      "ph_url": "https://photon.codes/spectrum",
+      "maker": "Photon",
+      "featured": true,
+      "added_at": "2026-04-22T06:00:00Z"
+    },
+    {
+      "id": "ph-ml-intern",
+      "name": "ml-intern",
+      "tagline": "Open-source AI agent that automates the LLM post-training workflow.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Hugging Face just automated the most tedious part of ML work. This agent handles literature review, dataset discovery, and training execution end-to-end. If it actually works as advertised, it could turn weeks of manual post-training grunt work into a single agent run.",
+      "ph_url": "https://www.marktechpost.com/2026/04/21/hugging-face-releases-ml-intern-an-open-source-ai-agent-that-automates-the-llm-post-training-workflow/",
+      "maker": "Hugging Face",
+      "featured": true,
+      "added_at": "2026-04-22T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-euphony",
+      "name": "Euphony",
+      "tagline": "Browser-based visualization tool for Harmony Chat data and Codex session logs.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "OpenAI open-sourcing a debugging tool for multi-step AI agents is quietly significant. When agents run dozens of steps, traditional stack traces become useless. This visualisation approach might be the debugging paradigm we actually need for agentic workflows.",
+      "ph_url": "https://www.marktechpost.com/2026/04/21/openai-open-sources-euphony-a-browser-based-visualization-tool-for-harmony-chat-data-and-codex-session-logs/",
+      "maker": "OpenAI",
+      "featured": false,
+      "added_at": "2026-04-22T06:30:00Z"
+    },
+    {
+      "id": "ph-simula",
+      "name": "Simula",
+      "tagline": "Reasoning-first framework for generating controllable, scalable synthetic datasets across specialised AI domains.",
+      "logo_url": "",
+      "category": "Data Tools",
+      "why_radar": "Google's tackling the data scarcity problem for specialised domains with synthetic generation. The reasoning-first approach is clever, but the real test is whether these synthetic datasets actually improve model performance on real-world tasks. Early results look promising.",
+      "ph_url": "https://www.marktechpost.com/2026/04/21/google-introduces-simula-a-reasoning-first-framework-for-generating-controllable-scalable-synthetic-datasets-across-specialized-ai-domains/",
+      "maker": "Google",
+      "featured": false,
+      "added_at": "2026-04-22T06:45:00Z"
+    },
+    {
+      "id": "ph-crabtrap",
+      "name": "CrabTrap",
+      "tagline": "LLM-as-a-judge HTTP proxy to secure agents in production.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Brex built this because they needed real security for production agents, not academic papers. The HTTP proxy approach is pragmatic engineering that might actually get deployed. If you're running agents in prod, you probably need something like this.",
+      "ph_url": "https://www.brex.com/crabtrap",
+      "maker": "Brex",
+      "featured": false,
+      "added_at": "2026-04-22T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "CrabTrap: An LLM-as-a-judge HTTP proxy to secure agents in production",
+      "points": 111,
+      "comments": 40,
+      "summary": "Brex open-sourced their production agent security tool. Uses LLM-as-a-judge pattern to intercept and validate agent HTTP requests before they hit external APIs. The discussion covers real-world deployment challenges and security trade-offs.",
+      "hn_url": "https://news.ycombinator.com/item?id=47850212"
+    },
+    {
+      "title": "Show HN: Daemons \u2013 we pivoted from building agents to cleaning up after them",
+      "points": 57,
+      "comments": 28,
+      "summary": "Charlie Labs built tooling to monitor and fix issues caused by AI agents in production. The pivot story resonates with developers dealing with unreliable agent behaviour. Comments discuss the broader challenge of agent observability.",
+      "hn_url": "https://news.ycombinator.com/item?id=47850907"
+    },
+    {
+      "title": "Deep Research Max: a step change for autonomous research agents",
+      "points": 9,
+      "comments": 0,
+      "summary": "Google's new research agent built on Gemini 3.1 Pro can access proprietary data sources and financial feeds. Represents a shift from general web search to specialised research workflows. Early but limited discussion.",
+      "hn_url": "https://news.ycombinator.com/item?id=47851065"
+    },
+    {
+      "title": "Show HN: Spectrum \u2013 Deploy AI Agents to iMessage, WhatsApp, Telegram, and More",
+      "points": 8,
+      "comments": 0,
+      "summary": "Open-source TypeScript framework for deploying AI agents to existing messaging platforms. Addresses the adoption problem where users avoid downloading new apps for AI interactions. Fresh launch with minimal discussion so far.",
+      "hn_url": "https://news.ycombinator.com/item?id=47853228"
+    },
+    {
+      "title": "Meta will train AI agents by tracking employees' mouse, keyboard use",
+      "points": 6,
+      "comments": 1,
+      "summary": "Meta's new internal tool converts employee interactions into training data for AI models. Raises privacy concerns and questions about consent in workplace AI training. Limited engagement but touches on broader data collection ethics.",
+      "hn_url": "https://news.ycombinator.com/item?id=47854331"
+    }
+  ]
+}
