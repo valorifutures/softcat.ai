@@ -460,6 +460,169 @@ def build_shifts_log() -> list[dict]:
     return shifts
 
 
+STANCES = ("optimistic", "pragmatic", "sceptical")
+GIT_SHOW_TIMEOUT_S = 5
+
+
+def parse_scenario_diff(sha: str) -> list[dict] | None:
+    """Compare scenarios.json at `sha` vs its parent; emit year/band deltas.
+
+    Returns a list of change records. Empty list means "no meaningful drift"
+    (e.g., whitespace-only commit). None means "couldn't parse" — the caller
+    should fall back to emitting an unenriched shift entry.
+
+    Failure modes handled (plan 2026-04-22):
+      * file absent at parent (first commit touching scenarios.json)
+      * malformed JSON on either side
+      * git show timeout
+      * merge commits (first parent used via ``sha^`` which git resolves to -p1)
+      * whitespace-only edits (deep-equal short-circuit)
+      * renamed horizon ids (treated as remove + add, emitted as stance-level
+        removes + adds)
+      * stance block added or removed (emitted with stance_added/removed flags)
+      * indefinite year (delta_months null, band_change may still fire)
+    """
+    try:
+        after_raw = subprocess.run(
+            ["git", "show", f"{sha}:src/data/horizon/scenarios.json"],
+            capture_output=True, text=True, check=True,
+            timeout=GIT_SHOW_TIMEOUT_S,
+        ).stdout
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
+        print(f"[horizon_bot] parse_scenario_diff: git show after failed for {sha}: {e}")
+        return None
+
+    try:
+        before_raw = subprocess.run(
+            ["git", "show", f"{sha}^:src/data/horizon/scenarios.json"],
+            capture_output=True, text=True, check=True,
+            timeout=GIT_SHOW_TIMEOUT_S,
+        ).stdout
+    except subprocess.CalledProcessError:
+        # No parent, or file didn't exist at parent. No drift to compute.
+        return []
+    except subprocess.TimeoutExpired:
+        return None
+
+    try:
+        after_json = json.loads(after_raw)
+        before_json = json.loads(before_raw)
+    except json.JSONDecodeError as e:
+        print(f"[horizon_bot] parse_scenario_diff: JSON decode failed for {sha}: {e}")
+        return None
+
+    # Whitespace-only / no functional change.
+    if before_json == after_json:
+        return []
+
+    if not isinstance(before_json, list) or not isinstance(after_json, list):
+        print(f"[horizon_bot] parse_scenario_diff: unexpected top-level shape for {sha}")
+        return None
+
+    before_map = {s["id"]: s for s in before_json if isinstance(s, dict) and "id" in s}
+    after_map = {s["id"]: s for s in after_json if isinstance(s, dict) and "id" in s}
+
+    changes: list[dict] = []
+    all_ids = set(before_map) | set(after_map)
+    for scenario_id in sorted(all_ids):
+        before_s = before_map.get(scenario_id)
+        after_s = after_map.get(scenario_id)
+        if before_s is None or after_s is None:
+            # Whole scenario added/removed — treat as structural, not drift.
+            continue
+        for stance in STANCES:
+            try:
+                before_stance = before_s.get(stance)
+                after_stance = after_s.get(stance)
+            except AttributeError:
+                continue
+            if before_stance is None and after_stance is None:
+                continue
+            if before_stance is None:
+                changes.append({
+                    "horizon": scenario_id,
+                    "stance": stance,
+                    "from": None,
+                    "to": after_stance.get("year") if isinstance(after_stance, dict) else None,
+                    "delta_months": None,
+                    "stance_added": True,
+                })
+                continue
+            if after_stance is None:
+                changes.append({
+                    "horizon": scenario_id,
+                    "stance": stance,
+                    "from": before_stance.get("year") if isinstance(before_stance, dict) else None,
+                    "to": None,
+                    "delta_months": None,
+                    "stance_removed": True,
+                })
+                continue
+
+            before_year = before_stance.get("year") if isinstance(before_stance, dict) else None
+            before_band = before_stance.get("band") if isinstance(before_stance, dict) else None
+            after_year = after_stance.get("year") if isinstance(after_stance, dict) else None
+            after_band = after_stance.get("band") if isinstance(after_stance, dict) else None
+
+            year_changed = before_year != after_year
+            band_changed = before_band != after_band
+            if not year_changed and not band_changed:
+                continue
+
+            record: dict = {
+                "horizon": scenario_id,
+                "stance": stance,
+                "from": before_year,
+                "to": after_year,
+            }
+            if isinstance(before_year, int) and isinstance(after_year, int):
+                record["delta_months"] = (after_year - before_year) * 12
+            else:
+                record["delta_months"] = None
+            if band_changed:
+                record["band_change"] = {"from": before_band, "to": after_band}
+            changes.append(record)
+
+    return changes
+
+
+def enrich_scenario_shifts(shifts: list[dict]) -> tuple[list[dict], int]:
+    """Second pass over the shift log. For each entry where lane == 'scenarios',
+    compute a `changes` array via parse_scenario_diff.
+
+    Returns the enriched list plus a count of successfully parsed scenario
+    commits (for pipeline_log observability)."""
+    parsed_count = 0
+    enriched: list[dict] = []
+    seen_shas: set[str] = set()
+    for s in shifts:
+        if s.get("lane") != "scenarios":
+            enriched.append(s)
+            continue
+        # A single commit may appear once per lane — but we diff the scenarios
+        # file at that sha exactly once.
+        sha = s.get("sha")
+        if sha and sha in seen_shas:
+            enriched.append(s)
+            continue
+        if sha:
+            seen_shas.add(sha)
+        changes = parse_scenario_diff(sha) if sha else None
+        if changes is None:
+            # Couldn't parse; emit unenriched entry so shift log still renders.
+            enriched.append(s)
+            continue
+        parsed_count += 1
+        if changes:
+            enriched.append({**s, "changes": changes})
+        else:
+            # No drift detected (whitespace-only, structural-only, etc.); still
+            # emit the shift without a changes array so the renderer falls back
+            # to the commit-subject line.
+            enriched.append(s)
+    return enriched, parsed_count
+
+
 def write_shifts_log(shifts: list[dict]) -> bool:
     """Write shifts.json only if content changed. Returns True if written."""
     existing = _read_json(SHIFTS_FILE, None)
@@ -735,11 +898,14 @@ def main():
         # Proposal PR (Now entries only for now; Next/Past still staging-only)
         pr_url = create_proposal_pr(now_proposals)
 
-        # Shifts.json (committed if changed)
+        # Shifts.json (committed if changed). Second pass enriches scenario-lane
+        # entries with year/band delta arrays so /horizon/five can narrate drift.
         shifts = build_shifts_log()
+        shifts, scenario_changes_parsed = enrich_scenario_shifts(shifts)
         shifts_changed = write_shifts_log(shifts)
         print(f"[horizon_bot] Shifts: {len(shifts)} entries, "
-              f"{'changed' if shifts_changed else 'unchanged'}")
+              f"{'changed' if shifts_changed else 'unchanged'}, "
+              f"{scenario_changes_parsed} scenario commit(s) parsed")
 
         # Discord ping (opt-in)
         post_to_discord(len(now_proposals), len(next_flags), len(past_candidates),

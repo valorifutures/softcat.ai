@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import HorizonStrip from '../../components/HorizonStrip.tsx';
+import type {
+  ScenarioForStrip,
+  EventMarker,
+  ShiftChange,
+} from '../../components/HorizonStrip.tsx';
+import shiftsData from '../../data/horizon/shifts.json';
+
+// Load horizon data.
+const scenarioEntries = await getCollection('horizonScenarios');
+const pastEntries = await getCollection('horizonPast');
+
+// Row-accent mapping (one neon colour per horizon, stable across the page).
+const TOPIC_ACCENT: Record<string, ScenarioForStrip['accent']> = {
+  'scenario-agi': 'amber',
+  'scenario-agentic-work': 'cyan',
+  'scenario-robotics': 'purple',
+  'scenario-software-automation': 'green',
+  'scenario-education-disruption': 'red',
+};
+
+// Canonical order (top to bottom on the chart).
+const ORDER = [
+  'scenario-agi',
+  'scenario-agentic-work',
+  'scenario-robotics',
+  'scenario-software-automation',
+  'scenario-education-disruption',
+];
+
+const scenarios: ScenarioForStrip[] = ORDER.map((id) => {
+  const entry = scenarioEntries.find((e) => e.id === id);
+  if (!entry) throw new Error(`Missing scenario ${id}`);
+  return {
+    id: entry.id,
+    topic: entry.data.topic,
+    themes: entry.data.themes,
+    definition: entry.data.definition,
+    contested: entry.data.contested,
+    debate_ref: entry.data.debate_ref,
+    accent: TOPIC_ACCENT[entry.id] ?? 'cyan',
+    optimistic: entry.data.optimistic,
+    pragmatic: entry.data.pragmatic,
+    sceptical: entry.data.sceptical,
+  };
+});
+
+// Event markers: up to 3 post-2025 Past-lane milestones, inflection-type
+// preferred (keeps the chart's time-anchor depth without visual clutter).
+// Labels in Past tend to be multi-clause; we take the first 2 words so rotated
+// text stays legible.
+const PREFERRED_SIGNAL: Set<string> = new Set(['inflection']);
+const MAX_EVENTS = 3;
+
+function shortEventLabel(title: string): string {
+  const head = title.split(/[—:(]/)[0].trim();
+  const words = head.split(/\s+/).slice(0, 2).join(' ');
+  return words.slice(0, 14);
+}
+
+const events: EventMarker[] = pastEntries
+  .filter((e) => e.data.date >= '2025-01-01')
+  .map((e) => ({
+    year: Number(e.data.date.slice(0, 4)),
+    label: shortEventLabel(e.data.title),
+    signal_type: e.data.signal_type,
+    date: e.data.date,
+  }))
+  // Sort most-recent first so cap drops older events; prefer inflections.
+  .sort((a, b) => {
+    const aPref = PREFERRED_SIGNAL.has(a.signal_type) ? 0 : 1;
+    const bPref = PREFERRED_SIGNAL.has(b.signal_type) ? 0 : 1;
+    if (aPref !== bPref) return aPref - bPref;
+    return b.date.localeCompare(a.date);
+  })
+  .slice(0, MAX_EVENTS)
+  .map(({ year, label }) => ({ year, label }))
+  .sort((a, b) => a.year - b.year);
+
+// Shift log (the same source that powers /horizon's shift log). Filter to
+// scenarios-lane entries with a `changes` array inside the last 30 days.
+type Shift = {
+  date: string;
+  lane: string;
+  verb: string;
+  subject: string;
+  sha: string;
+  changes?: ShiftChange[];
+};
+const allShifts = shiftsData as Shift[];
+const CUTOFF_DAYS = 30;
+const cutoff = new Date();
+cutoff.setUTCDate(cutoff.getUTCDate() - CUTOFF_DAYS);
+const cutoffISO = cutoff.toISOString().slice(0, 10);
+
+const recentScenarioShifts = allShifts
+  .filter(
+    (s) =>
+      s.lane === 'scenarios' &&
+      s.date >= cutoffISO &&
+      Array.isArray(s.changes) &&
+      s.changes.length > 0,
+  )
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+// recentChanges keyed by scenario id — passed to HorizonStrip for ghost dots.
+const recentChanges: Record<string, ShiftChange[]> = {};
+for (const s of recentScenarioShifts) {
+  for (const c of s.changes!) {
+    if (!recentChanges[c.horizon]) recentChanges[c.horizon] = [];
+    recentChanges[c.horizon].push(c);
+  }
+}
+
+// "What moved this month" headline. Generates one-line prose from the
+// last 30 days of changes, up to 3 clauses, with "+ N more" suffix if
+// more exist. Empty fallback conveys honest stillness.
+function formatDelta(months: number): string {
+  const abs = Math.abs(months);
+  const dir = months > 0 ? 'pushed back' : 'pulled in';
+  if (abs < 12) return `${dir} ${abs} mo`;
+  const yrs = Math.round(abs / 12);
+  return `${dir} ${yrs} yr${yrs === 1 ? '' : 's'}`;
+}
+
+function topicFor(id: string): string {
+  const s = scenarios.find((x) => x.id === id);
+  return s ? s.topic : id.replace('scenario-', '').replace(/-/g, ' ');
+}
+
+const flatChanges: ShiftChange[] = recentScenarioShifts.flatMap((s) => s.changes!);
+let headline: string;
+if (flatChanges.length === 0) {
+  headline = 'No scenario drift this month — consensus holding.';
+} else {
+  const clauses = flatChanges.slice(0, 3).map((c) => {
+    const topic = topicFor(c.horizon);
+    if (c.delta_months != null && c.from != null && c.to != null) {
+      return `${topic} ${c.stance} ${formatDelta(c.delta_months)}`;
+    }
+    return `${topic} ${c.stance} band change`;
+  });
+  let line = `This month: ${clauses.join('; ')}`;
+  if (flatChanges.length > 3) line += `; + ${flatChanges.length - 3} more`;
+  line += '.';
+  headline = line;
+}
+
+const currentYear = new Date().getUTCFullYear();
+---
+
+<BaseLayout
+  title="Five Horizons"
+  description="Arrival-year forecasts for five AI futures across three worldviews — optimistic, pragmatic, sceptical. A living consensus map of when transformative AI reshapes work, robotics, software, and education."
+>
+  <section class="min-h-screen bg-void text-text-bright pt-8 pb-16">
+    <div class="px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto">
+      <!-- Hero -->
+      <div class="flex items-start justify-between gap-4 mb-1 flex-wrap">
+        <h1
+          class="font-mono font-bold text-neon-green glow-green"
+          style="font-size: clamp(28px, 4vw, 44px); letter-spacing: 0.04em;"
+        >
+          FIVE HORIZONS
+        </h1>
+        <a
+          href="/horizon"
+          class="font-mono text-xs text-text-muted hover:text-neon-cyan transition-colors self-center"
+        >
+          ← Horizon Map
+        </a>
+      </div>
+      <p class="font-mono text-xs text-text-muted mb-6 max-w-3xl">
+        Where consensus sits across the five AI futures we track. Three dots per row:
+        optimistic, pragmatic, sceptical. Near-term detail, far-future zones.
+      </p>
+
+      <!-- What moved headline -->
+      <p
+        class="font-mono text-sm mb-8 pb-5 border-b border-surface-light"
+        style="color: var(--color-neon-cyan, #5ab8d4);"
+      >
+        <span class="text-neon-amber">◂</span> {headline}
+      </p>
+
+      <!-- The Strip -->
+      <HorizonStrip
+        client:visible
+        scenarios={scenarios}
+        events={events}
+        recentChanges={recentChanges}
+        currentYear={currentYear}
+      />
+
+      <!-- Live ticker (scenarios shift log, scrolling) -->
+      {flatChanges.length > 0 && (
+        <div class="mt-10 pt-5 border-t border-surface-light overflow-hidden">
+          <div class="font-mono text-[11px] uppercase tracking-widest text-text-muted mb-2">
+            recent drift
+          </div>
+          <div class="overflow-hidden whitespace-nowrap relative" style="height: 24px;">
+            <div
+              class="inline-block font-mono text-xs text-text-muted"
+              style="animation: horizon-ticker 60s linear infinite; padding-left: 100%;"
+            >
+              {flatChanges.map((c, i) => (
+                <span class="mx-6">
+                  <span class="text-neon-amber">◂</span>{' '}
+                  <span class="text-text-bright">{topicFor(c.horizon)}</span>{' '}
+                  {c.stance}
+                  {c.from != null && c.to != null && (
+                    <> {c.from} → {c.to}</>
+                  )}
+                  {c.delta_months != null && (
+                    <> ({formatDelta(c.delta_months)})</>
+                  )}
+                </span>
+              ))}
+            </div>
+          </div>
+          <style>{`
+            @keyframes horizon-ticker {
+              from { transform: translateX(0); }
+              to { transform: translateX(-100%); }
+            }
+          `}</style>
+        </div>
+      )}
+
+      <!-- Footer strip: back link + source -->
+      <div class="mt-12 pt-5 border-t border-surface-light flex items-center justify-between gap-3 flex-wrap">
+        <a
+          href="/horizon"
+          class="font-mono text-sm text-neon-cyan hover:underline"
+        >
+          ← Back to Horizon Map
+        </a>
+        <span class="font-mono text-[11px] text-text-muted">
+          Data: <code class="text-text-bright">src/data/horizon/scenarios.json</code>
+          · Bot-enriched drift since <code class="text-text-bright">{cutoffISO}</code>
+        </span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

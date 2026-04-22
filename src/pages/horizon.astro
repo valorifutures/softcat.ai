@@ -247,6 +247,21 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
     <p class="font-mono text-xs text-text-muted/60 text-center">
       {sortedPast.length} past turning points · {sortedNow.length} now signals · {nextEntries.length} next forecasts
     </p>
+
+    <!-- Five Horizons entry point: hero-area button to the standalone map. -->
+    <div class="mt-8 text-center">
+      <a
+        href="/horizon/five"
+        class="inline-flex items-center gap-3 px-5 py-3 bg-surface border border-neon-green/30 rounded-lg hover:border-neon-green/70 hover:bg-surface-light/40 transition-all group"
+      >
+        <span class="font-mono text-xs uppercase tracking-widest text-neon-green glow-green">
+          Five Horizons
+        </span>
+        <span class="font-mono text-xs text-text-muted group-hover:text-text-bright transition-colors">
+          where consensus sits — single chart, five paths →
+        </span>
+      </a>
+    </div>
   </section>
 
   <div class="glow-divider mb-12 max-w-5xl mx-auto" style="--divider-color: rgba(90, 184, 212, 0.15)"></div>
@@ -478,14 +493,18 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
       <div class="space-y-10">
         {scenarioEntries.map((entry) => (
           <article
+            id={entry.id}
             data-horizon-card
             data-horizon-lane="scenarios"
             data-themes={entry.data.themes.join(',')}
-            class="bg-surface border border-surface-light rounded-xl p-6"
+            class="bg-surface border border-surface-light rounded-xl p-6 scroll-mt-24"
           >
-            <div class="flex flex-wrap items-baseline justify-between gap-3 mb-5">
+            <div class="flex flex-wrap items-baseline justify-between gap-3 mb-3">
               <h3 class="font-mono text-xl font-bold text-text-bright glow-amber">
                 {entry.data.topic}
+                {entry.data.contested && (
+                  <span class="ml-2 text-neon-amber text-base" aria-label="contested definition">⚠</span>
+                )}
               </h3>
               <div class="flex flex-wrap gap-1.5">
                 {entry.data.themes.map((t) => (
@@ -493,6 +512,21 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
                 ))}
               </div>
             </div>
+
+            <p class="text-sm text-text-muted leading-relaxed mb-5 italic">
+              {entry.data.definition}
+              {entry.data.contested && entry.data.debate_ref && (
+                <>
+                  {' '}
+                  <a
+                    href={`#${entry.data.debate_ref}`}
+                    class="not-italic font-mono text-xs text-neon-amber hover:underline"
+                  >
+                    See debate →
+                  </a>
+                </>
+              )}
+            </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               {(['optimistic', 'pragmatic', 'sceptical'] as const).map((stance) => {
@@ -567,10 +601,11 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
       <div class="space-y-8">
         {debateEntries.map((entry) => (
           <article
+            id={entry.id}
             data-horizon-card
             data-horizon-lane="debates"
             data-themes={entry.data.themes.join(',')}
-            class="bg-surface border border-surface-light rounded-xl p-6"
+            class="bg-surface border border-surface-light rounded-xl p-6 scroll-mt-24"
           >
             <div class="flex flex-wrap items-baseline justify-between gap-3 mb-5">
               <h3 class="font-mono text-lg md:text-xl font-bold text-text-bright glow-amber leading-snug">

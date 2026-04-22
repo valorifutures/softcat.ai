@@ -120,5 +120,29 @@
         "next-computer-use-agents-find-narrow-fit"
       ]
     }
+  },
+  {
+    "id": "debate-what-counts-as-agi",
+    "question": "What actually counts as AGI — economic substitution, cognitive breadth, or something else entirely?",
+    "themes": [
+      "models",
+      "society"
+    ],
+    "for": {
+      "argument": "The useful definition is economic: a system is AGI when it can reliably perform most paid knowledge work at human level or better, across domains, without task-specific retraining. This framing is measurable, matters commercially and treats “general” as a threshold of breadth rather than a philosophical claim about understanding. Reasoning models plus tool use already point at this definition, even if the threshold is years away.",
+      "supporting": [
+        "past-2024-o1-reasoning-shift",
+        "past-2025-deepseek-r1",
+        "past-2023-gpt-4-release"
+      ]
+    },
+    "against": {
+      "argument": "The economic definition smuggles in a philosophical claim and hides the hard part. Genuine general intelligence arguably requires durable goals, embodied experience, robust world-modelling and cross-domain transfer that current systems do not have even when they score well on benchmarks. A system that passes every exam and still cannot run a small business on its own is not general; it is a very capable text engine. The label matters because it shapes policy, investment and safety expectations.",
+      "supporting": [
+        "past-2016-alphago-lee-sedol",
+        "past-2023-ai-safety-public-view",
+        "past-2024-gemini-2-agentic-era"
+      ]
+    }
   }
 ]
