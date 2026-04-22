@@ -173,10 +173,36 @@ const currentYear = new Date().getUTCFullYear();
           ← Horizon Map
         </a>
       </div>
-      <p class="font-mono text-xs text-text-muted mb-6 max-w-3xl">
-        Where consensus sits across the five AI futures we track. Three dots per row:
-        optimistic, pragmatic, sceptical. Near-term detail, far-future zones.
-      </p>
+      <div class="font-mono text-xs text-text-muted mb-6 max-w-3xl space-y-2 leading-relaxed">
+        <p>
+          Where consensus sits across the five AI futures we track. Three dots
+          per horizon: <span class="text-neon-green">optimistic</span>,
+          <span class="text-neon-cyan">pragmatic</span>,
+          <span class="text-neon-red">sceptical</span>. The horizontal axis is
+          non-uniform: the <span class="text-text-bright">NEAR</span> zone gets
+          per-year detail because that's where real decisions get made;
+          <span class="text-text-bright">MID</span> and
+          <span class="text-text-bright">FAR</span> zones collapse to bands
+          because forecasting precision a decade out is dishonest;
+          <span class="text-text-bright">INDEFINITE</span> (far right) holds
+          claims that may not happen this generation.
+        </p>
+        <p>
+          <span class="text-neon-amber">Hover a row name</span> for a crisp
+          definition of that horizon (AGI is contested — follow the
+          <span class="text-neon-amber">⚠</span> to the debate).
+          <span class="text-neon-amber">Hover a dot</span> for the full stance
+          and its implication.
+        </p>
+        <p>
+          The view is <span class="text-text-bright">dynamic</span>: the axis
+          anchors to the current year, so zones slide forward as time passes
+          (what's NEAR today becomes MID next year). Horizon shifts land here
+          as the bot narrates each update in the ticker below and as
+          <span class="text-text-bright">ghost dots + arrows</span> on any row
+          whose stance has moved in the last 30 days.
+        </p>
+      </div>
 
       <!-- What moved headline -->
       <p
