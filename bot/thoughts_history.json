@@ -284,6 +284,11 @@
       "date": "2026-04-21",
       "file": "2026-04-21-agent-swarms-are-just-distributed-systems-we-forgot-how-to-d.md",
       "title": "Agent swarms are just distributed systems we forgot how to debug"
+    },
+    {
+      "date": "2026-04-22",
+      "file": "2026-04-22-synthetic-data-generation-is-just-admitting-we-never-learned.md",
+      "title": "Synthetic data generation is just admitting we never learned to collect the right data"
     }
   ]
 }
