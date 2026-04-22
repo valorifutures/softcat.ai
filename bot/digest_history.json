@@ -2139,6 +2139,42 @@
         "https://buttondown.com/ainews/archive/ainews-openai-o3-o4-mini-and-codex-cli/",
         "https://buttondown.com/ainews/archive/ainews-sota-video-gen-veo-2-and-kling-2-are-ga/"
       ]
+    },
+    {
+      "date": "2026-04-22",
+      "file": "2026-04-22-ai-digest.md",
+      "links": [
+        "https://www.marktechpost.com/2026/04/21/openai-open-sources-euphony-a-browser-based-visualization-tool-for-harmony-chat-data-and-codex-session-logs/",
+        "https://www.marktechpost.com/2026/04/21/hugging-face-releases-ml-intern-an-open-source-ai-agent-that-automates-the-llm-post-training-workflow/",
+        "https://www.marktechpost.com/2026/04/21/a-coding-implementation-to-build-a-conditional-bayesian-hyperparameter-optimization-pipeline-with-hyperopt-tpe-and-early-stopping/",
+        "https://www.marktechpost.com/2026/04/21/google-introduces-simula-a-reasoning-first-framework-for-generating-controllable-scalable-synthetic-datasets-across-specialized-ai-domains/",
+        "https://www.marktechpost.com/2026/04/21/a-coding-implementation-on-qwen-3-6-35b-a3b-covering-multimodal-inference-thinking-control-tool-calling-moe-routing-rag-and-session-persistence/",
+        "https://www.marktechpost.com/2026/04/20/moonshot-ai-releases-kimi-k2-6-with-long-horizon-coding-agent-swarm-scaling-to-300-sub-agents-and-4000-coordinated-steps/",
+        "https://www.marktechpost.com/2026/04/20/a-coding-implementation-on-microsofts-phi-4-mini-for-quantized-inference-reasoning-tool-use-rag-and-lora-fine-tuning/",
+        "https://www.marktechpost.com/2026/04/20/openai-scales-trusted-access-for-cyber-defense-with-gpt-5-4-cyber-a-fine-tuned-model-built-for-verified-security-defenders/",
+        "https://www.marktechpost.com/2026/04/19/moonshot-ai-and-tsinghua-researchers-propose-prfaas-a-cross-datacenter-kvcache-architecture-that-rethinks-how-llms-are-served-at-scale/",
+        "https://www.marktechpost.com/2026/04/19/meet-openmythos-an-open-source-pytorch-reconstruction-of-claude-mythos-where-770m-parameters-match-a-1-3b-transformer/",
+        "https://techcrunch.com/2026/04/21/meta-will-record-employees-keystrokes-and-use-it-to-train-its-ai-models/",
+        "https://techcrunch.com/2026/04/21/unauthorized-group-has-gained-access-to-anthropics-exclusive-cyber-tool-mythos-report-claims/",
+        "https://techcrunch.com/2026/04/21/spacex-is-working-with-cursor-and-has-an-option-to-buy-the-startup-for-60-billion/",
+        "https://techcrunch.com/2026/04/21/apples-john-ternus-will-run-one-of-the-worlds-most-powerful-companies-the-job-is-a-minefield/",
+        "https://techcrunch.com/2026/04/21/ai-research-lab-neocognition-lands-40m-seed-to-build-agents-that-learn-like-humans/",
+        "https://techcrunch.com/2026/04/21/chatgpts-new-images-2-0-model-is-surprisingly-good-at-generating-text/",
+        "https://techcrunch.com/2026/04/21/sam-altman-throws-shade-at-anthropics-cyber-model-mythos-fear-based-marketing/",
+        "https://techcrunch.com/2026/04/21/clarifai-okcupid-facial-recognition-ai-ftc-settlement/",
+        "https://techcrunch.com/2026/04/21/voyage-is-an-ai-rpg-platform-for-creating-custom-gaming-worlds-with-ai-generated-npc-interactions/",
+        "https://techcrunch.com/2026/04/21/bond-social-media-platform-ai-memories-kick-doomscrolling-habit/",
+        "https://techcrunch.com/2026/04/21/youtube-expands-its-ai-likeness-detection-technology-to-celebrities/",
+        "https://techcrunch.com/2026/04/21/grai-believes-ai-can-make-music-more-social-not-replace-artists/",
+        "https://techcrunch.com/2026/04/20/anthropic-takes-5b-from-amazon-and-pledges-100b-in-cloud-spending-in-return/",
+        "https://techcrunch.com/2026/04/20/google-rolls-out-gemini-in-chrome-in-seven-new-countries/",
+        "https://techcrunch.com/2026/04/20/ai-writing-its-not-just-this-its-that-barrons/",
+        "https://buttondown.com/ainews/archive/ainews-we-have-moved-please-help-us-move/",
+        "https://buttondown.com/ainews/archive/ainews-grok-3-3-mini-now-api-available/",
+        "https://buttondown.com/ainews/archive/ainews-gemini-25-flash-completes-the-total/",
+        "https://buttondown.com/ainews/archive/ainews-openai-o3-o4-mini-and-codex-cli/",
+        "https://buttondown.com/ainews/archive/ainews-sota-video-gen-veo-2-and-kling-2-are-ga/"
+      ]
     }
   ]
 }
