@@ -85,6 +85,17 @@ const ROW_ACCENT_CLASS: Record<ScenarioForStrip['accent'], string> = {
   red: 'text-neon-red',
 };
 
+// Short chart labels. The full scenario.topic would overflow the 240px label
+// column at 26px mono (SOFTWARE AUTOMATION = 324px, EDUCATION DISRUPTION = 341px).
+// Matches the terminology in the original Five Horizons ASCII mockup.
+const DISPLAY_LABEL: Record<string, string> = {
+  'AGI': 'AGI',
+  'Agentic Work': 'AGENTIC',
+  'Robotics': 'ROBOTS',
+  'Software Automation': 'SW AUTO',
+  'Education Disruption': 'EDUCATION',
+};
+
 interface Tooltip {
   kind: 'dot' | 'label';
   scenarioId: string;
@@ -377,7 +388,7 @@ export default function HorizonStrip({
                     class={`font-mono font-bold ${ROW_ACCENT_CLASS[s.accent]}`}
                     style="font-size: 26px; letter-spacing: 0.04em;"
                   >
-                    {s.topic.toUpperCase()}
+                    {(DISPLAY_LABEL[s.topic] ?? s.topic).toUpperCase()}
                   </text>
                   {s.contested && (
                     <text
