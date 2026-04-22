@@ -3636,5 +3636,37 @@
     "output_files": [
       "src/data/radar/2026-04-21.json"
     ]
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-04-21T10:00:17.094130+00:00",
+    "status": "success",
+    "duration_s": 15.4,
+    "feeds_scanned": 0,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 10,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0223,
+    "input_tokens": 2617,
+    "output_tokens": 960,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-22T04:00:01.310939+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 346,
+    "items_rejected": 0,
+    "items_published": 21,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [
+      "src/data/models.json"
+    ]
   }
 ]
