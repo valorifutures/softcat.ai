@@ -110,15 +110,15 @@
     },
     {
       "date": "2026-04-22",
-      "file": "ai-agent-message-schema-validator.md",
-      "title": "AI Agent Message Schema Validator",
-      "category": "agent-design"
+      "file": "multi-platform-ai-agent-deployment-validator.md",
+      "title": "Multi-Platform AI Agent Deployment Validator",
+      "category": "testing"
     },
     {
       "date": "2026-04-22",
-      "file": "multi-modal-input-sanitiser.md",
-      "title": "Multi-Modal Input Sanitiser",
-      "category": "security"
+      "file": "llm-post-training-workflow-validator.md",
+      "title": "LLM Post-Training Workflow Validator",
+      "category": "testing"
     }
   ]
 }
