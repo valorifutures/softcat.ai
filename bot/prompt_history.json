@@ -107,6 +107,18 @@
       "file": "multi-modal-ai-pipeline-architecture-designer.md",
       "title": "Multi-Modal AI Pipeline Architecture Designer",
       "category": "architecture"
+    },
+    {
+      "date": "2026-04-22",
+      "file": "ai-agent-message-schema-validator.md",
+      "title": "AI Agent Message Schema Validator",
+      "category": "agent-design"
+    },
+    {
+      "date": "2026-04-22",
+      "file": "multi-modal-input-sanitiser.md",
+      "title": "Multi-Modal Input Sanitiser",
+      "category": "security"
     }
   ]
 }
