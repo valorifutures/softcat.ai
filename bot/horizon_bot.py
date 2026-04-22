@@ -18,9 +18,10 @@ Every run also refreshes src/data/horizon/shifts.json from
 a stable structured source. This is a committed file; the proposals file is
 NOT.
 
-INVARIANT — past.json is SINGLE-WRITER (Valori only). This bot never writes to
-past.json. Proposals go to ~/.softcat-bot-staging/horizon-bot-proposals.json
-and debates.json is 100% human-curated (bot doesn't touch it either).
+Now proposals are written to now.json on a dated branch and a PR is opened for
+review. Valori merges to land. Next flags and Past candidates still go to
+~/.softcat-bot-staging/horizon-bot-proposals.json for manual review.
+past.json is SINGLE-WRITER (Valori only). debates.json is 100% human-curated.
 
 Issue #96 hard lesson: LLM calls in this bot are grounded ONLY in provided
 context. The prompt forbids inventing model names, prices, dates, or company
@@ -252,6 +253,7 @@ Return a single JSON object:
       "signal_type": "...",
       "confidence": "...",
       "why_it_matters": "...",
+      "implication": "1-sentence italic takeaway for the reader. Start with a verb.",
       "evidence": [
         {{"type": "radar|thought|news", "ref": "...", "label": "..."}}
       ],
@@ -484,7 +486,7 @@ def write_staging(now_proposals, next_flags, past_candidates):
     print(f"[horizon_bot] Staging written: {STAGING_FILE}")
 
 
-def post_to_discord(now_n, next_n, past_n):
+def post_to_discord(now_n, next_n, past_n, pr_url=None):
     webhook = os.environ.get("DISCORD_WEBHOOK_HORIZON")
     if not webhook:
         return
@@ -493,9 +495,12 @@ def post_to_discord(now_n, next_n, past_n):
     content = (
         f"**Horizon bot:** {now_n} Now proposal{'s' if now_n != 1 else ''}, "
         f"{next_n} Next flag{'s' if next_n != 1 else ''}, "
-        f"{past_n} Past candidate{'s' if past_n != 1 else ''}. "
-        f"Review staging file: `{STAGING_FILE}`."
+        f"{past_n} Past candidate{'s' if past_n != 1 else ''}."
     )
+    if pr_url:
+        content += f"\nReview PR: {pr_url}"
+    else:
+        content += f"\nStaging file: `{STAGING_FILE}`."
     try:
         httpx.post(webhook, json={"content": content,
                                    "username": "SOFT CAT Horizon"}, timeout=15)
@@ -551,6 +556,131 @@ def commit_shifts(shifts_changed: bool):
 
 
 # --------------------------------------------------------------------------- #
+# Proposal PR                                                                 #
+# --------------------------------------------------------------------------- #
+
+PROPOSAL_BRANCH_PREFIX = "horizon-bot/proposals-"
+
+
+def _proposal_to_entry(p: dict) -> dict:
+    """Convert a bot proposal dict into a valid Now-lane data entry."""
+    entry = {
+        "id": p["id"],
+        "lane": "now",
+        "title": p["title"],
+        "date": p["added"],
+        "themes": p["themes"],
+        "signal_type": p["signal_type"],
+        "confidence": p["confidence"],
+        "why_it_matters": p["why_it_matters"],
+        "implication": p.get("implication", ""),
+        "evidence": p.get("evidence", []),
+        "added": p["added"],
+    }
+    return entry
+
+
+def create_proposal_pr(now_proposals: list[dict]) -> str | None:
+    """Write Now proposals into now.json on a branch and open (or update) a PR.
+
+    Returns the PR URL on success, None if nothing to propose.
+    """
+    if not now_proposals:
+        return None
+
+    os.chdir(REPO_DIR)
+    today = date.today().isoformat()
+    branch = f"{PROPOSAL_BRANCH_PREFIX}{today}"
+
+    # Check for an existing open PR from a previous run today
+    existing_pr = None
+    try:
+        result = subprocess.run(
+            ["gh", "pr", "list", "--head", branch, "--state", "open",
+             "--json", "number,url", "--limit", "1"],
+            capture_output=True, text=True, check=True,
+        )
+        prs = json.loads(result.stdout)
+        if prs:
+            existing_pr = prs[0]
+    except (subprocess.CalledProcessError, json.JSONDecodeError):
+        pass
+
+    # Make sure we're starting from latest main
+    subprocess.run(["git", "fetch", "origin", "main"], check=True,
+                   capture_output=True)
+
+    # Create or reset the branch from origin/main
+    subprocess.run(["git", "checkout", "-B", branch, "origin/main"],
+                   check=True, capture_output=True)
+
+    # Load current now.json and append proposals
+    now_file = HORIZON_DIR / "now.json"
+    current = _read_json(now_file, [])
+    existing_ids = {e.get("id") for e in current}
+
+    new_entries = []
+    for p in now_proposals:
+        if p["id"] not in existing_ids:
+            new_entries.append(_proposal_to_entry(p))
+
+    if not new_entries:
+        # All proposals already exist, nothing to do
+        subprocess.run(["git", "checkout", "main"], capture_output=True)
+        return None
+
+    current.extend(new_entries)
+    now_file.write_text(json.dumps(current, indent=2) + "\n")
+
+    # Commit and push
+    subprocess.run(["git", "add", str(now_file)], check=True)
+    titles = ", ".join(e["title"][:50] for e in new_entries)
+    msg = f"bot(horizon): propose {len(new_entries)} Now entries\n\n{titles}"
+    subprocess.run(["git", "commit", "-m", msg], check=True,
+                   capture_output=True)
+    subprocess.run(["git", "push", "-u", "origin", branch, "--force"],
+                   check=True, capture_output=True)
+
+    pr_url = None
+    if existing_pr:
+        # PR already exists, force-push updated the branch
+        pr_url = existing_pr["url"]
+        print(f"[horizon_bot] Updated existing PR: {pr_url}")
+    else:
+        # Create new PR
+        body_lines = ["## Horizon bot proposals\n"]
+        for e in new_entries:
+            themes = ", ".join(e["themes"])
+            evidence_count = len(e.get("evidence", []))
+            body_lines.append(
+                f"- **{e['title']}** ({e['confidence']}, {themes}) "
+                f"— {evidence_count} sources"
+            )
+        body_lines.append(
+            "\n---\nGenerated by `horizon_bot.py`. Review, edit, then merge."
+        )
+        body = "\n".join(body_lines)
+
+        try:
+            result = subprocess.run(
+                ["gh", "pr", "create",
+                 "--title", f"Horizon: {len(new_entries)} Now proposals ({today})",
+                 "--body", body,
+                 "--base", "main",
+                 "--head", branch],
+                capture_output=True, text=True, check=True,
+            )
+            pr_url = result.stdout.strip()
+            print(f"[horizon_bot] Created PR: {pr_url}")
+        except subprocess.CalledProcessError as e:
+            print(f"[horizon_bot] gh pr create failed: {e.stderr}")
+
+    # Return to main
+    subprocess.run(["git", "checkout", "main"], capture_output=True)
+    return pr_url
+
+
+# --------------------------------------------------------------------------- #
 # Main                                                                        #
 # --------------------------------------------------------------------------- #
 
@@ -598,9 +728,12 @@ def main():
         past_candidates = score_past_candidates(past_entries)
         print(f"[horizon_bot] Past candidates: {len(past_candidates)}")
 
-        # Staging (never committed)
+        # Staging (backup, always written)
         write_staging(now_proposals, next_flags, past_candidates)
         items_published = len(now_proposals) + len(next_flags) + len(past_candidates)
+
+        # Proposal PR (Now entries only for now; Next/Past still staging-only)
+        pr_url = create_proposal_pr(now_proposals)
 
         # Shifts.json (committed if changed)
         shifts = build_shifts_log()
@@ -609,7 +742,8 @@ def main():
               f"{'changed' if shifts_changed else 'unchanged'}")
 
         # Discord ping (opt-in)
-        post_to_discord(len(now_proposals), len(next_flags), len(past_candidates))
+        post_to_discord(len(now_proposals), len(next_flags), len(past_candidates),
+                        pr_url=pr_url)
 
         # Log BEFORE commit so the runs.json entry lands in the same commit
         # as the shifts change (fix for issue #97).
