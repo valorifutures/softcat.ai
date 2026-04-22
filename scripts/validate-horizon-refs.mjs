@@ -153,6 +153,84 @@ for (const s of scenarios) {
   }
 }
 
+// Five Horizons additions (2026-04-22).
+// Banded-axis boundaries are duplicated from src/lib/horizon-axis.ts because
+// this .mjs validator cannot import TypeScript. Keep in sync when the chart
+// thresholds change.
+const BAND_NEAR_MAX_DELTA = 4;   // 0-4 years out of currentYear
+const BAND_MID_MAX_DELTA = 9;    // 5-9 years out
+const BAND_FAR_MAX_DELTA = 19;   // 10-19 years out; 20+ is indefinite
+
+function yearToBand(year, currentYear) {
+  if (year == null) return 'indefinite';
+  const delta = year - currentYear;
+  if (delta <= BAND_NEAR_MAX_DELTA) return 'near';
+  if (delta <= BAND_MID_MAX_DELTA) return 'mid';
+  if (delta <= BAND_FAR_MAX_DELTA) return 'far';
+  return 'indefinite';
+}
+
+const CURRENT_YEAR = new Date().getUTCFullYear();
+for (const s of scenarios) {
+  // debate_ref must resolve to an existing debate id.
+  if (s.debate_ref) {
+    const debateIds = new Set(debates.map((d) => d.id));
+    if (!debateIds.has(s.debate_ref)) {
+      errors.push(`scenarios.json: "${s.id}" debate_ref -> unknown debate id "${s.debate_ref}"`);
+    }
+  }
+  // Band/year consistency (warning — bot drift without band update is expected).
+  for (const stance of ['optimistic', 'pragmatic', 'sceptical']) {
+    const entry = s[stance];
+    if (!entry || !entry.band) continue;
+    const { year, band } = entry;
+    if (band === 'indefinite' && year != null) {
+      warnings.push(
+        `scenarios.json: "${s.id}" ${stance} has band="indefinite" but year=${year} (year will be ignored at render)`,
+      );
+      continue;
+    }
+    if (band !== 'indefinite' && year != null) {
+      const derived = yearToBand(year, CURRENT_YEAR);
+      if (derived !== band) {
+        warnings.push(
+          `scenarios.json: "${s.id}" ${stance} band="${band}" does not match year-derived band="${derived}" (year=${year}, currentYear=${CURRENT_YEAR})`,
+        );
+      }
+    }
+  }
+}
+
+// shifts.json — optional `changes` array on scenarios-touching entries.
+// Emitted by bot/horizon_bot.py when a commit touches scenarios.json.
+let shifts = [];
+try {
+  shifts = readJson(join(HORIZON_DIR, 'shifts.json'));
+} catch {
+  // shifts.json may not exist in a minimal checkout; not an error.
+}
+const STANCE_SET = new Set(['optimistic', 'pragmatic', 'sceptical']);
+for (let i = 0; i < shifts.length; i++) {
+  const shift = shifts[i];
+  if (!shift.changes) continue;
+  if (!Array.isArray(shift.changes)) {
+    errors.push(`shifts.json[${i}]: changes must be an array`);
+    continue;
+  }
+  for (let j = 0; j < shift.changes.length; j++) {
+    const c = shift.changes[j];
+    if (typeof c.horizon !== 'string' || !c.horizon) {
+      errors.push(`shifts.json[${i}].changes[${j}]: missing or invalid horizon field`);
+    }
+    if (!STANCE_SET.has(c.stance)) {
+      errors.push(`shifts.json[${i}].changes[${j}]: stance must be one of ${[...STANCE_SET].join('|')}`);
+    }
+    if (c.delta_months != null && typeof c.delta_months !== 'number') {
+      errors.push(`shifts.json[${i}].changes[${j}]: delta_months must be number or null`);
+    }
+  }
+}
+
 // 6. Next-lane confidence freshness warning.
 const today = new Date();
 today.setUTCHours(0, 0, 0, 0);

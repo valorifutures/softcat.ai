@@ -229,14 +229,26 @@ const horizonDebates = defineCollection({
     .strict(),
 });
 
+// Banded axis for the /horizon/five Five Horizons strip (2026-04-22).
+// year is required unless band === 'indefinite' (see superRefine below).
+// yearToBand auto-derivation lives in src/lib/horizon-axis.ts — the schema
+// accepts whatever value is written, so manual overrides are honoured.
+const horizonBand = z.enum(['near', 'mid', 'far', 'indefinite']);
+
 const horizonScenarioBranch = z
   .object({
     timeframe: z.string().min(1),
+    year: z.number().int().min(2026).max(2060).optional(),
+    band: horizonBand.optional(),
     assumptions: z.string().min(1),
     blockers: z.string().min(1),
     implication: z.string().min(1),
   })
-  .strict();
+  .strict()
+  .refine(
+    (v) => v.band === 'indefinite' || typeof v.year === 'number',
+    { message: 'stance must have year (unless band="indefinite")' },
+  );
 
 const horizonScenarios = defineCollection({
   loader: file('src/data/horizon/scenarios.json'),
@@ -247,6 +259,11 @@ const horizonScenarios = defineCollection({
       // Outside #7: scenarios need theme + related binding.
       themes: horizonThemeArray,
       related: z.array(z.string()).optional(),
+      // Five Horizons additions (2026-04-22): crisp definition rendered at top
+      // of Compare View cards AND in the /horizon/five chart tooltip.
+      definition: z.string().min(1).max(200),
+      contested: z.boolean().optional(),
+      debate_ref: z.string().regex(DEBATE_ID).optional(),
       optimistic: horizonScenarioBranch,
       pragmatic: horizonScenarioBranch,
       sceptical: horizonScenarioBranch,
