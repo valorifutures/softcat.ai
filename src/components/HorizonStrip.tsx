@@ -271,10 +271,10 @@ export default function HorizonStrip({
           })}
 
           {/* Year ticks along the axis */}
-          {axisYearTicks(axis).map(({ year, band }) => {
+          {axisYearTicks(axis).map(({ year, band, display }) => {
             const x = LABEL_COL_W + yearToX(year, band, axis);
             return (
-              <g key={`tick-${year}`}>
+              <g key={`tick-${band}-${year}`}>
                 <line
                   x1={x}
                   x2={x}
@@ -290,7 +290,7 @@ export default function HorizonStrip({
                   class="font-mono fill-text-muted"
                   style="font-size: 10px;"
                 >
-                  {year}
+                  {display ?? year}
                 </text>
               </g>
             );
@@ -715,13 +715,27 @@ function formatDelta(months: number): string {
   return `${years} yr ${sign}`;
 }
 
-function axisYearTicks(axis: typeof DEFAULT_AXIS_CONFIG) {
-  const ticks: { year: number; band: Band }[] = [];
-  for (let y = axis.nearRange[0]; y <= axis.nearRange[1]; y++) ticks.push({ year: y, band: 'near' });
-  for (let y = axis.midRange[0]; y <= axis.midRange[1]; y += 2) ticks.push({ year: y, band: 'mid' });
-  // Far zone gets just the endpoints
-  ticks.push({ year: axis.farRange[0], band: 'far' });
-  ticks.push({ year: Math.floor((axis.farRange[0] + axis.farRange[1]) / 2), band: 'far' });
-  ticks.push({ year: axis.farRange[1], band: 'far' });
+// Year-axis ticks. NEAR zone gets per-year precision (reader decision window).
+// MID/FAR zones collapse to a single band-centred label to avoid collisions
+// at zone boundaries (2030/2031 and 2035/2036 were overlapping at 10px font).
+function axisYearTicks(
+  axis: typeof DEFAULT_AXIS_CONFIG,
+): { year: number; band: Band; display?: string }[] {
+  const ticks: { year: number; band: Band; display?: string }[] = [];
+  for (let y = axis.nearRange[0]; y <= axis.nearRange[1]; y++) {
+    ticks.push({ year: y, band: 'near' });
+  }
+  const midCenter = Math.round((axis.midRange[0] + axis.midRange[1]) / 2);
+  ticks.push({
+    year: midCenter,
+    band: 'mid',
+    display: `${axis.midRange[0]}-${axis.midRange[1]}`,
+  });
+  const farCenter = Math.round((axis.farRange[0] + axis.farRange[1]) / 2);
+  ticks.push({
+    year: farCenter,
+    band: 'far',
+    display: `${axis.farRange[0]}+`,
+  });
   return ticks;
 }
