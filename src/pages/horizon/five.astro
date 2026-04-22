@@ -48,14 +48,36 @@ const scenarios: ScenarioForStrip[] = ORDER.map((id) => {
   };
 });
 
-// Event markers: post-2025 past-lane milestones (pre-2025 falls off the axis).
+// Event markers: up to 3 post-2025 Past-lane milestones, inflection-type
+// preferred (keeps the chart's time-anchor depth without visual clutter).
+// Labels in Past tend to be multi-clause; we take the first 2 words so rotated
+// text stays legible.
+const PREFERRED_SIGNAL: Set<string> = new Set(['inflection']);
+const MAX_EVENTS = 3;
+
+function shortEventLabel(title: string): string {
+  const head = title.split(/[—:(]/)[0].trim();
+  const words = head.split(/\s+/).slice(0, 2).join(' ');
+  return words.slice(0, 14);
+}
+
 const events: EventMarker[] = pastEntries
   .filter((e) => e.data.date >= '2025-01-01')
   .map((e) => ({
     year: Number(e.data.date.slice(0, 4)),
-    // Short label: strip trailing detail, keep key concept.
-    label: e.data.title.split(/[—:(]/)[0].trim().slice(0, 22),
+    label: shortEventLabel(e.data.title),
+    signal_type: e.data.signal_type,
+    date: e.data.date,
   }))
+  // Sort most-recent first so cap drops older events; prefer inflections.
+  .sort((a, b) => {
+    const aPref = PREFERRED_SIGNAL.has(a.signal_type) ? 0 : 1;
+    const bPref = PREFERRED_SIGNAL.has(b.signal_type) ? 0 : 1;
+    if (aPref !== bPref) return aPref - bPref;
+    return b.date.localeCompare(a.date);
+  })
+  .slice(0, MAX_EVENTS)
+  .map(({ year, label }) => ({ year, label }))
   .sort((a, b) => a.year - b.year);
 
 // Shift log (the same source that powers /horizon's shift log). Filter to

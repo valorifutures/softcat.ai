@@ -241,13 +241,14 @@ export default function HorizonStrip({
             );
           })}
 
-          {/* Event markers (past milestones) — thin vertical lines behind rows */}
+          {/* Event markers (past milestones) — thin vertical lines behind rows,
+              labels rotated -30deg so adjacent events don't collide horizontally. */}
           {visibleEvents.map((e) => {
             const band = yearToBand(e.year, currentYear);
             if (band === 'indefinite') return null;
             const x = LABEL_COL_W + yearToX(e.year, band, axis);
             return (
-              <g key={`event-${e.year}-${e.label}`} opacity="0.25">
+              <g key={`event-${e.year}-${e.label}`} opacity="0.35">
                 <line
                   x1={x}
                   x2={x}
@@ -259,8 +260,9 @@ export default function HorizonStrip({
                 />
                 <text
                   x={x}
-                  y={chartTop + chartH + 18}
-                  text-anchor="middle"
+                  y={chartTop + chartH + 46}
+                  text-anchor="end"
+                  transform={`rotate(-30 ${x} ${chartTop + chartH + 46})`}
                   class="font-mono fill-text-muted"
                   style="font-size: 9px;"
                 >
