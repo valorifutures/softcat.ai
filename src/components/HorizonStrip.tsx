@@ -77,12 +77,16 @@ const STANCE_LABEL: Record<Stance, string> = {
   sceptical: 'sceptical',
 };
 
+// SVG <text> is painted via the `fill` property, not `color`. Using
+// `text-neon-*` here sets CSS `color` only and leaves fill at the SVG
+// default (black) — which is invisible on the void background. These
+// utilities target fill directly so the massive row labels actually show.
 const ROW_ACCENT_CLASS: Record<ScenarioForStrip['accent'], string> = {
-  green: 'text-neon-green',
-  cyan: 'text-neon-cyan',
-  purple: 'text-neon-purple',
-  amber: 'text-neon-amber',
-  red: 'text-neon-red',
+  green: 'fill-neon-green',
+  cyan: 'fill-neon-cyan',
+  purple: 'fill-neon-purple',
+  amber: 'fill-neon-amber',
+  red: 'fill-neon-red',
 };
 
 // Short chart labels. The full scenario.topic would overflow the 240px label
@@ -232,8 +236,8 @@ export default function HorizonStrip({
                   x={x + w / 2}
                   y={chartTop - 12}
                   text-anchor="middle"
-                  class="font-mono fill-text-muted"
-                  style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;"
+                  class="font-mono fill-text-bright"
+                  style="font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;"
                 >
                   {band === 'indefinite' ? 'indefinite' : band}
                 </text>
@@ -281,16 +285,17 @@ export default function HorizonStrip({
                   x1={x}
                   x2={x}
                   y1={chartTop + chartH}
-                  y2={chartTop + chartH + 4}
-                  stroke="var(--color-text-muted, #6b7280)"
+                  y2={chartTop + chartH + 6}
+                  stroke="var(--color-text-bright, #e5e7eb)"
                   stroke-width="1"
+                  opacity="0.7"
                 />
                 <text
                   x={x}
-                  y={chartTop + chartH + 34}
+                  y={chartTop + chartH + 36}
                   text-anchor="middle"
-                  class="font-mono fill-text-muted"
-                  style="font-size: 10px;"
+                  class="font-mono fill-text-bright"
+                  style="font-size: 11px;"
                 >
                   {display ?? year}
                 </text>
@@ -301,10 +306,10 @@ export default function HorizonStrip({
           {/* Indefinite column header */}
           <text
             x={LABEL_COL_W + zoneStartX('indefinite', axis) + axis.widths.indefinite / 2}
-            y={chartTop + chartH + 34}
+            y={chartTop + chartH + 36}
             text-anchor="middle"
-            class="font-mono fill-text-muted"
-            style="font-size: 10px;"
+            class="font-mono fill-text-bright"
+            style="font-size: 11px;"
           >
             ???
           </text>
