@@ -3843,5 +3843,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-23-agent-deployment-just-solved-the-distribution-problem-we-pre.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-23T08:30:45.225353+00:00",
+    "status": "success",
+    "duration_s": 43.9,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0658,
+    "input_tokens": 11055,
+    "output_tokens": 2174,
+    "output_files": [
+      "src/data/radar/2026-04-23.json"
+    ]
   }
 ]

@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-23",
+  "featured": [
+    {
+      "id": "ph-qwen36-27b",
+      "name": "Qwen3.6-27B",
+      "tagline": "Dense 27B parameter model that outperforms 397B MoE on coding tasks.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Alibaba just proved that dense models can punch way above their weight in coding agents. The hybrid architecture mixing linear attention with self-attention could be the blueprint for the next generation of efficient coding models. When a 27B model beats a 397B MoE, the entire scaling conversation changes.",
+      "ph_url": "https://www.marktechpost.com/2026/04/22/alibaba-qwen-team-releases-qwen3-6-27b-a-dense-open-weight-model-outperforming-397b-moe-on-agentic-coding-benchmarks/",
+      "maker": "Alibaba Qwen Team",
+      "featured": true,
+      "added_at": "2026-04-23T06:00:00Z"
+    },
+    {
+      "id": "ph-workspace-agents",
+      "name": "OpenAI Workspace Agents",
+      "tagline": "Team automation platform that transforms ChatGPT from chatbot to persistent workflow engine.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "This is OpenAI's biggest architectural shift since GPTs. Moving from conversational interfaces to persistent automation changes the entire value proposition. Teams can finally deploy agents that work continuously, not just when someone remembers to ask a question.",
+      "ph_url": "https://the-decoder.com/openai-launches-workspace-agents-that-turn-chatgpt-from-a-chatbot-into-a-team-automation-platform/",
+      "maker": "OpenAI",
+      "featured": true,
+      "added_at": "2026-04-23T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-mimo-v25",
+      "name": "MiMo-V2.5-Pro",
+      "tagline": "Open-source agentic AI models matching frontier benchmarks at lower token cost.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Xiaomi is quietly building some of the most capable open-source agents we've seen. The combination of frontier performance with significantly lower inference costs could democratise agentic AI development. Open source is finally catching up to the big labs.",
+      "ph_url": "https://www.marktechpost.com/2026/04/22/xiaomi-releases-mimo-v2-5-pro-and-mimo-v2-5-matching-frontier-model-benchmarks-at-significantly-lower-token-cost/",
+      "maker": "Xiaomi",
+      "featured": false,
+      "added_at": "2026-04-23T06:30:00Z"
+    },
+    {
+      "id": "ph-jiuwen-claw",
+      "name": "JiuwenClaw AgentTeam",
+      "tagline": "Multi-agent coordination platform pioneering 'Coordination Engineering'.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "The concept of 'Coordination Engineering' as the next evolution beyond prompt engineering makes sense. Getting multiple agents to work together effectively is the hardest problem in agentic AI. This could be the framework that solves it.",
+      "ph_url": "https://www.marktechpost.com/2026/04/22/next-leap-to-harness-engineering-jiuwenclaw-pioneers-coordination-engineering/",
+      "maker": "openJiuwen",
+      "featured": false,
+      "added_at": "2026-04-23T06:45:00Z"
+    },
+    {
+      "id": "ph-agent-vault",
+      "name": "Agent Vault",
+      "tagline": "HTTP credential proxy and vault specifically designed for AI agents.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Finally, someone is building security infrastructure specifically for agents. As agents become more autonomous, credential management becomes critical. This addresses a real gap in the current agent ecosystem.",
+      "ph_url": "https://github.com/Infisical/agent-vault",
+      "maker": "Infisical",
+      "featured": false,
+      "added_at": "2026-04-23T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Agent Vault \u2013 A HTTP credential proxy and vault for AI agents",
+      "points": 9,
+      "comments": 3,
+      "summary": "Open-source security infrastructure built specifically for AI agents. Addresses credential management challenges as agents become more autonomous and need secure access to external services.",
+      "hn_url": "https://news.ycombinator.com/item?id=47865822"
+    },
+    {
+      "title": "AI agent skills pass every scanner. 87% still degrade agent safety",
+      "points": 7,
+      "comments": 1,
+      "summary": "Research reveals that most AI agent skills can bypass current safety scanners while still compromising agent security. Highlights significant gaps in current agent safety evaluation methods.",
+      "hn_url": "https://news.ycombinator.com/item?id=47866305"
+    },
+    {
+      "title": "Show HN: Trainly \u2013 Free 72-hour audit of your AI agent's production traces",
+      "points": 6,
+      "comments": 1,
+      "summary": "Monitoring and debugging service for AI agents in production. Offers free audits to help developers understand how their agents perform in real-world scenarios.",
+      "hn_url": "https://news.ycombinator.com/item?id=47867157"
+    },
+    {
+      "title": "Show HN: We built a <60ms, open-source alternative to E2B using RustVMM and KVM",
+      "points": 6,
+      "comments": 1,
+      "summary": "Ultra-fast code execution environment for AI agents using Rust and KVM. Claims sub-60ms latency for code execution, significantly faster than existing solutions like E2B.",
+      "hn_url": "https://news.ycombinator.com/item?id=47863430"
+    },
+    {
+      "title": "My GLM-5.1 coding agent scored 94.3% on LiveCodeBench Lite",
+      "points": 5,
+      "comments": 0,
+      "summary": "Developer showcases impressive performance of GLM-5.1 based coding agent achieving 94.3% success rate on LiveCodeBench. Demonstrates continued progress in AI coding capabilities.",
+      "hn_url": "https://news.ycombinator.com/item?id=47869330"
+    }
+  ]
+}

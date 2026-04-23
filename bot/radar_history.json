@@ -576,6 +576,17 @@
         "Simula",
         "CrabTrap"
       ]
+    },
+    {
+      "date": "2026-04-23",
+      "file": "2026-04-23.json",
+      "products": [
+        "Qwen3.6-27B",
+        "OpenAI Workspace Agents",
+        "MiMo-V2.5-Pro",
+        "JiuwenClaw AgentTeam",
+        "Agent Vault"
+      ]
     }
   ]
 }
