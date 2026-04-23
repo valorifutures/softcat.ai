@@ -1,5 +1,186 @@
 [
   {
+    "date": "2026-04-22",
+    "lane": "debates",
+    "verb": "updated",
+    "subject": "feat(horizon): Five Horizons \u2014 standalone strip at /horizon/five (#114)",
+    "sha": "3066df13e0"
+  },
+  {
+    "date": "2026-04-22",
+    "lane": "scenarios",
+    "verb": "updated",
+    "subject": "feat(horizon): Five Horizons \u2014 standalone strip at /horizon/five (#114)",
+    "sha": "3066df13e0",
+    "changes": [
+      {
+        "horizon": "scenario-agentic-work",
+        "stance": "optimistic",
+        "from": null,
+        "to": 2027,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "near"
+        }
+      },
+      {
+        "horizon": "scenario-agentic-work",
+        "stance": "pragmatic",
+        "from": null,
+        "to": 2030,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "near"
+        }
+      },
+      {
+        "horizon": "scenario-agentic-work",
+        "stance": "sceptical",
+        "from": null,
+        "to": 2036,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "far"
+        }
+      },
+      {
+        "horizon": "scenario-agi",
+        "stance": "optimistic",
+        "from": null,
+        "to": 2028,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "near"
+        }
+      },
+      {
+        "horizon": "scenario-agi",
+        "stance": "pragmatic",
+        "from": null,
+        "to": 2033,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "mid"
+        }
+      },
+      {
+        "horizon": "scenario-agi",
+        "stance": "sceptical",
+        "from": null,
+        "to": 2045,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "far"
+        }
+      },
+      {
+        "horizon": "scenario-education-disruption",
+        "stance": "optimistic",
+        "from": null,
+        "to": 2030,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "near"
+        }
+      },
+      {
+        "horizon": "scenario-education-disruption",
+        "stance": "pragmatic",
+        "from": null,
+        "to": 2034,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "mid"
+        }
+      },
+      {
+        "horizon": "scenario-education-disruption",
+        "stance": "sceptical",
+        "from": null,
+        "to": null,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "indefinite"
+        }
+      },
+      {
+        "horizon": "scenario-robotics",
+        "stance": "optimistic",
+        "from": null,
+        "to": 2030,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "near"
+        }
+      },
+      {
+        "horizon": "scenario-robotics",
+        "stance": "pragmatic",
+        "from": null,
+        "to": 2035,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "mid"
+        }
+      },
+      {
+        "horizon": "scenario-robotics",
+        "stance": "sceptical",
+        "from": null,
+        "to": 2038,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "far"
+        }
+      },
+      {
+        "horizon": "scenario-software-automation",
+        "stance": "optimistic",
+        "from": null,
+        "to": 2028,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "near"
+        }
+      },
+      {
+        "horizon": "scenario-software-automation",
+        "stance": "pragmatic",
+        "from": null,
+        "to": 2031,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "mid"
+        }
+      },
+      {
+        "horizon": "scenario-software-automation",
+        "stance": "sceptical",
+        "from": null,
+        "to": 2036,
+        "delta_months": null,
+        "band_change": {
+          "from": null,
+          "to": "far"
+        }
+      }
+    ]
+  },
+  {
     "date": "2026-04-11",
     "lane": "debates",
     "verb": "updated",
