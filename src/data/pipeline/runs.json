@@ -3764,5 +3764,67 @@
     "output_files": [
       "src/data/radar/2026-04-22.json"
     ]
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-04-22T09:58:00.634877+00:00",
+    "status": "success",
+    "duration_s": 22.5,
+    "feeds_scanned": 0,
+    "items_found": 56,
+    "items_rejected": 0,
+    "items_published": 8,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0227,
+    "input_tokens": 2620,
+    "output_tokens": 987,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-23T04:00:03.600731+00:00",
+    "status": "success",
+    "duration_s": 1.9,
+    "feeds_scanned": 0,
+    "items_found": 348,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-23T05:00:06.571373+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 348,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-04-23T06:00:34.666568+00:00",
+    "status": "success",
+    "duration_s": 32.4,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0316,
+    "input_tokens": 6852,
+    "output_tokens": 739,
+    "output_files": [
+      "src/content/news-and-updates/2026-04-23-ai-digest.md"
+    ]
   }
 ]
