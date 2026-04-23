@@ -1,21 +1,21 @@
 ---
-title: Continual Learning
-description: A training approach that lets AI models learn new tasks over time without overwriting previously acquired knowledge.
-tags:
-  - training
-  - agents
-  - memory
-  - research
-  - fine-tuning
-date: 2026-04-03
-related:
-  - test-time-training
-  - retrieval-augmented-generation
+title: "Continual Learning"
+description: "Training AI models to accumulate new knowledge over time without overwriting what they already know."
+tags: [training, agents, memory, research, fine-tuning]
+date: 2026-04-22
+related: [test-time-training, retrieval-augmented-generation, fine-tuning]
 draft: false
 ---
 
-Continual learning is the practice of training AI models to acquire new tasks or information over time without degrading performance on what they already know, a failure mode called catastrophic forgetting. Standard fine-tuning tends to overwrite existing capabilities when trained on new data. Continual learning techniques such as sparse updates, memory replay, and skill isolation let models accumulate knowledge incrementally instead. Recent research on continual meta-learning for LLM agents explores jointly evolving policies and reusable skills with minimal downtime between updates.
+Continual learning is the challenge of updating a model on new tasks or information without degrading performance on old ones. Standard fine-tuning is the problem: train on new data and the model tends to forget what it learned before. This is called catastrophic forgetting.
 
-In practice, a customer support agent built with continual learning can be updated with new product knowledge each week without losing its grasp of older product lines or general language ability.
+**Why it matters:** Deployed models go stale. The world changes, new products launch, regulations shift, user behaviour evolves. Running a full retrain every time is expensive and slow. Continual learning research is looking for ways to keep models current with targeted updates instead.
 
-Related terms: test-time-training (a related idea for adapting at inference time rather than via scheduled training), retrieval-augmented-generation (an alternative that sidesteps forgetting by keeping knowledge external).
+**The core techniques:**
+- **Sparse updates** — only modify the weights most relevant to the new task, leaving others intact
+- **Memory replay** — interleave new training data with samples from previous tasks so the model stays sharp on both
+- **Skill isolation** — partition model capacity so new capabilities do not overwrite old ones (related to mixture-of-experts approaches)
+
+**Where research is heading:** A March 2026 paper introduced a Continual Meta-Learning Framework for LLM agents that jointly evolves policies and reusable skills with minimal downtime. The goal is agents that accumulate expertise across deployments rather than resetting with each update.
+
+**The practical tension:** Continual learning and RAG solve overlapping problems from different angles. RAG keeps knowledge current by retrieval at inference time; continual learning bakes it into the weights. For enterprise teams, the choice depends on how structured the new knowledge is and how much latency you can afford.
