@@ -38,6 +38,36 @@ const radarPreviewItems = radarData ? radarData.featured.slice(0, 3) : [];
 
 <BaseLayout>
   <Hero />
+  <div class="max-w-5xl mx-auto px-6 pb-12">
+    <section class="relative glass-card rounded-2xl border border-neon-green/15 overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 p-5 md:p-6 border-b border-surface-light/50">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest text-neon-green/80 mb-2">
+            interactive artefact
+          </p>
+          <h2 class="font-mono text-xl md:text-2xl font-bold text-text-bright">
+            Agent Trace Tape
+          </h2>
+          <p class="text-sm text-text-muted mt-2 max-w-2xl">
+            A physical trace from the SOFT CAT pipeline: feeds scanned, tools called,
+            slop rejected, static site deployed.
+          </p>
+        </div>
+        <a
+          href="/trace/"
+          class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-neon-green/30 bg-neon-green/5 font-mono text-sm text-neon-green hover:bg-neon-green/10 hover:border-neon-green/60 transition-all shrink-0"
+        >
+          open full trace &rarr;
+        </a>
+      </div>
+      <iframe
+        src="/trace/?embed=1"
+        title="Interactive SOFT CAT Agent Trace Tape"
+        loading="lazy"
+        class="block w-full h-[360px] md:h-[430px] bg-void border-0"
+      ></iframe>
+    </section>
+  </div>
   <ActivityTicker />
   <About />
 
