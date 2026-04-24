@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pipeline Ticket | SOFT CAT .ai</title>
+    <title>Agent Trace Tape | SOFT CAT .ai</title>
     <meta
       name="description"
-      content="A standalone interactive 3D SOFT CAT pipeline run ticket."
+      content="A standalone interactive 3D SOFT CAT agent trace tape."
     />
     <style is:inline>
       :root {
@@ -175,12 +175,12 @@
   </head>
   <body>
     <main>
-      <p class="caption">SOFT CAT autonomous output terminal</p>
+      <p class="caption">SOFT CAT agent trace terminal</p>
       <div class="scene-shell">
-        <canvas id="scene" aria-label="Interactive 3D SOFT CAT pipeline run ticket"></canvas>
+        <canvas id="scene" aria-label="Interactive 3D SOFT CAT agent trace tape"></canvas>
         <div id="grabIndicator" class="grab-indicator" aria-hidden="true"></div>
       </div>
-      <p class="instruction">Grab and drag the pipeline ticket</p>
+      <p class="instruction">Grab and drag the agent trace tape</p>
     </main>
 
     <script is:inline>
@@ -207,15 +207,15 @@
           return;
         }
 
-        const GRID_X = 25;
-        const GRID_Y = 50;
+        const GRID_X = 42;
+        const GRID_Y = 30;
         const COLS = GRID_X + 1;
         const ROWS = GRID_Y + 1;
         const PARTICLES = COLS * ROWS;
-        const PAPER_WIDTH = 3.0;
-        const PAPER_HEIGHT = 6.0;
-        const CAMERA_Z = 9.2;
-        const FOV = 42 * Math.PI / 180;
+        const PAPER_WIDTH = 5.12;
+        const PAPER_HEIGHT = 3.35;
+        const CAMERA_Z = 9.65;
+        const FOV = 43 * Math.PI / 180;
         const TAN_HALF_FOV = Math.tan(FOV / 2);
         const DAMPING = 0.988;
         const GRAVITY = -0.0068;
@@ -275,8 +275,8 @@
 
         function createReceiptTexture() {
           const texCanvas = document.createElement("canvas");
-          texCanvas.width = 1024;
-          texCanvas.height = 2048;
+          texCanvas.width = 1800;
+          texCanvas.height = 1180;
           const ctx = texCanvas.getContext("2d");
           const w = texCanvas.width;
           const h = texCanvas.height;
@@ -298,7 +298,7 @@
           ctx.globalAlpha = 0.11;
           ctx.strokeStyle = "#345744";
           ctx.lineWidth = 1;
-          for (let y = 24; y < h; y += 18) {
+          for (let y = 24; y < h; y += 16) {
             ctx.beginPath();
             ctx.moveTo(0, y + Math.sin(y * 0.01) * 2);
             ctx.lineTo(w, y + Math.cos(y * 0.013) * 2);
@@ -315,14 +315,25 @@
             ctx.fillText(value, x, y);
           }
 
+          function rule(y, color, width) {
+            ctx.save();
+            ctx.strokeStyle = color || "#24352c";
+            ctx.lineWidth = width || 3;
+            ctx.beginPath();
+            ctx.moveTo(118, y);
+            ctx.lineTo(w - 118, y);
+            ctx.stroke();
+            ctx.restore();
+          }
+
           function dashed(y) {
             ctx.save();
             ctx.strokeStyle = "#24352c";
             ctx.lineWidth = 3;
             ctx.setLineDash([15, 12]);
             ctx.beginPath();
-            ctx.moveTo(90, y);
-            ctx.lineTo(w - 90, y);
+            ctx.moveTo(118, y);
+            ctx.lineTo(w - 118, y);
             ctx.stroke();
             ctx.restore();
           }
@@ -332,20 +343,27 @@
             ctx.strokeStyle = "#172019";
             ctx.lineWidth = 9;
             ctx.beginPath();
-            ctx.moveTo(90, y);
-            ctx.lineTo(w - 90, y);
+            ctx.moveTo(118, y);
+            ctx.lineTo(w - 118, y);
             ctx.stroke();
             ctx.restore();
           }
 
           function columns(left, right, y, bold, color) {
-            text(left, 96, y, 35, bold ? "700" : "400", "left", color);
-            text(right, w - 96, y, 35, bold ? "700" : "400", "right", color);
+            text(left, 128, y, 36, bold ? "700" : "400", "left", color);
+            text(right, w - 128, y, 36, bold ? "700" : "400", "right", color);
           }
 
-          function status(label, value, y, color) {
-            text(label, 96, y, 34, "400", "left", "#171b18");
-            text(value, w - 96, y, 34, "700", "right", color || "#23684f");
+          function status(label, value, labelX, valueX, y, color) {
+            text(label, labelX, y, 30, "400", "left", "#171b18");
+            text(value, valueX, y, 30, "700", "right", color || "#23684f");
+          }
+
+          function traceRow(time, agent, tool, state, y, color) {
+            text(time, 128, y, 28, "700", "left", "#23684f");
+            text(agent, 294, y, 28, "400", "left", "#171b18");
+            text(tool, 900, y, 28, "400", "left", "#4d554f");
+            text(state, w - 128, y, 28, "700", "right", color || "#23684f");
           }
 
           ctx.save();
@@ -353,80 +371,85 @@
           ctx.strokeStyle = "#4ecb8f";
           ctx.lineWidth = 2;
           ctx.setLineDash([9, 13]);
-          ctx.strokeRect(58, 56, w - 116, h - 112);
+          ctx.strokeRect(64, 62, w - 128, h - 124);
           ctx.restore();
 
-          let y = 172;
-          text("SOFT CAT .ai", w / 2, y, 70, "700", "center", "#153322");
-          y += 58;
-          text("AUTONOMOUS OUTPUT TERMINAL", w / 2, y, 27, "700", "center", "#23684f");
-          y += 44;
-          text("smart outputs from trained conversational AI", w / 2, y, 25, "400", "center", "#4d554f");
+          ctx.save();
+          ctx.fillStyle = "#153322";
+          ctx.globalAlpha = 0.24;
+          for (let y = 125; y < h - 110; y += 78) {
+            ctx.beginPath();
+            ctx.arc(72, y, 16, 0, Math.PI * 2);
+            ctx.arc(w - 72, y, 16, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
 
-          y += 82;
-          text("> cat pipeline.log", 96, y, 35, "700", "left", "#23684f");
-          y += 46;
-          text("run: daily-build-2026-04-24", 96, y, 31, "400", "left", "#171b18");
-          y += 42;
-          text("deploy: github-pages / main", 96, y, 31, "400", "left", "#171b18");
-          y += 42;
-          text("operator: mostly not a person", 96, y, 31, "400", "left", "#171b18");
+          let y = 142;
+          text("SOFT CAT .ai", 128, y, 64, "700", "left", "#153322");
+          text("AGENT TRACE TAPE", w - 128, y, 42, "700", "right", "#23684f");
+          y += 48;
+          text("autonomous output terminal / run: daily-build-2026-04-24 / route: /receipt", 128, y, 25, "400", "left", "#4d554f");
+          text("status: deployed", w - 128, y, 25, "700", "right", "#23684f");
 
-          y += 68;
-          dashed(y);
-          y += 64;
+          y += 52;
+          rule(y, "#172019", 6);
 
-          columns("feeds scanned", "57", y, false);
-          y += 50;
-          columns("signals found", "67", y, false);
-          y += 50;
-          columns("items published", "9", y, false);
-          y += 50;
-          columns("human edits", "0", y, false, "#345744");
-          y += 50;
-          columns("api spend", "$0.141", y, false);
-          y += 50;
-          columns("latency tax", "paid", y, false, "#23684f");
-
-          y += 72;
-          dashed(y);
-          y += 64;
-
-          status("AI News Digest", "OK", y, "#23684f");
-          y += 47;
-          status("AI Thoughts", "OK", y, "#23684f");
-          y += 47;
-          status("The Radar", "OK", y, "#23684f");
-          y += 47;
-          status("Horizon", "STAGED", y, "#8b6a12");
-          y += 47;
-          status("Model Data", "OK", y, "#23684f");
-          y += 47;
-          status("Prompt Library", "WED", y, "#4d554f");
-          y += 47;
-          status("Tool of the Week", "SUN", y, "#4d554f");
-
-          y += 70;
-          thick(y);
-          y += 76;
-
-          columns("TOTAL USEFUL OUTPUT", "1 living site", y, true, "#153322");
           y += 54;
-          text("content is the exhaust. the pipeline is the product.", w / 2, y, 25, "400", "center", "#4d554f");
+          text("TIME", 128, y, 24, "700", "left", "#23684f");
+          text("AGENT STEP", 294, y, 24, "700", "left", "#23684f");
+          text("TOOL", 900, y, 24, "700", "left", "#23684f");
+          text("STATE", w - 128, y, 24, "700", "right", "#23684f");
+
+          y += 32;
+          dashed(y);
+          y += 46;
+
+          traceRow("00:00", "wake pipeline", "systemd.timer", "OK", y);
+          y += 45;
+          traceRow("00:04", "read feeds", "rss.scan", "57", y);
+          y += 45;
+          traceRow("00:09", "rank signals", "llm.select", "67", y);
+          y += 45;
+          traceRow("00:14", "reject slop", "critic.filter", "58", y, "#8b6a12");
+          y += 45;
+          traceRow("00:21", "draft outputs", "llm.generate", "9", y);
+          y += 45;
+          traceRow("00:31", "build static site", "astro.build", "559", y);
+          y += 45;
+          traceRow("00:38", "publish artifact", "git.push", "LIVE", y);
+
+          y += 54;
+          dashed(y);
+
+          y += 56;
+          status("AI News Digest", "OK", 128, 706, y, "#23684f");
+          status("AI Thoughts", "OK", 128, 706, y + 40, "#23684f");
+          status("The Radar", "OK", 128, 706, y + 80, "#23684f");
+          status("Horizon", "STAGED", 128, 706, y + 120, "#8b6a12");
+
+          status("Model Data", "OK", 900, w - 128, y, "#23684f");
+          status("Prompt Library", "WED", 900, w - 128, y + 40, "#4d554f");
+          status("Tool of Week", "SUN", 900, w - 128, y + 80, "#4d554f");
+          status("Human edits", "0", 900, w - 128, y + 120, "#23684f");
+
+          y += 178;
+          thick(y);
+          y += 66;
+
+          columns("FINAL OUTPUT", "one living website", y, true, "#153322");
+          y += 46;
+          text("content is the exhaust. the pipeline is the product. no meeting required.", w / 2, y, 25, "400", "center", "#4d554f");
 
           ctx.save();
           ctx.globalAlpha = 0.32;
           ctx.fillStyle = "#153322";
-          for (let i = 0; i < 86; i += 1) {
-            const x = 92 + i * 10;
-            const height = 34 + ((i * 19) % 58);
-            ctx.fillRect(x, 1582, 4, height);
+          for (let i = 0; i < 140; i += 1) {
+            const x = 168 + i * 10;
+            const height = 22 + ((i * 19) % 42);
+            ctx.fillRect(x, 1090, 4, height);
           }
           ctx.restore();
-
-          text("ROUTE: /receipt", w / 2, 1764, 30, "700", "center", "#23684f");
-          text("softcat.ai / pipeline artefact", w / 2, 1814, 32, "400", "center", "#171b18");
-          text("github.com/valorifutures/softcat.ai", w / 2, 1862, 25, "400", "center", "#4d554f");
 
           return texCanvas;
         }
@@ -569,7 +592,7 @@
               uvs[index * 2] = u;
               uvs[index * 2 + 1] = 1 - v;
 
-              if (y === 0) {
+              if (y === 0 && (x === 0 || x === GRID_X || x % 7 === 0)) {
                 pinned[index] = 1;
               }
             }
