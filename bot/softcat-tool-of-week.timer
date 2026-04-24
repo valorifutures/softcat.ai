@@ -2,7 +2,7 @@
 Description=Run SOFT CAT Tool of the Week every Sunday at 10:00
 
 [Timer]
-OnCalendar=Sun 10:00
+OnCalendar=Sun 10:00 Europe/London
 Persistent=true
 
 [Install]

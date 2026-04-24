@@ -2,7 +2,7 @@
 Description=Run SOFT CAT Horizon bot daily at 10:00
 
 [Timer]
-OnCalendar=*-*-* 10:00
+OnCalendar=*-*-* 10:00 Europe/London
 Persistent=true
 
 [Install]

@@ -2,7 +2,7 @@
 Description=Run SOFT CAT Model Data Updater daily at 06:00
 
 [Timer]
-OnCalendar=*-*-* 06:00
+OnCalendar=*-*-* 06:00 Europe/London
 Persistent=true
 
 [Install]

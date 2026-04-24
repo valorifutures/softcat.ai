@@ -2,7 +2,7 @@
 Description=Run SOFT CAT Radar bot daily at 09:30
 
 [Timer]
-OnCalendar=*-*-* 09:30
+OnCalendar=*-*-* 09:30 Europe/London
 Persistent=true
 
 [Install]

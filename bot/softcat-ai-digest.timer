@@ -2,7 +2,7 @@
 Description=Run SOFT CAT AI News Digest daily at 07:00
 
 [Timer]
-OnCalendar=*-*-* 07:00
+OnCalendar=*-*-* 07:00 Europe/London
 Persistent=true
 
 [Install]
