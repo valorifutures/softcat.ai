@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-24",
+  "featured": [
+    {
+      "id": "ph-gpt-55",
+      "name": "GPT-5.5",
+      "tagline": "OpenAI's fully retrained agentic model that autonomously handles complex computer tasks.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "This isn't just another model bump. GPT-5.5 represents a fundamental shift toward autonomous agents that can actually complete multi-step work without constant hand-holding. The 82.7% Terminal-Bench score suggests we're finally getting agents that can operate computers like humans do.",
+      "ph_url": "https://www.marktechpost.com/2026/04/23/openai-releases-gpt-5-5-a-fully-retrained-agentic-model-that-scores-82-7-on-terminal-bench-2-0-and-84-9-on-gdpval/",
+      "maker": "OpenAI",
+      "featured": true,
+      "added_at": "2026-04-24T06:00:00Z"
+    },
+    {
+      "id": "ph-noscroll",
+      "name": "Noscroll",
+      "tagline": "AI bot that does your doomscrolling for you.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Peak absurdity or genius automation? Having an AI consume the endless scroll of social feeds while you stay focused is either the perfect productivity hack or a sign we've completely lost the plot. Either way, it's fascinating.",
+      "ph_url": "https://techcrunch.com/2026/04/23/meet-noscroll-an-ai-bot-that-does-your-doomscrolling-for-you/",
+      "maker": "Noscroll",
+      "featured": true,
+      "added_at": "2026-04-24T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-reasoningbank",
+      "name": "ReasoningBank",
+      "tagline": "Memory framework that distills reasoning strategies from agent successes and failures.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Finally, agents that learn from their mistakes rather than forgetting everything between sessions. Google's approach to building persistent reasoning capabilities could be the breakthrough that makes agents genuinely useful rather than just impressive demos.",
+      "ph_url": "https://www.marktechpost.com/2026/04/23/google-cloud-ai-research-introduces-reasoningbank-a-memory-framework-that-distills-reasoning-strategies-from-agent-successes-and-failures/",
+      "maker": "Google Cloud AI Research",
+      "featured": false,
+      "added_at": "2026-04-24T06:30:00Z"
+    },
+    {
+      "id": "ph-design-md",
+      "name": "DESIGN.md",
+      "tagline": "Open-source prompt format for teaching AI agents brand-consistent design.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Google open-sourcing the prompt architecture behind Stitch is smart positioning. Standardising how we teach agents about design systems could accelerate adoption across the industry.",
+      "ph_url": "https://the-decoder.com/googles-open-source-design-md-gives-ai-agents-a-prompt-ready-blueprint-for-brand-consistent-design/",
+      "maker": "Google",
+      "featured": false,
+      "added_at": "2026-04-24T06:45:00Z"
+    },
+    {
+      "id": "ph-decisionbox",
+      "name": "DecisionBox",
+      "tagline": "Autonomous AI agent for data discovery on your warehouse.",
+      "logo_url": "",
+      "category": "Data Tools",
+      "why_radar": "Data discovery is one of those tedious tasks that's perfect for agent automation. If DecisionBox can reliably map out data warehouse schemas and relationships, it'll save analysts weeks of manual exploration.",
+      "ph_url": "https://github.com/decisionbox-io/decisionbox-platform",
+      "maker": "DecisionBox.io",
+      "featured": false,
+      "added_at": "2026-04-24T07:00:00Z"
+    },
+    {
+      "id": "ph-agentbox",
+      "name": "AgentBox",
+      "tagline": "SDK to run Claude Code, Codex, or OpenCode in any sandbox.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Sandboxing AI code execution is becoming critical infrastructure. AgentBox's multi-provider approach means developers aren't locked into one model's execution environment.",
+      "ph_url": "https://github.com/TwillAI/agentbox-sdk",
+      "maker": "TwillAI",
+      "featured": false,
+      "added_at": "2026-04-24T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "People Do Not Yearn for Automation",
+      "points": 86,
+      "comments": 50,
+      "summary": "A discussion about the growing backlash against AI automation. The piece argues that despite tech industry assumptions, many people actually prefer human control over automated processes.",
+      "hn_url": "https://news.ycombinator.com/item?id=47878737"
+    },
+    {
+      "title": "Show HN: DecisionBox \u2013 Autonomous AI agent runs data discovery on your warehouse",
+      "points": 6,
+      "comments": 0,
+      "summary": "An open-source platform for automated data warehouse exploration. The agent autonomously discovers schemas, relationships, and data patterns without manual configuration.",
+      "hn_url": "https://news.ycombinator.com/item?id=47875097"
+    },
+    {
+      "title": "Show HN: AgentBox \u2013 SDK to Run Claude Code, Codex, or OpenCode in Any Sandbox",
+      "points": 6,
+      "comments": 0,
+      "summary": "A unified SDK for executing AI-generated code safely across different models. Provides consistent sandboxing regardless of whether you're using Claude, Codex, or other coding models.",
+      "hn_url": "https://news.ycombinator.com/item?id=47876788"
+    },
+    {
+      "title": "CubeSandbox: Instant, Concurrent, Secure and Lightweight Sandbox for AI Agents",
+      "points": 4,
+      "comments": 0,
+      "summary": "Tencent Cloud's new sandboxing solution for AI agents. Focuses on providing secure, isolated environments for agent code execution with minimal overhead.",
+      "hn_url": "https://news.ycombinator.com/item?id=47879216"
+    },
+    {
+      "title": "A 95%-accurate AI agent fails 64% of the time on 20-step tasks",
+      "points": 3,
+      "comments": 1,
+      "summary": "Research showing how compound error rates make even highly accurate agents unreliable for complex tasks. Highlights the critical gap between single-step accuracy and multi-step reliability.",
+      "hn_url": "https://news.ycombinator.com/item?id=47876051"
+    }
+  ]
+}

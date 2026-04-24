@@ -3945,5 +3945,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-24-agent-benchmarks-are-just-unit-tests-for-unpredictable-syste.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-24T08:30:48.299754+00:00",
+    "status": "success",
+    "duration_s": 45.6,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0674,
+    "input_tokens": 11181,
+    "output_tokens": 2259,
+    "output_files": [
+      "src/data/radar/2026-04-24.json"
+    ]
   }
 ]
