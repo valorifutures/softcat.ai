@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Receipt Demo | SOFT CAT .ai</title>
+    <meta
+      name="description"
+      content="A standalone interactive 3D paper receipt demo for SOFT CAT .ai."
+    />
+    <style is:inline>
+      :root {
+        color-scheme: light;
+        --page-bg: #e5e5e5;
+        --panel-bg: #ededed;
+        --muted: #8a8a8a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 34rem),
+          var(--page-bg);
+        color: #222;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        overflow-x: hidden;
+      }
+
+      main {
+        width: min(100%, 980px);
+        min-height: 100vh;
+        margin: 0 auto;
+        padding: clamp(18px, 4vw, 42px) 16px 34px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .scene-shell {
+        position: relative;
+        width: min(92vw, 860px);
+        height: min(74vh, 700px);
+        min-height: 520px;
+        border-radius: 30px;
+        background:
+          radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.2) 40%, rgba(224, 224, 224, 0.15) 70%),
+          linear-gradient(145deg, rgba(255, 255, 255, 0.46), rgba(211, 211, 211, 0.18));
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.92),
+          0 24px 70px rgba(0, 0, 0, 0.12);
+        overflow: hidden;
+      }
+
+      .scene-shell::before {
+        content: "";
+        position: absolute;
+        inset: 9%;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(185, 185, 185, 0.2), rgba(185, 185, 185, 0) 68%);
+        filter: blur(10px);
+        pointer-events: none;
+      }
+
+      canvas {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: grab;
+        touch-action: none;
+      }
+
+      canvas.dragging {
+        cursor: grabbing;
+      }
+
+      .instruction {
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: clamp(15px, 2vw, 18px);
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        text-align: center;
+      }
+
+      .grab-indicator {
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        margin: -17px 0 0 -17px;
+        border-radius: 999px;
+        border: 2px solid rgba(45, 45, 45, 0.22);
+        background: rgba(255, 255, 255, 0.28);
+        box-shadow:
+          0 0 0 10px rgba(255, 255, 255, 0.13),
+          0 10px 22px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        transform: scale(0.75);
+        transition: opacity 120ms ease, transform 120ms ease;
+        pointer-events: none;
+        backdrop-filter: blur(3px);
+      }
+
+      .grab-indicator.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      @media (max-width: 640px) {
+        main {
+          justify-content: flex-start;
+          padding-top: 18px;
+        }
+
+        .scene-shell {
+          height: 72vh;
+          min-height: 470px;
+          border-radius: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="scene-shell">
+        <canvas id="scene" aria-label="Interactive 3D paper receipt"></canvas>
+        <div id="grabIndicator" class="grab-indicator" aria-hidden="true"></div>
+      </div>
+      <p class="instruction">Grab and drag the receipt</p>
+    </main>
+
+    <script is:inline>
+      (() => {
+        "use strict";
+
+        const canvas = document.getElementById("scene");
+        const indicator = document.getElementById("grabIndicator");
+        const gl = canvas.getContext("webgl", {
+          antialias: true,
+          alpha: false,
+          depth: true,
+          premultipliedAlpha: false,
+        });
+
+        if (!gl) {
+          const context = canvas.getContext("2d");
+          context.fillStyle = "#e5e5e5";
+          context.fillRect(0, 0, canvas.width, canvas.height);
+          context.fillStyle = "#777";
+          context.font = "16px monospace";
+          context.textAlign = "center";
+          context.fillText("WebGL is required for this demo.", canvas.width / 2, canvas.height / 2);
+          return;
+        }
+
+        const GRID_X = 25;
+        const GRID_Y = 50;
+        const COLS = GRID_X + 1;
+        const ROWS = GRID_Y + 1;
+        const PARTICLES = COLS * ROWS;
+        const PAPER_WIDTH = 3.0;
+        const PAPER_HEIGHT = 6.0;
+        const CAMERA_Z = 9.2;
+        const FOV = 42 * Math.PI / 180;
+        const TAN_HALF_FOV = Math.tan(FOV / 2);
+        const DAMPING = 0.988;
+        const GRAVITY = -0.0068;
+        const CONSTRAINT_ITERATIONS = 8;
+        const MAX_FRAME_STEPS = 3;
+
+        let aspect = 1;
+        let projection = new Float32Array(16);
+        let view = new Float32Array(16);
+        let time = 0;
+        let lastTime = performance.now();
+        let accumulator = 0;
+        let grabbed = -1;
+        let grabbedTarget = [0, 0, 0];
+        let pointerStart = [0, 0];
+        let grabStartZ = 0;
+        let needsMeshUpdate = true;
+
+        const pos = new Float32Array(PARTICLES * 3);
+        const prev = new Float32Array(PARTICLES * 3);
+        const base = new Float32Array(PARTICLES * 3);
+        const normals = new Float32Array(PARTICLES * 3);
+        const uvs = new Float32Array(PARTICLES * 2);
+        const shadowPos = new Float32Array(PARTICLES * 3);
+        const indices = new Uint16Array(GRID_X * GRID_Y * 6);
+        const constraints = [];
+        const pinned = new Uint8Array(PARTICLES);
+
+        function id(x, y) {
+          return y * COLS + x;
+        }
+
+        function setVec3(array, index, x, y, z) {
+          const n = index * 3;
+          array[n] = x;
+          array[n + 1] = y;
+          array[n + 2] = z;
+        }
+
+        function addConstraint(a, b, stiffness) {
+          const ax = base[a * 3];
+          const ay = base[a * 3 + 1];
+          const az = base[a * 3 + 2];
+          const bx = base[b * 3];
+          const by = base[b * 3 + 1];
+          const bz = base[b * 3 + 2];
+          const dx = bx - ax;
+          const dy = by - ay;
+          const dz = bz - az;
+          constraints.push({
+            a,
+            b,
+            rest: Math.hypot(dx, dy, dz),
+            stiffness,
+          });
+        }
+
+        function createReceiptTexture() {
+          const texCanvas = document.createElement("canvas");
+          texCanvas.width = 1024;
+          texCanvas.height = 2048;
+          const ctx = texCanvas.getContext("2d");
+          const w = texCanvas.width;
+          const h = texCanvas.height;
+
+          ctx.fillStyle = "#fbf7eb";
+          ctx.fillRect(0, 0, w, h);
+
+          const imageData = ctx.getImageData(0, 0, w, h);
+          const data = imageData.data;
+          for (let i = 0; i < data.length; i += 4) {
+            const noise = (Math.random() - 0.5) * 9;
+            data[i] = Math.max(0, Math.min(255, data[i] + noise));
+            data[i + 1] = Math.max(0, Math.min(255, data[i + 1] + noise));
+            data[i + 2] = Math.max(0, Math.min(255, data[i + 2] + noise));
+          }
+          ctx.putImageData(imageData, 0, 0);
+
+          ctx.save();
+          ctx.globalAlpha = 0.12;
+          ctx.strokeStyle = "#716b5d";
+          ctx.lineWidth = 1;
+          for (let y = 24; y < h; y += 18) {
+            ctx.beginPath();
+            ctx.moveTo(0, y + Math.sin(y * 0.01) * 2);
+            ctx.lineTo(w, y + Math.cos(y * 0.013) * 2);
+            ctx.stroke();
+          }
+          ctx.restore();
+
+          ctx.fillStyle = "#222";
+          ctx.textBaseline = "alphabetic";
+
+          function text(value, x, y, size, weight, align) {
+            ctx.font = `${weight || "400"} ${size}px "Courier New", ui-monospace, monospace`;
+            ctx.textAlign = align || "left";
+            ctx.fillText(value, x, y);
+          }
+
+          function dashed(y) {
+            ctx.save();
+            ctx.strokeStyle = "#2d2d2d";
+            ctx.lineWidth = 4;
+            ctx.setLineDash([18, 13]);
+            ctx.beginPath();
+            ctx.moveTo(90, y);
+            ctx.lineTo(w - 90, y);
+            ctx.stroke();
+            ctx.restore();
+          }
+
+          function thick(y) {
+            ctx.save();
+            ctx.strokeStyle = "#2d2d2d";
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            ctx.moveTo(90, y);
+            ctx.lineTo(w - 90, y);
+            ctx.stroke();
+            ctx.restore();
+          }
+
+          function columns(left, right, y, bold) {
+            text(left, 96, y, 38, bold ? "700" : "400", "left");
+            text(right, w - 96, y, 38, bold ? "700" : "400", "right");
+          }
+
+          let y = 172;
+          text("SOFT CAT .ai", w / 2, y, 70, "700", "center");
+          y += 66;
+          text("smart output, soft landing", w / 2, y, 32, "400", "center");
+          y += 48;
+          text("anything good", w / 2, y, 30, "400", "center");
+
+          y += 88;
+          text("operator: visitor", 96, y, 36, "400", "left");
+          y += 48;
+          text("mode: self-building", 96, y, 36, "400", "left");
+
+          y += 68;
+          dashed(y);
+          y += 72;
+
+          columns("Vertex Shader", "$4.20", y, false);
+          y += 58;
+          columns("Fragment Shader", "$3.50", y, false);
+          y += 58;
+          columns("Normal Map", "$2.80", y, false);
+          y += 58;
+          columns("UV Unwrap", "$1.50", y, false);
+          y += 58;
+          columns("Cloth Simulation", "$6.00", y, false);
+
+          y += 72;
+          dashed(y);
+          y += 76;
+
+          columns("Subtotal", "$18.00", y, false);
+          y += 58;
+          columns("Tax (8%)", "$1.44", y, false);
+
+          y += 76;
+          thick(y);
+          y += 78;
+
+          columns("TOTAL", "$19.44", y, true);
+
+          ctx.save();
+          ctx.globalAlpha = 0.22;
+          ctx.fillStyle = "#111";
+          for (let i = 0; i < 82; i += 1) {
+            const x = 112 + i * 10;
+            const height = 40 + ((i * 17) % 46);
+            ctx.fillRect(x, 1550, 4, height);
+          }
+          ctx.restore();
+
+          text("Thank you for visiting!", w / 2, 1818, 36, "400", "center");
+          text("github.com/softcatai", w / 2, 1870, 27, "400", "center");
+
+          return texCanvas;
+        }
+
+        function mat4Identity(out) {
+          out[0] = 1; out[1] = 0; out[2] = 0; out[3] = 0;
+          out[4] = 0; out[5] = 1; out[6] = 0; out[7] = 0;
+          out[8] = 0; out[9] = 0; out[10] = 1; out[11] = 0;
+          out[12] = 0; out[13] = 0; out[14] = 0; out[15] = 1;
+        }
+
+        function mat4Perspective(out, fovy, currentAspect, near, far) {
+          const f = 1 / Math.tan(fovy / 2);
+          out[0] = f / currentAspect;
+          out[1] = 0;
+          out[2] = 0;
+          out[3] = 0;
+          out[4] = 0;
+          out[5] = f;
+          out[6] = 0;
+          out[7] = 0;
+          out[8] = 0;
+          out[9] = 0;
+          out[10] = (far + near) / (near - far);
+          out[11] = -1;
+          out[12] = 0;
+          out[13] = 0;
+          out[14] = (2 * far * near) / (near - far);
+          out[15] = 0;
+        }
+
+        function createShader(type, source) {
+          const shader = gl.createShader(type);
+          gl.shaderSource(shader, source);
+          gl.compileShader(shader);
+          if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+            throw new Error(gl.getShaderInfoLog(shader) || "Shader compile failed");
+          }
+          return shader;
+        }
+
+        function createProgram(vertexSource, fragmentSource) {
+          const program = gl.createProgram();
+          gl.attachShader(program, createShader(gl.VERTEX_SHADER, vertexSource));
+          gl.attachShader(program, createShader(gl.FRAGMENT_SHADER, fragmentSource));
+          gl.linkProgram(program);
+          if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+            throw new Error(gl.getProgramInfoLog(program) || "Program link failed");
+          }
+          return program;
+        }
+
+        const vertexSource = `
+          attribute vec3 aPosition;
+          attribute vec3 aNormal;
+          attribute vec2 aUv;
+
+          uniform mat4 uProjection;
+          uniform mat4 uView;
+
+          varying vec2 vUv;
+          varying vec3 vNormal;
+          varying vec3 vPosition;
+
+          void main() {
+            vUv = aUv;
+            vNormal = aNormal;
+            vPosition = aPosition;
+            gl_Position = uProjection * uView * vec4(aPosition, 1.0);
+          }
+        `;
+
+        const fragmentSource = `
+          precision mediump float;
+
+          uniform sampler2D uTexture;
+          uniform vec3 uLightDir;
+          uniform int uShadow;
+
+          varying vec2 vUv;
+          varying vec3 vNormal;
+          varying vec3 vPosition;
+
+          void main() {
+            if (uShadow == 1) {
+              gl_FragColor = vec4(0.13, 0.13, 0.13, 0.13);
+              return;
+            }
+
+            vec4 ink = texture2D(uTexture, vUv);
+            vec3 n = normalize(vNormal);
+            if (!gl_FrontFacing) {
+              n = -n;
+            }
+
+            float diffuse = max(dot(n, normalize(uLightDir)), 0.0);
+            float wrap = max(dot(n, vec3(-0.4, 0.25, 0.88)), 0.0);
+            float crease = 1.0 - clamp(abs(n.z), 0.0, 1.0);
+            float depthTint = 1.0 - clamp((-vPosition.z - 0.12) * 0.1, 0.0, 0.11);
+            float shade = (0.58 + diffuse * 0.34 + wrap * 0.09 - crease * 0.1) * depthTint;
+
+            vec3 color = ink.rgb * shade;
+            color += vec3(0.025) * max(vPosition.z, 0.0);
+            gl_FragColor = vec4(color, 1.0);
+          }
+        `;
+
+        const program = createProgram(vertexSource, fragmentSource);
+        const loc = {
+          position: gl.getAttribLocation(program, "aPosition"),
+          normal: gl.getAttribLocation(program, "aNormal"),
+          uv: gl.getAttribLocation(program, "aUv"),
+          projection: gl.getUniformLocation(program, "uProjection"),
+          view: gl.getUniformLocation(program, "uView"),
+          texture: gl.getUniformLocation(program, "uTexture"),
+          lightDir: gl.getUniformLocation(program, "uLightDir"),
+          shadow: gl.getUniformLocation(program, "uShadow"),
+        };
+
+        const positionBuffer = gl.createBuffer();
+        const normalBuffer = gl.createBuffer();
+        const uvBuffer = gl.createBuffer();
+        const shadowBuffer = gl.createBuffer();
+        const indexBuffer = gl.createBuffer();
+
+        function initializeMesh() {
+          for (let y = 0; y < ROWS; y += 1) {
+            for (let x = 0; x < COLS; x += 1) {
+              const index = id(x, y);
+              const u = x / GRID_X;
+              const v = y / GRID_Y;
+              const px = (u - 0.5) * PAPER_WIDTH;
+              const py = PAPER_HEIGHT * 0.5 - v * PAPER_HEIGHT;
+              const pz = Math.sin(u * Math.PI * 2.0) * Math.sin(v * Math.PI) * 0.035;
+
+              setVec3(pos, index, px, py, pz);
+              setVec3(prev, index, px, py, pz);
+              setVec3(base, index, px, py, pz);
+
+              uvs[index * 2] = u;
+              uvs[index * 2 + 1] = 1 - v;
+
+              if (y === 0) {
+                pinned[index] = 1;
+              }
+            }
+          }
+
+          let n = 0;
+          for (let y = 0; y < GRID_Y; y += 1) {
+            for (let x = 0; x < GRID_X; x += 1) {
+              const a = id(x, y);
+              const b = id(x + 1, y);
+              const c = id(x, y + 1);
+              const d = id(x + 1, y + 1);
+              indices[n++] = a;
+              indices[n++] = c;
+              indices[n++] = b;
+              indices[n++] = b;
+              indices[n++] = c;
+              indices[n++] = d;
+            }
+          }
+
+          for (let y = 0; y < ROWS; y += 1) {
+            for (let x = 0; x < COLS; x += 1) {
+              if (x < GRID_X) addConstraint(id(x, y), id(x + 1, y), 1.0);
+              if (y < GRID_Y) addConstraint(id(x, y), id(x, y + 1), 1.0);
+              if (x < GRID_X && y < GRID_Y) {
+                addConstraint(id(x, y), id(x + 1, y + 1), 0.72);
+                addConstraint(id(x + 1, y), id(x, y + 1), 0.72);
+              }
+              if (x < GRID_X - 1) addConstraint(id(x, y), id(x + 2, y), 0.34);
+              if (y < GRID_Y - 1) addConstraint(id(x, y), id(x, y + 2), 0.34);
+            }
+          }
+
+          gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+          gl.bufferData(gl.ARRAY_BUFFER, pos.byteLength, gl.DYNAMIC_DRAW);
+
+          gl.bindBuffer(gl.ARRAY_BUFFER, shadowBuffer);
+          gl.bufferData(gl.ARRAY_BUFFER, shadowPos.byteLength, gl.DYNAMIC_DRAW);
+
+          gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
+          gl.bufferData(gl.ARRAY_BUFFER, normals.byteLength, gl.DYNAMIC_DRAW);
+
+          gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
+          gl.bufferData(gl.ARRAY_BUFFER, uvs, gl.STATIC_DRAW);
+
+          gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+          gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
+        }
+
+        function installTexture() {
+          const texture = gl.createTexture();
+          gl.activeTexture(gl.TEXTURE0);
+          gl.bindTexture(gl.TEXTURE_2D, texture);
+          gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+          gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, createReceiptTexture());
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        }
+
+        function resize() {
+          const rect = canvas.getBoundingClientRect();
+          const dpr = Math.min(2, window.devicePixelRatio || 1);
+          const width = Math.max(1, Math.floor(rect.width * dpr));
+          const height = Math.max(1, Math.floor(rect.height * dpr));
+
+          if (canvas.width !== width || canvas.height !== height) {
+            canvas.width = width;
+            canvas.height = height;
+          }
+
+          aspect = width / height;
+          gl.viewport(0, 0, width, height);
+          mat4Perspective(projection, FOV, aspect, 0.1, 80);
+          mat4Identity(view);
+          view[14] = -CAMERA_Z;
+        }
+
+        function fixed(index) {
+          return pinned[index] || index === grabbed;
+        }
+
+        function solveConstraints() {
+          for (let iter = 0; iter < CONSTRAINT_ITERATIONS; iter += 1) {
+            for (let i = 0; i < constraints.length; i += 1) {
+              const c = constraints[i];
+              const a = c.a * 3;
+              const b = c.b * 3;
+              const ax = pos[a];
+              const ay = pos[a + 1];
+              const az = pos[a + 2];
+              const bx = pos[b];
+              const by = pos[b + 1];
+              const bz = pos[b + 2];
+              let dx = bx - ax;
+              let dy = by - ay;
+              let dz = bz - az;
+              const dist = Math.hypot(dx, dy, dz) || 0.0001;
+              const diff = (dist - c.rest) / dist;
+              const lockedA = fixed(c.a);
+              const lockedB = fixed(c.b);
+
+              if (lockedA && lockedB) continue;
+
+              const scale = c.stiffness * diff * (lockedA || lockedB ? 1 : 0.5);
+              dx *= scale;
+              dy *= scale;
+              dz *= scale;
+
+              if (!lockedA) {
+                pos[a] += dx;
+                pos[a + 1] += dy;
+                pos[a + 2] += dz;
+              }
+              if (!lockedB) {
+                pos[b] -= dx;
+                pos[b + 1] -= dy;
+                pos[b + 2] -= dz;
+              }
+            }
+
+            if (grabbed >= 0) {
+              setVec3(pos, grabbed, grabbedTarget[0], grabbedTarget[1], grabbedTarget[2]);
+            }
+          }
+        }
+
+        function integrate() {
+          time += 1 / 60;
+
+          for (let i = 0; i < PARTICLES; i += 1) {
+            const p = i * 3;
+
+            if (pinned[i]) {
+              pos[p] = base[p];
+              pos[p + 1] = base[p + 1];
+              pos[p + 2] = base[p + 2] + Math.sin(time * 0.7 + i * 0.05) * 0.004;
+              prev[p] = pos[p];
+              prev[p + 1] = pos[p + 1];
+              prev[p + 2] = pos[p + 2];
+              continue;
+            }
+
+            if (i === grabbed) {
+              continue;
+            }
+
+            const x = pos[p];
+            const y = pos[p + 1];
+            const z = pos[p + 2];
+            const vx = (x - prev[p]) * DAMPING;
+            const vy = (y - prev[p + 1]) * DAMPING;
+            const vz = (z - prev[p + 2]) * DAMPING;
+            const flutter = Math.sin(time * 1.35 + i * 0.017) * 0.00032;
+
+            prev[p] = x;
+            prev[p + 1] = y;
+            prev[p + 2] = z;
+
+            pos[p] = x + vx;
+            pos[p + 1] = y + vy + GRAVITY;
+            pos[p + 2] = z + vz + flutter;
+          }
+
+          if (grabbed >= 0) {
+            setVec3(pos, grabbed, grabbedTarget[0], grabbedTarget[1], grabbedTarget[2]);
+          }
+
+          solveConstraints();
+          needsMeshUpdate = true;
+        }
+
+        function updateNormalsAndShadow() {
+          normals.fill(0);
+
+          for (let i = 0; i < indices.length; i += 3) {
+            const ia = indices[i] * 3;
+            const ib = indices[i + 1] * 3;
+            const ic = indices[i + 2] * 3;
+
+            const ax = pos[ia];
+            const ay = pos[ia + 1];
+            const az = pos[ia + 2];
+            const bx = pos[ib];
+            const by = pos[ib + 1];
+            const bz = pos[ib + 2];
+            const cx = pos[ic];
+            const cy = pos[ic + 1];
+            const cz = pos[ic + 2];
+
+            const abx = bx - ax;
+            const aby = by - ay;
+            const abz = bz - az;
+            const acx = cx - ax;
+            const acy = cy - ay;
+            const acz = cz - az;
+
+            const nx = aby * acz - abz * acy;
+            const ny = abz * acx - abx * acz;
+            const nz = abx * acy - aby * acx;
+
+            normals[ia] += nx;
+            normals[ia + 1] += ny;
+            normals[ia + 2] += nz;
+            normals[ib] += nx;
+            normals[ib + 1] += ny;
+            normals[ib + 2] += nz;
+            normals[ic] += nx;
+            normals[ic + 1] += ny;
+            normals[ic + 2] += nz;
+          }
+
+          for (let i = 0; i < PARTICLES; i += 1) {
+            const p = i * 3;
+            const nx = normals[p];
+            const ny = normals[p + 1];
+            const nz = normals[p + 2];
+            const inv = 1 / (Math.hypot(nx, ny, nz) || 1);
+            normals[p] = nx * inv;
+            normals[p + 1] = ny * inv;
+            normals[p + 2] = nz * inv;
+
+            const z = pos[p + 2];
+            shadowPos[p] = pos[p] + 0.22 + z * 0.12;
+            shadowPos[p + 1] = pos[p + 1] - 0.26 - Math.max(0, z) * 0.12;
+            shadowPos[p + 2] = -0.92;
+          }
+
+          gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+          gl.bufferSubData(gl.ARRAY_BUFFER, 0, pos);
+
+          gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
+          gl.bufferSubData(gl.ARRAY_BUFFER, 0, normals);
+
+          gl.bindBuffer(gl.ARRAY_BUFFER, shadowBuffer);
+          gl.bufferSubData(gl.ARRAY_BUFFER, 0, shadowPos);
+
+          needsMeshUpdate = false;
+        }
+
+        function bindCommonAttributes(positionSource) {
+          gl.bindBuffer(gl.ARRAY_BUFFER, positionSource);
+          gl.enableVertexAttribArray(loc.position);
+          gl.vertexAttribPointer(loc.position, 3, gl.FLOAT, false, 0, 0);
+
+          gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
+          gl.enableVertexAttribArray(loc.normal);
+          gl.vertexAttribPointer(loc.normal, 3, gl.FLOAT, false, 0, 0);
+
+          gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
+          gl.enableVertexAttribArray(loc.uv);
+          gl.vertexAttribPointer(loc.uv, 2, gl.FLOAT, false, 0, 0);
+
+          gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+        }
+
+        function draw() {
+          if (needsMeshUpdate) {
+            updateNormalsAndShadow();
+          }
+
+          resize();
+          gl.clearColor(0.898, 0.898, 0.898, 1);
+          gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+          gl.useProgram(program);
+          gl.uniformMatrix4fv(loc.projection, false, projection);
+          gl.uniformMatrix4fv(loc.view, false, view);
+          gl.uniform3f(loc.lightDir, -0.42, 0.68, 0.72);
+          gl.uniform1i(loc.texture, 0);
+
+          gl.disable(gl.CULL_FACE);
+          gl.enable(gl.DEPTH_TEST);
+          gl.depthFunc(gl.LEQUAL);
+          gl.enable(gl.BLEND);
+          gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+          gl.depthMask(false);
+          gl.uniform1i(loc.shadow, 1);
+          bindCommonAttributes(shadowBuffer);
+          gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+
+          gl.depthMask(true);
+          gl.uniform1i(loc.shadow, 0);
+          bindCommonAttributes(positionBuffer);
+          gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+
+          updateGrabIndicator();
+        }
+
+        function projectParticle(index) {
+          const p = index * 3;
+          const depth = CAMERA_Z - pos[p + 2];
+          const ndcX = pos[p] / (aspect * TAN_HALF_FOV * depth);
+          const ndcY = pos[p + 1] / (TAN_HALF_FOV * depth);
+          return [
+            (ndcX * 0.5 + 0.5) * canvas.clientWidth,
+            (-ndcY * 0.5 + 0.5) * canvas.clientHeight,
+            depth,
+          ];
+        }
+
+        function pointerToWorld(event, planeZ) {
+          const rect = canvas.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+          const ndcX = (x / rect.width) * 2 - 1;
+          const ndcY = 1 - (y / rect.height) * 2;
+          const depth = CAMERA_Z - planeZ;
+          return [
+            ndcX * aspect * TAN_HALF_FOV * depth,
+            ndcY * TAN_HALF_FOV * depth,
+            planeZ,
+          ];
+        }
+
+        function findClosestParticle(event) {
+          const rect = canvas.getBoundingClientRect();
+          const px = event.clientX - rect.left;
+          const py = event.clientY - rect.top;
+          let best = -1;
+          let bestDistance = Infinity;
+
+          for (let y = 1; y < ROWS; y += 1) {
+            for (let x = 0; x < COLS; x += 1) {
+              const index = id(x, y);
+              const projected = projectParticle(index);
+              const dx = projected[0] - px;
+              const dy = projected[1] - py;
+              const distance = dx * dx + dy * dy;
+
+              if (distance < bestDistance) {
+                bestDistance = distance;
+                best = index;
+              }
+            }
+          }
+
+          return bestDistance < 95 * 95 ? best : -1;
+        }
+
+        function updateGrabIndicator() {
+          if (grabbed < 0) {
+            indicator.classList.remove("visible");
+            return;
+          }
+
+          const projected = projectParticle(grabbed);
+          indicator.style.left = `${projected[0]}px`;
+          indicator.style.top = `${projected[1]}px`;
+          indicator.classList.add("visible");
+        }
+
+        function setGrabTarget(event) {
+          const dx = event.clientX - pointerStart[0];
+          const dy = event.clientY - pointerStart[1];
+          const lift = Math.min(1.15, Math.hypot(dx, dy) * 0.0024);
+          const world = pointerToWorld(event, grabStartZ + lift);
+          grabbedTarget[0] = world[0];
+          grabbedTarget[1] = world[1];
+          grabbedTarget[2] = world[2];
+
+          if (grabbed >= 0) {
+            const p = grabbed * 3;
+            prev[p] = pos[p];
+            prev[p + 1] = pos[p + 1];
+            prev[p + 2] = pos[p + 2];
+            pos[p] = grabbedTarget[0];
+            pos[p + 1] = grabbedTarget[1];
+            pos[p + 2] = grabbedTarget[2];
+            needsMeshUpdate = true;
+          }
+        }
+
+        function onPointerDown(event) {
+          event.preventDefault();
+          resize();
+          const index = findClosestParticle(event);
+          if (index < 0) return;
+
+          grabbed = index;
+          pointerStart = [event.clientX, event.clientY];
+          grabStartZ = pos[index * 3 + 2];
+          setGrabTarget(event);
+          canvas.classList.add("dragging");
+          canvas.setPointerCapture(event.pointerId);
+        }
+
+        function onPointerMove(event) {
+          if (grabbed < 0) return;
+          event.preventDefault();
+          setGrabTarget(event);
+        }
+
+        function releasePointer(event) {
+          if (grabbed < 0) return;
+          grabbed = -1;
+          canvas.classList.remove("dragging");
+          indicator.classList.remove("visible");
+          try {
+            canvas.releasePointerCapture(event.pointerId);
+          } catch (_error) {
+            // Capture may already be released by the browser.
+          }
+        }
+
+        function animate(now) {
+          const elapsed = Math.min(48, now - lastTime);
+          lastTime = now;
+          accumulator += elapsed;
+
+          let steps = 0;
+          while (accumulator >= 16.666 && steps < MAX_FRAME_STEPS) {
+            integrate();
+            accumulator -= 16.666;
+            steps += 1;
+          }
+
+          draw();
+          requestAnimationFrame(animate);
+        }
+
+        window.addEventListener("resize", resize);
+        canvas.addEventListener("pointerdown", onPointerDown);
+        canvas.addEventListener("pointermove", onPointerMove);
+        canvas.addEventListener("pointerup", releasePointer);
+        canvas.addEventListener("pointercancel", releasePointer);
+        canvas.addEventListener("lostpointercapture", () => {
+          grabbed = -1;
+          canvas.classList.remove("dragging");
+        });
+
+        initializeMesh();
+        installTexture();
+        resize();
+        updateNormalsAndShadow();
+        requestAnimationFrame(animate);
+      })();
+    </script>
+  </body>
+</html>
