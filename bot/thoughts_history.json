@@ -294,6 +294,11 @@
       "date": "2026-04-23",
       "file": "2026-04-23-agent-deployment-just-solved-the-distribution-problem-we-pre.md",
       "title": "Agent deployment just solved the distribution problem we pretended didn"
+    },
+    {
+      "date": "2026-04-24",
+      "file": "2026-04-24-agent-benchmarks-are-just-unit-tests-for-unpredictable-syste.md",
+      "title": "Agent benchmarks are just unit tests for unpredictable systems"
     }
   ]
 }
