@@ -4024,5 +4024,22 @@
     "output_files": [
       "src/content/news-and-updates/2026-04-25-ai-digest.md"
     ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-04-25T07:00:29.532480+00:00",
+    "status": "success",
+    "duration_s": 27.1,
+    "feeds_scanned": 5,
+    "items_found": 47,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0223,
+    "input_tokens": 5557,
+    "output_tokens": 378,
+    "output_files": [
+      "src/content/thoughts/2026-04-25-compute-deals-just-became-the-new-talent-poaching.md"
+    ]
   }
 ]
