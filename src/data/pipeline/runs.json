@@ -4041,5 +4041,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-25-compute-deals-just-became-the-new-talent-poaching.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-25T08:30:48.779523+00:00",
+    "status": "success",
+    "duration_s": 48.0,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0706,
+    "input_tokens": 11401,
+    "output_tokens": 2427,
+    "output_files": [
+      "src/data/radar/2026-04-25.json"
+    ]
   }
 ]

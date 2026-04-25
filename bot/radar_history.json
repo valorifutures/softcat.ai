@@ -599,6 +599,18 @@
         "DecisionBox",
         "AgentBox"
       ]
+    },
+    {
+      "date": "2026-04-25",
+      "file": "2026-04-25.json",
+      "products": [
+        "Vision Banana",
+        "GitNexus",
+        "DeepSeek-V4",
+        "Browser Harness",
+        "AI Security Governance Framework",
+        "Stash"
+      ]
     }
   ]
 }
