@@ -4158,5 +4158,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-26-massive-datasets-just-killed-the-visualisation-industry.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-26T08:30:44.397583+00:00",
+    "status": "success",
+    "duration_s": 37.7,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 63,
+    "items_published": 4,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.06,
+    "input_tokens": 11318,
+    "output_tokens": 1738,
+    "output_files": [
+      "src/data/radar/2026-04-26.json"
+    ]
   }
 ]

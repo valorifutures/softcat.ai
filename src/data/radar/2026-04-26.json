@@ -1,0 +1,78 @@
+{
+  "date": "2026-04-26",
+  "featured": [
+    {
+      "id": "ph-grok-voice-think-fast",
+      "name": "grok-voice-think-fast-1.0",
+      "tagline": "xAI's flagship voice model topping \u03c4-voice Bench at 67.3%.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "xAI just leapfrogged Gemini and GPT Realtime on voice benchmarks with proper reasoning integration. The \u03c4-voice bench numbers show this isn't just another voice wrapper, it's actually thinking through complex retail and telecom workflows. If the API pricing is competitive, this could shake up the voice AI landscape significantly.",
+      "ph_url": "https://www.marktechpost.com/2026/04/25/xai-launches-grok-voice-think-fast-1-0-topping-%cf%84-voice-bench-at-67-3-outperforming-gemini-gpt-realtime-and-more/",
+      "maker": "xAI",
+      "featured": true,
+      "added_at": "2026-04-26T06:00:00Z"
+    },
+    {
+      "id": "ph-pageindex",
+      "name": "PageIndex",
+      "tagline": "RAG system that retrieves by reasoning instead of vector similarity.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Finally, someone tackled the fundamental flaw in most RAG pipelines. Vector similarity is a terrible proxy for relevance in complex documents. This reasoning-based retrieval approach could actually make RAG work reliably for professional use cases where precision matters more than speed.",
+      "ph_url": "https://www.marktechpost.com/2026/04/25/rag-without-vectors-how-pageindex-retrieves-by-reasoning/",
+      "maker": "Unknown",
+      "featured": true,
+      "added_at": "2026-04-26T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-kvcached",
+      "name": "kvcached",
+      "tagline": "Dynamic KV-cache implementation for elastic GPU memory in LLM serving.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Proper memory management for multi-model GPU sharing has been a massive pain point for anyone running LLMs at scale. Dynamic KV allocation could dramatically improve GPU utilisation for bursty workloads. The vLLM integration makes this immediately practical.",
+      "ph_url": "https://www.marktechpost.com/2026/04/25/a-coding-implementation-on-kvcached-for-elastic-kv-cache-memory-bursty-llm-serving-and-multi-model-gpu-sharing/",
+      "maker": "Unknown",
+      "featured": false,
+      "added_at": "2026-04-26T06:30:00Z"
+    },
+    {
+      "id": "ph-wuphf",
+      "name": "WUPHF",
+      "tagline": "A Karpathy-style LLM wiki your agents maintain with Markdown and Git.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Agent-maintained documentation that stays current and uses Git for versioning is genuinely clever. Most internal wikis rot because humans forget to update them. Having agents that understand your codebase maintain the docs could solve a real problem.",
+      "ph_url": "https://github.com/nex-crm/wuphf",
+      "maker": "nex-crm",
+      "featured": false,
+      "added_at": "2026-04-26T06:45:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: A Karpathy-style LLM wiki your agents maintain (Markdown and Git)",
+      "points": 230,
+      "comments": 108,
+      "summary": "Agent-maintained documentation system that uses Git versioning and stays current automatically. Could solve the perennial problem of outdated internal wikis by having AI agents understand and update documentation continuously.",
+      "hn_url": "https://news.ycombinator.com/item?id=47899844"
+    },
+    {
+      "title": "Agents Aren't Coworkers, Embed Them in Your Software",
+      "points": 45,
+      "comments": 19,
+      "summary": "Argues against the popular narrative of AI agents as autonomous workers. Instead proposes embedding them deeply in software systems where they can operate more reliably and effectively.",
+      "hn_url": "https://news.ycombinator.com/item?id=47905837"
+    },
+    {
+      "title": "AI agents that argue with each other to improve decisions",
+      "points": 28,
+      "comments": 16,
+      "summary": "HATS framework where multiple AI agents debate and challenge each other's reasoning to reach better decisions. Multi-agent argumentation could improve reasoning quality in complex scenarios.",
+      "hn_url": "https://news.ycombinator.com/item?id=47903471"
+    }
+  ]
+}

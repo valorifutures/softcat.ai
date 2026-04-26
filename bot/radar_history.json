@@ -611,6 +611,16 @@
         "AI Security Governance Framework",
         "Stash"
       ]
+    },
+    {
+      "date": "2026-04-26",
+      "file": "2026-04-26.json",
+      "products": [
+        "grok-voice-think-fast-1.0",
+        "PageIndex",
+        "kvcached",
+        "WUPHF"
+      ]
     }
   ]
 }
