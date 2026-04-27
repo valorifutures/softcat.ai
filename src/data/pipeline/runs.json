@@ -4192,5 +4192,67 @@
     "output_files": [
       "src/content/tools/2026-04-26-gitnexus.md"
     ]
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-04-26T09:00:21.519551+00:00",
+    "status": "success",
+    "duration_s": 19.8,
+    "feeds_scanned": 0,
+    "items_found": 53,
+    "items_rejected": 0,
+    "items_published": 12,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0216,
+    "input_tokens": 2595,
+    "output_tokens": 920,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-27T04:00:01.668825+00:00",
+    "status": "success",
+    "duration_s": 0.2,
+    "feeds_scanned": 0,
+    "items_found": 358,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-04-27T05:00:06.574480+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 360,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-04-27T06:00:37.032016+00:00",
+    "status": "success",
+    "duration_s": 34.7,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0331,
+    "input_tokens": 7793,
+    "output_tokens": 646,
+    "output_files": [
+      "src/content/news-and-updates/2026-04-27-ai-digest.md"
+    ]
   }
 ]
