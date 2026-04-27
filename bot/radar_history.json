@@ -621,6 +621,18 @@
         "kvcached",
         "WUPHF"
       ]
+    },
+    {
+      "date": "2026-04-27",
+      "file": "2026-04-27.json",
+      "products": [
+        "OpenKB",
+        "BudouX",
+        "YourMemory",
+        "AgentSwarms",
+        "8v",
+        "Polynya"
+      ]
     }
   ]
 }

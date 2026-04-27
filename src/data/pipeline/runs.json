@@ -4271,5 +4271,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-27-ai-agents-just-turned-economics-into-a-debugging-problem.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-27T08:30:49.954885+00:00",
+    "status": "success",
+    "duration_s": 43.3,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0643,
+    "input_tokens": 11133,
+    "output_tokens": 2063,
+    "output_files": [
+      "src/data/radar/2026-04-27.json"
+    ]
   }
 ]
