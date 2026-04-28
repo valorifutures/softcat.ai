@@ -4369,5 +4369,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-28-time-aware-models-just-made-everything-else-obsolete.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-28T08:30:53.679243+00:00",
+    "status": "success",
+    "duration_s": 47.0,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 63,
+    "items_published": 4,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0632,
+    "input_tokens": 11092,
+    "output_tokens": 1992,
+    "output_files": [
+      "src/data/radar/2026-04-28.json"
+    ]
   }
 ]
