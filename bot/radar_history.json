@@ -643,6 +643,18 @@
         "Sapiens2",
         "Gnosis"
       ]
+    },
+    {
+      "date": "2026-04-29",
+      "file": "2026-04-29.json",
+      "products": [
+        "NeuralSet",
+        "Laguna XS.2 and M.1",
+        "smol-audio",
+        "Privacy Filter",
+        "VoiceGoat",
+        "Authsome"
+      ]
     }
   ]
 }
