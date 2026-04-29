@@ -131,6 +131,18 @@
       "file": "audio-model-fine-tuning-pipeline-validator.md",
       "title": "Audio Model Fine-tuning Pipeline Validator",
       "category": "testing"
+    },
+    {
+      "date": "2026-04-29",
+      "file": "ai-model-privacy-impact-assessor.md",
+      "title": "AI Model Privacy Impact Assessor",
+      "category": "security"
+    },
+    {
+      "date": "2026-04-29",
+      "file": "neuro-ai-data-pipeline-validator.md",
+      "title": "Neuro-AI Data Pipeline Validator",
+      "category": "testing"
     }
   ]
 }
