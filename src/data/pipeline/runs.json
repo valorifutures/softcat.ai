@@ -4435,5 +4435,22 @@
     "output_files": [
       "src/data/models.json"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-04-29T06:00:38.084116+00:00",
+    "status": "success",
+    "duration_s": 36.0,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0327,
+    "input_tokens": 7315,
+    "output_tokens": 715,
+    "output_files": [
+      "src/content/news-and-updates/2026-04-29-ai-digest.md"
+    ]
   }
 ]
