@@ -655,6 +655,17 @@
         "VoiceGoat",
         "Authsome"
       ]
+    },
+    {
+      "date": "2026-04-30",
+      "file": "2026-04-30.json",
+      "products": [
+        "Granite Speech 4.1",
+        "Cursor TypeScript SDK",
+        "FlashQLA",
+        "AgentPort",
+        "AgentRQ"
+      ]
     }
   ]
 }

@@ -4599,5 +4599,22 @@
     "output_files": [
       "src/content/thoughts/2026-04-30-code-assistants-just-turned-programming-into-pair-programmin.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-04-30T08:30:49.151556+00:00",
+    "status": "success",
+    "duration_s": 42.5,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0662,
+    "input_tokens": 11390,
+    "output_tokens": 2137,
+    "output_files": [
+      "src/data/radar/2026-04-30.json"
+    ]
   }
 ]

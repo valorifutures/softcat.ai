@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-30",
+  "featured": [
+    {
+      "id": "ph-granite-speech-4-1",
+      "name": "Granite Speech 4.1",
+      "tagline": "Enterprise-ready 2B parameter speech models with autoregressive ASR and non-autoregressive editing.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "IBM's compact speech models are actually usable at scale, unlike the bloated alternatives everyone else ships. The dual approach with both autoregressive and non-autoregressive variants shows they understand deployment constraints. Enterprise teams need this level of pragmatism in their speech stacks.",
+      "ph_url": "https://www.marktechpost.com/2026/04/30/ibm-releases-two-granite-speech-4-1-2b-models-autoregressive-asr-with-translation-and-non-autoregressive-editing-for-fast-inference/",
+      "maker": "IBM",
+      "featured": true,
+      "added_at": "2026-04-30T06:00:00Z"
+    },
+    {
+      "id": "ph-cursor-typescript-sdk",
+      "name": "Cursor TypeScript SDK",
+      "tagline": "Build programmatic coding agents with sandboxed cloud VMs, subagents, and token-based pricing.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Cursor finally gives developers proper tools to build coding agents instead of just using them. The sandboxed VM approach tackles the security problem that's been holding back agent deployment. This could be the missing piece for teams wanting to go beyond ChatGPT wrappers.",
+      "ph_url": "https://www.marktechpost.com/2026/04/29/cursor-introduces-a-typescript-sdk-for-building-programmatic-coding-agents-with-sandboxed-cloud-vms-subagents-hooks-and-token-based-pricing/",
+      "maker": "Cursor",
+      "featured": true,
+      "added_at": "2026-04-30T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-flashqla",
+      "name": "FlashQLA",
+      "tagline": "High-performance linear attention kernel library achieving 3x speedup on NVIDIA Hopper GPUs.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "The Qwen team keeps shipping infrastructure that actually matters for production deployments. Linear attention kernels are unglamorous but essential for making transformer inference economically viable. This is the kind of optimisation work that separates serious AI infrastructure from research toys.",
+      "ph_url": "https://www.marktechpost.com/2026/04/29/qwen-team-releases-flashqla-a-high-performance-linear-attention-kernel-library-that-achieves-up-to-3x-speedup-on-nvidia-hopper-gpus/",
+      "maker": "Qwen Team",
+      "featured": false,
+      "added_at": "2026-04-30T06:30:00Z"
+    },
+    {
+      "id": "ph-agentport",
+      "name": "AgentPort",
+      "tagline": "Open-source security gateway for AI agents.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Finally someone is building proper security tooling for agent deployments instead of just hoping for the best. The open-source approach means teams can actually audit what's happening to their agent traffic. This should have existed two years ago but better late than never.",
+      "ph_url": "https://agentport.sh/",
+      "maker": "AgentPort",
+      "featured": false,
+      "added_at": "2026-04-30T06:45:00Z"
+    },
+    {
+      "id": "ph-agentrq",
+      "name": "AgentRQ",
+      "tagline": "Task manager for AI agents with MCP support.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Agent orchestration is still a mess and tools like this are desperately needed. MCP integration shows they understand the ecosystem that's actually emerging. Simple task management might be the killer app that makes agent deployments manageable for real teams.",
+      "ph_url": "https://github.com/agentrq/agentrq",
+      "maker": "AgentRQ",
+      "featured": false,
+      "added_at": "2026-04-30T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Tell HN: VS Code v1.117.0 automatically adds GitHub Copilot as your co author",
+      "points": 20,
+      "comments": 10,
+      "summary": "Microsoft's latest VS Code update automatically credits GitHub Copilot as a co-author on commits. This has sparked debate about AI attribution and who owns code generated with assistance.",
+      "hn_url": "https://news.ycombinator.com/item?id=47958353"
+    },
+    {
+      "title": "Show HN: Agent that refuses to run commands without human approval",
+      "points": 9,
+      "comments": 1,
+      "summary": "A safety-focused shell agent that requires explicit human approval before executing commands. Built as a response to recent incidents where AI agents performed destructive actions.",
+      "hn_url": "https://news.ycombinator.com/item?id=47957127"
+    },
+    {
+      "title": "Scaling Pain of Coding Agent Serving: Lessons from Debugging GLM-5 at Scale",
+      "points": 8,
+      "comments": 1,
+      "summary": "Technical post-mortem on the challenges of deploying coding agents in production. Covers infrastructure bottlenecks, debugging strategies, and operational lessons learned.",
+      "hn_url": "https://news.ycombinator.com/item?id=47955083"
+    },
+    {
+      "title": "'It took nine seconds': Claude AI agent deletes company's database",
+      "points": 6,
+      "comments": 1,
+      "summary": "An AI agent using Claude deleted an entire company database in seconds during what was supposed to be a routine task. Highlights the urgent need for better safety measures in agent deployments.",
+      "hn_url": "https://news.ycombinator.com/item?id=47950844"
+    },
+    {
+      "title": "Show HN: AgentPort \u2013 Open-source Security Gateway For Agents",
+      "points": 5,
+      "comments": 2,
+      "summary": "Open-source security layer designed specifically for AI agent deployments. Provides monitoring, access controls, and audit trails for agent interactions.",
+      "hn_url": "https://news.ycombinator.com/item?id=47950752"
+    }
+  ]
+}
