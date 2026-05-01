@@ -666,6 +666,17 @@
         "AgentPort",
         "AgentRQ"
       ]
+    },
+    {
+      "date": "2026-05-01",
+      "file": "2026-05-01.json",
+      "products": [
+        "Qwen-Scope",
+        "World-R1",
+        "Spec27",
+        "FlashKDA",
+        "Mistral Medium 3.5"
+      ]
     }
   ]
 }

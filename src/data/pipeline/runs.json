@@ -4695,5 +4695,22 @@
     "output_files": [
       "src/content/thoughts/2026-05-01-model-distillation-just-turned-training-into-intellectual-pr.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-05-01T08:30:51.178716+00:00",
+    "status": "success",
+    "duration_s": 44.5,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0668,
+    "input_tokens": 11334,
+    "output_tokens": 2187,
+    "output_files": [
+      "src/data/radar/2026-05-01.json"
+    ]
   }
 ]
