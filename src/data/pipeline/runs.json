@@ -4810,5 +4810,20 @@
     "output_files": [
       "src/data/radar/2026-05-02.json"
     ]
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-05-02T09:00:19.838505+00:00",
+    "status": "success",
+    "duration_s": 18.4,
+    "feeds_scanned": 0,
+    "items_found": 52,
+    "items_rejected": 0,
+    "items_published": 13,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0191,
+    "input_tokens": 2602,
+    "output_tokens": 756,
+    "output_files": []
   }
 ]
