@@ -228,6 +228,72 @@
     "added": "2026-04-10"
   },
   {
+    "id": "now-2026-04-debug-data-becomes-training-gold",
+    "lane": "now",
+    "title": "Debug logs and error traces are becoming premium training data sources",
+    "date": "2026-04-24",
+    "themes": [
+      "data",
+      "code",
+      "infrastructure"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Failed tests and error logs contain information about edge cases and real-world complexity that clean datasets miss. This data is suddenly more valuable than the working code.",
+    "implication": "Start treating your debug infrastructure as a strategic data asset, not just operational overhead.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-04-18",
+        "label": "Debug logs just became the most valuable training data in tech"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-04-22",
+        "label": "Synthetic data generation is just admitting we never learned to collect the right data"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-22",
+        "label": "ml-intern"
+      }
+    ],
+    "added": "2026-04-24"
+  },
+  {
+    "id": "now-2026-05-ai-economics-become-programmable",
+    "lane": "now",
+    "title": "AI agent interactions turn market dynamics into debugging problems",
+    "date": "2026-05-01",
+    "themes": [
+      "agents",
+      "society",
+      "enterprise"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "When AI agents trade and interact with each other at scale, economic inefficiencies become software bugs we can identify and patch. Markets become programmable systems rather than natural forces.",
+    "implication": "Prepare for economic policy to start looking more like software engineering than traditional regulation.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-04-27",
+        "label": "AI agents just turned economics into a debugging problem"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-27",
+        "label": "AgentSwarms"
+      },
+      {
+        "type": "news",
+        "ref": "2026-04-26",
+        "label": "AI digest: Models get stronger, commerce gets weirder"
+      }
+    ],
+    "added": "2026-05-01"
+  },
+  {
     "id": "now-2026-05-coding-models-cross-benchmark-threshold",
     "lane": "now",
     "title": "Coding models cross the 70% benchmark threshold into production territory",
@@ -270,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -286,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25",
-        "label": "Google drops \u00a340B on Anthropic"
+        "label": "Google drops £40B on Anthropic"
       },
       {
         "type": "thought",
