@@ -167,11 +167,47 @@ def load_recent_markdown(dir_path: Path, days: int = 7) -> list[dict]:
 # Job 1 — Now proposals                                                       #
 # --------------------------------------------------------------------------- #
 
+_PENDING_PR_LINE = re.compile(r"^- \*\*(.+?)\*\* \((.+?)\)")
+
+
+def load_pending_proposals() -> list[dict]:
+    """Parse open horizon-bot PR bodies into {title, themes} so the LLM can
+    deduplicate against its own un-merged backlog. Without this the bot only
+    sees merged now.json and re-proposes the same themes day after day when
+    PRs sit unreviewed (observed 2026-04-23 → 2026-05-02: 60%+ recycling)."""
+    try:
+        result = subprocess.run(
+            ["gh", "pr", "list",
+             "--search", "head:horizon-bot/proposals- is:open",
+             "--limit", "30",
+             "--json", "body"],
+            cwd=REPO_DIR, capture_output=True, text=True, timeout=15,
+        )
+        if result.returncode != 0:
+            return []
+        prs = json.loads(result.stdout or "[]")
+    except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError):
+        return []
+
+    pending = []
+    for pr in prs:
+        for line in (pr.get("body") or "").splitlines():
+            m = _PENDING_PR_LINE.match(line.strip())
+            if not m:
+                continue
+            title = m.group(1).strip()
+            tokens = [t.strip() for t in m.group(2).split(",")]
+            themes = [t for t in tokens[1:] if t in HORIZON_THEMES]
+            pending.append({"title": title, "themes": themes})
+    return pending
+
+
 def propose_now_entries(
     radar_items: list[dict],
     thoughts: list[dict],
     news: list[dict],
     existing_now: list[dict],
+    pending_proposals: list[dict] | None = None,
 ) -> tuple[list[dict], object | None]:
     """Ask Claude for Now-lane proposals grounded only in provided evidence."""
     if not radar_items and not thoughts and not news:
@@ -180,6 +216,10 @@ def propose_now_entries(
     client = Anthropic()
     style_guide = STYLE_GUIDE.read_text() if STYLE_GUIDE.exists() else ""
     existing_titles = [e.get("title", "") for e in existing_now]
+    pending = pending_proposals or []
+    pending_text = "\n".join(
+        f"- {p['title']} [{', '.join(p['themes']) or 'no-themes'}]" for p in pending
+    ) or "(none)"
 
     radar_text = "\n".join(
         f"- [{r.get('_radar_date')}] {r.get('name','?')}: {r.get('description','')[:200]}"
@@ -213,7 +253,12 @@ PATTERNS that deserve a Now entry.
    support the pattern. No single-source entries.
 2. NEVER invent model names, prices, company names, dates, or claims that are
    not in the provided context. If you are unsure, leave it out.
-3. Deduplicate against existing Now titles. Don't re-propose what is already live.
+3. Deduplicate THEMATICALLY, not just by title, against both already-live Now
+   entries and proposals already pending in open PRs (listed below). If a
+   pending PR proposal already covers the same underlying signal — e.g. "agents
+   shifting to platforms", "compute capacity as talent acquisition", "time-aware
+   model architectures", "coding models crossing 70%" — DO NOT re-propose it
+   with different wording. Wait for the existing PR to merge or be closed.
 4. Output AT MOST 3 proposals. It is valid (and often correct) to output zero.
 5. Each proposal must cite its evidence with the exact radar date or
    thought/news slug from the context. The `ref` field is the filename stem
@@ -237,8 +282,11 @@ PATTERNS that deserve a Now entry.
 ### Recent news ({len(news)} items)
 {news_text}
 
-### Existing Now titles (do not duplicate)
+### Existing Now titles (already merged — do not duplicate)
 {existing_text}
+
+### Pending proposals in open horizon-bot PRs (already proposed, awaiting review — do not re-propose the SAME THEMES)
+{pending_text}
 
 ## Output
 
@@ -873,8 +921,12 @@ def main():
         now_proposals: list[dict] = []
         usage = None
         if items_found > 0:
+            pending_proposals = load_pending_proposals()
+            print(f"[horizon_bot] Pending PR proposals to dedup against: "
+                  f"{len(pending_proposals)}")
             now_proposals, usage = propose_now_entries(
                 radar_items, thoughts, news, now_entries,
+                pending_proposals=pending_proposals,
             )
             if usage is not None:
                 input_tokens = usage.input_tokens
