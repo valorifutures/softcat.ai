@@ -4793,5 +4793,22 @@
     "output_files": [
       "src/content/thoughts/2026-05-02-sparse-autoencoders-just-turned-interpretability-into-featur.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-05-02T08:30:49.192380+00:00",
+    "status": "success",
+    "duration_s": 42.5,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0681,
+    "input_tokens": 11486,
+    "output_tokens": 2243,
+    "output_files": [
+      "src/data/radar/2026-05-02.json"
+    ]
   }
 ]

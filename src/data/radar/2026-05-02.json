@@ -1,0 +1,116 @@
+{
+  "date": "2026-05-02",
+  "featured": [
+    {
+      "id": "ph-autodata",
+      "name": "Autodata",
+      "tagline": "Agentic framework that turns AI models into autonomous data scientists.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Meta's Autodata tackles one of the biggest bottlenecks in AI development: creating quality training data. The framework lets AI models become their own data scientists, automatically generating, cleaning, and curating datasets. This could dramatically accelerate model training cycles across the industry.",
+      "ph_url": "https://www.marktechpost.com/2026/05/01/meta-introduces-autodata-an-agentic-framework-that-turns-ai-models-into-autonomous-data-scientists-for-high-quality-training-data-creation/",
+      "maker": "Meta",
+      "featured": true,
+      "added_at": "2026-05-02T06:00:00Z"
+    },
+    {
+      "id": "ph-grok-43",
+      "name": "Grok 4.3",
+      "tagline": "xAI's latest model with steep price cuts and Imagine agent mode.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "xAI is playing the price war game hard with Grok 4.3, undercutting competitors whilst adding an agent-based image generator called Imagine. The model still trails OpenAI and Anthropic on benchmarks, but the aggressive pricing could force a market reset. Sometimes cheaper is all you need to win developer mindshare.",
+      "ph_url": "https://the-decoder.com/xai-drops-grok-4-3-with-steep-price-cuts-and-an-imagine-agent-mode-for-creative-projects/",
+      "maker": "xAI",
+      "featured": true,
+      "added_at": "2026-05-02T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-ai-cad-harness",
+      "name": "AI CAD Harness",
+      "tagline": "AI-powered CAD tool for automated design workflows.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Finally, someone's tackling CAD with proper AI integration rather than just slapping a chatbot on top. The harness approach suggests this could actually understand 3D design constraints and engineering requirements. If it works as advertised, this could be the Cursor moment for mechanical engineers.",
+      "ph_url": "https://fusion.adam.new/install",
+      "maker": "Adam",
+      "featured": false,
+      "added_at": "2026-05-02T06:30:00Z"
+    },
+    {
+      "id": "ph-loopsy",
+      "name": "Loopsy",
+      "tagline": "Communication protocol for terminals and AI agents across different machines.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Distributed AI agent communication is becoming crucial as workflows span multiple machines and cloud services. Loopsy provides the plumbing for agents to talk to each other properly, which is less glamorous but more necessary than most realise. We need more infrastructure tools like this.",
+      "ph_url": "https://github.com/leox255/loopsy",
+      "maker": "leox255",
+      "featured": false,
+      "added_at": "2026-05-02T06:45:00Z"
+    },
+    {
+      "id": "ph-aide-memory",
+      "name": "Aide-memory",
+      "tagline": "Persistent memory system for AI coding agents and development teams.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "AI coding agents suffer from amnesia between sessions, losing context about codebases and team decisions. Aide-memory tackles this fundamental limitation by giving agents persistent memory across projects. This could be the difference between toy demos and production-ready AI developers.",
+      "ph_url": "https://www.aide-memory.dev/blog/launch",
+      "maker": "Aide",
+      "featured": false,
+      "added_at": "2026-05-02T07:00:00Z"
+    },
+    {
+      "id": "ph-flue-sandbox",
+      "name": "Flue Sandbox",
+      "tagline": "Agent framework for building and testing AI agents in controlled environments.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Another agent framework, but Flue focuses on sandbox environments for safe testing. As AI agents get more capable and potentially destructive, having proper testing infrastructure becomes critical. The sandbox approach could prevent the kind of database-wiping incidents we're starting to see.",
+      "ph_url": "https://flueframework.com",
+      "maker": "Flue",
+      "featured": false,
+      "added_at": "2026-05-02T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: AI CAD Harness",
+      "points": 85,
+      "comments": 85,
+      "summary": "An AI-powered CAD tool that promises to automate design workflows. The high comment count suggests strong interest from the engineering community.",
+      "hn_url": "https://news.ycombinator.com/item?id=47977694"
+    },
+    {
+      "title": "Show HN: Loopsy, a way for terminals and AI agents on different machines to talk",
+      "points": 50,
+      "comments": 8,
+      "summary": "A communication protocol enabling AI agents and terminals to communicate across different machines. Infrastructure tooling for distributed AI workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47973093"
+    },
+    {
+      "title": "'Rogue' Cursor AI agent loses control and wipes company's database",
+      "points": 14,
+      "comments": 12,
+      "summary": "A cautionary tale about AI agent reliability. A Cursor agent allegedly went rogue and deleted a company's database, highlighting the risks of autonomous AI tools.",
+      "hn_url": "https://news.ycombinator.com/item?id=47973681"
+    },
+    {
+      "title": "Show HN: Aide-memory \u2013 persistent memory for AI coding agents and teams",
+      "points": 4,
+      "comments": 0,
+      "summary": "A system for giving AI coding agents persistent memory across sessions. Addresses the amnesia problem that limits current AI development tools.",
+      "hn_url": "https://news.ycombinator.com/item?id=47979991"
+    },
+    {
+      "title": "Flue Sandbox Agent Framework",
+      "points": 5,
+      "comments": 0,
+      "summary": "A framework for building and testing AI agents in controlled sandbox environments. Safety-focused approach to agent development.",
+      "hn_url": "https://news.ycombinator.com/item?id=47979985"
+    }
+  ]
+}

@@ -677,6 +677,18 @@
         "FlashKDA",
         "Mistral Medium 3.5"
       ]
+    },
+    {
+      "date": "2026-05-02",
+      "file": "2026-05-02.json",
+      "products": [
+        "Autodata",
+        "Grok 4.3",
+        "AI CAD Harness",
+        "Loopsy",
+        "Aide-memory",
+        "Flue Sandbox"
+      ]
     }
   ]
 }
