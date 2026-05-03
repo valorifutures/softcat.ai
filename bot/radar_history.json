@@ -689,6 +689,17 @@
         "Aide-memory",
         "Flue Sandbox"
       ]
+    },
+    {
+      "date": "2026-05-03",
+      "file": "2026-05-03.json",
+      "products": [
+        "KAME",
+        "Flue",
+        "xAI Custom Voices",
+        "Mljar Studio",
+        "MiMo-V2.5-Pro"
+      ]
     }
   ]
 }

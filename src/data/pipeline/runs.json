@@ -4893,5 +4893,22 @@
     "output_files": [
       "src/content/thoughts/2026-05-03-remote-agents-just-made-the-desktop-obsolete.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-05-03T08:30:47.897244+00:00",
+    "status": "success",
+    "duration_s": 41.4,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.064,
+    "input_tokens": 11519,
+    "output_tokens": 1966,
+    "output_files": [
+      "src/data/radar/2026-05-03.json"
+    ]
   }
 ]
