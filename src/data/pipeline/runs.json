@@ -4944,6 +4944,39 @@
     ]
   },
   {
+    "bot": "tool_bot",
+    "timestamp": "2026-05-03T09:00:13.850283+00:00",
+    "status": "error",
+    "duration_s": 12.3,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 128."
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-05-03T09:00:15.680210+00:00",
+    "status": "success",
+    "duration_s": 14.2,
+    "feeds_scanned": 0,
+    "items_found": 53,
+    "items_rejected": 0,
+    "items_published": 16,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0159,
+    "input_tokens": 2784,
+    "output_tokens": 500,
+    "output_files": [
+      "src/data/horizon/shifts.json"
+    ]
+  },
+  {
     "bot": "model_bot",
     "timestamp": "2026-05-04T04:00:02.085078+00:00",
     "status": "success",
