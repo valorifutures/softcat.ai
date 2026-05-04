@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-05-02",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "horizon: 2026-05-02 Now proposals (curated, supersedes #116-#131)",
+    "sha": "afaeddaa37"
+  },
+  {
     "date": "2026-04-22",
     "lane": "debates",
     "verb": "updated",
