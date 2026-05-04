@@ -4974,5 +4974,22 @@
     "output_files": [
       "src/content/thoughts/2026-05-04-billion-dollar-valuations-just-turned-ai-companies-into-perf.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-05-04T08:30:53.480447+00:00",
+    "status": "success",
+    "duration_s": 46.8,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 63,
+    "items_published": 4,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0629,
+    "input_tokens": 11438,
+    "output_tokens": 1906,
+    "output_files": [
+      "src/data/radar/2026-05-04.json"
+    ]
   }
 ]

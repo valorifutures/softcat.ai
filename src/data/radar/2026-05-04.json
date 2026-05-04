@@ -1,0 +1,92 @@
+{
+  "date": "2026-05-04",
+  "featured": [
+    {
+      "id": "ph-vibe-remote-agents",
+      "name": "Vibe Remote Agents",
+      "tagline": "Async cloud-based coding sessions with autonomous AI agents.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Mistral's new Vibe platform lets you spin up remote coding environments where AI agents work autonomously on your codebase. The 77.6% SWE-Bench Verified score from their Medium 3.5 model suggests these aren't just fancy autocomplete tools. This could fundamentally change how we think about AI pair programming.",
+      "ph_url": "https://www.marktechpost.com/2026/05/02/mistral-ai-launches-remote-agents-in-vibe-and-mistral-medium-3-5-with-77-6-swe-bench-verified-score/",
+      "maker": "Mistral AI",
+      "featured": true,
+      "added_at": "2026-05-04T06:00:00Z"
+    },
+    {
+      "id": "ph-obscura-browser",
+      "name": "Obscura",
+      "tagline": "Headless browser designed for AI agents and web scraping.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Finally, a headless browser built specifically for AI agents rather than retrofitted from testing tools. Obscura understands that agents need different primitives than humans browsing the web. If you're building anything that involves AI interacting with websites, this could save you weeks of wrestling with Puppeteer quirks.",
+      "ph_url": "https://github.com/h4ckf0r0day/obscura",
+      "maker": "H4ckf0r0day",
+      "featured": true,
+      "added_at": "2026-05-04T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-duralang",
+      "name": "Duralang",
+      "tagline": "Decorator that makes every LangChain call a Temporal Activity.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "One Python decorator turns your flaky LangChain workflows into durable, resumable processes. This is the kind of unglamorous infrastructure work that actually matters when you're trying to run AI agents in production. Temporal's workflow engine handles the complexity of state management and failure recovery.",
+      "ph_url": "https://temporal.io/code-exchange/duralang-durable-stochastic-ai-agents-with-one-decorator",
+      "maker": "Temporal",
+      "featured": false,
+      "added_at": "2026-05-04T06:30:00Z"
+    },
+    {
+      "id": "ph-mnemory",
+      "name": "Mnemory",
+      "tagline": "Persistent memory system for AI agents.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "AI agents that forget everything between sessions are barely useful. Mnemory tackles the unglamorous but critical problem of giving agents proper long-term memory. The difference between a chatbot and an assistant often comes down to whether it remembers what you worked on yesterday.",
+      "ph_url": "https://github.com/fpytloun/mnemory",
+      "maker": "fpytloun",
+      "featured": false,
+      "added_at": "2026-05-04T06:45:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "For thirty years I programmed with Phish on, every day",
+      "points": 217,
+      "comments": 172,
+      "summary": "A developer reflects on three decades of coding while listening to Phish, exploring how music affects flow state and programming productivity. The post connects personal ritual to professional practice in software development.",
+      "hn_url": "https://news.ycombinator.com/item?id=47998225"
+    },
+    {
+      "title": "H4ckf0r0day/obscura: The headless browser for AI agents and web scraping",
+      "points": 4,
+      "comments": 3,
+      "summary": "A new headless browser built specifically for AI agents rather than adapted from testing tools. Designed to handle the unique requirements of automated web interaction for AI systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=48002523"
+    },
+    {
+      "title": "MIT AI expert warns automating Gen Z entry-level jobs could backfire",
+      "points": 5,
+      "comments": 1,
+      "summary": "MIT researcher Andrew McAfee argues that automating entry-level positions could disrupt talent pipelines and hurt long-term organizational capability. The concern is that removing junior roles eliminates training grounds for future senior employees.",
+      "hn_url": "https://news.ycombinator.com/item?id=48000054"
+    },
+    {
+      "title": "Duralang \u2013 decorator makes every LangChain LLM/tool/MCP call a Temporal Activity",
+      "points": 5,
+      "comments": 0,
+      "summary": "A Python decorator that integrates LangChain workflows with Temporal's durable execution engine. Turns fragile AI agent workflows into resumable, fault-tolerant processes.",
+      "hn_url": "https://news.ycombinator.com/item?id=48001123"
+    },
+    {
+      "title": "UAE Plans to Run 50% of Government on Agentic AI Within Two Years",
+      "points": 3,
+      "comments": 0,
+      "summary": "The UAE government announces ambitious plans to automate half of government operations using AI agents within two years. Represents one of the most aggressive national AI adoption strategies announced to date.",
+      "hn_url": "https://news.ycombinator.com/item?id=48001340"
+    }
+  ]
+}
