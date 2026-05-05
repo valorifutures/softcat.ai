@@ -1,0 +1,92 @@
+{
+  "date": "2026-05-05",
+  "featured": [
+    {
+      "id": "ph-bonsai-1-7b",
+      "name": "Bonsai 1.7B",
+      "tagline": "Ternary model achieving 442T/s inference on M4 Max.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "A ternary model hitting 442T/s on consumer hardware changes the game for edge inference. This isn't just another optimisation trick, it's a fundamental shift in how we think about model efficiency. The fact that it runs this fast on an M4 Max means we're looking at truly practical local AI deployment.",
+      "ph_url": "https://agents2agents.ai/bonsai",
+      "maker": "agents2agents.ai",
+      "featured": true,
+      "added_at": "2026-05-05T06:00:00Z"
+    },
+    {
+      "id": "ph-faz-safety-layer",
+      "name": "Faz",
+      "tagline": "Safety layer between AI agents and databases.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Finally someone is building proper guardrails for agent database access. This addresses the elephant in the room that everyone talks about but few actually solve. When agents start writing to production databases at scale, you want something like this sitting in between.",
+      "ph_url": "https://github.com/fazhq/faz",
+      "maker": "fazhq",
+      "featured": true,
+      "added_at": "2026-05-05T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-zerminal",
+      "name": "Zerminal",
+      "tagline": "Terminal-first Zed fork for AI coding agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Taking Zed and making it agent-first is a smart move. The terminal focus means agents can actually drive the editor properly without GUI nonsense getting in the way. This could become the standard coding environment for autonomous development workflows.",
+      "ph_url": "https://zerminal.dev",
+      "maker": "Zerminal",
+      "featured": false,
+      "added_at": "2026-05-05T06:30:00Z"
+    },
+    {
+      "id": "ph-hyperframes",
+      "name": "HyperFrames",
+      "tagline": "AI agents compose videos by writing HTML, CSS and JavaScript.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Web tech as a video composition language is clever. Agents already understand HTML and CSS better than most video editing APIs. This could unlock programmatic video generation in ways that actually make sense to developers.",
+      "ph_url": "https://hyperframes.heygen.com",
+      "maker": "HeyGen",
+      "featured": false,
+      "added_at": "2026-05-05T06:45:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Bonsai 1.7B ternary model at 442T/s on M4 Max",
+      "points": 13,
+      "comments": 3,
+      "summary": "Breakthrough ternary model achieving extreme inference speeds on consumer hardware. This represents a significant advance in making powerful AI models practically deployable on edge devices without compromising too much on capability.",
+      "hn_url": "https://news.ycombinator.com/item?id=48010204"
+    },
+    {
+      "title": "Show HN: Safety layer between AI agents and databases",
+      "points": 3,
+      "comments": 9,
+      "summary": "New security tool that sits between AI agents and database systems to prevent unauthorised or dangerous operations. Addresses growing concerns about autonomous agents having direct database access in production environments.",
+      "hn_url": "https://news.ycombinator.com/item?id=48008603"
+    },
+    {
+      "title": "Why AI Agents Need Proof Chains, Not Just Logs",
+      "points": 8,
+      "comments": 0,
+      "summary": "Discussion on building trust infrastructure for AI agents through cryptographic proof chains rather than traditional logging. Proposes a framework for verifiable agent actions that could be crucial for enterprise adoption.",
+      "hn_url": "https://news.ycombinator.com/item?id=48017366"
+    },
+    {
+      "title": "Show HN: Zerminal \u2013 a terminal-first Zed fork for AI coding agents",
+      "points": 5,
+      "comments": 0,
+      "summary": "Modified version of the Zed editor optimised for AI agent interaction through terminal interfaces. Designed specifically to enable autonomous coding workflows without GUI dependencies that typically complicate agent automation.",
+      "hn_url": "https://news.ycombinator.com/item?id=48007158"
+    },
+    {
+      "title": "HyperFrames lets AI agents compose videos by writing HTML, CSS and JavaScript",
+      "points": 5,
+      "comments": 0,
+      "summary": "Novel approach to programmatic video creation using web technologies as the composition language. Leverages agents' existing understanding of HTML/CSS to enable sophisticated video generation without learning specialised video APIs.",
+      "hn_url": "https://news.ycombinator.com/item?id=48015808"
+    }
+  ]
+}

@@ -710,6 +710,16 @@
         "Duralang",
         "Mnemory"
       ]
+    },
+    {
+      "date": "2026-05-05",
+      "file": "2026-05-05.json",
+      "products": [
+        "Bonsai 1.7B",
+        "Faz",
+        "Zerminal",
+        "HyperFrames"
+      ]
     }
   ]
 }

@@ -5074,5 +5074,22 @@
     "output_files": [
       "src/content/thoughts/2026-05-05-training-data-just-became-a-protection-racket.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-05-05T08:30:36.886585+00:00",
+    "status": "success",
+    "duration_s": 33.6,
+    "feeds_scanned": 10,
+    "items_found": 57,
+    "items_rejected": 53,
+    "items_published": 4,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0588,
+    "input_tokens": 10850,
+    "output_tokens": 1747,
+    "output_files": [
+      "src/data/radar/2026-05-05.json"
+    ]
   }
 ]
