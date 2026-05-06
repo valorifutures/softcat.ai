@@ -5172,5 +5172,20 @@
     "output_files": [
       "src/content/thoughts/2026-05-06-webhooks-just-turned-every-ai-model-into-a-notification-addi.md"
     ]
+  },
+  {
+    "bot": "prompt_bot",
+    "timestamp": "2026-05-06T08:00:37.859968+00:00",
+    "status": "success",
+    "duration_s": 37.3,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 2,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0367,
+    "input_tokens": 6024,
+    "output_tokens": 1242,
+    "output_files": []
   }
 ]

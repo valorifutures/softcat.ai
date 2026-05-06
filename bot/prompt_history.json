@@ -143,6 +143,18 @@
       "file": "neuro-ai-data-pipeline-validator.md",
       "title": "Neuro-AI Data Pipeline Validator",
       "category": "testing"
+    },
+    {
+      "date": "2026-05-06",
+      "file": "event-driven-api-webhook-validator.md",
+      "title": "Event-Driven API Webhook Validator",
+      "category": "api-design"
+    },
+    {
+      "date": "2026-05-06",
+      "file": "agent-conversation-flow-designer.md",
+      "title": "Agent Conversation Flow Designer",
+      "category": "agent-design"
     }
   ]
 }
