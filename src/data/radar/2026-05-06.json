@@ -1,0 +1,97 @@
+{
+  "date": "2026-05-06",
+  "featured": [
+    {
+      "id": "ph-gpt-55-instant",
+      "name": "GPT-5.5 Instant",
+      "tagline": "New default ChatGPT model with 52.5% fewer hallucinations and memory sources.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "OpenAI's quiet revolution comes through reliability, not headlines. The 52.5% reduction in medical and legal hallucinations suggests we're finally moving past the 'confident but wrong' era. Memory sources that show which stored context influenced each response could be the transparency breakthrough enterprise AI has been waiting for.",
+      "ph_url": "https://techcrunch.com/2026/05/05/openai-releases-gpt-5-5-instant-a-new-default-model-for-chatgpt/",
+      "maker": "OpenAI",
+      "featured": true,
+      "added_at": "2026-05-06T06:00:00Z"
+    },
+    {
+      "id": "ph-inworld-realtime-tts-2",
+      "name": "Inworld Realtime TTS-2",
+      "tagline": "Closed-loop voice model that adapts to how you actually speak.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Most TTS systems treat conversation like a performance, not a dialogue. Inworld's closed-loop architecture that conditions on full audio context instead of just transcripts is the difference between talking to a robot and talking to something that actually listens. This could be what makes voice agents finally feel natural.",
+      "ph_url": "https://www.marktechpost.com/2026/05/05/inworld-ai-launches-realtime-tts-2-a-closed-loop-voice-model-that-adapts-to-how-you-actually-talk/",
+      "maker": "Inworld AI",
+      "featured": true,
+      "added_at": "2026-05-06T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-mtp-drafters-gemma-4",
+      "name": "MTP Drafters for Gemma 4",
+      "tagline": "Multi-token prediction drafters delivering up to 3x faster inference without quality loss.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Google's speculative decoding approach for Gemma 4 tackles the fundamental inference bottleneck that makes local models painful to use. Three times faster without quality degradation means the difference between viable and unusable for most real-world applications.",
+      "ph_url": "https://www.marktechpost.com/2026/05/06/google-ai-releases-multi-token-prediction-mtp-drafters-for-gemma-4-delivering-up-to-3x-faster-inference-without-quality-loss/",
+      "maker": "Google AI",
+      "featured": false,
+      "added_at": "2026-05-06T06:30:00Z"
+    },
+    {
+      "id": "ph-copilotkit-agent-platform",
+      "name": "CopilotKit",
+      "tagline": "Platform helping developers deploy app-native AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Building AI agents that actually understand your application context is harder than it looks. CopilotKit's $27M Series A suggests there's real demand for tools that make agents native to existing applications rather than external bolt-ons.",
+      "ph_url": "https://techcrunch.com/2026/05/05/copilotkit-raises-27m-to-help-devs-deploy-app-native-ai-agents/",
+      "maker": "CopilotKit",
+      "featured": false,
+      "added_at": "2026-05-06T06:45:00Z"
+    },
+    {
+      "id": "ph-clankerview-ux-feedback",
+      "name": "ClankerView",
+      "tagline": "AI agents browse your web app and provide UX feedback.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Automated UX testing by AI agents that actually browse and interact with your application could catch usability issues human testers miss. The real test is whether these agents can spot the subtle friction points that kill conversions, not just obvious broken buttons.",
+      "ph_url": "https://clankerview.com",
+      "maker": "ClankerView",
+      "featured": false,
+      "added_at": "2026-05-06T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents",
+      "points": 140,
+      "comments": 28,
+      "summary": "Research paper introducing GLM-5V-Turbo, a foundation model specifically designed for multimodal AI agents. The model aims to handle vision and text tasks natively rather than through separate components, potentially improving agent performance across visual and textual reasoning tasks.",
+      "hn_url": "https://news.ycombinator.com/item?id=48026021"
+    },
+    {
+      "title": "Show HN: Design Taste for AI Agents",
+      "points": 7,
+      "comments": 0,
+      "summary": "A tool focused on helping AI agents develop better design sensibilities and aesthetic judgement. Appears to be targeting the gap between AI agents that can execute design tasks and those that can make good design decisions.",
+      "hn_url": "https://news.ycombinator.com/item?id=48030480"
+    },
+    {
+      "title": "Show HN: ClankerView \u2013 AI agents browse your web app and give UX feedback",
+      "points": 5,
+      "comments": 6,
+      "summary": "An automated UX testing tool where AI agents actually browse and interact with web applications to provide usability feedback. Could help developers identify user experience issues without requiring human testing sessions.",
+      "hn_url": "https://news.ycombinator.com/item?id=48022228"
+    },
+    {
+      "title": "SensorHub \u2013 The event-driven version of Clawhub (giving AI agents 'ears')",
+      "points": 4,
+      "comments": 0,
+      "summary": "An event-driven platform that provides AI agents with real-time sensory input capabilities. Builds on the Clawhub concept but adds reactive, event-based processing to help agents respond to environmental changes as they happen.",
+      "hn_url": "https://news.ycombinator.com/item?id=48033063"
+    }
+  ]
+}

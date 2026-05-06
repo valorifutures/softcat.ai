@@ -720,6 +720,17 @@
         "Zerminal",
         "HyperFrames"
       ]
+    },
+    {
+      "date": "2026-05-06",
+      "file": "2026-05-06.json",
+      "products": [
+        "GPT-5.5 Instant",
+        "Inworld Realtime TTS-2",
+        "MTP Drafters for Gemma 4",
+        "CopilotKit",
+        "ClankerView"
+      ]
     }
   ]
 }
