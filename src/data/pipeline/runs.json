@@ -5204,5 +5204,35 @@
     "output_files": [
       "src/data/radar/2026-05-06.json"
     ]
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-05-06T09:00:20.435524+00:00",
+    "status": "success",
+    "duration_s": 18.8,
+    "feeds_scanned": 0,
+    "items_found": 50,
+    "items_rejected": 0,
+    "items_published": 9,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0185,
+    "input_tokens": 2865,
+    "output_tokens": 658,
+    "output_files": []
+  },
+  {
+    "bot": "prompt_bot",
+    "timestamp": "2026-05-06T09:00:40.754604+00:00",
+    "status": "success",
+    "duration_s": 39.1,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 2,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0386,
+    "input_tokens": 6111,
+    "output_tokens": 1354,
+    "output_files": []
   }
 ]

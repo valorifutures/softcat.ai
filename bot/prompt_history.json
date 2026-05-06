@@ -155,6 +155,18 @@
       "file": "agent-conversation-flow-designer.md",
       "title": "Agent Conversation Flow Designer",
       "category": "agent-design"
+    },
+    {
+      "date": "2026-05-06",
+      "file": "voice-tts-model-latency-profiler.md",
+      "title": "Voice TTS Model Latency Profiler",
+      "category": "performance"
+    },
+    {
+      "date": "2026-05-06",
+      "file": "llm-api-rate-limit-strategy-designer.md",
+      "title": "LLM API Rate Limit Strategy Designer",
+      "category": "api-design"
     }
   ]
 }
