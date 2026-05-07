@@ -116,7 +116,7 @@
     "provider": "Google",
     "family": "Gemini 2",
     "released": "2025-02",
-    "contextK": 1000,
+    "contextK": 1048,
     "inputPrice": 0.1,
     "outputPrice": 0.4,
     "openSource": false,
