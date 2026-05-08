@@ -5379,5 +5379,38 @@
     "output_files": [
       "src/content/news-and-updates/2026-05-08-ai-digest.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-05-08T06:00:58.205161+00:00",
+    "status": "error",
+    "duration_s": 56.4,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 128."
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-05-08T07:00:43.678547+00:00",
+    "status": "success",
+    "duration_s": 43.2,
+    "feeds_scanned": 5,
+    "items_found": 25,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0184,
+    "input_tokens": 4418,
+    "output_tokens": 344,
+    "output_files": [
+      "src/content/thoughts/2026-05-08-networking-protocols-just-became-the-new-cuda-moats.md"
+    ]
   }
 ]
