@@ -629,5 +629,59 @@
       }
     ],
     "added": "2026-05-06"
+  },
+  {
+    "id": "now-2026-05-09-spec-driven-ai-development",
+    "lane": "now",
+    "title": "Specification-driven development becomes the production standard for AI agents",
+    "date": "2026-05-09",
+    "themes": [
+      "code",
+      "agents"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "AI coding agents are shifting from prototyping tools to production engineers by requiring formal specifications before execution. This separates serious deployment from experimentation.",
+    "implication": "Write specs first, let AI execute second.",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-05-09",
+        "label": "GitHub Spec-Kit"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-05-09-spec-driven-development-just-turned-ai-coding-agents-into-actual-engineers",
+        "label": "Spec-driven development just turned AI coding agents into actual engineers"
+      }
+    ],
+    "added": "2026-05-09"
+  },
+  {
+    "id": "now-2026-05-09-custom-networking-protocols-ai-infrastructure",
+    "lane": "now",
+    "title": "Custom networking protocols become competitive moats in AI infrastructure",
+    "date": "2026-05-09",
+    "themes": [
+      "infrastructure",
+      "enterprise"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "AI companies are building proprietary networking protocols to control large-scale training and inference infrastructure. This creates new lock-in mechanisms beyond model weights.",
+    "implication": "Control the pipes, control the AI.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-05-08-networking-protocols-just-became-the-new-cuda-moats",
+        "label": "Networking protocols just became the new CUDA moats"
+      },
+      {
+        "type": "news",
+        "ref": "2026-05-08-ai-digest-infrastructure-week",
+        "label": "AI digest: Infrastructure week"
+      }
+    ],
+    "added": "2026-05-09"
   }
 ]
