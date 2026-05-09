@@ -5510,5 +5510,22 @@
     "output_files": [
       "src/content/thoughts/2026-05-09-spec-driven-development-just-turned-ai-coding-agents-into-ac.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-05-09T08:30:51.440743+00:00",
+    "status": "success",
+    "duration_s": 44.8,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0672,
+    "input_tokens": 11426,
+    "output_tokens": 2192,
+    "output_files": [
+      "src/data/radar/2026-05-09.json"
+    ]
   }
 ]

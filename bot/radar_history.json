@@ -731,6 +731,17 @@
         "CopilotKit",
         "ClankerView"
       ]
+    },
+    {
+      "date": "2026-05-09",
+      "file": "2026-05-09.json",
+      "products": [
+        "GitHub Spec-Kit",
+        "OpenAI Codex Chrome Extension",
+        "TokenSpeed",
+        "Natural Language Autoencoders",
+        "NeuralBench"
+      ]
     }
   ]
 }
