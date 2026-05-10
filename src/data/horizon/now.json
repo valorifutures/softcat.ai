@@ -511,5 +511,59 @@
       }
     ],
     "added": "2026-05-04"
+  },
+  {
+    "id": "now-2026-05-sparse-autoencoders-become-production-interpretability",
+    "lane": "now",
+    "title": "Sparse autoencoders move from research curiosity to production interpretability standard",
+    "date": "2026-05-05",
+    "themes": [
+      "models",
+      "infrastructure"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Model interpretability is shifting from academic exercise to operational necessity. Companies need to understand what their AI systems are doing, not just whether they work.",
+    "implication": "Expect interpretability tools to become as standard as monitoring dashboards in production AI systems.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-05-02-sparse-autoencoders-just-turned-interpretability-into-feature-engineering",
+        "label": "Sparse autoencoders turning interpretability into feature engineering"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-05-02",
+        "label": "Multiple interpretability tools appearing on radar"
+      }
+    ],
+    "added": "2026-05-05"
+  },
+  {
+    "id": "now-2026-05-training-data-quality-becomes-premium-service",
+    "lane": "now",
+    "title": "Clean training data transforms from commodity to premium service category",
+    "date": "2026-05-05",
+    "themes": [
+      "data",
+      "enterprise"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "The AI training pipeline is splitting into haves and have-nots based on data quality. Clean data is becoming the new competitive moat.",
+    "implication": "Budget for data cleaning and curation like you budget for compute, because that's what determines model quality now.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-05-05-training-data-just-became-a-protection-racket",
+        "label": "Training data becoming protection racket with survey bias correction"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-05-02",
+        "label": "Autodata and other data curation tools"
+      }
+    ],
+    "added": "2026-05-05"
   }
 ]
