@@ -5640,5 +5640,37 @@
     "output_files": [
       "src/data/radar/2026-05-10.json"
     ]
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-05-10T09:00:16.590256+00:00",
+    "status": "success",
+    "duration_s": 16.1,
+    "feeds_scanned": 0,
+    "items_found": 39,
+    "items_rejected": 0,
+    "items_published": 12,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0166,
+    "input_tokens": 2696,
+    "output_tokens": 566,
+    "output_files": []
+  },
+  {
+    "bot": "tool_bot",
+    "timestamp": "2026-05-10T09:00:18.849248+00:00",
+    "status": "success",
+    "duration_s": 18.3,
+    "feeds_scanned": 4,
+    "items_found": 30,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0189,
+    "input_tokens": 4380,
+    "output_tokens": 381,
+    "output_files": [
+      "src/content/tools/2026-05-10-cudaoxide.md"
+    ]
   }
 ]

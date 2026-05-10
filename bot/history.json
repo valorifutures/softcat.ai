@@ -22,6 +22,7 @@
     "https://www.marktechpost.com/2026/04/25/rag-without-vectors-how-pageindex-retrieves-by-reasoning/",
     "https://www.marktechpost.com/2026/04/24/meet-gitnexus-an-open-source-mcp-native-knowledge-graph-engine-that-gives-claude-code-and-cursor-full-codebase-structural-awareness/",
     "https://www.marktechpost.com/2026/05/01/qwen-ai-releases-qwen-scope-an-open-source-sparse-autoencoders-sae-suite-that-turns-llm-internal-features-into-practical-development-tools",
-    "https://www.marktechpost.com/2026/05/09/a-coding-implementation-to-recover-hidden-malware-iocs-with-flare-floss-beyond-classic-strings-analysis/"
+    "https://www.marktechpost.com/2026/05/09/a-coding-implementation-to-recover-hidden-malware-iocs-with-flare-floss-beyond-classic-strings-analysis/",
+    "https://www.marktechpost.com/2026/05/09/nvidia-ai-just-released-cuda-oxide-an-experimental-rust-to-cuda-compiler-backend-that-compiles-simt-gpu-kernels-directly-to-ptx/"
   ]
 }
