@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -361,5 +361,101 @@
       }
     ],
     "added": "2026-05-02"
+  },
+  {
+    "id": "now-2026-05-time-aware-models",
+    "lane": "now",
+    "title": "Time-aware model architectures become the new baseline",
+    "date": "2026-05-04",
+    "themes": [
+      "models",
+      "interfaces"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "Models that process time-based data natively aren't just better at audio and video. They represent a fundamental shift in how AI understands sequential information.",
+    "implication": "Expect temporal reasoning to become standard across all model architectures, not just audio specialists.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-04-28-time-aware-models-just-made-everything-else-obsolete",
+        "label": "Time-aware models as fundamental architecture shift"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-28",
+        "label": "MOSS-Audio and Talkie-1930 temporal models"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-29",
+        "label": "smol-audio time-based processing"
+      }
+    ],
+    "added": "2026-05-04"
+  },
+  {
+    "id": "now-2026-05-ai-valuations-disconnect",
+    "lane": "now",
+    "title": "AI company valuations detach from engineering fundamentals",
+    "date": "2026-05-04",
+    "themes": [
+      "society",
+      "enterprise"
+    ],
+    "signal_type": "warning",
+    "confidence": "confirmed",
+    "why_it_matters": "When AI startups get billion-dollar valuations before solving basic engineering problems, investment becomes speculation rather than technology assessment.",
+    "implication": "Prepare for a correction when market expectations meet production realities.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-05-04-billion-dollar-valuations-just-turned-ai-companies-into-performance-art",
+        "label": "Valuations disconnected from engineering reality"
+      },
+      {
+        "type": "news",
+        "ref": "2026-05-01-ai-digest-valuations-gone-mad",
+        "label": "Anthropic heading for $900B valuation"
+      },
+      {
+        "type": "news",
+        "ref": "2026-04-30-ai-digest-big-money-better-tools",
+        "label": "Anthropic massive funding round"
+      }
+    ],
+    "added": "2026-05-04"
+  },
+  {
+    "id": "now-2026-05-model-distillation-mainstreams",
+    "lane": "now",
+    "title": "Model distillation becomes standard practice for deployment",
+    "date": "2026-05-04",
+    "themes": [
+      "models",
+      "infrastructure"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Teaching smaller models to mimic larger ones is becoming the default path from research to production. This isn't just optimisation, it's how AI knowledge transfers.",
+    "implication": "Expect most deployed models to be distilled versions, not the original research breakthroughs.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-05-01-model-distillation-just-turned-training-into-intellectual-property-laundering",
+        "label": "Distillation as standard knowledge transfer"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-04-29",
+        "label": "Laguna XS.2 and M.1 lightweight models"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-05-02",
+        "label": "MiMo-V2.5-Pro optimised deployment"
+      }
+    ],
+    "added": "2026-05-04"
   }
 ]
