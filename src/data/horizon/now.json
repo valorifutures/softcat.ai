@@ -565,5 +565,69 @@
       }
     ],
     "added": "2026-05-05"
+  },
+  {
+    "id": "now-2026-05-voice-ai-crosses-realtime-barrier",
+    "lane": "now",
+    "title": "Voice AI crosses the real-time interaction barrier",
+    "date": "2026-05-06",
+    "themes": [
+      "interfaces",
+      "models"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "Voice AI is moving from stilted turn-taking to natural conversation flow. This shifts AI from a tool you operate to a participant you converse with.",
+    "implication": "Expect voice to become the default interface for AI agents, not text chat with audio bolted on.",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-05-06",
+        "label": "Inworld Realtime TTS-2"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-05-03",
+        "label": "xAI Custom Voices"
+      },
+      {
+        "type": "news",
+        "ref": "2026-05-06-ai-digest-voice-gets-real-agents-get-organised",
+        "label": "Voice AI finally starts listening to how we actually talk"
+      },
+      {
+        "type": "news",
+        "ref": "2026-05-04-ai-digest-production-realities-bite",
+        "label": "Voice cloning breakthroughs"
+      }
+    ],
+    "added": "2026-05-06"
+  },
+  {
+    "id": "now-2026-05-ai-notifications-become-engagement-layer",
+    "lane": "now",
+    "title": "AI notifications become the new engagement layer",
+    "date": "2026-05-06",
+    "themes": [
+      "interfaces",
+      "agents"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Push notifications for AI jobs turn models from batch processors into always-on services. This transforms AI from a tool you visit to a service that reaches you.",
+    "implication": "Prepare for AI-driven notification fatigue as every model tries to grab your attention.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-05-06-webhooks-just-turned-every-ai-model-into-a-notification-addiction",
+        "label": "Webhooks turn AI models into notification addiction"
+      },
+      {
+        "type": "news",
+        "ref": "2026-05-06-ai-digest-voice-gets-real-agents-get-organised",
+        "label": "OpenAI ships a less hallucinogenic model and everyone builds agent frameworks"
+      }
+    ],
+    "added": "2026-05-06"
   }
 ]
