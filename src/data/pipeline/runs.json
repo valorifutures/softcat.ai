@@ -5589,5 +5589,22 @@
     "output_files": [
       "src/content/tools/2026-05-10-flarefloss.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-05-10T06:00:37.145832+00:00",
+    "status": "success",
+    "duration_s": 35.5,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0315,
+    "input_tokens": 7145,
+    "output_tokens": 668,
+    "output_files": [
+      "src/content/news-and-updates/2026-05-10-ai-digest.md"
+    ]
   }
 ]
