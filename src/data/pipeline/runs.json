@@ -5527,5 +5527,67 @@
     "output_files": [
       "src/data/radar/2026-05-09.json"
     ]
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-05-09T09:00:27.379139+00:00",
+    "status": "success",
+    "duration_s": 26.9,
+    "feeds_scanned": 0,
+    "items_found": 39,
+    "items_rejected": 0,
+    "items_published": 12,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0163,
+    "input_tokens": 2660,
+    "output_tokens": 552,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-05-10T04:00:01.999927+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 367,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-05-10T05:00:00.465256+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 367,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": []
+  },
+  {
+    "bot": "tool_bot",
+    "timestamp": "2026-05-10T06:00:16.293006+00:00",
+    "status": "success",
+    "duration_s": 14.6,
+    "feeds_scanned": 4,
+    "items_found": 30,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0183,
+    "input_tokens": 4362,
+    "output_tokens": 347,
+    "output_files": [
+      "src/content/tools/2026-05-10-flarefloss.md"
+    ]
   }
 ]
