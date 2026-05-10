@@ -363,6 +363,60 @@
     "added": "2026-05-02"
   },
   {
+    "id": "now-2026-05-remote-agents-cloud-first",
+    "lane": "now",
+    "title": "Remote AI agents shift development from local to cloud-first",
+    "date": "2026-05-03",
+    "themes": [
+      "agents",
+      "infrastructure"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Cloud-based AI agents are making local development environments obsolete. Remote execution is becoming the default for agent deployment.",
+    "implication": "Prepare for development workflows that assume agents live in the cloud, not on your machine.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-05-03",
+        "label": "Remote agents just made the desktop obsolete"
+      },
+      {
+        "type": "news",
+        "ref": "2026-05-03",
+        "label": "Mistral ships remote agents whilst regulators scramble"
+      }
+    ],
+    "added": "2026-05-03"
+  },
+  {
+    "id": "now-2026-05-privacy-tools-mainstream",
+    "lane": "now",
+    "title": "Privacy-preserving AI tools move from research to production",
+    "date": "2026-05-03",
+    "themes": [
+      "security",
+      "models"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Major AI companies are shipping open-source privacy tools as protection becomes essential for deployment. Privacy is shifting from afterthought to core infrastructure.",
+    "implication": "Build privacy protection into AI workflows from the start, not as a retrofit.",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-04-29",
+        "label": "Privacy Filter"
+      },
+      {
+        "type": "news",
+        "ref": "2026-04-29",
+        "label": "OpenAI releases open-source privacy tools"
+      }
+    ],
+    "added": "2026-05-03"
+  },
+  {
     "id": "now-2026-05-time-aware-models",
     "lane": "now",
     "title": "Time-aware model architectures become the new baseline",
