@@ -374,6 +374,11 @@
       "date": "2026-05-09",
       "file": "2026-05-09-spec-driven-development-just-turned-ai-coding-agents-into-ac.md",
       "title": "Spec-driven development just turned AI coding agents into actual engineers"
+    },
+    {
+      "date": "2026-05-10",
+      "file": "2026-05-10-single-checkpoints-just-turned-model-deployment-into-a-versi.md",
+      "title": "Single checkpoints just turned model deployment into a version control nightmare"
     }
   ]
 }
