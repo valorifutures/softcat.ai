@@ -683,5 +683,69 @@
       }
     ],
     "added": "2026-05-09"
+  },
+  {
+    "id": "now-2026-05-deployment-packaging",
+    "lane": "now",
+    "title": "Model packaging shifts from size variants to deployment configurations",
+    "date": "2026-05-10",
+    "themes": [
+      "models",
+      "infrastructure"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "The industry is moving from shipping different model sizes to shipping different deployment configurations of the same model. This changes how we think about model distribution and optimisation.",
+    "implication": "Expect deployment infrastructure to become the primary differentiator, not model architecture.",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-05-10",
+        "label": "Star Elastic dynamic model sizing"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-05-10-single-checkpoints",
+        "label": "Single checkpoints becoming deployment complexity"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-05-06",
+        "label": "MTP Drafters for Gemma 4 speculative execution"
+      }
+    ],
+    "added": "2026-05-10"
+  },
+  {
+    "id": "now-2026-05-real-time-interfaces",
+    "lane": "now",
+    "title": "Real-time interaction becomes the new baseline for AI interfaces",
+    "date": "2026-05-10",
+    "themes": [
+      "interfaces",
+      "models"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "AI interfaces are crossing from request-response patterns to continuous real-time interaction. This fundamentally changes how we design AI experiences.",
+    "implication": "Design for streaming, persistent connections rather than discrete API calls.",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-05-10",
+        "label": "GPT Realtime Models"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-05-06",
+        "label": "Inworld Realtime TTS-2"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-05-09",
+        "label": "TokenSpeed real-time monitoring"
+      }
+    ],
+    "added": "2026-05-10"
   }
 ]
