@@ -1,0 +1,104 @@
+{
+  "date": "2026-05-10",
+  "featured": [
+    {
+      "id": "ph-cuda-oxide",
+      "name": "cuda-oxide",
+      "tagline": "Experimental Rust-to-CUDA compiler backend that compiles SIMT GPU kernels directly to PTX.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "NVIDIA's finally taking Rust seriously for GPU programming. This lets you write kernel code in Rust and compile directly to PTX, which could make GPU programming less of a nightmare. Early days, but this is the kind of infrastructure shift that changes how we build AI systems.",
+      "ph_url": "https://www.marktechpost.com/2026/05/09/nvidia-ai-just-released-cuda-oxide-an-experimental-rust-to-cuda-compiler-backend-that-compiles-simt-gpu-kernels-directly-to-ptx/",
+      "maker": "NVIDIA",
+      "featured": true,
+      "added_at": "2026-05-10T06:00:00Z"
+    },
+    {
+      "id": "ph-star-elastic",
+      "name": "Star Elastic",
+      "tagline": "One checkpoint containing 30B, 23B, and 12B reasoning models with zero-shot slicing.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "This is clever engineering from NVIDIA. Instead of training three separate models, they've embedded multiple parameter scales in a single checkpoint. It's a 360x reduction in training tokens compared to separate runs, which means cheaper deployment and easier model management.",
+      "ph_url": "https://www.marktechpost.com/2026/05/09/nvidia-ai-releases-star-elastic-one-checkpoint-that-contains-30b-23b-and-12b-reasoning-models-with-zero-shot-slicing/",
+      "maker": "NVIDIA",
+      "featured": true,
+      "added_at": "2026-05-10T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-gpt-realtime-models",
+      "name": "GPT Realtime Models",
+      "tagline": "Three purpose-built audio models for reasoning, translation, and transcription in OpenAI's Realtime API.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "OpenAI's splitting their realtime audio into specialised models rather than one general-purpose system. GPT-Realtime-2 handles reasoning, Translate covers 70+ languages, and Whisper does streaming transcription. Smart move to optimise for specific use cases rather than trying to do everything with one model.",
+      "ph_url": "https://www.marktechpost.com/2026/05/08/openai-releases-three-realtime-audio-models-gpt-realtime-2-gpt-realtime-translate-and-gpt-realtime-whisper-in-the-realtime-api/",
+      "maker": "OpenAI",
+      "featured": false,
+      "added_at": "2026-05-10T06:30:00Z"
+    },
+    {
+      "id": "ph-mochi-js",
+      "name": "Mochi.js",
+      "tagline": "Bun-native high-fidelity browser automation library with stealth capabilities.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Another browser automation tool, but this one's built for Bun rather than Node. The stealth focus suggests it's targeting the web scraping and testing crowd who need to avoid detection. Could be useful for training data collection or automated testing of AI web interfaces.",
+      "ph_url": "https://mochijs.com/",
+      "maker": "Unknown",
+      "featured": false,
+      "added_at": "2026-05-10T06:45:00Z"
+    },
+    {
+      "id": "ph-armorer",
+      "name": "Armorer",
+      "tagline": "Secure local control plane to sandbox AI agents in Docker containers.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "As AI agents get more autonomous, sandboxing becomes critical. This gives you a local control plane to run agents in isolated Docker containers. It's the kind of infrastructure you need before deploying agents that can execute code or access external systems.",
+      "ph_url": "https://github.com/ArmorerLabs/Armorer",
+      "maker": "ArmorerLabs",
+      "featured": false,
+      "added_at": "2026-05-10T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Mochi.js: bun-native high-fidelity browser automation library",
+      "points": 41,
+      "comments": 19,
+      "summary": "A browser automation library built specifically for Bun runtime with stealth capabilities. Targets use cases where you need high-fidelity browser control without detection.",
+      "hn_url": "https://news.ycombinator.com/item?id=48075059"
+    },
+    {
+      "title": "Show HN: My AI agents bully each other to prevent context drift",
+      "points": 4,
+      "comments": 0,
+      "summary": "An experimental approach to maintaining AI agent focus by having them challenge each other's responses. Interesting technique for keeping multi-agent systems on track.",
+      "hn_url": "https://news.ycombinator.com/item?id=48076137"
+    },
+    {
+      "title": "Show HN: Armorer \u2013 A secure local control plane to sandbox AI agents in Docker",
+      "points": 2,
+      "comments": 2,
+      "summary": "Security infrastructure for running AI agents in isolated Docker containers. Addresses the growing need for safe agent deployment as autonomy increases.",
+      "hn_url": "https://news.ycombinator.com/item?id=48076067"
+    },
+    {
+      "title": "Ask HN: What is the underlying stack behind multi-agent platforms?",
+      "points": 3,
+      "comments": 2,
+      "summary": "Discussion about the technical infrastructure powering multi-agent AI systems. Community sharing insights on orchestration, communication, and deployment patterns.",
+      "hn_url": "https://news.ycombinator.com/item?id=48074184"
+    },
+    {
+      "title": "ToolOps: One Decorator Away from Production-Ready AI Agents",
+      "points": 2,
+      "comments": 1,
+      "summary": "Framework that simplifies deploying AI agents to production with Python decorators. Aims to reduce the operational overhead of running autonomous agents.",
+      "hn_url": "https://news.ycombinator.com/item?id=48079291"
+    }
+  ]
+}

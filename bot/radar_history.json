@@ -742,6 +742,17 @@
         "Natural Language Autoencoders",
         "NeuralBench"
       ]
+    },
+    {
+      "date": "2026-05-10",
+      "file": "2026-05-10.json",
+      "products": [
+        "cuda-oxide",
+        "Star Elastic",
+        "GPT Realtime Models",
+        "Mochi.js",
+        "Armorer"
+      ]
     }
   ]
 }
