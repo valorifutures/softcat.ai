@@ -379,6 +379,11 @@
       "date": "2026-05-10",
       "file": "2026-05-10-single-checkpoints-just-turned-model-deployment-into-a-versi.md",
       "title": "Single checkpoints just turned model deployment into a version control nightmare"
+    },
+    {
+      "date": "2026-05-11",
+      "file": "2026-05-11-cost-aware-routing-just-turned-llm-apis-into-a-commodity-pri.md",
+      "title": "Cost-aware routing just turned LLM APIs into a commodity pricing problem"
     }
   ]
 }
