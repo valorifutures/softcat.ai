@@ -384,6 +384,11 @@
       "date": "2026-05-11",
       "file": "2026-05-11-cost-aware-routing-just-turned-llm-apis-into-a-commodity-pri.md",
       "title": "Cost-aware routing just turned LLM APIs into a commodity pricing problem"
+    },
+    {
+      "date": "2026-05-12",
+      "file": "2026-05-12-memory-bandwidth-just-became-the-new-cuda-bottleneck.md",
+      "title": "Memory bandwidth just became the new CUDA bottleneck"
     }
   ]
 }
