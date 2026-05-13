@@ -5901,5 +5901,20 @@
     "output_files": [
       "src/content/thoughts/2026-05-13-model-compilers-just-turned-optimisation-into-a-black-art-no.md"
     ]
+  },
+  {
+    "bot": "prompt_bot",
+    "timestamp": "2026-05-13T08:00:50.703047+00:00",
+    "status": "success",
+    "duration_s": 44.4,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 2,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0404,
+    "input_tokens": 5890,
+    "output_tokens": 1516,
+    "output_files": []
   }
 ]

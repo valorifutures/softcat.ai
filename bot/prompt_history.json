@@ -167,6 +167,18 @@
       "file": "llm-api-rate-limit-strategy-designer.md",
       "title": "LLM API Rate Limit Strategy Designer",
       "category": "api-design"
+    },
+    {
+      "date": "2026-05-13",
+      "file": "ai-agent-prompt-injection-security-validator.md",
+      "title": "AI Agent Prompt Injection Security Validator",
+      "category": "security"
+    },
+    {
+      "date": "2026-05-13",
+      "file": "llm-distillation-pipeline-validator.md",
+      "title": "LLM Distillation Pipeline Validator",
+      "category": "testing"
     }
   ]
 }
