@@ -389,6 +389,11 @@
       "date": "2026-05-12",
       "file": "2026-05-12-memory-bandwidth-just-became-the-new-cuda-bottleneck.md",
       "title": "Memory bandwidth just became the new CUDA bottleneck"
+    },
+    {
+      "date": "2026-05-13",
+      "file": "2026-05-13-model-compilers-just-turned-optimisation-into-a-black-art-no.md",
+      "title": "Model compilers just turned optimisation into a black art nobody understands"
     }
   ]
 }
