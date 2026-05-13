@@ -179,6 +179,18 @@
       "file": "llm-distillation-pipeline-validator.md",
       "title": "LLM Distillation Pipeline Validator",
       "category": "testing"
+    },
+    {
+      "date": "2026-05-13",
+      "file": "ai-agent-router-security-auditor.md",
+      "title": "AI Agent Router Security Auditor",
+      "category": "security"
+    },
+    {
+      "date": "2026-05-13",
+      "file": "ai-development-interview-question-generator.md",
+      "title": "AI Development Interview Question Generator",
+      "category": "interviewing"
     }
   ]
 }
