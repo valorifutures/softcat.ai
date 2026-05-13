@@ -5851,5 +5851,38 @@
     "output_files": [
       "src/content/thoughts/2026-05-12-memory-bandwidth-just-became-the-new-cuda-bottleneck.md"
     ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-05-13T05:00:05.148606+00:00",
+    "status": "error",
+    "duration_s": 2.1,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-05-13T06:00:31.587675+00:00",
+    "status": "success",
+    "duration_s": 30.1,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0281,
+    "input_tokens": 6817,
+    "output_tokens": 512,
+    "output_files": [
+      "src/content/news-and-updates/2026-05-13-ai-digest.md"
+    ]
   }
 ]
