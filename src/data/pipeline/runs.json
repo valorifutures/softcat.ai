@@ -6046,5 +6046,22 @@
     "output_files": [
       "src/content/news-and-updates/2026-05-15-ai-digest.md"
     ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-05-15T07:00:25.670732+00:00",
+    "status": "success",
+    "duration_s": 19.0,
+    "feeds_scanned": 5,
+    "items_found": 47,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0205,
+    "input_tokens": 5194,
+    "output_tokens": 326,
+    "output_files": [
+      "src/content/thoughts/2026-05-15-inference-harnesses-just-turned-model-improvement-into-a-con.md"
+    ]
   }
 ]
