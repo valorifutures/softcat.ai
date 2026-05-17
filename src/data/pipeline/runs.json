@@ -6146,5 +6146,22 @@
     "output_files": [
       "src/content/tools/2026-05-17-lighthouse-attention.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-05-17T06:00:35.814172+00:00",
+    "status": "success",
+    "duration_s": 33.4,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.034,
+    "input_tokens": 7424,
+    "output_tokens": 783,
+    "output_files": [
+      "src/content/news-and-updates/2026-05-17-ai-digest.md"
+    ]
   }
 ]
