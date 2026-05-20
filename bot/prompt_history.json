@@ -191,6 +191,18 @@
       "file": "ai-development-interview-question-generator.md",
       "title": "AI Development Interview Question Generator",
       "category": "interviewing"
+    },
+    {
+      "date": "2026-05-20",
+      "file": "agent-memory-migration-path-planner.md",
+      "title": "Agent Memory Migration Path Planner",
+      "category": "migration"
+    },
+    {
+      "date": "2026-05-20",
+      "file": "agent-capability-prompt-engineering-validator.md",
+      "title": "Agent Capability Prompt Engineering Validator",
+      "category": "prompt-engineering"
     }
   ]
 }
