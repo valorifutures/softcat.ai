@@ -203,6 +203,18 @@
       "file": "agent-capability-prompt-engineering-validator.md",
       "title": "Agent Capability Prompt Engineering Validator",
       "category": "prompt-engineering"
+    },
+    {
+      "date": "2026-05-20",
+      "file": "real-time-translation-model-latency-profiler.md",
+      "title": "Real-Time Translation Model Latency Profiler",
+      "category": "performance"
+    },
+    {
+      "date": "2026-05-20",
+      "file": "agent-tool-calling-security-validator.md",
+      "title": "Agent Tool Calling Security Validator",
+      "category": "security"
     }
   ]
 }
