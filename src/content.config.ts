@@ -91,6 +91,20 @@ const horizonTheme = z.enum(HORIZON_THEMES);
 const horizonConfidence = z.enum(['confirmed', 'emerging', 'contested', 'speculative']);
 const horizonSignalType = z.enum(['event', 'trend', 'forecast', 'debate', 'inflection', 'warning']);
 
+// TODOS #10: lane-specific signal_type / confidence subsets. The base enums
+// above are the full vocabulary; each lane narrows them so a hand-edited or
+// bot-proposed entry can't drift into an incoherent shape (e.g. a `past` event
+// marked `speculative`, or a `forecast` filed under `now`). Subsets verified
+// against current seed data — every existing entry already conforms.
+//   past → settled history: only event/inflection, always confirmed.
+//   now  → things underway: event/trend/inflection/warning; any confidence.
+//          (forecast is excluded on purpose — a pure forecast belongs in next.)
+//   next → forward-looking: only forecast; any confidence.
+const pastSignalType = z.enum(['event', 'inflection']);
+const pastConfidence = z.literal('confirmed');
+const nowSignalType = z.enum(['event', 'trend', 'inflection', 'warning']);
+const nextSignalType = z.literal('forecast');
+
 // Strict YYYY-MM-DD with calendar validation. Catches typos like 2025-02-30,
 // 2025-13-01, 2025-00-00 that a pure regex would let through. The other site
 // collections use z.coerce.date() but horizon stores dates as strings so they
@@ -197,6 +211,8 @@ const horizonPast = defineCollection({
         id: z.string().regex(PAST_ID, 'Past id must be past-{YYYY}-{slug}'),
         lane: z.literal('past'),
         date: isoDate, // required for past
+        signal_type: pastSignalType, // TODOS #10
+        confidence: pastConfidence, // TODOS #10
       })
       .strict(),
   ),
@@ -211,6 +227,7 @@ const horizonNowSchema = withLaneRefines(
       id: z.string().regex(NOW_ID, 'Now id must be now-{YYYY-MM}-{slug}'),
       lane: z.literal('now'),
       date: isoDate, // required for now
+      signal_type: nowSignalType, // TODOS #10 (confidence unconstrained on now)
     })
     .strict(),
 );
@@ -236,6 +253,7 @@ const horizonNext = defineCollection({
         id: z.string().regex(NEXT_ID, 'Next id must be next-{slug}'),
         lane: z.literal('next'),
         date: isoDate.optional(), // optional for next
+        signal_type: nextSignalType, // TODOS #10 (confidence unconstrained on next)
         // Issue 8 / Outside #6: confidence freshness mandatory on Next.
         // Validator WARNS at >90 days, no fail in v1. TODOS.md #1 tracks the
         // future escalation to hard fail at 180 days.
