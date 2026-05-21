@@ -125,22 +125,42 @@ const horizonThemeArray = z
   .min(1)
   .refine((arr) => new Set(arr).size === arr.length, 'themes must be unique');
 
+// TODOS #11: evidence and origin share one ref-type vocabulary. radar|news|
+// thought refs resolve to a content file (enforced by validate-horizon-refs.mjs);
+// paper is a freeform identifier (DOI / arXiv id / title); external must be an
+// http(s) URL. The URL rule is the real footgun-catcher — the validator passes
+// paper/external through, so without it a date or slug typed into an external
+// ref would silently ship a broken outbound link.
+const horizonRefType = z.enum(['radar', 'news', 'thought', 'paper', 'external']);
+const externalRefIsUrl = (v: { type: string; ref: string }) =>
+  v.type !== 'external' || /^https?:\/\/\S+$/.test(v.ref);
+
 const horizonEvidence = z
   .object({
-    type: z.enum(['radar', 'news', 'thought', 'paper', 'external']),
+    type: horizonRefType,
     ref: z.string().min(1),
     label: z.string().min(1),
   })
-  .strict();
+  .strict()
+  .refine(externalRefIsUrl, {
+    message: "evidence ref with type 'external' must be an http(s) URL",
+    path: ['ref'],
+  });
 
+// TODOS #11(b): origin shares evidence's full type vocabulary, so a Past entry
+// can record promotion from a paper or external source, not just site content.
 const horizonOrigin = z
   .object({
-    type: z.enum(['radar', 'news', 'thought']),
+    type: horizonRefType,
     ref: z.string().min(1),
     promoted_at: isoDate,
     promoted_reason: z.string().min(1).optional(),
   })
-  .strict();
+  .strict()
+  .refine(externalRefIsUrl, {
+    message: "origin ref with type 'external' must be an http(s) URL",
+    path: ['ref'],
+  });
 
 // Shared lane-entry fields. Each lane extends this with its own id pattern,
 // lane discriminator, and date/freshness requirements.
@@ -159,27 +179,41 @@ const horizonLaneBase = z.object({
   updated: isoDate.optional(),
 });
 
+// TODOS #12: shared relational refine. Applied to each lane's *final* schema
+// rather than to horizonLaneBase, because .extend() works on a ZodObject but
+// not on the ZodEffects that .refine() produces. Catches a backdated `updated`
+// (an entry can't be revised before it was added).
+const withLaneRefines = <T extends z.ZodTypeAny>(schema: T) =>
+  schema.refine(
+    (d: { added: string; updated?: string }) => !d.updated || d.updated >= d.added,
+    { message: 'updated must be on or after added', path: ['updated'] },
+  );
+
 const horizonPast = defineCollection({
   loader: file('src/data/horizon/past.json'),
-  schema: horizonLaneBase
-    .extend({
-      id: z.string().regex(PAST_ID, 'Past id must be past-{YYYY}-{slug}'),
-      lane: z.literal('past'),
-      date: isoDate, // required for past
-    })
-    .strict(),
+  schema: withLaneRefines(
+    horizonLaneBase
+      .extend({
+        id: z.string().regex(PAST_ID, 'Past id must be past-{YYYY}-{slug}'),
+        lane: z.literal('past'),
+        date: isoDate, // required for past
+      })
+      .strict(),
+  ),
 });
 
 // Shared schema for now.json (rolling 90d window) and now-archive.json
 // (cold archive of entries older than 90d). Same shape, different files
 // (Issue 2 reversed by Outside #2).
-const horizonNowSchema = horizonLaneBase
-  .extend({
-    id: z.string().regex(NOW_ID, 'Now id must be now-{YYYY-MM}-{slug}'),
-    lane: z.literal('now'),
-    date: isoDate, // required for now
-  })
-  .strict();
+const horizonNowSchema = withLaneRefines(
+  horizonLaneBase
+    .extend({
+      id: z.string().regex(NOW_ID, 'Now id must be now-{YYYY-MM}-{slug}'),
+      lane: z.literal('now'),
+      date: isoDate, // required for now
+    })
+    .strict(),
+);
 
 const horizonNow = defineCollection({
   loader: file('src/data/horizon/now.json'),
@@ -193,17 +227,29 @@ const horizonNowArchive = defineCollection({
 
 const horizonNext = defineCollection({
   loader: file('src/data/horizon/next.json'),
-  schema: horizonLaneBase
-    .extend({
-      id: z.string().regex(NEXT_ID, 'Next id must be next-{slug}'),
-      lane: z.literal('next'),
-      date: isoDate.optional(), // optional for next
-      // Issue 8 / Outside #6: confidence freshness mandatory on Next.
-      // Validator WARNS at >90 days, no fail in v1. TODOS.md #1 tracks the
-      // future escalation to hard fail at 180 days.
-      confidence_last_reviewed: isoDate,
-    })
-    .strict(),
+  // withLaneRefines adds updated>=added; the chained refine adds the Next-only
+  // rule that confidence can't have been reviewed before the entry existed
+  // (TODOS #12).
+  schema: withLaneRefines(
+    horizonLaneBase
+      .extend({
+        id: z.string().regex(NEXT_ID, 'Next id must be next-{slug}'),
+        lane: z.literal('next'),
+        date: isoDate.optional(), // optional for next
+        // Issue 8 / Outside #6: confidence freshness mandatory on Next.
+        // Validator WARNS at >90 days, no fail in v1. TODOS.md #1 tracks the
+        // future escalation to hard fail at 180 days.
+        confidence_last_reviewed: isoDate,
+      })
+      .strict(),
+  ).refine(
+    (d: { added: string; confidence_last_reviewed?: string }) =>
+      !d.confidence_last_reviewed || d.confidence_last_reviewed >= d.added,
+    {
+      message: 'confidence_last_reviewed must be on or after added',
+      path: ['confidence_last_reviewed'],
+    },
+  ),
 });
 
 const horizonDebates = defineCollection({
@@ -212,16 +258,18 @@ const horizonDebates = defineCollection({
     .object({
       id: z.string().regex(DEBATE_ID, 'Debate id must be debate-{slug}'),
       question: z.string().min(1),
+      // TODOS #12: each side needs at least one supporting ref — a debate side
+      // arguing from no evidence is a content gap, not a valid entry.
       for: z
         .object({
           argument: z.string().min(1),
-          supporting: z.array(z.string()),
+          supporting: z.array(z.string()).min(1),
         })
         .strict(),
       against: z
         .object({
           argument: z.string().min(1),
-          supporting: z.array(z.string()),
+          supporting: z.array(z.string()).min(1),
         })
         .strict(),
       themes: horizonThemeArray,
