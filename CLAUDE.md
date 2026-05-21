@@ -77,6 +77,15 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 - Pipeline page and activity ticker read runs.json at build time
 - Content frontmatter supports optional pipeline metadata: `generated_by`, `model`, `generation_time_s`, `cost_usd`
 
+## Horizon Map (`/horizon`)
+
+- Data lives in `src/data/horizon/*.json` (lanes: `past`, `now`, `now-archive`, `next`, plus `debates`, `scenarios`, `shifts`). Per-entry shape is enforced by Zod in `src/content.config.ts`; cross-file integrity (id uniqueness, dangling refs, confidence freshness) by `scripts/validate-horizon-refs.mjs`.
+- **Review surface — bot proposes, Valori lands (TODOS #5, decided):**
+  - `bot/horizon_bot.py` Job 1 writes Now-lane proposals to `now.json` on a dated `horizon-bot/proposals-YYYY-MM-DD` branch and opens a **PR**. Valori reviews the data diff and merges to land. The bot never writes `now.json` on `main` directly.
+  - Job 2 (Next confidence shifts) and Job 3 (Past promotion candidates) are **flag-only** — they go to `~/.softcat-bot-staging/horizon-bot-proposals.json` for manual review, not a PR.
+  - `past.json` is single-writer (Valori only). `debates.json` is 100% human-curated.
+- The validator is run manually / via CI, not as part of `astro build`. Run it before merging horizon data PRs: `node scripts/validate-horizon-refs.mjs`.
+
 ## Safety Rules
 
 1. NEVER push directly to main. Always create a branch and PR.
