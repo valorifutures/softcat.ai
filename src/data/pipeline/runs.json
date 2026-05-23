@@ -6573,5 +6573,38 @@
     "output_files": [
       "src/content/news-and-updates/2026-05-23-ai-digest.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-05-23T06:00:33.298805+00:00",
+    "status": "error",
+    "duration_s": 31.5,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-05-23T07:00:18.605673+00:00",
+    "status": "success",
+    "duration_s": 17.8,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.022,
+    "input_tokens": 5422,
+    "output_tokens": 379,
+    "output_files": [
+      "src/content/thoughts/2026-05-23-agent-memory-just-turned-every-conversation-into-a-liability.md"
+    ]
   }
 ]
