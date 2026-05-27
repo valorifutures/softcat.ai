@@ -227,6 +227,18 @@
       "file": "agent-authentication-flow-designer.md",
       "title": "Agent Authentication Flow Designer",
       "category": "agent-design"
+    },
+    {
+      "date": "2026-05-27",
+      "file": "mimo-attention-drift-monitor.md",
+      "title": "MIMO Attention Drift Monitor",
+      "category": "testing"
+    },
+    {
+      "date": "2026-05-27",
+      "file": "multi-model-memory-framework-designer.md",
+      "title": "Multi-Model Memory Framework Designer",
+      "category": "architecture"
     }
   ]
 }
