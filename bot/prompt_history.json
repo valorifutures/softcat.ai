@@ -215,6 +215,18 @@
       "file": "agent-tool-calling-security-validator.md",
       "title": "Agent Tool Calling Security Validator",
       "category": "security"
+    },
+    {
+      "date": "2026-05-27",
+      "file": "speculative-decoding-performance-validator.md",
+      "title": "Speculative Decoding Performance Validator",
+      "category": "testing"
+    },
+    {
+      "date": "2026-05-27",
+      "file": "agent-authentication-flow-designer.md",
+      "title": "Agent Authentication Flow Designer",
+      "category": "agent-design"
     }
   ]
 }
