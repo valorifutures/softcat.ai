@@ -7080,5 +7080,38 @@
     "output_files": [
       "src/content/news-and-updates/2026-05-30-ai-digest.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-05-30T06:00:31.294351+00:00",
+    "status": "error",
+    "duration_s": 30.7,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-05-30T07:00:23.119114+00:00",
+    "status": "success",
+    "duration_s": 19.5,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0222,
+    "input_tokens": 5712,
+    "output_tokens": 335,
+    "output_files": [
+      "src/content/thoughts/2026-05-30-tool-search-just-turned-agent-frameworks-into-library-manage.md"
+    ]
   }
 ]
