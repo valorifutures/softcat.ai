@@ -7047,5 +7047,38 @@
     "output_files": [
       "src/content/thoughts/2026-05-29-infrastructure-companies-just-became-the-real-ai-kingmakers.md"
     ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-05-30T05:00:03.412298+00:00",
+    "status": "error",
+    "duration_s": 2.3,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-05-30T06:00:29.750963+00:00",
+    "status": "success",
+    "duration_s": 29.2,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.033,
+    "input_tokens": 7385,
+    "output_tokens": 726,
+    "output_files": [
+      "src/content/news-and-updates/2026-05-30-ai-digest.md"
+    ]
   }
 ]
