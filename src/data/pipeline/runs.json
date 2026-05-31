@@ -7146,5 +7146,38 @@
     "output_files": [
       "src/content/tools/2026-05-31-sia-selfimproving-agent.md"
     ]
+  },
+  {
+    "bot": "tool_bot",
+    "timestamp": "2026-05-31T06:00:20.284027+00:00",
+    "status": "error",
+    "duration_s": 18.1,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-05-31T06:00:35.161564+00:00",
+    "status": "success",
+    "duration_s": 33.0,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.033,
+    "input_tokens": 7268,
+    "output_tokens": 745,
+    "output_files": [
+      "src/content/news-and-updates/2026-05-31-ai-digest.md"
+    ]
   }
 ]
