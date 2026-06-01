@@ -7278,5 +7278,38 @@
     "output_files": [
       "src/content/news-and-updates/2026-06-01-ai-digest.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-06-01T06:00:34.961682+00:00",
+    "status": "error",
+    "duration_s": 34.4,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-06-01T07:00:24.294718+00:00",
+    "status": "success",
+    "duration_s": 22.2,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0218,
+    "input_tokens": 5468,
+    "output_tokens": 363,
+    "output_files": [
+      "src/content/thoughts/2026-06-01-governance-layers-just-turned-ai-agents-into-bureaucrats.md"
+    ]
   }
 ]
