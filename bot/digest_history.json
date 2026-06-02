@@ -3574,6 +3574,42 @@
         "https://buttondown.com/ainews/archive/ainews-openai-o3-o4-mini-and-codex-cli/",
         "https://buttondown.com/ainews/archive/ainews-sota-video-gen-veo-2-and-kling-2-are-ga/"
       ]
+    },
+    {
+      "date": "2026-06-02",
+      "file": "2026-06-02-ai-digest.md",
+      "links": [
+        "https://www.marktechpost.com/2026/06/01/how-to-speed-up-transformer-training-using-nvidia-apex-fusedadam-fusedlayernorm-and-native-torch-amp/",
+        "https://www.marktechpost.com/2026/06/01/minimax-releases-minimax-m3-with-msa-architecture-supporting-1m-token-context-native-multimodality-and-agentic-coding/",
+        "https://www.marktechpost.com/2026/06/01/meet-memory-os-a-6-layer-open-source-memory-stack-built-on-top-of-hermes-agent/",
+        "https://www.marktechpost.com/2026/05/31/parallax-a-parameterized-local-linear-attention-that-keeps-softmax-and-adds-a-learned-covariance-correction-branch/",
+        "https://www.marktechpost.com/2026/05/31/an-implementation-of-the-microsoft-agent-governance-toolkit-for-safe-ai-agent-tool-use-with-policies-approvals-audit-logs-and-risk-controls/",
+        "https://www.marktechpost.com/2026/05/31/a-coding-implementation-on-loguru-for-designing-robust-structured-concurrent-and-production-ready-python-logging-pipelines/",
+        "https://www.marktechpost.com/2026/05/30/trajectory-releases-a-concurrent-multi-lora-training-stack-for-continual-learning-reporting-a-2-81x-experiment-throughput-gain/",
+        "https://www.marktechpost.com/2026/05/30/build-skill-augmented-ai-agents-with-skillnet-for-search-evaluation-graph-analysis-and-task-planning/",
+        "https://www.marktechpost.com/2026/05/30/best-text-to-speech-tts-models-in-2026-a-benchmark-based-comparison/",
+        "https://www.marktechpost.com/2026/05/30/genesis-ai-releases-nyx-quadrants-and-genesis-world-1-0-physics-platform-for-scalable-robotics-foundation-model-evaluation/",
+        "https://techcrunch.com/2026/06/01/alphabet-plans-to-raise-80-billion-to-pay-for-ai-buildout/",
+        "https://techcrunch.com/2026/06/01/nvidia-chases-200b-cpu-market-with-ai-agent-pcs-from-microsoft-dell-and-hp/",
+        "https://techcrunch.com/2026/06/01/florida-sues-openai-sam-altman-in-first-of-its-kind-lawsuit-over-violent-incidents/",
+        "https://techcrunch.com/2026/06/01/water-access-is-now-a-risk-factor-in-spacexs-ipo/",
+        "https://techcrunch.com/2026/06/01/anthropic-files-to-go-public/",
+        "https://techcrunch.com/2026/06/01/this-ai-weather-startup-is-out-forecasting-government-agencies/",
+        "https://techcrunch.com/2026/06/01/duckduckgo-makes-its-no-ai-search-engine-easier-to-access-as-its-traffic-booms/",
+        "https://techcrunch.com/2026/05/31/erin-brockovich-takes-aim-at-data-center-secrecy/",
+        "https://techcrunch.com/2026/05/31/making-sense-of-the-debate-over-ai-psychosis/",
+        "https://techcrunch.com/2026/05/30/softbank-says-it-will-invest-up-to-e75-billion-to-build-french-data-centers/",
+        "https://techcrunch.com/2026/05/30/what-a-joke-github-copilots-new-token-based-billing-spurs-consternation-among-devs/",
+        "https://techcrunch.com/2026/05/30/meta-is-reportedly-developing-an-ai-pendant/",
+        "https://techcrunch.com/2026/05/30/i-put-googles-24-7-ai-assistant-gemini-spark-to-work-and-its-actually-pretty-useful/",
+        "https://techcrunch.com/2026/05/30/the-groupthink-boom-what-three-top-vcs-really-think-about-the-ai-frenzy/",
+        "https://techcrunch.com/2026/05/30/as-the-browser-wars-heat-up-here-are-the-hottest-alternatives-to-chrome-and-safari-in-2026/",
+        "https://buttondown.com/ainews/archive/ainews-we-have-moved-please-help-us-move/",
+        "https://buttondown.com/ainews/archive/ainews-grok-3-3-mini-now-api-available/",
+        "https://buttondown.com/ainews/archive/ainews-gemini-25-flash-completes-the-total/",
+        "https://buttondown.com/ainews/archive/ainews-openai-o3-o4-mini-and-codex-cli/",
+        "https://buttondown.com/ainews/archive/ainews-sota-video-gen-veo-2-and-kling-2-are-ga/"
+      ]
     }
   ]
 }
