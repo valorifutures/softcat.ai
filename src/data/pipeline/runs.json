@@ -7377,5 +7377,38 @@
     "output_files": [
       "src/content/thoughts/2026-06-02-training-efficiency-just-became-a-hardware-marketing-scheme.md"
     ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-06-03T05:00:06.998503+00:00",
+    "status": "error",
+    "duration_s": 2.2,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-06-03T06:00:31.567287+00:00",
+    "status": "success",
+    "duration_s": 29.2,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0297,
+    "input_tokens": 6759,
+    "output_tokens": 628,
+    "output_files": [
+      "src/content/news-and-updates/2026-06-03-ai-digest.md"
+    ]
   }
 ]
