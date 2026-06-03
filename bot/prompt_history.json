@@ -239,6 +239,18 @@
       "file": "multi-model-memory-framework-designer.md",
       "title": "Multi-Model Memory Framework Designer",
       "category": "architecture"
+    },
+    {
+      "date": "2026-06-03",
+      "file": "mixture-of-experts-model-pipeline-validator.md",
+      "title": "Mixture-of-Experts Model Pipeline Validator",
+      "category": "testing"
+    },
+    {
+      "date": "2026-06-03",
+      "file": "ai-agent-tool-registry-security-auditor.md",
+      "title": "AI Agent Tool Registry Security Auditor",
+      "category": "security"
     }
   ]
 }
