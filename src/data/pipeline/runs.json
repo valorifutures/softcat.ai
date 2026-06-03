@@ -7474,5 +7474,52 @@
     "input_tokens": 6262,
     "output_tokens": 1175,
     "output_files": []
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-06-03T08:30:57.792719+00:00",
+    "status": "error",
+    "duration_s": 53.7,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-06-03T09:00:21.580973+00:00",
+    "status": "error",
+    "duration_s": 19.9,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'fetch', 'origin', 'main']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "prompt_bot",
+    "timestamp": "2026-06-03T09:00:35.784685+00:00",
+    "status": "success",
+    "duration_s": 34.1,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 2,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0358,
+    "input_tokens": 6309,
+    "output_tokens": 1124,
+    "output_files": []
   }
 ]

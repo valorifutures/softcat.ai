@@ -251,6 +251,18 @@
       "file": "ai-agent-tool-registry-security-auditor.md",
       "title": "AI Agent Tool Registry Security Auditor",
       "category": "security"
+    },
+    {
+      "date": "2026-06-03",
+      "file": "mixture-of-experts-model-routing-efficiency-analyser.md",
+      "title": "Mixture-of-Experts Model Routing Efficiency Analyser",
+      "category": "performance"
+    },
+    {
+      "date": "2026-06-03",
+      "file": "ai-agent-governance-policy-framework-designer.md",
+      "title": "AI Agent Governance Policy Framework Designer",
+      "category": "agent-design"
     }
   ]
 }
