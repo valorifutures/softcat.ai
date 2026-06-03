@@ -7410,5 +7410,38 @@
     "output_files": [
       "src/content/news-and-updates/2026-06-03-ai-digest.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-06-03T06:00:32.996854+00:00",
+    "status": "error",
+    "duration_s": 30.7,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-06-03T07:00:23.927103+00:00",
+    "status": "success",
+    "duration_s": 21.9,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0219,
+    "input_tokens": 5374,
+    "output_tokens": 384,
+    "output_files": [
+      "src/content/thoughts/2026-06-03-fine-tuning-tutorials-just-turned-model-training-into-paint-.md"
+    ]
   }
 ]
