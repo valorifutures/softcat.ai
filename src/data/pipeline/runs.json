@@ -7686,5 +7686,38 @@
     "output_files": [
       "src/content/news-and-updates/2026-06-06-ai-digest.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-06-06T06:00:34.229928+00:00",
+    "status": "error",
+    "duration_s": 31.9,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-06-06T07:00:20.870066+00:00",
+    "status": "success",
+    "duration_s": 16.5,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0218,
+    "input_tokens": 5512,
+    "output_tokens": 354,
+    "output_files": [
+      "src/content/thoughts/2026-06-06-hybrid-routing-just-turned-your-laptop-into-a-schizophrenic-.md"
+    ]
   }
 ]
