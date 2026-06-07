@@ -7818,5 +7818,38 @@
     "output_files": [
       "src/content/thoughts/2026-06-07-command-line-interfaces-just-turned-ai-agents-into-unix-phil.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-06-07T08:30:52.215196+00:00",
+    "status": "error",
+    "duration_s": 48.1,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "tool_bot",
+    "timestamp": "2026-06-07T09:00:15.783783+00:00",
+    "status": "success",
+    "duration_s": 14.2,
+    "feeds_scanned": 4,
+    "items_found": 30,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0187,
+    "input_tokens": 4576,
+    "output_tokens": 330,
+    "output_files": [
+      "src/content/tools/2026-06-07-google-colab-cli.md"
+    ]
   }
 ]
