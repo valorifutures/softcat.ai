@@ -7785,5 +7785,38 @@
     "output_files": [
       "src/content/news-and-updates/2026-06-07-ai-digest.md"
     ]
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-06-07T06:00:32.664580+00:00",
+    "status": "error",
+    "duration_s": 30.3,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-06-07T07:00:19.807960+00:00",
+    "status": "success",
+    "duration_s": 19.0,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0225,
+    "input_tokens": 5561,
+    "output_tokens": 389,
+    "output_files": [
+      "src/content/thoughts/2026-06-07-command-line-interfaces-just-turned-ai-agents-into-unix-phil.md"
+    ]
   }
 ]
