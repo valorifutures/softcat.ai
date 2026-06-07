@@ -7752,5 +7752,38 @@
     "output_files": [
       "src/content/tools/2026-06-07-nvidia-garak.md"
     ]
+  },
+  {
+    "bot": "tool_bot",
+    "timestamp": "2026-06-07T06:00:17.647152+00:00",
+    "status": "error",
+    "duration_s": 15.3,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-06-07T06:00:31.425054+00:00",
+    "status": "success",
+    "duration_s": 29.1,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.032,
+    "input_tokens": 7519,
+    "output_tokens": 631,
+    "output_files": [
+      "src/content/news-and-updates/2026-06-07-ai-digest.md"
+    ]
   }
 ]
