@@ -3790,6 +3790,42 @@
         "https://buttondown.com/ainews/archive/ainews-openai-o3-o4-mini-and-codex-cli/",
         "https://buttondown.com/ainews/archive/ainews-sota-video-gen-veo-2-and-kling-2-are-ga/"
       ]
+    },
+    {
+      "date": "2026-06-08",
+      "file": "2026-06-08-ai-digest.md",
+      "links": [
+        "https://www.marktechpost.com/2026/06/07/building-reflective-prompt-optimization-with-gepa-multi-component-prompts-structured-feedback-and-held-out-validation/",
+        "https://www.marktechpost.com/2026/06/07/best-21-low-code-and-no-code-ai-tools-in-2026/",
+        "https://www.marktechpost.com/2026/06/06/meet-harness-1-a-20b-retrieval-subagent-trained-with-reinforcement-learning-inside-a-stateful-search-harness-on-gpt-oss-20b/",
+        "https://www.marktechpost.com/2026/06/06/nvidia-garak-tutorial-build-a-complete-defensive-llm-red-teaming-workflow-with-custom-probes-and-detectors/",
+        "https://www.marktechpost.com/2026/06/06/googles-new-colab-cli-lets-developers-and-ai-agents-run-python-on-remote-colab-gpus-and-tpus-from-the-terminal/",
+        "https://www.marktechpost.com/2026/06/06/moonshot-ai-releases-kimi-code-cli-a-terminal-ai-coding-agent-built-in-typescript-for-next-gen-agents/",
+        "https://www.marktechpost.com/2026/06/06/nvidia-releases-nemotron-3-5-asr-a-600m-parameter-cache-aware-streaming-model-transcribing-40-language-locales-in-real-time/",
+        "https://www.marktechpost.com/2026/06/05/a-hands-on-coding-tutorial-on-qualcomm-ai-hub-models-for-classification-object-detection-and-hardware-aware-deployment/",
+        "https://www.marktechpost.com/2026/06/05/google-deepmind-releases-gemma-4-qat-checkpoints-q4_0-and-a-new-mobile-format-cut-on-device-memory/",
+        "https://www.marktechpost.com/2026/06/05/nvidia-ai-releases-dynamo-snapshot-a-criu-based-fast-startup-system-for-ai-inference-on-kubernetes/",
+        "https://techcrunch.com/2026/06/07/is-this-the-dawn-of-the-tokenpocalypse/",
+        "https://techcrunch.com/2026/06/07/notion-restores-access-to-anthropic-after-service-disruption/",
+        "https://techcrunch.com/2026/06/07/openai-is-still-working-on-that-super-app/",
+        "https://techcrunch.com/2026/06/06/openai-unveils-lockdown-mode-to-protect-sensitive-data-from-prompt-injection-attacks/",
+        "https://techcrunch.com/2026/06/06/what-to-expect-from-wwdc-2026-siris-highly-anticipated-revamp-and-apple-intelligence-updates/",
+        "https://techcrunch.com/2026/06/06/sriram-krishnan-is-leaving-his-role-as-white-house-ai-advisor/",
+        "https://techcrunch.com/2026/06/06/the-trump-administration-might-take-an-equity-stake-in-openai/",
+        "https://techcrunch.com/2026/06/05/startup-battlefield-200-applications-officially-close-in-3-days/",
+        "https://techcrunch.com/2026/06/05/google-will-pay-spacex-920m-per-month-for-compute/",
+        "https://techcrunch.com/video/the-most-interesting-startups-right-now-want-to-get-you-off-your-phone/",
+        "https://techcrunch.com/2026/06/05/the-token-bill-comes-due-inside-the-industry-scramble-to-manage-ais-runaway-costs/",
+        "https://techcrunch.com/podcast/the-together-tech-wave-might-be-the-most-intriguing-startup-bet-of-2026/",
+        "https://techcrunch.com/2026/06/05/airtrunk-commits-30b-to-build-5gw-of-ai-data-centers-in-india/",
+        "https://techcrunch.com/2026/06/04/mira-murati-steps-back-into-the-spotlight-carefully/",
+        "https://techcrunch.com/2026/06/04/ahead-of-its-ipo-anthropics-daniela-amodei-shrugs-off-doubts-about-ais-returns/",
+        "https://buttondown.com/ainews/archive/ainews-we-have-moved-please-help-us-move/",
+        "https://buttondown.com/ainews/archive/ainews-grok-3-3-mini-now-api-available/",
+        "https://buttondown.com/ainews/archive/ainews-gemini-25-flash-completes-the-total/",
+        "https://buttondown.com/ainews/archive/ainews-openai-o3-o4-mini-and-codex-cli/",
+        "https://buttondown.com/ainews/archive/ainews-sota-video-gen-veo-2-and-kling-2-are-ga/"
+      ]
     }
   ]
 }
