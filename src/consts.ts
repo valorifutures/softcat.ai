@@ -8,7 +8,7 @@
 //
 // While the token is empty, NOTHING is rendered: no beacon script ships, and the
 // /privacy page truthfully says "no analytics". The two stay in sync automatically.
-const CF_BEACON_TOKEN_OVERRIDE = '';
+const CF_BEACON_TOKEN_OVERRIDE = 'c0ed69cab5c240d1813af18a31734729';
 
 export const CF_BEACON_TOKEN: string =
   import.meta.env.PUBLIC_CF_BEACON_TOKEN || CF_BEACON_TOKEN_OVERRIDE;
