@@ -8015,5 +8015,22 @@
     "output_tokens": 0,
     "output_files": [],
     "error_msg": "Command '['git', 'fetch', 'origin', 'main']' returned non-zero exit status 1."
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-06-09T14:39:51.972169+00:00",
+    "status": "success",
+    "duration_s": 42.1,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 61,
+    "items_published": 6,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0684,
+    "input_tokens": 11016,
+    "output_tokens": 2356,
+    "output_files": [
+      "src/data/radar/2026-06-09.json"
+    ]
   }
 ]

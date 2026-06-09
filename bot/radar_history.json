@@ -753,6 +753,18 @@
         "Mochi.js",
         "Armorer"
       ]
+    },
+    {
+      "date": "2026-06-09",
+      "file": "2026-06-09.json",
+      "products": [
+        "MAI-Transcribe-1.5",
+        "Harness-1",
+        "Command Center",
+        "Rayline",
+        "Deep Memory",
+        "CapaKit"
+      ]
     }
   ]
 }

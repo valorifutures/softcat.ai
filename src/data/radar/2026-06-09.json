@@ -1,0 +1,116 @@
+{
+  "date": "2026-06-09",
+  "featured": [
+    {
+      "id": "ph-mai-transcribe-1-5",
+      "name": "MAI-Transcribe-1.5",
+      "tagline": "Microsoft's speech-to-text model with 2.4% WER and 43 language support.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Microsoft finally delivers a transcription model that works. The 2.4% error rate on Artificial Analysis puts it ahead of OpenAI's Whisper variants, and the keyword biasing for domain-specific terms addresses real enterprise needs. Available in Azure AI Foundry now.",
+      "ph_url": "https://www.marktechpost.com/2026/06/08/microsoft-ai-introduces-mai-transcribe-1-5-2-4-wer-on-artificial-analysis-best-in-class-fleurs-accuracy-and-up-to-5x-faster-long-audio-transcription/",
+      "maker": "Microsoft AI",
+      "featured": true,
+      "added_at": "2026-06-09T06:00:00Z"
+    },
+    {
+      "id": "ph-harness-1",
+      "name": "Harness-1",
+      "tagline": "20B retrieval subagent trained with reinforcement learning inside a stateful search harness.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "UIUC and Chroma built something genuinely clever here. Instead of just another RAG system, Harness-1 maintains proper bookkeeping whilst the policy decides what to search, curate, and verify. The 0.730 average curated recall beats most open subagents by double digits.",
+      "ph_url": "https://www.marktechpost.com/2026/06/06/meet-harness-1-a-20b-retrieval-subagent-trained-with-reinforcement-learning-inside-a-stateful-search-harness-on-gpt-oss-20b/",
+      "maker": "UIUC & Chroma",
+      "featured": true,
+      "added_at": "2026-06-09T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-command-center",
+      "name": "Command Center",
+      "tagline": "AI coding environment designed for developers who prioritise quality.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Most AI coding tools optimise for speed over quality, which gets you fast bugs. Command Center's approach of building quality controls into the environment itself makes more sense for production work. We're curious to see if developers will trade velocity for reliability.",
+      "ph_url": "https://www.cc.dev/",
+      "maker": "CC.dev",
+      "featured": false,
+      "added_at": "2026-06-09T06:30:00Z"
+    },
+    {
+      "id": "ph-rayline",
+      "name": "Rayline",
+      "tagline": "Routes Claude Code subagents to on-device and cheaper models for cost optimisation.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Smart routing between expensive and cheap models is becoming essential infrastructure. Rayline tackles the specific case of Claude's coding agents, which can burn through credits quickly. The economics of AI development depend on tools like this working properly.",
+      "ph_url": "https://rayline.ai/",
+      "maker": "Rayline",
+      "featured": false,
+      "added_at": "2026-06-09T06:30:00Z"
+    },
+    {
+      "id": "ph-deep-memory",
+      "name": "Deep Memory",
+      "tagline": "Vocabulary-driven graph memory system for AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Most AI agents forget everything between sessions, which makes them useless for real work. Deep Memory's vocabulary-driven approach to persistent memory could fix this fundamental limitation. The graph structure should help with retrieval at scale.",
+      "ph_url": "https://github.com/TjWheeler/deep-memory",
+      "maker": "TjWheeler",
+      "featured": false,
+      "added_at": "2026-06-09T06:30:00Z"
+    },
+    {
+      "id": "ph-capakit",
+      "name": "CapaKit",
+      "tagline": "Sandbox environment for complete AI app lifecycle from build to run.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Building AI apps usually means juggling multiple tools and environments. CapaKit's integrated sandbox approach could streamline the whole process from development to deployment. We need more tools that treat AI applications as first-class citizens.",
+      "ph_url": "https://capakit.com/",
+      "maker": "CapaKit",
+      "featured": false,
+      "added_at": "2026-06-09T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Command Center, the AI coding env for people who care about quality",
+      "points": 53,
+      "comments": 26,
+      "summary": "A new AI coding environment that prioritises code quality over speed. Built for developers who want AI assistance without sacrificing reliability. Takes a different approach from the usual 'move fast and break things' AI coding tools.",
+      "hn_url": "https://news.ycombinator.com/item?id=48453002"
+    },
+    {
+      "title": "Mach \u2013 A compiled systems language looking for contributions",
+      "points": 28,
+      "comments": 14,
+      "summary": "New compiled systems programming language seeking community contributions. Could be relevant for AI infrastructure development. Still early stage but worth watching.",
+      "hn_url": "https://news.ycombinator.com/item?id=48453666"
+    },
+    {
+      "title": "Rayline routes Claude Code subagents to on-device and cheaper models",
+      "points": 11,
+      "comments": 8,
+      "summary": "Tool for routing Claude's coding agents between expensive cloud models and cheaper alternatives. Addresses the cost problem that makes AI coding tools expensive at scale. Smart approach to model orchestration.",
+      "hn_url": "https://news.ycombinator.com/item?id=48448372"
+    },
+    {
+      "title": "Why won't you be replaced by AI?",
+      "points": 8,
+      "comments": 30,
+      "summary": "Community discussion about which jobs and skills remain AI-resistant. Lots of interesting perspectives on the future of work. More philosophical than technical but worth reading.",
+      "hn_url": "https://news.ycombinator.com/item?id=48450261"
+    },
+    {
+      "title": "Apple Passwords Now Auto Fixes Weak and Compromised Passwords with Agentic AI",
+      "points": 7,
+      "comments": 3,
+      "summary": "Apple's password manager now uses AI agents to automatically fix weak passwords. Part of their broader AI push. Practical application of agentic AI in consumer software.",
+      "hn_url": "https://news.ycombinator.com/item?id=48451450"
+    }
+  ]
+}
