@@ -35,6 +35,7 @@ import httpx
 from dotenv import load_dotenv
 
 from pipeline_log import log_run
+import git_safe
 
 BOT_DIR = Path(__file__).parent
 load_dotenv(BOT_DIR / ".env")
@@ -282,30 +283,14 @@ def post_suspects_to_discord(suspects):
 
 
 def git_commit_and_push():
-    os.chdir(REPO_DIR)
-    # Stash any stray uncommitted files (from other bots mid-run, etc.) so
-    # pull --rebase cannot fail on dirty worktree, then restore them after.
-    stash_result = subprocess.run(
-        ["git", "stash", "--include-untracked", "--keep-index"],
-        capture_output=True, text=True,
-    )
-    stashed = "No local changes" not in stash_result.stdout
-    subprocess.run(["git", "pull", "--rebase"], check=True)
-    if stashed:
-        subprocess.run(["git", "stash", "pop"], check=True)
-    subprocess.run(["git", "add", "src/data/models.json", "src/data/pipeline/runs.json"], check=True)
-
-    # Check if there are actually staged changes after pull
-    result = subprocess.run(["git", "diff", "--cached", "--quiet"])
-    if result.returncode == 0:
-        print("No staged changes after pull. Exiting.")
-        return
-
+    # Serialized under the shared git lock, health-checked, and rebased before
+    # push by git_safe (which also stashes any stray files from other bots).
     today = date.today().isoformat()
     msg = f"bot: update model data ({today})"
-    subprocess.run(["git", "commit", "-m", msg], check=True)
-    subprocess.run(["git", "push"], check=True)
-    print(f"Pushed: {msg}")
+    git_safe.safe_commit_and_push(
+        ["src/data/models.json", "src/data/pipeline/runs.json"],
+        msg,
+    )
 
 
 def ping_healthcheck(status="success"):

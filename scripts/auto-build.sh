@@ -28,6 +28,29 @@ trap 'rm -f "$LOCK_FILE"; cd "$REPO_DIR" && git checkout main 2>/dev/null || tru
 
 cd "$REPO_DIR"
 
+# Pre-flight: never build on top of a corrupt repo (interrupted-write damage,
+# zero-byte refs, unresolvable HEAD). Abort loudly so a human repairs it instead
+# of the build piling commits onto a broken tree.
+if ! python3 bot/git_safe.py --check >> "$LOG_FILE" 2>&1; then
+    echo "[$(date)] Repo health check FAILED — aborting build, manual repair needed." >> "$LOG_FILE"
+    if [ -n "${SOFTCAT_ALERT_WEBHOOK:-}" ]; then
+        curl -s -X POST "$SOFTCAT_ALERT_WEBHOOK" -H 'Content-Type: application/json' \
+            -d '{"content":"⚠️ softcat auto-build aborted: git repo health check failed (corrupt state). Manual repair needed."}' >/dev/null 2>&1 || true
+    fi
+    exit 1
+fi
+
+# Serialize ALL git-mutating work against the content bots via the shared lock
+# (bot/git_safe.py uses the same file). Held for the whole run so a bot can never
+# commit to main while we are on a feature branch or mid-checkout. A bot that
+# overlaps simply waits, then recovers on its next scheduled run. The fd stays
+# open for the script's lifetime, releasing the lock automatically on exit.
+exec 200>"/tmp/softcat-git.lock"
+if ! flock -w 600 200; then
+    echo "[$(date)] Could not acquire shared git lock within 600s; a bot is busy. Skipping this run." >> "$LOG_FILE"
+    exit 0
+fi
+
 # Start clean on main
 git checkout main 2>/dev/null
 git pull --ff-only origin main 2>/dev/null || true

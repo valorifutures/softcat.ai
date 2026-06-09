@@ -21,6 +21,7 @@ from dotenv import load_dotenv
 from anthropic import Anthropic
 
 from pipeline_log import log_run
+import git_safe
 
 # Paths
 BOT_DIR = Path(__file__).parent
@@ -180,16 +181,12 @@ Rules:
 
 
 def git_commit_and_push(filename: str):
-    """Commit the new file and push."""
-    os.chdir(REPO_DIR)
-
-    subprocess.run(["git", "add", f"src/content/tools/{filename}", "bot/history.json", "src/data/pipeline/runs.json"], check=True)
-
+    """Commit the new file and push (serialized + health-checked via git_safe)."""
     msg = f"bot: add tool of the week ({filename.replace('.md', '')})"
-    subprocess.run(["git", "commit", "-m", msg], check=True)
-    subprocess.run(["git", "push"], check=True)
-
-    print(f"Pushed: {msg}")
+    git_safe.safe_commit_and_push(
+        [f"src/content/tools/{filename}", "bot/history.json", "src/data/pipeline/runs.json"],
+        msg,
+    )
 
 
 def ping_healthcheck(status="success"):
