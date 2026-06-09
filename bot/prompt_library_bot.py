@@ -22,6 +22,7 @@ from dotenv import load_dotenv
 from anthropic import Anthropic
 
 from pipeline_log import log_run
+import git_safe
 
 # Paths
 BOT_DIR = Path(__file__).parent
@@ -252,17 +253,10 @@ def save_and_push(prompts: list[str], history: dict, *, push: bool = True):
 
     save_history(history)
 
-    # Commit and push
-    os.chdir(REPO_DIR)
+    # Commit and push (serialized + health-checked via git_safe)
     git_add = files_created + ["bot/prompt_history.json", "src/data/pipeline/runs.json"]
-    subprocess.run(["git", "add"] + git_add, check=True)
     msg = f"bot: add {len(prompts)} prompt(s) to library"
-    subprocess.run(["git", "commit", "-m", msg], check=True)
-    if push:
-        subprocess.run(["git", "push"], check=True)
-        print(f"Pushed: {msg}")
-    else:
-        print(f"Committed (no push): {msg}")
+    git_safe.safe_commit_and_push(git_add, msg, push=push)
 
 
 def ping_healthcheck(status="success"):

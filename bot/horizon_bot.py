@@ -44,6 +44,7 @@ from anthropic import Anthropic
 from dotenv import load_dotenv
 
 from pipeline_log import log_run as _log_run
+import git_safe
 
 # Paths
 BOT_DIR = Path(__file__).parent
@@ -740,30 +741,13 @@ def commit_shifts(shifts_changed: bool):
     """
     if not shifts_changed:
         return
-    os.chdir(REPO_DIR)
-    stash = subprocess.run(["git", "stash", "--include-untracked"],
-                           capture_output=True, text=True)
-    stashed = "No local changes" not in stash.stdout
-    subprocess.run(["git", "pull", "--rebase"], check=True)
-    if stashed:
-        subprocess.run(["git", "stash", "pop"], check=True)
-
-    subprocess.run([
-        "git", "add",
-        "src/data/horizon/shifts.json",
-        "src/data/pipeline/runs.json",
-    ], check=True)
-
-    result = subprocess.run(["git", "diff", "--cached", "--quiet"])
-    if result.returncode == 0:
-        print("[horizon_bot] Nothing staged after shift update.")
-        return
-
+    # Serialized + health-checked + rebased-before-push via git_safe.
     today = date.today().isoformat()
     msg = f"bot: refresh horizon shifts ({today})"
-    subprocess.run(["git", "commit", "-m", msg], check=True)
-    subprocess.run(["git", "push"], check=True)
-    print(f"[horizon_bot] Pushed: {msg}")
+    git_safe.safe_commit_and_push(
+        ["src/data/horizon/shifts.json", "src/data/pipeline/runs.json"],
+        msg,
+    )
 
 
 # --------------------------------------------------------------------------- #
@@ -817,78 +801,84 @@ def create_proposal_pr(now_proposals: list[dict]) -> str | None:
     except (subprocess.CalledProcessError, json.JSONDecodeError):
         pass
 
-    # Make sure we're starting from latest main
-    subprocess.run(["git", "fetch", "origin", "main"], check=True,
-                   capture_output=True)
+    # All branch/ref mutations below run under the shared git lock so they
+    # cannot interleave with another bot committing to main (this path switches
+    # the working tree's branch via `checkout -B`). Health-checked first.
+    with git_safe.git_lock():
+        git_safe.check_repo_health()
 
-    # Create or reset the branch from origin/main
-    subprocess.run(["git", "checkout", "-B", branch, "origin/main"],
-                   check=True, capture_output=True)
+        # Make sure we're starting from latest main
+        subprocess.run(["git", "fetch", "origin", "main"], check=True,
+                       capture_output=True)
 
-    # Load current now.json and append proposals
-    now_file = HORIZON_DIR / "now.json"
-    current = _read_json(now_file, [])
-    existing_ids = {e.get("id") for e in current}
+        # Create or reset the branch from origin/main
+        subprocess.run(["git", "checkout", "-B", branch, "origin/main"],
+                       check=True, capture_output=True)
 
-    new_entries = []
-    for p in now_proposals:
-        if p["id"] not in existing_ids:
-            new_entries.append(_proposal_to_entry(p))
+        # Load current now.json and append proposals
+        now_file = HORIZON_DIR / "now.json"
+        current = _read_json(now_file, [])
+        existing_ids = {e.get("id") for e in current}
 
-    if not new_entries:
-        # All proposals already exist, nothing to do
-        subprocess.run(["git", "checkout", "main"], capture_output=True)
-        return None
+        new_entries = []
+        for p in now_proposals:
+            if p["id"] not in existing_ids:
+                new_entries.append(_proposal_to_entry(p))
 
-    current.extend(new_entries)
-    now_file.write_text(json.dumps(current, indent=2) + "\n")
+        if not new_entries:
+            # All proposals already exist, nothing to do
+            subprocess.run(["git", "checkout", "main"], capture_output=True)
+            return None
 
-    # Commit and push
-    subprocess.run(["git", "add", str(now_file)], check=True)
-    titles = ", ".join(e["title"][:50] for e in new_entries)
-    msg = f"bot(horizon): propose {len(new_entries)} Now entries\n\n{titles}"
-    subprocess.run(["git", "commit", "-m", msg], check=True,
-                   capture_output=True)
-    subprocess.run(["git", "push", "-u", "origin", branch, "--force"],
-                   check=True, capture_output=True)
+        current.extend(new_entries)
+        now_file.write_text(json.dumps(current, indent=2) + "\n")
 
-    pr_url = None
-    if existing_pr:
-        # PR already exists, force-push updated the branch
-        pr_url = existing_pr["url"]
-        print(f"[horizon_bot] Updated existing PR: {pr_url}")
-    else:
-        # Create new PR
-        body_lines = ["## Horizon bot proposals\n"]
-        for e in new_entries:
-            themes = ", ".join(e["themes"])
-            evidence_count = len(e.get("evidence", []))
+        # Commit and push
+        subprocess.run(["git", "add", str(now_file)], check=True)
+        titles = ", ".join(e["title"][:50] for e in new_entries)
+        msg = f"bot(horizon): propose {len(new_entries)} Now entries\n\n{titles}"
+        subprocess.run(["git", "commit", "-m", msg], check=True,
+                       capture_output=True)
+        subprocess.run(["git", "push", "-u", "origin", branch, "--force"],
+                       check=True, capture_output=True)
+
+        pr_url = None
+        if existing_pr:
+            # PR already exists, force-push updated the branch
+            pr_url = existing_pr["url"]
+            print(f"[horizon_bot] Updated existing PR: {pr_url}")
+        else:
+            # Create new PR
+            body_lines = ["## Horizon bot proposals\n"]
+            for e in new_entries:
+                themes = ", ".join(e["themes"])
+                evidence_count = len(e.get("evidence", []))
+                body_lines.append(
+                    f"- **{e['title']}** ({e['confidence']}, {themes}) "
+                    f"— {evidence_count} sources"
+                )
             body_lines.append(
-                f"- **{e['title']}** ({e['confidence']}, {themes}) "
-                f"— {evidence_count} sources"
+                "\n---\nGenerated by `horizon_bot.py`. Review, edit, then merge."
             )
-        body_lines.append(
-            "\n---\nGenerated by `horizon_bot.py`. Review, edit, then merge."
-        )
-        body = "\n".join(body_lines)
+            body = "\n".join(body_lines)
 
-        try:
-            result = subprocess.run(
-                ["gh", "pr", "create",
-                 "--title", f"Horizon: {len(new_entries)} Now proposals ({today})",
-                 "--body", body,
-                 "--base", "main",
-                 "--head", branch],
-                capture_output=True, text=True, check=True,
-            )
-            pr_url = result.stdout.strip()
-            print(f"[horizon_bot] Created PR: {pr_url}")
-        except subprocess.CalledProcessError as e:
-            print(f"[horizon_bot] gh pr create failed: {e.stderr}")
+            try:
+                result = subprocess.run(
+                    ["gh", "pr", "create",
+                     "--title", f"Horizon: {len(new_entries)} Now proposals ({today})",
+                     "--body", body,
+                     "--base", "main",
+                     "--head", branch],
+                    capture_output=True, text=True, check=True,
+                )
+                pr_url = result.stdout.strip()
+                print(f"[horizon_bot] Created PR: {pr_url}")
+            except subprocess.CalledProcessError as e:
+                print(f"[horizon_bot] gh pr create failed: {e.stderr}")
 
-    # Return to main
-    subprocess.run(["git", "checkout", "main"], capture_output=True)
-    return pr_url
+        # Return to main
+        subprocess.run(["git", "checkout", "main"], capture_output=True)
+        return pr_url
 
 
 # --------------------------------------------------------------------------- #

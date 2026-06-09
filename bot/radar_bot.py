@@ -20,6 +20,7 @@ from dotenv import load_dotenv
 from anthropic import Anthropic
 
 from pipeline_log import log_run as _log_run
+import git_safe
 
 # Paths
 BOT_DIR = Path(__file__).parent
@@ -378,45 +379,53 @@ def save_and_push(radar_data: dict, history: dict):
     })
     save_history(history)
 
-    # Stage our files (prune_orphan_files already staged any deletions)
-    _git([
-        "add",
-        f"src/data/radar/{filename}",
-        "src/data/radar/index.json",
-        "bot/radar_history.json",
-        "src/data/pipeline/runs.json",
-    ])
+    # All git mutations run under the shared lock so they can't interleave with
+    # another bot's ref writes, and behind a health check so a corrupt repo is
+    # caught loudly (the day's data files are already on disk and recover next
+    # run). The commit-before-sync + bounded-retry design below is preserved.
+    with git_safe.git_lock():
+        git_safe.check_repo_health()
 
-    # Only commit if there are staged changes
-    if _git(["diff", "--cached", "--quiet"]).returncode == 0:
-        print("No changes to commit.")
-        return
+        # Stage our files (prune_orphan_files already staged any deletions)
+        _git([
+            "add",
+            f"src/data/radar/{filename}",
+            "src/data/radar/index.json",
+            "bot/radar_history.json",
+            "src/data/pipeline/runs.json",
+        ])
 
-    msg = f"bot: add radar data ({today})"
-    _git(["commit", "-m", msg], check=True)
-    print(f"Committed: {msg}")
-
-    # Sync with remote and push, retrying if a concurrent bot pushed first.
-    # --autostash handles any stray dirty files (e.g. runs.json) without the old
-    # stash-pop crash. A bounded retry covers the push race between staggered bots.
-    for attempt in range(1, 4):
-        rebase = _git(["pull", "--rebase", "--autostash"])
-        if rebase.returncode != 0:
-            print(f"[radar_bot] rebase failed (attempt {attempt}):\n{rebase.stderr.strip()}")
-            _git(["rebase", "--abort"])
-            time.sleep(3)
-            continue
-        push = _git(["push"])
-        if push.returncode == 0:
-            print(f"Pushed: {msg}")
+        # Only commit if there are staged changes
+        if _git(["diff", "--cached", "--quiet"]).returncode == 0:
+            print("No changes to commit.")
             return
-        print(f"[radar_bot] push rejected (attempt {attempt}):\n{push.stderr.strip()}")
-        time.sleep(3)
 
-    raise RuntimeError(
-        "radar_bot: could not push after 3 attempts. Today's radar data is "
-        "committed locally and will be pushed on the next successful run."
-    )
+        msg = f"bot: add radar data ({today})"
+        _git(["commit", "-m", msg], check=True)
+        print(f"Committed: {msg}")
+
+        # Sync with remote and push, retrying if a concurrent bot pushed first.
+        # --autostash handles any stray dirty files (e.g. runs.json) without the
+        # old stash-pop crash. A bounded retry covers the push race between
+        # staggered bots.
+        for attempt in range(1, 4):
+            rebase = _git(["pull", "--rebase", "--autostash"])
+            if rebase.returncode != 0:
+                print(f"[radar_bot] rebase failed (attempt {attempt}):\n{rebase.stderr.strip()}")
+                _git(["rebase", "--abort"])
+                time.sleep(3)
+                continue
+            push = _git(["push"])
+            if push.returncode == 0:
+                print(f"Pushed: {msg}")
+                return
+            print(f"[radar_bot] push rejected (attempt {attempt}):\n{push.stderr.strip()}")
+            time.sleep(3)
+
+        raise RuntimeError(
+            "radar_bot: could not push after 3 attempts. Today's radar data is "
+            "committed locally and will be pushed on the next successful run."
+        )
 
 
 def post_to_discord(radar_data: dict):

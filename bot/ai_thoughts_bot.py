@@ -22,6 +22,7 @@ from dotenv import load_dotenv
 from anthropic import Anthropic
 
 from pipeline_log import log_run
+import git_safe
 
 # Paths
 BOT_DIR = Path(__file__).parent
@@ -191,16 +192,13 @@ def save_and_push(content: str, history: dict, *, push: bool = True):
     })
     save_history(history)
 
-    # Commit and push
-    os.chdir(REPO_DIR)
-    subprocess.run(["git", "add", f"src/content/thoughts/{filename}", "bot/thoughts_history.json", "src/data/pipeline/runs.json"], check=True)
+    # Commit and push (serialized + health-checked via git_safe)
     msg = f"bot: add thought ({slug_date})"
-    subprocess.run(["git", "commit", "-m", msg], check=True)
-    if push:
-        subprocess.run(["git", "push"], check=True)
-        print(f"Pushed: {msg}")
-    else:
-        print(f"Committed (no push): {msg}")
+    git_safe.safe_commit_and_push(
+        [f"src/content/thoughts/{filename}", "bot/thoughts_history.json", "src/data/pipeline/runs.json"],
+        msg,
+        push=push,
+    )
 
 
 def ping_healthcheck(status="success"):
