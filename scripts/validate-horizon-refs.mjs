@@ -11,7 +11,7 @@
 //   4. Debate `for.supporting` / `against.supporting` resolve to a known id.
 //   5. Scenario `related[]` resolves to a known id.
 //   6. Next-lane `confidence_last_reviewed` older than 90 days produces a
-//      warning (TODOS.md #1 tracks future escalation to hard-fail at 180d).
+//      warning; older than 180 days is an error (TODOS.md #1).
 //
 // Errors fail the run (exit 1). Warnings do not.
 
@@ -27,6 +27,11 @@ const THOUGHTS_DIR = join(ROOT, 'src/content/thoughts');
 const NEWS_DIR = join(ROOT, 'src/content/news-and-updates');
 
 const WARN_DAYS = 90;
+// TODOS #1: stale forecasts on a forecasting page are a credibility hit. v1
+// shipped warn-only at 90d while editorial cadence calibrated; this escalates
+// to a build failure at 180d. Threshold is tunable — bump it here if a genuine
+// in-transition forecast needs to ship past the limit.
+const FAIL_DAYS = 180;
 
 const errors = [];
 const warnings = [];
@@ -231,7 +236,7 @@ for (let i = 0; i < shifts.length; i++) {
   }
 }
 
-// 6. Next-lane confidence freshness warning.
+// 6. Next-lane confidence freshness: warn at 90d, fail at 180d (TODOS #1).
 const today = new Date();
 today.setUTCHours(0, 0, 0, 0);
 for (const entry of next) {
@@ -239,7 +244,11 @@ for (const entry of next) {
   if (!reviewed) continue;
   const d = new Date(reviewed + 'T00:00:00Z');
   const ageDays = Math.floor((today - d) / 86_400_000);
-  if (ageDays > WARN_DAYS) {
+  if (ageDays > FAIL_DAYS) {
+    errors.push(
+      `next.json: "${entry.id}" confidence_last_reviewed is ${ageDays} days old (> ${FAIL_DAYS}d fail threshold) — re-review the forecast or update the date`,
+    );
+  } else if (ageDays > WARN_DAYS) {
     warnings.push(
       `next.json: "${entry.id}" confidence_last_reviewed is ${ageDays} days old (> ${WARN_DAYS}d warn threshold)`,
     );
