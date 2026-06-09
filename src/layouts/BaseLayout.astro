@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SearchOverlay from '../components/SearchOverlay.tsx';
+import { CF_BEACON_TOKEN, ANALYTICS_ENABLED } from '../consts';
 import '../styles/global.css';
 
 interface Props {
@@ -77,6 +78,13 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     )}
     <slot name="head" />
+    {ANALYTICS_ENABLED && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: CF_BEACON_TOKEN })}
+      ></script>
+    )}
   </head>
   <body class="flex flex-col min-h-screen">
     <Header />
