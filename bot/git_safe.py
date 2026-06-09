@@ -112,13 +112,60 @@ def _zero_byte_refs() -> list[str]:
     return bad
 
 
+def _local_ref_targets() -> dict:
+    """Map every local branch ref -> the raw SHA (or ``ref:`` target) it records.
+
+    Read straight from the filesystem (loose refs + packed-refs) rather than via
+    ``git for-each-ref``, because git's own ref enumeration can choke once a ref
+    is already broken — exactly when we most need to inspect it.
+    """
+    git_dir = REPO_DIR / ".git"
+    targets: dict[str, str] = {}
+    heads = git_dir / "refs" / "heads"
+    if heads.is_dir():
+        for ref in heads.rglob("*"):
+            if ref.is_file():
+                name = "refs/heads/" + str(ref.relative_to(heads)).replace("\\", "/")
+                targets[name] = ref.read_text(errors="replace").strip()
+    packed = git_dir / "packed-refs"
+    if packed.is_file():
+        for line in packed.read_text(errors="replace").splitlines():
+            line = line.strip()
+            if not line or line[0] in "#^":
+                continue
+            parts = line.split(" ", 1)
+            if len(parts) == 2 and parts[1].startswith("refs/heads/"):
+                targets.setdefault(parts[1], parts[0])
+    return targets
+
+
+def _bad_object_refs() -> list[str]:
+    """Local branch refs whose recorded SHA does not resolve to an existing
+    object.
+
+    This is the corruption that silently broke radar_bot for a month: a stray
+    ``refs/heads/add/horizon-ci-validator`` pointed at a missing object, so every
+    ``git pull --rebase`` died with ``fatal: bad object refs/heads/...`` and no
+    content could be pushed. A zero-byte scan misses it (the ref file has a
+    plausible 40-char SHA), so check it explicitly.
+    """
+    bad = []
+    for name, target in _local_ref_targets().items():
+        if not target or target.startswith("ref:"):
+            continue  # empty -> covered by zero-byte scan; symref -> not an object
+        if _git(["cat-file", "-e", target], check=False).returncode != 0:
+            bad.append(name)
+    return bad
+
+
 def check_repo_health() -> None:
-    """Raise :class:`RepoCorruptError` if the repo is in the broken state this
+    """Raise :class:`RepoCorruptError` if the repo is in a broken state this
     module guards against.
 
-    Cheap and targeted (no full ``fsck``): confirms HEAD resolves to a real
-    commit and that no loose ref file is zero bytes. Catches the exact failure
-    that motivated this module.
+    Cheap and targeted (no full ``fsck``): confirms HEAD resolves, no loose ref
+    file is zero bytes, and no local branch ref points at a missing object.
+    Catches both the interrupted-write signature that motivated this module and
+    the bad-object ref that stalled radar_bot for a month.
     """
     if not (REPO_DIR / ".git").exists():
         raise RepoCorruptError(f"{REPO_DIR} is not a git repository")
@@ -134,6 +181,12 @@ def check_repo_health() -> None:
         raise RepoCorruptError(
             "HEAD does not resolve to a valid commit "
             f"(git rev-parse exited {head.returncode})"
+        )
+
+    broken = _bad_object_refs()
+    if broken:
+        raise RepoCorruptError(
+            "branch ref(s) pointing at a missing object: " + ", ".join(broken)
         )
 
 
