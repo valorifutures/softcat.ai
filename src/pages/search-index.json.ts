@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import radarManifest from '../data/radar/index.json';
+import { RADAR_VISIBLE_DAYS } from '../utils/radar';
 
 export const GET: APIRoute = async () => {
   const [news, thoughts, tools, prompts] = await Promise.all([
@@ -61,19 +62,25 @@ export const GET: APIRoute = async () => {
     });
   }
 
-  // Load radar data
-  const radarFiles = import.meta.glob('../data/radar/????-??-??.json', { eager: true });
-  for (const [path, mod] of Object.entries(radarFiles)) {
-    const data = (mod as any).default;
-    const items = [...(data.featured || []), ...(data.picks || [])];
+  // Load radar data, bounded to the visible window. Older day-files stay on
+  // disk for the horizon bot but have no public /radar/<date> route, so indexing
+  // them would point search results at pages that 404. Lazy glob keeps the build
+  // from reading the entire archive into memory.
+  const radarFiles = import.meta.glob('../data/radar/????-??-??.json');
+  const visibleDates = radarManifest.dates.slice(0, RADAR_VISIBLE_DAYS);
+  for (const date of visibleDates) {
+    const key = Object.keys(radarFiles).find((k) => k.includes(date));
+    if (!key) continue;
+    const data = (await radarFiles[key]()) as any;
+    const items = [...(data.default.featured || []), ...(data.default.picks || [])];
     for (const item of items) {
       entries.push({
         title: item.name,
         summary: item.tagline || item.why_radar || '',
-        url: `/radar/${data.date}`,
+        url: `/radar/${data.default.date}`,
         type: 'radar',
         tags: item.category ? [item.category] : [],
-        date: data.date,
+        date: data.default.date,
       });
     }
   }

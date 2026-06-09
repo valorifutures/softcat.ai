@@ -307,15 +307,45 @@ Keep discord_summary under 1800 characters. Wrap all URLs in angle brackets.
     return data, response.usage
 
 
+def _git(args: list[str], check: bool = False):
+    """Run a git command in the repo, capturing output."""
+    return subprocess.run(["git", *args], capture_output=True, text=True, check=check)
+
+
+def prune_orphan_files(manifest: dict) -> list[str]:
+    """Delete radar day-files on disk that the manifest no longer references.
+
+    The manifest is capped to MAX_ARCHIVE_DAYS, so any ????-??-??.json file whose
+    date isn't in manifest['dates'] is either an orphan left by an earlier run or
+    has aged out of the cap. Radar entries worth keeping are copied canonically
+    into past.json by the horizon bot before they age out, so removing the source
+    file here is safe. Deletions are staged via `git rm` so they ride along in the
+    same commit as the new day's data.
+    """
+    keep = set(manifest.get("dates", []))
+    removed = []
+    for f in sorted(RADAR_DIR.glob("????-??-??.json")):
+        if f.stem in keep:
+            continue
+        _git(["rm", "--quiet", "--ignore-unmatch", str(f)])
+        if f.exists():  # untracked file: git rm left it on disk, remove directly
+            f.unlink()
+        removed.append(f.name)
+    if removed:
+        print(f"Pruned {len(removed)} orphan radar file(s): {', '.join(removed)}")
+    return removed
+
+
 def save_and_push(radar_data: dict, history: dict):
-    """Save radar JSON, update manifest, commit and push."""
+    """Save radar JSON, update manifest, prune orphans, commit and push.
+
+    We commit locally *before* syncing with the remote so today's radar data is
+    captured in a real commit straight away. A failed remote sync then can't
+    strand the day's output in a stash (the old `git stash pop` crash on a dirty
+    runs.json from a concurrent bot); the already-committed data is recovered by
+    the next successful run or a manual push.
+    """
     os.chdir(REPO_DIR)
-    # Stash any dirty files (e.g. runs.json from other bots) so rebase can proceed
-    stash_result = subprocess.run(["git", "stash", "--include-untracked"], capture_output=True, text=True)
-    stashed = "No local changes" not in stash_result.stdout
-    subprocess.run(["git", "pull", "--rebase"], check=True)
-    if stashed:
-        subprocess.run(["git", "stash", "pop"], check=True)
 
     today = date.today().isoformat()
     filename = f"{today}.json"
@@ -335,6 +365,9 @@ def save_and_push(radar_data: dict, history: dict):
     save_manifest(manifest)
     print(f"Manifest updated: {len(manifest['dates'])} dates")
 
+    # Drop day-files that aged out of the manifest or were orphaned earlier
+    prune_orphan_files(manifest)
+
     # Update history
     product_names = [p["name"] for p in radar_data.get("featured", [])]
     product_names += [p["name"] for p in radar_data.get("picks", [])]
@@ -345,25 +378,45 @@ def save_and_push(radar_data: dict, history: dict):
     })
     save_history(history)
 
-    # Git commit and push
-    subprocess.run([
-        "git", "add",
+    # Stage our files (prune_orphan_files already staged any deletions)
+    _git([
+        "add",
         f"src/data/radar/{filename}",
         "src/data/radar/index.json",
         "bot/radar_history.json",
         "src/data/pipeline/runs.json",
-    ], check=True)
+    ])
 
     # Only commit if there are staged changes
-    result = subprocess.run(["git", "diff", "--cached", "--quiet"])
-    if result.returncode == 0:
+    if _git(["diff", "--cached", "--quiet"]).returncode == 0:
         print("No changes to commit.")
         return
 
     msg = f"bot: add radar data ({today})"
-    subprocess.run(["git", "commit", "-m", msg], check=True)
-    subprocess.run(["git", "push"], check=True)
-    print(f"Pushed: {msg}")
+    _git(["commit", "-m", msg], check=True)
+    print(f"Committed: {msg}")
+
+    # Sync with remote and push, retrying if a concurrent bot pushed first.
+    # --autostash handles any stray dirty files (e.g. runs.json) without the old
+    # stash-pop crash. A bounded retry covers the push race between staggered bots.
+    for attempt in range(1, 4):
+        rebase = _git(["pull", "--rebase", "--autostash"])
+        if rebase.returncode != 0:
+            print(f"[radar_bot] rebase failed (attempt {attempt}):\n{rebase.stderr.strip()}")
+            _git(["rebase", "--abort"])
+            time.sleep(3)
+            continue
+        push = _git(["push"])
+        if push.returncode == 0:
+            print(f"Pushed: {msg}")
+            return
+        print(f"[radar_bot] push rejected (attempt {attempt}):\n{push.stderr.strip()}")
+        time.sleep(3)
+
+    raise RuntimeError(
+        "radar_bot: could not push after 3 attempts. Today's radar data is "
+        "committed locally and will be pushed on the next successful run."
+    )
 
 
 def post_to_discord(radar_data: dict):

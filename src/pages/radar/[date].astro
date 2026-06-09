@@ -16,9 +16,10 @@ const visibleDates = manifest.dates.slice(0, RADAR_VISIBLE_DAYS);
 
 const { date } = Astro.params;
 
-const allDayFiles = import.meta.glob('../../data/radar/????-??-??.json', { eager: true });
-const dayKey = Object.keys(allDayFiles).find((k) => k.includes(date));
-const dayData = dayKey ? (allDayFiles[dayKey] as any).default : null;
+// Lazy glob: only this date's file is read at build, not the entire archive.
+const dayFiles = import.meta.glob('../../data/radar/????-??-??.json');
+const dayKey = Object.keys(dayFiles).find((k) => k.includes(date));
+const dayData = dayKey ? ((await dayFiles[dayKey]()) as any).default : null;
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr + 'T00:00:00Z');
