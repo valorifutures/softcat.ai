@@ -5,9 +5,11 @@ import RadarPickCard from '../../components/RadarPickCard.astro';
 
 import manifest from '../../data/radar/index.json';
 
-const allDayFiles = import.meta.glob('../../data/radar/????-??-??.json', { eager: true });
-const latestKey = Object.keys(allDayFiles).find((k) => k.includes(manifest.latest));
-const dayData = latestKey ? (allDayFiles[latestKey] as any).default : null;
+// Lazy glob: only the latest day's file is read at build, not the entire
+// on-disk archive (which the bot keeps up to MAX_ARCHIVE_DAYS for the horizon bot).
+const dayFiles = import.meta.glob('../../data/radar/????-??-??.json');
+const latestKey = Object.keys(dayFiles).find((k) => k.includes(manifest.latest));
+const dayData = latestKey ? ((await dayFiles[latestKey]()) as any).default : null;
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr + 'T00:00:00Z');
