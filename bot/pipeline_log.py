@@ -55,8 +55,13 @@ def log_run(
     output_tokens: int = 0,
     output_files: list[str] | None = None,
     error_msg: str = "",
+    job: str = "",
 ) -> None:
-    """Append a run entry to runs.json with file locking."""
+    """Append a run entry to runs.json with file locking.
+
+    `job` optionally distinguishes sub-jobs of one bot (e.g. model_bot's
+    "prices" vs "roster") without registering new bot ids - the site's
+    "six bots" copy stays true (eng D8/4A)."""
     entry = {
         "bot": bot,
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -74,6 +79,8 @@ def log_run(
     }
     if error_msg:
         entry["error_msg"] = error_msg
+    if job:
+        entry["job"] = job
 
     # Ensure directory exists
     RUNS_FILE.parent.mkdir(parents=True, exist_ok=True)

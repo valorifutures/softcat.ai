@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import modelsData from '../../data/models.json';
+import { isNewlyTracked, radarLink } from './ModelComparison';
 
 interface ModelData {
   name: string;
@@ -16,6 +17,8 @@ interface ModelData {
   reasoning_score: number;
   speed: number;
   description: string;
+  trackedSince?: string;
+  radarRef?: string;
 }
 
 const allModels: ModelData[] = modelsData as ModelData[];
@@ -37,7 +40,15 @@ function ModelCard({ model }: { model: ModelData }) {
     <div class="bg-surface border border-surface-light rounded-lg p-4 card-glow space-y-3">
       <div class="flex items-start justify-between">
         <div>
-          <h3 class="font-mono text-sm font-bold text-text-bright">{model.name}</h3>
+          <h3 class="font-mono text-sm font-bold text-text-bright">
+            {isNewlyTracked(model.trackedSince) && (
+              <span
+                class="inline-block w-1.5 h-1.5 rounded-full bg-neon-cyan motion-safe:animate-pulse mr-2 align-middle"
+                title={`newly tracked since ${model.trackedSince}`}
+              />
+            )}
+            {model.name}
+          </h3>
           <div class="flex items-center gap-2 mt-1">
             <span class="font-mono text-xs text-text-muted">{model.provider}</span>
             {model.openSource && <span class="font-mono text-xs text-neon-green bg-neon-green/10 px-1.5 py-0.5 rounded">OSS</span>}
@@ -71,8 +82,16 @@ function ModelCard({ model }: { model: ModelData }) {
         </div>
       </div>
 
-      <div class="font-mono text-xs text-text-muted pt-1 border-t border-surface-light">
-        {priceStr} <span class="text-text-muted/50">per 1M tokens (in/out)</span>
+      <div class="font-mono text-xs text-text-muted pt-1 border-t border-surface-light flex items-center justify-between">
+        <span>{priceStr} <span class="text-text-muted/50">per 1M tokens (in/out)</span></span>
+        {radarLink(model.radarRef) && (
+          <a
+            href={radarLink(model.radarRef)!.href}
+            class="no-underline hover:underline"
+            style="color: #ff3366"
+            title={`seen on Radar ${radarLink(model.radarRef)!.date}`}
+          >◉ radar</a>
+        )}
       </div>
     </div>
   );

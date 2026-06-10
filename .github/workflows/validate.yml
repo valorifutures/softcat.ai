@@ -22,4 +22,12 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: node scripts/validate-tools-data.mjs
       - run: npm run build
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Bot unit tests
+        run: |
+          pip install -q pytest httpx python-dotenv
+          python -m pytest bot/tests/ -q

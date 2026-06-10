@@ -52,33 +52,15 @@ MAX_AUTO_DELTA = 0.5
 # Fields eligible for the delta check. Non-numeric fields skip the guardrail.
 GUARDED_NUMERIC_FIELDS = {"contextK", "inputPrice", "outputPrice"}
 
-# OpenRouter model IDs we track. Add new IDs here to have the bot
-# pick them up automatically. Remove IDs to stop tracking.
-TRACKED_IDS = [
-    "anthropic/claude-opus-4",
-    "anthropic/claude-sonnet-4",
-    "anthropic/claude-haiku-4.5",
-    "openai/gpt-5",
-    "openai/gpt-5-mini",
-    "openai/gpt-5-nano",
-    "openai/gpt-4.1",
-    "openai/gpt-4o",
-    "openai/o3",
-    "openai/o3-mini",
-    "google/gemini-2.5-pro-preview",
-    "google/gemini-2.5-flash",
-    "google/gemini-2.0-flash-001",
-    "meta-llama/llama-4-scout",
-    "meta-llama/llama-4-maverick",
-    "deepseek/deepseek-chat-v3-0324",
-    "deepseek/deepseek-r1",
-    "mistralai/mistral-large-2512",
-    "mistralai/mistral-small-3.1-24b-instruct",
-    "qwen/qwen-2.5-72b-instruct",
-    "moonshotai/kimi-k2",
-]
+# The roster IS src/data/models.json (eng review E1). Job 1 refreshes
+# prices/specs for whatever ids that file contains. New models enter the
+# roster only through Job 2's proposal PRs (radar-gated), reviewed by Valori.
+# There is deliberately NO bootstrap path that can publish placeholder
+# entries to main.
 
-# Defaults for newly discovered models (manual fields)
+# Defaults for PROPOSED models (Job 2). These land only on a proposal
+# branch, clearly placeholder-marked, and are edited during PR review.
+# They are never committed to main by the bot.
 NEW_MODEL_DEFAULTS = {
     "family": "Unknown",
     "reasoning": False,
@@ -86,9 +68,17 @@ NEW_MODEL_DEFAULTS = {
     "coding": 70,
     "reasoning_score": 70,
     "speed": 70,
-    "description": "Newly added model. Capability scores are placeholder.",
-    "strengths": "Newly added",
+    "description": "PLACEHOLDER - edit before merge. Capability scores are editorial; set them during PR review.",
+    "strengths": "PLACEHOLDER - edit before merge",
 }
+
+PROPOSAL_BRANCH = "model-bot/roster-proposals"
+RADAR_DIR = REPO_DIR / "src" / "data" / "radar"
+
+
+class RadarDataError(RuntimeError):
+    """Radar day-files were missing or unparseable. Loud by design (D5/1A):
+    a broken trigger must never look like 'no notable models this month'."""
 
 PROVIDER_MAP = {
     "anthropic": "Anthropic",
@@ -99,13 +89,21 @@ PROVIDER_MAP = {
     "mistralai": "Mistral",
     "qwen": "Alibaba",
     "moonshotai": "Moonshot AI",
+    "x-ai": "xAI",
+    "z-ai": "Z.ai",
 }
 
 
 def load_models():
-    if MODELS_FILE.exists():
-        return json.loads(MODELS_FILE.read_text())
-    return []
+    """Load the roster. Missing or empty models.json is a LOUD failure
+    (eng E6.1) - with no TRACKED_IDS fallback an empty roster would
+    otherwise become a valid silent no-op."""
+    if not MODELS_FILE.exists():
+        raise RuntimeError(f"{MODELS_FILE} missing - roster is gone, refusing to run")
+    models = json.loads(MODELS_FILE.read_text())
+    if not isinstance(models, list) or not models:
+        raise RuntimeError(f"{MODELS_FILE} is empty or malformed - refusing to run")
+    return models
 
 
 def save_models(models):
@@ -213,28 +211,9 @@ def update_models(existing, api_models):
             # No API data for this model, keep as-is
             updated.append(model)
 
-    # Add new tracked models not yet in our data
-    existing_ids = {m.get("id", "") for m in existing}
-    for model_id in TRACKED_IDS:
-        if model_id not in existing_ids and model_id in api_models:
-            api_model = api_models[model_id]
-            # Strip "Provider: " prefix if present
-            raw_name = api_model.get("name", model_id)
-            name = raw_name.split(": ", 1)[-1] if ": " in raw_name else raw_name
-
-            auto_fields = extract_auto_fields(api_model)
-            new_model = {
-                "id": model_id,
-                "name": name,
-                "provider": derive_provider(model_id),
-                "released": date.today().strftime("%Y-%m"),
-                **NEW_MODEL_DEFAULTS,
-                **auto_fields,
-            }
-            print(f"  Added new model: {new_model['name']}")
-            updated.append(new_model)
-            changed = True
-
+    # NOTE: there is intentionally no "add new models" branch here (eng E1).
+    # Job 1 only refreshes entries already in models.json. New entries arrive
+    # via Job 2's reviewed proposal PRs.
     return updated, changed, suspects
 
 
@@ -293,6 +272,221 @@ def git_commit_and_push():
     )
 
 
+# --------------------------------------------------------------------------- #
+# Job 2: radar-gated roster proposals (B4 / D4 / D11 / E4)                     #
+#                                                                              #
+#   radar day-files ──▶ normalized-name match ──▶ OpenRouter id               #
+#        │ (loud fail on        │ (pure fn,            │ not in models.json   #
+#        │  malformed/0 files)  │  table-tested)       ▼                      #
+#        │                      │              proposal entry (placeholder-   #
+#        ▼                      ▼              marked) ──▶ commit on top of   #
+#   RadarDataError       no match = no       existing PR branch (never        #
+#   + exit non-zero      proposal (fine)     force-push) ──▶ gh pr outside    #
+#                                            git lock ──▶ Discord ping        #
+# --------------------------------------------------------------------------- #
+
+def normalize_name(s: str) -> str:
+    """Lowercase, strip everything but [a-z0-9]. Deterministic join key
+    between radar entry names and OpenRouter model names (eng E4)."""
+    import re
+    return re.sub(r"[^a-z0-9]", "", (s or "").lower())
+
+
+def names_match(radar_name: str, or_name: str) -> bool:
+    """Bidirectional substring on normalized names. >=6 chars to avoid
+    junk matches like 'ai' or 'gpt'."""
+    rn, on = normalize_name(radar_name), normalize_name(or_name.split(": ", 1)[-1])
+    # >=5 chars on both sides: blocks junk ("ai", "o3", "gpt") while letting
+    # short real names ("gpt55") through. Every match is still human-reviewed.
+    if len(rn) < 5 or len(on) < 5:
+        return False
+    return rn in on or on in rn
+
+
+def scan_radar_entries() -> list[dict]:
+    """Read all radar day-files. Returns [{name, date, entry_id}, ...].
+    LOUD on malformed JSON or zero readable files (D5/1A)."""
+    files = sorted(RADAR_DIR.glob("2026-*.json")) + sorted(RADAR_DIR.glob("202[7-9]-*.json"))
+    if not files:
+        raise RadarDataError(f"no radar day-files found in {RADAR_DIR}")
+    out = []
+    for f in files:
+        try:
+            day = json.loads(f.read_text())
+        except (json.JSONDecodeError, ValueError) as e:
+            raise RadarDataError(f"radar file {f.name} unparseable: {e}")
+        if not isinstance(day, dict):
+            raise RadarDataError(f"radar file {f.name} is not an object")
+        date_str = day.get("date", f.stem)
+        for section in ("featured", "items", "launches"):
+            for item in day.get(section) or []:
+                if isinstance(item, dict) and item.get("name"):
+                    out.append({"name": item["name"], "date": date_str,
+                                "entry_id": item.get("id", "")})
+    if not out:
+        raise RadarDataError("radar files parsed but contained zero entries")
+    return out
+
+
+def find_roster_candidates(existing_ids: set, api_models: dict,
+                           radar_entries: list[dict]) -> list[dict]:
+    """The gate: on OpenRouter AND radar-featured AND not already tracked.
+    Skips :free/-fast variant ids when the base id also matches."""
+    candidates = {}
+    for r in radar_entries:
+        for mid, api_model in api_models.items():
+            if mid in existing_ids or ":" in mid:
+                continue
+            if names_match(r["name"], api_model.get("name", mid)):
+                prev = candidates.get(mid)
+                if not prev or r["date"] > prev["radar_date"]:
+                    candidates[mid] = {"model_id": mid, "radar_name": r["name"],
+                                       "radar_date": r["date"], "radar_entry_id": r["entry_id"]}
+    # prefer base ids over longer variants of the same family (e.g. -fast)
+    ids = set(candidates)
+    return [c for mid, c in sorted(candidates.items())
+            if not any(other != mid and mid.startswith(other) for other in ids)]
+
+
+def build_proposal_entry(cand: dict, api_models: dict) -> dict:
+    api_model = api_models[cand["model_id"]]
+    raw_name = api_model.get("name", cand["model_id"])
+    name = raw_name.split(": ", 1)[-1] if ": " in raw_name else raw_name
+    return {
+        "id": cand["model_id"],
+        "name": name,
+        "provider": derive_provider(cand["model_id"]),
+        "released": date.today().strftime("%Y-%m"),
+        **NEW_MODEL_DEFAULTS,
+        **extract_auto_fields(api_model),
+        "trackedSince": date.today().isoformat(),
+        "radarRef": f"{cand['radar_date']}#{cand['radar_entry_id']}",
+    }
+
+
+def post_roster_pr_to_discord(pr_url: str, entries: list[dict]):
+    webhook = os.environ.get("DISCORD_WEBHOOK_MODEL_DATA")
+    if not webhook:
+        return
+    names = ", ".join(e["name"] for e in entries)
+    try:
+        httpx.post(webhook, json={
+            "content": f"**Model bot:** roster proposal PR for {names}\n"
+                       f"Edit the placeholder scores before merging: {pr_url}",
+            "username": "SOFT CAT Model Data"}, timeout=15)
+    except Exception as e:
+        print(f"[model_bot] Discord post failed: {e}")
+
+
+def propose_roster_pr(entries: list[dict]) -> str | None:
+    """Open or update the single roster proposal PR.
+
+    D11/E6.5: new proposals land as commits ON TOP of the existing open PR
+    branch (preserves human edits + review discussion). Never checkout -B
+    over a remote branch, never force-push. gh network calls run OUTSIDE
+    the git lock (E6.6). The tree is ALWAYS checked back to main (E6.4).
+    """
+    if not entries:
+        return None
+    os.chdir(REPO_DIR)
+
+    # gh queries outside the lock
+    existing_pr = None
+    try:
+        result = subprocess.run(
+            ["gh", "pr", "list", "--head", PROPOSAL_BRANCH, "--state", "open",
+             "--json", "number,url", "--limit", "1"],
+            capture_output=True, text=True, check=True)
+        prs = json.loads(result.stdout)
+        if prs:
+            existing_pr = prs[0]
+    except (subprocess.CalledProcessError, json.JSONDecodeError):
+        pass
+
+    pushed = False
+    added = []
+    with git_safe.git_lock():
+        git_safe.check_repo_health()
+        try:
+            subprocess.run(["git", "fetch", "origin", "main", PROPOSAL_BRANCH],
+                           capture_output=True)  # branch may not exist yet
+            remote_branch = subprocess.run(
+                ["git", "rev-parse", "--verify", f"origin/{PROPOSAL_BRANCH}"],
+                capture_output=True).returncode == 0
+            if remote_branch and existing_pr:
+                # continue the open PR's branch - append, never rewrite
+                subprocess.run(["git", "checkout", "-B", PROPOSAL_BRANCH,
+                                f"origin/{PROPOSAL_BRANCH}"], check=True, capture_output=True)
+            else:
+                subprocess.run(["git", "checkout", "-B", PROPOSAL_BRANCH,
+                                "origin/main"], check=True, capture_output=True)
+
+            current = json.loads(MODELS_FILE.read_text())
+            branch_ids = {m.get("id") for m in current}
+            added = [e for e in entries if e["id"] not in branch_ids]
+            if not added:
+                print("[model_bot] all candidates already proposed on branch")
+                return existing_pr["url"] if existing_pr else None
+
+            current.extend(added)
+            current.sort(key=lambda m: (m.get("provider", ""), m.get("name", "")))
+            MODELS_FILE.write_text(json.dumps(current, indent=2) + "\n")
+            names = ", ".join(e["name"] for e in added)
+            subprocess.run(["git", "add", str(MODELS_FILE)], check=True, capture_output=True)
+            subprocess.run(["git", "commit", "-m",
+                            f"bot(model): propose roster addition - {names}"],
+                           check=True, capture_output=True)
+            subprocess.run(["git", "push", "origin", PROPOSAL_BRANCH],
+                           check=True, capture_output=True)
+            pushed = True
+        finally:
+            # the shared working tree must NEVER be left on a branch (E6.4)
+            subprocess.run(["git", "checkout", "main"], capture_output=True)
+
+    if not pushed:
+        return existing_pr["url"] if existing_pr else None
+
+    # gh mutations outside the lock (E6.6)
+    if existing_pr:
+        body = "New roster candidate(s) appended: " + ", ".join(e["name"] for e in added)
+        subprocess.run(["gh", "pr", "comment", str(existing_pr["number"]),
+                        "--body", body], capture_output=True)
+        pr_url = existing_pr["url"]
+    else:
+        lines = [f"- **{e['name']}** (`{e['id']}`) - radar: {e['radarRef']}" for e in added]
+        body = ("## Roster proposal (radar-gated)\n\n" + "\n".join(lines) +
+                "\n\nScores are PLACEHOLDER - assign editorial scores during review, "
+                "then merge. Trigger: model on OpenRouter AND featured on Radar AND "
+                "not in models.json.\n\n---\nGenerated by `model_data_bot.py` Job 2.")
+        result = subprocess.run(
+            ["gh", "pr", "create", "--base", "main", "--head", PROPOSAL_BRANCH,
+             "--title", f"Model roster: {', '.join(e['name'] for e in added)}",
+             "--body", body], capture_output=True, text=True, check=True)
+        pr_url = result.stdout.strip().splitlines()[-1]
+
+    post_roster_pr_to_discord(pr_url, added)
+    return pr_url
+
+
+def run_roster_job(existing: list[dict], api_models: dict, t0: float):
+    """Job 2 entry point. Loud on radar data errors; quiet when there is
+    simply nothing to propose."""
+    radar_entries = scan_radar_entries()
+    existing_ids = {m.get("id", "") for m in existing}
+    candidates = find_roster_candidates(existing_ids, api_models, radar_entries)
+    if not candidates:
+        print("[model_bot] roster: no new radar-gated candidates")
+        log_run("model_bot", status="success", duration_s=_time.time() - t0,
+                items_found=len(radar_entries), items_published=0, job="roster")
+        return
+    entries = [build_proposal_entry(c, api_models) for c in candidates]
+    pr_url = propose_roster_pr(entries)
+    print(f"[model_bot] roster proposal: {pr_url}")
+    log_run("model_bot", status="success", duration_s=_time.time() - t0,
+            items_found=len(radar_entries), items_published=len(entries),
+            output_files=[pr_url or ""], job="roster")
+
+
 def ping_healthcheck(status="success"):
     """Ping Healthchecks.io to report bot status."""
     url = os.environ.get("HC_PING_MODEL_DATA")
@@ -311,7 +505,10 @@ def main():
 
     try:
         # Self-heal: clear any uncommitted drift before we read baseline.
-        reset_drifted_baseline()
+        # Under the shared git lock (eng E6.3) so it can't race another
+        # bot's branch work in the same working tree.
+        with git_safe.git_lock():
+            reset_drifted_baseline()
 
         existing = load_models()
         print(f"Loaded {len(existing)} existing models")
@@ -335,37 +532,43 @@ def main():
             write_suspects(suspects)
             post_suspects_to_discord(suspects)
 
-        if not changed:
-            print("No changes detected. Exiting.")
-            # Log BEFORE any commit step so the runs.json entry lands with
-            # any concurrent bot's commit instead of a future one (#97).
+        if changed:
+            print(f"Saving {len(updated)} models...")
+            save_models(updated)
+
+            # Log BEFORE commit so the runs.json entry lands in the same commit
+            # as models.json (#97 fix). If commit fails, the log still reflects
+            # what we tried to ship and surfaces the problem on the dashboard.
             log_run("model_bot", status="success", duration_s=_time.time() - t0,
-                    items_found=len(api_models), items_published=0)
-            ping_healthcheck()
-            sys.exit(0)
+                    items_found=len(api_models), items_published=len(updated),
+                    output_files=["src/data/models.json"], job="prices")
 
-        print(f"Saving {len(updated)} models...")
-        save_models(updated)
-
-        # Log BEFORE commit so the runs.json entry lands in the same commit
-        # as models.json (#97 fix). If commit fails, the log still reflects
-        # what we tried to ship and surfaces the problem on the dashboard.
-        log_run("model_bot", status="success", duration_s=_time.time() - t0,
-                items_found=len(api_models), items_published=len(updated),
-                output_files=["src/data/models.json"])
-
-        print("Committing and pushing...")
-        git_commit_and_push()
-
-        print("Done.")
-        ping_healthcheck()
+            print("Committing and pushing...")
+            git_commit_and_push()
+        else:
+            print("No price/spec changes detected.")
+            log_run("model_bot", status="success", duration_s=_time.time() - t0,
+                    items_found=len(api_models), items_published=0, job="prices")
 
     except Exception as e:
-        print(f"Bot failed: {e}")
+        print(f"Bot failed (prices job): {e}")
         log_run("model_bot", status="error", duration_s=_time.time() - t0,
-                error_msg=str(e))
+                error_msg=str(e), job="prices")
         ping_healthcheck("fail")
         sys.exit(1)
+
+    # ---- Job 2: roster proposals (failures are loud but independent of Job 1)
+    try:
+        run_roster_job(updated if changed else existing, api_models, t0)
+    except Exception as e:
+        print(f"Bot failed (roster job): {e}")
+        log_run("model_bot", status="error", duration_s=_time.time() - t0,
+                error_msg=str(e), job="roster")
+        ping_healthcheck("fail")
+        sys.exit(1)
+
+    print("Done.")
+    ping_healthcheck()
 
 
 if __name__ == "__main__":
