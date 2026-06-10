@@ -1,5 +1,6 @@
 ---
 title: "Composio Agent Orchestrator"
+date: 2026-02-24
 description: "Open source framework for building production-ready multi-agent workflows that go beyond simple ReAct loops."
 url: "https://www.marktechpost.com/2026/02/23/composio-open-sources-agent-orchestrator-to-help-ai-developers-build-scalable-multi-agent-workflows-beyond-the-traditional-react-loops/"
 status: experimental

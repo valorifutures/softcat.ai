@@ -1,5 +1,6 @@
 ---
 title: "Liquid AI LocalCowork"
+date: 2026-03-08
 description: "A privacy-first desktop agent that runs entirely locally using Model Context Protocol, eliminating API calls for sensitive workflows."
 url: "https://www.marktechpost.com/2026/03/05/liquid-ai-releases-localcowork-powered-by-lfm2-24b-a2b-to-execute-privacy-first-agent-workflows-locally-via-model-context-protocol-mcp/"
 status: experimental

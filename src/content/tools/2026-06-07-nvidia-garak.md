@@ -1,5 +1,6 @@
 ---
 title: "NVIDIA garak"
+date: 2026-06-07
 description: "A complete framework for red-teaming LLMs to find vulnerabilities before they reach production."
 url: "https://www.marktechpost.com/2026/06/06/nvidia-garak-tutorial-build-a-complete-defensive-llm-red-teaming-workflow-with-custom-probes-and-detectors/"
 status: experimental

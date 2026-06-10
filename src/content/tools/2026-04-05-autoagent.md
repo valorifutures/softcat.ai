@@ -1,5 +1,6 @@
 ---
 title: "AutoAgent"
+date: 2026-04-05
 description: "An open-source library that automatically engineers and optimises AI agents overnight, eliminating the tedious prompt-tuning loop."
 url: "https://www.marktechpost.com/2026/04/05/meet-autoagent-the-open-source-library-that-lets-an-ai-engineer-and-optimize-its-own-agent-harness-overnight/"
 status: experimental

@@ -1,5 +1,6 @@
 ---
 title: "Qwen-Scope"
+date: 2026-05-03
 description: "Sparse autoencoders that turn LLM black-box internals into interpretable features you can actually use."
 url: "https://www.marktechpost.com/2026/05/01/qwen-ai-releases-qwen-scope-an-open-source-sparse-autoencoders-sae-suite-that-turns-llm-internal-features-into-practical-development-tools"
 status: experimental

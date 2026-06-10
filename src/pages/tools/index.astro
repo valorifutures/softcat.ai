@@ -5,8 +5,20 @@ import { getCollection } from 'astro:content';
 import { tagDotClass } from '../../utils/tagColor';
 import toolsManifest from '../../data/tools-manifest.json';
 
-const entries = (await getCollection('tools'))
-  .filter((e) => !e.data.draft);
+const all = (await getCollection('tools'))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const entries = all.filter((e) => e.data.status !== 'archived');
+const archived = all.filter((e) => e.data.status === 'archived');
+
+// Filter chips: top tags by frequency across ALL write-ups (archived included).
+const tagCounts = new Map<string, number>();
+for (const e of all) for (const t of e.data.tags) tagCounts.set(t, (tagCounts.get(t) || 0) + 1);
+const filterTags = [...tagCounts.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 8);
+
+const fmtDate = (d: Date) => d.toISOString().slice(0, 10);
 
 // Pick featured tool: first tool with "featured: true" in manifest, or fallback to first tool
 const featured = toolsManifest.find((t: any) => t.featured) || toolsManifest[0];
@@ -82,49 +94,175 @@ const featuredColor = categoryColors[featured.category] || categoryColors.models
       <div class="flex-1 h-px bg-surface-light/50"></div>
     </div>
 
-    {entries.length === 0 ? (
+    {all.length === 0 ? (
       <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
         <p class="font-mono text-sm text-text-muted">
           <span class="text-neon-purple">&#9679;</span> awaiting first transmission...
         </p>
       </div>
     ) : (
-      <div class="grid gap-5 ambient-glow" style="--glow-color: rgba(155, 122, 204, 0.035); --glow-color-alt: rgba(90, 184, 212, 0.025)">
-        {entries.map((entry, index) => (
-          <div
-            class="relative glass-card rounded-xl card-glow card-glow-purple card-lift group animate-stagger border-l-2 border-l-neon-purple/40 overflow-hidden"
-            style={`--stagger-index: ${index}`}
-          >
-            <a href={`/tools/${entry.id}`} class="block p-6 md:p-7">
-              <div class="flex items-start justify-between gap-4">
-                <div class="min-w-0">
-                  <h2 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-purple transition-colors">
-                    {entry.data.title}
-                  </h2>
-                  <p class="text-sm text-text-muted mt-2 leading-relaxed">{entry.data.description}</p>
-                </div>
-                <span class={`shrink-0 px-2 py-0.5 rounded text-xs font-mono ${
-                  entry.data.status === 'active' ? 'bg-neon-green/10 text-neon-green' :
-                  entry.data.status === 'experimental' ? 'bg-neon-amber/10 text-neon-amber' :
-                  'bg-surface-light text-text-muted'
-                }`}>
-                  {entry.data.status}
-                </span>
-              </div>
-            </a>
-            {entry.data.tags.length > 0 && (
-              <div class="flex flex-wrap gap-2 px-6 md:px-7 pb-5">
-                {entry.data.tags.map((tag) => (
-                  <a href={`/tags/${tag}`} class="tag-badge">
-                    <span class={`tag-dot ${tagDotClass(tag)}`}></span>
-                    {tag}
-                  </a>
-                ))}
-              </div>
-            )}
+      <>
+        {filterTags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mb-6" id="writeup-filters">
+            <button
+              type="button"
+              data-filter-tag="all"
+              data-active="true"
+              class="min-h-11 px-3 py-2 rounded-lg font-mono text-xs transition-all cursor-pointer border bg-neon-purple/10 text-neon-purple border-current"
+            >
+              <span class="inline-block w-1.5 h-1.5 rounded-full mr-2 bg-current"></span>All
+            </button>
+            {filterTags.map(([tag, count]) => (
+              <button
+                type="button"
+                data-filter-tag={tag}
+                data-active="false"
+                class="min-h-11 px-3 py-2 rounded-lg font-mono text-xs transition-all cursor-pointer border bg-surface border-surface-light text-text-muted hover:text-text-bright"
+              >
+                <span class={`inline-block w-1.5 h-1.5 rounded-full mr-2 tag-dot ${tagDotClass(tag)}`}></span>
+                {tag}
+                <span class="ml-1.5 opacity-50">{count}</span>
+              </button>
+            ))}
           </div>
-        ))}
-      </div>
+        )}
+
+        <div
+          id="writeup-empty"
+          hidden
+          class="bg-surface border border-surface-light rounded-lg p-8 text-center"
+        >
+          <p class="font-mono text-sm text-text-muted">
+            <span class="text-neon-purple">&#9679;</span> no write-ups tagged "<span id="writeup-empty-tag"></span>"
+            <button type="button" id="writeup-clear" class="ml-2 text-neon-cyan hover:underline cursor-pointer">clear filter</button>
+          </p>
+        </div>
+
+        <div class="grid gap-5 ambient-glow" id="writeup-grid" style="--glow-color: rgba(155, 122, 204, 0.035); --glow-color-alt: rgba(90, 184, 212, 0.025)">
+          {entries.map((entry, index) => (
+            <div
+              class="writeup-card relative glass-card rounded-xl card-glow card-glow-purple card-lift group animate-stagger border-l-2 border-l-neon-purple/40 overflow-hidden"
+              data-tags={entry.data.tags.join(',')}
+              style={`--stagger-index: ${index}`}
+            >
+              <a href={`/tools/${entry.id}`} class="block p-6 md:p-7">
+                <div class="flex items-start justify-between gap-4">
+                  <div class="min-w-0">
+                    <h2 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-purple transition-colors">
+                      {entry.data.title}
+                    </h2>
+                    <p class="text-sm text-text-muted mt-2 leading-relaxed">{entry.data.description}</p>
+                  </div>
+                  <div class="shrink-0 flex items-center gap-3">
+                    <span class="font-mono text-xs text-text-muted">{fmtDate(entry.data.date)}</span>
+                    <span class={`px-2 py-0.5 rounded text-xs font-mono ${
+                      entry.data.status === 'active' ? 'bg-neon-green/10 text-neon-green' :
+                      entry.data.status === 'experimental' ? 'bg-neon-amber/10 text-neon-amber' :
+                      'bg-surface-light text-text-muted'
+                    }`}>
+                      {entry.data.status}
+                    </span>
+                  </div>
+                </div>
+              </a>
+              {entry.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2 px-6 md:px-7 pb-5">
+                  {entry.data.tags.map((tag) => (
+                    <a href={`/tags/${tag}`} class="tag-badge">
+                      <span class={`tag-dot ${tagDotClass(tag)}`}></span>
+                      {tag}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {archived.length > 0 && (
+          <details class="mt-10" id="writeup-archive">
+            <summary class="font-mono text-xs text-text-muted tracking-wider uppercase cursor-pointer select-none">
+              archive &middot; <span id="archive-count">{archived.length}</span>
+            </summary>
+            <p class="font-mono text-xs text-text-muted/70 mt-3 mb-4">
+              tools die, the bots notice, we keep the receipts.
+            </p>
+            <div class="grid gap-4">
+              {archived.map((entry) => (
+                <div class="writeup-card relative glass-card rounded-xl opacity-60 overflow-hidden" data-tags={entry.data.tags.join(',')}>
+                  <a href={`/tools/${entry.id}`} class="block p-5">
+                    <div class="flex items-start justify-between gap-4">
+                      <div class="min-w-0">
+                        <h2 class="font-mono text-sm font-bold text-text-bright">{entry.data.title}</h2>
+                        <p class="text-sm text-text-muted mt-1">{entry.data.description}</p>
+                      </div>
+                      <div class="shrink-0 flex items-center gap-3">
+                        <span class="font-mono text-xs text-text-muted">{fmtDate(entry.data.date)}</span>
+                        <span class="px-2 py-0.5 rounded text-xs font-mono bg-surface-light text-text-muted">
+                          archived &mdash; source link dead
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </details>
+        )}
+      </>
     )}
   </div>
+
+  <script>
+    // Tag filter: toggles `hidden` on SSR'd cards. No island, no re-stagger
+    // (stagger class is removed on first interaction so display toggles
+    // don't restart the entrance animation).
+    const chips = document.querySelectorAll<HTMLButtonElement>('[data-filter-tag]');
+    const cards = document.querySelectorAll<HTMLElement>('.writeup-card');
+    const empty = document.getElementById('writeup-empty');
+    const emptyTag = document.getElementById('writeup-empty-tag');
+    const grid = document.getElementById('writeup-grid');
+    const archive = document.getElementById('writeup-archive');
+    let staggerCleared = false;
+
+    const ACTIVE = ['bg-neon-purple/10', 'text-neon-purple', 'border-current'];
+    const IDLE = ['bg-surface', 'border-surface-light', 'text-text-muted', 'hover:text-text-bright'];
+
+    function apply(tag: string) {
+      if (!staggerCleared) {
+        cards.forEach((c) => c.classList.remove('animate-stagger'));
+        staggerCleared = true;
+      }
+      let visible = 0;
+      cards.forEach((card) => {
+        const tags = (card.dataset.tags || '').split(',');
+        const show = tag === 'all' || tags.includes(tag);
+        card.hidden = !show;
+        if (show && card.closest('#writeup-grid')) visible++;
+      });
+      chips.forEach((chip) => {
+        const on = chip.dataset.filterTag === tag;
+        chip.dataset.active = String(on);
+        chip.classList.remove(...ACTIVE, ...IDLE);
+        chip.classList.add(...(on ? ACTIVE : IDLE));
+      });
+      if (empty && emptyTag && grid) {
+        const none = visible === 0 && tag !== 'all';
+        empty.hidden = !none;
+        grid.style.display = none ? 'none' : '';
+        if (none) emptyTag.textContent = tag;
+      }
+      if (archive) {
+        const archVisible = archive.querySelectorAll<HTMLElement>('.writeup-card:not([hidden])').length;
+        (archive as HTMLElement).hidden = archVisible === 0;
+        const count = document.getElementById('archive-count');
+        if (count) count.textContent = String(archVisible);
+      }
+    }
+
+    chips.forEach((chip) =>
+      chip.addEventListener('click', () => apply(chip.dataset.filterTag || 'all'))
+    );
+    document.getElementById('writeup-clear')?.addEventListener('click', () => apply('all'));
+  </script>
 </BaseLayout>

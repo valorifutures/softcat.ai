@@ -1,5 +1,6 @@
 ---
 title: "Zero Programming Language"
+date: 2026-05-17
 description: "A systems language built for AI agents to read, repair, and ship native programs without human interpretation."
 url: "https://www.marktechpost.com/2026/05/17/vercel-labs-introduces-zero-a-systems-programming-language-designed-so-ai-agents-can-read-repair-and-ship-native-programs/"
 status: experimental

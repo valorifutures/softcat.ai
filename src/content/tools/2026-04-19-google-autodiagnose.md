@@ -1,5 +1,6 @@
 ---
 title: "Google Auto-Diagnose"
+date: 2026-04-19
 description: "An LLM-powered system that automatically reads integration test failure logs and identifies the actual bugs amongst thousands of lines of output."
 url: "https://www.marktechpost.com/2026/04/17/google-ai-releases-auto-diagnose-an-large-language-model-llm-based-system-to-diagnose-integration-test-failures-at-scale/"
 status: experimental

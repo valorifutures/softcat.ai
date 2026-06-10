@@ -1,5 +1,6 @@
 ---
 title: "FLARE-FLOSS"
+date: 2026-05-10
 description: "A malware analysis tool that recovers hidden and obfuscated strings from Windows executables using advanced static analysis."
 url: "https://www.marktechpost.com/2026/05/09/a-coding-implementation-to-recover-hidden-malware-iocs-with-flare-floss-beyond-classic-strings-analysis/"
 status: experimental

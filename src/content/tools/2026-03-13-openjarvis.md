@@ -1,5 +1,6 @@
 ---
 title: "OpenJarvis"
+date: 2026-03-13
 description: "Stanford's open-source framework for building personal AI agents that run entirely on-device with tools, memory, and learning capabilities."
 url: "https://www.marktechpost.com/2026/03/12/stanford-researchers-release-openjarvis-a-local-first-framework-for-building-on-device-personal-ai-agents-with-tools-memory-and-learning/"
 status: experimental

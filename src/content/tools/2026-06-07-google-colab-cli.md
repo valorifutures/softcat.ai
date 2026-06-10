@@ -1,5 +1,6 @@
 ---
 title: "Google Colab CLI"
+date: 2026-06-07
 description: "Command-line tool that lets developers and AI agents run local Python code on remote Colab GPUs and TPUs."
 url: "https://www.marktechpost.com/2026/06/06/googles-new-colab-cli-lets-developers-and-ai-agents-run-python-on-remote-colab-gpUs-and-tpus-from-the-terminal/"
 status: experimental

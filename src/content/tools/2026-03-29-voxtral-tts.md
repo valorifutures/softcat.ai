@@ -1,5 +1,6 @@
 ---
 title: "Voxtral TTS"
+date: 2026-03-29
 description: "Mistral's first open-weight text-to-speech model with streaming capabilities for low-latency multilingual voice generation."
 url: "https://www.marktechpost.com/2026/03/28/mistral-ai-releases-voxtral-tts-a-4b-open-weight-streaming-speech-model-for-low-latency-multilingual-voice-generation/"
 status: experimental

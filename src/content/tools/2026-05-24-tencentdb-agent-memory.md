@@ -1,5 +1,6 @@
 ---
 title: "TencentDB Agent Memory"
+date: 2026-05-24
 description: "A fully local memory system for AI agents with a clever 4-tier hierarchy and symbolic short-term storage."
 url: "https://www.marktechpost.com/2026/05/23/tencent-open-sources-tencentdb-agent-memory-a-4-tier-local-memory-pipeline-for-ai-agents/"
 status: experimental

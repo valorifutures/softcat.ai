@@ -1,5 +1,6 @@
 ---
 title: "Outlines + Pydantic"
+date: 2026-03-15
 description: "A Python combination for building type-safe LLM pipelines with strict schema validation and JSON recovery."
 url: "https://www.marktechpost.com/2026/03/14/how-to-build-type-safe-schema-constrained-and-function-driven-llm-pipelines-using-outlines-and-pydantic/"
 status: experimental

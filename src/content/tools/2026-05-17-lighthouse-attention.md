@@ -1,5 +1,6 @@
 ---
 title: "Lighthouse Attention"
+date: 2026-05-17
 description: "A training-only attention mechanism that delivers 1.4-1.7x speedup for long context pretraining."
 url: "https://www.marktechpost.com/2026/05/16/nous-research-proposes-lighthouse-attention-a-training-only-selection-based-hierarchical-attention-that-delivers-1-4-1-7x-pretraining-speedup-at-long-context/"
 status: experimental

@@ -1,5 +1,6 @@
 ---
 title: "Token Cost Calculator"
+date: 2026-04-03
 description: "Estimate the API cost of your prompts across AI models. Single prompt or full conversation mode with per-turn breakdown."
 labUrl: "/lab/token-cost"
 status: active
