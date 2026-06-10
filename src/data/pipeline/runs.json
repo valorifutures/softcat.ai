@@ -8098,5 +8098,22 @@
     "input_tokens": 6186,
     "output_tokens": 985,
     "output_files": []
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-06-10T08:30:53.951579+00:00",
+    "status": "success",
+    "duration_s": 49.8,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0663,
+    "input_tokens": 11197,
+    "output_tokens": 2182,
+    "output_files": [
+      "src/data/radar/2026-06-10.json"
+    ]
   }
 ]

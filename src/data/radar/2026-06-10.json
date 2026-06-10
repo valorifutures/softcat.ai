@@ -1,0 +1,104 @@
+{
+  "date": "2026-06-10",
+  "featured": [
+    {
+      "id": "ph-claude-fable-5",
+      "name": "Claude Fable 5",
+      "tagline": "Public release of Anthropic's Mythos-class model with enhanced safety guardrails.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Anthropic just made their most capable model available to everyone, but with training wheels on. It's the same underlying tech as Mythos 5 but wrapped in classifiers that block the spicy stuff. This feels like the new pattern for AI releases - give the public the power but keep the dangerous bits locked away.",
+      "ph_url": "https://www.marktechpost.com/2026/06/10/anthropic-releases-claude-fable-5-and-claude-mythos-5-same-underlying-model-different-safeguards-new-mythos-class-tier/",
+      "maker": "Anthropic",
+      "featured": true,
+      "added_at": "2026-06-10T06:00:00Z"
+    },
+    {
+      "id": "ph-gemini-live-translate",
+      "name": "Gemini 3.5 Live Translate",
+      "tagline": "Real-time speech-to-speech translation across 70+ languages via streaming API.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google's taking a proper swing at real-time translation with continuous streaming that stays just seconds behind the speaker. The fact it's hitting the Gemini Live API means developers can actually build with it. This could be the moment voice translation stops feeling like a party trick.",
+      "ph_url": "https://www.marktechpost.com/2026/06/09/google-releases-gemini-3-5-live-translate-a-streaming-speech-to-speech-audio-model-covering-70-languages-across-meet-translate-and-the-live-api/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-06-10T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-claw-patrol",
+      "name": "Claw Patrol",
+      "tagline": "Security firewall specifically designed for AI agents.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "As agents get more autonomous, we need proper security layers that understand their behaviour patterns. Claw Patrol tackles this head-on with agent-specific firewalling. It's exactly the kind of infrastructure we'll need as these systems start handling real business logic.",
+      "ph_url": "https://github.com/denoland/clawpatrol",
+      "maker": "Deno",
+      "featured": false,
+      "added_at": "2026-06-10T06:30:00Z"
+    },
+    {
+      "id": "ph-craftbot",
+      "name": "Craftbot",
+      "tagline": "Agent that builds and operates its own SaaS tools autonomously.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "An agent that can spin up and run its own software products is either the future or a really elaborate demo. The fact someone's actually shipping this suggests we're closer to autonomous business creation than most people think. Worth watching to see if it can actually deliver on the promise.",
+      "ph_url": "https://craftbot.live",
+      "maker": "Craftbot",
+      "featured": false,
+      "added_at": "2026-06-10T06:45:00Z"
+    },
+    {
+      "id": "ph-lore-llm-proxy",
+      "name": "Lore",
+      "tagline": "LLM proxy for coding agent context and memory management.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Coding agents are getting smarter but their memory management is still rubbish. Lore tackles the context problem with a proxy layer that actually understands code structure. It's the kind of unglamorous infrastructure that could make the difference between agents that work and agents that just demo well.",
+      "ph_url": "https://withlore.ai/",
+      "maker": "Lore",
+      "featured": false,
+      "added_at": "2026-06-10T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Launch HN: Transload (YC P26) \u2013 Measuring freight items with CCTV",
+      "points": 48,
+      "comments": 15,
+      "summary": "YC company using computer vision to measure freight dimensions from existing CCTV infrastructure. Tackles the logistics problem of accurate item measurement without additional hardware.",
+      "hn_url": "https://news.ycombinator.com/item?id=48463273"
+    },
+    {
+      "title": "Show HN: Nucleus \u2013 A security-hardened, Nix-native container runtime",
+      "points": 27,
+      "comments": 7,
+      "summary": "New container runtime built with Nix that focuses on security hardening. Aims to provide better isolation and security guarantees than traditional Docker-style containers.",
+      "hn_url": "https://news.ycombinator.com/item?id=48469039"
+    },
+    {
+      "title": "Show HN: Claw Patrol, a security firewall for agents",
+      "points": 22,
+      "comments": 4,
+      "summary": "Security firewall specifically designed for AI agents from the Deno team. Provides monitoring and control layers for autonomous AI systems to prevent malicious behaviour.",
+      "hn_url": "https://news.ycombinator.com/item?id=48462928"
+    },
+    {
+      "title": "Show HN: The agent that builds and operates its own SaaS tools",
+      "points": 10,
+      "comments": 5,
+      "summary": "AI agent that can autonomously create and manage SaaS products. Claims to handle everything from initial build to ongoing operations without human intervention.",
+      "hn_url": "https://news.ycombinator.com/item?id=48469352"
+    },
+    {
+      "title": "Show HN: Lore \u2013 LLM proxy for coding agent context and memory management",
+      "points": 6,
+      "comments": 0,
+      "summary": "Proxy layer for LLMs that improves context and memory management specifically for coding agents. Addresses the persistent problem of maintaining code context across long interactions.",
+      "hn_url": "https://news.ycombinator.com/item?id=48464573"
+    }
+  ]
+}

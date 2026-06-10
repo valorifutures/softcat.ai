@@ -765,6 +765,17 @@
         "Deep Memory",
         "CapaKit"
       ]
+    },
+    {
+      "date": "2026-06-10",
+      "file": "2026-06-10.json",
+      "products": [
+        "Claude Fable 5",
+        "Gemini 3.5 Live Translate",
+        "Claw Patrol",
+        "Craftbot",
+        "Lore"
+      ]
     }
   ]
 }
