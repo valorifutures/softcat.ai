@@ -28,8 +28,8 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
 - `src/content/news-and-updates/` — markdown with frontmatter: title, date, tags[], summary, draft
 - `src/content/thoughts/` — markdown with frontmatter: title, date, tags[], summary, draft, pinned
-- `src/content/tools/` — markdown with frontmatter: title, description, url?, labUrl?, status (active/experimental/archived), tags[], draft
-- `src/data/models.json` — array of AI model specs (pricing, context, capabilities)
+- `src/content/tools/` — markdown with frontmatter: title, description, date, last_verified?, url?, labUrl?, status (active/experimental/archived), tags[], draft
+- `src/data/models.json` — array of AI model specs (pricing, context, capabilities). **This file IS the model roster**: model_bot Job 1 refreshes prices/specs for whatever ids it contains; new models enter ONLY via Job 2's radar-gated proposal PRs (branch `model-bot/roster-proposals`, one open PR updated in place, placeholder scores edited during review). Validate with `node scripts/validate-tools-data.mjs` (also runs in PR CI with `bot/tests/` pytest).
 - Collections defined in `src/content.config.ts`
 
 ## Content File Naming
@@ -61,7 +61,7 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 - `/` — homepage with hero, activity ticker, about, section previews
 - `/news-and-updates` — AI news digest posts (bot-generated daily)
 - `/thoughts` — opinion pieces (bot-generated daily)
-- `/tools` — merged tools page: interactive tools (9 Preact apps at `/lab/*`) + tool write-ups. `/lab` redirects here.
+- `/tools` — merged tools page: provenance strip (staleness register), weekly-rotating featured spotlight (`featured: true` in tools-manifest.json pins as editorial override), interactive tools (Preact apps at `/lab/*`, data-driven ones show model-data stamps) + dated tool write-ups with tag filter and archive section. `/lab` redirects here. Design doc: `docs/designs/tools-page-showroom.md`
 - `/radar` — daily AI product launches (bot-generated)
 - `/prompts` — copy-ready AI prompts (bot-generated weekly)
 - `/pipeline` — the machinery dashboard: bot roster, run history, costs, feed sources
@@ -73,7 +73,8 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
 - `src/data/pipeline/bots.json` — bot manifest (name, schedule, feeds, model, accent)
 - `src/data/pipeline/runs.json` — append-only run log (populated by bots via `bot/pipeline_log.py`)
-- Bots log every run: duration, feeds scanned, items found/rejected/published, model, cost, output files
+- Bots log every run: duration, feeds scanned, items found/rejected/published, model, cost, output files. Multi-job bots pass `job=` to log_run (model_bot: prices/roster; tool_bot: weekly write-up + verify) — never register new bot ids, the "six bots" copy depends on it
+- tool_bot Job 2 (Sundays, after the write-up): checks every write-up url, HTTP status only. Archive needs 3 consecutive definitive-dead weeks (404/410/DNS/refused); 403/429/timeout = unverifiable (staged to ~/.softcat-bot-staging + Discord), never auto-archived. Streaks in `bot/tool_verify_history.json`
 - Pipeline page and activity ticker read runs.json at build time
 - Content frontmatter supports optional pipeline metadata: `generated_by`, `model`, `generation_time_s`, `cost_usd`
 
