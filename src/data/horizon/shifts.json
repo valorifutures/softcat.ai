@@ -1,73 +1,59 @@
 [
   {
-    "date": "2026-04-11",
-    "lane": "debates",
-    "verb": "updated",
-    "subject": "horizon: seed Next/Debates/Scenarios + wire renderers (#94)",
-    "sha": "976239e681"
-  },
-  {
-    "date": "2026-04-11",
-    "lane": "next",
-    "verb": "updated",
-    "subject": "horizon: seed Next/Debates/Scenarios + wire renderers (#94)",
-    "sha": "976239e681"
-  },
-  {
-    "date": "2026-04-11",
-    "lane": "scenarios",
-    "verb": "updated",
-    "subject": "horizon: seed Next/Debates/Scenarios + wire renderers (#94)",
-    "sha": "976239e681"
-  },
-  {
-    "date": "2026-04-11",
+    "date": "2026-05-10",
     "lane": "now",
     "verb": "updated",
-    "subject": "Horizon Now seed (6 patterns) + static renderer at /horizon (#98)",
-    "sha": "986f943c77"
+    "subject": "fix(horizon): correct two now.json IDs to match schema",
+    "sha": "f212c30802"
   },
   {
-    "date": "2026-04-11",
-    "lane": "debates",
-    "verb": "added",
-    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
-    "sha": "17aee4421a"
-  },
-  {
-    "date": "2026-04-11",
-    "lane": "next",
-    "verb": "added",
-    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
-    "sha": "17aee4421a"
-  },
-  {
-    "date": "2026-04-11",
-    "lane": "now-archive",
-    "verb": "added",
-    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
-    "sha": "17aee4421a"
-  },
-  {
-    "date": "2026-04-11",
+    "date": "2026-05-10",
     "lane": "now",
-    "verb": "added",
-    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
-    "sha": "17aee4421a"
+    "verb": "updated",
+    "subject": "bot(horizon): propose 2 Now entries",
+    "sha": "fc4da24088"
   },
   {
-    "date": "2026-04-11",
-    "lane": "past",
-    "verb": "added",
-    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
-    "sha": "17aee4421a"
+    "date": "2026-05-09",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "bot(horizon): propose 2 Now entries",
+    "sha": "750cf9d143"
   },
   {
-    "date": "2026-04-11",
-    "lane": "scenarios",
-    "verb": "added",
-    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
-    "sha": "17aee4421a"
+    "date": "2026-05-06",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "bot(horizon): propose 2 Now entries",
+    "sha": "1c090b24b1"
+  },
+  {
+    "date": "2026-05-05",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "bot(horizon): propose 2 Now entries",
+    "sha": "5bcaf4ee13"
+  },
+  {
+    "date": "2026-05-03",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "bot(horizon): propose 2 Now entries",
+    "sha": "0315784714"
+  },
+  {
+    "date": "2026-05-04",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "bot(horizon): propose 3 Now entries",
+    "sha": "ad8a10b793"
+  },
+  {
+    "date": "2026-05-02",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "horizon: 2026-05-02 Now proposals (curated, supersedes #116-#131)",
+    "sha": "afaeddaa37"
   },
   {
     "date": "2026-04-22",
@@ -251,17 +237,73 @@
     ]
   },
   {
-    "date": "2026-05-02",
-    "lane": "now",
+    "date": "2026-04-11",
+    "lane": "debates",
     "verb": "updated",
-    "subject": "horizon: 2026-05-02 Now proposals (curated, supersedes #116-#131)",
-    "sha": "afaeddaa37"
+    "subject": "horizon: seed Next/Debates/Scenarios + wire renderers (#94)",
+    "sha": "976239e681"
   },
   {
-    "date": "2026-05-03",
+    "date": "2026-04-11",
+    "lane": "next",
+    "verb": "updated",
+    "subject": "horizon: seed Next/Debates/Scenarios + wire renderers (#94)",
+    "sha": "976239e681"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "scenarios",
+    "verb": "updated",
+    "subject": "horizon: seed Next/Debates/Scenarios + wire renderers (#94)",
+    "sha": "976239e681"
+  },
+  {
+    "date": "2026-04-11",
     "lane": "now",
     "verb": "updated",
-    "subject": "bot(horizon): propose 2 Now entries",
-    "sha": "485cfffb07"
+    "subject": "Horizon Now seed (6 patterns) + static renderer at /horizon (#98)",
+    "sha": "986f943c77"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "debates",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "next",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "now-archive",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "now",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "past",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
+  },
+  {
+    "date": "2026-04-11",
+    "lane": "scenarios",
+    "verb": "added",
+    "subject": "Horizon schema lock + 18 founding past entries + tightened validation (#91)",
+    "sha": "17aee4421a"
   }
 ]
