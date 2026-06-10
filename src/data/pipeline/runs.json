@@ -8066,5 +8066,22 @@
     "output_files": [
       "src/content/news-and-updates/2026-06-10-ai-digest.md"
     ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-06-10T07:00:25.794497+00:00",
+    "status": "success",
+    "duration_s": 22.4,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0217,
+    "input_tokens": 5265,
+    "output_tokens": 392,
+    "output_files": [
+      "src/content/thoughts/2026-06-10-real-time-streaming-just-turned-ai-into-a-conversational-arm.md"
+    ]
   }
 ]
