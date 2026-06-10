@@ -70,7 +70,7 @@ function formatDate(dateStr: string): string {
 }
 ---
 
-<BaseLayout title="Pipeline" description="The machinery behind softcat.ai. Six bots, five feeds, one pipeline. See every run, every cost, every decision.">
+<BaseLayout title="Pipeline" description={`The machinery behind softcat.ai. ${allBots.length} bots, one pipeline, receipts for everything. Every run, every cost, every decision.`}>
   <div class="max-w-4xl mx-auto px-6 py-16">
     <header class="mb-8">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
