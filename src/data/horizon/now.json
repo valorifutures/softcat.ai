@@ -747,5 +747,107 @@
       }
     ],
     "added": "2026-05-10"
+  },
+  {
+    "id": "now-2026-06-terminal-agents-replace-chat",
+    "lane": "now",
+    "title": "Command-line interfaces become the preferred agent interaction pattern",
+    "date": "2026-06-10",
+    "themes": [
+      "agents",
+      "interfaces"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Chat interfaces are proving inadequate for complex AI agent workflows. Terminal-style interactions force precision and enable proper operational control.",
+    "implication": "Expect agent platforms to prioritise CLI tooling over conversational interfaces.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-07",
+        "label": "Command line interfaces just turned AI agents into Unix philosophers"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-08",
+        "label": "Command-line agents just turned every developer into a system administrator"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-07",
+        "label": "Tools go terminal: Command-line AI tools multiply"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-08",
+        "label": "OpenAI declares chat dead whilst everyone rushes to build autonomous agents"
+      }
+    ],
+    "added": "2026-06-10"
+  },
+  {
+    "id": "now-2026-06-model-repos-security-crisis",
+    "lane": "now",
+    "title": "AI model repositories face systematic security contamination",
+    "date": "2026-06-10",
+    "themes": [
+      "security",
+      "models",
+      "infrastructure"
+    ],
+    "signal_type": "warning",
+    "confidence": "emerging",
+    "why_it_matters": "Model repositories are becoming attack vectors with no established cleanup protocols. The infrastructure for safe model distribution is broken.",
+    "implication": "Expect enterprise model deployment to shift towards private registries and strict provenance tracking.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-09",
+        "label": "Security scanning just turned AI model repositories into hazmat disposal sites"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-03",
+        "label": "AI security breaches shake up the week"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-07",
+        "label": "security and politics heat up around major models"
+      }
+    ],
+    "added": "2026-06-10"
+  },
+  {
+    "id": "now-2026-06-streaming-response-arms-race",
+    "lane": "now",
+    "title": "Real-time streaming responses become competitive battleground",
+    "date": "2026-06-10",
+    "themes": [
+      "interfaces",
+      "models"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Every AI company is racing to stream responses faster, creating pressure for instant interaction even when it degrades user experience.",
+    "implication": "Optimise for streaming latency as a primary competitive metric, not just model quality.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-10",
+        "label": "Real-time streaming just turned AI into a conversational arms race"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-09",
+        "label": "trillion-parameter models hit crazy speeds"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-10",
+        "label": "Google ships real-time translation across 70 languages"
+      }
+    ],
+    "added": "2026-06-10"
   }
 ]
