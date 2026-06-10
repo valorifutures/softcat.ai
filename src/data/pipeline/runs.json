@@ -8032,5 +8032,22 @@
     "output_files": [
       "src/data/radar/2026-06-09.json"
     ]
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-06-10T05:00:04.814481+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 339,
+    "items_rejected": 0,
+    "items_published": 21,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [
+      "src/data/models.json"
+    ]
   }
 ]
