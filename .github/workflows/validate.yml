@@ -29,5 +29,5 @@ jobs:
           python-version: '3.12'
       - name: Bot unit tests
         run: |
-          pip install -q pytest httpx python-dotenv
+          pip install -q pytest httpx python-dotenv feedparser anthropic
           python -m pytest bot/tests/ -q

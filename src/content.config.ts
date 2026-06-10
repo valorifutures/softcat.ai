@@ -39,6 +39,7 @@ const tools = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.coerce.date(),
+    last_verified: z.coerce.date().optional(),
     url: z.string().optional(),
     labUrl: z.string().optional(),
     status: z.enum(['active', 'experimental', 'archived']).default('experimental'),

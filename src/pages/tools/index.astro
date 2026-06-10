@@ -167,15 +167,22 @@ const featuredColor = categoryColors[featured.category] || categoryColors.models
                     </h2>
                     <p class="text-sm text-text-muted mt-2 leading-relaxed">{entry.data.description}</p>
                   </div>
-                  <div class="shrink-0 flex items-center gap-3">
-                    <span class="font-mono text-xs text-text-muted">{fmtDate(entry.data.date)}</span>
-                    <span class={`px-2 py-0.5 rounded text-xs font-mono ${
-                      entry.data.status === 'active' ? 'bg-neon-green/10 text-neon-green' :
-                      entry.data.status === 'experimental' ? 'bg-neon-amber/10 text-neon-amber' :
-                      'bg-surface-light text-text-muted'
-                    }`}>
-                      {entry.data.status}
-                    </span>
+                  <div class="shrink-0 flex flex-col items-end gap-1">
+                    <div class="flex items-center gap-3">
+                      <span class="font-mono text-xs text-text-muted">{fmtDate(entry.data.date)}</span>
+                      <span class={`px-2 py-0.5 rounded text-xs font-mono ${
+                        entry.data.status === 'active' ? 'bg-neon-green/10 text-neon-green' :
+                        entry.data.status === 'experimental' ? 'bg-neon-amber/10 text-neon-amber' :
+                        'bg-surface-light text-text-muted'
+                      }`}>
+                        {entry.data.status}
+                      </span>
+                    </div>
+                    {entry.data.last_verified && (
+                      <span class="font-mono text-[10px] text-text-muted/60">
+                        link checked {fmtDate(entry.data.last_verified)}
+                      </span>
+                    )}
                   </div>
                 </div>
               </a>
