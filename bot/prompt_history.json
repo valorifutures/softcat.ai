@@ -263,6 +263,18 @@
       "file": "ai-agent-governance-policy-framework-designer.md",
       "title": "AI Agent Governance Policy Framework Designer",
       "category": "agent-design"
+    },
+    {
+      "date": "2026-06-10",
+      "file": "streaming-audio-model-performance-validator.md",
+      "title": "Streaming Audio Model Performance Validator",
+      "category": "testing"
+    },
+    {
+      "date": "2026-06-10",
+      "file": "ai-agent-state-migration-validator.md",
+      "title": "AI Agent State Migration Validator",
+      "category": "migration"
     }
   ]
 }
