@@ -1,0 +1,128 @@
+---
+// Provenance strip (plan B6+E4 merged per D9/5A, hardened per F1/F4/F8/F9).
+//
+// Collapsed: ONE mono line between the page intro and the Featured rule,
+// reading as a status line. Native <details> = tap/keyboard parity for free.
+// Staleness register (F4): <26h green dot, 26h-7d amber, >7d red — the
+// machinery being dead must LOOK dead. Absolute UTC timestamps render
+// server-side (crawlers/no-JS keep the proof); a tiny script upgrades the
+// summary time to a relative age client-side (width reserved, F8).
+import botsManifest from '../data/pipeline/bots.json';
+
+interface Run {
+  bot: string;
+  timestamp: string;
+  status: string;
+  items_published?: number;
+}
+
+// Whole-file guard (F9): an unparseable runs.json renders the no-data form;
+// the build never fails on it.
+let runs: Run[] = [];
+try {
+  runs = (await import('../data/pipeline/runs.json')).default as Run[];
+  if (!Array.isArray(runs)) runs = [];
+} catch {
+  runs = [];
+}
+
+const SECTION_LINKS: Record<string, string> = {
+  news_bot: '/news-and-updates',
+  thoughts_bot: '/thoughts',
+  radar_bot: '/radar',
+  tool_bot: '/tools',
+  prompt_bot: '/prompts',
+  model_bot: '/lab/model-comparison',
+  horizon_bot: '/horizon',
+};
+
+const now = Date.now();
+const weekAgo = now - 7 * 86400_000;
+
+const bots = (botsManifest as { id: string; name: string }[]).map((b) => {
+  const mine = runs.filter((r) => r.bot === b.id);
+  const lastOk = mine.filter((r) => r.status === 'success').at(-1);
+  const weekCount = mine
+    .filter((r) => new Date(r.timestamp).getTime() >= weekAgo)
+    .reduce((s, r) => s + (r.items_published || 0), 0);
+  const ageMs = lastOk ? now - new Date(lastOk.timestamp).getTime() : Infinity;
+  const dot =
+    ageMs < 26 * 3600_000 ? 'bg-neon-green' :
+    ageMs < 7 * 86400_000 ? 'bg-neon-amber' : 'bg-neon-red';
+  return {
+    ...b,
+    href: SECTION_LINKS[b.id] || '/pipeline',
+    lastOk: lastOk?.timestamp ?? null,
+    weekCount,
+    dot,
+  };
+});
+
+const newest = bots.filter((b) => b.lastOk).sort((a, b) => b.lastOk!.localeCompare(a.lastOk!))[0];
+const weekTotal = bots.reduce((s, b) => s + b.weekCount, 0);
+const fmtAbs = (iso: string) => iso.slice(0, 16).replace('T', ' ') + 'Z';
+const overallDot = newest ? newest.dot : 'bg-neon-red';
+---
+
+<details class="mb-8 font-mono text-xs text-text-muted group/strip">
+  <summary class="cursor-pointer select-none list-none flex items-center gap-2 min-h-11 [&::-webkit-details-marker]:hidden">
+    {newest ? (
+      <>
+        <span class={`inline-block w-1.5 h-1.5 rounded-full shrink-0 ${overallDot} motion-safe:animate-pulse`}></span>
+        <span class="truncate">
+          fed by the pipeline &middot; last output
+          <time
+            datetime={newest.lastOk}
+            data-age-ts={newest.lastOk}
+            title={fmtAbs(newest.lastOk!)}
+            class="inline-block min-w-[11ch] text-text-primary"
+          > {fmtAbs(newest.lastOk!)}</time>
+          &middot; {weekTotal} outputs this week
+        </span>
+        <span class="text-text-muted/50 shrink-0 group-open/strip:rotate-90 transition-transform">▸</span>
+        <span class="text-text-muted/50 shrink-0">detail</span>
+      </>
+    ) : (
+      <>
+        <span class="inline-block w-1.5 h-1.5 rounded-full shrink-0 bg-neon-red"></span>
+        <span>pipeline data unavailable &middot; see <a href="/pipeline" class="text-neon-cyan hover:underline">/pipeline</a></span>
+      </>
+    )}
+  </summary>
+  {newest && (
+    <div class="mt-3 ml-3.5 grid gap-1.5">
+      {bots.map((b) => (
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class={`inline-block w-1.5 h-1.5 rounded-full shrink-0 ${b.dot}`}></span>
+          <a href={b.href} class="text-neon-cyan hover:underline">{b.name}</a>
+          {b.lastOk ? (
+            <time datetime={b.lastOk} title={fmtAbs(b.lastOk)} class="text-text-muted/70">{fmtAbs(b.lastOk)}</time>
+          ) : (
+            <span class="text-text-muted/50">no data</span>
+          )}
+          <span class="text-text-muted/50">&middot; {b.weekCount} this week</span>
+        </div>
+      ))}
+      <div class="mt-1">
+        <a href="/pipeline" class="text-neon-cyan hover:underline">full run history &rarr;</a>
+      </div>
+    </div>
+  )}
+</details>
+
+<script>
+  // Upgrade the summary timestamp to a relative age (F8): absolute stays in
+  // the title attr + datetime; width reserved via min-w so no layout shift.
+  const rel = (iso: string) => {
+    const s = Math.max(0, (Date.now() - new Date(iso).getTime()) / 1000);
+    if (s < 90) return 'just now';
+    if (s < 5400) return `${Math.round(s / 60)}m ago`;
+    if (s < 129600) return `${Math.round(s / 3600)}h ago`;
+    return `${Math.round(s / 86400)}d ago`;
+  };
+  document.querySelectorAll<HTMLElement>('[data-age-ts]').forEach((el) => {
+    const iso = el.dataset.ageTs;
+    if (!iso || isNaN(new Date(iso).getTime())) return; // NaN guard: keep absolute
+    el.textContent = ' ' + rel(iso);
+  });
+</script>

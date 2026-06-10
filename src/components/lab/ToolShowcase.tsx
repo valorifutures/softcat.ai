@@ -9,6 +9,7 @@ interface Tool {
   icon: string;
   category: string;
   addedDate: string;
+  dataSource?: string;
 }
 
 const categories = [
@@ -68,7 +69,7 @@ function isNew(addedDate: string): boolean {
   return diffDays <= 30;
 }
 
-export default function ToolShowcase({ tools }: { tools: Tool[] }) {
+export default function ToolShowcase({ tools, modelDataStamp }: { tools: Tool[]; modelDataStamp?: string | null }) {
   const [active, setActive] = useState('all');
 
   const filtered = active === 'all' ? tools : tools.filter((t) => t.category === active);
@@ -143,10 +144,19 @@ export default function ToolShowcase({ tools }: { tools: Tool[] }) {
                       <p class="text-sm text-text-muted mt-1.5 leading-relaxed">
                         {tool.description}
                       </p>
-                      {/* Quick stat — desktop hover reveal */}
-                      <p class={`font-mono text-xs ${colors.text} mt-2 opacity-50 group-hover:opacity-100 transition-opacity hidden md:block`}>
-                        ▸ {tool.stat}
-                      </p>
+                      {tool.dataSource === 'models.json' && modelDataStamp ? (
+                        /* Data-age footer (E1/F3): replaces the hover stat on
+                           data-driven tools, ALWAYS visible — freshness proof
+                           that only appears on hover proves nothing. */
+                        <p class={`font-mono text-xs ${colors.text} mt-2`}>
+                          ▸ model data {modelDataStamp}
+                        </p>
+                      ) : (
+                        /* Quick stat — desktop hover reveal */
+                        <p class={`font-mono text-xs ${colors.text} mt-2 opacity-50 group-hover:opacity-100 transition-opacity hidden md:block`}>
+                          ▸ {tool.stat}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
