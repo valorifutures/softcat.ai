@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ToolShowcase from '../../components/lab/ToolShowcase';
+import ProvenanceStrip from '../../components/ProvenanceStrip.astro';
 import { getCollection } from 'astro:content';
 import { tagDotClass } from '../../utils/tagColor';
 import toolsManifest from '../../data/tools-manifest.json';
+import { pickFeatured } from '../../lib/feature-rotation';
+import runsData from '../../data/pipeline/runs.json';
 
 const all = (await getCollection('tools'))
   .filter((e) => !e.data.draft)
@@ -20,8 +23,16 @@ const filterTags = [...tagCounts.entries()]
 
 const fmtDate = (d: Date) => d.toISOString().slice(0, 10);
 
-// Pick featured tool: first tool with "featured: true" in manifest, or fallback to first tool
-const featured = toolsManifest.find((t: any) => t.featured) || toolsManifest[0];
+// Featured spotlight (B5/D14): a featured:true manifest entry pins the
+// spotlight (editorial override); otherwise it rotates weekly by ISO week.
+const featured = pickFeatured(toolsManifest as any[], new Date()) || toolsManifest[0];
+
+// Data-age stamp for data-driven lab tools (E1/F3): model_bot's latest
+// successful prices run. Absolute UTC, rendered as text (F8).
+const modelRuns = (runsData as any[]).filter((r) => r.bot === 'model_bot' && r.status === 'success');
+const modelDataStamp: string | null = modelRuns.length
+  ? modelRuns[modelRuns.length - 1].timestamp.slice(0, 16).replace('T', ' ') + 'Z'
+  : null;
 
 const categoryColors: Record<string, { text: string; bg: string; border: string; glowVar: string; hex: string }> = {
   prompts: { text: 'text-neon-amber', bg: 'bg-neon-amber/10', border: 'border-neon-amber/30', glowVar: 'rgba(212, 165, 74, 0.12)', hex: '#d4a54a' },
@@ -41,10 +52,13 @@ const featuredColor = categoryColors[featured.category] || categoryColors.models
       <p class="text-text-muted mt-2">Interactive tools built for people who work with AI. All client-side, nothing leaves your browser.</p>
     </header>
 
-    <!-- Featured tool spotlight -->
+    <ProvenanceStrip />
+
+    <!-- Featured tool spotlight: rotates weekly, featured:true pins (B5/D14) -->
     <div class="mb-10">
       <div class="flex items-center gap-2 mb-4">
-        <span class="font-mono text-xs text-text-muted tracking-wider uppercase">Featured</span>
+        <span class="font-mono text-xs text-text-muted tracking-wider uppercase">Featured this week</span>
+        <span class="font-mono text-xs text-text-muted/50">rotates weekly &middot; pinned picks override</span>
         <div class="flex-1 h-px bg-surface-light/50"></div>
       </div>
       <a
@@ -83,7 +97,7 @@ const featuredColor = categoryColors[featured.category] || categoryColors.models
         <span class="font-mono text-xs text-text-muted/50">{toolsManifest.length}</span>
         <div class="flex-1 h-px bg-surface-light/50"></div>
       </div>
-      <ToolShowcase client:load tools={toolsManifest} />
+      <ToolShowcase client:load tools={toolsManifest} modelDataStamp={modelDataStamp} />
     </div>
 
     <!-- Tool write-ups -->
