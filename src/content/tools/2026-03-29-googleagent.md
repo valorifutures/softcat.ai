@@ -1,5 +1,6 @@
 ---
 title: "Google-Agent"
+date: 2026-03-29
 description: "Google's new user agent that distinguishes AI-powered searches from traditional web crawling."
 url: "https://www.marktechpost.com/2026/03/28/google-agent-vs-googlebot-google-defines-the-technical-boundary-between-user-triggered-ai-access-and-search-crawling-systems-today/"
 status: experimental

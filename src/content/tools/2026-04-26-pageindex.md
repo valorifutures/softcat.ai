@@ -1,5 +1,6 @@
 ---
 title: "PageIndex"
+date: 2026-04-26
 description: "A RAG system that retrieves documents by reasoning instead of vector similarity."
 url: "https://www.marktechpost.com/2026/04/25/rag-without-vectors-how-pageindex-retrieves-by-reasoning/"
 status: experimental

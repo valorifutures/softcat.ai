@@ -1,5 +1,6 @@
 ---
 title: "softcat.ai"
+date: 2026-02-23
 description: "This site. A self-maintaining AI site powered by Astro, Tailwind, and an automated content pipeline."
 status: active
 tags: [astro, tailwind, github-pages, meta]

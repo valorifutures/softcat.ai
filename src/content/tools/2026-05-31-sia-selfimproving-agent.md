@@ -1,5 +1,6 @@
 ---
 title: "SIA: Self-Improving Agent"
+date: 2026-05-31
 description: "An open-source agent that updates both its own code scaffold and model weights based on performance feedback."
 url: "https://www.marktechpost.com/2026/05/29/hexo-labs-open-sources-sia-a-self-improving-agent-that-updates-both-the-harness-and-the-model-weights/"
 status: experimental

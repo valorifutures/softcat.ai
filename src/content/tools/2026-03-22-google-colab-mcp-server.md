@@ -1,5 +1,6 @@
 ---
 title: "Google Colab MCP Server"
+date: 2026-03-22
 description: "An open-source Model Context Protocol server that lets AI agents directly control Google Colab notebooks with GPU access."
 url: "https://www.marktechpost.com/2026/03/19/google-colab-now-has-an-open-source-mcp-model-context-protocol-server-use-colab-runtimes-with-gpus-from-any-local-ai-agent/"
 status: experimental

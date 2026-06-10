@@ -108,6 +108,7 @@ Return ONLY a markdown file with YAML frontmatter. No extra commentary. The file
 ---
 title: "Name of the tool"
 description: "One sentence. What it is and why it's interesting."
+date: {today}
 url: "https://link-to-the-tool-or-article"
 status: experimental
 tags: [tag1, tag2, tag3]
@@ -122,7 +123,10 @@ Rules:
 - Tags should be lowercase, hyphenated where needed, specific
 - No em dashes anywhere
 - Write like a real person, not a press release
-- Keep it under 200 words in the body"""
+- Keep it under 200 words in the body
+- NEVER claim hands-on testing or first-hand use ("we tested", "we tried",
+  "we've been using"). You have not used the tool. Attribute claims to the
+  source ("the benchmarks show", "the demo handles") or stay neutral."""
 
     response = client.messages.create(
         model="claude-sonnet-4-20250514",

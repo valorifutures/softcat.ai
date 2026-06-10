@@ -1,5 +1,6 @@
 ---
 title: "NVIDIA AITune"
+date: 2026-04-12
 description: "Open-source toolkit that automatically finds the fastest inference backend for any PyTorch model."
 url: "https://www.marktechpost.com/2026/04/10/nvidia-releases-aitune-an-open-source-inference-toolkit-that-automatically-finds-the-fastest-inference-backend-for-any-pytorch-model/"
 status: experimental

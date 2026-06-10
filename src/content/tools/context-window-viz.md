@@ -1,5 +1,6 @@
 ---
 title: "Context Window Visualiser"
+date: 2026-04-03
 description: "Compare context window sizes across 8 major AI models with interactive usage simulation."
 labUrl: "/lab/context-window"
 status: active

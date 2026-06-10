@@ -1,5 +1,6 @@
 ---
 title: "OpenAI WebSocket Mode"
+date: 2026-02-24
 description: "Real-time voice AI without the latency nightmare of chaining STT, LLM, and TTS."
 url: "https://www.marktechpost.com/2026/02/23/beyond-simple-api-requests-how-openais-websocket-mode-changes-the-game-for-low-latency-voice-powered-ai-experiences/"
 status: experimental

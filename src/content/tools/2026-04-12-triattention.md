@@ -1,5 +1,6 @@
 ---
 title: "TriAttention"
+date: 2026-04-12
 description: "A KV cache compression method that maintains full attention quality whilst delivering 2.5× higher throughput for long-context inference."
 url: "https://www.marktechpost.com/2026/04/11/researchers-from-mit-nvidia-and-zhejiang-university-propose-triattention-a-kv-cache-compression-method-that-matches-full-attention-at-2-5x-higher-throughput/"
 status: experimental

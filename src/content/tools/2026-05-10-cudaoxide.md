@@ -1,5 +1,6 @@
 ---
 title: "cuda-oxide"
+date: 2026-05-10
 description: "NVIDIA's experimental Rust-to-CUDA compiler that lets you write GPU kernels in Rust and compile them directly to PTX."
 url: "https://www.marktechpost.com/2026/05/09/nvidia-ai-just-released-cuda-oxide-an-experimental-rust-to-cuda-compiler-backend-that-compiles-simt-gpu-kernels-directly-to-ptx/"
 status: experimental

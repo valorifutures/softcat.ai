@@ -1,5 +1,6 @@
 ---
 title: "Google's Agent2Agent Protocol"
+date: 2026-05-03
 description: "A new protocol that lets AI agents communicate and coordinate tasks directly with each other."
 url: "https://buttondown.com/ainews/archive/ainews-googles-agent2agent-protocol-a2a/"
 status: experimental
