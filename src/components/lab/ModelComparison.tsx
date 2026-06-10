@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import modelsData from '../../data/models.json';
+import radarIndex from '../../data/radar/index.json';
 
 interface Model {
   name: string;
@@ -13,9 +14,26 @@ interface Model {
   coding: number;
   reasoning_score: number;
   speed: number;
+  trackedSince?: string;
+  radarRef?: string;
 }
 
 const models: Model[] = modelsData as Model[];
+
+// Radar day-files are pruned as they age out of the manifest (PR #143) —
+// a radarRef whose day is gone renders nothing, never a dead link (E2).
+const liveRadarDates = new Set<string>((radarIndex as { dates: string[] }).dates);
+
+const NEWLY_TRACKED_DAYS = 14;
+export const isNewlyTracked = (trackedSince?: string) =>
+  !!trackedSince && Date.now() - new Date(trackedSince).getTime() < NEWLY_TRACKED_DAYS * 86400_000;
+
+export function radarLink(radarRef?: string): { date: string; href: string } | null {
+  if (!radarRef) return null;
+  const date = radarRef.split('#')[0];
+  if (!liveRadarDates.has(date)) return null;
+  return { date, href: `/radar/${date}` };
+}
 
 const ctxDisplay = (k: number) => k >= 1000 ? `${k / 1000}M` : `${k}K`;
 const priceDisplay = (p: number) => p === 0 ? 'Free*' : `$${p}`;
@@ -112,9 +130,23 @@ export default function ModelComparison() {
           <tbody>
             {filtered.map((m) => (
               <tr class="border-b border-surface-light/30 hover:bg-surface-light/20 transition-colors">
-                <td class="py-2.5 px-3 font-mono text-sm text-text-bright">
+                <td class="py-2.5 px-3 font-mono text-sm text-text-bright whitespace-nowrap">
+                  {isNewlyTracked(m.trackedSince) && (
+                    <span
+                      class="inline-block w-1.5 h-1.5 rounded-full bg-neon-cyan motion-safe:animate-pulse mr-2 align-middle"
+                      title={`newly tracked since ${m.trackedSince}`}
+                    />
+                  )}
                   {m.name}
                   {m.openSource && <span class="ml-2 text-xs text-neon-green">OSS</span>}
+                  {radarLink(m.radarRef) && (
+                    <a
+                      href={radarLink(m.radarRef)!.href}
+                      class="ml-2 text-xs no-underline hover:underline"
+                      style="color: #ff3366"
+                      title={`seen on Radar ${radarLink(m.radarRef)!.date}`}
+                    >◉</a>
+                  )}
                 </td>
                 <td class="py-2.5 px-3 font-mono text-sm text-text-muted">{m.provider}</td>
                 <td class="py-2.5 px-3 font-mono text-sm text-neon-cyan">{ctxDisplay(m.contextK)}</td>
@@ -132,6 +164,9 @@ export default function ModelComparison() {
 
       <p class="font-mono text-xs text-text-muted">
         {filtered.length} of {models.length} models shown. Prices per 1M tokens (USD). *Open source models are free to self-host.
+      </p>
+      <p class="font-mono text-xs text-text-muted/70">
+        scores: editorial, calibrated against public benchmarks &middot; ◉ = seen on the Radar
       </p>
     </div>
   );

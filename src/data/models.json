@@ -15,7 +15,28 @@
     "reasoning_score": 75,
     "speed": 60,
     "description": "Top-tier Chinese open-source model. Strong at coding and multilingual tasks.",
-    "strengths": "Strong multilingual, coding, open weights"
+    "strengths": "Strong multilingual, coding, open weights",
+    "trackedSince": "2026-02-23"
+  },
+  {
+    "id": "anthropic/claude-fable-5",
+    "name": "Claude Fable 5",
+    "provider": "Anthropic",
+    "family": "Claude Mythos",
+    "released": "2026-06",
+    "contextK": 1000,
+    "inputPrice": 10.0,
+    "outputPrice": 50.0,
+    "openSource": false,
+    "reasoning": true,
+    "multimodal": true,
+    "coding": 98,
+    "reasoning_score": 99,
+    "speed": 45,
+    "description": "Anthropic's Mythos-class flagship with adaptive reasoning. Tops the Artificial Analysis index at launch.",
+    "strengths": "Frontier reasoning, 1M context, adaptive effort",
+    "trackedSince": "2026-06-10",
+    "radarRef": "2026-06-10#ph-claude-fable-5"
   },
   {
     "id": "anthropic/claude-haiku-4.5",
@@ -33,7 +54,8 @@
     "reasoning_score": 75,
     "speed": 95,
     "description": "Fastest Claude model. Great for high-volume, latency-sensitive applications.",
-    "strengths": "Speed, cost efficiency, high volume"
+    "strengths": "Speed, cost efficiency, high volume",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "anthropic/claude-opus-4",
@@ -51,7 +73,28 @@
     "reasoning_score": 98,
     "speed": 40,
     "description": "Most capable Claude model. Excels at complex reasoning, agentic tasks, and extended coding.",
-    "strengths": "Most capable Claude, complex reasoning, agentic tasks"
+    "strengths": "Most capable Claude, complex reasoning, agentic tasks",
+    "trackedSince": "2026-02-23"
+  },
+  {
+    "id": "anthropic/claude-opus-4.7",
+    "name": "Claude Opus 4.7",
+    "provider": "Anthropic",
+    "family": "Claude 4",
+    "released": "2026-04",
+    "contextK": 1000,
+    "inputPrice": 5.0,
+    "outputPrice": 25.0,
+    "openSource": false,
+    "reasoning": true,
+    "multimodal": true,
+    "coding": 97,
+    "reasoning_score": 97,
+    "speed": 50,
+    "description": "Opus-class reasoning at a third of the old Opus price, with the context window stretched to 1M.",
+    "strengths": "Deep reasoning, 1M context, agentic coding",
+    "trackedSince": "2026-06-10",
+    "radarRef": "2026-04-20#ph-claude-opus-4-7"
   },
   {
     "id": "anthropic/claude-sonnet-4",
@@ -72,7 +115,8 @@
     "strengths": "Near-Opus intelligence at Sonnet pricing",
     "lockedFields": [
       "contextK"
-    ]
+    ],
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "deepseek/deepseek-r1",
@@ -90,7 +134,8 @@
     "reasoning_score": 90,
     "speed": 35,
     "description": "Open-source reasoning model. Competes with o1 at a fraction of the cost.",
-    "strengths": "Open-source reasoning, competes with o1"
+    "strengths": "Open-source reasoning, competes with o1",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "deepseek/deepseek-chat-v3-0324",
@@ -108,7 +153,8 @@
     "reasoning_score": 82,
     "speed": 70,
     "description": "Strong general-purpose model at extremely low cost. Open weights.",
-    "strengths": "Cheap, strong general-purpose, open weights"
+    "strengths": "Cheap, strong general-purpose, open weights",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "google/gemini-2.0-flash-001",
@@ -126,7 +172,8 @@
     "reasoning_score": 75,
     "speed": 92,
     "description": "Rock-bottom pricing with 1M context. Fast multimodal processing.",
-    "strengths": "Rock-bottom pricing, speed, multimodal"
+    "strengths": "Rock-bottom pricing, speed, multimodal",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "google/gemini-2.5-flash",
@@ -144,7 +191,8 @@
     "reasoning_score": 82,
     "speed": 88,
     "description": "Cheap thinking model with 1M context. Excellent value for reasoning tasks.",
-    "strengths": "Cheap thinking model, massive context"
+    "strengths": "Cheap thinking model, massive context",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "google/gemini-2.5-pro-preview",
@@ -162,7 +210,28 @@
     "reasoning_score": 90,
     "speed": 55,
     "description": "Google's thinking model. Strong at coding, analysis, huge context window.",
-    "strengths": "Thinking model, coding, huge context"
+    "strengths": "Thinking model, coding, huge context",
+    "trackedSince": "2026-02-23"
+  },
+  {
+    "id": "google/gemini-3.5-flash",
+    "name": "Gemini 3.5 Flash",
+    "provider": "Google",
+    "family": "Gemini 3",
+    "released": "2026-06",
+    "contextK": 1048,
+    "inputPrice": 1.5,
+    "outputPrice": 9.0,
+    "openSource": false,
+    "reasoning": true,
+    "multimodal": true,
+    "coding": 88,
+    "reasoning_score": 89,
+    "speed": 95,
+    "description": "Google's streaming-first Gemini 3.5 workhorse. Powers the Live API including real-time translation.",
+    "strengths": "Streaming latency, native audio and video, 1M context",
+    "trackedSince": "2026-06-10",
+    "radarRef": "2026-06-10#ph-gemini-live-translate"
   },
   {
     "id": "meta-llama/llama-4-maverick",
@@ -180,7 +249,8 @@
     "reasoning_score": 83,
     "speed": 55,
     "description": "Strong open-source contender. 1M context, multimodal, competitive with proprietary.",
-    "strengths": "Strong open-source, 1M context, multimodal"
+    "strengths": "Strong open-source, 1M context, multimodal",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "meta-llama/llama-4-scout",
@@ -198,7 +268,8 @@
     "reasoning_score": 80,
     "speed": 45,
     "description": "10M token context. MoE architecture, self-hostable, multimodal.",
-    "strengths": "10M context, MoE architecture, self-hostable"
+    "strengths": "10M context, MoE architecture, self-hostable",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "mistralai/mistral-large-2512",
@@ -216,7 +287,8 @@
     "reasoning_score": 80,
     "speed": 60,
     "description": "European flagship. Excellent multilingual, 256K context, strong at code.",
-    "strengths": "Multilingual, code, reasoning, larger context"
+    "strengths": "Multilingual, code, reasoning, larger context",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "mistralai/mistral-small-3.1-24b-instruct",
@@ -234,7 +306,28 @@
     "reasoning_score": 68,
     "speed": 90,
     "description": "Very cheap and fast. Punches above its weight for simple to medium tasks.",
-    "strengths": "Very cheap, strong for its size"
+    "strengths": "Very cheap, strong for its size",
+    "trackedSince": "2026-02-23"
+  },
+  {
+    "id": "moonshotai/kimi-k2.6",
+    "name": "Kimi K2.6",
+    "provider": "Moonshot AI",
+    "family": "Kimi",
+    "released": "2026-04",
+    "contextK": 262,
+    "inputPrice": 0.68,
+    "outputPrice": 3.41,
+    "openSource": false,
+    "reasoning": true,
+    "multimodal": true,
+    "coding": 89,
+    "reasoning_score": 87,
+    "speed": 65,
+    "description": "Moonshot's agent-focused update to K2. Strong tool use at commodity pricing.",
+    "strengths": "Agentic tool use, long context, price",
+    "trackedSince": "2026-06-10",
+    "radarRef": "2026-04-21#ph-kimi-k26"
   },
   {
     "id": "moonshotai/kimi-k2",
@@ -252,7 +345,8 @@
     "reasoning_score": 82,
     "speed": 50,
     "description": "Long-context reasoning model. Competitive pricing and strong performance.",
-    "strengths": "Long-context reasoning, competitive pricing"
+    "strengths": "Long-context reasoning, competitive pricing",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "openai/gpt-4.1",
@@ -270,7 +364,8 @@
     "reasoning_score": 86,
     "speed": 72,
     "description": "Million-token context, strong at coding and instruction following.",
-    "strengths": "Million-token context, coding, instruction following"
+    "strengths": "Million-token context, coding, instruction following",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "openai/gpt-4o",
@@ -288,7 +383,8 @@
     "reasoning_score": 85,
     "speed": 75,
     "description": "Multimodal workhorse from OpenAI. Good all-rounder for text, vision, and audio.",
-    "strengths": "Multimodal, general purpose"
+    "strengths": "Multimodal, general purpose",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "openai/gpt-5",
@@ -306,7 +402,8 @@
     "reasoning_score": 94,
     "speed": 55,
     "description": "Flagship OpenAI model. 400K context, strong across all tasks.",
-    "strengths": "Massive context, strong all-rounder"
+    "strengths": "Massive context, strong all-rounder",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "openai/gpt-5-mini",
@@ -324,7 +421,8 @@
     "reasoning_score": 80,
     "speed": 80,
     "description": "Budget GPT-5 class model with large context window.",
-    "strengths": "Budget GPT-5 class, large context"
+    "strengths": "Budget GPT-5 class, large context",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "openai/gpt-5-nano",
@@ -342,7 +440,28 @@
     "reasoning_score": 65,
     "speed": 96,
     "description": "Cheapest frontier model. On-device capable, great for high-volume simple tasks.",
-    "strengths": "Cheapest frontier model, on-device capable"
+    "strengths": "Cheapest frontier model, on-device capable",
+    "trackedSince": "2026-02-23"
+  },
+  {
+    "id": "openai/gpt-5.5",
+    "name": "GPT-5.5",
+    "provider": "OpenAI",
+    "family": "GPT-5",
+    "released": "2026-05",
+    "contextK": 1050,
+    "inputPrice": 5.0,
+    "outputPrice": 30.0,
+    "openSource": false,
+    "reasoning": true,
+    "multimodal": true,
+    "coding": 96,
+    "reasoning_score": 96,
+    "speed": 60,
+    "description": "OpenAI's flagship successor to GPT-5. Instant-mode routing picks effort per request.",
+    "strengths": "Strong all-rounder, instant routing, broad tooling",
+    "trackedSince": "2026-06-10",
+    "radarRef": "2026-05-06#ph-gpt-55-instant"
   },
   {
     "id": "openai/o3",
@@ -360,7 +479,8 @@
     "reasoning_score": 96,
     "speed": 25,
     "description": "Deep reasoning model. Excels at maths, science, coding, and logic problems.",
-    "strengths": "Reasoning, maths, science, coding"
+    "strengths": "Reasoning, maths, science, coding",
+    "trackedSince": "2026-02-23"
   },
   {
     "id": "openai/o3-mini",
@@ -378,6 +498,47 @@
     "reasoning_score": 88,
     "speed": 55,
     "description": "Budget reasoning model. Good value for tasks that need structured thinking.",
-    "strengths": "Budget reasoning model, structured thinking"
+    "strengths": "Budget reasoning model, structured thinking",
+    "trackedSince": "2026-02-23"
+  },
+  {
+    "id": "z-ai/glm-5",
+    "name": "GLM-5",
+    "provider": "Z.ai",
+    "family": "GLM",
+    "released": "2026-04",
+    "contextK": 202,
+    "inputPrice": 0,
+    "outputPrice": 0,
+    "openSource": true,
+    "reasoning": true,
+    "multimodal": false,
+    "coding": 87,
+    "reasoning_score": 85,
+    "speed": 70,
+    "description": "Z.ai's open-weights flagship. Self-hostable frontier-adjacent capability.",
+    "strengths": "Open weights, strong reasoning per dollar, self-hosting",
+    "trackedSince": "2026-06-10",
+    "radarRef": "2026-04-02#ph-glm-5v-turbo"
+  },
+  {
+    "id": "x-ai/grok-4.3",
+    "name": "Grok 4.3",
+    "provider": "xAI",
+    "family": "Grok",
+    "released": "2026-05",
+    "contextK": 1000,
+    "inputPrice": 1.25,
+    "outputPrice": 2.5,
+    "openSource": false,
+    "reasoning": true,
+    "multimodal": true,
+    "coding": 91,
+    "reasoning_score": 92,
+    "speed": 80,
+    "description": "xAI's fast frontier model. Aggressive pricing for the capability tier.",
+    "strengths": "Speed at frontier level, low price, 1M context",
+    "trackedSince": "2026-06-10",
+    "radarRef": "2026-05-02#ph-grok-43"
   }
 ]
