@@ -8150,5 +8150,40 @@
       "src/data/models.json"
     ],
     "job": "prices"
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-06-11T05:00:12.470978+00:00",
+    "status": "success",
+    "duration_s": 9.2,
+    "feeds_scanned": 0,
+    "items_found": 123,
+    "items_rejected": 0,
+    "items_published": 11,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [
+      "https://github.com/valorifutures/softcat.ai/pull/163"
+    ],
+    "job": "roster"
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-06-11T06:00:25.619374+00:00",
+    "status": "success",
+    "duration_s": 23.7,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.03,
+    "input_tokens": 6728,
+    "output_tokens": 654,
+    "output_files": [
+      "src/content/news-and-updates/2026-06-11-ai-digest.md"
+    ]
   }
 ]
