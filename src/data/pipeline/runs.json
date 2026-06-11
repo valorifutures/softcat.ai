@@ -8202,5 +8202,22 @@
     "output_files": [
       "src/content/thoughts/2026-06-11-same-model-different-masks-just-turned-ai-safety-into-market.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-06-11T08:30:47.279544+00:00",
+    "status": "success",
+    "duration_s": 43.7,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 62,
+    "items_published": 5,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0663,
+    "input_tokens": 11212,
+    "output_tokens": 2179,
+    "output_files": [
+      "src/data/radar/2026-06-11.json"
+    ]
   }
 ]

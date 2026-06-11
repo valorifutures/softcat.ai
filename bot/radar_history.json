@@ -776,6 +776,17 @@
         "Craftbot",
         "Lore"
       ]
+    },
+    {
+      "date": "2026-06-11",
+      "file": "2026-06-11.json",
+      "products": [
+        "DiffusionGemma",
+        "Oasis 3",
+        "Apache Burr",
+        "HelixDB",
+        "Lua.ex"
+      ]
     }
   ]
 }
