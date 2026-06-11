@@ -8219,5 +8219,22 @@
     "output_files": [
       "src/data/radar/2026-06-11.json"
     ]
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-06-11T09:00:22.606829+00:00",
+    "status": "success",
+    "duration_s": 20.4,
+    "feeds_scanned": 0,
+    "items_found": 32,
+    "items_rejected": 0,
+    "items_published": 10,
+    "model": "claude-sonnet-4-20250514",
+    "cost_usd": 0.0205,
+    "input_tokens": 2558,
+    "output_tokens": 855,
+    "output_files": [
+      "src/data/horizon/shifts.json"
+    ]
   }
 ]
