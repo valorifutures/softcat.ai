@@ -143,7 +143,7 @@
     "provider": "DeepSeek",
     "family": "DeepSeek",
     "released": "2025-03",
-    "contextK": 163,
+    "contextK": 131,
     "inputPrice": 0.56,
     "outputPrice": 1.68,
     "openSource": true,
