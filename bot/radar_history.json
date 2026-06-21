@@ -787,6 +787,21 @@
         "HelixDB",
         "Lua.ex"
       ]
+    },
+    {
+      "date": "2026-06-21",
+      "file": "2026-06-21.json",
+      "products": [
+        "Perplexity Brain",
+        "AWS Continuum and Context",
+        "Cloudflare Temporary Accounts for AI Agents",
+        "VibeThinker-3B",
+        "LFM2.5 Retrievers",
+        "Hermes Agent Blank Slate Mode",
+        "Persona.js",
+        "Lelu",
+        "Callimachus"
+      ]
     }
   ]
 }

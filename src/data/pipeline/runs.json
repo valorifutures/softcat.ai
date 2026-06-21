@@ -7460,5 +7460,22 @@
     "output_files": [
       "src/content/thoughts/2026-06-21-agents-that-learn-from-their-own-mistakes-are-more-dangerous.md"
     ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-06-21T09:49:21.804203+00:00",
+    "status": "success",
+    "duration_s": 56.1,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 58,
+    "items_published": 9,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0769,
+    "input_tokens": 9574,
+    "output_tokens": 3212,
+    "output_files": [
+      "src/data/radar/2026-06-21.json"
+    ]
   }
 ]
