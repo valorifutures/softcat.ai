@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-06-21",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "bot(horizon): propose 3 Now entries (#164)",
+    "sha": "9bd3f9160a"
+  },
+  {
     "date": "2026-06-10",
     "lane": "now",
     "verb": "updated",
