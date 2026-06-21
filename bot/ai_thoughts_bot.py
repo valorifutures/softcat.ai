@@ -150,7 +150,7 @@ Rules:
 - This is NOT a news summary. It's a thought piece with a clear point of view."""
 
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=1500,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -259,7 +259,7 @@ def main():
         slug = slugify(title)
         log_run("thoughts_bot", status="success", duration_s=_time.time() - t0,
                 feeds_scanned=len(FEEDS), items_found=len(entries), items_published=1,
-                model="claude-sonnet-4-20250514", cost_usd=cost,
+                model="claude-sonnet-4-6", cost_usd=cost,
                 input_tokens=usage.input_tokens, output_tokens=usage.output_tokens,
                 output_files=[f"src/content/thoughts/{slug_date}-{slug}.md"])
 

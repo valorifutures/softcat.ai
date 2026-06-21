@@ -13,7 +13,7 @@
       "the-decoder.com",
       "artificialintelligence-news.com"
     ],
-    "model": "claude-sonnet-4-20250514",
+    "model": "claude-sonnet-4-6",
     "output_section": "news-and-updates",
     "accent": "green"
   },
@@ -31,7 +31,7 @@
       "the-decoder.com",
       "artificialintelligence-news.com"
     ],
-    "model": "claude-sonnet-4-20250514",
+    "model": "claude-sonnet-4-6",
     "output_section": "thoughts",
     "accent": "cyan"
   },
@@ -50,7 +50,7 @@
       "artificialintelligence-news.com",
       "HackerNews Algolia API"
     ],
-    "model": "claude-sonnet-4-20250514",
+    "model": "claude-sonnet-4-6",
     "output_section": "radar",
     "accent": "red"
   },
@@ -67,7 +67,7 @@
       "bensbites.com",
       "ainews (Buttondown)"
     ],
-    "model": "claude-sonnet-4-20250514",
+    "model": "claude-sonnet-4-6",
     "output_section": "tools",
     "accent": "purple"
   },
@@ -85,7 +85,7 @@
       "the-decoder.com",
       "artificialintelligence-news.com"
     ],
-    "model": "claude-sonnet-4-20250514",
+    "model": "claude-sonnet-4-6",
     "output_section": "prompts",
     "accent": "amber"
   },
@@ -113,7 +113,7 @@
       "src/content/thoughts/",
       "src/content/news-and-updates/"
     ],
-    "model": "claude-sonnet-4-20250514",
+    "model": "claude-sonnet-4-6",
     "output_section": "horizon",
     "accent": "cyan"
   }

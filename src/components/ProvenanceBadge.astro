@@ -22,7 +22,7 @@ const githubUrl = botScript
 
 const parts: string[] = [];
 if (model) {
-  const shortModel = model.replace('claude-sonnet-4-20250514', 'Claude Sonnet').replace('claude-', 'Claude ');
+  const shortModel = model.replace('claude-sonnet-4-20250514', 'Claude Sonnet').replace('claude-sonnet-4-6', 'Claude Sonnet 4.6').replace('claude-', 'Claude ');
   parts.push(shortModel);
 }
 if (generation_time_s != null) parts.push(`${generation_time_s}s`);

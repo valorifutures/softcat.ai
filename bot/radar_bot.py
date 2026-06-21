@@ -275,7 +275,7 @@ Keep discord_summary under 1800 characters. Wrap all URLs in angle brackets.
 - Be selective. Quality over quantity. 2-6 products is the sweet spot."""
 
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=4096,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -500,7 +500,7 @@ def main():
             _log_run("radar_bot", status="success", duration_s=time.time() - t0,
                      feeds_scanned=len(FEEDS) + len(HN_SEARCH_TERMS),
                      items_found=total_found, items_published=0,
-                     model="claude-sonnet-4-20250514")
+                     model="claude-sonnet-4-6")
             save_and_push(empty_data, history)
             ping_healthcheck()
             sys.exit(0)
@@ -528,7 +528,7 @@ def main():
         _log_run("radar_bot", status="success", duration_s=time.time() - t0,
                  feeds_scanned=len(FEEDS) + len(HN_SEARCH_TERMS),
                  items_found=total_found, items_rejected=rejected, items_published=published,
-                 model="claude-sonnet-4-20250514", cost_usd=cost,
+                 model="claude-sonnet-4-6", cost_usd=cost,
                  input_tokens=usage.input_tokens, output_tokens=usage.output_tokens,
                  output_files=[f"src/data/radar/{today}.json"])
 

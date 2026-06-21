@@ -130,7 +130,7 @@ Rules:
   source ("the benchmarks show", "the demo handles") or stay neutral."""
 
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=1024,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -410,7 +410,7 @@ def main():
             # as this bot's data changes, not the next bot's commit (issue #97).
             log_run("tool_bot", status="success", duration_s=_time.time() - t0,
                     feeds_scanned=len(FEEDS), items_found=len(entries), items_published=1,
-                    model="claude-sonnet-4-20250514", cost_usd=cost,
+                    model="claude-sonnet-4-6", cost_usd=cost,
                     input_tokens=in_tok, output_tokens=out_tok,
                     output_files=[f"src/content/tools/{filename}"])
 

@@ -134,7 +134,7 @@ function formatDate(dateStr: string): string {
                   <p class="text-xs text-text-muted">{bot.description}</p>
                   <div class="flex flex-wrap items-center gap-3 mt-2 font-mono text-xs text-text-muted/60">
                     <span>{bot.schedule}</span>
-                    {bot.model && <span>&middot; {bot.model.replace('claude-sonnet-4-20250514', 'Claude Sonnet')}</span>}
+                    {bot.model && <span>&middot; {bot.model.replace('claude-sonnet-4-20250514', 'Claude Sonnet').replace('claude-sonnet-4-6', 'Claude Sonnet 4.6')}</span>}
                     {bot.feeds.length > 0 && <span>&middot; {bot.feeds.length} feed{bot.feeds.length > 1 ? 's' : ''}</span>}
                   </div>
                 </div>

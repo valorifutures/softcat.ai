@@ -161,7 +161,7 @@ Rules:
 - Tags must be lowercase and hyphenated"""
 
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=3000,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -319,7 +319,7 @@ def main():
         log_run("prompt_bot", status="success", duration_s=_time.time() - t0,
                 feeds_scanned=len(FEEDS), items_found=len(entries),
                 items_published=len(prompts),
-                model="claude-sonnet-4-20250514", cost_usd=cost,
+                model="claude-sonnet-4-6", cost_usd=cost,
                 input_tokens=in_tok, output_tokens=out_tok)
 
         print(f"Generated {len(prompts)} prompt(s). Saving...")

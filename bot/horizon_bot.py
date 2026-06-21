@@ -73,7 +73,7 @@ NEXT_SHIFT_MIN_EVIDENCE = 3  # supporting items needed to flag a Next entry
 SHIFT_LOG_LOOKBACK_DAYS = 90 # how far back shifts.json reaches
 
 # Model + cost accounting (same pattern as radar_bot)
-MODEL = "claude-sonnet-4-20250514"
+MODEL = "claude-sonnet-4-6"
 INPUT_COST_PER_MTOK = 3
 OUTPUT_COST_PER_MTOK = 15
 
