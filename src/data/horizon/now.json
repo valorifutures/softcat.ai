@@ -849,5 +849,98 @@
       }
     ],
     "added": "2026-06-10"
+  },
+  {
+    "id": "now-2026-06-dual-tier-safety",
+    "lane": "now",
+    "title": "Dual-tier safety models become product differentiation strategy",
+    "date": "2026-06-11",
+    "themes": [
+      "models",
+      "enterprise",
+      "regulation"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Companies are shipping identical models with different safety configurations to serve both enterprise and consumer markets simultaneously. This creates artificial product tiers where safety becomes a feature you pay to customise.",
+    "implication": "Expect safety to become a configurable product parameter rather than a universal standard.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-11",
+        "label": "Same model, different masks just turned AI safety into marketing theatre"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-11",
+        "label": "Claude Fable 5"
+      }
+    ],
+    "added": "2026-06-11"
+  },
+  {
+    "id": "now-2026-06-cli-agent-takeover",
+    "lane": "now",
+    "title": "Command-line agents force operational complexity onto developers",
+    "date": "2026-06-11",
+    "themes": [
+      "agents",
+      "interfaces",
+      "work"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "AI agents are gravitating towards command-line interfaces because they force clarity, but this dumps decades of system administration complexity directly onto developers. The terminal is becoming the preferred agent interaction layer.",
+    "implication": "Prepare for every developer to become a systems administrator as CLI agents proliferate.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-07",
+        "label": "Command line interfaces just turned AI agents into Unix philosophers"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-08",
+        "label": "Command-line agents just turned every developer into a system administrator"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-07",
+        "label": "AI digest: Tools go terminal"
+      }
+    ],
+    "added": "2026-06-11"
+  },
+  {
+    "id": "now-2026-06-local-cloud-hybrid",
+    "lane": "now",
+    "title": "Hybrid local-cloud routing creates schizophrenic AI systems",
+    "date": "2026-06-11",
+    "themes": [
+      "infrastructure",
+      "models"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Smart task routing between local and cloud models is creating systems that can't decide what they are. Local inference frameworks are making cloud APIs look obsolete whilst hybrid systems try to bridge both worlds.",
+    "implication": "Watch for AI systems to develop split personalities as they juggle local efficiency against cloud capability.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-04",
+        "label": "On-device inference just turned the cloud into expensive nostalgia"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-06",
+        "label": "Hybrid routing just turned your laptop into a schizophrenic cloud terminal"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-04",
+        "label": "AI digest: Models go local, agents go mainstream"
+      }
+    ],
+    "added": "2026-06-11"
   }
 ]
