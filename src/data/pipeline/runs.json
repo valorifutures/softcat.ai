@@ -7511,5 +7511,22 @@
     "output_files": [
       "src/content/tools/2026-06-21-fapo.md"
     ]
+  },
+  {
+    "bot": "tool_bot",
+    "timestamp": "2026-06-21T11:00:10.935047+00:00",
+    "status": "success",
+    "duration_s": 26.9,
+    "feeds_scanned": 0,
+    "items_found": 37,
+    "items_rejected": 32,
+    "items_published": 5,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "32 unverifiable: 2026-02-23-trulens.md, 2026-02-24-composio-agent-orchestrator.md, 2026-02-24-openai-websocket-mode.md, 2026-03-01-sakana-ais-doctolora-and-texttolora.md, 2026-03-08-liquid-ai-localcowork.md",
+    "job": "verify"
   }
 ]
