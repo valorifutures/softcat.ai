@@ -10,6 +10,7 @@ interface Props {
   description?: string;
   breadcrumbs?: Array<{name: string, url: string}>;
   type?: string;
+  ogImage?: string;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   description = 'Smart Outputs From Trained Conversational AI Technology. An AI site that maintains itself.',
   breadcrumbs,
   type = 'website',
+  ogImage = '/og-default.png',
 } = Astro.props;
 
 const pageTitle = title === 'SOFT CAT .ai' ? title : `${title} | SOFT CAT .ai`;
@@ -60,9 +62,13 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
     <meta property="og:type" content={type} />
     <meta property="og:url" content={`https://softcat.ai${Astro.url.pathname}`} />
     <meta property="og:site_name" content="SOFT CAT .ai" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={`https://softcat.ai${ogImage}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`https://softcat.ai${ogImage}`} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
