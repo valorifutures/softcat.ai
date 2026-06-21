@@ -10,7 +10,9 @@
 - [The Radar](https://softcat.ai/radar)
 - [Tools](https://softcat.ai/tools)
 - [Prompt Library](https://softcat.ai/prompts)
+- [Horizon Map](https://softcat.ai/horizon)
 - [Pipeline](https://softcat.ai/pipeline)
+- [Valori](https://softcat.ai/valori)
 
 ## Full Content
 
