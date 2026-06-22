@@ -39,3 +39,31 @@ def test_normalize_name(raw, expected):
 ])
 def test_names_match(radar, openrouter, match):
     assert names_match(radar, openrouter) is match
+
+
+# --------------------------------------------------------------------------- #
+# Roster denylist (added 2026-06-22). Guards against re-proposing the same     #
+# non-models that were hand-rejected from PRs #163 and #169 every run.         #
+# --------------------------------------------------------------------------- #
+from model_data_bot import is_denied
+
+
+@pytest.mark.parametrize("model_id,denied", [
+    # explicit denylist (the three rejected in #163/#169)
+    ("anthropic/claude-opus-4.7-fast", True),
+    ("google/lyria-3-pro-preview", True),
+    ("openrouter/fusion", True),
+    # pattern: any "-fast" variant is a speed flag, not a separate SKU
+    ("anthropic/claude-opus-4.8-fast", True),
+    ("openai/gpt-5.5-fast", True),
+    # pattern: lyria = music models; openrouter = router meta-models
+    ("google/lyria-2", True),
+    ("openrouter/auto", True),
+    # real roster models must pass through
+    ("minimax/minimax-m2.7", False),
+    ("anthropic/claude-sonnet-4-6", False),
+    ("openai/gpt-5.5", False),
+    ("anthropic/claude-opus-4.8", False),  # base id, not the -fast flag
+])
+def test_is_denied(model_id, denied):
+    assert is_denied(model_id) is denied

@@ -66,6 +66,14 @@ HORIZON_THEMES = {
     "security", "enterprise", "work", "education", "creativity", "society",
 }
 
+# Valid signal_type values for the NOW lane (must stay in sync with
+# src/content.config.ts `nowSignalType`). The broader `horizonSignalType`
+# enum also allows "forecast" and "debate", but the Now lane (TODOS #10) does
+# NOT — and this bot only ever proposes Now entries. A "debate" entry slipped
+# through and broke the deploy build in PR #170 (2026-06-22); this set is the
+# guard so it can't happen again.
+NOW_SIGNAL_TYPES = {"event", "trend", "inflection", "warning"}
+
 # Heuristics
 PAST_MIN_AGE_DAYS = 60       # radar entries younger than this are too fresh to canonise
 PAST_CANDIDATE_LIMIT = 5     # how many Past candidates to surface per run
@@ -268,7 +276,8 @@ PATTERNS that deserve a Now entry.
 7. `confidence` is one of: confirmed, emerging, contested, speculative. Default
    to "emerging" unless the pattern is demonstrably well-established (confirmed)
    or the evidence actively disagrees (contested).
-8. `signal_type` is one of: event, trend, forecast, debate, inflection, warning.
+8. `signal_type` is one of: {sorted(NOW_SIGNAL_TYPES)}. (Now-lane entries do
+   NOT accept "forecast" or "debate" even though the broader schema lists them.)
 9. Lead `why_it_matters` with the point, 1-2 short sentences, no em dashes,
    no corporate vocabulary.
 
@@ -339,6 +348,11 @@ apologise, do not explain, just return the JSON.
     for p in proposals:
         themes = p.get("themes", [])
         if not themes or any(t not in HORIZON_THEMES for t in themes):
+            continue
+        if p.get("signal_type") not in NOW_SIGNAL_TYPES:
+            print(f"[horizon_bot] dropping {p.get('id', '?')}: invalid Now-lane "
+                  f"signal_type {p.get('signal_type')!r} (must be one of "
+                  f"{sorted(NOW_SIGNAL_TYPES)})")
             continue
         clean.append(p)
     return clean, response.usage

@@ -94,6 +94,37 @@ PROVIDER_MAP = {
 }
 
 
+# Roster denylist (added 2026-06-22). Ids the bot must NEVER propose because
+# they are not standalone text/coding roster models. Each was hand-rejected
+# from a prior proposal PR (#163, #169); because rejected models are dropped
+# rather than tracked, the radar gate keeps re-surfacing the same non-models
+# every run. This guard stops the re-proposal loop.
+DENYLIST_IDS = {
+    "anthropic/claude-opus-4.7-fast",   # "Fast" is a speed flag, not a SKU
+    "google/lyria-3-pro-preview",       # music-generation model, out of scope
+    "openrouter/fusion",                # router meta-model / feature, not a model
+}
+
+
+def is_denied(model_id: str) -> bool:
+    """True if model_id must never enter the roster. Covers the explicit
+    denylist plus pattern families: a '-fast' suffix (a speed flag on an
+    existing model, e.g. claude-opus-4.7-fast — the base id is already
+    tracked), 'lyria' (Google music models), and the 'openrouter/' provider
+    (router meta-models / features, not real models)."""
+    mid = model_id.lower()
+    if mid in DENYLIST_IDS:
+        return True
+    base = mid.split("/", 1)[-1]
+    if base.endswith("-fast"):
+        return True
+    if "lyria" in mid:
+        return True
+    if mid.startswith("openrouter/"):
+        return True
+    return False
+
+
 def load_models():
     """Load the roster. Missing or empty models.json is a LOUD failure
     (eng E6.1) - with no TRACKED_IDS fallback an empty roster would
@@ -335,7 +366,7 @@ def find_roster_candidates(existing_ids: set, api_models: dict,
     candidates = {}
     for r in radar_entries:
         for mid, api_model in api_models.items():
-            if mid in existing_ids or ":" in mid:
+            if mid in existing_ids or ":" in mid or is_denied(mid):
                 continue
             if names_match(r["name"], api_model.get("name", mid)):
                 prev = candidates.get(mid)
