@@ -1,35 +1,5 @@
 [
   {
-    "bot": "model_bot",
-    "timestamp": "2026-03-24T04:00:01.735101+00:00",
-    "status": "success",
-    "duration_s": 0.3,
-    "feeds_scanned": 0,
-    "items_found": 349,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": []
-  },
-  {
-    "bot": "model_bot",
-    "timestamp": "2026-03-24T06:00:02.336951+00:00",
-    "status": "success",
-    "duration_s": 0.2,
-    "feeds_scanned": 0,
-    "items_found": 349,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": []
-  },
-  {
     "bot": "news_bot",
     "timestamp": "2026-03-24T07:00:26.782582+00:00",
     "status": "success",
@@ -7528,5 +7498,56 @@
     "output_files": [],
     "error_msg": "32 unverifiable: 2026-02-23-trulens.md, 2026-02-24-composio-agent-orchestrator.md, 2026-02-24-openai-websocket-mode.md, 2026-03-01-sakana-ais-doctolora-and-texttolora.md, 2026-03-08-liquid-ai-localcowork.md",
     "job": "verify"
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-06-22T05:00:06.582029+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 340,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "job": "prices"
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-06-22T05:00:12.190781+00:00",
+    "status": "success",
+    "duration_s": 5.9,
+    "feeds_scanned": 0,
+    "items_found": 128,
+    "items_rejected": 0,
+    "items_published": 4,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [
+      "https://github.com/valorifutures/softcat.ai/pull/169"
+    ],
+    "job": "roster"
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-06-22T06:00:24.854468+00:00",
+    "status": "success",
+    "duration_s": 22.5,
+    "feeds_scanned": 5,
+    "items_found": 35,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0215,
+    "input_tokens": 3495,
+    "output_tokens": 734,
+    "output_files": [
+      "src/content/news-and-updates/2026-06-22-ai-digest.md"
+    ]
   }
 ]
