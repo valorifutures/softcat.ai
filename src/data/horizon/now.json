@@ -942,5 +942,86 @@
       }
     ],
     "added": "2026-06-11"
+  },
+  {
+    "id": "now-2026-06-agent-memory-self-improvement",
+    "lane": "now",
+    "title": "Agent self-improvement through memory becomes a live safety concern",
+    "date": "2026-06-21",
+    "themes": [
+      "agents",
+      "security"
+    ],
+    "signal_type": "warning",
+    "confidence": "emerging",
+    "why_it_matters": "Agents that update their own memory from experience can quietly encode bad behaviour with no checkpoint. The gap between capability and oversight is opening faster than tooling to close it.",
+    "implication": "_Watch for the emergence of memory-auditing as a distinct product category alongside agent deployment._",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-06-21-ai-digest-agents-getting-smarter-models-getting-smaller",
+        "label": "Perplexity self-improving agent memory flagged in digest"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-21-agents-that-learn-from-their-own-mistakes-are-more-dangerous-than-agents-that-dont",
+        "label": "Self-improving agent memory as unmonitored risk"
+      }
+    ],
+    "added": "2026-06-21"
+  },
+  {
+    "id": "now-2026-06-ephemeral-agent-infrastructure",
+    "lane": "now",
+    "title": "Ephemeral, disposable infrastructure becomes the default model for agent identity",
+    "date": "2026-06-21",
+    "themes": [
+      "agents",
+      "infrastructure"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Temporary accounts and blank-slate modes for agents signal a shift away from persistent identity toward throwaway, task-scoped instances. This changes how trust, auth, and billing get handled at the infrastructure layer.",
+    "implication": "_Expect identity and access management vendors to rebuild product lines around short-lived agent sessions rather than long-lived user accounts._",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-06-21",
+        "label": "Cloudflare Temporary Accounts for AI Agents"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-21",
+        "label": "Hermes Agent Blank Slate Mode"
+      }
+    ],
+    "added": "2026-06-21"
+  },
+  {
+    "id": "now-2026-06-small-models-specialist-tasks",
+    "lane": "now",
+    "title": "Sub-4B models take on specialist roles previously reserved for large models",
+    "date": "2026-06-21",
+    "themes": [
+      "models",
+      "infrastructure"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "A 3B reasoning model and a retrieval-focused small model appearing in the same radar cycle shows the compression trend moving from general chat into harder tasks. Small is no longer a concession, it is a design choice.",
+    "implication": "_Reconsider any architecture that defaults to large models for retrieval or reasoning steps without benchmarking smaller alternatives first._",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-06-21",
+        "label": "VibeThinker-3B tiny reasoning model"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-21",
+        "label": "LFM2.5 Retrievers specialist small model"
+      }
+    ],
+    "added": "2026-06-21"
   }
 ]
