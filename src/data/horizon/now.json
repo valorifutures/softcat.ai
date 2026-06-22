@@ -942,5 +942,99 @@
       }
     ],
     "added": "2026-06-11"
+  },
+  {
+    "id": "now-2026-06-agent-infrastructure-gaps-patched-at-platform-level",
+    "lane": "now",
+    "title": "Cloud platforms patch agent infrastructure gaps in real time",
+    "date": "2026-06-22",
+    "themes": [
+      "agents",
+      "infrastructure",
+      "enterprise"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "AWS and Cloudflare both shipped agent-focused infrastructure fixes in the same week. Platforms are no longer waiting for standards to settle before solving agent operational problems themselves.",
+    "implication": "_Watch for cloud vendors to quietly lock in agent workflows before open protocols can compete._",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-06-21",
+        "label": "AWS Continuum and Context"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-21",
+        "label": "Cloudflare Temporary Accounts for AI Agents"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-22",
+        "label": "AI digest: money, agents, and a grade inflation scandal"
+      }
+    ],
+    "added": "2026-06-22"
+  },
+  {
+    "id": "now-2026-06-ai-governance-bans-amplify-model-adoption",
+    "lane": "now",
+    "title": "Government AI bans accelerate the adoption they intend to stop",
+    "date": "2026-06-22",
+    "themes": [
+      "regulation",
+      "society",
+      "models"
+    ],
+    "signal_type": "debate",
+    "confidence": "emerging",
+    "why_it_matters": "Banning AI models hands labs free publicity and drives curiosity-driven uptake. The Anthropic ban saga shows regulation can backfire badly when the product is software.",
+    "implication": "_Expect policymakers to face pressure to find enforcement mechanisms that don't double as marketing campaigns._",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-22",
+        "label": "Government Bans Are Free Marketing for AI Labs"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-21",
+        "label": "AI digest: agents getting smarter, models getting smaller"
+      }
+    ],
+    "added": "2026-06-22"
+  },
+  {
+    "id": "now-2026-06-automated-code-review-and-commit-governance-tooling-emerges",
+    "lane": "now",
+    "title": "Automated commit governance becomes a distinct product category",
+    "date": "2026-06-22",
+    "themes": [
+      "code",
+      "security",
+      "enterprise"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Tools that gate, review, or audit AI-generated commits are shipping as standalone products. As AI writes more code, the enforcement layer around that code is becoming its own market.",
+    "implication": "_Teams adopting AI coding tools should expect a parallel spend on commit-level governance before the end of the year._",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-06-22",
+        "label": "CommitGate"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-22",
+        "label": "Codex Record & Replay"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-22",
+        "label": "AI digest: money, agents, and a grade inflation scandal"
+      }
+    ],
+    "added": "2026-06-22"
   }
 ]
