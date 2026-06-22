@@ -1,22 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-03-24T07:00:26.782582+00:00",
-    "status": "success",
-    "duration_s": 24.2,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0323,
-    "input_tokens": 7502,
-    "output_tokens": 655,
-    "output_files": [
-      "src/content/news-and-updates/2026-03-24-ai-digest.md"
-    ]
-  },
-  {
     "bot": "thoughts_bot",
     "timestamp": "2026-03-24T08:00:20.734222+00:00",
     "status": "success",
@@ -7548,6 +7531,23 @@
     "output_tokens": 734,
     "output_files": [
       "src/content/news-and-updates/2026-06-22-ai-digest.md"
+    ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-06-22T07:00:29.456127+00:00",
+    "status": "success",
+    "duration_s": 22.8,
+    "feeds_scanned": 5,
+    "items_found": 35,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0239,
+    "input_tokens": 5516,
+    "output_tokens": 489,
+    "output_files": [
+      "src/content/thoughts/2026-06-22-government-bans-are-free-marketing-for-ai-labs.md"
     ]
   }
 ]
