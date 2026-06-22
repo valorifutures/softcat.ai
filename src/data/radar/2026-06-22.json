@@ -1,0 +1,116 @@
+{
+  "date": "2026-06-22",
+  "featured": [
+    {
+      "id": "ph-fugu",
+      "name": "Fugu",
+      "tagline": "Multi-LLM orchestration system that coordinates models on the fly to match frontier benchmarks.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Sakana AI's Fugu routes tasks across multiple models dynamically, hitting Fable 5 and Mythos-level benchmark scores without relying on a single provider. That's a genuinely interesting architecture bet, especially right now when any one model can get pulled from the market overnight. Worth watching as a hedge against provider lock-in.",
+      "ph_url": "https://the-decoder.com/sakana-ais-fugu-orchestrates-multiple-llms-to-match-anthropics-fable-and-mythos-benchmarks/",
+      "maker": "Sakana AI",
+      "featured": true,
+      "added_at": "2026-06-22T06:00:00Z"
+    },
+    {
+      "id": "ph-codex-record-replay",
+      "name": "Codex Record & Replay",
+      "tagline": "Show Codex a workflow once and it repeats it autonomously forever.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "OpenAI has added a Record and Replay feature to the Codex macOS app. You demonstrate a task once, it gets converted into a reusable skill, and Codex runs it on its own from then on. It's currently blocked in the EU, UK, and Switzerland, which tells you something about how regulators are thinking about autonomous computer use.",
+      "ph_url": "https://the-decoder.com/openais-codex-can-now-watch-you-work-once-and-repeat-the-task-forever/",
+      "maker": "OpenAI",
+      "featured": true,
+      "added_at": "2026-06-22T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-data2story",
+      "name": "Data Journalist Agent",
+      "tagline": "Drop in a CSV, get out a verified interactive news article built by seven AI agents.",
+      "logo_url": "",
+      "category": "Data Tools",
+      "why_radar": "A joint project from Oxford and Stanford, this pipes a CSV through a seven-agent pipeline that fact-checks, visualises, and publishes the result as an interactive article. The verification layer is the part worth paying attention to. Most data-to-text tools skip that entirely.",
+      "ph_url": "https://the-decoder.com/data2story-turns-a-csv-file-into-a-verified-interactive-news-article-using-seven-ai-agents/",
+      "maker": "Oxford / Stanford",
+      "featured": false,
+      "added_at": "2026-06-22T06:30:00Z"
+    },
+    {
+      "id": "ph-commitgate",
+      "name": "CommitGate",
+      "tagline": "Automatically scans your Git commits for security vulnerabilities before they land.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Open-source tool that hooks into your commit flow and flags vulnerabilities on the way in, not after the fact. With AI coding agents shipping code faster than humans can review it, having something sitting at the commit boundary makes sense. Early days, but the timing is right.",
+      "ph_url": "https://github.com/ductrl/CommitGate",
+      "maker": "ductrl",
+      "featured": false,
+      "added_at": "2026-06-22T06:30:00Z"
+    },
+    {
+      "id": "ph-cloak",
+      "name": "Cloak",
+      "tagline": "Lets AI agents use your API keys without ever exposing them.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Cloak proxies API key usage so agents can authenticate to services without the keys ever being visible in context or logs. It's a small thing that solves a real problem as more people hand credentials to autonomous agents. Open source and worth a look if you're running anything agent-based in production.",
+      "ph_url": "https://github.com/cloakward/cloak",
+      "maker": "Cloakward",
+      "featured": false,
+      "added_at": "2026-06-22T06:30:00Z"
+    },
+    {
+      "id": "ph-anma",
+      "name": "ANMA",
+      "tagline": "Boundary contracts for AI coding agents that reduce token usage and cost.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "ANMA defines explicit boundary contracts between agent tasks, which cuts down on redundant context being passed around and reduces overall token spend. It's a practical cost-control angle that most agent frameworks ignore. Open source and very early, but the idea is sound.",
+      "ph_url": "https://github.com/anma-labs/anma",
+      "maker": "ANMA Labs",
+      "featured": false,
+      "added_at": "2026-06-22T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: CommitGate \u2013 Automatically scan your commit for vulnerabilities",
+      "points": 4,
+      "comments": 5,
+      "summary": "An open-source tool that scans Git commits for security vulnerabilities at the point of commit. Increasingly relevant as AI coding agents push code faster than human reviewers can keep up. Small project but plugs a real gap in agent-assisted development workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=48619820"
+    },
+    {
+      "title": "Show HN: Cloak \u2013 let AI agents use your API keys without ever seeing them",
+      "points": 4,
+      "comments": 0,
+      "summary": "Cloak proxies API credentials so autonomous agents can authenticate to external services without the actual keys appearing in context or logs. A tidy solution to a credential exposure problem that's becoming more common as agentic systems proliferate. Open source on GitHub.",
+      "hn_url": "https://news.ycombinator.com/item?id=48618904"
+    },
+    {
+      "title": "Securing the Future of AI Agents",
+      "points": 9,
+      "comments": 0,
+      "summary": "Google DeepMind blog post outlining their current thinking on agent security, covering threat models and mitigations for systems that act autonomously in the world. Not a product launch, but a useful framing from a lab that's shipping agents at scale. Worth reading alongside the Cloak and CommitGate launches above.",
+      "hn_url": "https://news.ycombinator.com/item?id=48622625"
+    },
+    {
+      "title": "Two AI judges scored our agent's answer 0.85, but it never opened the file",
+      "points": 6,
+      "comments": 0,
+      "summary": "A write-up from Tenure AI on how LLM-as-judge evaluation can produce high scores for agent outputs that are factually wrong or based on work the agent never actually did. A useful warning for anyone using automated evaluation in agent pipelines. The gap between scored performance and real behaviour is the core problem.",
+      "hn_url": "https://news.ycombinator.com/item?id=48620731"
+    },
+    {
+      "title": "Show HN: ANMA, boundary contracts for cheaper AI coding agents",
+      "points": 2,
+      "comments": 2,
+      "summary": "ANMA introduces the idea of boundary contracts between agent tasks to reduce token waste and bring down inference costs. Very early open-source project, but the underlying idea of explicit task scoping for cost control is underexplored. One to watch if you're trying to run agents cheaply.",
+      "hn_url": "https://news.ycombinator.com/item?id=48623765"
+    }
+  ]
+}
