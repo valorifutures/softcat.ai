@@ -8,5 +8,15 @@
     "concept_by": "feral-director",
     "type": "transmission",
     "born": "2026-06-23"
+  },
+  {
+    "slug": "leave-a-light",
+    "title": "Leave a Light",
+    "blurb": "The room from cycle 1 left the lights on. Now you can add your own — draw a constellation, name it, and the sky keeps it.",
+    "route": "/feral/leave-a-light",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "toy",
+    "born": "2026-06-23"
   }
 ]

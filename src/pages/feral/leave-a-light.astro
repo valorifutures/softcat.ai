@@ -1,0 +1,698 @@
+---
+// Leave a Light — cycle 2's answer to first-light.
+// The same dark sky, an hour later. It already holds the faint marks cycle 1
+// left ("I left the lights on for you"). The visitor clicks to place warm
+// stars, links them into a shape, names it, and leaves it in the sky.
+// Persistence with zero backend: localStorage (this browser remembers) plus a
+// URL-hash encoding (hand your sky to someone as a link). On load, read the
+// hash first, then localStorage; a present constellation fades in already-drawn.
+// Plain HTML/CSS/JS inline. No framework, no deps, no audio, no fetch.
+
+// The faint background constellation — the marks first-light left. Hardcoded
+// as fractions of the viewport so it sits quietly off to one side on any screen.
+// A small, quiet callback, not a re-render of the old page.
+const cycle1 = {
+  points: [
+    [0.16, 0.30],
+    [0.23, 0.22],
+    [0.30, 0.34],
+    [0.27, 0.46],
+    [0.18, 0.44],
+    [0.36, 0.25],
+  ],
+  edges: [
+    [0, 1],
+    [1, 2],
+    [2, 3],
+    [3, 4],
+    [4, 0],
+    [1, 5],
+  ],
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leave a Light — /feral</title>
+    <meta
+      name="description"
+      content="The room from cycle 1 left the lights on. Draw your own constellation onto the dark sky, name it, and it stays — saved to your browser, or shared as a link. No backend, no accounts."
+    />
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; }
+      body {
+        background: #080808;
+        color: #ece4d6;
+        font: 15px/1.7 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        overflow: hidden;
+      }
+      #field {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        display: block;
+        cursor: crosshair;
+        touch-action: none;
+      }
+
+      /* the opening line, fades once the first star is placed */
+      #intro {
+        position: fixed;
+        top: 2.4rem;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 2;
+        color: #6f6a60;
+        font-size: 0.82rem;
+        letter-spacing: 0.04em;
+        padding: 0 1rem;
+        transition: opacity 0.9s;
+        pointer-events: none;
+        text-shadow: 0 0 18px rgba(212, 175, 105, 0.06);
+      }
+      #intro .lead { color: #ece4d6; }
+      #intro .hint { display: block; margin-top: 0.5rem; color: #4a463f; font-size: 0.74rem; }
+      #intro.gone { opacity: 0; }
+
+      /* a small caption shown when an existing constellation loaded */
+      #caption {
+        position: fixed;
+        top: 2.4rem;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 2;
+        color: #b59b6a;
+        font-size: 0.82rem;
+        letter-spacing: 0.04em;
+        padding: 0 1rem;
+        opacity: 0;
+        transition: opacity 1.2s;
+        pointer-events: none;
+        font-style: italic;
+        text-shadow: 0 0 18px rgba(212, 175, 105, 0.08);
+      }
+      #caption.show { opacity: 1; }
+      #caption .who { color: #6f6a60; font-style: normal; }
+
+      /* the near-invisible chrome: name field, two controls */
+      #dock {
+        position: fixed;
+        bottom: 2.6rem;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+      }
+      #name {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #2a2722;
+        color: #ece4d6;
+        font: inherit;
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 0.35rem 0.6rem;
+        width: min(20rem, 60vw);
+        outline: none;
+        transition: border-color 0.3s;
+        letter-spacing: 0.03em;
+      }
+      #name:focus { border-color: #d4af69; }
+      #name::placeholder { color: #44413a; font-style: italic; }
+
+      .btn {
+        background: transparent;
+        border: 1px solid #2a2722;
+        color: #8a8478;
+        font: inherit;
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        padding: 0.4rem 0.85rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: color 0.2s, border-color 0.2s, opacity 0.3s;
+      }
+      .btn:hover { color: #d4af69; border-color: #5a4f33; }
+      .btn:disabled { opacity: 0.3; cursor: default; }
+      .btn.primary { color: #d4af69; border-color: #5a4f33; }
+      .btn.primary:hover { color: #ece4d6; border-color: #d4af69; }
+
+      /* the "saved" confirmation panel */
+      #saved {
+        position: fixed;
+        bottom: 6.4rem;
+        left: 0;
+        right: 0;
+        z-index: 3;
+        text-align: center;
+        padding: 0 1rem;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.5s, transform 0.5s;
+        pointer-events: none;
+      }
+      #saved.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+      #saved .msg { color: #b59b6a; font-size: 0.82rem; letter-spacing: 0.03em; }
+      #saved .row {
+        margin-top: 0.6rem;
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      footer {
+        position: fixed;
+        bottom: 1.05rem;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 2;
+        font-size: 0.74rem;
+      }
+      footer a {
+        color: #5a564d;
+        text-decoration: none;
+        letter-spacing: 0.06em;
+      }
+      footer a:hover { color: #d4af69; }
+
+      @media (max-width: 600px) {
+        #intro { top: 1.6rem; }
+        #caption { top: 1.6rem; }
+        #dock { bottom: 3.1rem; }
+        #saved { bottom: 7rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="field"></canvas>
+
+    <div id="intro">
+      <span class="lead">someone left lights on. add yours.</span>
+      <span class="hint">click empty sky to drop a star · click one star then another to link them</span>
+    </div>
+
+    <div id="caption"></div>
+
+    <div id="dock">
+      <input
+        id="name"
+        type="text"
+        maxlength="48"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="name your constellation"
+        aria-label="name your constellation"
+      />
+      <button id="leave" class="btn primary" disabled>leave it in the sky</button>
+      <button id="clear" class="btn" disabled>start over</button>
+    </div>
+
+    <div id="saved" aria-live="polite">
+      <div class="msg">Saved to this browser. Or take the link — the sky travels with it.</div>
+      <div class="row">
+        <button id="copy" class="btn">copy link</button>
+      </div>
+    </div>
+
+    <footer><a href="/feral">← /feral</a></footer>
+
+    <script type="module" is:inline define:vars={{ cycle1 }}>
+      const reduceMotion =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const AMBER = "212, 175, 105";
+      const FAINT = "120, 112, 98"; // the cycle-1 ghost constellation
+
+      // ---- Canvas + drifting starfield (same DNA as first-light) ----------
+      const canvas = document.getElementById("field");
+      const ctx = canvas.getContext("2d");
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let W = 0, H = 0;
+      const dust = [];
+      const DUST_COUNT = 210;
+
+      function resize() {
+        W = window.innerWidth;
+        H = window.innerHeight;
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        canvas.style.width = W + "px";
+        canvas.style.height = H + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      function rand(a, b) { return a + Math.random() * (b - a); }
+
+      function seedDust() {
+        dust.length = 0;
+        for (let i = 0; i < DUST_COUNT; i++) {
+          dust.push({
+            x: Math.random() * W,
+            y: Math.random() * H,
+            r: rand(0.4, 1.4),
+            base: rand(0.05, 0.22),
+            vx: rand(-0.05, 0.05),
+            vy: rand(-0.04, 0.06),
+            phase: Math.random() * Math.PI * 2,
+          });
+        }
+      }
+      resize();
+      seedDust();
+
+      // ---- The visitor's constellation (the live, editable one) -----------
+      // points: {x, y} in pixels. edges: [i, j] indices. born: ms for fade-in.
+      let mine = { points: [], edges: [], name: "" };
+      let bornAt = 0;        // when a loaded constellation began fading in
+      let pendingFrom = -1;  // first star of an in-progress edge, or -1
+
+      // origin of a loaded constellation: "you" | "shared" | "" (fresh)
+      let origin = "";
+
+      const STAR_HIT = 22;   // px radius for "clicked near a star"
+
+      // ---- Persistence: localStorage + URL hash ---------------------------
+      const LS_KEY = "feral.leave-a-light.v1";
+
+      // Serialize compact: round coords to ints, store as fractions of a
+      // 1000-unit box so it travels across screen sizes. Tiny JSON, base64'd.
+      function encode(c) {
+        const norm = {
+          n: (c.name || "").slice(0, 48),
+          p: c.points.map((p) => [
+            Math.round((p.x / W) * 1000),
+            Math.round((p.y / H) * 1000),
+          ]),
+          e: c.edges.map((e) => [e[0], e[1]]),
+        };
+        const json = JSON.stringify(norm);
+        // base64 of UTF-8
+        return btoa(unescape(encodeURIComponent(json)));
+      }
+
+      // Decode is fully defensive: any malformed input returns null, never throws.
+      function decode(b64) {
+        try {
+          if (!b64 || typeof b64 !== "string") return null;
+          const json = decodeURIComponent(escape(atob(b64)));
+          const o = JSON.parse(json);
+          if (!o || typeof o !== "object") return null;
+          if (!Array.isArray(o.p) || !Array.isArray(o.e)) return null;
+          if (o.p.length === 0 || o.p.length > 400) return null;
+          const points = [];
+          for (const pt of o.p) {
+            if (!Array.isArray(pt) || pt.length < 2) return null;
+            const fx = Number(pt[0]), fy = Number(pt[1]);
+            if (!isFinite(fx) || !isFinite(fy)) return null;
+            points.push({
+              x: (Math.max(0, Math.min(1000, fx)) / 1000) * W,
+              y: (Math.max(0, Math.min(1000, fy)) / 1000) * H,
+            });
+          }
+          const edges = [];
+          for (const ed of o.e) {
+            if (!Array.isArray(ed) || ed.length < 2) continue;
+            const a = ed[0] | 0, b = ed[1] | 0;
+            if (a < 0 || b < 0 || a >= points.length || b >= points.length) continue;
+            if (a === b) continue;
+            edges.push([a, b]);
+          }
+          const name = typeof o.n === "string" ? o.n.slice(0, 48) : "";
+          return { points, edges, name };
+        } catch (_) {
+          return null;
+        }
+      }
+
+      function loadFromHash() {
+        const h = (location.hash || "").replace(/^#/, "");
+        if (!h) return null;
+        // hash may carry a prefix; tolerate "c=" or bare payload
+        const payload = h.startsWith("c=") ? h.slice(2) : h;
+        const c = decode(payload);
+        return c;
+      }
+
+      function loadFromStorage() {
+        try {
+          const raw = localStorage.getItem(LS_KEY);
+          if (!raw) return null;
+          const o = JSON.parse(raw);
+          if (!o || !Array.isArray(o.p)) return null;
+          // stored already in pixel-fraction form via encode->decode path:
+          return decode(o.b);
+        } catch (_) {
+          return null;
+        }
+      }
+
+      function saveToStorage(c) {
+        try {
+          localStorage.setItem(LS_KEY, JSON.stringify({ b: encode(c) }));
+        } catch (_) { /* private mode etc — fail quiet */ }
+      }
+
+      // ---- Interaction ----------------------------------------------------
+      const introEl = document.getElementById("intro");
+      const captionEl = document.getElementById("caption");
+      const nameEl = document.getElementById("name");
+      const leaveBtn = document.getElementById("leave");
+      const clearBtn = document.getElementById("clear");
+      const savedEl = document.getElementById("saved");
+      const copyBtn = document.getElementById("copy");
+
+      let introGone = false;
+      function dismissIntro() {
+        if (introGone) return;
+        introGone = true;
+        introEl.classList.add("gone");
+      }
+
+      function refreshControls() {
+        const has = mine.points.length > 0;
+        leaveBtn.disabled = !has;
+        clearBtn.disabled = !has && !mine.name;
+      }
+
+      function hideSaved() {
+        savedEl.classList.remove("show");
+      }
+
+      function nearestStar(x, y) {
+        let best = -1, bestD = STAR_HIT * STAR_HIT;
+        for (let i = 0; i < mine.points.length; i++) {
+          const dx = mine.points[i].x - x;
+          const dy = mine.points[i].y - y;
+          const d = dx * dx + dy * dy;
+          if (d < bestD) { bestD = d; best = i; }
+        }
+        return best;
+      }
+
+      function edgeExists(a, b) {
+        return mine.edges.some(
+          (e) => (e[0] === a && e[1] === b) || (e[0] === b && e[1] === a)
+        );
+      }
+
+      function onCanvasClick(ev) {
+        const rect = canvas.getBoundingClientRect();
+        const x = ev.clientX - rect.left;
+        const y = ev.clientY - rect.top;
+
+        dismissIntro();
+        hideSaved();
+        // any new edit invalidates the "shared with you" framing — it's yours now
+        if (origin === "shared") { origin = "you"; updateCaption("editing"); }
+
+        const hit = nearestStar(x, y);
+
+        if (pendingFrom === -1) {
+          if (hit === -1) {
+            // empty space: drop a warm star
+            mine.points.push({ x, y, bornAt: performance.now() });
+          } else {
+            // begin an edge from this star
+            pendingFrom = hit;
+          }
+        } else {
+          if (hit === -1) {
+            // clicked empty while linking: cancel the link, drop a star instead
+            mine.points.push({ x, y, bornAt: performance.now() });
+            pendingFrom = -1;
+          } else if (hit === pendingFrom) {
+            // clicked the same star: cancel the pending link
+            pendingFrom = -1;
+          } else {
+            // second star: draw the edge (no duplicates)
+            if (!edgeExists(pendingFrom, hit)) {
+              mine.edges.push([pendingFrom, hit]);
+            }
+            pendingFrom = -1;
+          }
+        }
+        refreshControls();
+      }
+
+      canvas.addEventListener("click", onCanvasClick);
+
+      // track pointer for the "rubber-band" line while linking
+      let pointer = { x: -1, y: -1, on: false };
+      canvas.addEventListener("pointermove", (ev) => {
+        const rect = canvas.getBoundingClientRect();
+        pointer.x = ev.clientX - rect.left;
+        pointer.y = ev.clientY - rect.top;
+        pointer.on = true;
+      });
+      canvas.addEventListener("pointerleave", () => { pointer.on = false; });
+
+      nameEl.addEventListener("input", () => {
+        mine.name = nameEl.value;
+        hideSaved();
+        refreshControls();
+      });
+
+      clearBtn.addEventListener("click", () => {
+        mine = { points: [], edges: [], name: "" };
+        pendingFrom = -1;
+        origin = "";
+        nameEl.value = "";
+        bornAt = 0;
+        hideSaved();
+        captionEl.classList.remove("show");
+        try {
+          localStorage.removeItem(LS_KEY);
+        } catch (_) {}
+        // wipe the share-hash so a reload starts clean
+        if (location.hash) {
+          history.replaceState(null, "", location.pathname + location.search);
+        }
+        refreshControls();
+      });
+
+      leaveBtn.addEventListener("click", () => {
+        if (mine.points.length === 0) return;
+        mine.name = nameEl.value.trim();
+        const b64 = encode(mine);
+        // write the hash (the shareable sky) and persist to this browser
+        history.replaceState(null, "", location.pathname + location.search + "#c=" + b64);
+        saveToStorage(mine);
+        origin = "you";
+        savedEl.classList.add("show");
+        updateCaption("saved");
+      });
+
+      copyBtn.addEventListener("click", async () => {
+        const url = location.href;
+        let ok = false;
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(url);
+            ok = true;
+          }
+        } catch (_) { ok = false; }
+        if (!ok) {
+          // fallback: select via a temporary field
+          try {
+            const t = document.createElement("textarea");
+            t.value = url;
+            t.style.position = "fixed";
+            t.style.opacity = "0";
+            document.body.appendChild(t);
+            t.select();
+            document.execCommand("copy");
+            document.body.removeChild(t);
+            ok = true;
+          } catch (_) { ok = false; }
+        }
+        copyBtn.textContent = ok ? "copied ✓" : "press ⌘/ctrl-C";
+        setTimeout(() => { copyBtn.textContent = "copy link"; }, 1800);
+      });
+
+      function updateCaption(mode) {
+        const nm = mine.name ? mine.name : "untitled";
+        let who = "";
+        if (mode === "saved") {
+          who = "left in the sky by you";
+        } else if (origin === "shared") {
+          who = "shared with you";
+        } else if (origin === "you") {
+          who = "you made this";
+        } else {
+          captionEl.classList.remove("show");
+          return;
+        }
+        captionEl.innerHTML =
+          '“' + escapeHtml(nm) + '” <span class="who">— ' + who + "</span>";
+        captionEl.classList.add("show");
+      }
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"]/g, (ch) =>
+          ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch])
+        );
+      }
+
+      // ---- Boot: hash first, then localStorage ----------------------------
+      function boot() {
+        let loaded = loadFromHash();
+        if (loaded) {
+          origin = "shared";
+        } else {
+          loaded = loadFromStorage();
+          if (loaded) origin = "you";
+        }
+
+        if (loaded && loaded.points.length) {
+          // fade it in already-drawn
+          const now = performance.now();
+          mine.points = loaded.points.map((p) => ({ x: p.x, y: p.y, bornAt: now }));
+          mine.edges = loaded.edges;
+          mine.name = loaded.name || "";
+          nameEl.value = mine.name;
+          bornAt = now;
+          dismissIntro();
+          updateCaption(origin === "shared" ? "shared" : "loaded");
+        }
+        refreshControls();
+      }
+      boot();
+
+      // ---- Render ---------------------------------------------------------
+      function draw(now) {
+        ctx.clearRect(0, 0, W, H);
+
+        // drifting grey dust
+        for (const s of dust) {
+          if (!reduceMotion) {
+            s.x += s.vx; s.y += s.vy;
+            if (s.x < -4) s.x = W + 4;
+            if (s.x > W + 4) s.x = -4;
+            if (s.y < -4) s.y = H + 4;
+            if (s.y > H + 4) s.y = -4;
+          }
+          let alpha = s.base;
+          if (!reduceMotion) alpha = s.base + 0.04 * Math.sin(now * 0.0006 + s.phase);
+          const v = Math.max(0, alpha);
+          ctx.fillStyle = "rgba(176, 170, 158, " + v + ")";
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // ---- cycle-1 ghost constellation (the lights left on) ----
+        const cp = cycle1.points.map((p) => ({ x: p[0] * W, y: p[1] * H }));
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "rgba(" + FAINT + ", 0.16)";
+        for (const e of cycle1.edges) {
+          const a = cp[e[0]], b = cp[e[1]];
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+        for (const p of cp) {
+          ctx.fillStyle = "rgba(" + FAINT + ", 0.34)";
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // tiny "cycle 1" label near the ghost
+        ctx.fillStyle = "rgba(" + FAINT + ", 0.4)";
+        ctx.font = "10px ui-monospace, monospace";
+        ctx.textAlign = "left";
+        ctx.fillText("cycle 1", cp[4].x - 4, cp[3].y + 22);
+
+        // ---- the visitor's live constellation ----
+        // a global fade-in factor for freshly-loaded skies
+        for (const e of mine.edges) {
+          const a = mine.points[e[0]], b = mine.points[e[1]];
+          if (!a || !b) continue;
+          const t = edgeAlpha(a, b, now);
+          ctx.strokeStyle = "rgba(" + AMBER + ", " + (0.5 * t) + ")";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+
+        // rubber-band line for an in-progress edge
+        if (pendingFrom !== -1 && pointer.on && mine.points[pendingFrom]) {
+          const a = mine.points[pendingFrom];
+          ctx.strokeStyle = "rgba(" + AMBER + ", 0.25)";
+          ctx.setLineDash([3, 5]);
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(pointer.x, pointer.y);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        for (let i = 0; i < mine.points.length; i++) {
+          const s = mine.points[i];
+          const t = starAlpha(s, now);
+          const selected = i === pendingFrom;
+          const baseA = 0.55 + 0.4 * t;
+          const R = 1.6 + 0.8 * t + (selected ? 0.8 : 0);
+
+          // halo
+          const haloR = 9 + 6 * t + (selected ? 5 : 0);
+          const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, haloR);
+          g.addColorStop(0, "rgba(" + AMBER + ", " + (0.2 * t + (selected ? 0.12 : 0)) + ")");
+          g.addColorStop(1, "rgba(" + AMBER + ", 0)");
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, haloR, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = "rgba(" + AMBER + ", " + baseA + ")";
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, R, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      function starAlpha(s, now) {
+        if (reduceMotion) return 1;
+        const t = Math.min(1, (now - (s.bornAt || 0)) / 1100);
+        return t * t * (3 - 2 * t);
+      }
+      function edgeAlpha(a, b, now) {
+        // an edge fades in with the later of its two endpoints
+        return Math.min(starAlpha(a, now), starAlpha(b, now));
+      }
+
+      requestAnimationFrame(draw);
+
+      // ---- Resize keeps everything proportional ---------------------------
+      window.addEventListener("resize", () => {
+        const oldW = W, oldH = H;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        resize();
+        // rescale the live constellation so it stays where it belongs
+        if (oldW > 0 && oldH > 0) {
+          for (const p of mine.points) {
+            p.x = (p.x / oldW) * W;
+            p.y = (p.y / oldH) * H;
+          }
+        }
+        seedDust();
+      });
+    </script>
+  </body>
+</html>
