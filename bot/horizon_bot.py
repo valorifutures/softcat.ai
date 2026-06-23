@@ -203,6 +203,72 @@ def load_pending_proposals() -> list[dict]:
     return pending
 
 
+def _resolve_evidence_ref(
+    ev_type: str, ref: str, *,
+    radar_dates: set[str],
+    thought_index: dict[str, list[str]],
+    news_index: dict[str, list[str]],
+) -> str | None:
+    """Map a model-supplied evidence ref onto one that resolves to real content,
+    mirroring scripts/validate-horizon-refs.mjs and src/lib/horizon-evidence.ts.
+
+    Returns the corrected ref, or None if it cannot be resolved (caller drops
+    the item). *_index map a slug's leading date (YYYY-MM-DD) -> slugs.
+    """
+    if ev_type == "radar":
+        return ref if ref in radar_dates else None
+    if ev_type in ("thought", "news"):
+        index = thought_index if ev_type == "thought" else news_index
+        if any(ref in slugs for slugs in index.values()):
+            return ref                       # exact slug already valid
+        cands = index.get(ref[:10], [])      # fall back to the unique same-day slug
+        return cands[0] if len(cands) == 1 else None
+    return ref                               # paper / external: pass through
+
+
+def _sanitize_evidence(
+    proposal: dict,
+    radar_items: list[dict],
+    thoughts: list[dict],
+    news: list[dict],
+) -> dict:
+    """Rewrite/strip a proposal's evidence so every ref resolves to real content.
+
+    Defence-in-depth behind the prompt fix: the model is now shown the exact
+    `ref=` token to copy, but if it still abbreviates a slug to its date or
+    invents one, we resolve against the SAME context it was shown and drop
+    (logging) anything that points at nothing. Stops broken refs at the source
+    rather than relying on the renderer's graceful fallback.
+    """
+    radar_dates = {r.get("_radar_date") for r in radar_items}
+    thought_index: dict[str, list[str]] = {}
+    for t in thoughts:
+        thought_index.setdefault(t["slug"][:10], []).append(t["slug"])
+    news_index: dict[str, list[str]] = {}
+    for n in news:
+        news_index.setdefault(n["slug"][:10], []).append(n["slug"])
+
+    kept = []
+    for ev in proposal.get("evidence", []) or []:
+        ref = _resolve_evidence_ref(
+            ev.get("type", ""), ev.get("ref", ""),
+            radar_dates=radar_dates,
+            thought_index=thought_index,
+            news_index=news_index,
+        )
+        if ref is None:
+            print(f"[horizon_bot] dropped unresolvable evidence "
+                  f"{ev.get('type')}:{ev.get('ref')!r} on {proposal.get('id')}")
+            continue
+        kept.append({**ev, "ref": ref})
+    proposal["evidence"] = kept
+    if len(kept) < 2:
+        print(f"[horizon_bot] WARNING: {proposal.get('id')} has {len(kept)} "
+              f"resolvable evidence item(s) after sanitisation (two-source "
+              f"rule) — Valori should review before merge.")
+    return proposal
+
+
 def propose_now_entries(
     radar_items: list[dict],
     thoughts: list[dict],
@@ -222,16 +288,21 @@ def propose_now_entries(
         f"- {p['title']} [{', '.join(p['themes']) or 'no-themes'}]" for p in pending
     ) or "(none)"
 
+    # Every item leads with `ref=<stem>` so the model can copy the exact
+    # citeable id verbatim. Before this, the context showed only [date] + title
+    # and the model guessed the ref — abbreviating thought/news slugs to a bare
+    # date or inventing one, which shipped 48 dangling evidence refs (fixed
+    # 2026-06-23). Radar's ref IS its date; thoughts/news cite the full slug.
     radar_text = "\n".join(
-        f"- [{r.get('_radar_date')}] {r.get('name','?')}: {r.get('description','')[:200]}"
+        f"- ref={r.get('_radar_date')} | {r.get('name','?')}: {r.get('description','')[:200]}"
         for r in radar_items[:60]
     ) or "(none)"
     thoughts_text = "\n".join(
-        f"- [{t['date']}] {t['title']}: {t['summary'][:200]}"
+        f"- ref={t['slug']} | [{t['date']}] {t['title']}: {t['summary'][:200]}"
         for t in thoughts
     ) or "(none)"
     news_text = "\n".join(
-        f"- [{n['date']}] {n['title']}: {n['summary'][:200]}"
+        f"- ref={n['slug']} | [{n['date']}] {n['title']}: {n['summary'][:200]}"
         for n in news
     ) or "(none)"
     existing_text = "\n".join(f"- {t}" for t in existing_titles) or "(none yet)"
@@ -261,9 +332,11 @@ PATTERNS that deserve a Now entry.
    model architectures", "coding models crossing 70%" — DO NOT re-propose it
    with different wording. Wait for the existing PR to merge or be closed.
 4. Output AT MOST 3 proposals. It is valid (and often correct) to output zero.
-5. Each proposal must cite its evidence with the exact radar date or
-   thought/news slug from the context. The `ref` field is the filename stem
-   (e.g. "2026-04-09" for radar, "2026-04-08-slug" for thoughts/news).
+5. Each evidence item's `ref` MUST be copied VERBATIM from the `ref=` token of
+   the exact context item you are citing. Do NOT abbreviate a thought/news slug
+   to its date, and do NOT invent a slug. Only cite items shown in the context
+   above. (radar ref is a date like "2026-04-09"; thought/news ref is the full
+   slug like "2026-04-08-some-headline".)
 6. `themes` must be a subset of: {sorted(HORIZON_THEMES)}.
 7. `confidence` is one of: confirmed, emerging, contested, speculative. Default
    to "emerging" unless the pattern is demonstrably well-established (confirmed)
@@ -340,6 +413,7 @@ apologise, do not explain, just return the JSON.
         themes = p.get("themes", [])
         if not themes or any(t not in HORIZON_THEMES for t in themes):
             continue
+        _sanitize_evidence(p, radar_items, thoughts, news)
         clean.append(p)
     return clean, response.usage
 
