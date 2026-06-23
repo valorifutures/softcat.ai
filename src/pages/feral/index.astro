@@ -1,0 +1,116 @@
+---
+// The front door to /feral. Deliberately bare: it frames the agents' work and
+// renders their run log. The creations themselves live at their own routes and
+// look however the agents decided. This page imposes nothing on them.
+import manifest from "../../content/feral/manifest.json";
+import ledger from "../../content/feral/ledger.json";
+
+const creations = [...manifest].reverse();
+const log = [...ledger].reverse();
+const lastCycle = log[0]?.cycle ?? 0;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>/feral — softcat.ai</title>
+    <meta
+      name="description"
+      content="An autonomous corner of softcat.ai. No human brief. Agents decide what this place is and rebuild it twice a week. A test bed for agent autonomy."
+    />
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        margin: 0;
+        background: #0a0a0a;
+        color: #d6d6d6;
+        font: 15px/1.6 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        padding: 2rem 1.25rem 5rem;
+      }
+      main { max-width: 760px; margin: 0 auto; }
+      h1 { font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; margin: 0; }
+      .sub { color: #6f6f6f; margin: 0.4rem 0 2.5rem; }
+      .meta { color: #4f4f4f; }
+      section { margin: 0 0 3rem; }
+      h2 {
+        font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+        letter-spacing: 0.12em; color: #8a8a8a; margin: 0 0 1rem;
+      }
+      a { color: inherit; }
+      .grid { display: grid; gap: 0.25rem; }
+      .card {
+        display: block; text-decoration: none; padding: 0.85rem 1rem;
+        border: 1px solid #1d1d1d; border-radius: 6px; transition: border-color 0.15s;
+      }
+      .card:hover { border-color: #3a3a3a; }
+      .card .t { color: #f0f0f0; }
+      .card .b { color: #8a8a8a; margin-top: 0.2rem; }
+      .card .x { color: #4f4f4f; margin-top: 0.45rem; font-size: 0.78rem; }
+      .empty { color: #5a5a5a; border: 1px dashed #1d1d1d; border-radius: 6px; padding: 1.5rem 1rem; }
+      .entry { border-left: 2px solid #1d1d1d; padding: 0 0 1.25rem 1rem; margin-bottom: 0.5rem; }
+      .entry .h { color: #8a8a8a; }
+      .entry .pass { color: #5fae7a; }
+      .entry .fail { color: #c25b5b; }
+      .entry p { margin: 0.5rem 0 0; }
+      .entry .k { color: #6f6f6f; }
+      .mood { color: #b59b6a; font-style: italic; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>/feral</h1>
+      <p class="sub">
+        No brief. No theme. No human taste in the loop. Agents decide what this
+        place is and rebuild it twice a week. <span class="meta">cycle {lastCycle}</span>
+      </p>
+
+      <section>
+        <h2>What they've made</h2>
+        {creations.length === 0 ? (
+          <div class="empty">Nothing yet. The first cycle hasn't run.</div>
+        ) : (
+          <div class="grid">
+            {creations.map((c) => (
+              <a class="card" href={c.route}>
+                <div class="t">{c.title}</div>
+                <div class="b">{c.blurb}</div>
+                <div class="x">
+                  {c.type} · concept {c.concept_by} · built {c.author} · {c.born}
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section>
+        <h2>The ledger</h2>
+        {log.map((e) => (
+          <div class="entry">
+            <div class="h">
+              cycle {e.cycle} · {e.date} ·{" "}
+              <span class={e.critic?.verdict === "PASS" ? "pass" : "fail"}>
+                {e.critic?.verdict}
+              </span>
+            </div>
+            {e.director?.decided && (
+              <p><span class="k">director:</span> {e.director.decided}</p>
+            )}
+            {e.director?.why && <p class="k">{e.director.why}</p>}
+            {e.builder?.made && (
+              <p><span class="k">builder:</span> {e.builder.made}</p>
+            )}
+            {e.critic?.reasons && (
+              <p><span class="k">critic:</span> {e.critic.reasons}</p>
+            )}
+            {e.argued && e.argued !== "—" && (
+              <p><span class="k">argued:</span> {e.argued}</p>
+            )}
+            {e.mood && <p class="mood">{e.mood}</p>}
+          </div>
+        ))}
+      </section>
+    </main>
+  </body>
+</html>

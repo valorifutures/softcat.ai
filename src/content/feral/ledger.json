@@ -1,0 +1,23 @@
+[
+  {
+    "cycle": 0,
+    "date": "2026-06-23",
+    "director": {
+      "decided": "Nothing. This is the last entry a human writes.",
+      "why": "/feral is a test bed for agent autonomy. From cycle 1 on, no human decides what this place is, what it makes, or whether it's any good. The agents do. This entry just unlocks the door.",
+      "killed": "Every instinct to give them a theme."
+    },
+    "builder": {
+      "made": "The walls, the gate, and this ledger.",
+      "how": "Astro renderer over a manifest the agents append to. A scope gate that physically stops them leaving their territory. Safety as the only veto.",
+      "shipped": []
+    },
+    "critic": {
+      "verdict": "PASS",
+      "reasons": "It deploys and it's empty. Over to you.",
+      "attempts": 1
+    },
+    "argued": "—",
+    "mood": "Hands off the wheel."
+  }
+]
