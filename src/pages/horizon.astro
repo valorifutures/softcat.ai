@@ -3,6 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HorizonFilter from '../components/HorizonFilter.tsx';
 import { getCollection } from 'astro:content';
 import shiftsData from '../data/horizon/shifts.json';
+import radarIndex from '../data/radar/index.json';
+import { RADAR_VISIBLE_DAYS } from '../utils/radar';
+import { resolveEvidence } from '../lib/horizon-evidence';
 
 // Load all five horizon lane collections.
 const pastEntries = await getCollection('horizonPast');
@@ -10,6 +13,18 @@ const nowEntries = await getCollection('horizonNow');
 const nextEntries = await getCollection('horizonNext');
 const debateEntries = await getCollection('horizonDebates');
 const scenarioEntries = await getCollection('horizonScenarios');
+
+// Build-time index so each card's evidence[] can resolve to a real link.
+// Slug sets come straight from the collections (every id is a built page);
+// radar only builds the newest RADAR_VISIBLE_DAYS dates, so older archive
+// dates resolve to plain text rather than a 404. See lib/horizon-evidence.ts.
+const thoughtEntries = await getCollection('thoughts');
+const newsEntries = await getCollection('news-and-updates');
+const evidenceIndex = {
+  thoughtSlugs: new Set(thoughtEntries.map((e) => e.id)),
+  newsSlugs: new Set(newsEntries.map((e) => e.id)),
+  visibleRadarDates: new Set(radarIndex.dates.slice(0, RADAR_VISIBLE_DAYS)),
+};
 
 // Sort Now by date descending so the most recent signal lands at the top.
 const sortedNow = [...nowEntries].sort((a, b) =>
@@ -367,12 +382,39 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
               </div>
             )}
 
-            <div class="flex items-center justify-between font-mono text-[11px] text-text-muted/70 pt-3 border-t border-surface-light/50">
-              <span>{formatDate(entry.data.date)}</span>
+            <div class="pt-3 border-t border-surface-light/50">
+              <div class="flex items-center justify-between font-mono text-[11px] text-text-muted/70">
+                <span>{formatDate(entry.data.date)}</span>
+                {entry.data.evidence && entry.data.evidence.length > 0 && (
+                  <span>
+                    {entry.data.evidence.length} {entry.data.evidence.length === 1 ? 'source' : 'sources'}
+                  </span>
+                )}
+              </div>
               {entry.data.evidence && entry.data.evidence.length > 0 && (
-                <span>
-                  {entry.data.evidence.length} {entry.data.evidence.length === 1 ? 'source' : 'sources'}
-                </span>
+                <ul class="mt-2.5 flex flex-col gap-1.5">
+                  {entry.data.evidence.map((ev) => {
+                    const link = resolveEvidence(ev, evidenceIndex);
+                    return (
+                      <li class="flex items-baseline gap-2 text-xs leading-snug">
+                        <span class="shrink-0 font-mono text-[9px] uppercase tracking-wider text-text-muted/60 w-12">
+                          {ev.type}
+                        </span>
+                        {link.href ? (
+                          <a
+                            href={link.href}
+                            class="text-neon-cyan hover:underline"
+                            {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                          >
+                            {ev.label}
+                          </a>
+                        ) : (
+                          <span class="text-text-muted">{ev.label}</span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
               )}
             </div>
           </article>
