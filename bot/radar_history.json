@@ -814,6 +814,18 @@
         "Cloak",
         "ANMA"
       ]
+    },
+    {
+      "date": "2026-06-23",
+      "file": "2026-06-23.json",
+      "products": [
+        "Ponytrail",
+        "Selector Forge",
+        "PMB",
+        "Ask a Human",
+        "Keynap",
+        "OpenPlan"
+      ]
     }
   ]
 }

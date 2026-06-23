@@ -1,38 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-03-25T07:00:46.197853+00:00",
-    "status": "error",
-    "duration_s": 45.1,
-    "feeds_scanned": 0,
-    "items_found": 0,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": [],
-    "error_msg": "Command '['git', 'push']' returned non-zero exit status 128."
-  },
-  {
-    "bot": "thoughts_bot",
-    "timestamp": "2026-03-25T08:00:23.256668+00:00",
-    "status": "success",
-    "duration_s": 22.4,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0215,
-    "input_tokens": 5106,
-    "output_tokens": 410,
-    "output_files": [
-      "src/content/thoughts/2026-03-25-parameter-efficiency-is-just-premature-optimisation-disguise.md"
-    ]
-  },
-  {
     "bot": "prompt_bot",
     "timestamp": "2026-03-25T09:00:26.748529+00:00",
     "status": "success",
@@ -7569,6 +7536,23 @@
     "output_tokens": 519,
     "output_files": [
       "src/content/thoughts/2026-06-23-agent-loops-are-the-distributed-systems-problem-nobody-wante.md"
+    ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-06-23T08:30:52.212008+00:00",
+    "status": "success",
+    "duration_s": 45.6,
+    "feeds_scanned": 10,
+    "items_found": 45,
+    "items_rejected": 39,
+    "items_published": 6,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0616,
+    "input_tokens": 7859,
+    "output_tokens": 2533,
+    "output_files": [
+      "src/data/radar/2026-06-23.json"
     ]
   }
 ]
