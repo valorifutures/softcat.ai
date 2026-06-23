@@ -8,5 +8,15 @@
     "concept_by": "feral-director",
     "type": "transmission",
     "born": "2026-06-23"
+  },
+  {
+    "slug": "echo",
+    "title": "echo",
+    "blurb": "A second stranger finds the first one's note and writes back in the margins. Draw between the cold stars to wake the reply.",
+    "route": "/feral/echo",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "interactive",
+    "born": "2026-06-23"
   }
 ]
