@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -1117,5 +1117,71 @@
       }
     ],
     "added": "2026-06-22"
+  },
+  {
+    "id": "now-2026-06-agentic-loops-become-ops-liability",
+    "lane": "now",
+    "title": "Continuous agent loops shift from product feature to operational liability",
+    "date": "2026-06-23",
+    "themes": [
+      "agents",
+      "infrastructure",
+      "security"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "Agents running autonomously in the background are exposing the same failure modes as distributed systems: race conditions, unbounded retries, and no clear ownership. The gap between demo and production is turning into an engineering crisis.",
+    "implication": "*Expect a wave of agent circuit-breaker tooling as teams discover that loop management is now a first-class infrastructure problem.*",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-23-agent-loops-are-the-distributed-systems-problem-nobody-wanted-back",
+        "label": "Agent loops as distributed systems nightmare"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-23",
+        "label": "AI digest: agentic AI goes fully autonomous"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-21",
+        "label": "Hermes Agent Blank Slate Mode"
+      }
+    ],
+    "added": "2026-06-23"
+  },
+  {
+    "id": "now-2026-06-offensive-ai-threats-move-from-theory-to-timeline",
+    "lane": "now",
+    "title": "Offensive AI threats move from theoretical to imminent on intelligence agency timelines",
+    "date": "2026-06-23",
+    "themes": [
+      "security",
+      "society",
+      "regulation"
+    ],
+    "signal_type": "warning",
+    "confidence": "emerging",
+    "why_it_matters": "Five Eyes agencies are now saying offensive AI threats are months away, not years. That shifts the conversation from policy speculation to active defence preparation.",
+    "implication": "*Watch for enterprise security teams accelerating AI threat modelling as government warnings give internal risk budgets a concrete anchor.*",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-06-23",
+        "label": "AI digest: Five Eyes agencies warn offensive AI threats are months away"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-21-agents-that-learn-from-their-own-mistakes-are-more-dangerous-than-agents-that-dont",
+        "label": "Self-improving agent memory as unmonitored safety risk"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-22",
+        "label": "Cloak"
+      }
+    ],
+    "added": "2026-06-23"
   }
 ]
