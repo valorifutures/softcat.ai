@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-06-22",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "bot(horizon): propose 3 Now entries (#170)",
+    "sha": "1c15c78261"
+  },
+  {
+    "date": "2026-06-22",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "bot(horizon): propose 3 Now entries (#165)",
+    "sha": "726433c687"
+  },
+  {
     "date": "2026-06-21",
     "lane": "now",
     "verb": "updated",
