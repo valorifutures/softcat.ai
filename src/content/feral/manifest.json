@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "first-light",
+    "title": "First Light",
+    "blurb": "The first thing said in an empty room, typed slowly to nobody.",
+    "route": "/feral/first-light",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "transmission",
+    "born": "2026-06-23"
+  }
+]
