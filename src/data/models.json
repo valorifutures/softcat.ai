@@ -352,6 +352,26 @@
     "radarRef": "2026-04-12#ph-minimax-m2-7"
   },
   {
+    "id": "minimax/minimax-m2.7",
+    "name": "MiniMax M2.7",
+    "provider": "Minimax",
+    "released": "2026-03",
+    "family": "MiniMax",
+    "reasoning": true,
+    "openSource": true,
+    "coding": 80,
+    "reasoning_score": 73,
+    "speed": 80,
+    "description": "Open-weight MoE (230B total / 10B active), self-improving successor to M2; 56.2% SWE-Pro, 205K context, text-only.",
+    "strengths": "Agentic coding and reasoning at low cost, open weights",
+    "contextK": 204,
+    "inputPrice": 0.25,
+    "outputPrice": 1.0,
+    "multimodal": false,
+    "trackedSince": "2026-06-22",
+    "radarRef": "2026-04-12#ph-minimax-m2-7"
+  },
+  {
     "id": "mistralai/mistral-large-2512",
     "name": "Mistral Large 3",
     "provider": "Mistral",
@@ -417,7 +437,7 @@
     "released": "2026-04",
     "contextK": 262,
     "inputPrice": 0.66,
-    "outputPrice": 3.5,
+    "outputPrice": 3.41,
     "openSource": false,
     "reasoning": true,
     "multimodal": true,
@@ -740,25 +760,5 @@
     "strengths": "Speed at frontier level, low price, 1M context",
     "trackedSince": "2026-06-10",
     "radarRef": "2026-05-02#ph-grok-43"
-  },
-  {
-    "id": "minimax/minimax-m2.7",
-    "name": "MiniMax M2.7",
-    "provider": "Minimax",
-    "released": "2026-03",
-    "family": "MiniMax",
-    "reasoning": true,
-    "openSource": true,
-    "coding": 80,
-    "reasoning_score": 73,
-    "speed": 80,
-    "description": "Open-weight MoE (230B total / 10B active), self-improving successor to M2; 56.2% SWE-Pro, 205K context, text-only.",
-    "strengths": "Agentic coding and reasoning at low cost, open weights",
-    "contextK": 205,
-    "inputPrice": 0.25,
-    "outputPrice": 1.0,
-    "multimodal": false,
-    "trackedSince": "2026-06-22",
-    "radarRef": "2026-04-12#ph-minimax-m2-7"
   }
 ]
