@@ -1,20 +1,5 @@
 [
   {
-    "bot": "model_bot",
-    "timestamp": "2026-03-25T06:00:02.599694+00:00",
-    "status": "success",
-    "duration_s": 0.5,
-    "feeds_scanned": 0,
-    "items_found": 346,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": []
-  },
-  {
     "bot": "news_bot",
     "timestamp": "2026-03-25T07:00:46.197853+00:00",
     "status": "error",
@@ -7534,5 +7519,39 @@
       "src/data/models.json"
     ],
     "job": "prices"
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-06-23T05:00:12.676613+00:00",
+    "status": "error",
+    "duration_s": 6.4,
+    "feeds_scanned": 0,
+    "items_found": 0,
+    "items_rejected": 0,
+    "items_published": 0,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "Command '['git', 'push', 'origin', 'model-bot/roster-proposals']' returned non-zero exit status 1.",
+    "job": "roster"
+  },
+  {
+    "bot": "news_bot",
+    "timestamp": "2026-06-23T06:00:24.448842+00:00",
+    "status": "success",
+    "duration_s": 22.4,
+    "feeds_scanned": 5,
+    "items_found": 35,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0241,
+    "input_tokens": 4214,
+    "output_tokens": 764,
+    "output_files": [
+      "src/content/news-and-updates/2026-06-23-ai-digest.md"
+    ]
   }
 ]
