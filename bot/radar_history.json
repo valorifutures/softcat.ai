@@ -826,6 +826,19 @@
         "Keynap",
         "OpenPlan"
       ]
+    },
+    {
+      "date": "2026-06-24",
+      "file": "2026-06-24.json",
+      "products": [
+        "Cursor Git Platform + Mobile App",
+        "Halo",
+        "Eve",
+        "GPT-5.5-Cyber",
+        "Claude Tag",
+        "Gemini Interactions API",
+        "Aharness"
+      ]
     }
   ]
 }

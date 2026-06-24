@@ -1,0 +1,128 @@
+{
+  "date": "2026-06-24",
+  "featured": [
+    {
+      "id": "ph-cursor-git-mobile",
+      "name": "Cursor Git Platform + Mobile App",
+      "tagline": "Cursor expands beyond the editor with its own Git platform and a mobile app.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Cursor is no longer just an editor. A proprietary Git platform and mobile app turn it into a full development environment built around AI from the ground up. This is a direct move to own more of the developer workflow, not just assist in it.",
+      "ph_url": "https://the-decoder.com/cursor-announces-its-own-ai-model-a-new-git-platform-and-a-mobile-app/",
+      "maker": "Cursor",
+      "featured": true,
+      "added_at": "2026-06-24T06:00:00Z"
+    },
+    {
+      "id": "ph-halo-agent-debugger",
+      "name": "Halo",
+      "tagline": "A local RLM-based debugger for AI agent traces.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Debugging agent behaviour is one of the messiest problems in AI development right now. Halo brings a structured, local debugger to agent traces using reinforcement learning models, which is a different approach to most observability tools. Worth watching if you are building anything with multi-step agents.",
+      "ph_url": "https://github.com/context-labs/halo",
+      "maker": "Context Labs",
+      "featured": true,
+      "added_at": "2026-06-24T06:00:00Z"
+    },
+    {
+      "id": "ph-eve-agent-framework",
+      "name": "Eve",
+      "tagline": "Vercel's open-source agent framework.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Vercel building an agent framework is a big signal. Eve is open-source and sits inside the Vercel ecosystem, which means it is designed to deploy and run agents on the same infrastructure you already use for frontend work. The abstraction layer here could matter a lot for teams who want agents without managing separate infra.",
+      "ph_url": "https://vercel.com/blog/introducing-eve",
+      "maker": "Vercel",
+      "featured": true,
+      "added_at": "2026-06-24T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-gpt-55-cyber",
+      "name": "GPT-5.5-Cyber",
+      "tagline": "OpenAI's cybersecurity-focused model with an updated Codex Security plugin.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "OpenAI is pushing its Daybreak cybersecurity initiative further with a dedicated model tuned for security work and a partner network across 25-plus firms. The focus on patching, not just finding vulnerabilities, is the interesting shift here. This one is aimed squarely at enterprise security teams.",
+      "ph_url": "https://the-decoder.com/openai-says-new-gpt-5-5-cyber-outperforms-anthropics-mythos-on-cybersecurity-benchmark/",
+      "maker": "OpenAI",
+      "featured": false,
+      "added_at": "2026-06-24T06:30:00Z"
+    },
+    {
+      "id": "ph-claude-tag-slack",
+      "name": "Claude Tag",
+      "tagline": "Anthropic's always-on AI teammate that lives inside Slack.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Claude Tag learns from your Slack messages to build up organisational context over time. That is useful on the surface, but the deeper play is Anthropic capturing institutional knowledge at the enterprise level. If it works, it gives Claude a persistent memory advantage over competitors who start fresh each session.",
+      "ph_url": "https://techcrunch.com/2026/06/23/anthropics-claude-tag-is-learning-your-company-one-slack-message-at-a-time/",
+      "maker": "Anthropic",
+      "featured": false,
+      "added_at": "2026-06-24T06:30:00Z"
+    },
+    {
+      "id": "ph-gemini-interactions-api",
+      "name": "Gemini Interactions API",
+      "tagline": "Google's new default interface for Gemini models and agents replaces the old generateContent API.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Google has made the Interactions API the only route for new agent features going forward. The shift from role-based structures to typed steps is a meaningful architectural change for anyone building on Gemini. If you have existing integrations, this is not optional to understand.",
+      "ph_url": "https://the-decoder.com/google-makes-interactions-api-the-default-interface-for-gemini-models-and-agents/",
+      "maker": "Google DeepMind",
+      "featured": false,
+      "added_at": "2026-06-24T06:30:00Z"
+    },
+    {
+      "id": "ph-aharness",
+      "name": "Aharness",
+      "tagline": "Enforce coding-agent workflows as state machines on Codex.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Aharness lets you wrap Codex in a state machine so agent workflows follow a defined structure rather than running free. It is a small tool but the idea is solid. Controlled agent execution is becoming a real concern as coding agents get more autonomous.",
+      "ph_url": "https://github.com/Alfredvc/aharness",
+      "maker": "Alfredvc",
+      "featured": false,
+      "added_at": "2026-06-24T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: RLM-based local debugger for AI agent traces",
+      "points": 19,
+      "comments": 6,
+      "summary": "Halo is a local debugger for AI agent traces built on reinforcement learning models. It gives developers a structured way to inspect what agents are actually doing step by step. Observability for agents is still an unsolved problem, so tooling like this is genuinely useful.",
+      "hn_url": "https://news.ycombinator.com/item?id=48649137"
+    },
+    {
+      "title": "Vercel: Eve, an open-source agent framework",
+      "points": 4,
+      "comments": 1,
+      "summary": "Vercel has released Eve, an open-source framework for building AI agents designed to run on Vercel infrastructure. It brings agent deployment into the same workflow as frontend development. Early days, but Vercel's distribution gives it a head start.",
+      "hn_url": "https://news.ycombinator.com/item?id=48645073"
+    },
+    {
+      "title": "Show HN: Aharness \u2013 Enforce coding-agent workflows as state machines on Codex",
+      "points": 4,
+      "comments": 2,
+      "summary": "Aharness is a lightweight tool that wraps Codex agents in state machine logic to constrain how they move through a workflow. It addresses the unpredictability problem that comes with autonomous coding agents. Small footprint, practical idea.",
+      "hn_url": "https://news.ycombinator.com/item?id=48643056"
+    },
+    {
+      "title": "Linux Foundation Is Pursuing Trusted Identity Infrastructure for AI Agents",
+      "points": 5,
+      "comments": 0,
+      "summary": "The Linux Foundation has announced plans to launch an Agent Name Service to give AI agents verified, trusted identities. As agents start acting autonomously across systems, knowing who or what is making a request matters. This is infrastructure-level work that most people are not thinking about yet.",
+      "hn_url": "https://news.ycombinator.com/item?id=48651697"
+    },
+    {
+      "title": "Anthropic-Cybersecurity-Skills: 817 structured cybersecurity skills for AI agents",
+      "points": 4,
+      "comments": 0,
+      "summary": "A public repo containing 817 structured cybersecurity skills mapped for use by AI agents. It is a dataset and reference architecture in one. Useful for anyone building security-focused agents or evaluating what a model actually knows about offensive and defensive techniques.",
+      "hn_url": "https://news.ycombinator.com/item?id=48654971"
+    }
+  ]
+}
