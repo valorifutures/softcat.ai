@@ -1,39 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-03-26T07:00:26.937185+00:00",
-    "status": "success",
-    "duration_s": 23.4,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0313,
-    "input_tokens": 6898,
-    "output_tokens": 710,
-    "output_files": [
-      "src/content/news-and-updates/2026-03-26-ai-digest.md"
-    ]
-  },
-  {
-    "bot": "thoughts_bot",
-    "timestamp": "2026-03-26T08:00:21.672707+00:00",
-    "status": "success",
-    "duration_s": 17.6,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0214,
-    "input_tokens": 5131,
-    "output_tokens": 401,
-    "output_files": [
-      "src/content/thoughts/2026-03-26-memory-compression-is-just-bandwidth-denial-pretending-to-be.md"
-    ]
-  },
-  {
     "bot": "radar_bot",
     "timestamp": "2026-03-26T09:30:46.929187+00:00",
     "status": "success",
@@ -7561,5 +7527,20 @@
     "output_files": [
       "src/content/thoughts/2026-06-24-organisational-memory-is-the-new-moat-nobody-meant-to-build.md"
     ]
+  },
+  {
+    "bot": "prompt_bot",
+    "timestamp": "2026-06-24T08:00:43.748313+00:00",
+    "status": "success",
+    "duration_s": 37.3,
+    "feeds_scanned": 5,
+    "items_found": 35,
+    "items_rejected": 0,
+    "items_published": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0383,
+    "input_tokens": 4627,
+    "output_tokens": 1628,
+    "output_files": []
   }
 ]
