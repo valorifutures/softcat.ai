@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-06-23",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "horizon: fix 48 dangling evidence refs + stop the bot emitting them",
+    "sha": "94b37952f2"
+  },
+  {
     "date": "2026-06-22",
     "lane": "now",
     "verb": "updated",
