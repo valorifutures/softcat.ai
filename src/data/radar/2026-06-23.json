@@ -1,0 +1,116 @@
+{
+  "date": "2026-06-23",
+  "featured": [
+    {
+      "id": "ph-ponytrail",
+      "name": "Ponytrail",
+      "tagline": "Local audit trail for AI coding agent edits.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "As AI coding agents touch more of your codebase, knowing exactly what changed and when becomes critical. Ponytrail runs locally and logs every edit an agent makes, giving you a proper paper trail without sending anything to a third party. Simple idea, serious utility.",
+      "ph_url": "https://github.com/0xroylee/ponytrail",
+      "maker": "0xroylee",
+      "featured": true,
+      "added_at": "2026-06-23T06:00:00Z"
+    },
+    {
+      "id": "ph-selector-forge",
+      "name": "Selector Forge",
+      "tagline": "Browser extension that generates resilient AI-powered CSS selectors.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Brittle selectors are one of the biggest pain points in browser automation and testing. Selector Forge uses AI to generate selectors that survive DOM changes, which matters a lot if you are building agents that scrape or interact with live pages. Worth keeping an eye on for anyone doing web automation.",
+      "ph_url": "https://github.com/Intuned/selector-forge",
+      "maker": "Intuned",
+      "featured": true,
+      "added_at": "2026-06-23T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-pmb",
+      "name": "PMB",
+      "tagline": "Local-first memory for AI coding agents over MCP.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Persistent memory for coding agents is still an unsolved problem for most teams. PMB tackles it locally over MCP, which keeps your context private and avoids cloud round-trips. Early days but the approach is sound.",
+      "ph_url": "https://github.com/oleksiijko/pmb/blob/main/README.md",
+      "maker": "oleksiijko",
+      "featured": false,
+      "added_at": "2026-06-23T06:30:00Z"
+    },
+    {
+      "id": "ph-ask-a-human",
+      "name": "Ask a Human",
+      "tagline": "A private pager that alerts a human when your AI agent loop needs intervention.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Fully autonomous agent loops still get stuck, and most teams have no clean way to escalate. This tool pages a human when the agent hits a decision it cannot make alone, keeping loops unblocked without requiring constant babysitting. Practical and honest about where AI still falls short.",
+      "ph_url": "https://ask-a-human.ai",
+      "maker": "ask-a-human.ai",
+      "featured": false,
+      "added_at": "2026-06-23T06:30:00Z"
+    },
+    {
+      "id": "ph-keynap",
+      "name": "Keynap",
+      "tagline": "On-device AI voice typing app for Windows.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "On-device voice typing means no audio leaving your machine, which is the right default for anything sensitive. Keynap runs the whole pipeline locally on Windows without a subscription or cloud dependency. Straightforward and worth a look if you dictate a lot.",
+      "ph_url": "https://apps.microsoft.com/detail/9n7kdlcxvjxt?hl=en-US&gl=US",
+      "maker": "Keynap",
+      "featured": false,
+      "added_at": "2026-06-23T06:30:00Z"
+    },
+    {
+      "id": "ph-openplan",
+      "name": "OpenPlan",
+      "tagline": "Real-time routing and planning layer for AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "The Waze framing is a bit marketing-speak, but the underlying idea is interesting: dynamic replanning for agents as conditions change mid-task. If it delivers on that, it fills a genuine gap in multi-step agent orchestration. Worth watching as the agent tooling space matures.",
+      "ph_url": "https://openplan.cc",
+      "maker": "OpenPlan",
+      "featured": false,
+      "added_at": "2026-06-23T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Selector Forge \u2013 browser extension for AI-generated resilient selectors",
+      "points": 33,
+      "comments": 1,
+      "summary": "A browser extension from Intuned that uses AI to generate CSS selectors that hold up when the DOM changes. Useful for anyone building web automation or browser-based agents. Direct answer to one of the most common causes of flaky test suites.",
+      "hn_url": "https://news.ycombinator.com/item?id=48630515"
+    },
+    {
+      "title": "I built Ponytrail, a local audit trail for AI coding-agent edits",
+      "points": 23,
+      "comments": 11,
+      "summary": "Ponytrail logs every file change made by an AI coding agent, locally, so you have a full record of what was touched and when. Built in response to the real problem of agents making opaque edits across a codebase. Gets more relevant as agentic coding becomes the default.",
+      "hn_url": "https://news.ycombinator.com/item?id=48631043"
+    },
+    {
+      "title": "GLM-5.2 is the step change for open agents",
+      "points": 9,
+      "comments": 0,
+      "summary": "GLM-5.2 from Zhipu AI is being positioned as a strong open model for agentic tasks, with independent evaluations placing it above GPT-5.5 on knowledge work benchmarks. The interconnects.ai write-up goes deep on why the architecture suits multi-step reasoning. Good news for teams wanting capable open models without API lock-in.",
+      "hn_url": "https://news.ycombinator.com/item?id=48639840"
+    },
+    {
+      "title": "Show HN: PMB \u2013 local-first memory for AI coding agents over MCP",
+      "points": 7,
+      "comments": 6,
+      "summary": "PMB gives AI coding agents persistent, local memory via the Model Context Protocol. It keeps context on your machine rather than in a hosted service. Early project but the local-first approach is the right instinct for developer tooling.",
+      "hn_url": "https://news.ycombinator.com/item?id=48631169"
+    },
+    {
+      "title": "Show HN: A private pager for your AI agent loops",
+      "points": 3,
+      "comments": 1,
+      "summary": "Ask a Human lets you define points in an agent loop where a human needs to approve or unblock the next step. It sends a notification and waits for a response before continuing. Honest about the limits of full autonomy and genuinely useful for production agent workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=48640461"
+    }
+  ]
+}

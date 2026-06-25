@@ -275,6 +275,18 @@
       "file": "ai-agent-state-migration-validator.md",
       "title": "AI Agent State Migration Validator",
       "category": "migration"
+    },
+    {
+      "date": "2026-06-24",
+      "file": "multi-llm-orchestration-architecture-designer.md",
+      "title": "Multi-LLM Orchestration Architecture Designer",
+      "category": "architecture"
+    },
+    {
+      "date": "2026-06-24",
+      "file": "agentic-loop-risk-auditor.md",
+      "title": "Agentic Loop Risk Auditor",
+      "category": "security"
     }
   ]
 }

@@ -244,12 +244,12 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-04-18",
+        "ref": "2026-04-18-debug-logs-just-became-the-most-valuable-training-data-in-te",
         "label": "Debug logs just became the most valuable training data in tech"
       },
       {
         "type": "thought",
-        "ref": "2026-04-22",
+        "ref": "2026-04-22-synthetic-data-generation-is-just-admitting-we-never-learned",
         "label": "Synthetic data generation is just admitting we never learned to collect the right data"
       },
       {
@@ -277,7 +277,7 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-04-27",
+        "ref": "2026-04-27-ai-agents-just-turned-economics-into-a-debugging-problem",
         "label": "AI agents just turned economics into a debugging problem"
       },
       {
@@ -287,7 +287,7 @@
       },
       {
         "type": "news",
-        "ref": "2026-04-26",
+        "ref": "2026-04-26-ai-digest",
         "label": "AI digest: Models get stronger, commerce gets weirder"
       }
     ],
@@ -309,17 +309,17 @@
     "evidence": [
       {
         "type": "news",
-        "ref": "2026-04-29",
+        "ref": "2026-04-29-ai-digest",
         "label": "Poolside's coding models reach 72.5% on SWE-bench"
       },
       {
         "type": "thought",
-        "ref": "2026-04-29-agentic-coding-models-just-made-software-engineering-a-spectator-sport",
+        "ref": "2026-04-29-agentic-coding-models-just-made-software-engineering-a-spect",
         "label": "Models hitting 70% on complex coding benchmarks means watching machines do our jobs"
       },
       {
         "type": "thought",
-        "ref": "2026-04-30-code-assistants-just-turned-programming-into-pair-programming-with-a-know-it-all",
+        "ref": "2026-04-30-code-assistants-just-turned-programming-into-pair-programmin",
         "label": "Programming with AI assistants fundamentally changes the development dynamic"
       }
     ],
@@ -341,17 +341,17 @@
     "evidence": [
       {
         "type": "news",
-        "ref": "2026-05-01",
+        "ref": "2026-05-01-ai-digest",
         "label": "Anthropic heads for a $900B valuation"
       },
       {
         "type": "news",
-        "ref": "2026-05-02",
+        "ref": "2026-05-02-ai-digest",
         "label": "Big tech splashes $725 billion on AI infrastructure"
       },
       {
         "type": "news",
-        "ref": "2026-04-25",
+        "ref": "2026-04-25-ai-digest",
         "label": "Google drops £40B on Anthropic"
       },
       {
@@ -378,12 +378,12 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-05-03",
+        "ref": "2026-05-03-remote-agents-just-made-the-desktop-obsolete",
         "label": "Remote agents just made the desktop obsolete"
       },
       {
         "type": "news",
-        "ref": "2026-05-03",
+        "ref": "2026-05-03-ai-digest",
         "label": "Mistral ships remote agents whilst regulators scramble"
       }
     ],
@@ -410,7 +410,7 @@
       },
       {
         "type": "news",
-        "ref": "2026-04-29",
+        "ref": "2026-04-29-ai-digest",
         "label": "OpenAI releases open-source privacy tools"
       }
     ],
@@ -464,17 +464,17 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-05-04-billion-dollar-valuations-just-turned-ai-companies-into-performance-art",
+        "ref": "2026-05-04-billion-dollar-valuations-just-turned-ai-companies-into-perf",
         "label": "Valuations disconnected from engineering reality"
       },
       {
         "type": "news",
-        "ref": "2026-05-01-ai-digest-valuations-gone-mad",
+        "ref": "2026-05-01-ai-digest",
         "label": "Anthropic heading for $900B valuation"
       },
       {
         "type": "news",
-        "ref": "2026-04-30-ai-digest-big-money-better-tools",
+        "ref": "2026-04-30-ai-digest",
         "label": "Anthropic massive funding round"
       }
     ],
@@ -496,7 +496,7 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-05-01-model-distillation-just-turned-training-into-intellectual-property-laundering",
+        "ref": "2026-05-01-model-distillation-just-turned-training-into-intellectual-pr",
         "label": "Distillation as standard knowledge transfer"
       },
       {
@@ -528,7 +528,7 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-05-02-sparse-autoencoders-just-turned-interpretability-into-feature-engineering",
+        "ref": "2026-05-02-sparse-autoencoders-just-turned-interpretability-into-featur",
         "label": "Sparse autoencoders turning interpretability into feature engineering"
       },
       {
@@ -592,12 +592,12 @@
       },
       {
         "type": "news",
-        "ref": "2026-05-06-ai-digest-voice-gets-real-agents-get-organised",
+        "ref": "2026-05-06-ai-digest",
         "label": "Voice AI finally starts listening to how we actually talk"
       },
       {
         "type": "news",
-        "ref": "2026-05-04-ai-digest-production-realities-bite",
+        "ref": "2026-05-04-ai-digest",
         "label": "Voice cloning breakthroughs"
       }
     ],
@@ -619,12 +619,12 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-05-06-webhooks-just-turned-every-ai-model-into-a-notification-addiction",
+        "ref": "2026-05-06-webhooks-just-turned-every-ai-model-into-a-notification-addi",
         "label": "Webhooks turn AI models into notification addiction"
       },
       {
         "type": "news",
-        "ref": "2026-05-06-ai-digest-voice-gets-real-agents-get-organised",
+        "ref": "2026-05-06-ai-digest",
         "label": "OpenAI ships a less hallucinogenic model and everyone builds agent frameworks"
       }
     ],
@@ -651,7 +651,7 @@
       },
       {
         "type": "thought",
-        "ref": "2026-05-09-spec-driven-development-just-turned-ai-coding-agents-into-actual-engineers",
+        "ref": "2026-05-09-spec-driven-development-just-turned-ai-coding-agents-into-ac",
         "label": "Spec-driven development just turned AI coding agents into actual engineers"
       }
     ],
@@ -678,7 +678,7 @@
       },
       {
         "type": "news",
-        "ref": "2026-05-08-ai-digest-infrastructure-week",
+        "ref": "2026-05-08-ai-digest",
         "label": "AI digest: Infrastructure week"
       }
     ],
@@ -705,7 +705,7 @@
       },
       {
         "type": "thought",
-        "ref": "2026-05-10-single-checkpoints",
+        "ref": "2026-05-10-single-checkpoints-just-turned-model-deployment-into-a-versi",
         "label": "Single checkpoints becoming deployment complexity"
       },
       {
@@ -764,22 +764,22 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-06-07",
+        "ref": "2026-06-07-command-line-interfaces-just-turned-ai-agents-into-unix-phil",
         "label": "Command line interfaces just turned AI agents into Unix philosophers"
       },
       {
         "type": "thought",
-        "ref": "2026-06-08",
+        "ref": "2026-06-08-command-line-agents-just-turned-every-developer-into-a-syste",
         "label": "Command-line agents just turned every developer into a system administrator"
       },
       {
         "type": "news",
-        "ref": "2026-06-07",
+        "ref": "2026-06-07-ai-digest",
         "label": "Tools go terminal: Command-line AI tools multiply"
       },
       {
         "type": "news",
-        "ref": "2026-06-08",
+        "ref": "2026-06-08-ai-digest",
         "label": "OpenAI declares chat dead whilst everyone rushes to build autonomous agents"
       }
     ],
@@ -802,17 +802,17 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-06-09",
+        "ref": "2026-06-09-security-scanning-just-turned-ai-model-repositories-into-haz",
         "label": "Security scanning just turned AI model repositories into hazmat disposal sites"
       },
       {
         "type": "news",
-        "ref": "2026-06-03",
+        "ref": "2026-06-03-ai-digest",
         "label": "AI security breaches shake up the week"
       },
       {
         "type": "news",
-        "ref": "2026-06-07",
+        "ref": "2026-06-07-ai-digest",
         "label": "security and politics heat up around major models"
       }
     ],
@@ -834,17 +834,17 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-06-10",
+        "ref": "2026-06-10-real-time-streaming-just-turned-ai-into-a-conversational-arm",
         "label": "Real-time streaming just turned AI into a conversational arms race"
       },
       {
         "type": "news",
-        "ref": "2026-06-09",
+        "ref": "2026-06-09-ai-digest",
         "label": "trillion-parameter models hit crazy speeds"
       },
       {
         "type": "news",
-        "ref": "2026-06-10",
+        "ref": "2026-06-10-ai-digest",
         "label": "Google ships real-time translation across 70 languages"
       }
     ],
@@ -867,7 +867,7 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-06-11",
+        "ref": "2026-06-11-same-model-different-masks-just-turned-ai-safety-into-market",
         "label": "Same model, different masks just turned AI safety into marketing theatre"
       },
       {
@@ -895,17 +895,17 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-06-07",
+        "ref": "2026-06-07-command-line-interfaces-just-turned-ai-agents-into-unix-phil",
         "label": "Command line interfaces just turned AI agents into Unix philosophers"
       },
       {
         "type": "thought",
-        "ref": "2026-06-08",
+        "ref": "2026-06-08-command-line-agents-just-turned-every-developer-into-a-syste",
         "label": "Command-line agents just turned every developer into a system administrator"
       },
       {
         "type": "news",
-        "ref": "2026-06-07",
+        "ref": "2026-06-07-ai-digest",
         "label": "AI digest: Tools go terminal"
       }
     ],
@@ -927,17 +927,17 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-06-04",
+        "ref": "2026-06-04-on-device-inference-just-turned-the-cloud-into-expensive-nos",
         "label": "On-device inference just turned the cloud into expensive nostalgia"
       },
       {
         "type": "thought",
-        "ref": "2026-06-06",
+        "ref": "2026-06-06-hybrid-routing-just-turned-your-laptop-into-a-schizophrenic-",
         "label": "Hybrid routing just turned your laptop into a schizophrenic cloud terminal"
       },
       {
         "type": "news",
-        "ref": "2026-06-04",
+        "ref": "2026-06-04-ai-digest",
         "label": "AI digest: Models go local, agents go mainstream"
       }
     ],
@@ -959,12 +959,12 @@
     "evidence": [
       {
         "type": "news",
-        "ref": "2026-06-21-ai-digest-agents-getting-smarter-models-getting-smaller",
+        "ref": "2026-06-21-ai-digest",
         "label": "Perplexity self-improving agent memory flagged in digest"
       },
       {
         "type": "thought",
-        "ref": "2026-06-21-agents-that-learn-from-their-own-mistakes-are-more-dangerous-than-agents-that-dont",
+        "ref": "2026-06-21-agents-that-learn-from-their-own-mistakes-are-more-dangerous",
         "label": "Self-improving agent memory as unmonitored risk"
       }
     ],
@@ -1051,7 +1051,7 @@
       },
       {
         "type": "news",
-        "ref": "2026-06-22",
+        "ref": "2026-06-22-ai-digest",
         "label": "AI digest: money, agents, and a grade inflation scandal"
       }
     ],
@@ -1074,12 +1074,12 @@
     "evidence": [
       {
         "type": "thought",
-        "ref": "2026-06-22",
+        "ref": "2026-06-22-government-bans-are-free-marketing-for-ai-labs",
         "label": "Government Bans Are Free Marketing for AI Labs"
       },
       {
         "type": "news",
-        "ref": "2026-06-21",
+        "ref": "2026-06-21-ai-digest",
         "label": "AI digest: agents getting smarter, models getting smaller"
       }
     ],
@@ -1112,10 +1112,137 @@
       },
       {
         "type": "news",
-        "ref": "2026-06-22",
+        "ref": "2026-06-22-ai-digest",
         "label": "AI digest: money, agents, and a grade inflation scandal"
       }
     ],
     "added": "2026-06-22"
+  },
+  {
+    "id": "now-2026-06-organisational-memory-creates-vendor-lock-in",
+    "lane": "now",
+    "title": "AI organisational memory quietly deepens vendor lock-in",
+    "date": "2026-06-24",
+    "themes": [
+      "agents",
+      "enterprise",
+      "security"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "As agents learn internal workflows and accumulate context, switching costs compound silently. What looks like a productivity gain becomes structural dependency on a single vendor's memory layer.",
+    "implication": "_Watch for the moment your AI vendor's memory of your business becomes more valuable than the model itself._",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-24-organisational-memory-is-the-new-moat-nobody-meant-to-build",
+        "label": "Organisational Memory Is the New Moat Nobody Meant to Build"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-21-agents-that-learn-from-their-own-mistakes-are-more-dangerous",
+        "label": "Agents That Learn From Their Own Mistakes Are More Dangerous Than Agents That Don't"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-21-ai-digest",
+        "label": "AI digest: agents getting smarter, models getting smaller"
+      }
+    ],
+    "added": "2026-06-24"
+  },
+  {
+    "id": "now-2026-06-cursor-vertical-platform-expansion",
+    "lane": "now",
+    "title": "AI coding tools expand vertically into platform and mobile territory",
+    "date": "2026-06-24",
+    "themes": [
+      "code",
+      "interfaces",
+      "enterprise"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "Cursor adding Git platform features and a mobile app signals that AI coding tools are no longer competing on model quality alone. The battleground is shifting to full developer workflow ownership.",
+    "implication": "_Expect coding tool vendors to absorb adjacent developer tooling categories rather than stay focused on the editor._",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-06-24",
+        "label": "Cursor Git Platform + Mobile App"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-24-ai-digest",
+        "label": "AI digest: agents everywhere, and cyber warnings getting serious"
+      }
+    ],
+    "added": "2026-06-24"
+  },
+  {
+    "id": "now-2026-06-agentic-loops-become-ops-liability",
+    "lane": "now",
+    "title": "Continuous agent loops shift from product feature to operational liability",
+    "date": "2026-06-23",
+    "themes": [
+      "agents",
+      "infrastructure",
+      "security"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "Agents running autonomously in the background are exposing the same failure modes as distributed systems: race conditions, unbounded retries, and no clear ownership. The gap between demo and production is turning into an engineering crisis.",
+    "implication": "*Expect a wave of agent circuit-breaker tooling as teams discover that loop management is now a first-class infrastructure problem.*",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-23-agent-loops-are-the-distributed-systems-problem-nobody-wante",
+        "label": "Agent loops as distributed systems nightmare"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-23-ai-digest",
+        "label": "AI digest: agentic AI goes fully autonomous"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-21",
+        "label": "Hermes Agent Blank Slate Mode"
+      }
+    ],
+    "added": "2026-06-23"
+  },
+  {
+    "id": "now-2026-06-offensive-ai-threats-move-from-theory-to-timeline",
+    "lane": "now",
+    "title": "Offensive AI threats move from theoretical to imminent on intelligence agency timelines",
+    "date": "2026-06-23",
+    "themes": [
+      "security",
+      "society",
+      "regulation"
+    ],
+    "signal_type": "warning",
+    "confidence": "emerging",
+    "why_it_matters": "Five Eyes agencies are now saying offensive AI threats are months away, not years. That shifts the conversation from policy speculation to active defence preparation.",
+    "implication": "*Watch for enterprise security teams accelerating AI threat modelling as government warnings give internal risk budgets a concrete anchor.*",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-06-23-ai-digest",
+        "label": "AI digest: Five Eyes agencies warn offensive AI threats are months away"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-21-agents-that-learn-from-their-own-mistakes-are-more-dangerous",
+        "label": "Self-improving agent memory as unmonitored safety risk"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-22",
+        "label": "Cloak"
+      }
+    ],
+    "added": "2026-06-23"
   }
 ]
