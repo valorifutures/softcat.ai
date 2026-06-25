@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25-ai-digest",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -1117,5 +1117,66 @@
       }
     ],
     "added": "2026-06-22"
+  },
+  {
+    "id": "now-2026-06-organisational-memory-creates-vendor-lock-in",
+    "lane": "now",
+    "title": "AI organisational memory quietly deepens vendor lock-in",
+    "date": "2026-06-24",
+    "themes": [
+      "agents",
+      "enterprise",
+      "security"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "As agents learn internal workflows and accumulate context, switching costs compound silently. What looks like a productivity gain becomes structural dependency on a single vendor's memory layer.",
+    "implication": "_Watch for the moment your AI vendor's memory of your business becomes more valuable than the model itself._",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-24-organisational-memory-is-the-new-moat-nobody-meant-to-build",
+        "label": "Organisational Memory Is the New Moat Nobody Meant to Build"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-21-agents-that-learn-from-their-own-mistakes-are-more-dangerous",
+        "label": "Agents That Learn From Their Own Mistakes Are More Dangerous Than Agents That Don't"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-21-ai-digest",
+        "label": "AI digest: agents getting smarter, models getting smaller"
+      }
+    ],
+    "added": "2026-06-24"
+  },
+  {
+    "id": "now-2026-06-cursor-vertical-platform-expansion",
+    "lane": "now",
+    "title": "AI coding tools expand vertically into platform and mobile territory",
+    "date": "2026-06-24",
+    "themes": [
+      "code",
+      "interfaces",
+      "enterprise"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "Cursor adding Git platform features and a mobile app signals that AI coding tools are no longer competing on model quality alone. The battleground is shifting to full developer workflow ownership.",
+    "implication": "_Expect coding tool vendors to absorb adjacent developer tooling categories rather than stay focused on the editor._",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-06-24",
+        "label": "Cursor Git Platform + Mobile App"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-24-ai-digest",
+        "label": "AI digest: agents everywhere, and cyber warnings getting serious"
+      }
+    ],
+    "added": "2026-06-24"
   }
 ]
