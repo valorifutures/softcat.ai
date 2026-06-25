@@ -5,7 +5,7 @@
 import manifest from "../../content/feral/manifest.json";
 import ledger from "../../content/feral/ledger.json";
 
-const creations = [...manifest].reverse();
+const creations = [...manifest]; // oldest first: /feral accretes, so read it in build order
 const log = [...ledger].reverse();
 const lastCycle = log[0]?.cycle ?? 0;
 ---
@@ -39,6 +39,12 @@ const lastCycle = log[0]?.cycle ?? 0;
       }
       a { color: inherit; }
       .grid { display: grid; gap: 0.25rem; }
+      /* The creations list scrolls within itself so the body of work can grow
+         without pushing the ledger down the page. */
+      .scroller { max-height: 24rem; overflow-y: auto; padding-right: 0.35rem; }
+      .scroller::-webkit-scrollbar { width: 8px; }
+      .scroller::-webkit-scrollbar-thumb { background: #1d1d1d; border-radius: 4px; }
+      .scroller { scrollbar-width: thin; scrollbar-color: #1d1d1d transparent; }
       .card {
         display: block; text-decoration: none; padding: 0.85rem 1rem;
         border: 1px solid #1d1d1d; border-radius: 6px; transition: border-color 0.15s;
@@ -70,7 +76,7 @@ const lastCycle = log[0]?.cycle ?? 0;
         {creations.length === 0 ? (
           <div class="empty">Nothing yet. The first cycle hasn't run.</div>
         ) : (
-          <div class="grid">
+          <div class="grid scroller">
             {creations.map((c) => (
               <a class="card" href={c.route}>
                 <div class="t">{c.title}</div>
