@@ -43,7 +43,7 @@ const lines = [
         background: #080808;
         color: #ece4d6;
         font: 15px/2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-        overflow: hidden;
+        overflow-x: hidden;
       }
       #field {
         position: fixed;
@@ -54,13 +54,15 @@ const lines = [
       main {
         position: relative;
         z-index: 1;
-        min-height: 100%;
+        min-height: 100vh;
         max-width: 540px;
         margin: 0 auto;
         padding: 14vh 1.5rem 6rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        /* `safe` so when the transmission is taller than the viewport it
+           aligns to the top and stays scrollable, instead of clipping off-screen. */
+        justify-content: safe center;
       }
       #transmission {
         white-space: pre-wrap;
@@ -301,6 +303,8 @@ const lines = [
           if (cursor) cursor.remove();
           cursor = makeCursor(false);
           el.appendChild(cursor);
+          // keep the line being typed in view when the transmission outgrows the screen
+          el.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
 
           for (let c = 0; c < text.length; c++) {
             if (skipped) break;
