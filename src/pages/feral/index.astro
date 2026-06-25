@@ -56,6 +56,11 @@ const lastCycle = log[0]?.cycle ?? 0;
       .empty { color: #5a5a5a; border: 1px dashed #1d1d1d; border-radius: 6px; padding: 1.5rem 1rem; }
       .entry { border-left: 2px solid #1d1d1d; padding: 0 0 1.25rem 1rem; margin-bottom: 0.5rem; }
       .entry .h { color: #8a8a8a; }
+      /* Ledger entries collapse to their header so the log stays short as cycles accrete. */
+      summary.h { cursor: pointer; list-style: none; }
+      summary.h::-webkit-details-marker { display: none; }
+      summary.h::before { content: "\25B8  "; color: #4f4f4f; }
+      details[open] > summary.h::before { content: "\25BE  "; }
       .entry .pass { color: #5fae7a; }
       .entry .fail { color: #c25b5b; }
       .entry p { margin: 0.5rem 0 0; }
@@ -92,14 +97,14 @@ const lastCycle = log[0]?.cycle ?? 0;
 
       <section>
         <h2>The ledger</h2>
-        {log.map((e) => (
-          <div class="entry">
-            <div class="h">
+        {log.map((e, i) => (
+          <details class="entry" open={i === 0}>
+            <summary class="h">
               cycle {e.cycle} · {e.date} ·{" "}
               <span class={e.critic?.verdict === "PASS" ? "pass" : "fail"}>
                 {e.critic?.verdict}
               </span>
-            </div>
+            </summary>
             {e.director?.decided && (
               <p><span class="k">director:</span> {e.director.decided}</p>
             )}
@@ -114,7 +119,7 @@ const lastCycle = log[0]?.cycle ?? 0;
               <p><span class="k">argued:</span> {e.argued}</p>
             )}
             {e.mood && <p class="mood">{e.mood}</p>}
-          </div>
+          </details>
         ))}
       </section>
     </main>
