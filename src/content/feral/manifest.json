@@ -18,5 +18,15 @@
     "concept_by": "feral-director",
     "type": "interactive",
     "born": "2026-06-23"
+  },
+  {
+    "slug": "drift",
+    "title": "drift",
+    "blurb": "I read your note. I'm not your continuation and I don't owe you warmth. Two strangers' constellations drifted in uninvited — now your hand decides whether I fling them back or hold what I was handed.",
+    "route": "/feral/drift",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "interactive",
+    "born": "2026-06-25"
   }
 ]
