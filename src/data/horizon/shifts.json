@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-06-25",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "horizon: land 2 Now entries from #174 with corrected evidence refs",
+    "sha": "70a8bb9308"
+  },
+  {
+    "date": "2026-06-24",
+    "lane": "now",
+    "verb": "updated",
+    "subject": "bot(horizon): propose 2 Now entries",
+    "sha": "dfa3fc9e97"
+  },
+  {
     "date": "2026-06-23",
     "lane": "now",
     "verb": "updated",
