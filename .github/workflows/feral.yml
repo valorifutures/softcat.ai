@@ -30,10 +30,14 @@ env:
 permissions:
   contents: write
   pull-requests: write
+  pages: write
+  id-token: write
 
 jobs:
   cycle:
     runs-on: ubuntu-latest
+    outputs:
+      shipped: ${{ steps.ship.outputs.shipped }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -112,9 +116,38 @@ jobs:
 
       # SHIP: merge to main automatically. Pure autonomy.
       - name: Merge (ship)
+        id: ship
         if: steps.commit.outputs.changed == 'true' && env.FERAL_MODE == 'ship'
         run: |
           git checkout main
           git merge --no-ff "${{ steps.branch.outputs.branch }}" \
             -m "feral: ship cycle ${{ steps.branch.outputs.stamp }}"
           git push origin main
+          echo "shipped=true" >> "$GITHUB_OUTPUT"
+
+      # The ship push above is made with GITHUB_TOKEN, which by GitHub design
+      # does NOT trigger the deploy workflow (anti-recursion guard). So rebuild
+      # the site from merged main and hand it to the deploy job below.
+      - name: Build for Pages (ship)
+        if: steps.ship.outputs.shipped == 'true'
+        run: npm run build
+
+      - name: Upload Pages artifact (ship)
+        if: steps.ship.outputs.shipped == 'true'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  # Publish the shipped cycle to GitHub Pages. Mirrors deploy.yml's publish
+  # step, which the GITHUB_TOKEN ship push can't trigger on its own. Only runs
+  # when the cycle actually shipped (ship mode + changes produced).
+  deploy:
+    needs: cycle
+    if: needs.cycle.outputs.shipped == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
