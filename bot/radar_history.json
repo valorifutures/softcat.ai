@@ -839,6 +839,19 @@
         "Gemini Interactions API",
         "Aharness"
       ]
+    },
+    {
+      "date": "2026-06-25",
+      "file": "2026-06-25.json",
+      "products": [
+        "Unlimited OCR",
+        "lift",
+        "Mistral OCR 4",
+        "stt-translate and s2s-translate",
+        "Hermes Agent /learn",
+        "Stupify",
+        "smolfs"
+      ]
     }
   ]
 }
