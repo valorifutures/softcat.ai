@@ -23,7 +23,7 @@ on:
 # Start on `propose` for a few cycles. Once you've watched the council run and
 # trust the safety gate, flip this default to `ship`. That's the only change.
 env:
-  FERAL_MODE: ${{ github.event.inputs.mode || 'propose' }}
+  FERAL_MODE: ${{ github.event.inputs.mode || 'ship' }}
   # Runaway guard. Raise if cycles get cut off mid-build.
   FERAL_MAX_TURNS: "60"
 
