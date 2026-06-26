@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25-ai-digest",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -1244,5 +1244,109 @@
       }
     ],
     "added": "2026-06-23"
+  },
+  {
+    "id": "now-2026-06-document-parsing-closes-gap-with-understanding",
+    "lane": "now",
+    "title": "Document parsing closes the gap with document understanding",
+    "date": "2026-06-26",
+    "themes": [
+      "models",
+      "enterprise",
+      "data"
+    ],
+    "signal_type": "inflection",
+    "confidence": "confirmed",
+    "why_it_matters": "Multiple serious OCR and document extraction models shipped in the same week, moving the capability from a hard integration problem to a solved one. The gap between extracting text and understanding structure is now effectively closed for most production use cases.",
+    "implication": "*Treat document parsing as a commodity input layer and move engineering effort upstream to what you do with the structured output.*",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-06-25",
+        "label": "Mistral OCR 4"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-25",
+        "label": "Unlimited OCR"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-25-document-parsing-just-became-a-solved-problem-nobody-noticed",
+        "label": "Document Parsing Just Became a Solved Problem Nobody Noticed"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-25-ai-digest",
+        "label": "AI digest: chips, OCR, and code that writes itself"
+      }
+    ],
+    "added": "2026-06-26"
+  },
+  {
+    "id": "now-2026-06-inference-speed-yields-to-throughput-and-cost",
+    "lane": "now",
+    "title": "Inference speed yields to throughput and cost as the real competitive axis",
+    "date": "2026-06-26",
+    "themes": [
+      "infrastructure",
+      "models",
+      "chips"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "Speculative decoding and dedicated inference chips are making raw token speed a near-solved problem. The competitive pressure is shifting to cost per token at scale and sustainable throughput, not latency alone.",
+    "implication": "*Audit your AI infrastructure choices against cost and throughput targets, not just latency benchmarks.*",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-26-speculative-decoding-just-made-inference-speed-a-red-herring",
+        "label": "Speculative Decoding Just Made Inference Speed a Red Herring"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-25-ai-digest",
+        "label": "AI digest: chips, OCR, and code that writes itself"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-23-ai-digest",
+        "label": "AI digest: loops, chips, and cyber warnings"
+      }
+    ],
+    "added": "2026-06-26"
+  },
+  {
+    "id": "now-2026-06-ai-security-threats-move-from-warning-to-active-pressure",
+    "lane": "now",
+    "title": "AI-enabled cyber threats move from intelligence warnings to active product responses",
+    "date": "2026-06-26",
+    "themes": [
+      "security",
+      "models",
+      "enterprise"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Five Eyes agencies have named offensive AI threats as months away, and product launches are already responding with dedicated security-focused model variants. The warning cycle is compressing fast.",
+    "implication": "*Expect security posture to become a first-class evaluation criterion when selecting AI models and platforms, not an afterthought.*",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-06-24",
+        "label": "GPT-5.5-Cyber"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-24-ai-digest",
+        "label": "AI digest: agents everywhere, and cyber warnings getting serious"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-23-ai-digest",
+        "label": "AI digest: loops, chips, and cyber warnings"
+      }
+    ],
+    "added": "2026-06-26"
   }
 ]
