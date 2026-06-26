@@ -852,6 +852,17 @@
         "Stupify",
         "smolfs"
       ]
+    },
+    {
+      "date": "2026-06-26",
+      "file": "2026-06-26.json",
+      "products": [
+        "Ornith-1.0",
+        "OpenKnowledge",
+        "Polygraph",
+        "Shotlist",
+        "DFlash"
+      ]
     }
   ]
 }

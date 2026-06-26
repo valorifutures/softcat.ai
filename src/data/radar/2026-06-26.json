@@ -1,0 +1,104 @@
+{
+  "date": "2026-06-26",
+  "featured": [
+    {
+      "id": "ph-ornith-10",
+      "name": "Ornith-1.0",
+      "tagline": "Open-source coding model family that learns its own RL scaffolds during training.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Most RL-trained coding models ship with a fixed harness baked in. Ornith-1.0 learns its own scaffold, which is a genuinely different approach. The 397B flagship hits 82.4 on SWE-Bench Verified and all weights are MIT-licensed, so you can actually pull and run it.",
+      "ph_url": "https://deep-reinforce.com/ornith_1_0.html",
+      "maker": "DeepReinforce",
+      "featured": true,
+      "added_at": "2026-06-26T06:00:00Z"
+    },
+    {
+      "id": "ph-openknowledge",
+      "name": "OpenKnowledge",
+      "tagline": "Open-source AI-first knowledge base as an alternative to Obsidian and Notion.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "264 points on HN with 131 comments is a strong signal that people are genuinely fed up with current knowledge tools. This is fully open source and built AI-first from the ground up, not an AI layer bolted onto a 2018 notes app. Worth watching how the community extends it.",
+      "ph_url": "https://github.com/inkeep/open-knowledge",
+      "maker": "Inkeep",
+      "featured": true,
+      "added_at": "2026-06-26T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-polygraph",
+      "name": "Polygraph",
+      "tagline": "Lets AI agents see across repos and maintain session memory.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Cross-repo context is one of the nastier unsolved problems for coding agents. Polygraph tackles that directly and adds persistent session memory on top. Early days, but the problem it is solving is real.",
+      "ph_url": "https://trypolygraph.com/",
+      "maker": "Polygraph",
+      "featured": false,
+      "added_at": "2026-06-26T06:30:00Z"
+    },
+    {
+      "id": "ph-shotlist",
+      "name": "Shotlist",
+      "tagline": "Makes AI agents prove their work with real screenshots.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Agent trust is a growing problem and screenshot verification is a simple, blunt fix. If your agent says it completed a task, Shotlist makes it show its work. Useful for browser agents in particular.",
+      "ph_url": "https://github.com/varmabudharaju/shotlist",
+      "maker": "Budharaju Varma",
+      "featured": false,
+      "added_at": "2026-06-26T06:30:00Z"
+    },
+    {
+      "id": "ph-dflash",
+      "name": "DFlash",
+      "tagline": "Speculative decoding that drafts whole token blocks in parallel for up to 15x throughput.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Autoregressive drafting is slow and DFlash replaces it with a block diffusion model in a single forward pass. Up to 15x throughput on Blackwell is a big number, and it ships with 20 checkpoints plus support for SGLang, vLLM, and TensorRT-LLM. Practical, not just a paper result.",
+      "ph_url": "https://www.marktechpost.com/2026/06/24/dflash-speculative-decoding-drafts-whole-token-blocks-in-parallel-for-up-to-15x-higher-throughput-on-nvidia-blackwell/",
+      "maker": "UC San Diego / NVIDIA",
+      "featured": false,
+      "added_at": "2026-06-26T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: OpenKnowledge \u2013 open source AI-first alternative to Obsidian/Notion",
+      "points": 264,
+      "comments": 131,
+      "summary": "A fully open-source knowledge base built AI-first, positioned as an alternative to Obsidian and Notion. Strong community reaction with 264 points and 131 comments suggests genuine demand for this kind of tool. Worth watching as a potential default for AI-assisted personal knowledge management.",
+      "hn_url": "https://news.ycombinator.com/item?id=48675435"
+    },
+    {
+      "title": "Ornith-1.0: Self-Scaffolding LLMs for Agentic Coding",
+      "points": 7,
+      "comments": 0,
+      "summary": "DeepReinforce released Ornith-1.0, a coding model family where the model learns its own RL scaffold rather than using a fixed one. The 397B flagship scores 82.4 on SWE-Bench Verified and all weights are MIT-licensed. A meaningful departure from how most RL-trained coding models are built.",
+      "hn_url": "https://news.ycombinator.com/item?id=48675882"
+    },
+    {
+      "title": "Show HN: Polygraph \u2013 Let AI agents see cross repo and maintain session memory",
+      "points": 7,
+      "comments": 0,
+      "summary": "Polygraph gives AI agents visibility across multiple repositories and adds persistent session memory. Cross-repo context is a real gap in current coding agent tooling. Early but addresses a concrete pain point.",
+      "hn_url": "https://news.ycombinator.com/item?id=48678471"
+    },
+    {
+      "title": "Show HN: Shotlist \u2013 Make your AI agent prove its work with real screenshots",
+      "points": 4,
+      "comments": 1,
+      "summary": "Shotlist is a lightweight tool that forces AI agents to capture screenshots as proof of task completion. Simple idea, useful for anyone running browser or UI agents where trust in the output matters. Open source on GitHub.",
+      "hn_url": "https://news.ycombinator.com/item?id=48682204"
+    },
+    {
+      "title": "Show HN: Topos \u2013 Structural code quality metrics for agent-written programs",
+      "points": 5,
+      "comments": 0,
+      "summary": "Topos measures structural code quality in programs written by AI agents, going beyond standard linting. As agent-written code becomes more common, tooling to evaluate its quality independently is increasingly important. Early project but points at a real gap.",
+      "hn_url": "https://news.ycombinator.com/item?id=48678841"
+    }
+  ]
+}
