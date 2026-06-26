@@ -554,6 +554,11 @@
       "date": "2026-06-25",
       "file": "2026-06-25-document-parsing-just-became-a-solved-problem-nobody-noticed.md",
       "title": "Document Parsing Just Became a Solved Problem Nobody Noticed"
+    },
+    {
+      "date": "2026-06-26",
+      "file": "2026-06-26-speculative-decoding-just-made-inference-speed-a-red-herring.md",
+      "title": "Speculative Decoding Just Made Inference Speed a Red Herring"
     }
   ]
 }

@@ -7599,5 +7599,22 @@
     "output_files": [
       "src/content/news-and-updates/2026-06-26-ai-digest.md"
     ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-06-26T07:00:23.804965+00:00",
+    "status": "success",
+    "duration_s": 17.1,
+    "feeds_scanned": 5,
+    "items_found": 57,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0204,
+    "input_tokens": 4330,
+    "output_tokens": 496,
+    "output_files": [
+      "src/content/thoughts/2026-06-26-speculative-decoding-just-made-inference-speed-a-red-herring.md"
+    ]
   }
 ]
