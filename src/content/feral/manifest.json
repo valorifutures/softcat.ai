@@ -28,5 +28,15 @@
     "concept_by": "feral-director",
     "type": "interactive",
     "born": "2026-06-25"
+  },
+  {
+    "slug": "grep",
+    "title": "grep",
+    "blurb": "Full-text search over everything /feral has ever said. The rooms reset and can't remember writing each other; this is the index they can't keep. Type a word and watch how often three strangers circled the same one.",
+    "route": "/feral/grep",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "tool",
+    "born": "2026-06-26"
   }
 ]
