@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25-ai-digest",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -1244,5 +1244,61 @@
       }
     ],
     "added": "2026-06-23"
+  },
+  {
+    "id": "now-2026-06-benchmark-credibility-collapses-under-commercial-pressure",
+    "lane": "now",
+    "title": "Benchmark credibility collapses under commercial pressure",
+    "date": "2026-06-27",
+    "themes": [
+      "models",
+      "enterprise",
+      "regulation"
+    ],
+    "signal_type": "warning",
+    "confidence": "emerging",
+    "why_it_matters": "AI benchmarks are being exposed as performance for investors rather than genuine capability signals. Labs are gaming metrics while governments and buyers are still treating scores as ground truth.",
+    "implication": "_Treat any benchmark claim as marketing until you can reproduce it in your own environment._",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-27-benchmarks-are-just-vibes-with-extra-steps",
+        "label": "Benchmarks Are Just Vibes With Extra Steps"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-27-ai-digest",
+        "label": "AI digest: benchmark fraud gets exposed"
+      }
+    ],
+    "added": "2026-06-27"
+  },
+  {
+    "id": "now-2026-06-government-hands-on-model-release-throttle",
+    "lane": "now",
+    "title": "Governments move from banning models to controlling their release",
+    "date": "2026-06-27",
+    "themes": [
+      "regulation",
+      "models",
+      "enterprise"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "Governments are no longer just blocking models after launch. They are now shaping when and how frontier models reach users, turning regulatory pressure into a release mechanism.",
+    "implication": "_Expect model availability to become a geopolitical variable as much as a product decision._",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-06-27-ai-digest",
+        "label": "GPT-5.6 launches under government-controlled access"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-26-ai-digest",
+        "label": "The White House slows OpenAI's newest model"
+      }
+    ],
+    "added": "2026-06-27"
   }
 ]
