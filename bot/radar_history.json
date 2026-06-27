@@ -863,6 +863,19 @@
         "Shotlist",
         "DFlash"
       ]
+    },
+    {
+      "date": "2026-06-27",
+      "file": "2026-06-27.json",
+      "products": [
+        "Workweave Router",
+        "Computer for Counsel",
+        "AgentKits",
+        "Hush",
+        "BetterDB",
+        "TBD",
+        "iLLaDA"
+      ]
     }
   ]
 }

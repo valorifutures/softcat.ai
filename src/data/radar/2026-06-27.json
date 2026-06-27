@@ -1,0 +1,128 @@
+{
+  "date": "2026-06-27",
+  "featured": [
+    {
+      "id": "ph-workweave-router",
+      "name": "Workweave Router",
+      "tagline": "Smart model routing built directly into Claude, Codex, and Cursor.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Model routing is one of those problems everyone hits and nobody loves solving. Workweave puts it directly inside the tools developers already use, so you stop paying frontier prices for tasks that don't need them. 167 points on HN with 97 comments tells you this hit a nerve.",
+      "ph_url": "https://github.com/workweave/router",
+      "maker": "Workweave",
+      "featured": true,
+      "added_at": "2026-06-27T06:00:00Z"
+    },
+    {
+      "id": "ph-perplexity-computer-for-counsel",
+      "name": "Computer for Counsel",
+      "tagline": "Multi-model agentic layer for legal workflows, with cited outputs lawyers can verify.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Perplexity is extending its Computer product into legal, routing across 20-plus models with Midpage and Microsoft 365 connectors. The cited outputs angle matters here, because lawyers need a paper trail and most AI tools don't give them one. A specific vertical play from a general-purpose product is worth watching.",
+      "ph_url": "https://www.marktechpost.com/2026/06/26/perplexity-launches-computer-for-counsel-a-multi-model-agentic-layer-for-legal-workflows/",
+      "maker": "Perplexity",
+      "featured": true,
+      "added_at": "2026-06-27T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-agentkits",
+      "name": "AgentKits",
+      "tagline": "60 production-ready AI agent blueprints with guardrails built in.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Starting from scratch on every agent build is wasteful. AgentKits bundles 60 production-ready blueprints that include guardrails, which is the part most people bolt on last and regret. Worth a look if you're standing up agents regularly.",
+      "ph_url": "https://www.agent-kits.com",
+      "maker": "AgentKits",
+      "featured": false,
+      "added_at": "2026-06-27T06:30:00Z"
+    },
+    {
+      "id": "ph-hush",
+      "name": "Hush",
+      "tagline": "Let an AI agent use your secrets without ever seeing them.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Passing API keys and credentials through an agent context is a known risk and most people just accept it. Hush routes secrets so the agent can act on them without them being exposed in the prompt or logs. Small tool, real problem.",
+      "ph_url": "https://github.com/royashbrook/hush",
+      "maker": "royashbrook",
+      "featured": false,
+      "added_at": "2026-06-27T06:30:00Z"
+    },
+    {
+      "id": "ph-betterdb",
+      "name": "BetterDB",
+      "tagline": "MIT-licensed Valkey-native context layer for AI agents.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Context management for agents usually means bolting something onto Redis or reinventing it entirely. BetterDB is Valkey-native and MIT-licensed, so it fits into existing stacks without lock-in. Early stage but the architecture is clean.",
+      "ph_url": "https://github.com/BetterDB-inc/monitor/tree/master/packages",
+      "maker": "BetterDB",
+      "featured": false,
+      "added_at": "2026-06-27T06:30:00Z"
+    },
+    {
+      "id": "ph-tbd-multiplexer",
+      "name": "TBD",
+      "tagline": "Mac-native CLI-forward coding agent multiplexer.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Running multiple coding agents at once from a single CLI on Mac is not a solved problem. TBD takes a multiplexer approach, which should feel familiar to anyone who lives in tmux. Niche, but the right niche.",
+      "ph_url": "https://github.com/cheapsteak/tbd",
+      "maker": "cheapsteak",
+      "featured": false,
+      "added_at": "2026-06-27T06:30:00Z"
+    },
+    {
+      "id": "ph-illada",
+      "name": "iLLaDA",
+      "tagline": "8B diffusion language model from ByteDance and Renmin University that generates text without autoregression.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Diffusion for text generation keeps getting closer to competitive. iLLaDA matches Qwen2.5 at the base level, which is a meaningful result for a non-autoregressive approach. The gap after fine-tuning is the honest caveat, and it's refreshing to see that reported plainly.",
+      "ph_url": "https://the-decoder.com/bytedances-illada-is-a-diffusion-language-model-that-keeps-up-with-qwen2-5/",
+      "maker": "ByteDance / Renmin University",
+      "featured": false,
+      "added_at": "2026-06-27T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Smart model routing directly in Claude, Codex and Cursor",
+      "points": 167,
+      "comments": 97,
+      "summary": "Workweave Router adds intelligent model routing directly inside Claude, Codex, and Cursor. It automatically selects a cheaper or faster model when the task doesn't need the frontier option. One of the more practical tools to surface on HN this week.",
+      "hn_url": "https://news.ycombinator.com/item?id=48688700"
+    },
+    {
+      "title": "AgentKits \u2013 60 production-ready AI agent blueprints with guardrails",
+      "points": 24,
+      "comments": 0,
+      "summary": "AgentKits is a library of 60 agent blueprints aimed at production use, with guardrails included. It targets teams who want to ship agents without building the scaffolding from scratch every time. Covers a wide range of use cases.",
+      "hn_url": "https://news.ycombinator.com/item?id=48692101"
+    },
+    {
+      "title": "Show HN: TBD, a Mac-native CLI-forward coding agent multiplexer",
+      "points": 4,
+      "comments": 0,
+      "summary": "TBD is a Mac-native tool for running multiple coding agents in parallel from the CLI. Think tmux for your agent sessions. Early but the approach is sensible for anyone juggling more than one agent at a time.",
+      "hn_url": "https://news.ycombinator.com/item?id=48688943"
+    },
+    {
+      "title": "Hush, let an AI agent use your secrets without ever seeing them",
+      "points": 4,
+      "comments": 1,
+      "summary": "Hush is an open-source tool that lets agents act on credentials and API keys without those secrets appearing in the prompt or context. It addresses a genuine security gap in most current agent setups. Simple concept, real utility.",
+      "hn_url": "https://news.ycombinator.com/item?id=48691038"
+    },
+    {
+      "title": "Show HN: BetterDB, MIT Valkey-native context layer for AI agents",
+      "points": 5,
+      "comments": 1,
+      "summary": "BetterDB provides a Valkey-native context layer for AI agents, released under the MIT licence. It is designed to slot into existing infrastructure without forcing a new datastore. A focused solution for a persistent pain point in agent memory management.",
+      "hn_url": "https://news.ycombinator.com/item?id=48687650"
+    }
+  ]
+}

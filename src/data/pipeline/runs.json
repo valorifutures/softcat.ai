@@ -1,21 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-03-29T07:00:48.310495+00:00",
-    "status": "error",
-    "duration_s": 47.8,
-    "feeds_scanned": 0,
-    "items_found": 0,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": [],
-    "error_msg": "Command '['git', 'push']' returned non-zero exit status 128."
-  },
-  {
     "bot": "radar_bot",
     "timestamp": "2026-03-29T09:31:37.526969+00:00",
     "status": "error",
@@ -7617,6 +7601,23 @@
     "output_tokens": 515,
     "output_files": [
       "src/content/thoughts/2026-06-27-benchmarks-are-just-vibes-with-extra-steps.md"
+    ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-06-27T08:30:55.002423+00:00",
+    "status": "success",
+    "duration_s": 48.4,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 60,
+    "items_published": 7,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0696,
+    "input_tokens": 9741,
+    "output_tokens": 2692,
+    "output_files": [
+      "src/data/radar/2026-06-27.json"
     ]
   }
 ]
