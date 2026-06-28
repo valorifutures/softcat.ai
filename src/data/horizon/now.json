@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25-ai-digest",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -1244,5 +1244,99 @@
       }
     ],
     "added": "2026-06-23"
+  },
+  {
+    "id": "now-2026-06-custom-silicon-race-reaches-lab-level",
+    "lane": "now",
+    "title": "Custom silicon becomes a first-party priority for AI labs",
+    "date": "2026-06-28",
+    "themes": [
+      "chips",
+      "infrastructure",
+      "models"
+    ],
+    "signal_type": "inflection",
+    "confidence": "confirmed",
+    "why_it_matters": "AI labs are no longer treating compute as someone else's problem. OpenAI shipping its own inference chip and Groq raising $650M signals that the chip layer is now an in-house competition.",
+    "implication": "_Watch for model performance claims to become inseparable from hardware claims as labs conflate the two._",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-06-25-ai-digest",
+        "label": "OpenAI builds its own inference chip"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-23-ai-digest",
+        "label": "Groq raises $650M"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-28-the-chip-stack-is-the-new-model-stack",
+        "label": "The chip stack is the new model stack"
+      }
+    ],
+    "added": "2026-06-28"
+  },
+  {
+    "id": "now-2026-06-ai-writing-its-own-code-at-scale",
+    "lane": "now",
+    "title": "AI is now writing the majority of code at leading labs",
+    "date": "2026-06-28",
+    "themes": [
+      "code",
+      "models",
+      "work"
+    ],
+    "signal_type": "inflection",
+    "confidence": "confirmed",
+    "why_it_matters": "Anthropic reports Claude writing 65% of its own team's code. That is not a benchmark number, it is a live production figure from the lab building the model.",
+    "implication": "_Expect the definition of a software engineering team to shift as AI-authored code crosses the majority threshold at more organisations._",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-06-25-ai-digest",
+        "label": "Anthropic's Claude writing 65% of its own team's code"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-24",
+        "label": "Cursor Git Platform + Mobile App, extending coding tooling vertically"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-22",
+        "label": "Codex Record & Replay, extending autonomous coding workflows"
+      }
+    ],
+    "added": "2026-06-28"
+  },
+  {
+    "id": "now-2026-06-government-control-over-model-releases",
+    "lane": "now",
+    "title": "Governments move from banning AI to gatekeeping releases",
+    "date": "2026-06-28",
+    "themes": [
+      "regulation",
+      "models",
+      "enterprise"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "GPT-5.6 launched under government-controlled access, and the White House slowed OpenAI's newest model. That is a different kind of intervention from outright bans.",
+    "implication": "_Consider how government-gated model access reshapes which organisations can build on frontier models and which cannot._",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-06-27-ai-digest",
+        "label": "GPT-5.6 launches under government-controlled access"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-26-ai-digest",
+        "label": "White House slows OpenAI's newest model"
+      }
+    ],
+    "added": "2026-06-28"
   }
 ]
