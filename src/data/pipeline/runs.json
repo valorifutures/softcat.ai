@@ -7639,5 +7639,22 @@
     "output_files": [
       "src/data/radar/2026-06-28.json"
     ]
+  },
+  {
+    "bot": "tool_bot",
+    "timestamp": "2026-06-28T09:00:15.163301+00:00",
+    "status": "success",
+    "duration_s": 13.4,
+    "feeds_scanned": 4,
+    "items_found": 30,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0199,
+    "input_tokens": 4593,
+    "output_tokens": 410,
+    "output_files": [
+      "src/content/tools/2026-06-28-dspark.md"
+    ]
   }
 ]
