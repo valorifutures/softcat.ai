@@ -7656,5 +7656,37 @@
     "output_files": [
       "src/content/tools/2026-06-28-dspark.md"
     ]
+  },
+  {
+    "bot": "horizon_bot",
+    "timestamp": "2026-06-28T09:00:26.833341+00:00",
+    "status": "success",
+    "duration_s": 25.1,
+    "feeds_scanned": 0,
+    "items_found": 61,
+    "items_rejected": 0,
+    "items_published": 10,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.027,
+    "input_tokens": 3963,
+    "output_tokens": 1006,
+    "output_files": []
+  },
+  {
+    "bot": "tool_bot",
+    "timestamp": "2026-06-28T09:00:30.392874+00:00",
+    "status": "success",
+    "duration_s": 28.6,
+    "feeds_scanned": 0,
+    "items_found": 38,
+    "items_rejected": 33,
+    "items_published": 5,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [],
+    "error_msg": "33 unverifiable: 2026-02-23-trulens.md, 2026-02-24-composio-agent-orchestrator.md, 2026-02-24-openai-websocket-mode.md, 2026-03-01-sakana-ais-doctolora-and-texttolora.md, 2026-03-08-liquid-ai-localcowork.md",
+    "job": "verify"
   }
 ]
