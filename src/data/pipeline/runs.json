@@ -1,21 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-03-30T07:00:51.188967+00:00",
-    "status": "error",
-    "duration_s": 47.1,
-    "feeds_scanned": 0,
-    "items_found": 0,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": [],
-    "error_msg": "Command '['git', 'push']' returned non-zero exit status 128."
-  },
-  {
     "bot": "radar_bot",
     "timestamp": "2026-03-30T09:31:31.959614+00:00",
     "status": "error",
@@ -7637,6 +7621,23 @@
     "output_tokens": 499,
     "output_files": [
       "src/content/thoughts/2026-06-28-the-chip-stack-is-the-new-model-stack.md"
+    ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-06-28T08:30:59.593358+00:00",
+    "status": "success",
+    "duration_s": 52.9,
+    "feeds_scanned": 10,
+    "items_found": 67,
+    "items_rejected": 60,
+    "items_published": 7,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0752,
+    "input_tokens": 9619,
+    "output_tokens": 3091,
+    "output_files": [
+      "src/data/radar/2026-06-28.json"
     ]
   }
 ]

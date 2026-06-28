@@ -876,6 +876,19 @@
         "TBD",
         "iLLaDA"
       ]
+    },
+    {
+      "date": "2026-06-28",
+      "file": "2026-06-28.json",
+      "products": [
+        "DSpark",
+        "Astryx",
+        "LFM2.5-230M",
+        "Adrafinil",
+        "Cerberus",
+        "git-temp",
+        "Corv"
+      ]
     }
   ]
 }
