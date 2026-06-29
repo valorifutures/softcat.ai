@@ -1,37 +1,5 @@
 [
   {
-    "bot": "radar_bot",
-    "timestamp": "2026-03-30T09:31:31.959614+00:00",
-    "status": "error",
-    "duration_s": 89.6,
-    "feeds_scanned": 0,
-    "items_found": 0,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": [],
-    "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 1."
-  },
-  {
-    "bot": "model_bot",
-    "timestamp": "2026-03-31T04:00:01.955150+00:00",
-    "status": "error",
-    "duration_s": 0.5,
-    "feeds_scanned": 0,
-    "items_found": 0,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": [],
-    "error_msg": "Command '['git', 'pull', '--rebase']' returned non-zero exit status 128."
-  },
-  {
     "bot": "model_bot",
     "timestamp": "2026-03-31T06:00:01.795390+00:00",
     "status": "success",
@@ -7688,5 +7656,23 @@
     "output_files": [],
     "error_msg": "33 unverifiable: 2026-02-23-trulens.md, 2026-02-24-composio-agent-orchestrator.md, 2026-02-24-openai-websocket-mode.md, 2026-03-01-sakana-ais-doctolora-and-texttolora.md, 2026-03-08-liquid-ai-localcowork.md",
     "job": "verify"
+  },
+  {
+    "bot": "model_bot",
+    "timestamp": "2026-06-29T05:00:06.589618+00:00",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 0,
+    "items_found": 339,
+    "items_rejected": 0,
+    "items_published": 39,
+    "model": "",
+    "cost_usd": null,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [
+      "src/data/models.json"
+    ],
+    "job": "prices"
   }
 ]
