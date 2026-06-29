@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25-ai-digest",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -1244,5 +1244,71 @@
       }
     ],
     "added": "2026-06-23"
+  },
+  {
+    "id": "now-2026-06-chip-stack-displaces-model-stack-as-primary-differentiator",
+    "lane": "now",
+    "title": "The chip stack displaces the model stack as the primary differentiator",
+    "date": "2026-06-29",
+    "themes": [
+      "chips",
+      "infrastructure",
+      "models"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "AI labs building their own silicon means the competitive moat is shifting from model weights to the hardware layer beneath them. Who controls inference silicon now shapes what models can be deployed, at what cost, and at what scale.",
+    "implication": "_Watch the chip announcements as closely as the model releases, because that is where the real capability gaps will open._",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-28-the-chip-stack-is-the-new-model-stack",
+        "label": "The Chip Stack Is the New Model Stack"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-25-ai-digest",
+        "label": "OpenAI builds its own inference chip"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-27-ai-digest",
+        "label": "Custom chip race heats up"
+      }
+    ],
+    "added": "2026-06-29"
+  },
+  {
+    "id": "now-2026-06-government-gatekeeping-reshapes-deployment-politics",
+    "lane": "now",
+    "title": "Government gatekeeping turns AI deployment into a political negotiation",
+    "date": "2026-06-29",
+    "themes": [
+      "regulation",
+      "enterprise",
+      "models"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Governments are no longer just banning models. They are controlling release timing, access, and critical infrastructure clearance. The AI race is now as much about political approval as technical capability.",
+    "implication": "_Expect enterprise AI roadmaps to start including government relations as a hard dependency, not an afterthought._",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-29-governments-are-now-the-biggest-bottleneck-in-ai-deployment",
+        "label": "Governments Are Now the Biggest Bottleneck in AI Deployment"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-26-ai-digest",
+        "label": "White House slows OpenAI's newest model"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-29-ai-digest",
+        "label": "Anthropic's Mythos 5 cleared for critical infrastructure"
+      }
+    ],
+    "added": "2026-06-29"
   }
 ]
