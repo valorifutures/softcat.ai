@@ -7693,5 +7693,22 @@
     "output_files": [
       "src/content/news-and-updates/2026-06-29-ai-digest.md"
     ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-06-29T07:00:20.420621+00:00",
+    "status": "success",
+    "duration_s": 17.7,
+    "feeds_scanned": 5,
+    "items_found": 35,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0182,
+    "input_tokens": 3702,
+    "output_tokens": 473,
+    "output_files": [
+      "src/content/thoughts/2026-06-29-governments-are-now-the-biggest-bottleneck-in-ai-deployment.md"
+    ]
   }
 ]
