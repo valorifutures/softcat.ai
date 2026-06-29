@@ -1,39 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-03-31T07:00:27.109047+00:00",
-    "status": "success",
-    "duration_s": 23.8,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.032,
-    "input_tokens": 7363,
-    "output_tokens": 660,
-    "output_files": [
-      "src/content/news-and-updates/2026-03-31-ai-digest.md"
-    ]
-  },
-  {
-    "bot": "thoughts_bot",
-    "timestamp": "2026-03-31T08:00:23.459681+00:00",
-    "status": "success",
-    "duration_s": 20.2,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0215,
-    "input_tokens": 5225,
-    "output_tokens": 386,
-    "output_files": [
-      "src/content/thoughts/2026-03-31-latency-budgets-are-the-new-moore.md"
-    ]
-  },
-  {
     "bot": "radar_bot",
     "timestamp": "2026-03-31T09:30:59.005478+00:00",
     "status": "success",
@@ -7709,6 +7675,23 @@
     "output_tokens": 473,
     "output_files": [
       "src/content/thoughts/2026-06-29-governments-are-now-the-biggest-bottleneck-in-ai-deployment.md"
+    ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-06-29T08:30:41.048538+00:00",
+    "status": "success",
+    "duration_s": 38.4,
+    "feeds_scanned": 10,
+    "items_found": 45,
+    "items_rejected": 41,
+    "items_published": 4,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0543,
+    "input_tokens": 8031,
+    "output_tokens": 2017,
+    "output_files": [
+      "src/data/radar/2026-06-29.json"
     ]
   }
 ]

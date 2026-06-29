@@ -889,6 +889,16 @@
         "git-temp",
         "Corv"
       ]
+    },
+    {
+      "date": "2026-06-29",
+      "file": "2026-06-29.json",
+      "products": [
+        "AgentWatch",
+        "wavecat",
+        "Caliper",
+        "VibeThinker-3B"
+      ]
     }
   ]
 }

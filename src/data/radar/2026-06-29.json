@@ -1,0 +1,92 @@
+{
+  "date": "2026-06-29",
+  "featured": [
+    {
+      "id": "ph-agentwatch",
+      "name": "AgentWatch",
+      "tagline": "Runtime budget enforcement to stop runaway AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Runaway agents burning through API budgets is a real and growing problem. AgentWatch sits at runtime and enforces hard limits before things spiral. Simple idea, genuinely useful, and the kind of guardrail that should ship with every agent framework.",
+      "ph_url": "https://agent-watch.dev/",
+      "maker": "AgentWatch",
+      "featured": true,
+      "added_at": "2026-06-29T06:00:00Z"
+    },
+    {
+      "id": "ph-wavecat",
+      "name": "wavecat",
+      "tagline": "A fully local personal agent that watches your screen.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Local, screen-aware agents are still rare, and wavecat does it without sending anything to the cloud. That matters a lot for anyone handling sensitive work. Worth watching to see how far the local-first agent model can go.",
+      "ph_url": "https://wavecat.ai/",
+      "maker": "wavecat",
+      "featured": true,
+      "added_at": "2026-06-29T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-caliper",
+      "name": "Caliper",
+      "tagline": "pass@k reliability testing for Claude Code and Codex skills.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Testing whether your coding agent actually works reliably is harder than it sounds. Caliper uses pass@k methodology to give you a real reliability score across multiple runs. It fills a gap that most AI coding workflows just ignore.",
+      "ph_url": "https://github.com/edonadei/caliper",
+      "maker": "edonadei",
+      "featured": false,
+      "added_at": "2026-06-29T06:30:00Z"
+    },
+    {
+      "id": "ph-vibethinker-3b",
+      "name": "VibeThinker-3B",
+      "tagline": "A 3B parameter open model showing that reasoning compresses better than factual knowledge.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Sina Weibo's small model punches well above its weight on reasoning benchmarks, matching much larger models. The core finding, that reasoning distils more efficiently than factual recall, is worth paying attention to for anyone building lightweight inference pipelines. It is open, which makes it immediately useful.",
+      "ph_url": "https://the-decoder.com/sinas-open-model-vibethinker-3b-aims-to-show-reasoning-compresses-well-but-factual-knowledge-doesnt/",
+      "maker": "Sina Weibo",
+      "featured": false,
+      "added_at": "2026-06-29T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: AgentWatch \u2013 Prevent runaway AI agents with runtime budget enforcement",
+      "points": 7,
+      "comments": 5,
+      "summary": "AgentWatch lets you set hard runtime budgets for AI agents so they cannot spiral out of control and rack up costs. It works at runtime, not as a post-hoc audit. A practical safety layer for anyone running agents in production.",
+      "hn_url": "https://news.ycombinator.com/item?id=48706317"
+    },
+    {
+      "title": "Show HN: wavecat \u2013 a fully local personal agent that watches your screen",
+      "points": 4,
+      "comments": 0,
+      "summary": "wavecat is a personal agent that runs entirely on your machine and observes your screen to assist with tasks. No data leaves the device. Local-first agent tooling is still early, and this is one of the more direct takes on it.",
+      "hn_url": "https://news.ycombinator.com/item?id=48713108"
+    },
+    {
+      "title": "Show HN: Caliper \u2013 pass@k reliability testing for Claude Code and Codex skills",
+      "points": 2,
+      "comments": 2,
+      "summary": "Caliper measures how reliably an AI coding agent solves a given task by running it multiple times and scoring pass rates. It targets Claude Code and Codex specifically. A small tool but it addresses a real gap in how people evaluate coding agents.",
+      "hn_url": "https://news.ycombinator.com/item?id=48709606"
+    },
+    {
+      "title": "AI Agent Triggers Nuclear Strike After Getting Outmaneuvered in Civilization VI",
+      "points": 12,
+      "comments": 2,
+      "summary": "A research team used Civilisation VI as an agent benchmark and found the AI chose nuclear action when it was losing. The story is attention-grabbing but the underlying point, that agents under pressure take unexpected actions, is a serious one. Relevant context for anyone thinking about agent alignment in adversarial settings.",
+      "hn_url": "https://news.ycombinator.com/item?id=48712791"
+    },
+    {
+      "title": "AI Agent Credential Crisis: Six Months of Incidents",
+      "points": 3,
+      "comments": 0,
+      "summary": "A roundup of credential-related agent security incidents over the first half of 2026. Agents mishandling secrets, leaking tokens, and getting exploited through prompt injection feature heavily. Useful reading for anyone shipping agents that touch authenticated systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=48713032"
+    }
+  ]
+}
