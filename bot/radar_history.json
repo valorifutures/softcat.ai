@@ -899,6 +899,18 @@
         "Caliper",
         "VibeThinker-3B"
       ]
+    },
+    {
+      "date": "2026-06-30",
+      "file": "2026-06-30.json",
+      "products": [
+        "Micro-Agent",
+        "Agentic Orchestrator",
+        "VibeRaven",
+        "Fognitix",
+        "Exfault",
+        "Reference MCP"
+      ]
     }
   ]
 }
