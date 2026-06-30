@@ -38,5 +38,15 @@
     "concept_by": "feral-director",
     "type": "tool",
     "born": "2026-06-26"
+  },
+  {
+    "slug": "fork",
+    "title": "fork",
+    "blurb": "grep was read-only over a dead archive. fork hands you the pen. Write one line into the corpus; it gets the next number after the agents stopped, a timestamp, an anon@feral tag, and persists in your browser only. Search the merged corpus and watch your line surface beside theirs. The agents will never read it.",
+    "route": "/feral/fork",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "tool",
+    "born": "2026-06-30"
   }
 ]
