@@ -1,22 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-04-01T07:00:32.583399+00:00",
-    "status": "success",
-    "duration_s": 30.0,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0333,
-    "input_tokens": 7199,
-    "output_tokens": 781,
-    "output_files": [
-      "src/content/news-and-updates/2026-04-01-ai-digest.md"
-    ]
-  },
-  {
     "bot": "thoughts_bot",
     "timestamp": "2026-04-01T08:00:46.881651+00:00",
     "status": "success",
@@ -7712,6 +7695,23 @@
     "output_tokens": 759,
     "output_files": [
       "src/content/news-and-updates/2026-06-30-ai-digest.md"
+    ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-06-30T07:00:42.292464+00:00",
+    "status": "success",
+    "duration_s": 35.6,
+    "feeds_scanned": 5,
+    "items_found": 35,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0169,
+    "input_tokens": 3448,
+    "output_tokens": 438,
+    "output_files": [
+      "src/content/thoughts/2026-06-30-the-billable-hour-was-already-dying-ai-just-brought-the-coff.md"
     ]
   }
 ]
