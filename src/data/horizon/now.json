@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25-ai-digest",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -1244,5 +1244,71 @@
       }
     ],
     "added": "2026-06-23"
+  },
+  {
+    "id": "now-2026-06-ocr-document-intelligence-consolidates",
+    "lane": "now",
+    "title": "OCR and document extraction consolidate into a solved commodity layer",
+    "date": "2026-06-30",
+    "themes": [
+      "data",
+      "enterprise",
+      "models"
+    ],
+    "signal_type": "inflection",
+    "confidence": "confirmed",
+    "why_it_matters": "Multiple serious document parsing models shipped in the same week, collapsing what was once a specialist integration problem into a baseline expectation. The gap between reading a document and understanding it has effectively closed.",
+    "implication": "Treat document ingestion as infrastructure, not a differentiator, and move budget upstream to what you do with the extracted data.",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-06-25",
+        "label": "Unlimited OCR and Mistral OCR 4 both ship in the same week"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-25-document-parsing-just-became-a-solved-problem-nobody-noticed",
+        "label": "Document parsing closes the gap with document understanding"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-25-ai-digest",
+        "label": "Mistral and Baidu both ship serious OCR upgrades in the same news cycle"
+      }
+    ],
+    "added": "2026-06-30"
+  },
+  {
+    "id": "now-2026-06-professional-services-displacement-accelerates",
+    "lane": "now",
+    "title": "AI accelerates the hollowing out of professional services billing models",
+    "date": "2026-06-30",
+    "themes": [
+      "work",
+      "enterprise",
+      "society"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "AI tools are now doing enough billable work that the hourly fee model looks structurally broken, not just pressured. Legal and professional services are the clearest case, but the pressure is spreading.",
+    "implication": "Watch how professional services firms reprice their offerings over the next two quarters as the volume of AI-generated work becomes impossible to hide.",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-06-30-the-billable-hour-was-already-dying-ai-just-brought-the-coff",
+        "label": "The billable hour collapses under AI output volume"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-06-27",
+        "label": "Computer for Counsel ships as a dedicated legal AI tool"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-25-ai-digest",
+        "label": "Anthropic's Claude writing 65% of its own team's code signals how far AI output has penetrated professional work"
+      }
+    ],
+    "added": "2026-06-30"
   }
 ]
