@@ -1,0 +1,152 @@
+{
+  "date": "2026-07-01",
+  "featured": [
+    {
+      "id": "ph-claude-sonnet-5",
+      "name": "Claude Sonnet 5",
+      "tagline": "Anthropic's mid-tier model that now rivals Opus at a fraction of the cost.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Sonnet 5 beats its predecessor across all benchmarks and edges past Opus 4.8 on knowledge work tests. That is a big deal for anyone running agents at scale where Opus pricing hurts. Cheaper capable models push the whole industry forward.",
+      "ph_url": "https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/",
+      "maker": "Anthropic",
+      "featured": true,
+      "added_at": "2026-07-01T06:00:00Z"
+    },
+    {
+      "id": "ph-claude-science",
+      "name": "Claude Science",
+      "tagline": "A dedicated AI workbench for researchers, with 60+ preconfigured scientific skills.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Anthropic is going after scientific workflows directly rather than just offering a general model. The built-in verification agent that checks citations and calculations is the part worth watching. Runs locally or on HPC clusters, which means actual researchers might actually use it.",
+      "ph_url": "https://techcrunch.com/2026/06/30/anthropics-claude-science-bets-on-workflow-not-a-new-model-to-win-over-scientists/",
+      "maker": "Anthropic",
+      "featured": true,
+      "added_at": "2026-07-01T06:00:00Z"
+    },
+    {
+      "id": "ph-nano-banana-2-lite",
+      "name": "Nano Banana 2 Lite",
+      "tagline": "Google's faster, cheaper image generator producing images in four seconds.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Four-second generation at $0.034 per image is genuinely competitive pricing. Google also dropped Gemini Omni Flash alongside it, adding text-prompt video generation to the API for the first time. Chaining the two for text-to-video workflows is the obvious play.",
+      "ph_url": "https://techcrunch.com/2026/06/30/google-introduces-a-faster-cheaper-image-generator-with-nano-banana-2-lite/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-07-01T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-openclaw-mobile",
+      "name": "OpenClaw Mobile",
+      "tagline": "The open-source agentic program is now on Android and iOS.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "OpenClaw going mobile is a meaningful moment for open-source agentic software. Most capable agent tooling still lives on the desktop, so this widens access considerably. Worth watching to see how the mobile UX holds up for real agentic tasks.",
+      "ph_url": "https://techcrunch.com/2026/06/30/openclaw-is-finally-available-on-android-and-ios/",
+      "maker": "OpenClaw",
+      "featured": false,
+      "added_at": "2026-07-01T06:30:00Z"
+    },
+    {
+      "id": "ph-acti-keyboard",
+      "name": "Acti",
+      "tagline": "An AI agent keyboard for iOS and Android that works across every app.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Putting agent shortcuts into the keyboard layer is a smarter distribution move than another standalone app. You define custom AI actions in natural language and they fire from wherever you are typing. The cross-app scope is what separates this from earlier AI keyboard experiments.",
+      "ph_url": "https://techcrunch.com/2026/06/30/acti-puts-ai-agents-directly-into-your-smartphone-keyboard/",
+      "maker": "Acti",
+      "featured": false,
+      "added_at": "2026-07-01T06:30:00Z"
+    },
+    {
+      "id": "ph-x-mcp-server",
+      "name": "X MCP Server",
+      "tagline": "A hosted MCP server from X, making the platform accessible to AI tools and agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "X joining the MCP ecosystem means developers can wire the platform into agent workflows without wrestling with the raw API. Whether or not you like X, it is a massive real-time data source and this makes it far easier to tap. More MCP coverage across major platforms is a good trend.",
+      "ph_url": "https://techcrunch.com/2026/06/30/x-now-offers-an-mcp-server-to-make-its-platform-easier-for-ai-tools-to-use/",
+      "maker": "X",
+      "featured": false,
+      "added_at": "2026-07-01T06:30:00Z"
+    },
+    {
+      "id": "ph-lumo-2",
+      "name": "Lumo 2.0",
+      "tagline": "Proton's privacy-first AI chatbot gets a significant capability upgrade.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Proton has a built-in audience that cares about data privacy, and Lumo 2.0 expands what that audience can do without leaving the privacy bubble. The upgrade arrives at a moment when people are genuinely reconsidering what they feed to mainstream AI chatbots. A more capable private option matters.",
+      "ph_url": "https://techcrunch.com/2026/06/30/lumo-protons-privacy-focused-ai-chatbot-gets-an-upgrade/",
+      "maker": "Proton",
+      "featured": false,
+      "added_at": "2026-07-01T06:30:00Z"
+    },
+    {
+      "id": "ph-143dev-coding-agent",
+      "name": "143.dev",
+      "tagline": "Open-sourced internal coding-agent infrastructure, now public.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Teams rarely open-source the scaffolding they actually use internally, so this is worth a look. The repo surfaces real production patterns for coding agents rather than tutorial-grade demos. Low points on HN but the signal-to-noise ratio on Show HN infrastructure posts is often inverted.",
+      "ph_url": "https://news.ycombinator.com/item?id=48736251",
+      "maker": "143.dev",
+      "featured": false,
+      "added_at": "2026-07-01T06:30:00Z"
+    },
+    {
+      "id": "ph-autotune-llm",
+      "name": "AutoTune LLM",
+      "tagline": "Makes local LLMs faster and more reliable by optimising for your specific device.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Local LLM performance varies wildly depending on hardware and most tools ignore that entirely. AutoTune LLM addresses the gap by profiling your device and adjusting accordingly. Small tool, but the problem it solves is real and felt by anyone running models locally.",
+      "ph_url": "https://www.autotunellm.com/",
+      "maker": "AutoTune LLM",
+      "featured": false,
+      "added_at": "2026-07-01T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: 143.dev \u2013 we open-sourced our internal coding-agent infrastructure",
+      "points": 11,
+      "comments": 1,
+      "summary": "A team has open-sourced the coding-agent infrastructure they built and used internally. Rare to see production-grade agent scaffolding released rather than demo code. Worth reviewing if you are building or evaluating coding agent setups.",
+      "hn_url": "https://news.ycombinator.com/item?id=48736251"
+    },
+    {
+      "title": "Show HN: Morph Reflexes \u2013 Multi-head classifiers for agent traces",
+      "points": 7,
+      "comments": 1,
+      "summary": "Morph Reflexes applies multi-head classifiers to agent execution traces, which is a practical approach to evaluating and monitoring agent behaviour. Agent observability is still an unsolved problem for most teams. This sits at a useful intersection of evals and runtime monitoring.",
+      "hn_url": "https://news.ycombinator.com/item?id=48739038"
+    },
+    {
+      "title": "Show HN: Scaffold a BigQuery and dbt and Cube project an AI agent can operate",
+      "points": 7,
+      "comments": 3,
+      "summary": "A CLI tool that scaffolds a full BigQuery, dbt, and Cube stack structured so an AI agent can operate it. Data infrastructure that is designed from the start to be agent-accessible is an emerging pattern. The opinionated stack choice makes it immediately usable rather than abstract.",
+      "hn_url": "https://news.ycombinator.com/item?id=48733674"
+    },
+    {
+      "title": "Show HN: NodePad \u2013 AI agent on a canvas instead of a linear chat",
+      "points": 5,
+      "comments": 0,
+      "summary": "NodePad moves AI agent interaction onto a canvas rather than a chat thread, letting users build and visualise workflows spatially. The canvas metaphor maps better onto complex multi-step agent tasks than a scrolling conversation does. Early but the concept addresses a genuine UX problem.",
+      "hn_url": "https://news.ycombinator.com/item?id=48731991"
+    },
+    {
+      "title": "Show HN: Makes local LLMs faster and more reliable by optimizing for your device",
+      "points": 5,
+      "comments": 0,
+      "summary": "AutoTune LLM profiles your hardware and adjusts local LLM settings to improve speed and reliability. Most local model tooling ships with generic defaults that leave performance on the table. Device-aware optimisation is the obvious next step for the local AI ecosystem.",
+      "hn_url": "https://news.ycombinator.com/item?id=48736860"
+    }
+  ]
+}

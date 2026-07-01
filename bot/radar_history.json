@@ -911,6 +911,21 @@
         "Exfault",
         "Reference MCP"
       ]
+    },
+    {
+      "date": "2026-07-01",
+      "file": "2026-07-01.json",
+      "products": [
+        "Claude Sonnet 5",
+        "Claude Science",
+        "Nano Banana 2 Lite",
+        "OpenClaw Mobile",
+        "Acti",
+        "X MCP Server",
+        "Lumo 2.0",
+        "143.dev",
+        "AutoTune LLM"
+      ]
     }
   ]
 }
