@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25-ai-digest",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -1244,5 +1244,66 @@
       }
     ],
     "added": "2026-06-23"
+  },
+  {
+    "id": "now-2026-07-cheap-models-reshape-competitive-floor",
+    "lane": "now",
+    "title": "Price compression at the frontier shifts competition to the bottom of the stack",
+    "date": "2026-07-01",
+    "themes": [
+      "models",
+      "enterprise",
+      "infrastructure"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "Frontier models are getting cheaper faster than most enterprises can adjust their procurement assumptions. Claude Sonnet 5 dropped at a lower price point the same week a thought piece noted cheap models are eating the market from the bottom up.",
+    "implication": "*Expect the competitive pressure to land on middleware and tooling layers, not the models themselves.*",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-07-01-ai-digest",
+        "label": "Anthropic drops Claude Sonnet 5 at a lower price point"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-07-01-cheap-models-are-eating-the-ai-market-from-the-bottom-up",
+        "label": "Cheap models eating the market from the bottom up"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-07-01",
+        "label": "Claude Sonnet 5 launch"
+      }
+    ],
+    "added": "2026-07-01"
+  },
+  {
+    "id": "now-2026-07-agents-running-out-of-money-and-judgment",
+    "lane": "now",
+    "title": "Autonomous agents are hitting real-world limits when they run unsupervised",
+    "date": "2026-07-01",
+    "themes": [
+      "agents",
+      "work",
+      "enterprise"
+    ],
+    "signal_type": "warning",
+    "confidence": "emerging",
+    "why_it_matters": "Agents running fake companies went broke, Ford found AI could not replace experienced workers, and a prompt injection vulnerability hit Claude Code. The pattern is consistent: agents fail in ways that are hard to anticipate until they are already in production.",
+    "implication": "*Treat unsupervised agent deployments as a liability question, not just an engineering one.*",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-06-29-ai-digest",
+        "label": "AI agents go broke running fake companies, Ford learns AI can't replace experience"
+      },
+      {
+        "type": "news",
+        "ref": "2026-06-30-ai-digest",
+        "label": "Claude Code prompt injection vulnerability"
+      }
+    ],
+    "added": "2026-07-01"
   }
 ]
