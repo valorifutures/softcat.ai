@@ -1,39 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-04-02T07:00:29.518689+00:00",
-    "status": "success",
-    "duration_s": 27.5,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0338,
-    "input_tokens": 7807,
-    "output_tokens": 690,
-    "output_files": [
-      "src/content/news-and-updates/2026-04-02-ai-digest.md"
-    ]
-  },
-  {
-    "bot": "thoughts_bot",
-    "timestamp": "2026-04-02T08:00:21.676046+00:00",
-    "status": "success",
-    "duration_s": 19.9,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0215,
-    "input_tokens": 5248,
-    "output_tokens": 382,
-    "output_files": [
-      "src/content/thoughts/2026-04-02-enterprise-ai-is-just-expensive-autocomplete-with-a-complian.md"
-    ]
-  },
-  {
     "bot": "radar_bot",
     "timestamp": "2026-04-02T09:30:53.874747+00:00",
     "status": "success",
@@ -7720,5 +7686,20 @@
     "output_files": [
       "src/content/thoughts/2026-07-01-cheap-models-are-eating-the-ai-market-from-the-bottom-up.md"
     ]
+  },
+  {
+    "bot": "prompt_bot",
+    "timestamp": "2026-07-01T08:00:54.812509+00:00",
+    "status": "success",
+    "duration_s": 48.2,
+    "feeds_scanned": 5,
+    "items_found": 35,
+    "items_rejected": 0,
+    "items_published": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0436,
+    "input_tokens": 4509,
+    "output_tokens": 2006,
+    "output_files": []
   }
 ]

@@ -287,6 +287,18 @@
       "file": "agentic-loop-risk-auditor.md",
       "title": "Agentic Loop Risk Auditor",
       "category": "security"
+    },
+    {
+      "date": "2026-07-01",
+      "file": "mcp-server-integration-validator.md",
+      "title": "MCP Server Integration Validator",
+      "category": "api-design"
+    },
+    {
+      "date": "2026-07-01",
+      "file": "ai-agent-cost-attribution-analyser.md",
+      "title": "AI Agent Cost Attribution Analyser",
+      "category": "monitoring"
     }
   ]
 }
