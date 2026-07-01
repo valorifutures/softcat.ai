@@ -7703,5 +7703,22 @@
     "output_files": [
       "src/content/news-and-updates/2026-07-01-ai-digest.md"
     ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-07-01T07:00:22.446779+00:00",
+    "status": "success",
+    "duration_s": 15.8,
+    "feeds_scanned": 5,
+    "items_found": 35,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0172,
+    "input_tokens": 3442,
+    "output_tokens": 461,
+    "output_files": [
+      "src/content/thoughts/2026-07-01-cheap-models-are-eating-the-ai-market-from-the-bottom-up.md"
+    ]
   }
 ]
