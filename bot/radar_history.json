@@ -926,6 +926,16 @@
         "143.dev",
         "AutoTune LLM"
       ]
+    },
+    {
+      "date": "2026-07-02",
+      "file": "2026-07-02.json",
+      "products": [
+        "Gemini Spark for Mac",
+        "Ox",
+        "Kage Core",
+        "Job Application Agent"
+      ]
     }
   ]
 }

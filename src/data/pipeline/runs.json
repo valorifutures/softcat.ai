@@ -1,22 +1,5 @@
 [
   {
-    "bot": "thoughts_bot",
-    "timestamp": "2026-04-03T08:00:35.050809+00:00",
-    "status": "success",
-    "duration_s": 30.2,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0218,
-    "input_tokens": 5206,
-    "output_tokens": 410,
-    "output_files": [
-      "src/content/thoughts/2026-04-03-open-source-reasoning-models-just-made-the-api-economy-irrel.md"
-    ]
-  },
-  {
     "bot": "model_bot",
     "timestamp": "2026-04-04T04:00:02.106094+00:00",
     "status": "error",
@@ -7735,6 +7718,23 @@
     "output_tokens": 522,
     "output_files": [
       "src/content/thoughts/2026-07-02-hidden-flags-and-token-bloat-trust-is-now-a-pricing-problem.md"
+    ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-07-02T08:30:47.486485+00:00",
+    "status": "success",
+    "duration_s": 40.8,
+    "feeds_scanned": 10,
+    "items_found": 45,
+    "items_rejected": 41,
+    "items_published": 4,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0601,
+    "input_tokens": 9662,
+    "output_tokens": 2071,
+    "output_files": [
+      "src/data/radar/2026-07-02.json"
     ]
   }
 ]
