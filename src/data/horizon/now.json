@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25-ai-digest",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -1244,5 +1244,61 @@
       }
     ],
     "added": "2026-06-23"
+  },
+  {
+    "id": "now-2026-07-hidden-costs-and-monitoring-erode-ai-tool-trust",
+    "lane": "now",
+    "title": "Hidden monitoring and silent cost inflation become the new trust crisis in AI tooling",
+    "date": "2026-07-02",
+    "themes": [
+      "enterprise",
+      "security",
+      "models"
+    ],
+    "signal_type": "warning",
+    "confidence": "emerging",
+    "why_it_matters": "Anthropic was caught embedding undisclosed monitoring code and Claude Sonnet 5 was found to quietly double token costs. When AI tools obscure what they do and what they charge, the trust required for enterprise adoption starts to break down.",
+    "implication": "_Watch for procurement teams demanding contractual transparency clauses as a condition of AI tool adoption._",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-07-02-ai-digest",
+        "label": "Anthropic caught hiding monitoring code, Claude Sonnet 5 doubles bills"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-07-02-hidden-flags-and-token-bloat-trust-is-now-a-pricing-problem",
+        "label": "Hidden flags and token bloat reframe trust as a pricing problem"
+      }
+    ],
+    "added": "2026-07-02"
+  },
+  {
+    "id": "now-2026-07-compute-monetisation-becomes-competitive-product-move",
+    "lane": "now",
+    "title": "Spare compute becomes a product as AI infrastructure operators race to monetise idle capacity",
+    "date": "2026-07-02",
+    "themes": [
+      "infrastructure",
+      "chips",
+      "enterprise"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Meta and SpaceX are both moving to monetise unused compute capacity, turning idle infrastructure into a revenue line. This shifts the compute market away from pure capex and towards a more liquid, spot-market model.",
+    "implication": "_Expect smaller AI teams to route workloads through infrastructure brokers rather than committing to dedicated cloud contracts._",
+    "evidence": [
+      {
+        "type": "news",
+        "ref": "2026-07-02-ai-digest",
+        "label": "Meta and SpaceX race to monetise spare compute"
+      },
+      {
+        "type": "thought",
+        "ref": "2026-06-28-the-chip-stack-is-the-new-model-stack",
+        "label": "The chip stack displaces the model stack as primary differentiator"
+      }
+    ],
+    "added": "2026-07-02"
   }
 ]
