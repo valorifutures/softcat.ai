@@ -1,22 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-04-03T07:00:30.191008+00:00",
-    "status": "success",
-    "duration_s": 25.4,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0332,
-    "input_tokens": 7670,
-    "output_tokens": 679,
-    "output_files": [
-      "src/content/news-and-updates/2026-04-03-ai-digest.md"
-    ]
-  },
-  {
     "bot": "thoughts_bot",
     "timestamp": "2026-04-03T08:00:35.050809+00:00",
     "status": "success",
@@ -7735,6 +7718,23 @@
     "output_tokens": 743,
     "output_files": [
       "src/content/news-and-updates/2026-07-02-ai-digest.md"
+    ]
+  },
+  {
+    "bot": "thoughts_bot",
+    "timestamp": "2026-07-02T07:00:53.720788+00:00",
+    "status": "success",
+    "duration_s": 47.1,
+    "feeds_scanned": 5,
+    "items_found": 35,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0186,
+    "input_tokens": 3579,
+    "output_tokens": 522,
+    "output_files": [
+      "src/content/thoughts/2026-07-02-hidden-flags-and-token-bloat-trust-is-now-a-pricing-problem.md"
     ]
   }
 ]
