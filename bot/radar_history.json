@@ -936,6 +936,18 @@
         "Kage Core",
         "Job Application Agent"
       ]
+    },
+    {
+      "date": "2026-07-03",
+      "file": "2026-07-03.json",
+      "products": [
+        "Manufact",
+        "Pocket by Meta",
+        "NotebookLM Video Shorts",
+        "Mirrors",
+        "Declaw Arena",
+        "Enola"
+      ]
     }
   ]
 }

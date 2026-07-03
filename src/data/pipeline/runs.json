@@ -1,39 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-04-04T07:00:26.358092+00:00",
-    "status": "success",
-    "duration_s": 23.7,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0329,
-    "input_tokens": 7541,
-    "output_tokens": 683,
-    "output_files": [
-      "src/content/news-and-updates/2026-04-04-ai-digest.md"
-    ]
-  },
-  {
-    "bot": "thoughts_bot",
-    "timestamp": "2026-04-04T08:00:20.207268+00:00",
-    "status": "success",
-    "duration_s": 18.9,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-20250514",
-    "cost_usd": 0.0216,
-    "input_tokens": 5200,
-    "output_tokens": 400,
-    "output_files": [
-      "src/content/thoughts/2026-04-04-token-taxes-are-just-cloud-computing.md"
-    ]
-  },
-  {
     "bot": "radar_bot",
     "timestamp": "2026-04-04T09:30:53.553304+00:00",
     "status": "success",
@@ -7788,6 +7754,23 @@
     "output_tokens": 440,
     "output_files": [
       "src/content/thoughts/2026-07-03-models-are-getting-smarter-and-needing-less-hand-holding-tha.md"
+    ]
+  },
+  {
+    "bot": "radar_bot",
+    "timestamp": "2026-07-03T08:30:48.697123+00:00",
+    "status": "success",
+    "duration_s": 48.0,
+    "feeds_scanned": 10,
+    "items_found": 45,
+    "items_rejected": 39,
+    "items_published": 6,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0608,
+    "input_tokens": 7876,
+    "output_tokens": 2478,
+    "output_files": [
+      "src/data/radar/2026-07-03.json"
     ]
   }
 ]
