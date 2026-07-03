@@ -336,7 +336,7 @@
     ],
     "signal_type": "inflection",
     "confidence": "emerging",
-    "why_it_matters": "Anthropic heading for a £900B valuation whilst big tech drops £725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
+    "why_it_matters": "Anthropic heading for a \u00a3900B valuation whilst big tech drops \u00a3725B on AI infrastructure signals AI companies reaching nation-state scale economics. This isn't venture capital anymore, it's geopolitical infrastructure investment.",
     "implication": "Expect AI development to follow sovereign investment patterns rather than traditional tech funding cycles.",
     "evidence": [
       {
@@ -352,7 +352,7 @@
       {
         "type": "news",
         "ref": "2026-04-25-ai-digest",
-        "label": "Google drops £40B on Anthropic"
+        "label": "Google drops \u00a340B on Anthropic"
       },
       {
         "type": "thought",
@@ -1244,5 +1244,61 @@
       }
     ],
     "added": "2026-06-23"
+  },
+  {
+    "id": "now-2026-07-prompt-engineering-loses-its-grip-as-models-self-direct",
+    "lane": "now",
+    "title": "Prompt engineering loses its grip as models become self-directing",
+    "date": "2026-07-03",
+    "themes": [
+      "models",
+      "work",
+      "interfaces"
+    ],
+    "signal_type": "inflection",
+    "confidence": "emerging",
+    "why_it_matters": "Better models need less hand-holding from carefully crafted prompts, which undermines a whole layer of tooling and practice built around prompt design. Tools like AutoTune LLM signal the same shift from the product side.",
+    "implication": "*Watch for prompt-engineering frameworks to quietly rebrand as model-evaluation or orchestration tools instead.*",
+    "evidence": [
+      {
+        "type": "thought",
+        "ref": "2026-07-03-models-are-getting-smarter-and-needing-less-hand-holding-tha",
+        "label": "Models Are Getting Smarter and Needing Less Hand-Holding"
+      },
+      {
+        "type": "radar",
+        "ref": "2026-07-01",
+        "label": "AutoTune LLM"
+      }
+    ],
+    "added": "2026-07-03"
+  },
+  {
+    "id": "now-2026-07-ai-agents-move-into-freelance-and-job-market-territory",
+    "lane": "now",
+    "title": "AI agents move into freelance and job-market territory",
+    "date": "2026-07-03",
+    "themes": [
+      "agents",
+      "work",
+      "society"
+    ],
+    "signal_type": "trend",
+    "confidence": "emerging",
+    "why_it_matters": "Agents are now applying for jobs and quietly absorbing freelance tasks that used to require a human. This is no longer a forecast, it is showing up in specific tools and news coverage.",
+    "implication": "*Expect freelance platforms to face structural volume declines before most labour economists have models for it.*",
+    "evidence": [
+      {
+        "type": "radar",
+        "ref": "2026-07-02",
+        "label": "Job Application Agent"
+      },
+      {
+        "type": "news",
+        "ref": "2026-07-03-ai-digest",
+        "label": "AI agents quietly eat freelance work"
+      }
+    ],
+    "added": "2026-07-03"
   }
 ]
