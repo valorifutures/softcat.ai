@@ -1,4 +1,5 @@
 ---
+import ModelDataNotice from '../../components/ModelDataNotice.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ChatPlayground from '../../components/lab/ChatPlayground';
 import modelsData from '../../data/models.json';
@@ -10,8 +11,9 @@ const models = modelsData.map((m: any) => ({ id: m.id, name: m.name, provider: m
     <header class="mb-8">
       <a href="/tools" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; tools</a>
       <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">Chat Playground</h1>
-      <p class="text-text-muted mt-2">Chat with any model via OpenRouter. Compare responses side by side. Bring your own key.</p>
+      <p class="text-text-muted mt-2">Chat with a model from our saved roster via OpenRouter. Compare responses side by side. Bring your own key.</p>
     </header>
+    <ModelDataNotice />
     <ChatPlayground client:load models={models} />
   </div>
 </BaseLayout>

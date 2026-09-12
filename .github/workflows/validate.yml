@@ -24,6 +24,8 @@ jobs:
       - run: npm ci
       - run: node scripts/validate-tools-data.mjs
       - run: node scripts/validate-content.mjs
+      - run: node --test scripts/tests/*.test.mjs
+      - run: node scripts/validate-horizon-refs.mjs
       - run: npm run build
       - uses: actions/setup-python@v6
         with:

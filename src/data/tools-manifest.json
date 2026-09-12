@@ -2,10 +2,10 @@
   {
     "id": "chat-playground",
     "name": "Chat Playground",
-    "description": "Chat with any AI model via OpenRouter. Side-by-side comparison, streaming, cost tracking.",
-    "stat": "21 models, live cost tracking",
+    "description": "Chat with models via OpenRouter using your own key. Compare responses and estimated costs.",
+    "stat": "Bring your own key · provider charges apply",
     "href": "/lab/chat-playground",
-    "icon": "\u25c8",
+    "icon": "◈",
     "category": "models",
     "addedDate": "2026-02-01",
     "dataSource": "models.json"
@@ -16,7 +16,7 @@
     "description": "Full prompt IDE. System/user/assistant prefill, variables, 8 templates, save/load, multi-format export.",
     "stat": "8 templates, localStorage persistence",
     "href": "/lab/prompt-workbench",
-    "icon": "\u2699",
+    "icon": "⚙",
     "category": "prompts",
     "addedDate": "2026-02-01"
   },
@@ -26,7 +26,7 @@
     "description": "Visual map of the AI model landscape. Timeline, capability bars, pricing calculator.",
     "stat": "Card, timeline & pricing views",
     "href": "/lab/model-explorer",
-    "icon": "\u25c9",
+    "icon": "◉",
     "category": "models",
     "addedDate": "2026-02-01",
     "dataSource": "models.json"
@@ -35,9 +35,9 @@
     "id": "model-comparison",
     "name": "Model Comparison",
     "description": "Sortable table of AI models with capability scores, pricing, and context windows.",
-    "stat": "21 models, coding/reasoning/speed bars",
+    "stat": "Specs, stored pricing and editorial ratings",
     "href": "/lab/model-comparison",
-    "icon": "\u229e",
+    "icon": "⊞",
     "category": "models",
     "addedDate": "2026-02-01",
     "dataSource": "models.json"
@@ -59,7 +59,7 @@
     "description": "Compare two prompt versions with word-level diff, token delta, and cost difference.",
     "stat": "LCS diff + load saved prompts",
     "href": "/lab/prompt-diff",
-    "icon": "~\u0394",
+    "icon": "~Δ",
     "category": "prompts",
     "addedDate": "2026-02-01"
   },

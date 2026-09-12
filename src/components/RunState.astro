@@ -1,0 +1,7 @@
+---
+import { recordState } from '../lib/pipeline-status.mjs';
+interface Props { run?: { timestamp: string; status: string } | null; threshold?: number; }
+const { run, threshold = 36 } = Astro.props;
+const state = recordState(run, threshold);
+---
+<span class="run-state" data-run-state data-timestamp={run?.timestamp} data-status={run?.status} data-threshold={threshold} data-tone={state.tone}>{state.label}</span>

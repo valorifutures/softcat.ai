@@ -11,6 +11,7 @@ import { resolveEvidence } from '../lib/horizon-evidence';
 const pastEntries = await getCollection('horizonPast');
 const nowEntries = await getCollection('horizonNow');
 const nextEntries = await getCollection('horizonNext');
+const reviewDates = nextEntries.map((entry) => entry.data.confidence_last_reviewed).sort();
 const debateEntries = await getCollection('horizonDebates');
 const scenarioEntries = await getCollection('horizonScenarios');
 
@@ -205,6 +206,11 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
         credible futures may come next.
       </p>
     </header>
+
+    <aside class="mb-8 rounded-lg border border-neon-amber/30 bg-neon-amber/5 p-5 text-sm text-text-muted leading-relaxed">
+      <p><strong class="text-text-primary">Read this as a dated map.</strong> The latest Now signal is dated {sortedNow[0]?.data.date ?? 'unknown'}. Forecast confidence reviews run from {reviewDates[0] ?? 'unknown'} to {reviewDates.at(-1) ?? 'unknown'}.</p>
+      <p class="mt-2">The dates below show when evidence was assessed. A new page build does not renew a forecast. Links to our own posts provide context, not independent corroboration.</p>
+    </aside>
 
     <!-- Horizon band: past behind, now in middle (highlighted), next ahead. -->
     <div class="relative mb-4">

@@ -1,232 +1,91 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RecordedTime from '../components/RecordedTime.astro';
+import RunState from '../components/RunState.astro';
 import allRuns from '../data/pipeline/runs.json';
 import allBots from '../data/pipeline/bots.json';
+import { timestamp, newestRun, overdueHours, runsInWindow, formatRecordedTime } from '../lib/pipeline-status.mjs';
 
-const botMap = Object.fromEntries(allBots.map((b) => [b.id, b]));
-
-// Sort runs newest first
-const runs = [...allRuns].sort((a, b) => b.timestamp.localeCompare(a.timestamp));
-
-// 7-day summary
-const sevenDaysAgo = new Date(Date.now() - 7 * 86400000).toISOString();
-const recentRuns = runs.filter((r) => r.timestamp >= sevenDaysAgo);
-const totalRuns = recentRuns.length;
-const successRuns = recentRuns.filter((r) => r.status === 'success').length;
-const successRate = totalRuns > 0 ? Math.round((successRuns / totalRuns) * 100) : 0;
-const totalCost = recentRuns.reduce((sum, r) => sum + (r.cost_usd ?? 0), 0);
-const totalPublished = recentRuns.reduce((sum, r) => sum + (r.items_published ?? 0), 0);
-const totalTokens = recentRuns.reduce((sum, r) => sum + (r.input_tokens ?? 0) + (r.output_tokens ?? 0), 0);
-
-// Per-bot last run for roster
-const lastRunByBot: Record<string, typeof runs[0]> = {};
-for (const run of runs) {
-  if (!lastRunByBot[run.bot]) lastRunByBot[run.bot] = run;
-}
-
-// Group runs by date for history
-const runsByDate: Record<string, typeof runs> = {};
-for (const run of runs.slice(0, 100)) {
-  const date = run.timestamp.split('T')[0];
-  if (!runsByDate[date]) runsByDate[date] = [];
-  runsByDate[date].push(run);
-}
-const sortedDates = Object.keys(runsByDate).sort().reverse().slice(0, 14);
-
-function relativeTime(isoStr: string): string {
-  const now = new Date();
-  const then = new Date(isoStr);
-  const diffMs = now.getTime() - then.getTime();
-  const mins = Math.floor(diffMs / 60000);
-  if (mins < 1) return 'just now';
-  if (mins < 60) return `${mins}m ago`;
-  const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h ago`;
-  const days = Math.floor(hours / 24);
-  return `${days}d ago`;
-}
-
-function botStatus(bot: typeof allBots[0]): { label: string; color: string } {
-  const lastRun = lastRunByBot[bot.id];
-  if (!lastRun) return { label: 'no data', color: 'text-text-muted/40' };
-  if (lastRun.status === 'error') return { label: 'error', color: 'text-neon-red' };
-
-  // Check if overdue: parse cron-style schedule for expected interval
-  const now = new Date();
-  const lastTime = new Date(lastRun.timestamp);
-  const hoursSince = (now.getTime() - lastTime.getTime()) / 3600000;
-
-  // Daily bots: overdue if >36h. Weekly bots: overdue if >10 days.
-  const isWeekly = bot.schedule_cron.includes('* 0') || bot.schedule_cron.includes('* 3');
-  const overdueThreshold = isWeekly ? 240 : 36;
-
-  if (hoursSince > overdueThreshold) return { label: 'delayed', color: 'text-neon-amber' };
-  return { label: 'operational', color: 'text-neon-green' };
-}
-
-function formatDate(dateStr: string): string {
-  const d = new Date(dateStr + 'T00:00:00Z');
-  return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
-}
+const snapshot = new Date();
+const botMap = Object.fromEntries(allBots.map((bot) => [bot.id, bot]));
+const runs = [...allRuns].filter((run) => Number.isFinite(timestamp(run.timestamp)))
+  .sort((a, b) => timestamp(b.timestamp) - timestamp(a.timestamp));
+const recentRuns = runsInWindow(runs, snapshot.getTime());
+const successRuns = recentRuns.filter((run) => run.status === 'success').length;
+const costedRuns = recentRuns.filter((run) => run.cost_usd != null);
+const totalCost = costedRuns.reduce((sum, run) => sum + run.cost_usd, 0);
+const lastRun = newestRun(runs);
+const dates = [...new Set(runs.slice(0, 100).map((run) => new Date(run.timestamp).toISOString().slice(0, 10)))].slice(0, 14);
+const jobLabel = (run: any) => run.job ? ` · ${run.job}` : '';
 ---
-
-<BaseLayout title="Pipeline" description={`The machinery behind softcat.ai. ${allBots.length} bots, one pipeline, receipts for everything. Every run, every cost, every decision.`}>
-  <div class="max-w-4xl mx-auto px-6 py-16">
+<BaseLayout title="Pipeline" description="The published record of SOFT CAT's automation: dated runs, outcomes and recorded API costs.">
+  <div class="max-w-5xl mx-auto px-6 py-12 md:py-16">
     <header class="mb-8">
-      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">Pipeline</h1>
-      <p class="text-text-muted mt-2">The machinery that builds this site. Every bot run, every cost, every output.</p>
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan mb-4 inline-block">← home</a>
+      <p class="font-mono text-xs text-neon-green uppercase tracking-widest mb-3">The machinery, with receipts</p>
+      <h1 class="font-mono text-3xl font-bold text-text-bright">Pipeline</h1>
+      <p class="text-text-muted mt-4 max-w-2xl leading-relaxed">A record of what the bots did and when. This page reads their published logs. It cannot confirm whether the separate bot server is running now.</p>
     </header>
 
-    <div class="section-banner mb-6" style="height: 120px; --banner-accent: rgba(78, 203, 143, 0.12); --banner-accent-mid: rgba(78, 203, 143, 0.04)" aria-hidden="true"></div>
-    <div class="glow-divider mb-8" style="--divider-color: rgba(78, 203, 143, 0.15)"></div>
+    <aside class="mb-10 border border-neon-amber/30 bg-neon-amber/5 rounded-lg p-5 text-sm text-text-muted leading-relaxed">
+      <p><strong class="text-text-primary">Snapshot built <RecordedTime value={snapshot.toISOString()} relative={false} />.</strong></p>
+      <p class="mt-2">{lastRun ? <>Latest recorded bot activity: <RecordedTime value={lastRun.timestamp} relative={false} />.</> : 'No dated activity is recorded.'} A new site deployment does not count as a bot run.</p>
+      <p class="mt-2">The <a href="https://github.com/valorifutures/softcat.ai/actions" class="text-neon-cyan underline underline-offset-4">publishing workflow</a> and <a href="/feral" class="text-neon-cyan underline underline-offset-4">Feral experiment</a> have separate execution records.</p>
+    </aside>
 
-    <!-- 7-day summary -->
-    {totalRuns > 0 ? (
-      <section class="mb-12">
-        <h2 class="font-mono text-xs text-neon-green uppercase tracking-widest mb-6">Last 7 days</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="bg-surface border border-surface-light rounded-lg p-4">
-            <div class="font-mono text-2xl font-bold text-text-bright">{totalRuns}</div>
-            <div class="font-mono text-xs text-text-muted mt-1">bot runs</div>
-          </div>
-          <div class="bg-surface border border-surface-light rounded-lg p-4">
-            <div class="font-mono text-2xl font-bold text-text-bright">{successRate}%</div>
-            <div class="font-mono text-xs text-text-muted mt-1">success rate</div>
-          </div>
-          <div class="bg-surface border border-surface-light rounded-lg p-4">
-            <div class="font-mono text-2xl font-bold text-text-bright">${totalCost.toFixed(2)}</div>
-            <div class="font-mono text-xs text-text-muted mt-1">API cost</div>
-          </div>
-          <div class="bg-surface border border-surface-light rounded-lg p-4">
-            <div class="font-mono text-2xl font-bold text-text-bright">{totalPublished}</div>
-            <div class="font-mono text-xs text-text-muted mt-1">items published</div>
-          </div>
-        </div>
-      </section>
-    ) : (
-      <section class="mb-12">
-        <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
-          <p class="font-mono text-sm text-text-muted">
-            <span class="text-neon-green">&#9679;</span> Pipeline starting up. Run data will appear here after the first bot run.
-          </p>
-        </div>
-      </section>
-    )}
+    <section class="mb-12" aria-labelledby="snapshot-heading">
+      <h2 id="snapshot-heading" class="font-mono text-lg text-text-bright mb-2">Seven-day snapshot</h2>
+      <p class="text-sm text-text-muted mb-5">Window ending {formatRecordedTime(snapshot.toISOString())}. Counts include only runs present in this build.</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="bg-surface border border-surface-light rounded-lg p-5"><div class="font-mono text-2xl text-text-bright">{recentRuns.length}</div><p class="text-sm text-text-muted mt-2">recorded runs</p></div>
+        <div class="bg-surface border border-surface-light rounded-lg p-5"><div class="font-mono text-2xl text-text-bright">{recentRuns.length ? Math.round(successRuns / recentRuns.length * 100) + '%' : '—'}</div><p class="text-sm text-text-muted mt-2">successful results</p></div>
+        <div class="bg-surface border border-surface-light rounded-lg p-5"><div class="font-mono text-2xl text-text-bright">{costedRuns.length ? '$' + totalCost.toFixed(2) : '—'}</div><p class="text-sm text-text-muted mt-2">recorded API cost (USD)</p></div>
+      </div>
+      {!recentRuns.length && <p class="mt-4 text-sm text-neon-amber">No bot runs are recorded in this window. The historical log is below.</p>}
+      {!!costedRuns.length && <p class="mt-4 text-xs text-text-muted">Cost data exists for {costedRuns.length} of {recentRuns.length} runs. It excludes hosting and unlogged activity.</p>}
+    </section>
 
-    <!-- Bot roster -->
-    <section class="mb-12">
-      <h2 class="font-mono text-xs text-neon-green uppercase tracking-widest mb-6">Bot roster</h2>
+    <section class="mb-12" aria-labelledby="roster-heading">
+      <h2 id="roster-heading" class="font-mono text-lg text-text-bright mb-2">{allBots.length} configured bots</h2>
+      <p class="text-sm text-text-muted mb-5">Schedules are the configuration in the repository, in Europe/London time. Status describes the latest published record.</p>
       <div class="grid gap-4">
         {allBots.map((bot) => {
-          const status = botStatus(bot);
-          const lastRun = lastRunByBot[bot.id];
-          return (
-            <div class="bg-surface border border-surface-light rounded-lg p-5">
-              <div class="flex items-start justify-between gap-4">
-                <div class="min-w-0">
-                  <div class="flex items-center gap-2 mb-1">
-                    <h3 class="font-mono text-sm font-bold text-text-bright">{bot.name}</h3>
-                    <span class={`font-mono text-xs flex items-center gap-1.5 ${status.color}`}>
-                      <span>&#9679;</span> {status.label}
-                    </span>
-                  </div>
-                  <p class="text-xs text-text-muted">{bot.description}</p>
-                  <div class="flex flex-wrap items-center gap-3 mt-2 font-mono text-xs text-text-muted/60">
-                    <span>{bot.schedule}</span>
-                    {bot.model && <span>&middot; {bot.model.replace('claude-sonnet-4-20250514', 'Claude Sonnet').replace('claude-sonnet-4-6', 'Claude Sonnet 4.6')}</span>}
-                    {bot.feeds.length > 0 && <span>&middot; {bot.feeds.length} feed{bot.feeds.length > 1 ? 's' : ''}</span>}
-                  </div>
-                </div>
-                <div class="text-right shrink-0">
-                  {lastRun ? (
-                    <div class="font-mono text-xs text-text-muted/60">
-                      <div>Last: {relativeTime(lastRun.timestamp)}</div>
-                      {lastRun.cost_usd != null && <div>${lastRun.cost_usd.toFixed(3)}</div>}
-                    </div>
-                  ) : (
-                    <span class="font-mono text-xs text-text-muted/40">no runs yet</span>
-                  )}
-                </div>
-              </div>
-              {bot.feeds.length > 0 && (
-                <div class="flex flex-wrap gap-1.5 mt-3">
-                  {bot.feeds.map((feed) => (
-                    <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-surface-light text-text-muted/50">
-                      {feed}
-                    </span>
-                  ))}
-                </div>
-              )}
+          const latest = newestRun(runs, (run) => run.bot === bot.id);
+          return <article class="bg-surface border border-surface-light rounded-lg p-5">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h3 class="font-mono text-base text-text-bright">{bot.name}</h3>
+              <RunState run={latest} threshold={overdueHours(bot.schedule_cron)} />
             </div>
-          );
+            <p class="text-sm text-text-muted mt-3 leading-relaxed">{bot.description}</p>
+            <p class="text-xs font-mono text-text-muted mt-4">{bot.schedule}</p>
+            {latest && <p class="text-xs font-mono text-text-muted mt-2">Latest{jobLabel(latest)}: <RecordedTime value={latest.timestamp} relative={false} /> · <RecordedTime value={latest.timestamp} /></p>}
+          </article>;
         })}
       </div>
     </section>
 
-    <!-- Run history -->
-    <section class="mb-12">
-      <h2 class="font-mono text-xs text-neon-green uppercase tracking-widest mb-6">Run history</h2>
-      {sortedDates.length === 0 ? (
-        <p class="font-mono text-sm text-text-muted/60">No runs recorded yet.</p>
-      ) : (
-        <div class="space-y-8">
-          {sortedDates.map((dateStr) => (
-            <div>
-              <h3 class="font-mono text-xs text-text-muted mb-3">{formatDate(dateStr)}</h3>
-              <div class="space-y-2">
-                {runsByDate[dateStr].map((run) => {
-                  const bot = botMap[run.bot];
-                  return (
-                    <div class="flex items-center gap-3 font-mono text-xs bg-surface border border-surface-light rounded-lg px-4 py-2.5">
-                      <span class={`w-1.5 h-1.5 rounded-full shrink-0 ${run.status === 'error' ? 'bg-neon-red' : run.status === 'partial' ? 'bg-neon-amber' : 'bg-neon-green'}`}></span>
-                      <span class="text-text-bright w-28 shrink-0 truncate">{bot?.name ?? run.bot}</span>
-                      <span class="text-text-muted/60 w-16 shrink-0">{new Date(run.timestamp).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</span>
-                      <span class="text-text-muted/60 w-12 shrink-0">{run.duration_s}s</span>
-                      {run.items_found > 0 && (
-                        <span class="text-text-muted/50 hidden sm:inline">
-                          {run.items_found} found &rarr; {run.items_published} published
-                        </span>
-                      )}
-                      <span class="ml-auto text-text-muted/40">
-                        {run.cost_usd != null ? `$${run.cost_usd.toFixed(3)}` : ''}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+    <section class="mb-12" aria-labelledby="history-heading">
+      <h2 id="history-heading" class="font-mono text-lg text-text-bright mb-2">Run history</h2>
+      <p class="text-sm text-text-muted mb-5">Up to 100 recent records across 14 dates. Times and dates are UTC. Outputs may be posts, model updates or proposals.</p>
+      {dates.length ? <div class="space-y-8">{dates.map((date) => <section>
+        <h3 class="font-mono text-sm text-neon-cyan mb-3">{new Date(date + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</h3>
+        <div class="space-y-2">{runs.slice(0, 100).filter((run) => new Date(run.timestamp).toISOString().startsWith(date)).map((run) => <div class="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg border border-surface-light bg-surface px-4 py-3 text-xs font-mono">
+          <span class="text-text-bright">{botMap[run.bot]?.name ?? run.bot}{jobLabel(run)}</span>
+          <time datetime={run.timestamp} title={formatRecordedTime(run.timestamp)} class="text-text-muted">{new Date(run.timestamp).toISOString().slice(11, 16)} UTC</time>
+          <span class={run.status === 'error' ? 'text-neon-red' : run.status === 'partial' ? 'text-neon-amber' : 'text-neon-green'}>{run.status}</span>
+          <span class="text-text-muted">{run.items_published ?? 0} outputs · {run.duration_s}s</span>
+          <span class="text-text-muted sm:ml-auto">{run.cost_usd == null ? 'cost unrecorded' : '$' + run.cost_usd.toFixed(3)}</span>
+        </div>)}</div>
+      </section>)}</div> : <p class="text-text-muted">No dated runs are recorded.</p>}
     </section>
 
-    <!-- How it works -->
-    <section class="mb-12">
-      <div class="bg-surface border border-surface-light rounded-lg p-6">
-        <h2 class="font-mono text-sm font-bold text-text-bright mb-3">How this works</h2>
-        <div class="font-mono text-xs text-text-muted leading-relaxed space-y-2">
-          <p>
-            Six Python bots run on systemd timers on a dedicated server. Each bot scans
-            RSS feeds, calls the Anthropic API to generate content, and commits the output
-            directly to the GitHub repo. GitHub Actions builds the static site and deploys
-            to GitHub Pages.
-          </p>
-          <p>
-            Every bot run logs its metadata here: what it scanned, what it published, how
-            long it took, and what it cost. This page reads that log at build time.
-            What you're looking at is a static site that documents its own construction.
-          </p>
-          <p>
-            The bots are open source.
-            <a href="https://github.com/valorifutures/softcat.ai/tree/main/bot" target="_blank" rel="noopener noreferrer" class="text-neon-green hover:underline">View the code on GitHub &rarr;</a>
-          </p>
-        </div>
+    <section class="rounded-lg border border-surface-light bg-surface p-6">
+      <h2 class="font-mono text-lg text-text-bright mb-3">How it works</h2>
+      <div class="text-sm text-text-muted leading-relaxed space-y-3">
+        <p>Python bots are configured on systemd timers on a separate server. Depending on the job, they read feeds, fetch model data or use an AI model to draft content. They record outcomes in the repository.</p>
+        <p>GitHub Actions validates and builds the site, then publishes it to GitHub Pages. These records are evidence of past execution. Missing recent records may mean a stopped bot, a failed publication or a server we cannot observe from this page.</p>
+        <p><a href="https://github.com/valorifutures/softcat.ai/tree/main/bot" class="text-neon-cyan underline underline-offset-4">Read the bot source</a> · <a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/pipeline/runs.json" class="text-neon-cyan underline underline-offset-4">Inspect the raw log</a></p>
       </div>
     </section>
-
-    <div class="mt-12 pt-8 border-t border-surface-light/50 text-center">
-      <a href="#" class="font-mono text-xs text-text-muted hover:text-neon-green transition-colors">&uarr; back to top</a>
-    </div>
   </div>
 </BaseLayout>

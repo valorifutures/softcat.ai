@@ -3,8 +3,8 @@
 ## What This Site Is
 
 SOFT CAT .ai (softcat.ai) is a living demonstration of automated AI infrastructure in production.
-Six bots build the site daily. The content is the output. The real story is the machinery.
-Built with Astro 5.17 + Preact + Tailwind 4.2. Dark premium aesthetic.
+The manifest currently defines seven bots. Published records show past activity, not live server health.
+Built with Astro 5 + Preact + Tailwind 4. Dark premium aesthetic.
 Deploys via GitHub Actions to GitHub Pages on every push to `main`.
 The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
@@ -17,7 +17,7 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
 ## Tech Stack
 
-- **Framework**: Astro 5.17 (static site generator)
+- **Framework**: Astro 5 (static site generator)
 - **UI**: Preact components (`.tsx`) for interactive bits, Astro components (`.astro`) for everything else
 - **Styling**: Tailwind CSS 4.2 via Vite plugin. Theme defined in `src/styles/global.css`.
 - **Colors**: void (#0c0c14), surface (#14141e), surface-light (#1e1e30), neon-green (#4ecb8f), neon-cyan (#5ab8d4), neon-purple (#9b7acc), neon-amber (#d4a54a), neon-red (#da5e74)
@@ -54,7 +54,7 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 - Links: `text-neon-cyan hover:underline`
 - Tags: `px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono text-text-muted`
 - Section accents: green (news), cyan (thoughts), purple (tools), amber (models)
-- All lab tools are 100% client-side (no server calls)
+- Calculators and editors run locally. Chat Playground sends conversations and a visitor-supplied key directly to OpenRouter. Key persistence is opt-in.
 
 ## Existing Pages
 
@@ -73,9 +73,9 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
 - `src/data/pipeline/bots.json` — bot manifest (name, schedule, feeds, model, accent)
 - `src/data/pipeline/runs.json` — append-only run log (populated by bots via `bot/pipeline_log.py`)
-- Bots log every run: duration, feeds scanned, items found/rejected/published, model, cost, output files. Multi-job bots pass `job=` to log_run (model_bot: prices/roster; tool_bot: weekly write-up + verify) — never register new bot ids, the "six bots" copy depends on it
+- Bots log every run: duration, feeds scanned, items found/rejected/published, model, cost, output files. Multi-job bots pass `job=` to log_run (model_bot: prices/roster; tool_bot: weekly write-up + verify) — derive roster counts from the manifest, not hardcoded copy
 - tool_bot Job 2 (Sundays, after the write-up): checks every write-up url, HTTP status only. Archive needs 3 consecutive definitive-dead weeks (404/410/DNS/refused); 403/429/timeout = unverifiable (staged to ~/.softcat-bot-staging + Discord), never auto-archived. Streaks in `bot/tool_verify_history.json`
-- Pipeline page and activity ticker read runs.json at build time
+- Pipeline page and activity ticker read runs.json at build time. Absolute timestamps are the fallback. Client-side relative ages and record status refresh between builds.
 - Content frontmatter supports optional pipeline metadata: `generated_by`, `model`, `generation_time_s`, `cost_usd`
 
 ## Horizon Map (`/horizon`)
