@@ -264,16 +264,16 @@ export default function PromptDiff() {
       {/* Cost comparison */}
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="bg-surface border border-surface-light rounded-lg p-4 text-center">
-          <div class="font-mono text-lg font-bold text-text-bright">{formatCost(costA)}</div>
+          <div class="font-mono text-lg font-bold text-text-bright">{selectedModel ? formatCost(costA) : 'Unknown'}</div>
           <div class="font-mono text-xs text-text-muted mt-1">cost A</div>
         </div>
         <div class="bg-surface border border-surface-light rounded-lg p-4 text-center">
-          <div class="font-mono text-lg font-bold text-text-bright">{formatCost(costB)}</div>
+          <div class="font-mono text-lg font-bold text-text-bright">{selectedModel ? formatCost(costB) : 'Unknown'}</div>
           <div class="font-mono text-xs text-text-muted mt-1">cost B</div>
         </div>
         <div class={`bg-surface border rounded-lg p-4 text-center ${costDelta > 0 ? 'border-red-400/30' : costDelta < 0 ? 'border-neon-green/30' : 'border-surface-light'}`}>
           <div class={`font-mono text-lg font-bold ${costDelta > 0 ? 'text-red-400' : costDelta < 0 ? 'text-neon-green' : 'text-text-bright'}`}>
-            {costDelta > 0 ? '+' : ''}{formatCost(Math.abs(costDelta))}
+            {selectedModel ? (costDelta > 0 ? '+' : '') + formatCost(Math.abs(costDelta)) : 'Unknown'}
           </div>
           <div class="font-mono text-xs text-text-muted mt-1">cost delta</div>
         </div>

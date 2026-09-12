@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'preact/hooks';
+import { readChatStream } from '../../lib/chat-stream.mjs';
 import { estimateTokens } from '../../utils/tokens';
 
 interface Message {
@@ -46,12 +47,17 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
   const [storageError, setStorageError] = useState('');
   const [systemPrompt, setSystemPrompt] = useState('');
   const [input, setInput] = useState('');
-  const [panes, setPanes] = useState<ChatPane[]>([createPane(models[0]?.id || 'anthropic/claude-sonnet-4')]);
+  const [panes, setPanes] = useState<ChatPane[]>(() => [createPane(models[0]?.id || '')]);
   const [mode, setMode] = useState<'single' | 'compare'>('single');
   const [maxTokens, setMaxTokens] = useState(2048);
   const [temperature, setTemperature] = useState(0.7);
   const [sessionCost, setSessionCost] = useState(0);
-  const bottomRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const scrollRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const controllers = useRef(new Map<string, AbortController>());
+  const sending = useRef(false);
+  const busy = panes.some((pane) => pane.loading);
+
+  useEffect(() => () => { controllers.current.forEach((controller) => controller.abort()); }, []);
 
   // Existing keys migrate to page memory unless saving was explicitly chosen.
   useEffect(() => {
@@ -96,15 +102,18 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
     persistKey(key, rememberKey);
   };
 
-  // Scroll to bottom when messages change
+  // Scroll the message region, never the whole page on hydration.
   useEffect(() => {
-    Object.values(bottomRefs.current).forEach((el) => el?.scrollIntoView({ behavior: 'smooth' }));
+    Object.values(scrollRefs.current).forEach((element) => {
+      if (element && element.scrollHeight - element.scrollTop - element.clientHeight < 160) element.scrollTop = element.scrollHeight;
+    });
   }, [panes]);
 
   const switchMode = (newMode: 'single' | 'compare') => {
+    if (sending.current) return;
     setMode(newMode);
     if (newMode === 'compare' && panes.length < 2) {
-      const secondModel = models.length > 1 ? models[1].id : models[0]?.id || 'openai/gpt-4o';
+      const secondModel = models.length > 1 ? models[1].id : models[0]?.id || '';
       setPanes([panes[0], createPane(secondModel)]);
     } else if (newMode === 'single' && panes.length > 1) {
       setPanes([panes[0]]);
@@ -126,7 +135,8 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
   };
 
   const sendMessage = async () => {
-    if (!input.trim() || !apiKey) return;
+    if (!input.trim() || !apiKey || sending.current || !models.length) return;
+    sending.current = true;
 
     const userMessage: Message = { role: 'user', content: input.trim() };
     setInput('');
@@ -140,13 +150,16 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
     }));
     setPanes(updatedPanes);
 
-    // Send to all panes in parallel
-    for (const pane of updatedPanes) {
-      fetchResponse(pane.id, pane.model, [...pane.messages]);
+    try {
+      await Promise.all(updatedPanes.map((pane) => fetchResponse(pane.id, pane.model, [...pane.messages])));
+    } finally {
+      sending.current = false;
     }
   };
 
   const fetchResponse = async (paneId: string, model: string, messages: Message[]) => {
+    const controller = new AbortController();
+    controllers.current.set(paneId, controller);
     try {
       const apiMessages = systemPrompt
         ? [{ role: 'system' as const, content: systemPrompt }, ...messages]
@@ -154,6 +167,7 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
 
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
+        signal: controller.signal,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${apiKey}`,
@@ -175,55 +189,22 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
         return;
       }
 
-      const reader = response.body?.getReader();
-      if (!reader) {
-        updatePane(paneId, { loading: false, error: 'No response stream' });
-        return;
-      }
-
-      let assistantContent = '';
-      const decoder = new TextDecoder();
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split('\n').filter((l) => l.startsWith('data: '));
-
-        for (const line of lines) {
-          const data = line.slice(6);
-          if (data === '[DONE]') continue;
-
-          try {
-            const parsed = JSON.parse(data);
-            const delta = parsed.choices?.[0]?.delta?.content;
-            if (delta) {
-              assistantContent += delta;
-              setPanes((prev) =>
-                prev.map((p) => {
-                  if (p.id !== paneId) return p;
-                  const msgs = [...p.messages];
-                  const lastMsg = msgs[msgs.length - 1];
-                  if (lastMsg?.role === 'assistant') {
-                    msgs[msgs.length - 1] = { ...lastMsg, content: assistantContent };
-                  } else {
-                    msgs.push({ role: 'assistant', content: assistantContent });
-                  }
-                  return { ...p, messages: msgs };
-                }),
-              );
-            }
-          } catch {}
-        }
-      }
+      const result = await readChatStream(response.body, (content: string) => {
+        setPanes((previous) => previous.map((pane) => {
+          if (pane.id !== paneId) return pane;
+          return { ...pane, messages: [...messages, { role: 'assistant' as const, content }] };
+        }));
+      });
+      const assistantContent = result.text;
 
       // Estimate cost after streaming completes
       const modelInfo = models.find((m) => m.id === model);
       if (modelInfo) {
         const allText = apiMessages.map((m) => m.content).join(' ');
-        const inputTokens = estimateTokens(allText);
-        const outputTokens = estimateTokens(assistantContent);
+        const measuredInput = result.usage?.prompt_tokens;
+        const measuredOutput = result.usage?.completion_tokens;
+        const inputTokens = Number.isFinite(measuredInput) && measuredInput >= 0 ? measuredInput : estimateTokens(allText);
+        const outputTokens = Number.isFinite(measuredOutput) && measuredOutput >= 0 ? measuredOutput : estimateTokens(assistantContent);
         // Prices are per million tokens
         const inputCost = (inputTokens / 1_000_000) * modelInfo.inputPrice;
         const outputCost = (outputTokens / 1_000_000) * modelInfo.outputPrice;
@@ -235,21 +216,29 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
 
       updatePane(paneId, { loading: false });
     } catch (err: any) {
-      updatePane(paneId, { loading: false, error: err.message || 'Request failed' });
+      updatePane(paneId, { loading: false, error: err.name === 'AbortError' ? 'Stopped. The provider may charge for partial work.' : err.message || 'Request failed' });
+    } finally {
+      controllers.current.delete(paneId);
+      updatePane(paneId, { loading: false });
     }
   };
 
+  const stopAll = () => { controllers.current.forEach((controller) => controller.abort()); };
+
   const clearAll = () => {
+    if (sending.current) return;
     setPanes((prev) => prev.map((p) => ({ ...p, messages: [], messageCosts: {}, error: '' })));
     setSessionCost(0);
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
       e.preventDefault();
       sendMessage();
     }
   };
+
+  if (!models.length) return <p class="text-text-muted">No verified model rates are available for chat in this snapshot. <a href="/lab/model-comparison" class="text-neon-cyan underline">Check the model records</a>.</p>;
 
   return (
     <div class="space-y-4">
@@ -306,6 +295,8 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
       <div class="flex flex-wrap gap-3 items-center">
         <div class="flex gap-1 bg-surface border border-surface-light rounded-lg p-1">
           <button
+            disabled={busy}
+            aria-pressed={mode === 'single'}
             onClick={() => switchMode('single')}
             class={`px-3 py-1 rounded font-mono text-xs transition-all ${
               mode === 'single' ? 'bg-neon-green/20 text-neon-green' : 'text-text-muted hover:text-text-primary'
@@ -314,6 +305,8 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
             single
           </button>
           <button
+            disabled={busy}
+            aria-pressed={mode === 'compare'}
             onClick={() => switchMode('compare')}
             class={`px-3 py-1 rounded font-mono text-xs transition-all ${
               mode === 'compare' ? 'bg-neon-cyan/20 text-neon-cyan' : 'text-text-muted hover:text-text-primary'
@@ -324,8 +317,10 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
         </div>
 
         <div class="flex items-center gap-2">
-          <label class="font-mono text-xs text-text-muted">temp:</label>
+          <label for="chat-temperature" class="font-mono text-xs text-text-muted">temp:</label>
           <input
+            id="chat-temperature"
+            disabled={busy}
             type="range"
             min="0"
             max="2"
@@ -338,8 +333,10 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
         </div>
 
         <div class="flex items-center gap-2">
-          <label class="font-mono text-xs text-text-muted">max tokens:</label>
+          <label for="chat-max-tokens" class="font-mono text-xs text-text-muted">max tokens:</label>
           <select
+            id="chat-max-tokens"
+            disabled={busy}
             value={maxTokens}
             onChange={(e) => setMaxTokens(parseInt((e.target as HTMLSelectElement).value))}
             class="bg-surface border border-surface-light rounded px-2 py-1 font-mono text-xs text-text-primary focus:outline-none"
@@ -355,18 +352,22 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
         {/* Session cost pill */}
         {sessionCost > 0 && (
           <div class="flex items-center gap-1.5 bg-surface border border-surface-light rounded-full px-3 py-1">
-            <span class="font-mono text-xs text-text-muted">session:</span>
+            <span class="font-mono text-xs text-text-muted">completed replies, est.:</span>
             <span class="font-mono text-xs text-neon-amber">{formatCost(sessionCost)}</span>
           </div>
         )}
 
         <button
+          disabled={busy}
           onClick={clearAll}
           class="px-3 py-1.5 rounded font-mono text-xs bg-surface border border-surface-light text-text-muted hover:text-red-400 transition-colors ml-auto"
         >
           clear chat
         </button>
       </div>
+
+      {mode === 'compare' && <p class="text-xs text-text-muted">Compare sends the same conversation to both selected models. Both requests may be charged to your OpenRouter account.</p>}
+      {busy && <button onClick={stopAll} class="min-h-11 px-4 rounded-lg border border-neon-amber/40 text-neon-amber text-sm">Stop responses</button>}
 
       {/* System prompt */}
       <details class="bg-surface border border-surface-light rounded-lg">
@@ -375,6 +376,8 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
         </summary>
         <div class="px-4 pb-4">
           <textarea
+            aria-label="System prompt"
+            disabled={busy}
             value={systemPrompt}
             onInput={(e) => setSystemPrompt((e.target as HTMLTextAreaElement).value)}
             class="w-full h-24 bg-void border border-surface-light rounded p-3 font-mono text-sm text-text-primary focus:outline-none focus:border-neon-green/50 resize-y"
@@ -390,9 +393,11 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
             {/* Model selector */}
             <div class="flex items-center gap-2 px-3 py-2 border-b border-surface-light bg-void/50">
               <select
+                aria-label={`Model for chat ${panes.indexOf(pane) + 1}`}
+                disabled={busy}
                 value={pane.model}
-                onChange={(e) => updatePane(pane.id, { model: (e.target as HTMLSelectElement).value })}
-                class="bg-void border border-surface-light rounded px-2 py-1 font-mono text-xs text-text-primary focus:outline-none flex-1"
+                onChange={(e) => updatePane(pane.id, { model: (e.target as HTMLSelectElement).value, messages: [], messageCosts: {}, error: '' })}
+                class="bg-void border border-surface-light rounded px-2 py-1 font-mono text-xs text-text-primary focus:outline-none flex-1 min-w-0"
               >
                 {models.map((m) => (
                   <option value={m.id}>
@@ -404,7 +409,7 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
             </div>
 
             {/* Messages */}
-            <div class="flex-1 overflow-y-auto p-3 space-y-3">
+            <div ref={(element) => { scrollRefs.current[pane.id] = element; }} class="flex-1 overflow-y-auto p-3 space-y-3">
               {pane.messages.length === 0 && (
                 <div class="flex items-center justify-center h-full">
                   <p class="font-mono text-sm text-text-muted">Send a message to start chatting.</p>
@@ -414,7 +419,7 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
                 <div key={i}>
                   <div class={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div
-                      class={`max-w-[85%] rounded-lg px-3 py-2 font-mono text-sm whitespace-pre-wrap ${
+                      class={`max-w-[85%] rounded-lg px-3 py-2 font-mono text-sm whitespace-pre-wrap [overflow-wrap:anywhere] ${
                         msg.role === 'user'
                           ? 'bg-neon-green/10 border border-neon-green/20 text-text-primary'
                           : 'bg-void border border-surface-light text-text-primary'
@@ -426,18 +431,18 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
                   {msg.role === 'assistant' && pane.messageCosts[i] && (
                     <div class="flex justify-start mt-0.5 ml-1">
                       <span class="font-mono text-xs text-text-muted">
-                        cost: <span class="text-neon-amber">{formatCost(pane.messageCosts[i].total)}</span>
+                        estimate: <span class="text-neon-amber">{formatCost(pane.messageCosts[i].total)}</span>
                       </span>
                     </div>
                   )}
                 </div>
               ))}
               {pane.error && (
-                <div class="bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-2 font-mono text-xs text-red-400">
+                <div role="alert" class="bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-2 font-mono text-xs text-red-400">
                   {pane.error}
                 </div>
               )}
-              <div ref={(el) => { bottomRefs.current[pane.id] = el; }} />
+
             </div>
           </div>
         ))}
@@ -446,22 +451,24 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
       {/* Input */}
       <div class="flex gap-2">
         <textarea
+          aria-label="Chat message"
           value={input}
           onInput={(e) => setInput((e.target as HTMLTextAreaElement).value)}
           onKeyDown={handleKeyDown}
           placeholder={apiKey ? 'Type a message... (Enter to send, Shift+Enter for newline)' : 'Enter your OpenRouter API key above to start'}
-          disabled={!apiKey}
-          class="flex-1 bg-surface border border-surface-light rounded-lg px-4 py-3 font-mono text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-green/50 resize-none disabled:opacity-50"
+          disabled={!apiKey || busy}
+          class="min-w-0 flex-1 bg-surface border border-surface-light rounded-lg px-4 py-3 font-mono text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-green/50 resize-none disabled:opacity-50"
           rows={2}
         />
         <button
           onClick={sendMessage}
-          disabled={!apiKey || !input.trim() || panes.some((p) => p.loading)}
+          disabled={!apiKey || !input.trim() || busy}
           class="px-6 py-3 rounded-lg font-mono text-sm bg-neon-green/20 border border-neon-green text-neon-green hover:bg-neon-green/30 transition-all disabled:opacity-30 disabled:cursor-not-allowed self-end"
         >
           send
         </button>
       </div>
+      <p class="text-xs text-text-muted leading-relaxed">Costs shown are estimates for completed text replies. They use provider token counts when returned, otherwise a rough text estimate. Cached tokens, reasoning, routing and interrupted requests can change the bill. Your provider's usage record is the source of truth.</p>
     </div>
   );
 }

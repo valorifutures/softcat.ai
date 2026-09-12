@@ -297,7 +297,7 @@ export default function PromptWorkbench({ models }: { models: ModelInfo[] }) {
             <div class="font-mono text-sm">
               <span class="text-text-muted">Total: </span>
               <span class="text-text-bright font-bold">~{tokens.total} tokens</span>
-              <span class="text-text-muted ml-2">(~${((tokens.total / 1_000_000) * selectedModel.inputPrice).toFixed(4)} on {selectedModel.name})</span>
+              <span class="text-text-muted ml-2">{selectedModel.id ? `(~$${((tokens.total / 1_000_000) * selectedModel.inputPrice).toFixed(4)} on ${selectedModel.name})` : '(No verified price available)'}</span>
             </div>
 
             <div class="flex items-center gap-2">
