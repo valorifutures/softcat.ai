@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks';
+import { hasVerifiedPrice } from '../../lib/model-pricing.mjs';
 import modelsData from '../../data/models.json';
 import { estimateTokens } from '../../utils/tokens';
 
@@ -10,9 +11,7 @@ interface Model {
   outputPrice: number;
 }
 
-const models: Model[] = (modelsData as Model[]).filter(
-  (m) => m.inputPrice > 0 || m.outputPrice > 0
-);
+const models: Model[] = modelsData.filter(hasVerifiedPrice) as Model[];
 
 function formatCost(cost: number): string {
   if (cost === 0) return '$0.0000';

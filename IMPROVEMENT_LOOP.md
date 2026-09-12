@@ -16,6 +16,9 @@ do not need another approval conversation.
 Continue improving `valorifutures/softcat.ai` and `https://softcat.ai`.
 
 1. Read the saved checkpoint, current source and recent deployment results.
+   If `active_branch` is non-null and `updated_at` is under 90 minutes old,
+   another pass is active, even if its latest PR just merged. Do not start
+   competing edits. Clear `active_branch` when handing over.
    Check open improvement PRs. If one has been actively updated in the past
    90 minutes, do not start competing work. Resume stale work deliberately,
    recording what happened. Never overwrite another contributor's changes.
@@ -57,6 +60,7 @@ Continue improving `valorifutures/softcat.ai` and `https://softcat.ai`.
 npm ci
 node scripts/validate-content.mjs
 node scripts/validate-tools-data.mjs
+node --test scripts/tests/*.test.mjs
 node scripts/validate-horizon-refs.mjs
 npm run build
 python -m pytest bot/tests/ -q
@@ -77,3 +81,11 @@ A recurring task resumes this process. It is not a permanently running agent.
 Runtime availability and platform permissions still apply. Do useful work when
 available and leave enough evidence that the next run can continue accurately.
 Do not create artificial commits just to keep an automation alive.
+
+## Current overnight window
+
+The maintainer asked this run to continue until about 07:00 Europe/London on
+13 September 2026, or 06:00 UTC. Check the clock between batches. Stop starting
+new work at that deadline, leave in-flight work safe, and hand over the deployed
+result. The hourly continuation has eight scheduled starts, from 23:15 on
+12 September through 06:15 on 13 September, all in Europe/London time.

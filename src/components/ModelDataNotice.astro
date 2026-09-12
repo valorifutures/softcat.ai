@@ -1,10 +1,16 @@
 ---
-import runs from '../data/pipeline/runs.json';
-import { latestPriceRun } from '../lib/pipeline-status.mjs';
+import models from '../data/models.json';
+import { pricingRange } from '../lib/model-pricing.mjs';
 import RecordedTime from './RecordedTime.astro';
-const priceRun = latestPriceRun(runs);
+const range = pricingRange(models);
 ---
-<aside class="mb-6 rounded-lg border border-neon-amber/30 bg-neon-amber/5 p-4 text-sm text-text-muted leading-relaxed" aria-label="About the model data">
-  <p><strong class="text-text-primary">Dated model data.</strong> {priceRun ? <>Last recorded pricing check: <RecordedTime value={priceRun.timestamp} relative={false} />.</> : 'No successful pricing check is recorded.'} Check the provider before budgeting or choosing a model.</p>
-  <p class="mt-2">Prices are estimates from a stored OpenRouter snapshot. Capability scores are editorial ratings, not benchmark results. A zero marked for self-hosting excludes hardware and hosting costs. <a href="/pipeline" class="text-neon-cyan underline underline-offset-4">See the records</a>.</p>
-</aside>
+<details class="mb-6 rounded-lg border border-neon-amber/30 bg-neon-amber/5 p-4 text-sm text-text-muted leading-relaxed">
+  <summary class="cursor-pointer"><strong class="text-text-primary">Model data.</strong> {range.first ? <>Verified-price snapshots from <RecordedTime value={range.first} relative={false} />.</> : 'No verified price snapshot.'} Details</summary>
+  <div class="mt-3 space-y-2">
+    <p>{range.count} of {models.length} tracked models have verified token rates in the saved catalogue. Rates come from the <a href="https://openrouter.ai/api/v1/models" class="text-neon-cyan underline underline-offset-4">OpenRouter public API</a>. Models missing from that catalogue have unknown pricing and are excluded from cost estimates and chat selection.</p>
+    {range.first !== range.last && range.last && <p>Newest pricing check: <RecordedTime value={range.last} relative={false} />.</p>}
+    <p>Rates are USD per million text tokens. Caching, reasoning tokens, images, tool charges, provider routing and long-context tiers can change the bill. Check the provider before budgeting.</p>
+    <p>Context windows and capability notes are saved reference values. Capability scores are editorial opinions, not SOFT CAT benchmark results. Open weights do not make a hosted API or self-hosting free.</p>
+    <p><a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/models.json" class="text-neon-cyan underline underline-offset-4">Inspect the dated data</a> · <a href="/pipeline" class="text-neon-cyan underline underline-offset-4">Bot records</a></p>
+  </div>
+</details>
