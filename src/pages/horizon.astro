@@ -21,8 +21,8 @@ const scenarioEntries = await getCollection('horizonScenarios');
 // Slug sets come straight from the collections (every id is a built page);
 // radar only builds the newest RADAR_VISIBLE_DAYS dates, so older archive
 // dates resolve to plain text rather than a 404. See lib/horizon-evidence.ts.
-const thoughtEntries = await getCollection('thoughts');
-const newsEntries = await getCollection('news-and-updates');
+const thoughtEntries = (await getCollection('thoughts')).filter(entry => !entry.data.draft);
+const newsEntries = (await getCollection('news-and-updates')).filter(entry => !entry.data.draft);
 const evidenceIndex = {
   thoughtSlugs: new Set(thoughtEntries.map((e) => e.id)),
   newsSlugs: new Set(newsEntries.map((e) => e.id)),

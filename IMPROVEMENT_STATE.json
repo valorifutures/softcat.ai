@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-12T23:01:17.542061+00:00",
-  "phase": "horizon-editorial-review",
-  "active_branch": "codex/horizon-editorial-review",
+  "updated_at": "2026-09-12T23:19:49.380454+00:00",
+  "phase": "search-and-publication-quality",
+  "active_branch": "codex/search-and-publication-quality",
   "last_verified_deployment": {
-    "sha": "a70ce36196b98d790d77b49d6a7d2511c36eb38d",
-    "at": "2026-09-12T22:47:35Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34723661385"
+    "sha": "7c51318f4ea447e3b913063e18b14df490d8fc1a",
+    "at": "2026-09-12T23:06:59Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34724517890"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -14,12 +14,14 @@
     "PR #196 merged and live. Workshop homepage, sourced notebook entry and agent decision tool published. All 324 answer combinations covered by passing tests.",
     "PR #197 merged and deployed. Live model search confirms unlisted pricing for Laguna and paid OpenRouter rates for Qwen 2.5. All model data now carries per-entry source/check metadata.",
     "PR #198 merged and deployed. Live conversation estimates include repeated history. Streaming fixtures pass at every byte boundary. No paid chat call made.",
-    "PR #199 merged and deployed. The new Feral gallery was visually checked. The generation, validation and publishing jobs are separate, with fresh-verdict regression coverage. A paid council run remains unverified."
+    "PR #199 merged and deployed. The new Feral gallery was visually checked. The generation, validation and publishing jobs are separate, with fresh-verdict regression coverage. A paid council run remains unverified.",
+    "PR #200 merged and deployed. Live review shows seven active, eight withdrawn and 39 archived records. The Memory forecast withdrawal expands correctly with the original claim. PRs #186\u2013193 were each closed with specific review reasons."
   ],
   "next": [
-    "Publish the Horizon review, verify its live links and close the eight reviewed stale proposals with reasons.",
-    "Audit search, draft publishing, mobile navigation and remaining content quality.",
-    "Check the separate systemd host only if access is available. Source changes do not establish active timers.",
+    "Publish search and draft-route fixes, then verify keyboard navigation, modal close and focus restoration live.",
+    "Remove unsupported numerical capability ratings and consolidate overlapping model tools around verifiable information.",
+    "Review remaining content and navigation for useful additions or removals.",
+    "The separate systemd host is still unverified. No connection target is established.",
     "Leave a clean checkpoint for the next scheduled iteration."
   ],
   "constraints": [

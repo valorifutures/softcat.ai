@@ -177,3 +177,30 @@ at 22:47 UTC and the live front door was visually inspected.
 
 Six changed journeys have 281 valid local links and anchors. The bot also skips
 a paid proposal call when its context has fewer than two reporting source hosts.
+
+
+## 12 September 2026: search and draft publication
+
+Search previously hid fetch failures and treated scattered letters anywhere in
+long text as matches. Its overlay had no native modal focus handling or visible
+close control, and clicking the backdrop did not reliably close it. The new
+native dialog supplies browser focus containment, a close button, Escape,
+backdrop dismissal and focus restoration. Loading and retry states are explicit.
+Queries require every word to match, prioritise titles and allow bounded title
+typos. The index is validated before use and must link inside the site.
+
+Glossary definitions, active forecasts, scenario routes, Feral creations and the
+Horizon review now join the index. Retired forecasts are not presented as active
+results. Draft flags are honoured when building all five article route families,
+as they already were in the lists. Horizon's internal source links also exclude
+drafts from their public-page index.
+
+Validation: 32 JavaScript tests pass. A production build with one draft fixture
+in each of five collections confirmed their absence from direct routes, search
+and the sitemap. Fixtures were removed and the clean production build repeated.
+All indexed routes and anchors were checked. PR #200's Pages run 34724517890
+succeeded at 23:06 UTC. Its live withdrawal record was inspected. The eight old
+proposal PRs #186 to #193 were closed individually with the review reasons.
+
+The expanded index has 610 validated entries. Named tool searches for agent
+check and tokens rank their interactive tools above incidental archive mentions.

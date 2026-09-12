@@ -4,7 +4,7 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const entries = await getCollection('glossary');
-  return entries.map((entry) => ({
+  return entries.filter((entry) => !entry.data.draft).map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
   }));
