@@ -1,25 +1,26 @@
 {
-  "updated_at": "2026-09-12T22:22:28.247893+00:00",
-  "phase": "chat-and-cost-reliability",
-  "active_branch": "codex/chat-and-cost-reliability",
+  "updated_at": "2026-09-12T22:41:36.828552+00:00",
+  "phase": "feral-recovery",
+  "active_branch": "codex/feral-recovery",
   "last_verified_deployment": {
-    "sha": "4cbef039bdfbe2312958f7377ead8f7d5e2ef3a7",
-    "at": "2026-09-12T22:14:22Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34722155807"
+    "sha": "6f602adfdb74e70bae3dc311cd7eaf57bb0b4248",
+    "at": "2026-09-12T22:32:19Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34722994244"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
     "Hourly continuation is enabled. GitHub uses supported Allow all actions permission, authorised by the maintainer.",
     "PR #195 merged and deployed. Live pipeline shows July dates and stale records. Pricing stamps, privacy disclosure and opt-in key storage are implemented.",
     "PR #196 merged and live. Workshop homepage, sourced notebook entry and agent decision tool published. All 324 answer combinations covered by passing tests.",
-    "PR #197 merged and deployed. Live model search confirms unlisted pricing for Laguna and paid OpenRouter rates for Qwen 2.5. All model data now carries per-entry source/check metadata."
+    "PR #197 merged and deployed. Live model search confirms unlisted pricing for Laguna and paid OpenRouter rates for Qwen 2.5. All model data now carries per-entry source/check metadata.",
+    "PR #198 merged and deployed. Live conversation estimates include repeated history. Streaming fixtures pass at every byte boundary. No paid chat call made."
   ],
   "next": [
-    "Publish and verify chat stream and conversation-cost fixes.",
-    "Review all 15 Horizon forecasts and the eight unmerged proposals against current evidence.",
-    "Review Feral failure history and recover its scheduled experiment after shared-build repair.",
-    "Check the daily systemd bot host separately and record its actual status.",
-    "Audit remaining accessibility, search empty/error states and stale current-tense copy."
+    "Publish and verify Feral recovery. A new paid council cycle has not been run.",
+    "Review Horizon forecasts and eight unmerged proposals against primary evidence.",
+    "Curate weak, misleading or redundant content, preserving useful historical records.",
+    "Check the separate systemd host if access becomes available.",
+    "Review search, accessibility and remaining stale current-tense copy."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",

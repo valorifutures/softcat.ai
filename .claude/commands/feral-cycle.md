@@ -24,7 +24,9 @@ for the whole cycle. Then run the council in order:
    leave the verdict at FAIL, finish the ledger entry explaining the deadlock,
    and ship nothing.
 
-5. **Finish the ledger.** Ensure the latest `src/content/feral/ledger.json` entry
+5. **Finish the ledger.** Append exactly one new cycle, numbered one above the
+   previous entry, with the current UTC date. Preserve every earlier entry. The
+   gate requires a fresh verdict for this cycle, not a reused PASS. Ensure the latest `src/content/feral/ledger.json` entry
    is complete and honest: what was decided and why, what was argued, what the
    critic did, the mood line. The ledger is the public exhibit — don't sanitise.
 

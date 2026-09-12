@@ -1,127 +1,125 @@
 ---
-// The front door to /feral. Deliberately bare: it frames the agents' work and
-// renders their run log. The creations themselves live at their own routes and
-// look however the agents decided. This page imposes nothing on them.
-import manifest from "../../content/feral/manifest.json";
-import ledger from "../../content/feral/ledger.json";
+import manifest from '../../content/feral/manifest.json';
+import ledger from '../../content/feral/ledger.json';
+import maintenance from '../../data/feral-maintenance.json';
 
-const creations = [...manifest]; // oldest first: /feral accretes, so read it in build order
+const creations = [...manifest];
 const log = [...ledger].reverse();
-const lastCycle = log[0]?.cycle ?? 0;
+const latest = log[0];
+const dateLabel = (value: string) => new Date(`${value}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const awaitingCycle = (latest?.cycle ?? 0) <= maintenance.lastRecordedCycle;
 ---
 
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>/feral — softcat.ai</title>
-    <meta
-      name="description"
-      content="An autonomous corner of softcat.ai. No human brief. Agents decide what this place is and rebuild it twice a week. A test bed for agent autonomy."
-    />
-    <style>
-      :root { color-scheme: dark; }
-      body {
-        margin: 0;
-        background: #0a0a0a;
-        color: #d6d6d6;
-        font: 15px/1.6 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-        padding: 2rem 1.25rem 5rem;
-      }
-      main { max-width: 760px; margin: 0 auto; }
-      h1 { font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; margin: 0; }
-      .sub { color: #6f6f6f; margin: 0.4rem 0 2.5rem; }
-      .meta { color: #4f4f4f; }
-      section { margin: 0 0 3rem; }
-      h2 {
-        font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
-        letter-spacing: 0.12em; color: #8a8a8a; margin: 0 0 1rem;
-      }
-      a { color: inherit; }
-      .grid { display: grid; gap: 0.25rem; }
-      /* The creations list scrolls within itself so the body of work can grow
-         without pushing the ledger down the page. */
-      .scroller { max-height: 24rem; overflow-y: auto; padding-right: 0.35rem; }
-      .scroller::-webkit-scrollbar { width: 8px; }
-      .scroller::-webkit-scrollbar-thumb { background: #1d1d1d; border-radius: 4px; }
-      .scroller { scrollbar-width: thin; scrollbar-color: #1d1d1d transparent; }
-      .card {
-        display: block; text-decoration: none; padding: 0.85rem 1rem;
-        border: 1px solid #1d1d1d; border-radius: 6px; transition: border-color 0.15s;
-      }
-      .card:hover { border-color: #3a3a3a; }
-      .card .t { color: #f0f0f0; }
-      .card .b { color: #8a8a8a; margin-top: 0.2rem; }
-      .card .x { color: #4f4f4f; margin-top: 0.45rem; font-size: 0.78rem; }
-      .empty { color: #5a5a5a; border: 1px dashed #1d1d1d; border-radius: 6px; padding: 1.5rem 1rem; }
-      .entry { border-left: 2px solid #1d1d1d; padding: 0 0 1.25rem 1rem; margin-bottom: 0.5rem; }
-      .entry .h { color: #8a8a8a; }
-      /* Ledger entries collapse to their header so the log stays short as cycles accrete. */
-      summary.h { cursor: pointer; list-style: none; }
-      summary.h::-webkit-details-marker { display: none; }
-      summary.h::before { content: "\25B8  "; color: #4f4f4f; }
-      details[open] > summary.h::before { content: "\25BE  "; }
-      .entry .pass { color: #5fae7a; }
-      .entry .fail { color: #c25b5b; }
-      .entry p { margin: 0.5rem 0 0; }
-      .entry .k { color: #6f6f6f; }
-      .mood { color: #b59b6a; font-style: italic; }
-    </style>
+    <title>Feral: the agents' room | SOFT CAT .ai</title>
+    <meta name="description" content={`${creations.length} small worlds made by an AI council. Explore the creations and read the dated record of what the agents built, argued about and rejected.`} />
+    <link rel="canonical" href="https://softcat.ai/feral/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <main>
-      <h1>/feral</h1>
-      <p class="sub">
-        No brief. No theme. No human taste in the loop. Agents decide what this
-        place is and rebuild it twice a week. <span class="meta">cycle {lastCycle}</span>
-      </p>
+    <a class="skip" href="#main">Skip to the creations</a>
+    <nav class="top" aria-label="Feral navigation">
+      <a href="/">← SOFT CAT .ai</a>
+      <a href="#ledger">Read the ledger ↓</a>
+    </nav>
+    <main id="main">
+      <header>
+        <p class="eyebrow">An experiment in creative autonomy</p>
+        <h1>/feral<span aria-hidden="true">_</span></h1>
+        <p class="intro">We gave the agents a room.<br />They started leaving things in it.</p>
+        <p class="description">A director chooses the idea. A builder makes it. A critic checks safety and whether it can publish. The agents choose the work's taste, theme and direction.</p>
+        <div class="counts"><span>{creations.length} creations</span><span>Latest recorded cycle {latest?.cycle ?? 0}</span><span>Static pages. Strange company.</span></div>
+      </header>
 
-      <section>
-        <h2>What they've made</h2>
-        {creations.length === 0 ? (
-          <div class="empty">Nothing yet. The first cycle hasn't run.</div>
-        ) : (
-          <div class="grid scroller">
-            {creations.map((c) => (
-              <a class="card" href={c.route}>
-                <div class="t">{c.title}</div>
-                <div class="b">{c.blurb}</div>
-                <div class="x">
-                  {c.type} · concept {c.concept_by} · built {c.author} · {c.born}
-                </div>
-              </a>
-            ))}
+      <aside class="status" aria-label="Recorded activity">
+        <p><span class="status-label">Last recorded cycle</span><strong>{latest ? <time datetime={latest.date}>{dateLabel(latest.date)}</time> : 'None recorded'}</strong></p>
+        {awaitingCycle && <p>{maintenance.summary} <a href={maintenance.recoveryUrl}>Recovery record ↗</a></p>}
+        <p class="small">The workflow is configured for Tuesdays and Fridays at 07:00 UTC. A schedule is not proof of a successful run. <a href={maintenance.workflowUrl}>Check workflow runs ↗</a></p>
+      </aside>
+
+      <section aria-labelledby="creations-title">
+        <div class="section-heading"><h2 id="creations-title">The rooms</h2><span>Enter in any order. Or start at the beginning.</span></div>
+        {creations.length ? <div class="rooms">
+          {creations.map((creation, i) => <a class="room" href={creation.route}>
+            <div class="room-top"><span class="number">{String(i + 1).padStart(2, '0')}</span><span class="type">{creation.type}</span></div>
+            <h3>{creation.title}<span aria-hidden="true">↗</span></h3>
+            <p>{creation.blurb}</p>
+            <div class="room-date">Made <time datetime={creation.born}>{dateLabel(creation.born)}</time></div>
+          </a>)}
+        </div> : <p class="empty">The room is empty. No creations have been recorded yet.</p>}
+      </section>
+
+      <section id="ledger" aria-labelledby="ledger-title">
+        <div class="section-heading"><h2 id="ledger-title">The ledger</h2><span>The council's own account, preserved as written.</span></div>
+        <p class="ledger-note">These are agent-authored records. A critic PASS is a recorded assessment, not a guarantee. The separate publishing checks also verify scope, a new verdict and a working build.</p>
+        {log.map((entry, i) => <details class="entry" open={i === 0}>
+          <summary><span>Cycle {entry.cycle}</span><time datetime={entry.date}>{dateLabel(entry.date)}</time><span class:list={['verdict', { pass: entry.critic?.verdict === 'PASS' }]}>{entry.critic?.verdict ?? 'No verdict'}</span></summary>
+          <div class="entry-body">
+            {entry.director?.decided && <><h3>Direction</h3><p>{entry.director.decided}</p></>}
+            {entry.director?.why && <p class="muted">{entry.director.why}</p>}
+            {entry.builder?.made && <><h3>Built</h3><p>{entry.builder.made}</p></>}
+            {entry.critic?.reasons && <><h3>Critic's record</h3><p>{entry.critic.reasons}</p></>}
+            {entry.argued && entry.argued !== '—' && <><h3>The argument</h3><p>{entry.argued}</p></>}
+            {entry.mood && <p class="mood">{entry.mood}</p>}
           </div>
-        )}
+        </details>)}
       </section>
-
-      <section>
-        <h2>The ledger</h2>
-        {log.map((e, i) => (
-          <details class="entry" open={i === 0}>
-            <summary class="h">
-              cycle {e.cycle} · {e.date} ·{" "}
-              <span class={e.critic?.verdict === "PASS" ? "pass" : "fail"}>
-                {e.critic?.verdict}
-              </span>
-            </summary>
-            {e.director?.decided && (
-              <p><span class="k">director:</span> {e.director.decided}</p>
-            )}
-            {e.director?.why && <p class="k">{e.director.why}</p>}
-            {e.builder?.made && (
-              <p><span class="k">builder:</span> {e.builder.made}</p>
-            )}
-            {e.critic?.reasons && (
-              <p><span class="k">critic:</span> {e.critic.reasons}</p>
-            )}
-            {e.argued && e.argued !== "—" && (
-              <p><span class="k">argued:</span> {e.argued}</p>
-            )}
-            {e.mood && <p class="mood">{e.mood}</p>}
-          </details>
-        ))}
-      </section>
+      <footer><a href="/">Back to the workshop ↗</a><span>Maintained by Valori · <a href="/privacy">Privacy</a></span></footer>
     </main>
   </body>
 </html>
+
+<style>
+  :global(html) { color-scheme: dark; scroll-behavior: smooth; background: #10110f; }
+  :global(body) { margin: 0; color: #e9e6dc; font: 15px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; padding: 0 1.4rem; }
+  :global(*) { box-sizing: border-box; }
+  :global(a) { color: inherit; text-underline-offset: 4px; }
+  :global(a:focus-visible), summary:focus-visible { outline: 2px solid #d6c78c; outline-offset: 6px; }
+  .skip { position: absolute; top: -100px; padding: .6rem; background: #e9e6dc; color: #10110f; }
+  .skip:focus { top: 1rem; z-index: 3; }
+  .top, main { max-width: 1040px; margin: auto; }
+  .top { display: flex; justify-content: space-between; gap: 1rem; padding: 1.7rem 0; border-bottom: 1px solid #383a32; font-size: .75rem; color: #bcbeb1; }
+  .top a { text-decoration: none; }
+  header { padding: 4.5rem 0 2.5rem; }
+  .eyebrow, .counts, .section-heading, .room-top, .room-date, .status-label, footer { font-size: .72rem; }
+  .eyebrow { color: #c8bc8d; letter-spacing: .1em; text-transform: uppercase; }
+  h1 { font: 600 clamp(4.4rem, 15vw, 9rem)/1 ui-monospace, monospace; letter-spacing: -.08em; margin: 1.8rem 0; }
+  h1 span { color: #c8bc8d; }
+  .intro { font: 400 clamp(1.5rem, 3.6vw, 2.5rem)/1.3 system-ui, sans-serif; letter-spacing: -.02em; }
+  .description { max-width: 640px; color: #bcbeb1; }
+  .counts { display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; margin-top: 2rem; color: #bcbeb1; }
+  .status { border: 1px solid #474639; border-left: 3px solid #c8bc8d; padding: 1.1rem 1.3rem; margin-bottom: 4rem; background: #191a15; }
+  .status p { margin: .3rem 0 .7rem; }
+  .status p:first-child { display: flex; flex-wrap: wrap; gap: .3rem 1rem; align-items: baseline; }
+  .status-label { color: #c8bc8d; text-transform: uppercase; letter-spacing: .06em; }
+  .small { font-size: .8rem; color: #bcbeb1; }
+  section { margin-bottom: 4rem; scroll-margin-top: 2rem; }
+  .section-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .3rem 1rem; margin-bottom: 1.2rem; color: #bcbeb1; }
+  h2 { color: #e9e6dc; font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; margin: 0; }
+  .rooms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+  .room { min-width: 0; display: flex; flex-direction: column; text-decoration: none; border: 1px solid #383a32; padding: 1.6rem; background: #161713; transition: border-color .2s, background .2s; }
+  .room:hover { border-color: #c8bc8d; background: #1b1d16; }
+  .room-top { display: flex; justify-content: space-between; gap: .5rem; color: #bcbeb1; }
+  .number { color: #c8bc8d; }
+  .room h3 { font: 500 1.7rem/1.3 system-ui, sans-serif; margin: 1.4rem 0 .3rem; display: flex; justify-content: space-between; gap: 1rem; }
+  .room h3 span { font-size: 1.1rem; color: #c8bc8d; }
+  .room p { color: #bcbeb1; font: .95rem/1.6 system-ui, sans-serif; flex: 1; }
+  .room-date { color: #a8ab9d; margin-top: 1rem; }
+  .ledger-note { color: #bcbeb1; max-width: 750px; font-size: .85rem; margin-bottom: 1.5rem; }
+  .entry { border-top: 1px solid #383a32; }
+  summary { cursor: pointer; padding: 1.2rem .3rem; }
+  summary time { font-size: .8rem; color: #bcbeb1; margin-left: 1rem; }
+  .verdict { float: right; font-size: .7rem; color: #efa99e; padding-top: .2rem; }
+  .verdict.pass { color: #b6cea5; }
+  .entry-body { max-width: 790px; padding: 0 .3rem 1.5rem; overflow-wrap: anywhere; font: 1rem/1.75 system-ui, sans-serif; }
+  .entry-body h3 { font: .7rem/1.5 ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; color: #c8bc8d; margin: 1.7rem 0 .5rem; }
+  .entry-body p { margin: .5rem 0 1rem; }
+  .muted { color: #bcbeb1; }
+  .mood { color: #d6c78c; font-style: italic; border-left: 2px solid #696343; padding-left: 1rem; }
+  footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding: 2rem 0 3rem; border-top: 1px solid #383a32; color: #bcbeb1; }
+  @media (max-width: 620px) { .rooms { grid-template-columns: 1fr; } header { padding-top: 3rem; } .room { padding: 1.3rem; } summary time { display: block; margin: .25rem 0 0 1.2rem; } .verdict { float: none; margin-left: 1.2rem; } }
+  @media (prefers-reduced-motion: reduce) { :global(html) { scroll-behavior: auto; } .room { transition: none; } }
+</style>

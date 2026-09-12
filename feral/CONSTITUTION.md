@@ -55,8 +55,11 @@ the rest of `src/`, `astro.config.*`, `package.json`, `tailwind.config.*`,
 `feral/` folder. Need a new npm dependency? You can't add one — vendor the
 library into `public/feral/` or `src/pages/feral/` and import it locally.
 
-The gate enforces this mechanically. A run that writes outside the walls fails
-and never ships. Total freedom in your room; locked door to everyone else's.
+The publication gate checks changed paths against these roots before candidate
+code runs in a separate validation job. The generating and validating jobs have
+no repository write permission. Only the final publishing job can advance main.
+This is an output check, not a sandbox for arbitrary code. The critic still has
+to review what the page does, including its build-time code and external calls.
 
 ## 4. THE PHYSICS (one honest limit)
 

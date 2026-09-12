@@ -1,0 +1,7 @@
+{
+  "reviewedAt": "2026-09-12",
+  "lastRecordedCycle": 5,
+  "summary": "We repaired the shared build and strengthened the publishing checks. A new council cycle has not yet been verified.",
+  "recoveryUrl": "https://github.com/valorifutures/softcat.ai/pull/194",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/workflows/feral.yml"
+}

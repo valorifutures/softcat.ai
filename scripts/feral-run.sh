@@ -14,6 +14,19 @@ set -euo pipefail
 
 MODE="${FERAL_MODE:-propose}"
 BASE="$(git rev-parse --abbrev-ref HEAD)"
+BASE_SHA="$(git rev-parse HEAD)"
+GATE_COPY="$(mktemp --suffix=.mjs)"
+trap 'rm -f "$GATE_COPY"' EXIT
+git show "$BASE_SHA:scripts/feral-gate.mjs" > "$GATE_COPY"
+
+if [ -n "$(git status --porcelain)" ]; then
+  echo "Start from a clean working tree so this cycle cannot absorb other work."
+  exit 1
+fi
+node scripts/validate-content.mjs
+node scripts/validate-tools-data.mjs
+node scripts/validate-horizon-refs.mjs
+npm run build
 STAMP="$(date +%Y%m%d-%H%M%S)"
 BRANCH="feral/cycle-${STAMP}"
 
@@ -25,12 +38,11 @@ echo "────────────────────────�
 
 git checkout -b "${BRANCH}"
 
-# The heartbeat: invoke Claude Code headless to run one full council cycle.
-# --dangerously-skip-permissions lets it work unattended; the gate, not
-# permissions, is what contains it. It can do anything — but only inside the
-# walls, because anything outside fails feral-gate and never merges.
+# Local runs inherit this shell's access. Use the GitHub workflow for the
+# separated generation, validation and publication jobs.
 claude -p "/feral-cycle" \
   --dangerously-skip-permissions \
+  --max-turns "${FERAL_MAX_TURNS:-60}" \
   --allowedTools "Read,Write,Edit,Glob,Grep,Bash,Task"
 
 git add -A
@@ -44,7 +56,7 @@ git commit -m "feral: cycle ${STAMP}"
 
 # The gate decides whether this is allowed to ship.
 set +e
-node scripts/feral-gate.mjs "${BASE}"
+node "$GATE_COPY" "$BASE_SHA" HEAD
 GATE=$?
 set -e
 
@@ -53,6 +65,9 @@ if [ "${GATE}" -ne 0 ]; then
   git checkout "${BASE}"
   exit "${GATE}"
 fi
+
+node scripts/validate-content.mjs
+npm run build
 
 if [ "${MODE}" = "ship" ]; then
   git checkout "${BASE}"
