@@ -82,3 +82,25 @@ hash without pretending the separate systemd bot server ran.
 Validation: 16 JavaScript tests and 86 bot tests pass. The production build
 passes with 883 pages and the model validator has no errors. Missing IDs:
 `google/gemini-2.0-flash-001` and `poolside/laguna-xs.2`.
+
+## 12 September 2026: chat streaming and conversation costs
+
+The chat reader previously split each network chunk into lines, then discarded
+JSON that happened to end in the next chunk. A proper SSE reader now preserves
+partial events and UTF-8 characters. Provider errors, interrupted streams and
+empty completed responses are visible. It releases the reader on completion.
+The playground prevents overlapping sends, offers a stop control, keeps model
+and mode changes stable during requests and stops scrolling the whole page
+when it hydrates. Cost labels clearly describe estimates for completed replies.
+
+Conversation estimates now include the earlier user and assistant text sent
+again on later calls. Each call has an input-history and output breakdown. A
+trailing user message is labelled as a planned call with unknown output.
+Unsupported tokenizer accuracy claims are removed. Cost-dependent tools show
+unknown when a verified price is unavailable.
+
+Validation: all 24 JavaScript tests pass, including every split point in an SSE
+fixture, one-byte UTF-8 chunks, truncation and provider failures, plus repeated
+history billing. The production build passes with 883 pages. No paid chat call
+was made. PR #197's pricing deployment was separately verified live, including
+an unlisted ID and an open weight model with a paid hosted rate.

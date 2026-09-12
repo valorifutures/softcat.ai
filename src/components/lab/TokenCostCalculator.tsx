@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 import { hasVerifiedPrice } from '../../lib/model-pricing.mjs';
 import modelsData from '../../data/models.json';
+import { conversationUsage } from '../../lib/conversation-cost.mjs';
 import { estimateTokens } from '../../utils/tokens';
 
 interface Model {
@@ -101,11 +102,14 @@ export default function TokenCostCalculator() {
 
   // Conversation mode calculations
   const turns = conversationMode ? parseConversation(conversationText) : [];
-  const convInputTokens = turns.filter((t) => t.role === 'user').reduce((s, t) => s + t.tokens, 0);
-  const convOutputTokens = turns.filter((t) => t.role === 'assistant').reduce((s, t) => s + t.tokens, 0);
+  const usage = conversationUsage(turns);
+  const convInputTokens = usage.inputTokens;
+  const convOutputTokens = usage.outputTokens;
   const convInputCost = selectedModel ? (convInputTokens / 1_000_000) * selectedModel.inputPrice : 0;
   const convOutputCost = selectedModel ? (convOutputTokens / 1_000_000) * selectedModel.outputPrice : 0;
   const convTotalCost = convInputCost + convOutputCost;
+
+  if (!selectedModel) return <p class="text-text-muted">No verified model rates are available in this snapshot. <a href="/lab/model-comparison" class="text-neon-cyan underline">Check the model records</a>.</p>;
 
   return (
     <div class="space-y-6">
@@ -114,6 +118,7 @@ export default function TokenCostCalculator() {
           Model
         </label>
         <select
+          aria-label="Model for cost estimate"
           value={selectedId}
           onChange={(e) => setSelectedId((e.target as HTMLSelectElement).value)}
           class="w-full bg-surface border border-surface-light rounded-lg px-4 py-2.5 font-mono text-sm text-text-primary focus:outline-none focus:border-neon-green/50"
@@ -158,6 +163,7 @@ export default function TokenCostCalculator() {
                 Input text
               </label>
               <textarea
+                aria-label="Input text"
                 value={inputText}
                 onInput={(e) => setInputText((e.target as HTMLTextAreaElement).value)}
                 placeholder="Paste your prompt or input here..."
@@ -169,6 +175,7 @@ export default function TokenCostCalculator() {
                 Expected output <span class="text-text-muted normal-case font-sans">(optional)</span>
               </label>
               <textarea
+                aria-label="Expected output"
                 value={outputText}
                 onInput={(e) => setOutputText((e.target as HTMLTextAreaElement).value)}
                 placeholder="Paste expected response here..."
@@ -208,6 +215,7 @@ export default function TokenCostCalculator() {
               Conversation <span class="normal-case font-sans">(use User: / Assistant: / Human: / AI: markers)</span>
             </label>
             <textarea
+              aria-label="Conversation transcript"
               value={conversationText}
               onInput={(e) => setConversationText((e.target as HTMLTextAreaElement).value)}
               placeholder={"User: What is the capital of France?\nAssistant: The capital of France is Paris.\nUser: And Germany?\nAssistant: The capital of Germany is Berlin."}
@@ -215,33 +223,32 @@ export default function TokenCostCalculator() {
             />
           </div>
 
-          {turns.length > 0 && (
+          <p class="text-sm text-text-muted leading-relaxed">Each Assistant section is treated as one reply. Every call includes all earlier conversation text as input. A trailing User section is a planned call with no output estimate yet. System prompts, cached discounts and tool calls are excluded.</p>
+          {usage.calls.length > 0 && (
             <div class="overflow-x-auto">
               <table class="w-full text-left">
                 <thead>
                   <tr class="border-b border-surface-light">
-                    <th class="py-2 px-3 font-mono text-xs text-text-muted">Turn</th>
-                    <th class="py-2 px-3 font-mono text-xs text-text-muted">Role</th>
-                    <th class="py-2 px-3 font-mono text-xs text-text-muted">Est. Tokens</th>
+                    <th class="py-2 px-3 font-mono text-xs text-text-muted">Call</th>
+                    <th class="py-2 px-3 font-mono text-xs text-text-muted">Input history</th>
+                    <th class="py-2 px-3 font-mono text-xs text-text-muted">Output tokens</th>
                     <th class="py-2 px-3 font-mono text-xs text-text-muted">Est. Cost</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {turns.map((t) => {
-                    const price = t.role === 'user' ? selectedModel.inputPrice : selectedModel.outputPrice;
-                    const cost = (t.tokens / 1_000_000) * price;
-                    return (
-                      <tr key={t.turnNumber} class="border-b border-surface-light/30 hover:bg-surface-light/20 transition-colors">
-                        <td class="py-2 px-3 font-mono text-sm text-text-muted">{t.turnNumber}</td>
-                        <td class={`py-2 px-3 font-mono text-sm ${t.role === 'user' ? 'text-neon-green' : 'text-neon-cyan'}`}>{t.role}</td>
-                        <td class="py-2 px-3 font-mono text-sm text-text-primary">{t.tokens.toLocaleString()}</td>
-                        <td class="py-2 px-3 font-mono text-sm text-text-primary">{formatCost(cost)}</td>
-                      </tr>
-                    );
+                  {usage.calls.map((call) => {
+                    const cost = (call.inputTokens * selectedModel.inputPrice + call.outputTokens * selectedModel.outputPrice) / 1_000_000;
+                    return <tr key={call.number} class="border-b border-surface-light/30">
+                      <td class="py-2 px-3 font-mono text-sm text-text-muted">{call.number}{call.pending ? ' (planned)' : ''}</td>
+                      <td class="py-2 px-3 font-mono text-sm text-text-primary">{call.inputTokens.toLocaleString()}</td>
+                      <td class="py-2 px-3 font-mono text-sm text-text-primary">{call.pending ? 'unknown' : call.outputTokens.toLocaleString()}</td>
+                      <td class="py-2 px-3 font-mono text-sm text-text-primary">{formatCost(cost)}</td>
+                    </tr>;
                   })}
                   <tr class="border-t border-surface-light">
-                    <td class="py-2 px-3 font-mono text-xs text-text-muted font-bold" colSpan={2}>Totals</td>
-                    <td class="py-2 px-3 font-mono text-sm text-text-bright font-bold">{(convInputTokens + convOutputTokens).toLocaleString()}</td>
+                    <td class="py-2 px-3 font-mono text-xs text-text-muted font-bold">Totals</td>
+                    <td class="py-2 px-3 font-mono text-sm text-text-bright font-bold">{convInputTokens.toLocaleString()}</td>
+                    <td class="py-2 px-3 font-mono text-sm text-text-bright font-bold">{convOutputTokens.toLocaleString()}</td>
                     <td class="py-2 px-3 font-mono text-sm text-text-bright font-bold">{formatCost(convTotalCost)}</td>
                   </tr>
                 </tbody>
@@ -276,7 +283,7 @@ export default function TokenCostCalculator() {
       )}
 
       <p class="font-mono text-xs text-text-muted">
-        Token estimates are approximate (~+/-15% vs real tokenizers). Pricing from public API rates.
+        Token counts use a rough character-based estimate, not a model tokenizer. Accuracy varies with language, code and encoding. Prices are saved API rates. Actual usage, caching and provider fees can differ.
       </p>
     </div>
   );
