@@ -204,3 +204,34 @@ proposal PRs #186 to #193 were closed individually with the review reasons.
 
 The expanded index has 610 validated entries. Named tool searches for agent
 check and tokens rank their interactive tools above incidental archive mentions.
+
+
+## 12 September 2026: model comparisons with useful assumptions
+
+Removed 117 numerical capability ratings from the 39-model roster. They had no
+published measurement method. The model bot no longer assigns default scores
+to proposals, and the data validator rejects the old rating fields. Reference
+metadata still needs review. Existing price verification and delta guards stay
+in force.
+
+Model Explorer now redirects to one Model Comparison. The overlapping card and
+timeline component was removed from the bundle and tool list. The replacement
+compares dated token rates against editable input, output and call counts.
+Illustrative presets state their assumptions. Exact model IDs are searchable
+and copyable. The CSV includes the workload, unknown states, saved context,
+check dates and source URLs. It guards against spreadsheet formula text.
+
+Missing rates remain unknown. Input and output must fit the saved context to
+produce an estimate. The UI calls these reference limits, explains excluded
+charges and does not equate low cost with answer quality. Blank, fractional,
+negative and unsafe counts cannot silently produce a zero-dollar total.
+
+Validation: 37 JavaScript tests and 92 bot tests pass. Data and Horizon checks
+report no errors. The production build has 887 pages. All 38 local links from
+the comparison page resolve. The old Explorer route redirects and is removed
+from the search index, which now contains 609 entries. No provider call was made.
+
+PR #201's Pages run 34725367527 succeeded at 23:25 UTC. Live search ranked the
+agent tool first, updated its active descendant with ArrowDown, and returned
+focus to the opening button after Close. Loading and empty-result footer text
+was refined in this pass.

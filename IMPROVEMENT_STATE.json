@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-12T23:19:49.380454+00:00",
-  "phase": "search-and-publication-quality",
-  "active_branch": "codex/search-and-publication-quality",
+  "updated_at": "2026-09-12T23:44:46.434207+00:00",
+  "phase": "model-comparison-workloads",
+  "active_branch": "codex/model-comparison-workloads",
   "last_verified_deployment": {
-    "sha": "7c51318f4ea447e3b913063e18b14df490d8fc1a",
-    "at": "2026-09-12T23:06:59Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34724517890"
+    "sha": "4e10d0bc63d386d351f9b9f262e455b266d14c64",
+    "at": "2026-09-12T23:25:55Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34725367527"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -15,12 +15,13 @@
     "PR #197 merged and deployed. Live model search confirms unlisted pricing for Laguna and paid OpenRouter rates for Qwen 2.5. All model data now carries per-entry source/check metadata.",
     "PR #198 merged and deployed. Live conversation estimates include repeated history. Streaming fixtures pass at every byte boundary. No paid chat call made.",
     "PR #199 merged and deployed. The new Feral gallery was visually checked. The generation, validation and publishing jobs are separate, with fresh-verdict regression coverage. A paid council run remains unverified.",
-    "PR #200 merged and deployed. Live review shows seven active, eight withdrawn and 39 archived records. The Memory forecast withdrawal expands correctly with the original claim. PRs #186\u2013193 were each closed with specific review reasons."
+    "PR #200 merged and deployed. Live review shows seven active, eight withdrawn and 39 archived records. The Memory forecast withdrawal expands correctly with the original claim. PRs #186\u2013193 were each closed with specific review reasons.",
+    "PR #201 merged and deployed. Live search finds the agent tool first, ArrowDown selects the next result, and the Close control restores focus to the opener. Draft publication fixtures and all indexed routes passed checks."
   ],
   "next": [
-    "Publish search and draft-route fixes, then verify keyboard navigation, modal close and focus restoration live.",
-    "Remove unsupported numerical capability ratings and consolidate overlapping model tools around verifiable information.",
-    "Review remaining content and navigation for useful additions or removals.",
+    "Publish the consolidated model comparison and verify workload inputs, model ID search, sorting and export live.",
+    "Replace the JSON validator's partial schema checks with a validator that cannot silently pass unsupported constraints.",
+    "Curate the homepage's archive selections and remaining low-value content.",
     "The separate systemd host is still unverified. No connection target is established.",
     "Leave a clean checkpoint for the next scheduled iteration."
   ],

@@ -38,7 +38,7 @@ for (const m of models) {
   if (m.released && !YEAR_MONTH.test(m.released)) errors.push(`${at}: released must be YYYY-MM`);
   if (!ISO_DATE.test(m.trackedSince ?? '')) errors.push(`${at}: trackedSince must be YYYY-MM-DD`);
   for (const k of ['coding', 'reasoning_score', 'speed']) {
-    if (!Number.isFinite(m[k]) || m[k] < 0 || m[k] > 100) errors.push(`${at}: ${k} must be 0-100`);
+    if (k in m) errors.push(`${at}: remove unsupported numerical capability rating "${k}"`);
   }
   for (const k of ['inputPrice', 'outputPrice']) {
     if (m[k] !== null && (!Number.isFinite(m[k]) || m[k] < 0)) errors.push(`${at}: ${k} must be a number >= 0 or null for unknown`);
