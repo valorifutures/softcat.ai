@@ -2,185 +2,58 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import ActivityTicker from '../components/ActivityTicker.astro';
-import About from '../components/About.astro';
-import FeaturedPost from '../components/FeaturedPost.astro';
-import SectionPreview from '../components/SectionPreview.astro';
-import Dispatch from '../components/Dispatch.astro';
 import { getCollection } from 'astro:content';
-import radarManifest from '../data/radar/index.json';
-
-const newsEntries = (await getCollection('news-and-updates'))
-  .filter((e) => !e.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
-
-const allThoughts = (await getCollection('thoughts'))
-  .filter((e) => !e.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-const pinnedThoughts = allThoughts.filter((e) => e.data.pinned);
-const thoughtEntries = allThoughts.filter((e) => !e.data.pinned).slice(0, 3);
-
-const toolEntries = (await getCollection('tools'))
-  .filter((e) => !e.data.draft)
-  .slice(0, 3);
-
-const promptEntries = (await getCollection('prompts'))
-  .filter((e) => !e.data.draft)
-  .sort((a, b) => a.data.title.localeCompare(b.data.title))
-  .slice(0, 3);
-
-const radarDayFiles = import.meta.glob('../data/radar/????-??-??.json', { eager: true });
-const radarLatestKey = Object.keys(radarDayFiles).find((k) => k.includes(radarManifest.latest));
-const radarData = radarLatestKey ? (radarDayFiles[radarLatestKey] as any).default : null;
-const radarPreviewItems = radarData ? radarData.featured.slice(0, 3) : [];
+import feralManifest from '../content/feral/manifest.json';
+const thoughts = (await getCollection('thoughts')).filter((entry) => !entry.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const notes = thoughts.filter((entry) => entry.data.tags.includes('field-notes'));
+const latestNote = notes[0];
+const archive = thoughts.filter((entry) => !entry.data.tags.includes('field-notes')).slice(0, 2);
+const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const experiments = [
+  { index: '02', title: 'Prompt Workbench', text: 'Build, compare and keep the prompts that earn their place.', href: '/lab/prompt-workbench', category: 'MAKE SOMETHING', glyph: '{ }', colour: 'cyan' },
+  { index: '03', title: 'JSON Output Validator', text: 'Check what a model returned before your next step depends on it.', href: '/lab/json-validator', category: 'CHECK THE OUTPUT', glyph: '✓', colour: 'lilac' },
+  { index: '04', title: 'Agent Trace Tape', text: 'Explore a visual artefact of the pipeline, one recorded step at a time.', href: '/trace/', category: 'LOOK UNDERNEATH', glyph: '≋', colour: 'peach' },
+];
 ---
-
-<BaseLayout>
+<BaseLayout description="An independent AI workshop by Valori. Useful browser tools, inspectable agent experiments and a public notebook of what we learn.">
   <Hero />
-  <div class="max-w-5xl mx-auto px-6 pb-12">
-    <section class="relative glass-card rounded-2xl border border-neon-green/15 overflow-hidden">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 p-5 md:p-6 border-b border-surface-light/50">
-        <div>
-          <p class="font-mono text-xs uppercase tracking-widest text-neon-green/80 mb-2">
-            interactive artefact
-          </p>
-          <h2 class="font-mono text-xl md:text-2xl font-bold text-text-bright">
-            Agent Trace Tape
-          </h2>
-          <p class="text-sm text-text-muted mt-2 max-w-2xl">
-            A physical trace from the SOFT CAT pipeline: feeds scanned, tools called,
-            slop rejected, static site deployed.
-          </p>
-        </div>
-        <a
-          href="/trace/"
-          class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-neon-green/30 bg-neon-green/5 font-mono text-sm text-neon-green hover:bg-neon-green/10 hover:border-neon-green/60 transition-all shrink-0"
-        >
-          open full trace &rarr;
-        </a>
-      </div>
-      <iframe
-        src="/trace/?embed=1"
-        title="Interactive SOFT CAT Agent Trace Tape"
-        loading="lazy"
-        class="block w-full h-[360px] md:h-[430px] bg-void border-0"
-      ></iframe>
-    </section>
-  </div>
   <ActivityTicker />
-  <About />
 
-  {pinnedThoughts.length > 0 && (
-    <div class="border-t border-surface-light/30 mt-8">
-      <FeaturedPost entries={pinnedThoughts} />
-    </div>
-  )}
+  <section class="workshop-shell workshop-section" aria-labelledby="bench-heading">
+    <div class="workshop-section-heading"><div><p class="eyebrow">THE WORKBENCH</p><h2 id="bench-heading">Less watching. More trying.</h2></div><a class="text-link" href="/tools">All tools <span aria-hidden="true">↗</span></a></div>
+    <div class="experiment-grid">{experiments.map((experiment) => <a class={`bench-card ${experiment.colour}`} href={experiment.href}>
+      <div class="bench-meta"><span>{experiment.category}</span><span>{experiment.index}</span></div>
+      <div class="bench-glyph" aria-hidden="true">{experiment.glyph}</div>
+      <h3>{experiment.title}</h3><p>{experiment.text}</p><span class="bench-open">Open experiment <span aria-hidden="true">↗</span></span>
+    </a>)}</div>
+  </section>
 
-  <div class="border-t border-surface-light/30 mt-8">
-    <SectionPreview
-      title="News & Updates"
-      accent="green"
-      href="/news-and-updates"
-      basePath="/news-and-updates"
-      entries={newsEntries}
-    />
-  </div>
+  <section class="workshop-shell workshop-section" aria-labelledby="notebook-heading">
+    <div class="workshop-section-heading"><div><p class="eyebrow">NOTES FROM THE WORKSHOP</p><h2 id="notebook-heading">The work, including the rough edges.</h2></div><a class="text-link" href="/notebook">The notebook <span aria-hidden="true">↗</span></a></div>
+    {latestNote && <a class="notebook-feature" href={`/thoughts/${latestNote.id}`}>
+      <div class="notebook-date"><span>FIELD NOTE</span><time datetime={latestNote.data.date.toISOString()}>{fmt(latestNote.data.date)}</time><span class="notebook-mark" aria-hidden="true">↳</span></div>
+      <div><h3>{latestNote.data.title}</h3><p>{latestNote.data.summary}</p><span class="text-link">Read the entry <span aria-hidden="true">→</span></span></div>
+    </a>}
+    <div class="archive-note"><span class="eyebrow">FROM THE ARCHIVE</span><a href="/thoughts" class="text-link">All thoughts →</a></div>
+    <div class="archive-grid">{archive.map((entry) => <a href={`/thoughts/${entry.id}`}><time datetime={entry.data.date.toISOString()}>{fmt(entry.data.date)}</time><h3>{entry.data.title}</h3></a>)}</div>
+  </section>
 
-  <div class="border-t border-surface-light/30">
-    <SectionPreview
-      title="Thoughts"
-      accent="cyan"
-      href="/thoughts"
-      basePath="/thoughts"
-      entries={thoughtEntries}
-    />
-  </div>
+  <section class="workshop-shell workshop-section horizon-feral" aria-label="Explore the wider experiment">
+    <a href="/horizon" class="horizon-invitation">
+      <p class="eyebrow">THE HORIZON MAP</p><h2>Keep the past.<br />Question the next.</h2>
+      <p>A dated map of AI milestones, present signals and possible futures. Follow the evidence and the uncertainty.</p>
+      <div class="horizon-lanes" aria-hidden="true"><span>PAST</span><span>NOW</span><span>NEXT ↗</span></div>
+    </a>
+    <a href="/feral" class="feral-invitation">
+      <p class="eyebrow">THE UNSUPERVISED CORNER</p><h2>/feral<span aria-hidden="true">_</span></h2>
+      <p>What do agents make when they choose the brief? Step inside the experiment and inspect what they left behind.</p>
+      <div class="feral-bottom"><span>{feralManifest.length} published creations</span><span aria-hidden="true">↗</span></div>
+    </a>
+  </section>
 
-  <div class="border-t border-surface-light/30">
-    <SectionPreview
-      title="Tools & Experiments"
-      accent="purple"
-      href="/tools"
-      basePath="/tools"
-      entries={toolEntries}
-    />
-  </div>
-
-  <div class="border-t border-surface-light/30">
-    <SectionPreview
-      title="Prompt Library"
-      accent="amber"
-      href="/prompts"
-      basePath="/prompts"
-      entries={promptEntries}
-    />
-  </div>
-
-  <div class="border-t border-surface-light/30">
-    <section class="max-w-5xl mx-auto px-6 py-10">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="font-mono text-lg font-bold text-text-bright flex items-center gap-2">
-          <span class="text-neon-red">&#9632;</span>
-          The Radar
-        </h2>
-        <a
-          href="/radar"
-          class="font-mono text-xs text-text-muted hover:text-neon-red hover:border-neon-red/30 transition-colors border-b border-transparent"
-        >
-          view all &rarr;
-        </a>
-      </div>
-      {radarPreviewItems.length === 0 ? (
-        <div class="bg-surface border border-surface-light rounded-lg p-6 text-center">
-          <p class="font-mono text-sm text-text-muted">
-            <span class="text-neon-red">&#9679;</span> awaiting first transmission...
-          </p>
-        </div>
-      ) : (
-        <div class="grid gap-5">
-          {radarPreviewItems.map((item: any, index: number) => (
-            <a
-              href={item.ph_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block relative glass-card rounded-xl p-6 card-glow card-glow-red card-lift group animate-stagger border-l-2 border-l-neon-red/40 overflow-hidden"
-              style={`--stagger-index: ${index}`}
-            >
-              <div class="flex items-start justify-between gap-4">
-                <div class="min-w-0">
-                  <h3 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-red transition-colors truncate">
-                    {item.name}
-                  </h3>
-                  <p class="text-sm text-text-muted mt-2 leading-relaxed line-clamp-2">
-                    {item.why_radar}
-                  </p>
-                </div>
-                <span class="font-mono text-xs text-neon-red shrink-0 flex items-center gap-1">
-                  &#9650; {item.upvotes}
-                </span>
-              </div>
-            </a>
-          ))}
-        </div>
-      )}
-    </section>
-  </div>
-
-  <div class="border-t border-surface-light/30">
-    <section class="max-w-5xl mx-auto px-6 py-10">
-      <button
-        data-search-trigger
-        class="w-full flex items-center gap-3 px-4 py-3 rounded-xl border border-surface-light/50 bg-surface hover:border-neon-green/30 transition-all group cursor-pointer"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-muted/50 group-hover:text-neon-green transition-colors shrink-0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <span class="font-mono text-sm text-text-muted/50 group-hover:text-text-muted transition-colors">Search everything...</span>
-        <kbd class="ml-auto hidden sm:inline font-mono text-[10px] px-1.5 py-0.5 rounded border border-surface-light/50 text-text-muted/40">Ctrl+K</kbd>
-      </button>
-    </section>
-  </div>
-
-  <div class="border-t border-surface-light/30">
-    <Dispatch />
-  </div>
+  <section class="workshop-shell workshop-about">
+    <div><p class="eyebrow">SMART OUTPUTS FROM TRAINED<br />CONVERSATIONAL AI TECHNOLOGY</p><h2>That is the name.<br />Useful is the aim.</h2></div>
+    <div><p>SOFT CAT is an independent project by Valori. Part playground, part field notebook, part experiment in maintaining a website with AI.</p><p>We publish the code and the records, keep the failed attempts in view, and change our minds when the work calls for it.</p><a href="/valori" class="text-link">Meet the project →</a></div>
+  </section>
 </BaseLayout>

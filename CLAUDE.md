@@ -21,7 +21,7 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 - **UI**: Preact components (`.tsx`) for interactive bits, Astro components (`.astro`) for everything else
 - **Styling**: Tailwind CSS 4.2 via Vite plugin. Theme defined in `src/styles/global.css`.
 - **Colors**: void (#0c0c14), surface (#14141e), surface-light (#1e1e30), neon-green (#4ecb8f), neon-cyan (#5ab8d4), neon-purple (#9b7acc), neon-amber (#d4a54a), neon-red (#da5e74)
-- **Fonts**: Inter (sans), JetBrains Mono (mono). Mono used for headings and UI elements.
+- **Fonts**: Inter (sans), JetBrains Mono (mono). Workshop display headings use Inter, with mono for labels and records. Shared workshop styles are in `src/styles/workshop.css`.
 - **Build**: `npm run build` outputs to `dist/`. Must pass before any PR.
 
 ## Content Architecture
@@ -58,7 +58,9 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
 ## Existing Pages
 
-- `/` — homepage with hero, activity ticker, about, section previews
+- `/` — workshop homepage with tools, dated notebook entry, archive, Horizon and Feral
+- `/notebook` — build diary from thoughts tagged `field-notes`
+- `/lab/agent-check` — six-question deterministic design aid, rules in `src/lib/agent-check.mjs`
 - `/news-and-updates` — AI news digest posts (bot-generated daily)
 - `/thoughts` — opinion pieces (bot-generated daily)
 - `/tools` — merged tools page: provenance strip (staleness register), weekly-rotating featured spotlight (`featured: true` in tools-manifest.json pins as editorial override), interactive tools (Preact apps at `/lab/*`, data-driven ones show model-data stamps) + dated tool write-ups with tag filter and archive section. `/lab` redirects here. Design doc: `docs/designs/tools-page-showroom.md`

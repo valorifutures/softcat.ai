@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import toolsManifest from '../data/tools-manifest.json';
 import radarManifest from '../data/radar/index.json';
 import { RADAR_VISIBLE_DAYS } from '../utils/radar';
 
@@ -85,8 +86,14 @@ export const GET: APIRoute = async () => {
     }
   }
 
+  for (const tool of toolsManifest) entries.push({ title: tool.name, summary: tool.description, url: tool.href, type: 'tool', tags: [tool.category] });
+
   // Static pages
   const pages = [
+    { title: 'Notebook', summary: 'The public build diary: experiments, decisions and failures with evidence.', url: '/notebook', type: 'page' },
+    { title: 'Horizon Map', summary: 'A dated map of AI history, signals and possible futures.', url: '/horizon', type: 'page' },
+    { title: 'Pipeline', summary: 'Dated bot runs, outcomes and recorded costs.', url: '/pipeline', type: 'page' },
+    { title: 'Feral', summary: 'Agent-created experiments and their execution records.', url: '/feral', type: 'page' },
     { title: 'The Radar', summary: 'Daily AI product launches worth knowing about', url: '/radar', type: 'page' },
   ];
   entries.push(...pages);

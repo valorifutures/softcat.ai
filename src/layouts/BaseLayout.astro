@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import SearchOverlay from '../components/SearchOverlay.tsx';
 import { CF_BEACON_TOKEN, ANALYTICS_ENABLED } from '../consts';
 import '../styles/global.css';
+import '../styles/workshop.css';
 
 interface Props {
   title?: string;
@@ -114,7 +115,7 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
   <body class="flex flex-col min-h-screen">
     <a href="#main-content" class="skip-link">Skip to content</a>
     <Header />
-    <SearchOverlay client:idle />
+    <SearchOverlay client:load />
     <main id="main-content" class="flex-1" tabindex="-1">
       <slot />
     </main>

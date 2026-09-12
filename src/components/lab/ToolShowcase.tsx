@@ -14,6 +14,7 @@ interface Tool {
 
 const categories = [
   { id: 'all', label: 'All', color: 'purple' },
+  { id: 'agents', label: 'Agents & Workflows', color: 'green' },
   { id: 'prompts', label: 'Prompt Engineering', color: 'amber' },
   { id: 'models', label: 'Model Intelligence', color: 'cyan' },
   { id: 'cost', label: 'Cost & Tokens', color: 'green' },

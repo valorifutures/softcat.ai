@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AgentCheck from '../../components/lab/AgentCheck';
+import '../../styles/agent-check.css';
+---
+<BaseLayout title="Should this be an agent?" description="Six questions to help choose a script, an AI workflow, an assistant or a bounded agent trial." breadcrumbs={[{ name: 'Tools', url: '/tools' }, { name: 'Agent check', url: '/lab/agent-check' }]}>
+  <div class="workshop-shell agent-page">
+    <header class="agent-intro">
+      <a href="/tools" class="eyebrow">← All tools</a>
+      <p class="eyebrow accent-green">EXPERIMENT 01 / DECISION TOOL</p>
+      <h1>Should this be<br />an <em>agent?</em></h1>
+      <p>Start with the job, not the architecture. Six questions to help decide how much autonomy is useful.</p>
+      <div class="agent-meta"><span>~2 minutes</span><span>No account or API key</span><span>Runs in your browser</span></div>
+    </header>
+    <AgentCheck client:load />
+    <noscript><p class="my-8 text-text-muted">Enable JavaScript to use the decision tool. The approach: use rules for predictable tasks, workflows for known steps, and trial an agent only when discoveries change the plan and you can check the result.</p></noscript>
+    <details class="agent-method">
+      <summary>How the recommendation works</summary>
+      <p>This tool applies an editorial decision tree. It first checks whether success is defined and whether the work repeats. It then considers rules, consequences, the shape of the process and external tools. It does not predict performance or calculate a probability.</p>
+      <p>“Agent” here means a model choosing the next tool action from the results so far. A workflow can still use powerful models while code controls the steps.</p>
+      <a href="https://github.com/valorifutures/softcat.ai/blob/main/src/lib/agent-check.mjs">Read every rule in the source ↗</a>
+    </details>
+  </div>
+</BaseLayout>
