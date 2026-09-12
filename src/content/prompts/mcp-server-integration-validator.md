@@ -79,4 +79,3 @@ draft: false
 ---
 
 Use this prompt when you are building or reviewing an MCP server and want a structured audit before connecting it to any AI client. It is particularly useful now that platforms like X and OpenClaw are shipping hosted MCP servers, raising the bar for what a production-ready implementation looks like. Works well with Claude, GPT-4, and Gemini.
-```

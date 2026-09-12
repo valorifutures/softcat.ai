@@ -22,6 +22,7 @@ from dotenv import load_dotenv
 from anthropic import Anthropic
 
 from pipeline_log import log_run
+from prompt_output import normalise_frontmatter, split_prompt_response
 import git_safe
 
 # Paths
@@ -130,7 +131,7 @@ Pick categories that feel relevant to current AI trends in the news above.
 
 ## Output format:
 Return EXACTLY 2 prompt files separated by the delimiter `---SPLIT---` on its own line.
-Each file must follow this exact format:
+Each file must follow this exact format. Return raw Markdown without wrapping either file in code fences:
 
 ```
 ---
@@ -146,7 +147,7 @@ prompt: |
 draft: false
 ---
 
-One short paragraph (2-3 sentences) explaining when and how to use this prompt. Mention it works with Claude, GPT-4, and Gemini.
+One short paragraph (2-3 sentences) explaining when and how to use this prompt. Keep it model-agnostic. Do not hardcode model versions or current pricing.
 ```
 
 Rules:
@@ -162,29 +163,15 @@ Rules:
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=3000,
+        max_tokens=6000,
         messages=[{"role": "user", "content": prompt}],
     )
     # Store usage for pipeline logging
     generate_prompts._last_usage = response.usage
 
-    content = response.content[0].text.strip()
-
-    # Strip outer code fences if present
-    if content.startswith("```"):
-        lines = content.split("\n")
-        content = "\n".join(lines[1:])
-        if content.endswith("```"):
-            content = content[:-3].strip()
-
-    # Split into 2 prompts
-    parts = content.split("---SPLIT---")
-    parts = [p.strip() for p in parts if p.strip()]
-
-    if len(parts) < 2:
-        print(f"Expected 2 prompts, got {len(parts)}. Using what we have.")
-
-    return parts[:2] if parts else None
+    if response.stop_reason == "max_tokens":
+        raise ValueError("Prompt generation was truncated. Refusing to publish.")
+    return split_prompt_response(response.content[0].text)
 
 
 def extract_title(content: str) -> str:
@@ -199,36 +186,14 @@ def extract_category(content: str) -> str:
     return match.group(1) if match else "general"
 
 
-def normalise_frontmatter(content: str) -> str:
-    """Ensure content has valid YAML frontmatter delimiters."""
-    content = content.strip()
-    # If the file doesn't start with ---, add it
-    if not content.startswith("---"):
-        content = "---\n" + content
-    # Ensure there's a closing --- after the frontmatter
-    parts = content.split("---", 2)  # ['', frontmatter, body_or_more]
-    if len(parts) >= 3:
-        return content  # Already has opening and closing ---
-    # Only one --- found (the opening one); find where frontmatter ends
-    # Look for the first line that isn't YAML-like after ---
-    lines = content.split("\n")
-    in_yaml = False
-    for i, line in enumerate(lines):
-        if line.strip() == "---" and not in_yaml:
-            in_yaml = True
-            continue
-        if in_yaml and line.strip() == "---":
-            return content  # Already properly delimited
-    # No closing --- found; shouldn't happen with valid prompts but be safe
-    return content
-
-
 def save_and_push(prompts: list[str], history: dict, *, push: bool = True):
     """Save prompts, update history, commit and optionally push."""
     files_created = []
 
+    # Reject the whole batch before writing if any file has a broken wrapper.
+    prompts = [normalise_frontmatter(content) for content in prompts]
+    additions = []
     for content in prompts:
-        content = normalise_frontmatter(content)
         title = extract_title(content)
         category = extract_category(content)
         slug = slugify(title)
@@ -236,21 +201,31 @@ def save_and_push(prompts: list[str], history: dict, *, push: bool = True):
 
         # Avoid overwriting existing files
         output_path = CONTENT_DIR / filename
-        if output_path.exists():
-            filename = f"{slug}-2.md"
+        suffix = 2
+        while output_path.exists():
+            filename = f"{slug}-{suffix}.md"
             output_path = CONTENT_DIR / filename
+            suffix += 1
 
         output_path.write_text(content + "\n")
         print(f"Written: {output_path}")
         files_created.append(f"src/content/prompts/{filename}")
 
-        history.setdefault("prompts", []).append({
+        additions.append({
             "date": datetime.now().strftime("%Y-%m-%d"),
             "file": filename,
             "title": title,
             "category": category,
         })
 
+    # Validate actual YAML with Astro's parser before touching history or git.
+    try:
+        subprocess.run(["node", "scripts/validate-content.mjs"], cwd=REPO_DIR, check=True)
+    except (subprocess.CalledProcessError, OSError):
+        for filename in files_created:
+            (REPO_DIR / filename).unlink(missing_ok=True)
+        raise
+    history.setdefault("prompts", []).extend(additions)
     save_history(history)
 
     # Commit and push (serialized + health-checked via git_safe)

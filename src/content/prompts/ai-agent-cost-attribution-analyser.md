@@ -1,6 +1,4 @@
 ---
-```
----
 title: "AI Agent Cost Attribution Analyser"
 description: "Breaks down the token and compute costs of an agentic workflow and identifies where spending can be reduced."
 category: "monitoring"
