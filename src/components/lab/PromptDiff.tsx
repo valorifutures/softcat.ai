@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks';
+import { hasVerifiedPrice } from '../../lib/model-pricing.mjs';
 import modelsData from '../../data/models.json';
 import { estimateTokens } from '../../utils/tokens';
 
@@ -17,7 +18,7 @@ interface SavedPrompt {
   assistant: string;
 }
 
-const models: Model[] = (modelsData as Model[]).filter((m) => m.inputPrice > 0);
+const models: Model[] = modelsData.filter(hasVerifiedPrice) as Model[];
 
 type DiffToken =
   | { type: 'equal'; value: string }

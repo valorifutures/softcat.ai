@@ -26,9 +26,10 @@ Trust model (issue #96):
 import os
 import sys
 import json
+import math
 import subprocess
 import time as _time
-from datetime import datetime, date
+from datetime import datetime, date, timezone
 from pathlib import Path
 
 import httpx
@@ -154,11 +155,19 @@ def extract_auto_fields(api_model):
     """Pull auto-updatable fields from an OpenRouter API entry."""
     pricing = api_model.get("pricing", {})
 
-    # OpenRouter prices are per-token strings; convert to per-1M-token numbers
-    input_per_tok = float(pricing.get("prompt", "0") or "0")
-    output_per_tok = float(pricing.get("completion", "0") or "0")
-    input_price = round(input_per_tok * 1_000_000, 2)
-    output_price = round(output_per_tok * 1_000_000, 2)
+    # Missing and non-finite rates are unknown. Explicit zero is a real quote.
+    def rate(value):
+        try:
+            parsed = float(value)
+        except (TypeError, ValueError):
+            return None
+        if not math.isfinite(parsed) or parsed < 0:
+            return None
+        converted = parsed * 1_000_000
+        return round(converted, 6) if math.isfinite(converted) else None
+
+    input_price = rate(pricing.get("prompt"))
+    output_price = rate(pricing.get("completion"))
 
     context_length = api_model.get("context_length", 0)
     context_k = context_length // 1000 if context_length else 0
@@ -191,61 +200,53 @@ def _is_suspect(field, old, new):
 
 
 def update_models(existing, api_models):
-    """Merge API data into existing models.
+    """Refresh dated API quotes without treating open weights as free hosting.
 
-    Returns (models, changed, suspects) where suspects is a list of rejected
-    field changes (delta > MAX_AUTO_DELTA) that should go to human review,
-    not the commit."""
-    changed = False
+    Numeric swing and field locks still apply. A blocked quote is marked as
+    needing review so the UI cannot present an old number as freshly verified.
+    The caller rejects a wholly empty API catalogue before reaching this code.
+    """
     updated = []
     suspects = []
-
-    # Update existing models
+    checked_at = datetime.now(timezone.utc).isoformat()
     for model in existing:
+        copy = model.copy()
         model_id = model.get("id", "")
         api_model = api_models.get(model_id)
-
-        if api_model:
-            copy = model.copy()
-            auto = extract_auto_fields(api_model)
-            locked = set(copy.get("lockedFields") or [])
-
-            # Skip price updates for open-source models (we show "Free*" for self-hosting)
-            if copy.get("openSource"):
-                auto.pop("inputPrice", None)
-                auto.pop("outputPrice", None)
-
-            for key, value in auto.items():
-                old = copy.get(key)
-                if old == value:
-                    continue
-                if key in locked:
-                    print(f"  Locked {copy['name']}.{key}: {old} -> {value} (kept {old})")
-                    continue
-                if _is_suspect(key, old, value):
-                    print(f"  SUSPECT {copy['name']}.{key}: {old} -> {value} (> "
-                          f"{int(MAX_AUTO_DELTA * 100)}% delta, not landing)")
-                    suspects.append({
-                        "id": model_id,
-                        "name": copy.get("name", model_id),
-                        "field": key,
-                        "current": old,
-                        "proposed": value,
-                        "source": "openrouter",
-                    })
-                    continue
-                print(f"  Updated {copy['name']}.{key}: {old} -> {value}")
-                copy[key] = value
-                changed = True
+        copy["pricingSource"] = "https://openrouter.ai/api/v1/models"
+        copy["pricingCheckedAt"] = checked_at
+        if not api_model:
+            copy.update(inputPrice=None, outputPrice=None, pricingStatus="not-listed")
             updated.append(copy)
-        else:
-            # No API data for this model, keep as-is
-            updated.append(model)
+            continue
 
-    # NOTE: there is intentionally no "add new models" branch here (eng E1).
-    # Job 1 only refreshes entries already in models.json. New entries arrive
-    # via Job 2's reviewed proposal PRs.
-    return updated, changed, suspects
+        auto = extract_auto_fields(api_model)
+        locked = set(copy.get("lockedFields") or [])
+        for key, value in auto.items():
+            old = copy.get(key)
+            if old == value:
+                continue
+            if key in locked:
+                print(f"  Locked {copy['name']}.{key}: {old} -> {value} (kept {old})")
+                continue
+            if _is_suspect(key, old, value):
+                print(f"  SUSPECT {copy['name']}.{key}: {old} -> {value}")
+                suspects.append({"id": model_id, "name": copy.get("name", model_id),
+                                 "field": key, "current": old, "proposed": value,
+                                 "source": "openrouter"})
+                continue
+            copy[key] = value
+
+        if any(auto[key] is None for key in ("inputPrice", "outputPrice")):
+            copy["pricingStatus"] = "unverified"
+        elif any(copy.get(key) != auto[key] for key in ("inputPrice", "outputPrice")):
+            copy["pricingStatus"] = "review-needed"
+        else:
+            copy["pricingStatus"] = "verified"
+        updated.append(copy)
+
+    # Job 1 never adds untracked IDs. Roster proposals remain a separate job.
+    return updated, updated != existing, suspects
 
 
 def reset_drifted_baseline():
@@ -383,13 +384,17 @@ def build_proposal_entry(cand: dict, api_models: dict) -> dict:
     api_model = api_models[cand["model_id"]]
     raw_name = api_model.get("name", cand["model_id"])
     name = raw_name.split(": ", 1)[-1] if ": " in raw_name else raw_name
+    auto = extract_auto_fields(api_model)
     return {
         "id": cand["model_id"],
         "name": name,
         "provider": derive_provider(cand["model_id"]),
         "released": date.today().strftime("%Y-%m"),
         **NEW_MODEL_DEFAULTS,
-        **extract_auto_fields(api_model),
+        **auto,
+        "pricingStatus": "verified" if all(auto[k] is not None for k in ("inputPrice", "outputPrice")) else "unverified",
+        "pricingSource": "https://openrouter.ai/api/v1/models",
+        "pricingCheckedAt": datetime.now(timezone.utc).isoformat(),
         "trackedSince": date.today().isoformat(),
         "radarRef": f"{cand['radar_date']}#{cand['radar_entry_id']}",
     }

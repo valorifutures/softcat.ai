@@ -1,28 +1,30 @@
 {
-  "updated_at": "2026-09-12T21:54:58.192117+00:00",
-  "phase": "workshop-home",
-  "active_branch": "codex/workshop-home",
+  "updated_at": "2026-09-12T22:09:40.333226+00:00",
+  "phase": "verified-model-pricing",
+  "active_branch": "codex/model-data-and-chat",
   "last_verified_deployment": {
-    "sha": "d45dd989609f97bb4082b6a3ddccdfec85864da7",
-    "at": "2026-09-12T21:43:40Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34720708838"
+    "sha": "a6543eddcbe05873970e461239714157572a4223",
+    "url": "https://github.com/valorifutures/softcat.ai/pull/196",
+    "verification": "Live homepage, agent preset result, saved-key opt-in and clearing inspected in browser."
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
     "Hourly continuation is enabled. GitHub uses supported Allow all actions permission, authorised by the maintainer.",
-    "PR #195 merged and deployed. Live pipeline shows July dates and stale records. Pricing stamps, privacy disclosure and opt-in key storage are implemented."
+    "PR #195 merged and deployed. Live pipeline shows July dates and stale records. Pricing stamps, privacy disclosure and opt-in key storage are implemented.",
+    "PR #196 merged and live. Workshop homepage, sourced notebook entry and agent decision tool published. All 324 answer combinations covered by passing tests."
   ],
   "next": [
-    "Publish and visually inspect the workshop homepage, notebook and agent decision tool.",
-    "Correct model pricing semantics and refresh verifiable model data.",
-    "Fix chat streaming across split network chunks and verify request controls.",
+    "Publish and verify the sourced pricing update (37 of 39 tracked IDs matched, 16 changed price pairs).",
+    "Fix chat streaming across split network chunks and prevent overlapping requests.",
+    "Correct conversation cost estimates to include re-sent history and remove unsupported tokenizer accuracy claims.",
     "Review all 15 Horizon forecasts and the eight unmerged proposals against current evidence.",
-    "Check the daily systemd bot host separately and record its actual status.",
-    "Review Feral failure history and restore its scheduled experiment after shared-build repair."
+    "Review Feral failure history and recover its scheduled experiment after shared-build repair.",
+    "Check the daily systemd bot host separately and record its actual status."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "All 15 existing Horizon forecast reviews date to 2026-04-11."
-  ]
+  ],
+  "stop_at": "2026-09-13T06:00:00Z"
 }

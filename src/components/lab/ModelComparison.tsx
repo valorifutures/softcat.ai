@@ -1,13 +1,17 @@
 import { useState } from 'preact/hooks';
+import { hasVerifiedPrice, priceLabel, priceOrder } from '../../lib/model-pricing.mjs';
 import modelsData from '../../data/models.json';
 import radarIndex from '../../data/radar/index.json';
 
 interface Model {
+  id: string;
+  pricingStatus: string;
+  pricingCheckedAt?: string;
   name: string;
   provider: string;
   contextK: number;
-  inputPrice: number;
-  outputPrice: number;
+  inputPrice: number | null;
+  outputPrice: number | null;
   openSource: boolean;
   released: string;
   strengths: string;
@@ -36,7 +40,7 @@ export function radarLink(radarRef?: string): { date: string; href: string } | n
 }
 
 const ctxDisplay = (k: number) => k >= 1000 ? `${k / 1000}M` : `${k}K`;
-const priceDisplay = (p: number) => p === 0 ? 'Free*' : `$${p}`;
+
 
 type SortKey = 'name' | 'provider' | 'contextK' | 'inputPrice' | 'coding' | 'reasoning_score' | 'speed';
 
@@ -70,7 +74,8 @@ export default function ModelComparison() {
     })
     .sort((a, b) => {
       const dir = sortAsc ? 1 : -1;
-      if (sortBy === 'contextK' || sortBy === 'inputPrice' || sortBy === 'coding' || sortBy === 'reasoning_score' || sortBy === 'speed') return (a[sortBy] - b[sortBy]) * dir;
+      if (sortBy === 'inputPrice') return priceOrder(a, b, dir);
+      if (sortBy === 'contextK' || sortBy === 'coding' || sortBy === 'reasoning_score' || sortBy === 'speed') return (a[sortBy] - b[sortBy]) * dir;
       return a[sortBy].localeCompare(b[sortBy]) * dir;
     });
 
@@ -86,6 +91,7 @@ export default function ModelComparison() {
       {/* Filters */}
       <div class="flex flex-wrap gap-3">
         <input
+          aria-label="Search models"
           type="text"
           value={search}
           onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
@@ -93,6 +99,7 @@ export default function ModelComparison() {
           class="bg-surface border border-surface-light rounded px-3 py-1.5 font-mono text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-green/50 w-48"
         />
         <select
+          aria-label="Filter by provider"
           value={providerFilter}
           onChange={(e) => setProviderFilter((e.target as HTMLSelectElement).value)}
           class="bg-surface border border-surface-light rounded px-3 py-1.5 font-mono text-sm text-text-primary focus:outline-none focus:border-neon-green/50"
@@ -101,6 +108,7 @@ export default function ModelComparison() {
           {providers.map((p) => <option value={p}>{p}</option>)}
         </select>
         <select
+          aria-label="Filter by model licence"
           value={sourceFilter}
           onChange={(e) => setSourceFilter((e.target as HTMLSelectElement).value)}
           class="bg-surface border border-surface-light rounded px-3 py-1.5 font-mono text-sm text-text-primary focus:outline-none focus:border-neon-green/50"
@@ -116,14 +124,14 @@ export default function ModelComparison() {
         <table class="w-full text-left">
           <thead>
             <tr class="border-b border-surface-light">
-              <th class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan" onClick={() => toggleSort('name')}>Model{sortIcon('name')}</th>
-              <th class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan" onClick={() => toggleSort('provider')}>Provider{sortIcon('provider')}</th>
-              <th class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan" onClick={() => toggleSort('contextK')}>Context{sortIcon('contextK')}</th>
-              <th class="py-2 px-3 font-mono text-xs text-text-muted">Input /1M</th>
+              <th scope="col" aria-sort={sortBy === 'name' ? (sortAsc ? 'ascending' : 'descending') : 'none'} class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan"><button class="min-h-11" onClick={() => toggleSort('name')}> Model{sortIcon('name')}</button></th>
+              <th scope="col" aria-sort={sortBy === 'provider' ? (sortAsc ? 'ascending' : 'descending') : 'none'} class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan"><button class="min-h-11" onClick={() => toggleSort('provider')}> Provider{sortIcon('provider')}</button></th>
+              <th scope="col" aria-sort={sortBy === 'contextK' ? (sortAsc ? 'ascending' : 'descending') : 'none'} class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan"><button class="min-h-11" onClick={() => toggleSort('contextK')}> Context{sortIcon('contextK')}</button></th>
+              <th scope="col" aria-sort={sortBy === 'inputPrice' ? (sortAsc ? 'ascending' : 'descending') : 'none'} class="py-2 px-3 font-mono text-xs text-text-muted"><button class="min-h-11" onClick={() => toggleSort('inputPrice')}>Input /1M{sortIcon('inputPrice')}</button></th>
               <th class="py-2 px-3 font-mono text-xs text-text-muted">Output /1M</th>
-              <th class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan" onClick={() => toggleSort('coding')}>Coding{sortIcon('coding')}</th>
-              <th class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan" onClick={() => toggleSort('reasoning_score')}>Reasoning{sortIcon('reasoning_score')}</th>
-              <th class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan" onClick={() => toggleSort('speed')}>Speed{sortIcon('speed')}</th>
+              <th scope="col" aria-sort={sortBy === 'coding' ? (sortAsc ? 'ascending' : 'descending') : 'none'} class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan"><button class="min-h-11" onClick={() => toggleSort('coding')}> Coding{sortIcon('coding')}</button></th>
+              <th scope="col" aria-sort={sortBy === 'reasoning_score' ? (sortAsc ? 'ascending' : 'descending') : 'none'} class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan"><button class="min-h-11" onClick={() => toggleSort('reasoning_score')}> Reasoning{sortIcon('reasoning_score')}</button></th>
+              <th scope="col" aria-sort={sortBy === 'speed' ? (sortAsc ? 'ascending' : 'descending') : 'none'} class="py-2 px-3 font-mono text-xs text-text-muted cursor-pointer hover:text-neon-cyan"><button class="min-h-11" onClick={() => toggleSort('speed')}> Speed{sortIcon('speed')}</button></th>
               <th class="py-2 px-3 font-mono text-xs text-text-muted">Strengths</th>
             </tr>
           </thead>
@@ -138,6 +146,8 @@ export default function ModelComparison() {
                     />
                   )}
                   {m.name}
+                  <span class="block text-[10px] text-text-muted mt-1">{m.id}</span>
+                  {!hasVerifiedPrice(m) && <span class="block text-xs text-neon-amber mt-1">Pricing {m.pricingStatus.replaceAll('-', ' ')}</span>}
                   {m.openSource && <span class="ml-2 text-xs text-neon-green">OSS</span>}
                   {radarLink(m.radarRef) && (
                     <a
@@ -150,8 +160,8 @@ export default function ModelComparison() {
                 </td>
                 <td class="py-2.5 px-3 font-mono text-sm text-text-muted">{m.provider}</td>
                 <td class="py-2.5 px-3 font-mono text-sm text-neon-cyan">{ctxDisplay(m.contextK)}</td>
-                <td class="py-2.5 px-3 font-mono text-sm text-text-primary">{priceDisplay(m.inputPrice)}</td>
-                <td class="py-2.5 px-3 font-mono text-sm text-text-primary">{priceDisplay(m.outputPrice)}</td>
+                <td class="py-2.5 px-3 font-mono text-sm text-text-primary">{priceLabel(m, 'inputPrice')}</td>
+                <td class="py-2.5 px-3 font-mono text-sm text-text-primary">{priceLabel(m, 'outputPrice')}</td>
                 <td class="py-2.5 px-3"><MiniBar score={m.coding} color="bg-neon-green" /></td>
                 <td class="py-2.5 px-3"><MiniBar score={m.reasoning_score} color="bg-neon-cyan" /></td>
                 <td class="py-2.5 px-3"><MiniBar score={m.speed} color="bg-neon-amber" /></td>
@@ -163,10 +173,10 @@ export default function ModelComparison() {
       </div>
 
       <p class="font-mono text-xs text-text-muted">
-        {filtered.length} of {models.length} models shown. Prices per 1M tokens (USD). *Open source models are free to self-host.
+        {filtered.length} of {models.length} models shown. Hosted API rates per 1M tokens (USD). Unlisted models have unknown prices. Hosting and hardware are separate costs.
       </p>
       <p class="font-mono text-xs text-text-muted/70">
-        scores: editorial, calibrated against public benchmarks &middot; ◉ = seen on the Radar
+        scores: editorial opinions, no published SOFT CAT benchmark &middot; ◉ = seen on the Radar
       </p>
     </div>
   );

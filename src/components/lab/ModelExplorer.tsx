@@ -1,15 +1,17 @@
 import { useState } from 'preact/hooks';
+import { hasVerifiedPrice, priceLabel, priceOrder } from '../../lib/model-pricing.mjs';
 import modelsData from '../../data/models.json';
 import { isNewlyTracked, radarLink } from './ModelComparison';
 
 interface ModelData {
+  pricingStatus: string;
   name: string;
   provider: string;
   family: string;
   released: string;
   contextK: number;
-  inputPrice: number;
-  outputPrice: number;
+  inputPrice: number | null;
+  outputPrice: number | null;
   openSource: boolean;
   reasoning: boolean;
   multimodal: boolean;
@@ -35,7 +37,7 @@ function CapabilityBar({ value, color }: { value: number; color: string }) {
 }
 
 function ModelCard({ model }: { model: ModelData }) {
-  const priceStr = model.inputPrice === 0 ? 'Free (self-host)' : `$${model.inputPrice} / $${model.outputPrice}`;
+  const priceStr = hasVerifiedPrice(model) ? `${priceLabel(model)} / ${priceLabel(model, 'outputPrice')}` : priceLabel(model);
   return (
     <div class="bg-surface border border-surface-light rounded-lg p-4 card-glow space-y-3">
       <div class="flex items-start justify-between">
@@ -124,6 +126,7 @@ export default function ModelExplorer() {
     .sort((a, b) => {
       const dir = sortAsc ? 1 : -1;
       if (sortBy === 'name' || sortBy === 'released') return a[sortBy].localeCompare(b[sortBy]) * dir;
+      if (sortBy === 'inputPrice') return priceOrder(a, b, dir);
       return (a[sortBy] - b[sortBy]) * dir;
     });
 
@@ -141,6 +144,7 @@ export default function ModelExplorer() {
       {/* Filters */}
       <div class="flex flex-wrap gap-3 items-center">
         <input
+          aria-label="Search models"
           type="text"
           value={search}
           onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
@@ -148,6 +152,7 @@ export default function ModelExplorer() {
           class="bg-surface border border-surface-light rounded px-3 py-1.5 font-mono text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-green/50 w-48"
         />
         <select
+          aria-label="Filter by provider"
           value={providerFilter}
           onChange={(e) => setProviderFilter((e.target as HTMLSelectElement).value)}
           class="bg-surface border border-surface-light rounded px-3 py-1.5 font-mono text-sm text-text-primary focus:outline-none"
@@ -174,7 +179,8 @@ export default function ModelExplorer() {
         <div class="flex items-center gap-2 ml-auto">
           <label class="font-mono text-xs text-text-muted">sort:</label>
           <select
-            value={sortBy}
+            aria-label="Sort models"
+          value={sortBy}
             onChange={(e) => setSortBy((e.target as HTMLSelectElement).value as SortKey)}
             class="bg-surface border border-surface-light rounded px-2 py-1 font-mono text-xs text-text-primary focus:outline-none"
           >
@@ -279,12 +285,12 @@ export default function ModelExplorer() {
               </thead>
               <tbody>
                 {filtered
-                  .filter((m) => m.inputPrice > 0)
-                  .sort((a, b) => a.inputPrice - b.inputPrice)
+                  .filter(hasVerifiedPrice)
+                  .sort((a, b) => a.inputPrice! - b.inputPrice!)
                   .map((m) => {
-                    const cost = ((m.inputPrice + m.outputPrice) / 2 / 1_000_000) * calcTokens;
-                    const cheapest = Math.min(...filtered.filter((x) => x.inputPrice > 0).map((x) => (x.inputPrice + x.outputPrice) / 2));
-                    const avgPrice = (m.inputPrice + m.outputPrice) / 2;
+                    const cost = ((m.inputPrice! + m.outputPrice!) / 2 / 1_000_000) * calcTokens;
+                    const cheapest = Math.min(...filtered.filter(hasVerifiedPrice).map((x) => (x.inputPrice! + x.outputPrice!) / 2));
+                    const avgPrice = (m.inputPrice! + m.outputPrice!) / 2;
                     const relWidth = Math.min(100, (avgPrice / 50) * 100);
                     return (
                       <tr class="border-b border-surface-light/30 hover:bg-surface-light/20 transition-colors">
@@ -303,13 +309,7 @@ export default function ModelExplorer() {
                       </tr>
                     );
                   })}
-                {filtered.filter((m) => m.inputPrice === 0).length > 0 && (
-                  <tr class="border-b border-surface-light/30">
-                    <td colSpan={5} class="py-2.5 px-3 font-mono text-xs text-text-muted">
-                      + {filtered.filter((m) => m.inputPrice === 0).length} open-source model{filtered.filter((m) => m.inputPrice === 0).length > 1 ? 's' : ''} (free to self-host): {filtered.filter((m) => m.inputPrice === 0).map((m) => m.name).join(', ')}
-                    </td>
-                  </tr>
-                )}
+                {filtered.some((m) => !hasVerifiedPrice(m)) && <tr><td colSpan={5} class="py-3 px-3 text-xs text-neon-amber">Models without verified pricing are excluded from this estimate.</td></tr>}
               </tbody>
             </table>
           </div>
@@ -317,7 +317,7 @@ export default function ModelExplorer() {
       )}
 
       <p class="font-mono text-xs text-text-muted">
-        {filtered.length} of {allModels.length} models shown. Capability scores are approximate and based on public benchmarks. Prices per 1M tokens (USD).
+        {filtered.length} of {allModels.length} models shown. Capability scores are editorial opinions, not SOFT CAT benchmark results. Prices per 1M tokens (USD).
       </p>
     </div>
   );

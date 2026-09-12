@@ -41,8 +41,13 @@ for (const m of models) {
     if (!Number.isFinite(m[k]) || m[k] < 0 || m[k] > 100) errors.push(`${at}: ${k} must be 0-100`);
   }
   for (const k of ['inputPrice', 'outputPrice']) {
-    if (!Number.isFinite(m[k]) || m[k] < 0) errors.push(`${at}: ${k} must be a number >= 0`);
+    if (m[k] !== null && (!Number.isFinite(m[k]) || m[k] < 0)) errors.push(`${at}: ${k} must be a number >= 0 or null for unknown`);
+    if (m.pricingStatus === 'verified' && m[k] === null) errors.push(`${at}: verified ${k} cannot be unknown`);
   }
+  if (!['verified', 'not-listed', 'review-needed', 'unverified'].includes(m.pricingStatus)) errors.push(`${at}: pricingStatus is required`);
+  if (!Number.isFinite(Date.parse(m.pricingCheckedAt)) || Date.parse(m.pricingCheckedAt) > Date.now() + 60_000) errors.push(`${at}: pricingCheckedAt must be a valid, non-future timestamp`);
+  if (m.pricingSource !== 'https://openrouter.ai/api/v1/models') errors.push(`${at}: pricingSource must identify the catalogue`);
+  if (m.pricingStatus === 'not-listed' && (m.inputPrice !== null || m.outputPrice !== null)) errors.push(`${at}: unlisted model prices must be unknown`);
   if (!Number.isInteger(m.contextK) || m.contextK < 0) errors.push(`${at}: contextK must be a non-negative integer`);
   for (const k of ['openSource', 'reasoning', 'multimodal']) {
     if (typeof m[k] !== 'boolean') errors.push(`${at}: ${k} must be boolean`);

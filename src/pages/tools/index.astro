@@ -6,8 +6,9 @@ import { getCollection } from 'astro:content';
 import { tagDotClass } from '../../utils/tagColor';
 import toolsManifest from '../../data/tools-manifest.json';
 import { pickFeatured } from '../../lib/feature-rotation';
-import runsData from '../../data/pipeline/runs.json';
-import { latestPriceRun, formatRecordedTime } from '../../lib/pipeline-status.mjs';
+import modelsData from '../../data/models.json';
+import { pricingRange } from '../../lib/model-pricing.mjs';
+import { formatRecordedTime } from '../../lib/pipeline-status.mjs';
 
 const all = (await getCollection('tools'))
   .filter((e) => !e.data.draft)
@@ -30,8 +31,8 @@ const featured = pickFeatured(toolsManifest as any[], new Date()) || toolsManife
 
 // Data-age stamp for data-driven lab tools (E1/F3): model_bot's latest
 // successful prices run. Absolute UTC, rendered as text (F8).
-const priceRun = latestPriceRun(runsData);
-const modelDataStamp = priceRun ? formatRecordedTime(priceRun.timestamp) : null;
+const modelPriceRange = pricingRange(modelsData);
+const modelDataStamp = modelPriceRange.first ? formatRecordedTime(modelPriceRange.first) : null;
 
 const categoryColors: Record<string, { text: string; bg: string; border: string; glowVar: string; hex: string }> = {
   agents: { text: 'text-neon-green', bg: 'bg-neon-green/10', border: 'border-neon-green/30', glowVar: 'rgba(78, 203, 143, 0.12)', hex: '#4ecb8f' },

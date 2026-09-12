@@ -53,4 +53,32 @@ calls or claims of measured performance. The source and method are linked.
 Validation: 12 JavaScript tests pass, including all 324 answer combinations.
 The production build generates 883 pages. All 407 Markdown files and the model
 and tool data validate. Six changed page routes have no broken local links or
-missing in-page anchors. Visual and interaction verification follows deployment.
+missing in-page anchors. PR #196 passed CI and merged. The homepage and the agent preset were inspected
+on the live site. The failed-build example returned the expected bounded-agent
+trial. Chat key opt-in and removal were verified with a non-secret test value
+after client hydration, without making a chat request.
+
+## 12 September 2026: verified hosted model pricing
+
+The public OpenRouter catalogue returned 445 models at 21:57 UTC. Exact ID
+matching found 37 of the 39 tracked models. Sixteen stored price pairs changed,
+including two now marked unknown because their IDs were not listed. Four open
+weight models previously showed zero despite having paid hosted API rates.
+Rates now retain the precision of the quote, with source and check timestamps.
+
+The two missing IDs remain in the reference roster with unknown pricing, and
+are excluded from cost estimates and chat selection. Two Claude display names
+were newer than the IDs they actually called. Their labels now match the API.
+Context and editorial capability data remain clearly identified as reference
+material rather than newly verified benchmarks.
+
+The bot no longer exempts open weight models from price updates. Existing
+numeric swing and field-lock guards remain. A rejected quote is marked for
+review, so old prices cannot inherit a fresh verification label. Invalid,
+missing, non-finite and negative quotes become unknown, while a real zero is
+preserved. A source-review record captures the observed changes and response
+hash without pretending the separate systemd bot server ran.
+
+Validation: 16 JavaScript tests and 86 bot tests pass. The production build
+passes with 883 pages and the model validator has no errors. Missing IDs:
+`google/gemini-2.0-flash-001` and `poolside/laguna-xs.2`.
