@@ -55,6 +55,7 @@ def test_proposal_entry_is_placeholder_marked():
     assert entry["radarRef"] == "2026-06-10#ph-claude-fable-5"
     assert entry["contextK"] == 1000
     assert entry["multimodal"] is True
+    assert not {"coding", "reasoning_score", "speed"}.intersection(entry)
 
 
 def test_radar_scan_loud_on_malformed_file(tmp_path, monkeypatch):

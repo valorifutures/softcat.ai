@@ -32,21 +32,10 @@
     "addedDate": "2026-02-01"
   },
   {
-    "id": "model-explorer",
-    "name": "Model Explorer",
-    "description": "Visual map of the AI model landscape. Timeline, capability bars, pricing calculator.",
-    "stat": "Card, timeline & pricing views",
-    "href": "/lab/model-explorer",
-    "icon": "◉",
-    "category": "models",
-    "addedDate": "2026-02-01",
-    "dataSource": "models.json"
-  },
-  {
     "id": "model-comparison",
     "name": "Model Comparison",
-    "description": "Sortable table of AI models with capability scores, pricing, and context windows.",
-    "stat": "Specs, stored pricing and editorial ratings",
+    "description": "Compare recorded model prices against an editable workload. Filter by model ID or provider, then export the costs and sources.",
+    "stat": "Token rates, workload estimates and CSV export",
     "href": "/lab/model-comparison",
     "icon": "⊞",
     "category": "models",

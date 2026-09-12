@@ -65,7 +65,7 @@ export default function SearchOverlay() {
     const box = list.getBoundingClientRect(), itemBox = item.getBoundingClientRect();
     if (itemBox.top < box.top) list.scrollTop -= box.top - itemBox.top;
     else if (itemBox.bottom > box.bottom) list.scrollTop += itemBox.bottom - box.bottom;
-  }, [selected]);
+  }, [selected, query, index]);
 
   const onKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
@@ -99,6 +99,6 @@ export default function SearchOverlay() {
         <strong>{entry.title}</strong><p>{entry.summary}</p>
       </a>)}
     </div>
-    <div class="site-search-footer"><span>↑ ↓ choose · Enter opens · Esc closes</span><span aria-live="polite">{results.length ? `${results.length} shown` : 'Type at least 2 characters'}</span></div>
+    <div class="site-search-footer"><span>↑ ↓ choose · Enter opens · Esc closes</span><span aria-live="polite">{query.trim().length < 2 ? 'Type at least 2 characters' : status === 'loading' ? 'Loading…' : status === 'error' ? 'Search unavailable' : `${results.length} shown`}</span></div>
   </dialog>;
 }
