@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { execFileSync } from 'node:child_process';
 import { getCollection } from 'astro:content';
 import HorizonStrip from '../../components/HorizonStrip.tsx';
 import type {
@@ -134,7 +135,7 @@ function topicFor(id: string): string {
 const flatChanges: ShiftChange[] = recentScenarioShifts.flatMap((s) => s.changes!);
 let headline: string;
 if (flatChanges.length === 0) {
-  headline = 'No scenario drift this month — consensus holding.';
+  headline = 'No scenario changes recorded in the last 30 days. This does not establish consensus.';
 } else {
   const clauses = flatChanges.slice(0, 3).map((c) => {
     const topic = topicFor(c.horizon);
@@ -149,12 +150,16 @@ if (flatChanges.length === 0) {
   headline = line;
 }
 
+let scenarioUpdated: string | null = null;
+try {
+  scenarioUpdated = execFileSync('git', ['log', '-1', '--format=%cs', '--', 'src/data/horizon/scenarios.json'], { encoding: 'utf8' }).trim() || null;
+} catch { /* A shallow source export may have no Git history. Keep it unknown. */ }
 const currentYear = new Date().getUTCFullYear();
 ---
 
 <BaseLayout
   title="Five Horizons"
-  description="Arrival-year forecasts for five AI futures across three worldviews — optimistic, pragmatic, sceptical. A living consensus map of when transformative AI reshapes work, robotics, software, and education."
+  description="Editorial scenarios for five AI futures across optimistic, pragmatic and sceptical views. Dates are hypotheses, not expert consensus."
 >
   <section class="min-h-screen bg-void text-text-bright pt-8 pb-16">
     <div class="px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto">
@@ -174,22 +179,23 @@ const currentYear = new Date().getUTCFullYear();
         </a>
       </div>
       <div class="font-mono text-xs text-text-muted mb-6 max-w-3xl space-y-2 leading-relaxed">
+        <p>Scenario source last changed: {scenarioUpdated ? <time datetime={scenarioUpdated}>{scenarioUpdated}</time> : 'date unavailable'}. The September forecast review did not revise these arrival dates. <a href="/horizon/review" class="text-neon-cyan underline">Read the review record</a>.</p>
         <p>
-          Where consensus sits across the five AI futures we track. Three dots
+          Our editorial scenarios for five AI futures. These are hypotheses, not a survey or expert consensus. Three dots
           per horizon: <span class="text-neon-green">optimistic</span>,
           <span class="text-neon-cyan">pragmatic</span>,
           <span class="text-neon-red">sceptical</span>. The horizontal axis is
           non-uniform: the <span class="text-text-bright">NEAR</span> zone gets
-          per-year detail because that's where real decisions get made;
+          per-year detail.
           <span class="text-text-bright">MID</span> and
           <span class="text-text-bright">FAR</span> zones collapse to bands
-          because forecasting precision a decade out is dishonest;
+          because distant dates are particularly uncertain.
           <span class="text-text-bright">INDEFINITE</span> (far right) holds
           claims that may not happen this generation.
         </p>
         <p>
           <span class="text-neon-amber">Hover a row name</span> for a crisp
-          definition of that horizon (AGI is contested — follow the
+          definition of that horizon (AGI is contested, follow the
           <span class="text-neon-amber">⚠</span> to the debate).
           <span class="text-neon-amber">Hover a dot</span> for the full stance
           and its implication.
@@ -197,7 +203,7 @@ const currentYear = new Date().getUTCFullYear();
         <p>
           The view is <span class="text-text-bright">dynamic</span>: the axis
           anchors to the current year, so zones slide forward as time passes
-          (what's NEAR today becomes MID next year). Horizon shifts land here
+          (the same fixed arrival year moves closer over time). Horizon shifts land here
           as the bot narrates each update in the ticker below and as
           <span class="text-text-bright">ghost dots + arrows</span> on any row
           whose stance has moved in the last 30 days.

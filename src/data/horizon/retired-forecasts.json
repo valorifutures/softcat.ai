@@ -1,0 +1,131 @@
+[
+  {
+    "id": "next-search-becomes-an-assistant-surface",
+    "lane": "next",
+    "title": "Search becomes an assistant surface",
+    "themes": [
+      "search",
+      "interfaces"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "By late 2027, planning, shopping and research queries will more often begin in assistant-style surfaces than in a blank search box for power users. Search is already absorbing reasoning, follow-up dialogue, personal context and agentic steps.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11",
+    "retired_at": "2026-09-12",
+    "retirement_reason": "Withdrawn because power users, query categories and the adoption denominator were undefined. Product launches cannot resolve a claim about where most searches begin."
+  },
+  {
+    "id": "next-memory-beats-model-delta",
+    "lane": "next",
+    "title": "Memory beats model delta",
+    "themes": [
+      "models",
+      "interfaces"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "Within 12 months, assistant retention will depend more on memory, projects and connectors than on small differences in base-model quality. Once models are all good enough, continuity starts to matter more than eloquence.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11",
+    "retired_at": "2026-09-12",
+    "retirement_reason": "Withdrawn because no retention data or causal comparison supported the claim that memory matters more than model quality. A plausible product opinion is not a measurable forecast."
+  },
+  {
+    "id": "next-robotics-pays-off-at-work-before-home",
+    "lane": "next",
+    "title": "Robotics pays off at work before home",
+    "themes": [
+      "robotics",
+      "work"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "By 2028, AI-driven robots will create clearer economic value in warehouses, factories and structured commercial settings than in ordinary homes. Manipulation is improving quickly, but the home is still the messiest possible deployment environment.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11",
+    "retired_at": "2026-09-12",
+    "retirement_reason": "Withdrawn because clearer economic value had no defined cost basis, sample or comparison between industrial and domestic use. It needs a narrower outcome and deployment evidence."
+  },
+  {
+    "id": "next-vibe-coding-goes-corporate",
+    "lane": "next",
+    "title": "Vibe coding goes corporate",
+    "themes": [
+      "code",
+      "work",
+      "enterprise"
+    ],
+    "signal_type": "forecast",
+    "confidence": "speculative",
+    "why_it_matters": "Within 18 months, non-engineers in medium and large firms will ship useful internal tools through conversational builders and agentic IDEs. The interface to software is getting easier faster than organisations can redesign review, integration and security.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11",
+    "retired_at": "2026-09-12",
+    "retirement_reason": "Withdrawn because useful internal tools and organisational uptake were not defined. It also overlapped the coding forecast without adding a separate test."
+  },
+  {
+    "id": "next-education-adapts-assessment-before-credentialing",
+    "lane": "next",
+    "title": "Education adapts assessment before credentialing",
+    "themes": [
+      "education",
+      "society"
+    ],
+    "signal_type": "forecast",
+    "confidence": "speculative",
+    "why_it_matters": "Within 24 months, schools and employers will rely more on supervised, oral and process-based assessment because AI tutoring is easier to absorb than AI credentialing. Teaching is easier to displace than trusted signalling.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11",
+    "retired_at": "2026-09-12",
+    "retirement_reason": "Withdrawn because schools, employers and credentialing were combined into one claim without a common measure. This needs institution-specific evidence."
+  },
+  {
+    "id": "next-ai-video-becomes-normal-pre-production",
+    "lane": "next",
+    "title": "AI video becomes normal pre-production",
+    "themes": [
+      "creativity",
+      "work"
+    ],
+    "signal_type": "forecast",
+    "confidence": "speculative",
+    "why_it_matters": "Within 18 months, AI video will be routine for pitches, previs, explainers and ad variants but not a clean substitute for premium live-action production. The tools are improving fast, but taste, control, rights and production workflows still matter.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11",
+    "retired_at": "2026-09-12",
+    "retirement_reason": "Withdrawn because routine pre-production and a clean substitute for premium live action had no thresholds or comparable sample. Tool capabilities alone cannot establish production practice."
+  },
+  {
+    "id": "next-labelling-outruns-licensing",
+    "lane": "next",
+    "title": "Labelling outruns licensing",
+    "themes": [
+      "regulation",
+      "creativity"
+    ],
+    "signal_type": "forecast",
+    "confidence": "emerging",
+    "why_it_matters": "Within 24 months, more jurisdictions and platforms will enforce synthetic-media labelling or provenance rules than will settle training-data licensing rules. Transparency is easier to operationalise than copyright economics.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11",
+    "retired_at": "2026-09-12",
+    "retirement_reason": "Withdrawn because the forecast compared jurisdictions and platforms using undefined meanings of enforce and settle. Article 50 of the EU AI Act provides a concrete transparency rule, but cannot resolve that cross-market comparison."
+  },
+  {
+    "id": "next-regulation-stays-regionally-forked",
+    "lane": "next",
+    "title": "Regulation stays regionally forked",
+    "themes": [
+      "regulation",
+      "society"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "By 2028, AI regulation will still be regionally split, with the EU more rule-heavy, the UK lighter-touch, and no clean global settlement on copyright or frontier-model duties. The compliance machinery is diverging faster than international consensus is forming.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-04-11",
+    "retired_at": "2026-09-12",
+    "retirement_reason": "Withdrawn because rule-heavy, lighter-touch and no clean global settlement were too broad to resolve consistently. Specific legal duties belong in a dated jurisdiction-by-jurisdiction review."
+  }
+]

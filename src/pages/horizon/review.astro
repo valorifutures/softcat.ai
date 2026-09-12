@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import review from '../../data/horizon/review-2026-09-12.json';
+const active = await getCollection('horizonNext');
+const retired = await getCollection('horizonRetired');
+const archive = await getCollection('horizonNowArchive');
+const original = new Map(review.original_forecasts.map(item => [item.id, item]));
+---
+<BaseLayout title="Horizon: the review record" description="What we kept, revised and withdrew from the Horizon Map, with original claims and reasons.">
+  <div class="review-page">
+    <a class="back" href="/horizon">← Back to Horizon</a>
+    <p class="eyebrow">Editorial review · <time datetime="2026-09-12">12 September 2026</time></p>
+    <h1>A smaller map.<br /><span>A clearer trail.</span></h1>
+    <p class="lead">A forecast needs a deadline and a way to be wrong. A source needs to support the claim we attach to it.</p>
+    <div class="review-counts"><div><strong>{active.length}</strong><span>active forecasts</span></div><div><strong>{retired.length}</strong><span>withdrawn forecasts</span></div><div><strong>{archive.length}</strong><span>earlier signals archived</span></div></div>
+    <div class="method" id="references">
+      <h2>What changed</h2>
+      <p>The old current lane promoted summaries and opinions into broad claims about adoption. Some may prove useful, but their source chains did not support that level of confidence. We moved them out of the current map and kept the historical record below.</p>
+      <p>The current lane now contains narrow observations linked to their source material. A document can establish that a specification exists. A benchmark release can establish that an evaluation is available. Neither proves market share, productivity or safety.</p>
+      <p>We reassessed all 15 forecasts. Seven now have direct sources, dated targets and explicit resolution tests. Eight were too vague or unsupported to keep active. Withdrawal is an editorial decision, not a claim that the opposite outcome is true.</p>
+      <p>Confidence labels are qualitative. The three worldview scenarios elsewhere on Horizon are editorial hypotheses, not a survey or expert consensus. We keep unresolved questions unresolved.</p>
+      <a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/horizon/review-2026-09-12.json">Inspect the original forecast snapshot ↗</a>
+    </div>
+    <section aria-labelledby="revised-title">
+      <div class="section-label"><h2 id="revised-title">Kept, with revisions</h2><span>The April clocks have not been restarted.</span></div>
+      {active.map(entry => <details class="record" id={entry.data.id}>
+        <summary><span>{entry.data.title}</span><small>{original.get(entry.data.id)?.confidence} → {entry.data.confidence}</small></summary>
+        <div class="record-body"><p class="label">Original claim · 11 April 2026</p><blockquote>{original.get(entry.data.id)?.why_it_matters}</blockquote><p class="label">Review · 12 September 2026</p><p>{entry.data.review_note}</p><a href={`/horizon#${entry.data.id}`}>Current claim, sources and resolution test ↗</a></div>
+      </details>)}
+    </section>
+    <section aria-labelledby="withdrawn-title">
+      <div class="section-label"><h2 id="withdrawn-title">Withdrawn</h2><span>These no longer count as active forecasts.</span></div>
+      {retired.map(entry => <details class="record" id={entry.data.id}>
+        <summary><span>{entry.data.title}</span><small>Withdrawn · {entry.data.retired_at}</small></summary>
+        <div class="record-body"><p>{entry.data.retirement_reason}</p><p class="label">Original claim · {entry.data.added}</p><blockquote>{entry.data.why_it_matters}</blockquote></div>
+      </details>)}
+    </section>
+    <section aria-labelledby="archive-title">
+      <div class="section-label"><h2 id="archive-title">Earlier Now signals</h2><span>Historical records. Current accuracy is unverified.</span></div>
+      <p class="muted">These records retain their original wording and dates. Their old confidence labels do not represent the outcome of this review. They are excluded from the current lane.</p>
+      {archive.map(entry => <details class="record archive" id={entry.data.id}>
+        <summary><span>{entry.data.title}</span><small>{entry.data.date} · archived</small></summary>
+        <div class="record-body"><p>{entry.data.why_it_matters}</p><p class="muted">Original label: {entry.data.confidence}. This is a preserved historical claim, not a newly verified fact.</p><a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/horizon/now-archive.json">Original references and metadata ↗</a></div>
+      </details>)}
+    </section>
+    <section class="method">
+      <h2>What earns a place next</h2>
+      <p>A specific observation, a direct source, a date that means something, and a short explanation of the source's limits. Broader patterns need independent corroboration. Our own summary plus our own opinion is one source chain.</p>
+      <p>New bot proposals remain proposals. The bot cannot award a confirmed label, count duplicated references as corroboration, or use an opinion post as independent reporting.</p>
+      <a href="/notebook">Follow the work in the notebook ↗</a>
+    </section>
+  </div>
+</BaseLayout>
+<style>
+  .review-page { max-width: 1020px; margin: auto; padding: 3rem 1.5rem 5rem; }
+  a { color: var(--color-neon-cyan, #5ab8d4); text-underline-offset: 4px; }
+  .back, .eyebrow, .label, .section-label, small { font-family: monospace; font-size: .75rem; }
+  .back { display: inline-block; margin-bottom: 3rem; }
+  .eyebrow { color: #b6c4ae; letter-spacing: .06em; text-transform: uppercase; }
+  h1 { font: 600 clamp(2.7rem, 6vw, 5rem)/1.08 Inter, system-ui, sans-serif; letter-spacing: -.045em; margin: 1.4rem 0; color: #f3f0e7; }
+  h1 span { color: #b6c4ae; }
+  .lead { font-size: 1.2rem; line-height: 1.65; max-width: 690px; color: #bfc1c8; }
+  .review-counts { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid #343744; margin: 2.5rem 0; padding: 1.5rem 0; gap: 1rem; }
+  .review-counts strong { display: block; font: 500 2.4rem/1.4 system-ui, sans-serif; color: #f3f0e7; }
+  .review-counts span { font-size: .8rem; color: #bfc1c8; }
+  .method { background: #171b21; border: 1px solid #343744; padding: 1.6rem; margin: 2.5rem 0; line-height: 1.75; color: #c4c6cf; }
+  h2 { font-size: 1.2rem; font-weight: 600; color: #eeeae0; }
+  .method p { margin: 1rem 0; max-width: 780px; }
+  section { margin: 3rem 0; }
+  .section-label { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem; margin-bottom: 1.2rem; color: #bfc1c8; }
+  .record { border-top: 1px solid #343744; scroll-margin-top: 6rem; }
+  summary { cursor: pointer; padding: 1.2rem .2rem; color: #e8e5dd; }
+  summary small { display: block; margin: .35rem 0 0 1.1rem; color: #bbcbb6; }
+  .record-body { padding: .5rem 1.2rem 1.5rem; color: #c4c6cf; line-height: 1.75; max-width: 850px; }
+  .record-body p { margin: .6rem 0 1rem; }
+  .label { color: #d4c394; text-transform: uppercase; letter-spacing: .05em; }
+  blockquote { border-left: 2px solid #4c535c; padding-left: 1rem; margin: .5rem 0 1.5rem; color: #bfc1c8; }
+  .muted { font-size: .85rem; color: #bfc1c8; line-height: 1.7; }
+  .archive summary { font-size: .9rem; }
+  @media (max-width: 500px) { .review-counts { grid-template-columns: 1fr; } .review-counts>div { display: flex; align-items: baseline; gap: 1rem; } .method { padding: 1.1rem; } }
+</style>

@@ -38,6 +38,7 @@ import sys
 import time
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import urlsplit, urlunsplit
 
 import httpx
 from anthropic import Anthropic
@@ -159,7 +160,7 @@ def load_recent_markdown(dir_path: Path, days: int = 7) -> list[dict]:
             d = date.fromisoformat(date_str[:10])
         except ValueError:
             continue
-        if (today - d).days > days:
+        if not 0 <= (today - d).days <= days or meta.get("draft", "false").lower() == "true":
             continue
         body = p.read_text().split("---", 2)[-1].strip()
         out.append({
@@ -168,6 +169,7 @@ def load_recent_markdown(dir_path: Path, days: int = 7) -> list[dict]:
             "summary": meta.get("summary", ""),
             "date": date_str[:10],
             "body_excerpt": body[:1500],
+            "source_urls": re.findall(r"\[[^\]]*\]\((https?://[^\s)]+)\)", body),
         })
     return out
 
@@ -234,6 +236,37 @@ def _resolve_evidence_ref(
     return ref                               # paper / external: pass through
 
 
+def _source_url(value: str) -> str | None:
+    """Normalise a cited URL without fetching it or claiming it is verified."""
+    try:
+        parts = urlsplit(value)
+        host = (parts.hostname or "").lower().removeprefix("www.")
+        if parts.scheme not in {"https", "http"} or not host or parts.username or parts.password:
+            return None
+        if host == "softcat.ai" or host.endswith(".softcat.ai"):
+            return None
+        if host == "github.com" and parts.path.lower().startswith("/valorifutures/softcat.ai"):
+            return None
+        return urlunsplit((parts.scheme, parts.netloc.lower(), parts.path, parts.query, ""))
+    except (TypeError, ValueError):
+        return None
+
+
+def _provided_source_urls(radar_items: list[dict], news: list[dict]) -> set[str]:
+    values = [r.get(key, "") for r in radar_items for key in ("url", "ph_url", "source_url")]
+    values.extend(url for item in news for url in item.get("source_urls", []))
+    return {url for value in values if (url := _source_url(value))}
+
+
+def _proposal_has_reporting_basis(proposal: dict) -> bool:
+    # Different URLs or internal post types do not automatically mean different
+    # reporting. This minimum catches self-citation loops and duplicate hosts.
+    # A maintainer must still read the sources and assess their independence.
+    hosts = {urlsplit(ev["ref"]).hostname.lower().removeprefix("www.")
+             for ev in proposal.get("evidence", []) if ev.get("type") == "external"}
+    return len(hosts) >= 2
+
+
 def _sanitize_evidence(
     proposal: dict,
     radar_items: list[dict],
@@ -257,19 +290,31 @@ def _sanitize_evidence(
         news_index.setdefault(n["slug"][:10], []).append(n["slug"])
 
     kept = []
+    seen = set()
+    allowed_urls = _provided_source_urls(radar_items, news)
     for ev in proposal.get("evidence", []) or []:
-        ref = _resolve_evidence_ref(
-            ev.get("type", ""), ev.get("ref", ""),
-            radar_dates=radar_dates,
-            thought_index=thought_index,
-            news_index=news_index,
-        )
+        if ev.get("type") == "external":
+            candidate = _source_url(ev.get("ref", ""))
+            ref = candidate if candidate in allowed_urls else None
+        else:
+            ref = _resolve_evidence_ref(
+                ev.get("type", ""), ev.get("ref", ""),
+                radar_dates=radar_dates,
+                thought_index=thought_index,
+                news_index=news_index,
+            )
         if ref is None:
             print(f"[horizon_bot] dropped unresolvable evidence "
                   f"{ev.get('type')}:{ev.get('ref')!r} on {proposal.get('id')}")
             continue
+        key = (ev.get("type"), ref)
+        if key in seen:
+            continue
+        seen.add(key)
         kept.append({**ev, "ref": ref})
     proposal["evidence"] = kept
+    if proposal.get("confidence") == "confirmed":
+        proposal["confidence"] = "emerging"
     if len(kept) < 2:
         print(f"[horizon_bot] WARNING: {proposal.get('id')} has {len(kept)} "
               f"resolvable evidence item(s) after sanitisation (two-source "
@@ -286,6 +331,11 @@ def propose_now_entries(
 ) -> tuple[list[dict], object | None]:
     """Ask Claude for Now-lane proposals grounded only in provided evidence."""
     if not radar_items and not thoughts and not news:
+        return [], None
+    source_hosts = {urlsplit(url).hostname.lower().removeprefix("www.")
+                    for url in _provided_source_urls(radar_items, news)}
+    if len(source_hosts) < 2:
+        print("[horizon_bot] no paid proposal call: fewer than two reporting source hosts")
         return [], None
 
     client = Anthropic()
@@ -314,6 +364,7 @@ def propose_now_entries(
         for n in news
     ) or "(none)"
     existing_text = "\n".join(f"- {t}" for t in existing_titles) or "(none yet)"
+    source_urls_text = "\n".join(sorted(_provided_source_urls(radar_items, news))) or "(none)"
 
     today = date.today().isoformat()
     year_month = today[:7]
@@ -329,8 +380,12 @@ PATTERNS that deserve a Now entry.
 
 ## Hard rules (non-negotiable)
 
-1. Propose entries ONLY if at least TWO distinct items in the provided context
-   support the pattern. No single-source entries.
+1. Propose a pattern ONLY with direct external URLs from at least TWO different
+   source hosts in the supplied source URL list. Cite them as type "external".
+   Two internal posts, two URLs on the same host, or an opinion derived from a
+   news summary are not independent corroboration. Thoughts are context only.
+   These URLs were extracted from stored reporting, not fetched for this call.
+   Do not claim to have read or independently verified pages you were not shown.
 2. NEVER invent model names, prices, company names, dates, or claims that are
    not in the provided context. If you are unsure, leave it out.
 3. Deduplicate THEMATICALLY, not just by title, against both already-live Now
@@ -340,21 +395,25 @@ PATTERNS that deserve a Now entry.
    model architectures", "coding models crossing 70%" — DO NOT re-propose it
    with different wording. Wait for the existing PR to merge or be closed.
 4. Output AT MOST 3 proposals. It is valid (and often correct) to output zero.
-5. Each evidence item's `ref` MUST be copied VERBATIM from the `ref=` token of
+5. For radar, thought and news evidence, `ref` MUST be copied VERBATIM from the `ref=` token of
    the exact context item you are citing. Do NOT abbreviate a thought/news slug
    to its date, and do NOT invent a slug. Only cite items shown in the context
    above. (radar ref is a date like "2026-04-09"; thought/news ref is the full
    slug like "2026-04-08-some-headline".)
 6. `themes` must be a subset of: {sorted(HORIZON_THEMES)}.
-7. `confidence` is one of: confirmed, emerging, contested, speculative. Default
-   to "emerging" unless the pattern is demonstrably well-established (confirmed)
-   or the evidence actively disagrees (contested).
+7. `confidence` is emerging, contested or speculative. You cannot award
+   "confirmed". A maintainer must read primary sources before that label is used.
+   Product launches do not establish adoption, productivity, safety or that a
+   problem is solved. Keep the claim narrower than its supporting material.
 8. `signal_type` is one of: {sorted(NOW_SIGNAL_TYPES)}. (Now-lane entries do
    NOT accept "forecast" or "debate" even though the broader schema lists them.)
 9. Lead `why_it_matters` with the point, 1-2 short sentences, no em dashes,
    no corporate vocabulary.
 
 ## Context
+
+### Allowed external source URLs (copy exactly, no invented links)
+{source_urls_text}
 
 ### Recent radar ({len(radar_items)} items)
 {radar_text}
@@ -386,7 +445,7 @@ Return a single JSON object:
       "why_it_matters": "...",
       "implication": "1-sentence italic takeaway for the reader. Start with a verb.",
       "evidence": [
-        {{"type": "radar|thought|news", "ref": "...", "label": "..."}}
+        {{"type": "external|radar|thought|news", "ref": "...", "label": "..."}}
       ],
       "added": "{today}",
       "_rationale": "1-sentence internal note for Valori: why this pattern?"
@@ -428,6 +487,9 @@ apologise, do not explain, just return the JSON.
                   f"{sorted(NOW_SIGNAL_TYPES)})")
             continue
         _sanitize_evidence(p, radar_items, thoughts, news)
+        if not _proposal_has_reporting_basis(p):
+            print(f"[horizon_bot] dropping {p.get('id', '?')}: needs direct references from two source hosts, not repeated summaries")
+            continue
         clean.append(p)
     return clean, response.usage
 
