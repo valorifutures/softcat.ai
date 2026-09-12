@@ -235,3 +235,40 @@ PR #201's Pages run 34725367527 succeeded at 23:25 UTC. Live search ranked the
 agent tool first, updated its active descendant with ArrowDown, and returned
 focus to the opening button after Close. Loading and empty-result footer text
 was refined in this pass.
+
+
+## 12 September 2026: JSON contracts that are actually checked
+
+The old JSON validator checked only a few keywords, counted individual rule
+passes and could ignore numeric limits, additionalProperties or alternatives
+while returning a pass. Null types and structural enums were also mishandled.
+The replacement uses pinned Ajv 8.20.0 and ajv-formats 3.0.1 for draft-07 and
+2020-12. It distinguishes syntax-only success, schema errors and actual output
+failures. Unknown keywords and formats, unsupported drafts, remote references
+and async schemas cannot become an accidental success.
+
+Four worked examples include both broken and matching outputs: classification,
+a bounded tool call, invoice extraction and answer-or-abstain. Reports show
+JSON Pointer paths and the failed constraint, with a copy action. Editing either
+input cancels the current job and clears its prior result. A pass concerns the
+contract only, not factual accuracy or permission to execute a tool.
+
+Compilation and validation run in a separate worker loaded on request. No
+remote schemas are fetched. No types are coerced, fields removed or defaults
+inserted. Each editor is limited to one million characters for validation and
+formatting. A 2.5-second limit terminates costly regex or schema work, with an
+explicit no-verdict state. Reports show at most the first 100 failures.
+
+Validation: 46 JavaScript tests and 92 bot tests pass. Coverage includes both
+drafts, null and union types, structural enum equality, numeric bounds, local
+references, alternatives, conditionals, invalid schema shapes, inherited
+property names, unsupported features, cancellation and a real worker stopped
+during a pathological pattern. Content, model and Horizon validators pass.
+The production build has 887 pages. The validator UI is under 4 KB gzipped,
+with the 152 KB validation worker loaded only when a check is requested.
+
+PR #202's Pages run 34726346880 succeeded at 23:48 UTC. Live verification found
+Sonnet by its exact model ID, changed 1,000 calls to ten and produced $0.105,
+kept Laguna's unlisted price unknown for zero calls, and confirmed CSV export.
+The model page was visually inspected. Search's native Escape key check also
+closed the dialog and restored focus to its opening button.

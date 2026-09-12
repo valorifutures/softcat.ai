@@ -3,12 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import JsonValidator from '../../components/lab/JsonValidator';
 ---
 
-<BaseLayout title="JSON Output Validator" description="Validate AI model JSON output against a schema. Check types, required fields, and structure.">
-  <div class="max-w-4xl mx-auto px-6 py-16">
+<BaseLayout title="JSON Output Validator" description="Check AI output against JSON Schema draft-07 or 2020-12. Try broken examples, inspect exact failures and keep data in your browser.">
+  <div class="max-w-6xl mx-auto px-6 py-16">
     <header class="mb-8">
       <a href="/tools" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; tools</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">{'{}'} JSON Output Validator</h1>
-      <p class="text-text-muted mt-2">Paste a JSON Schema and your AI output. See field-level validation results instantly.</p>
+      <h1 class="text-4xl font-bold text-text-bright tracking-tight">JSON Output Validator</h1>
+      <p class="text-text-muted mt-3 max-w-2xl leading-relaxed">Valid JSON is a start. Check whether the fields, values and structure match the contract your next step depends on.</p>
     </header>
     <JsonValidator client:load />
   </div>

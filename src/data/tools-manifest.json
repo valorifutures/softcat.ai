@@ -66,8 +66,8 @@
   {
     "id": "json-validator",
     "name": "JSON Output Validator",
-    "description": "Validate AI model JSON output against a schema. Presets for tool_use, function calls, classification.",
-    "stat": "4 preset schemas, enum + pattern checks",
+    "description": "Check JSON output against draft-07 or 2020-12 schemas. Try broken examples and inspect exact constraint failures.",
+    "stat": "Four worked examples · runs in your browser",
     "href": "/lab/json-validator",
     "icon": "{}",
     "category": "validation",
