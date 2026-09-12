@@ -17,7 +17,7 @@ prompt: |
   [paste usage data, logs, or architecture description here]
 
   Also tell us:
-  - Which model or models are being called (e.g. Claude Sonnet 5, GPT-4.1, Gemini 2.5 Flash)
+  - Which model or models are being called (include the exact provider and model IDs from your logs)
   - Approximate number of agent runs per day
   - Current monthly spend, if known
   - Any cost targets or constraints you are working within
@@ -35,7 +35,7 @@ prompt: |
   ### 2. Model selection
   - Is the agent using the same model for all tasks, including simple ones that a cheaper model could handle?
   - Which steps in the workflow are the most expensive? Do those steps actually need a frontier model?
-  - Where could a smaller model (e.g. Gemini 2.5 Flash, Claude Haiku) handle routing, classification, or formatting tasks?
+  - Where could a smaller model with measured performance on your own tasks handle routing, classification, or formatting tasks?
 
   ### 3. Agentic loop efficiency
   - How many LLM calls does the agent make per user task on average?

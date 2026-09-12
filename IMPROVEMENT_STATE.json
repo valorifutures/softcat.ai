@@ -1,16 +1,18 @@
 {
-  "updated_at": "2026-09-12T21:20:18.406013+00:00",
-  "phase": "publishing-recovery",
-  "active_branch": "codex/restore-publishing",
+  "updated_at": "2026-09-12T21:38:46.599757+00:00",
+  "phase": "trust-and-freshness",
+  "active_branch": "codex/trust-and-freshness",
   "last_verified_deployment": {
-    "sha": "8efe99c16e7c1ba723eed39a5401ccfe066afdbd",
-    "at": "2026-07-01T07:00:27Z"
+    "sha": "c86143d92e5e5334b0fd72b02d2c14f85d219e2b",
+    "at": "2026-09-12T21:24:23Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34719831328"
   },
   "completed": [
-    "Publishing repair passes a production build of 877 pages and 82 bot tests. Awaiting PR checks and deployment."
+    "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
+    "Hourly continuation is enabled. GitHub uses supported Allow all actions permission, authorised by the maintainer."
   ],
   "next": [
-    "Make activity timestamps and bot health honest between static builds.",
+    "Finish and publish trust/freshness changes, then verify on the live site.",
     "Refresh the homepage around useful experiments, the diary and the Horizon Map.",
     "Correct privacy copy and surface the age and provenance of model data.",
     "Review the model roster against primary sources and handle unavailable prices as unknown.",

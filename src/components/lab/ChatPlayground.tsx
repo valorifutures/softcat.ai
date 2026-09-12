@@ -42,6 +42,8 @@ function formatCost(usd: number): string {
 export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
   const [apiKey, setApiKey] = useState('');
   const [keyVisible, setKeyVisible] = useState(false);
+  const [rememberKey, setRememberKey] = useState(false);
+  const [storageError, setStorageError] = useState('');
   const [systemPrompt, setSystemPrompt] = useState('');
   const [input, setInput] = useState('');
   const [panes, setPanes] = useState<ChatPane[]>([createPane(models[0]?.id || 'anthropic/claude-sonnet-4')]);
@@ -51,11 +53,14 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
   const [sessionCost, setSessionCost] = useState(0);
   const bottomRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  // Load API key from localStorage
+  // Existing keys migrate to page memory unless saving was explicitly chosen.
   useEffect(() => {
     try {
       const saved = localStorage.getItem('softcat-openrouter-key');
+      const remember = localStorage.getItem('softcat-remember-key') === 'yes';
       if (saved) setApiKey(saved);
+      setRememberKey(remember);
+      if (!remember) localStorage.removeItem('softcat-openrouter-key');
     } catch {}
   }, []);
 
@@ -71,10 +76,24 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
     } catch {}
   }, []);
 
+  const persistKey = (key: string, remember: boolean) => {
+    setStorageError('');
+    try {
+      if (key && remember) {
+        localStorage.setItem('softcat-remember-key', 'yes');
+        localStorage.setItem('softcat-openrouter-key', key);
+      } else {
+        localStorage.removeItem('softcat-openrouter-key');
+        localStorage.removeItem('softcat-remember-key');
+      }
+    } catch {
+      setStorageError('This browser could not update saved-key storage. Clear this site’s data in browser settings to remove a previously saved key.');
+    }
+  };
+
   const saveKey = (key: string) => {
     setApiKey(key);
-    if (key) localStorage.setItem('softcat-openrouter-key', key);
-    else localStorage.removeItem('softcat-openrouter-key');
+    persistKey(key, rememberKey);
   };
 
   // Scroll to bottom when messages change
@@ -236,10 +255,13 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
     <div class="space-y-4">
       {/* API Key */}
       <div class="bg-surface border border-surface-light rounded-lg p-4 space-y-3">
-        <div class="font-mono text-xs text-text-muted uppercase tracking-wider">OpenRouter API Key (BYOK)</div>
+        <label for="openrouter-key" class="block font-mono text-xs text-text-muted uppercase tracking-wider">OpenRouter API key</label>
         <div class="flex gap-2">
           <div class="relative flex-1">
             <input
+              id="openrouter-key"
+              autoComplete="off"
+              spellCheck={false}
               type={keyVisible ? 'text' : 'password'}
               value={apiKey}
               onInput={(e) => saveKey((e.target as HTMLInputElement).value)}
@@ -247,6 +269,7 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
               class="w-full bg-void border border-surface-light rounded px-3 py-1.5 font-mono text-sm text-text-primary focus:outline-none focus:border-neon-green/50 pr-16"
             />
             <button
+              aria-label={keyVisible ? 'Hide API key' : 'Show API key'}
               onClick={() => setKeyVisible(!keyVisible)}
               class="absolute right-2 top-1/2 -translate-y-1/2 font-mono text-xs text-text-muted hover:text-text-primary"
             >
@@ -259,8 +282,24 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
           <a href="https://openrouter.ai/keys" target="_blank" rel="noopener" class="text-neon-cyan hover:underline">
             openrouter.ai/keys
           </a>
-          . Your key stays in your browser, never sent to our servers.
+          . Sending a message sends your key to OpenRouter for authentication and your conversation to OpenRouter and the selected model provider. Provider charges apply.
         </p>
+        <label class="flex items-center gap-3 text-sm text-text-muted min-h-11">
+          <input type="checkbox" checked={rememberKey} onChange={(event) => {
+            const remember = event.currentTarget.checked;
+            setRememberKey(remember);
+            persistKey(apiKey, remember);
+          }} class="accent-neon-green" />
+          Remember key on this device
+        </label>
+        <div class="flex flex-wrap items-center gap-4 text-xs text-text-muted">
+          <span>{rememberKey ? 'Saved in this browser’s local storage.' : 'Key kept in memory for this page.'}</span>
+          <button class="min-h-11 text-neon-cyan underline underline-offset-4" onClick={() => {
+            setApiKey(''); setRememberKey(false); persistKey('', false);
+          }}>Clear key</button>
+          <a href="/privacy" class="text-neon-cyan underline underline-offset-4">Privacy details</a>
+        </div>
+        {storageError && <p role="alert" class="text-sm text-neon-amber">{storageError}</p>}
       </div>
 
       {/* Controls */}

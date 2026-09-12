@@ -1,0 +1,10 @@
+---
+import runs from '../data/pipeline/runs.json';
+import { latestPriceRun } from '../lib/pipeline-status.mjs';
+import RecordedTime from './RecordedTime.astro';
+const priceRun = latestPriceRun(runs);
+---
+<aside class="mb-6 rounded-lg border border-neon-amber/30 bg-neon-amber/5 p-4 text-sm text-text-muted leading-relaxed" aria-label="About the model data">
+  <p><strong class="text-text-primary">Dated model data.</strong> {priceRun ? <>Last recorded pricing check: <RecordedTime value={priceRun.timestamp} relative={false} />.</> : 'No successful pricing check is recorded.'} Check the provider before budgeting or choosing a model.</p>
+  <p class="mt-2">Prices are estimates from a stored OpenRouter snapshot. Capability scores are editorial ratings, not benchmark results. A zero marked for self-hosting excludes hardware and hosting costs. <a href="/pipeline" class="text-neon-cyan underline underline-offset-4">See the records</a>.</p>
+</aside>

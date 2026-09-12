@@ -402,3 +402,13 @@ body {
   font-style: italic;
   margin: 1.5em 0;
 }
+
+/* Published evidence should stay legible as the record ages. */
+.run-state { font-size: 0.75rem; }
+.run-state[data-tone="muted"] { color: var(--color-text-muted); }
+.run-state[data-tone="green"] { color: var(--color-neon-green); }
+.run-state[data-tone="amber"] { color: var(--color-neon-amber); }
+.run-state[data-tone="red"] { color: var(--color-neon-red); }
+.skip-link { position: fixed; top: 0.75rem; left: 1rem; z-index: 100; padding: 0.75rem 1rem; background: var(--color-neon-green); color: var(--color-void); border-radius: 0.5rem; transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+:focus-visible { outline: 2px solid var(--color-neon-cyan); outline-offset: 4px; }
