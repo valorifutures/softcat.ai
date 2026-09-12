@@ -1,69 +1,57 @@
 name: feral
 
-# The heartbeat. Twice a week the council wakes up, decides what /feral becomes,
-# builds it, gates it, and — depending on the dial — opens a PR or ships it live.
-
 on:
   schedule:
-    # Tuesdays and Fridays, 07:00 UTC. Twice weekly, as designed.
     - cron: "0 7 * * 2,5"
   workflow_dispatch:
     inputs:
       mode:
-        description: "Autonomy dial"
+        description: "Publish a passing cycle or leave its PR for review"
         type: choice
         default: propose
         options: [propose, ship]
 
-# ── THE DIAL ────────────────────────────────────────────────────────────────
-# propose = gate passes -> open a PR you one-click merge (a human stands between
-#           the agents and the live site; content autonomy is still total).
-# ship    = gate passes -> merge to main automatically, no human. Pure autonomy.
-#
-# Start on `propose` for a few cycles. Once you've watched the council run and
-# trust the safety gate, flip this default to `ship`. That's the only change.
-env:
-  FERAL_MODE: ${{ github.event.inputs.mode || 'ship' }}
-  # Runaway guard. Raise if cycles get cut off mid-build.
-  FERAL_MAX_TURNS: "60"
+# Only one council at a time. A new trigger must not cancel paid work.
+concurrency:
+  group: feral-cycle
+  cancel-in-progress: false
 
 permissions:
-  contents: write
-  pull-requests: write
-  pages: write
-  id-token: write
+  contents: read
+
+env:
+  FERAL_MODE: ${{ github.event.inputs.mode || 'ship' }}
+  FERAL_MAX_TURNS: "60"
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  cycle:
+  council:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     outputs:
-      shipped: ${{ steps.ship.outputs.shipped }}
+      changed: ${{ steps.candidate.outputs.changed }}
+      candidate_sha: ${{ steps.candidate.outputs.sha }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
+          ref: ${{ github.sha }}
           fetch-depth: 0
-
-      - uses: actions/setup-node@v4
+          persist-credentials: false
+      - uses: actions/setup-node@v6
         with:
-          node-version: "20"
-
-      - name: Install deps
-        run: npm ci
-
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Fail before a paid model call if the shared site is already broken.
+      - name: Baseline checks
+        run: |
+          node scripts/validate-content.mjs
+          node scripts/validate-tools-data.mjs
+          node scripts/validate-horizon-refs.mjs
+          node --test scripts/tests/*.test.mjs
+          npm run build
       - name: Install Claude Code
         run: npm i -g @anthropic-ai/claude-code
-
-      - name: New cycle branch
-        id: branch
-        run: |
-          STAMP="$(date +%Y%m%d-%H%M%S)"
-          BRANCH="feral/cycle-${STAMP}"
-          git config user.name  "feral-council"
-          git config user.email "feral@softcat.ai"
-          git checkout -b "$BRANCH"
-          echo "branch=$BRANCH"  >> "$GITHUB_OUTPUT"
-          echo "stamp=$STAMP"     >> "$GITHUB_OUTPUT"
-
       - name: Run the council
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -72,82 +60,131 @@ jobs:
             --dangerously-skip-permissions \
             --max-turns "${FERAL_MAX_TURNS}" \
             --allowedTools "Read,Write,Edit,Glob,Grep,Bash,Task"
-
-      - name: Commit cycle
-        id: commit
-        run: |
-          git add -A
-          if git diff --cached --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "Cycle produced no changes (deadlock or no-op)."
-          else
-            git commit -m "feral: cycle ${{ steps.branch.outputs.stamp }}"
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      # The build must be green — the first half of the deploy gate.
-      - name: Build
-        if: steps.commit.outputs.changed == 'true'
-        run: npm run build
-
-      # Optional but recommended: fail on broken links in the built output.
-      - name: Link check
-        if: steps.commit.outputs.changed == 'true'
-        continue-on-error: true
-        run: npx --yes linkinator ./dist --recurse --silent || true
-
-      # The hard wall — scope + critic verdict.
-      - name: Feral gate
-        if: steps.commit.outputs.changed == 'true'
-        run: node scripts/feral-gate.mjs "origin/main"
-
-      # PROPOSE: open a PR for a one-click human merge.
-      - name: Open PR (propose)
-        if: steps.commit.outputs.changed == 'true' && env.FERAL_MODE == 'propose'
+      - name: Save candidate for independent validation
+        id: candidate
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_SHA: ${{ github.sha }}
         run: |
-          git push origin "${{ steps.branch.outputs.branch }}"
-          gh pr create \
-            --base main \
-            --head "${{ steps.branch.outputs.branch }}" \
-            --title "feral: cycle ${{ steps.branch.outputs.stamp }}" \
-            --body "Autonomous feral cycle. Gate passed (scope + build + critic PASS). The agents made this; you didn't brief it. Merge to put it live, or close to veto."
+          git config user.name feral-council
+          git config user.email feral@softcat.ai
+          git add -A
+          TREE="$(git write-tree)"
+          if [ "$TREE" = "$(git rev-parse "$BASE_SHA^{tree}")" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes. Nothing to publish." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          # One candidate commit, always based on the checked starting commit.
+          CANDIDATE="$(git commit-tree "$TREE" -p "$BASE_SHA" -m "feral: cycle $GITHUB_RUN_ID")"
+          git update-ref refs/heads/feral-candidate "$CANDIDATE"
+          git bundle create "$RUNNER_TEMP/feral-candidate.bundle" "$BASE_SHA..refs/heads/feral-candidate"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "sha=$CANDIDATE" >> "$GITHUB_OUTPUT"
+      - name: Keep candidate, including candidates later rejected by the gate
+        if: steps.candidate.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: feral-candidate
+          path: ${{ runner.temp }}/feral-candidate.bundle
+          retention-days: 14
 
-      # SHIP: merge to main automatically. Pure autonomy.
-      - name: Merge (ship)
-        id: ship
-        if: steps.commit.outputs.changed == 'true' && env.FERAL_MODE == 'ship'
+  validate:
+    needs: council
+    if: needs.council.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/download-artifact@v4
+        with:
+          name: feral-candidate
+          path: ${{ runner.temp }}/feral-input
+      - name: Check candidate using the trusted base gate
+        env:
+          BASE_SHA: ${{ github.sha }}
+          CANDIDATE_SHA: ${{ needs.council.outputs.candidate_sha }}
         run: |
-          git checkout main
-          git merge --no-ff "${{ steps.branch.outputs.branch }}" \
-            -m "feral: ship cycle ${{ steps.branch.outputs.stamp }}"
-          git push origin main
-          echo "shipped=true" >> "$GITHUB_OUTPUT"
-
-      # The ship push above is made with GITHUB_TOKEN, which by GitHub design
-      # does NOT trigger the deploy workflow (anti-recursion guard). So rebuild
-      # the site from merged main and hand it to the deploy job below.
-      - name: Build for Pages (ship)
-        if: steps.ship.outputs.shipped == 'true'
-        run: npm run build
-
-      - name: Upload Pages artifact (ship)
-        if: steps.ship.outputs.shipped == 'true'
+          git fetch "$RUNNER_TEMP/feral-input/feral-candidate.bundle" refs/heads/feral-candidate:refs/heads/feral-candidate
+          test "$(git rev-parse feral-candidate)" = "$CANDIDATE_SHA"
+          test "$(git show -s --format=%P "$CANDIDATE_SHA")" = "$BASE_SHA"
+          node scripts/feral-gate.mjs "$BASE_SHA" "$CANDIDATE_SHA"
+          git checkout --detach "$CANDIDATE_SHA"
+      - run: npm ci
+      - name: Candidate checks
+        run: |
+          node scripts/validate-content.mjs
+          node scripts/validate-tools-data.mjs
+          node scripts/validate-horizon-refs.mjs
+          node --test scripts/tests/*.test.mjs
+          npm run build
+      - name: Save the checked Pages output
+        if: env.FERAL_MODE == 'ship'
         uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
-  # Publish the shipped cycle to GitHub Pages. Mirrors deploy.yml's publish
-  # step, which the GITHUB_TOKEN ship push can't trigger on its own. Only runs
-  # when the cycle actually shipped (ship mode + changes produced).
-  deploy:
-    needs: cycle
-    if: needs.cycle.outputs.shipped == 'true'
+  publish:
+    needs: [council, validate]
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # This job runs no generated source, npm scripts or model calls.
+    permissions:
+      contents: write
+      pull-requests: write
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: feral-candidate
+          path: ${{ runner.temp }}/feral-input
+      - name: Publish the checked candidate
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_SHA: ${{ github.sha }}
+          CANDIDATE_SHA: ${{ needs.council.outputs.candidate_sha }}
+        run: |
+          git fetch "$RUNNER_TEMP/feral-input/feral-candidate.bundle" refs/heads/feral-candidate:refs/heads/feral-candidate
+          test "$(git rev-parse feral-candidate)" = "$CANDIDATE_SHA"
+          test "$(git show -s --format=%P "$CANDIDATE_SHA")" = "$BASE_SHA"
+          gh auth setup-git
+          CYCLE_BRANCH="feral/cycle-$GITHUB_RUN_ID"
+          git push origin "$CANDIDATE_SHA:refs/heads/$CYCLE_BRANCH"
+          cat > "$RUNNER_TEMP/feral-pr.md" <<'BODY'
+          An autonomous Feral cycle with a new critic PASS. The trusted base gate verified the file scope and preserved ledger history. Content, model data, Horizon references, JavaScript tests and the production build passed in a separate job without repository write permission.
+
+          The candidate branch is retained if publication fails. Ship mode advances main only when this checked candidate is a fast-forward. A concurrent main change needs a fresh validation run.
+          BODY
+          PR_URL="$(gh pr create --base main --head "$CYCLE_BRANCH" --title "feral: cycle $GITHUB_RUN_ID" --body-file "$RUNNER_TEMP/feral-pr.md")"
+          echo "$PR_URL" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$FERAL_MODE" = "ship" ]; then
+            # No force push. A concurrent main update or branch rule blocks this.
+            # GitHub marks the PR merged when main contains its candidate commit.
+            git push origin "$CANDIDATE_SHA:refs/heads/main"
+            echo "shipped=true" >> "$GITHUB_OUTPUT"
+          fi
+      # GITHUB_TOKEN pushes do not trigger deploy.yml. Publish the exact output
+      # already built in the read-only validation job, without rebuilding here.
       - id: deployment
+        if: steps.publish.outputs.shipped == 'true'
         uses: actions/deploy-pages@v5

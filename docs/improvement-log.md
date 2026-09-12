@@ -104,3 +104,37 @@ fixture, one-byte UTF-8 chunks, truncation and provider failures, plus repeated
 history billing. The production build passes with 883 pages. No paid chat call
 was made. PR #197's pricing deployment was separately verified live, including
 an unlisted ID and an open weight model with a paid hosted rate.
+
+
+## 12 September 2026: Feral recovery and publication boundaries
+
+Feral's latest public cycle is still 5, recorded on 30 June. Its front door now
+shows that date and distinguishes the configured schedule from a successful
+run. The five original creations and complete historical ledger remain. The
+new gallery makes each room easier to enter and gives the ledger readable type,
+stronger contrast, keyboard focus and a return route to the main workshop.
+
+The workflow checks the shared site before calling the paid council. Generation
+and validation have read-only repository permission. A fresh validation job runs
+the gate from the trusted base before checking out candidate code. The final
+publishing job executes no generated source or npm scripts. It retains a PR and
+candidate branch, then uses a normal fast-forward push in ship mode so concurrent
+main changes or branch rules block publication. Pages receives the exact output
+from the separate validation job. A failed candidate remains a 14-day artifact.
+
+The gate now requires exactly one new cycle, unchanged prior ledger entries,
+a current date, a complete build record and a fresh critic PASS with reasons.
+It rejects changed symlinks and files outside Feral. The critic can now edit its
+verdict, as its instructions already required. Local runs get a baseline build,
+a turn limit and a copy of the base gate. Documentation no longer calls the
+scope check a sandbox or claims arbitrary code is physically contained.
+
+Validation: 28 JavaScript tests pass, including stale PASS, rewritten history,
+invalid dates, outside paths and a committed symlink. The trusted gate accepts
+a valid candidate before checking it out. Production build: 883 pages. The live
+cost calculator from PR #198 was checked with a four-turn transcript and shows
+repeated input history. Pages run 34722994244 succeeded at 22:32 UTC. A paid Feral
+cycle has not been invoked or claimed successful during this recovery.
+
+Actionlint 1.7.12 reports no workflow errors. A local bundle transfer verified
+the exact candidate commit, parent and file content in a fresh repository.
