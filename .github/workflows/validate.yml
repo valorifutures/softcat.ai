@@ -23,6 +23,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: node scripts/validate-tools-data.mjs
+      - run: node scripts/validate-content.mjs
       - run: npm run build
       - uses: actions/setup-python@v6
         with:
