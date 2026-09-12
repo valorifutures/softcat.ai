@@ -1,5 +1,16 @@
 [
   {
+    "id": "agent-check",
+    "name": "Should this be an agent?",
+    "description": "Six questions to choose a script, a workflow, an assistant or a bounded agent trial. Clear reasons, no hidden score.",
+    "stat": "Six questions · no API key needed",
+    "href": "/lab/agent-check",
+    "icon": "↳",
+    "category": "agents",
+    "addedDate": "2026-09-12",
+    "featured": true
+  },
+  {
     "id": "chat-playground",
     "name": "Chat Playground",
     "description": "Chat with models via OpenRouter using your own key. Compare responses and estimated costs.",

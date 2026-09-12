@@ -1,10 +1,12 @@
 # SOFT CAT .ai
 
-> Smart Outputs From Trained Conversational AI Technology. An AI site that maintains itself.
+> Smart Outputs From Trained Conversational AI Technology. An independent AI workshop with useful tools, agent experiments and a public notebook.
 
 ## Key Pages
 
 - [Home](https://softcat.ai/)
+- [Notebook](https://softcat.ai/notebook)
+- [Should this be an agent?](https://softcat.ai/lab/agent-check)
 - [News & Updates](https://softcat.ai/news-and-updates)
 - [Thoughts](https://softcat.ai/thoughts)
 - [The Radar](https://softcat.ai/radar)

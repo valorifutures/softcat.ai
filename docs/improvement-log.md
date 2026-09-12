@@ -33,5 +33,24 @@ Chat keys stay in page memory unless a visitor chooses to remember them.
 
 Validation: six timestamp and job-selection regression tests pass. Content,
 model data and Horizon validation have no errors. The production build passes
-with 877 pages. All 15 old Horizon reviews remain visible warnings. CI and
-live verification follow this commit.
+with 877 pages. All 15 old Horizon reviews remain visible warnings. PR #195 passed CI and merged. Pages deployment 34720708838 succeeded. Live
+inspection confirmed absolute dates, refreshed ages and explicit stale records.
+
+## 12 September 2026: workshop, notebook and agent check
+
+The homepage now leads with usable experiments, the build diary and routes
+into Horizon and Feral. It removes the heavy embedded trace from the front
+page while keeping the full experiment accessible. Shared navigation and the
+footer are rebuilt for keyboard use and smaller screens. Archive dates remain
+visible. A field note documents the publishing failure with links to its PRs
+and successful deployment.
+
+The new Agent Check applies a visible editorial decision tree to six answers.
+It distinguishes scripts, workflows, assistants and bounded agent trials. It
+includes examples, reasons, practical checks, reset and copy. It makes no API
+calls or claims of measured performance. The source and method are linked.
+
+Validation: 12 JavaScript tests pass, including all 324 answer combinations.
+The production build generates 883 pages. All 407 Markdown files and the model
+and tool data validate. Six changed page routes have no broken local links or
+missing in-page anchors. Visual and interaction verification follows deployment.

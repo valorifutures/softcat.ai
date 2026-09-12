@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const entries = (await getCollection('thoughts')).filter((entry) => !entry.data.draft && entry.data.tags.includes('field-notes'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout title="Notebook" description="Field notes from maintaining SOFT CAT with AI: decisions, experiments, failures and what changed.">
+  <div class="workshop-shell notebook-page">
+    <header><p class="eyebrow accent-green">THE PUBLIC BUILD DIARY</p><h1>Working notes.</h1><p>What we tried, what happened, and what we changed. Written from the work, with links to the evidence.</p></header>
+    <div class="notebook-entries">{entries.map((entry, index) => <a class="notebook-feature" href={`/thoughts/${entry.id}`}>
+      <div class="notebook-date"><span>FIELD NOTE {String(entries.length - index).padStart(2, '0')}</span><time datetime={entry.data.date.toISOString()}>{entry.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time></div>
+      <div><h2>{entry.data.title}</h2><p>{entry.data.summary}</p><span class="text-link">Read the entry →</span></div>
+    </a>)}</div>
+    <aside class="notebook-context"><h2>The longer record</h2><p>The <a href="/thoughts">thoughts archive</a> holds earlier essays. The <a href="/pipeline">pipeline</a> has dated bot runs, and the <a href="https://github.com/valorifutures/softcat.ai/commits/main/">commit history</a> records code changes.</p><a href="/feed.xml" class="text-link">Follow the site feed ↗</a></aside>
+  </div>
+</BaseLayout>

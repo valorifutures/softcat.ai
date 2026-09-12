@@ -1,98 +1,30 @@
----
-// Bot count derives from the manifest so this copy can never go stale
-// (it said "Six bots" for a month after the seventh joined).
-import allBots from '../data/pipeline/bots.json';
-const words = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
-const botCount = words[allBots.length] ?? String(allBots.length);
----
-<section class="max-w-5xl mx-auto px-6 pt-24 pb-16 md:pt-32 md:pb-24">
-  <div class="mb-8">
-    <div class="font-mono text-sm text-text-muted mb-6 flex items-center gap-1">
-      <span class="text-neon-green">visitor</span>
-      <span class="text-text-muted">@</span>
-      <span class="text-neon-cyan">softcat.ai</span>
-      <span class="text-text-muted">:</span>
-      <span class="text-neon-purple">~</span>
-      <span class="text-text-primary ml-1">$</span>
-      <span class="text-neon-green ml-2">cat welcome.md</span>
-      <span class="cursor-blink text-neon-green ml-0.5">_</span>
+<section class="workshop-shell workshop-hero">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="status-square" aria-hidden="true"></span> AN INDEPENDENT AI WORKSHOP</p>
+    <h1>A place to try<br />what comes <em>next.</em></h1>
+    <p class="hero-description">Tools you can use. Agents you can inspect.<br class="hidden sm:block" /> A notebook of what worked, what broke,<br class="hidden sm:block" /> and what we are trying next.</p>
+    <div class="hero-actions">
+      <a href="/tools" class="workshop-button primary">Explore the tools <span aria-hidden="true">↗</span></a>
+      <a href="/notebook" class="workshop-button quiet">Read the notebook <span aria-hidden="true">→</span></a>
     </div>
-
-    <h1 class="text-4xl md:text-6xl font-bold font-mono text-text-bright mb-4 tracking-tight">
-      <span class="glow-green">SOFT CAT</span><span class="text-neon-green">.ai</span>
-    </h1>
-
-    <p class="text-xl md:text-2xl text-text-bright max-w-2xl leading-relaxed font-medium">
-      This site wrote itself this morning. Mostly.
-    </p>
-
-    <p class="text-base text-text-muted max-w-2xl leading-relaxed mt-4">
-      {botCount} bots on timers write and publish this site. The careful bits arrive
-      as pull requests we merge. The Horizon Map stays hand-curated: where AI has
-      been, where it is, and where it's credibly going next. And /feral runs loose:
-      a council of agents building whatever they want, unsupervised, with no human
-      taste in the loop. The site is the product. The machinery is the story.
-    </p>
+    <p class="hero-footnote">BUILT WITH AI. KEPT OPEN TO INSPECTION.</p>
   </div>
-
-  <div class="section-banner mt-8 mb-2" style="height: 180px; --banner-accent: rgba(78, 203, 143, 0.12); --banner-accent-mid: rgba(78, 203, 143, 0.04)" aria-hidden="true"></div>
-
-  <div class="flex flex-wrap gap-4 mt-8">
-    <a
-      href="/news-and-updates"
-      class="inline-flex items-center gap-2 px-5 py-2.5 bg-surface border border-neon-green/30 rounded-lg font-mono text-sm text-neon-green hover:bg-neon-green/10 hover:border-neon-green/60 transition-all"
-    >
-      <span>&gt;</span>
-      <span>news & updates</span>
-    </a>
-    <a
-      href="/horizon"
-      class="inline-flex items-center gap-2 px-5 py-2.5 bg-surface border border-neon-amber/30 rounded-lg font-mono text-sm text-neon-amber hover:bg-neon-amber/10 hover:border-neon-amber/60 transition-all"
-    >
-      <span>&gt;</span>
-      <span>horizon</span>
-    </a>
-    <a
-      href="/thoughts"
-      class="inline-flex items-center gap-2 px-5 py-2.5 bg-surface border border-neon-cyan/30 rounded-lg font-mono text-sm text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan/60 transition-all"
-    >
-      <span>&gt;</span>
-      <span>thoughts</span>
-    </a>
-    <a
-      href="/radar"
-      class="inline-flex items-center gap-2 px-5 py-2.5 bg-surface border border-neon-red/30 rounded-lg font-mono text-sm text-neon-red hover:bg-neon-red/10 hover:border-neon-red/60 transition-all"
-    >
-      <span>&gt;</span>
-      <span>the radar</span>
-    </a>
-    <a
-      href="/tools"
-      class="inline-flex items-center gap-2 px-5 py-2.5 bg-surface border border-neon-purple/30 rounded-lg font-mono text-sm text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple/60 transition-all"
-    >
-      <span>&gt;</span>
-      <span>tools</span>
-    </a>
-    <a
-      href="/pipeline"
-      class="inline-flex items-center gap-2 px-5 py-2.5 bg-surface border border-neon-green/30 rounded-lg font-mono text-sm text-neon-green hover:bg-neon-green/10 hover:border-neon-green/60 transition-all"
-    >
-      <span>&gt;</span>
-      <span>pipeline</span>
-    </a>
-    <a
-      href="/play"
-      class="inline-flex items-center gap-2 px-5 py-2.5 bg-surface border border-neon-amber/30 rounded-lg font-mono text-sm text-neon-amber hover:bg-neon-amber/10 hover:border-neon-amber/60 transition-all"
-    >
-      <span>&gt;</span>
-      <span>play</span>
-    </a>
-    <a
-      href="/feral"
-      class="inline-flex items-center gap-2 px-5 py-2.5 bg-surface border border-neon-purple/30 rounded-lg font-mono text-sm text-neon-purple hover:bg-neon-purple/10 hover:border-neon-purple/60 transition-all"
-    >
-      <span>&gt;</span>
-      <span>/feral</span>
-    </a>
-  </div>
+  <a href="/lab/agent-check" class="hero-experiment" aria-label="Try the experiment: Should this be an agent?">
+    <div class="experiment-top"><span>EXPERIMENT 01</span><span>TRY IT YOURSELF ↗</span></div>
+    <div class="cat-study" aria-hidden="true">
+      <svg viewBox="0 0 320 178" fill="none">
+        <path d="M24 124H73M247 124H296M160 14V44" stroke="#a9b899" stroke-dasharray="3 5" />
+        <circle cx="23" cy="124" r="4" stroke="#657b50" /><circle cx="297" cy="124" r="4" stroke="#657b50" />
+        <path d="M95 124V54L128 79C148 71 172 71 192 79L225 54V124C225 153 95 153 95 124Z" fill="#d8e4c5" stroke="#293d20" stroke-width="2" stroke-linejoin="round" />
+        <path d="M121 107L134 112L121 117M199 107L186 112L199 117" stroke="#293d20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M153 125H167L160 132L153 125Z" fill="#293d20" />
+        <path d="M159 132C154 137 146 137 143 134M161 132C166 137 174 137 177 134M111 124L79 116M111 131L80 136M209 124L241 116M209 131L240 136" stroke="#293d20" stroke-width="1.5" stroke-linecap="round" />
+        <circle cx="160" cy="16" r="8" fill="#293d20" /><path d="M157 16H163M160 13V19" stroke="#e9efdd" />
+      </svg>
+      <span class="study-label">a little autonomy goes a long way</span>
+    </div>
+    <h2>Should this be<br />an agent?</h2>
+    <p>Six questions. A useful starting point.<br />Find the simplest shape for your task.</p>
+    <div class="experiment-paths"><span>script</span><span>workflow</span><span>agent</span><b aria-hidden="true">↗</b></div>
+  </a>
 </section>

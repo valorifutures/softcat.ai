@@ -1,81 +1,28 @@
 ---
-const navLinks = [
-  { label: 'news', href: '/news-and-updates', title: 'Latest AI news and updates' },
-  { label: 'horizon', href: '/horizon', title: 'A living map of past, present, and credible future AI' },
-  { label: 'thoughts', href: '/thoughts', title: 'Observations and opinions' },
-  { label: 'radar', href: '/radar', title: 'AI tools and launches worth knowing about' },
-  { label: 'tools', href: '/tools', title: 'Interactive tools and write-ups' },
-  { label: 'pipeline', href: '/pipeline', title: 'The machinery that builds this site' },
-  { label: 'play', href: '/play', title: 'Neon Cat Runner mini-game' },
+const links = [
+  { label: 'Tools', href: '/tools' },
+  { label: 'Notebook', href: '/notebook' },
+  { label: 'Horizon', href: '/horizon' },
+  { label: 'Feral', href: '/feral' },
+  { label: 'Pipeline', href: '/pipeline' },
 ];
+const isCurrent = (href: string) => Astro.url.pathname === href || Astro.url.pathname.startsWith(href + '/') || (href === '/tools' && Astro.url.pathname.startsWith('/lab/'));
 ---
-
-<header class="border-b border-surface-light/50">
-  <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2 group">
-      <span class="font-mono font-bold text-lg text-text-bright group-hover:text-neon-green transition-colors">
-        SOFT CAT
-      </span>
-      <span class="font-mono text-neon-green glow-green text-sm">.ai</span>
-    </a>
-
-    <!-- Desktop nav -->
-    <div class="hidden md:flex items-center gap-6">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          title={link.title}
-          class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors"
-        >
-          {link.label}
-        </a>
-      ))}
-    </div>
-
-    <!-- Mobile hamburger -->
-    <div class="flex md:hidden items-center gap-2">
-      <button
-        id="menu-toggle"
-        class="font-mono text-text-muted hover:text-neon-cyan transition-colors p-1"
-        aria-label="Toggle menu"
-        aria-expanded="false"
-      >
-        <span id="menu-icon" class="text-lg">&#9776;</span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-surface-light/50">
-    <div class="max-w-5xl mx-auto px-6 py-3 flex flex-col gap-3">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          title={link.title}
-          class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors py-1"
-        >
-          {link.label}
-        </a>
-      ))}
+<header class="workshop-header">
+  <div class="workshop-shell header-inner">
+    <a href="/" class="site-brand" aria-label="SOFT CAT .ai home"><svg aria-hidden="true" viewBox="0 0 32 32" fill="none"><path d="M5 21V5L11 11C14 9 18 9 21 11L27 5V21C27 29 5 29 5 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 17L13 19L10 21M22 17L19 19L22 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SOFT CAT<span class="brand-domain">.ai</span></span></a>
+    <nav class="desktop-navigation" aria-label="Main navigation">{links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>)}</nav>
+    <div class="header-controls">
+      <button data-search-trigger class="header-search" aria-label="Search the site"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M16 16L21 21"/></svg></button>
+      <details class="mobile-navigation" id="site-menu"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Mobile navigation">{links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}<span aria-hidden="true">↗</span></a>)}<a href="/news-and-updates">News archive</a><a href="/radar">Radar archive</a></nav></details>
     </div>
   </div>
 </header>
-
 <script>
-  const toggle = document.getElementById('menu-toggle')!;
-  const menu = document.getElementById('mobile-menu')!;
-  const icon = document.getElementById('menu-icon')!;
-
-  toggle.addEventListener('click', () => {
-    const open = !menu.classList.contains('hidden');
-    menu.classList.toggle('hidden');
-    icon.innerHTML = open ? '&#9776;' : '&#10005;';
-    toggle.setAttribute('aria-expanded', String(!open));
+  const menu = document.querySelector<HTMLDetailsElement>('#site-menu');
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu?.open) { menu.open = false; menu.querySelector('summary')?.focus(); }
   });
-
-  // Wire up any search trigger buttons on the page
-  const openSearch = () => (window as any).__searchOpen?.();
-  document.querySelectorAll('[data-search-trigger]').forEach((el) => {
-    el.addEventListener('click', openSearch);
-  });
+  document.addEventListener('click', (event) => { if (menu?.open && event.target instanceof Node && !menu.contains(event.target)) menu.open = false; });
+  document.querySelectorAll('[data-search-trigger]').forEach((element) => element.addEventListener('click', () => (window as any).__searchOpen?.()));
 </script>

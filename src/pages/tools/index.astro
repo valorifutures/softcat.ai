@@ -34,6 +34,7 @@ const priceRun = latestPriceRun(runsData);
 const modelDataStamp = priceRun ? formatRecordedTime(priceRun.timestamp) : null;
 
 const categoryColors: Record<string, { text: string; bg: string; border: string; glowVar: string; hex: string }> = {
+  agents: { text: 'text-neon-green', bg: 'bg-neon-green/10', border: 'border-neon-green/30', glowVar: 'rgba(78, 203, 143, 0.12)', hex: '#4ecb8f' },
   prompts: { text: 'text-neon-amber', bg: 'bg-neon-amber/10', border: 'border-neon-amber/30', glowVar: 'rgba(212, 165, 74, 0.12)', hex: '#d4a54a' },
   models: { text: 'text-neon-cyan', bg: 'bg-neon-cyan/10', border: 'border-neon-cyan/30', glowVar: 'rgba(90, 184, 212, 0.12)', hex: '#5ab8d4' },
   cost: { text: 'text-neon-green', bg: 'bg-neon-green/10', border: 'border-neon-green/30', glowVar: 'rgba(78, 203, 143, 0.12)', hex: '#4ecb8f' },
