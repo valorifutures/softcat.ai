@@ -82,11 +82,13 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 
 ## Horizon Map (`/horizon`)
 
-- Data lives in `src/data/horizon/*.json` (lanes: `past`, `now`, `now-archive`, `next`, plus `debates`, `scenarios`, `shifts`). Per-entry shape is enforced by Zod in `src/content.config.ts`; cross-file integrity (id uniqueness, dangling refs, confidence freshness) by `scripts/validate-horizon-refs.mjs`.
+- Data lives in `src/data/horizon/*.json` (lanes: `past`, `now`, `now-archive`, `next`, plus `retired-forecasts`, `debates`, `scenarios`, `shifts`). Per-entry shape is enforced by Zod in `src/content.config.ts`; cross-file integrity (id uniqueness, dangling refs, confidence freshness) by `scripts/validate-horizon-refs.mjs`.
 - **Review surface — bot proposes, Valori lands (TODOS #5, decided):**
   - `bot/horizon_bot.py` Job 1 writes Now-lane proposals to `now.json` on a dated `horizon-bot/proposals-YYYY-MM-DD` branch and opens a **PR**. Valori reviews the data diff and merges to land. The bot never writes `now.json` on `main` directly.
   - Job 2 (Next confidence shifts) and Job 3 (Past promotion candidates) are **flag-only** — they go to `~/.softcat-bot-staging/horizon-bot-proposals.json` for manual review, not a PR.
   - `past.json` is single-writer (Valori only). `debates.json` is 100% human-curated.
+- Active forecasts require target dates, review notes, resolution criteria and direct references. `/horizon/review` preserves the September editorial decisions and original claims. Withdrawn forecasts remain historical records, not active predictions.
+- Now proposal context includes extracted reporting URLs. Two distinct external source hosts are a minimum for a pattern proposal. Internal opinions are not independent reporting, and the bot cannot award confirmed.
 - The validator is run manually / via CI, not as part of `astro build`. Run it before merging horizon data PRs: `node scripts/validate-horizon-refs.mjs`.
 
 ## Safety Rules

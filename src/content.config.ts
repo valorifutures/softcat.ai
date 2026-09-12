@@ -257,9 +257,13 @@ const horizonNext = defineCollection({
         date: isoDate.optional(), // optional for next
         signal_type: nextSignalType, // TODOS #10 (confidence unconstrained on next)
         // Issue 8 / Outside #6: confidence freshness mandatory on Next.
-        // Validator WARNS at >90 days, no fail in v1. TODOS.md #1 tracks the
-        // future escalation to hard fail at 180 days.
+        // Validator warns after 90 days and fails after 180 days. A new
+        // review date requires reassessment of the linked evidence.
         confidence_last_reviewed: isoDate,
+        target_date: isoDate,
+        review_note: z.string().min(1),
+        resolution_criteria: z.string().min(1),
+        evidence: z.array(horizonEvidence).min(1),
       })
       .strict(),
   ).refine(
@@ -270,6 +274,20 @@ const horizonNext = defineCollection({
       path: ['confidence_last_reviewed'],
     },
   ),
+});
+
+// Withdrawn forecasts remain addressable as historical records. They are not
+// active predictions and do not receive artificial recurring confidence dates.
+const horizonRetired = defineCollection({
+  loader: file('src/data/horizon/retired-forecasts.json'),
+  schema: withLaneRefines(horizonLaneBase.extend({
+    id: z.string().regex(NEXT_ID),
+    lane: z.literal('next'),
+    date: isoDate.optional(),
+    confidence_last_reviewed: isoDate,
+    retired_at: isoDate,
+    retirement_reason: z.string().min(1),
+  }).strict()),
 });
 
 const horizonDebates = defineCollection({
@@ -349,6 +367,7 @@ export const collections = {
   horizonNow,
   horizonNowArchive,
   horizonNext,
+  horizonRetired,
   horizonDebates,
   horizonScenarios,
 };

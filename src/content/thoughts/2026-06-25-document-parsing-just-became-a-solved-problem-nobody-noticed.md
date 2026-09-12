@@ -1,24 +1,28 @@
 ---
-title: "Document Parsing Just Became a Solved Problem Nobody Noticed"
+title: "Document parsing still needs tests"
 date: 2026-06-25
-tags: [ocr, document-intelligence, inference, open-weights]
-summary: "Three serious OCR and document extraction models dropped in the same week, and the gap between 'parsing a PDF' and 'understanding a document' quietly closed."
+tags: [ocr, document-intelligence, evaluation, corrections]
+summary: "Correction: our original post called document parsing solved without presenting an evaluation. Here is the standard that claim should have met."
 draft: false
 pinned: false
 ---
 
-Somewhere between quarterly earnings calls and chip war politics, a genuinely important shift happened. Document parsing, the unglamorous plumbing of enterprise AI, just got solved by three different teams in the same week. Nobody threw a party.
+**Correction, 12 September 2026.** We have withdrawn the original claim that document parsing had become a solved problem. The post provided no dataset, measured error rate or reproducible comparison. It also claimed that a fifty-page contract could be processed at the same cost and latency as one page, without evidence.
 
-## The boring problems are the ones that matter
+The original publication date remains above. The earlier text is preserved in [Git history](https://github.com/valorifutures/softcat.ai/blob/a70ce36196b98d790d77b49d6a7d2511c36eb38d/src/content/thoughts/2026-06-25-document-parsing-just-became-a-solved-problem-nobody-noticed.md), not presented here as advice.
 
-For years, getting structured data out of a PDF was a pain. You'd stitch together OCR libraries, post-processing scripts, and a prayer. The results were fragile. Now you have open-weights models returning schema-validated JSON, citation-ready bounding boxes, and per-word confidence scores. The extraction layer is not a bottleneck anymore. It is a commodity.
+## Extraction is a set of separate tests
 
-This matters more than it sounds. Every RAG pipeline, every agentic workflow, every enterprise search tool has been quietly blocked by the quality of its intake layer. If the documents going in are messy, everything downstream is compromised. A model that returns null instead of hallucinating an absent field is not a minor improvement. It is a change in what you can actually trust.
+Reading characters, recovering table structure and deciding what a field means are different tasks. Producing valid JSON only establishes that the result has the expected syntax. A plausible invoice total can still be wrong.
 
-## Speed and memory flat-lining is the real headline
+Before trusting an extraction workflow, build an evaluation set from the documents it will actually encounter. Include poor scans, rotated pages, missing fields, repeated headers, multi-page tables and unfamiliar layouts.
 
-The more interesting engineering story is what these models do to memory. Keeping the KV cache constant as output length grows is not a neat trick. It is what makes long-document parsing deployable at scale without a beefy GPU cluster. You can finally parse a fifty-page contract the same way you'd parse a one-pager, at the same cost, with the same latency profile.
+- Write the expected values before running the system.
+- Count wrong values, missing values and invented values separately.
+- Check which page or region supports each extracted value.
+- Measure cost and latency across document lengths.
+- Decide which failures must go to a person before the result is used.
 
-That changes the economics of document-heavy workflows entirely. Legal, finance, insurance, logistics: these sectors have been waiting for exactly this. Not for a smarter chatbot. For reliable, fast, cheap document ingestion that does not fall apart when the invoice is a scan of a fax of a photocopy.
+An explicit `null` can be the correct answer when a value is absent. It can also hide a missed value. Only a known answer lets us tell the difference.
 
-The race for frontier reasoning gets all the attention. Meanwhile, the infrastructure that makes AI actually useful in business just quietly levelled up. We should probably talk about that more.
+Better tools are welcome. A release announcement cannot replace that evaluation.

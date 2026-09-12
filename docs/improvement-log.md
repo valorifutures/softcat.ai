@@ -138,3 +138,42 @@ cycle has not been invoked or claimed successful during this recovery.
 
 Actionlint 1.7.12 reports no workflow errors. A local bundle transfer verified
 the exact candidate commit, parent and file content in a fresh repository.
+
+
+## 12 September 2026: Horizon editorial review
+
+All 15 forecasts were reassessed. Seven remain, with primary source links,
+fixed target dates, review notes and explicit resolution criteria. Confidence
+changes explain the difference between available capabilities and measured
+adoption. Eight forecasts were withdrawn because their terms, comparisons or
+outcomes could not be judged consistently. Original April claims are preserved
+in a review snapshot and a public review page. The freshness gate still warns
+at 90 days and fails at 180 days for active forecasts. Retired records keep their
+historical confidence dates rather than receiving artificial recurring reviews.
+
+All 39 earlier Now signals moved to the historical archive. They had no direct
+external references in their map entries and commonly inferred broad adoption
+from summaries and opinions. The review does not declare all of them false.
+Three narrow current observations now link to actual source material: MCP's
+versioned schema, the SWE-bench maintainers' reported multimodal evaluation
+update, and the exact model-ID results from our OpenRouter pricing audit.
+
+The document-parsing essay's unsupported solved-problem and constant-cost
+claims were removed and replaced with a dated correction. The original remains
+in Git history. A new field note explains the source loop and editorial cuts.
+Five Horizons now calls its dates editorial scenarios, shows the source-change
+date and stops calling an absence of updates consensus.
+
+The proposal bot receives the exact URLs extracted from its reporting inputs.
+It strips invented or self-referential URLs, deduplicates references and rejects
+patterns without direct links from at least two source hosts. It cannot award
+confirmed. These checks are a minimum, not an automated assertion that sources
+are independent or accurate. Draft and future-dated posts cannot enter context.
+
+Validation: all 92 bot tests pass. Horizon validation reports 89 records with
+no errors or stale active reviews. All 408 Markdown files parse. The production
+build produces 887 pages. Feral's PR #199 deployment, run 34723661385, succeeded
+at 22:47 UTC and the live front door was visually inspected.
+
+Six changed journeys have 281 valid local links and anchors. The bot also skips
+a paid proposal call when its context has fewer than two reporting source hosts.

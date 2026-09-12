@@ -24,6 +24,9 @@ Continue improving `valorifutures/softcat.ai` and `https://softcat.ai`.
    recording what happened. Never overwrite another contributor's changes.
 2. Identify the most useful unfinished improvement. Prioritise broken journeys,
    inaccurate claims, accessibility, trustworthy data and clarity over novelty.
+   The maintainer explicitly wants material that does not earn its place removed
+   and useful additions made. Curate weak or misleading material, retaining a
+   correction or audit record where it helps explain a meaningful change.
    A new experiment should do something interesting that visitors can use.
 3. Define a small, complete outcome. Implement it on a focused branch. Use the
    existing Astro, Preact and Tailwind stack where it fits. Keep the site fast

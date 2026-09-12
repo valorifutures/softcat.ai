@@ -11,6 +11,8 @@ import { resolveEvidence } from '../lib/horizon-evidence';
 const pastEntries = await getCollection('horizonPast');
 const nowEntries = await getCollection('horizonNow');
 const nextEntries = await getCollection('horizonNext');
+const retiredEntries = await getCollection('horizonRetired');
+const archivedEntries = await getCollection('horizonNowArchive');
 const reviewDates = nextEntries.map((entry) => entry.data.confidence_last_reviewed).sort();
 const debateEntries = await getCollection('horizonDebates');
 const scenarioEntries = await getCollection('horizonScenarios');
@@ -154,6 +156,9 @@ const titleById = new Map<string, string>();
 for (const e of pastEntries) titleById.set(e.data.id, e.data.title);
 for (const e of nowEntries) titleById.set(e.data.id, e.data.title);
 for (const e of nextEntries) titleById.set(e.data.id, e.data.title);
+for (const e of retiredEntries) titleById.set(e.data.id, `${e.data.title} (withdrawn)`);
+for (const e of archivedEntries) titleById.set(e.data.id, `${e.data.title} (archived)`);
+const historicalIds = new Set([...retiredEntries, ...archivedEntries].map(e => e.data.id));
 
 // Order Next forecasts so the more confident ones lead.
 const confidenceRank: Record<string, number> = {
@@ -208,8 +213,8 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
     </header>
 
     <aside class="mb-8 rounded-lg border border-neon-amber/30 bg-neon-amber/5 p-5 text-sm text-text-muted leading-relaxed">
-      <p><strong class="text-text-primary">Read this as a dated map.</strong> The latest Now signal is dated {sortedNow[0]?.data.date ?? 'unknown'}. Forecast confidence reviews run from {reviewDates[0] ?? 'unknown'} to {reviewDates.at(-1) ?? 'unknown'}.</p>
-      <p class="mt-2">The dates below show when evidence was assessed. A new page build does not renew a forecast. Links to our own posts provide context, not independent corroboration.</p>
+      <p><strong class="text-text-primary">Read this as a dated map.</strong> The latest Now observation is dated {sortedNow[0]?.data.date ?? 'unknown'}. Active forecasts were reassessed from {reviewDates[0] ?? 'unknown'} to {reviewDates.at(-1) ?? 'unknown'}. These labels describe our judgement, not measured probabilities.</p>
+      <p class="mt-2">We withdrew eight untestable forecasts and moved earlier bot summaries out of the current lane. <a href="/horizon/review" class="text-neon-cyan underline">Read the original claims and review</a>. A new page build does not renew a forecast.</p>
     </aside>
 
     <!-- Horizon band: past behind, now in middle (highlighted), next ahead. -->
@@ -266,7 +271,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
     </div>
 
     <p class="font-mono text-xs text-text-muted/60 text-center">
-      {sortedPast.length} past turning points · {sortedNow.length} now signals · {nextEntries.length} next forecasts
+      {sortedPast.length} past turning points · {sortedNow.length} now signals · {nextEntries.length} next forecasts · <a href="/horizon/review" class="underline">review record ↗</a>
     </p>
 
     <!-- Five Horizons entry point: hero-area button to the standalone map. -->
@@ -279,7 +284,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
           Five Horizons
         </span>
         <span class="font-mono text-xs text-text-muted group-hover:text-text-bright transition-colors">
-          where consensus sits — single chart, five paths →
+          three editorial views · five possible futures →
         </span>
       </a>
     </div>
@@ -393,7 +398,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
                 <span>{formatDate(entry.data.date)}</span>
                 {entry.data.evidence && entry.data.evidence.length > 0 && (
                   <span>
-                    {entry.data.evidence.length} {entry.data.evidence.length === 1 ? 'source' : 'sources'}
+                    {entry.data.evidence.length} {entry.data.evidence.length === 1 ? 'reference' : 'references'}
                   </span>
                 )}
               </div>
@@ -448,7 +453,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
           <span class="text-neon-cyan">●</span> forecasts coming soon
         </p>
         <p class="text-xs text-text-muted/60 mt-2">
-          The Next lane will hold 12-15 forecasts with confidence labels and freshness timestamps. Currently being seeded.
+          No active forecasts meet the current evidence and review requirements.
         </p>
       </div>
     ) : (
@@ -466,6 +471,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
           return (
             <article
               data-horizon-card
+              id={entry.data.id}
               data-horizon-lane="next"
               data-themes={entry.data.themes.join(',')}
               class={`relative glass-card rounded-xl p-6 card-glow-${accent} card-lift animate-stagger`}
@@ -495,9 +501,24 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
                 {entry.data.why_it_matters}
               </p>
 
-              <div class="flex items-center justify-between font-mono text-[11px] text-text-muted/70 pt-3 border-t border-surface-light/50">
-                <span class="uppercase tracking-wider">forecast</span>
-                <span>reviewed {formatDate(entry.data.confidence_last_reviewed)}</span>
+              <p class="font-mono text-xs text-neon-cyan mb-3">Target: <time datetime={entry.data.target_date}>{formatDate(entry.data.target_date)}</time></p>
+              <details class="border-t border-surface-light pt-3 mb-4">
+                <summary class="cursor-pointer text-sm text-text-primary">Basis, limits and how we will judge it</summary>
+                <div class="mt-3 space-y-3 text-sm text-text-muted leading-relaxed">
+                  <p><strong class="text-text-primary">Review.</strong> {entry.data.review_note}</p>
+                  <p><strong class="text-text-primary">Resolution test.</strong> {entry.data.resolution_criteria}</p>
+                  <ul class="space-y-2">
+                    {entry.data.evidence.map(ev => {
+                      const link = resolveEvidence(ev, evidenceIndex);
+                      return <li>{link.href ? <a href={link.href} class="text-neon-cyan underline">{link.label} ↗</a> : link.label}</li>;
+                    })}
+                  </ul>
+                  <a href={`/horizon/review#${entry.data.id}`} class="inline-block text-neon-cyan underline">Original April claim and revision record</a>
+                </div>
+              </details>
+              <div class="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-text-muted pt-3 border-t border-surface-light/50">
+                <span class="uppercase tracking-wider">forecast, unresolved</span>
+                <span>reviewed <time datetime={entry.data.confidence_last_reviewed}>{formatDate(entry.data.confidence_last_reviewed)}</time></span>
               </div>
             </article>
           );
@@ -682,7 +703,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
                     {block.supporting.length > 0 && (
                       <div class="pt-3 border-t border-surface-light/50">
                         <span class="block font-mono text-[10px] uppercase tracking-wider text-text-muted/60 mb-2">
-                          Supporting evidence
+                          Referenced history and forecasts
                         </span>
                         <ul class="space-y-1.5">
                           {block.supporting.map((ref) => {
@@ -690,7 +711,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
                             return (
                               <li class="font-mono text-[11px] text-text-muted leading-snug flex items-start gap-1.5">
                                 <span class={`tag-dot tag-dot-${accent} mt-1.5 shrink-0`} aria-hidden="true"></span>
-                                <span>{title}</span>
+                                <a href={historicalIds.has(ref) ? `/horizon/review#${ref}` : `#${ref}`} class="underline">{title}</a>
                               </li>
                             );
                           })}
@@ -738,6 +759,7 @@ function stanceAccent(stance: 'optimistic' | 'pragmatic' | 'sceptical'): 'green'
             {pastByYear[year].map((entry) => (
               <article
                 data-horizon-card
+                id={entry.data.id}
                 data-horizon-lane="past"
                 data-themes={entry.data.themes.join(',')}
                 class="glass-card rounded-lg p-5 card-glow-purple card-lift"

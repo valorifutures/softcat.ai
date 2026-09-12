@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-12T22:41:36.828552+00:00",
-  "phase": "feral-recovery",
-  "active_branch": "codex/feral-recovery",
+  "updated_at": "2026-09-12T23:01:17.542061+00:00",
+  "phase": "horizon-editorial-review",
+  "active_branch": "codex/horizon-editorial-review",
   "last_verified_deployment": {
-    "sha": "6f602adfdb74e70bae3dc311cd7eaf57bb0b4248",
-    "at": "2026-09-12T22:32:19Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34722994244"
+    "sha": "a70ce36196b98d790d77b49d6a7d2511c36eb38d",
+    "at": "2026-09-12T22:47:35Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34723661385"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -13,19 +13,19 @@
     "PR #195 merged and deployed. Live pipeline shows July dates and stale records. Pricing stamps, privacy disclosure and opt-in key storage are implemented.",
     "PR #196 merged and live. Workshop homepage, sourced notebook entry and agent decision tool published. All 324 answer combinations covered by passing tests.",
     "PR #197 merged and deployed. Live model search confirms unlisted pricing for Laguna and paid OpenRouter rates for Qwen 2.5. All model data now carries per-entry source/check metadata.",
-    "PR #198 merged and deployed. Live conversation estimates include repeated history. Streaming fixtures pass at every byte boundary. No paid chat call made."
+    "PR #198 merged and deployed. Live conversation estimates include repeated history. Streaming fixtures pass at every byte boundary. No paid chat call made.",
+    "PR #199 merged and deployed. The new Feral gallery was visually checked. The generation, validation and publishing jobs are separate, with fresh-verdict regression coverage. A paid council run remains unverified."
   ],
   "next": [
-    "Publish and verify Feral recovery. A new paid council cycle has not been run.",
-    "Review Horizon forecasts and eight unmerged proposals against primary evidence.",
-    "Curate weak, misleading or redundant content, preserving useful historical records.",
-    "Check the separate systemd host if access becomes available.",
-    "Review search, accessibility and remaining stale current-tense copy."
+    "Publish the Horizon review, verify its live links and close the eight reviewed stale proposals with reasons.",
+    "Audit search, draft publishing, mobile navigation and remaining content quality.",
+    "Check the separate systemd host only if access is available. Source changes do not establish active timers.",
+    "Leave a clean checkpoint for the next scheduled iteration."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
-    "All 15 existing Horizon forecast reviews date to 2026-04-11."
+    "The September review retains seven active forecasts with explicit tests and withdraws eight. Their original April claims are preserved."
   ],
   "stop_at": "2026-09-13T06:00:00Z"
 }

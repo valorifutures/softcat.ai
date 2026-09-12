@@ -29,8 +29,7 @@ const NEWS_DIR = join(ROOT, 'src/content/news-and-updates');
 const WARN_DAYS = 90;
 // TODOS #1: stale forecasts on a forecasting page are a credibility hit. v1
 // shipped warn-only at 90d while editorial cadence calibrated; this escalates
-// to a build failure at 180d. Threshold is tunable — bump it here if a genuine
-// in-transition forecast needs to ship past the limit.
+// to a build failure at 180d. A fresh date requires an actual evidence review.
 const FAIL_DAYS = 180;
 
 const errors = [];
@@ -53,6 +52,7 @@ const past = readJson(join(HORIZON_DIR, 'past.json'));
 const now = readJson(join(HORIZON_DIR, 'now.json'));
 const nowArchive = readJson(join(HORIZON_DIR, 'now-archive.json'));
 const next = readJson(join(HORIZON_DIR, 'next.json'));
+const retired = readJson(join(HORIZON_DIR, 'retired-forecasts.json'));
 const debates = readJson(join(HORIZON_DIR, 'debates.json'));
 const scenarios = readJson(join(HORIZON_DIR, 'scenarios.json'));
 
@@ -74,6 +74,7 @@ for (const e of past) registerId(e.id, 'past.json');
 for (const e of now) registerId(e.id, 'now.json');
 for (const e of nowArchive) registerId(e.id, 'now-archive.json');
 for (const e of next) registerId(e.id, 'next.json');
+for (const e of retired) registerId(e.id, 'retired-forecasts.json');
 for (const e of debates) registerId(e.id, 'debates.json');
 for (const e of scenarios) registerId(e.id, 'scenarios.json');
 
@@ -82,6 +83,7 @@ const laneIds = new Set([
   ...now.map((e) => e.id),
   ...nowArchive.map((e) => e.id),
   ...next.map((e) => e.id),
+  ...retired.map((e) => e.id),
 ]);
 
 function checkRelated(entry, source) {
@@ -135,6 +137,7 @@ checkLane(past, 'past.json');
 checkLane(now, 'now.json');
 checkLane(nowArchive, 'now-archive.json');
 checkLane(next, 'next.json');
+checkLane(retired, 'retired-forecasts.json');
 
 // Debate supporting[] -> lane ids.
 for (const d of debates) {
@@ -241,12 +244,17 @@ const today = new Date();
 today.setUTCHours(0, 0, 0, 0);
 for (const entry of next) {
   const reviewed = entry.confidence_last_reviewed;
-  if (!reviewed) continue;
+  if (!reviewed) { errors.push(`next.json: "${entry.id}" has no review date`); continue; }
+  if (!entry.target_date || !entry.review_note || !entry.resolution_criteria || !entry.evidence?.some(ev => ev.type === 'external' || ev.type === 'paper')) {
+    errors.push(`next.json: "${entry.id}" needs a target date, review note, resolution criteria and a direct source`);
+  }
   const d = new Date(reviewed + 'T00:00:00Z');
   const ageDays = Math.floor((today - d) / 86_400_000);
-  if (ageDays > FAIL_DAYS) {
+  if (!Number.isFinite(ageDays) || ageDays < 0 || d.toISOString().slice(0, 10) !== reviewed) {
+    errors.push(`next.json: "${entry.id}" has an invalid or future review date`);
+  } else if (ageDays > FAIL_DAYS) {
     errors.push(
-      `next.json: "${entry.id}" confidence_last_reviewed is ${ageDays} days old (> ${FAIL_DAYS}d fail threshold) — re-review the forecast or update the date`,
+      `next.json: "${entry.id}" confidence_last_reviewed is ${ageDays} days old (> ${FAIL_DAYS}d fail threshold) — reassess the evidence or withdraw the forecast`,
     );
   } else if (ageDays > WARN_DAYS) {
     warnings.push(
@@ -258,7 +266,7 @@ for (const entry of next) {
 for (const w of warnings) console.warn(`warn: ${w}`);
 for (const e of errors) console.error(`error: ${e}`);
 
-const total = past.length + now.length + nowArchive.length + next.length + debates.length + scenarios.length;
+const total = past.length + now.length + nowArchive.length + next.length + retired.length + debates.length + scenarios.length;
 console.log(
   `\nhorizon validator: ${total} entries, ${errors.length} error(s), ${warnings.length} warning(s)`,
 );
