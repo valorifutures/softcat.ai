@@ -1,0 +1,216 @@
+{
+  "checkedAt": "2026-09-13T00:25:24.433594+00:00",
+  "sourceCatalogueCheckedAt": "2026-09-12T21:57:43.027197+00:00",
+  "method": "Matched catalogue model IDs to publisher repositories. Checked their public metadata, revision, weight file list and model-card licence declaration. No model was downloaded or run. Missing records do not establish closed weights.",
+  "previousSourceCommit": "7ce80e1c5cacee2e38a2125fd39037acc060d19b",
+  "trackedModels": 39,
+  "weightRecords": 19,
+  "previouslyMislabelledClosed": [
+    "mistralai/mistral-large-2512",
+    "mistralai/mistral-small-3.1-24b-instruct",
+    "moonshotai/kimi-k2.6",
+    "moonshotai/kimi-k2"
+  ],
+  "retiredFields": [
+    "description",
+    "strengths",
+    "openSource",
+    "family",
+    "released",
+    "reasoning",
+    "multimodal"
+  ],
+  "retiredValueCount": 273,
+  "records": [
+    {
+      "modelId": "qwen/qwen-2.5-72b-instruct",
+      "hubId": "Qwen/Qwen2.5-72B-Instruct",
+      "revision": "495f39366efef23836d0cfae4fbe635880d2be31",
+      "apiSource": "https://huggingface.co/api/models/Qwen/Qwen2.5-72B-Instruct",
+      "licence": "qwen",
+      "access": "public",
+      "fileCount": 37,
+      "metadataSha256": "2f8755a23a5d38eb27ae2dd5ffd853fbef2f5c7db02a088302e7ed1b1b0ff7fa"
+    },
+    {
+      "modelId": "qwen/qwen3.6-27b",
+      "hubId": "Qwen/Qwen3.6-27B",
+      "revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+      "apiSource": "https://huggingface.co/api/models/Qwen/Qwen3.6-27B",
+      "licence": "apache-2.0",
+      "access": "public",
+      "fileCount": 15,
+      "metadataSha256": "0f7ce71c76c666c8f995fe53ef65e4fc7519df72bf3b88a4903c08d39c49f222"
+    },
+    {
+      "modelId": "qwen/qwen3.6-35b-a3b",
+      "hubId": "Qwen/Qwen3.6-35B-A3B",
+      "revision": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+      "apiSource": "https://huggingface.co/api/models/Qwen/Qwen3.6-35B-A3B",
+      "licence": "apache-2.0",
+      "access": "public",
+      "fileCount": 26,
+      "metadataSha256": "02bc968f22a2cbeafaa4b879d9113f951eaa468f9a5a3ba454b935d35c68b11b"
+    },
+    {
+      "modelId": "arcee-ai/trinity-large-thinking",
+      "hubId": "arcee-ai/Trinity-Large-Thinking",
+      "revision": "dc6a99b6b74202880e31491a445a94884c97890c",
+      "apiSource": "https://huggingface.co/api/models/arcee-ai/Trinity-Large-Thinking",
+      "licence": "openmdw-1.1",
+      "access": "public",
+      "fileCount": 31,
+      "metadataSha256": "f5cf24407bbe3a6b6c6b16b441ec052b9daea6c8424df589155c3a7fcd59f727"
+    },
+    {
+      "modelId": "deepseek/deepseek-r1",
+      "hubId": "deepseek-ai/DeepSeek-R1",
+      "revision": "56d4cbbb4d29f4355bab4b9a39ccb717a14ad5ad",
+      "apiSource": "https://huggingface.co/api/models/deepseek-ai/DeepSeek-R1",
+      "licence": "mit",
+      "access": "public",
+      "fileCount": 163,
+      "metadataSha256": "59a410b8bf65a672e51605ce32ca72f1a6b7a3a85515980cdf222198f7e4fd2c"
+    },
+    {
+      "modelId": "deepseek/deepseek-chat-v3-0324",
+      "hubId": "deepseek-ai/DeepSeek-V3-0324",
+      "revision": "e9b33add76883f293d6bf61f6bd89b497e80e335",
+      "apiSource": "https://huggingface.co/api/models/deepseek-ai/DeepSeek-V3-0324",
+      "licence": "mit",
+      "access": "public",
+      "fileCount": 163,
+      "metadataSha256": "83f31c09e151a9945c06b0baba9e3fc8dd4012d9b5463b77972db2a97fcaa4d9"
+    },
+    {
+      "modelId": "meta-llama/llama-4-maverick",
+      "hubId": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "revision": "73d14711bcc77c16df3470856949c3764056b617",
+      "apiSource": "https://huggingface.co/api/models/meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+      "licence": "llama4",
+      "access": "gated",
+      "fileCount": 55,
+      "metadataSha256": "c9834593227ad5e86f3d4a70b85ac2452261e32fb6c60953d9b26685576bfeb1"
+    },
+    {
+      "modelId": "meta-llama/llama-4-scout",
+      "hubId": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+      "revision": "92f3b1597a195b523d8d9e5700e57e4fbb8f20d3",
+      "apiSource": "https://huggingface.co/api/models/meta-llama/Llama-4-Scout-17B-16E-Instruct",
+      "licence": "llama4",
+      "access": "gated",
+      "fileCount": 50,
+      "metadataSha256": "720baf201150c7d1fa336711499aad0829470c596965620bcccae6f8a07952c7"
+    },
+    {
+      "modelId": "minimax/minimax-m2",
+      "hubId": "MiniMaxAI/MiniMax-M2",
+      "revision": "757303d492a50514c312788b5247a4f696a4c6a3",
+      "apiSource": "https://huggingface.co/api/models/MiniMaxAI/MiniMax-M2",
+      "licence": "modified-mit",
+      "access": "public",
+      "fileCount": 130,
+      "metadataSha256": "35323fa80850b9adfcf729b5efc77d33bd76ee203ac15bdc3d737282c987af73"
+    },
+    {
+      "modelId": "minimax/minimax-m2.7",
+      "hubId": "MiniMaxAI/MiniMax-M2.7",
+      "revision": "d494266a4affc0d2995ba1fa35c8481cbd84294b",
+      "apiSource": "https://huggingface.co/api/models/MiniMaxAI/MiniMax-M2.7",
+      "licence": "other",
+      "access": "public",
+      "fileCount": 125,
+      "metadataSha256": "13746ac4252ceb746bc30bc2e9d5e397c94b7882f889c0baeaded0e5757a126f"
+    },
+    {
+      "modelId": "mistralai/mistral-large-2512",
+      "hubId": "mistralai/Mistral-Large-3-675B-Instruct-2512",
+      "revision": "383ffea2c7d60dfd44ca960e8e691709d4fdb9cd",
+      "apiSource": "https://huggingface.co/api/models/mistralai/Mistral-Large-3-675B-Instruct-2512",
+      "licence": "apache-2.0",
+      "access": "public",
+      "fileCount": 272,
+      "metadataSha256": "37c8b707a638b1cf0f43a73f55ce178f7d7d3fff559958b8925fc32dfbe563dd"
+    },
+    {
+      "modelId": "mistralai/mistral-small-3.1-24b-instruct",
+      "hubId": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+      "revision": "68faf511d618ef198fef186659617cfd2eb8e33a",
+      "apiSource": "https://huggingface.co/api/models/mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+      "licence": "apache-2.0",
+      "access": "public",
+      "fileCount": 11,
+      "metadataSha256": "5c529afb1d6daaeaf5b17ab58f7c599533512b24a69b4d20a146fd545b49e502"
+    },
+    {
+      "modelId": "mistralai/mistral-small-2603",
+      "hubId": "mistralai/Mistral-Small-4-119B-2603",
+      "revision": "a11f36bebf709121056b1dbcc943d1c6afbe494d",
+      "apiSource": "https://huggingface.co/api/models/mistralai/Mistral-Small-4-119B-2603",
+      "licence": "apache-2.0",
+      "access": "public",
+      "fileCount": 10,
+      "metadataSha256": "952c97a9b0f65b40c4a0cc922072e602f0aa38f0d512d5887259baeacb7bca85"
+    },
+    {
+      "modelId": "moonshotai/kimi-k2.6",
+      "hubId": "moonshotai/Kimi-K2.6",
+      "revision": "7eb5002f6aadc958aed6a9177b7ed26bb94011bb",
+      "apiSource": "https://huggingface.co/api/models/moonshotai/Kimi-K2.6",
+      "licence": "modified-mit",
+      "access": "public",
+      "fileCount": 64,
+      "metadataSha256": "63bfdcf76bb169cc534f3a650406023047efad0d144fa80cd4e09eb81cabc3d7"
+    },
+    {
+      "modelId": "moonshotai/kimi-k2",
+      "hubId": "moonshotai/Kimi-K2-Instruct",
+      "revision": "fd1984e2b7a3350dbf7305fe73a4ede25c14de50",
+      "apiSource": "https://huggingface.co/api/models/moonshotai/Kimi-K2-Instruct",
+      "licence": "modified-mit",
+      "access": "public",
+      "fileCount": 61,
+      "metadataSha256": "457fe37527bfd8c82c0de8a289586288f6120b31b9aa52b57ec69ebf85e7f35f"
+    },
+    {
+      "modelId": "nvidia/nemotron-3-super-120b-a12b",
+      "hubId": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",
+      "revision": "744b1880a37996c5d56bf454ae164dfd74d77c4e",
+      "apiSource": "https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",
+      "licence": "nvidia-nemotron-open-model-license",
+      "access": "public",
+      "fileCount": 26,
+      "metadataSha256": "fd893f3c5e91346ceb9543d808f7a6907f2573bd5de6d67b2d5c390c7e649d33"
+    },
+    {
+      "modelId": "poolside/laguna-xs.2",
+      "hubId": "poolside/Laguna-XS.2",
+      "revision": "69e3f4046616e40fb55ac54e0e2e6accbe5cadfe",
+      "apiSource": "https://huggingface.co/api/models/poolside/Laguna-XS.2",
+      "licence": "apache-2.0",
+      "access": "public",
+      "fileCount": 14,
+      "metadataSha256": "4ccefb4e8ea5c0107d73fd1641ce6512e4f5de51a4b97e87d540d1a2290b93d7"
+    },
+    {
+      "modelId": "z-ai/glm-5.1",
+      "hubId": "zai-org/GLM-5.1",
+      "revision": "26e1bd6e011feb778d25ae34b09b07074139d92d",
+      "apiSource": "https://huggingface.co/api/models/zai-org/GLM-5.1",
+      "licence": "mit",
+      "access": "public",
+      "fileCount": 282,
+      "metadataSha256": "852060b2e4cb296456719cb4db3f65d75b76c69da6ebbd7ffd27a02d09570d63"
+    },
+    {
+      "modelId": "z-ai/glm-5",
+      "hubId": "zai-org/GLM-5",
+      "revision": "c183ef8c61faee82855eca1ed9bb3a9a7ce3b0b2",
+      "apiSource": "https://huggingface.co/api/models/zai-org/GLM-5",
+      "licence": "mit",
+      "access": "public",
+      "fileCount": 282,
+      "metadataSha256": "e49539aea970217185a46e7e9f1307b972f544252064b9508a93f80689d65f3e"
+    }
+  ]
+}

@@ -13,6 +13,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { weightRecordErrors } from '../src/lib/model-weights.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
@@ -20,7 +21,6 @@ const warnings = [];
 
 const ISO_DATE = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
 const RADAR_REF = /^(\d{4}-\d{2}-\d{2})#(.+)$/;
-const YEAR_MONTH = /^\d{4}-(0[1-9]|1[0-2])$/;
 
 // ---- models.json -----------------------------------------------------------
 const models = JSON.parse(readFileSync(join(root, 'src/data/models.json'), 'utf8'));
@@ -30,15 +30,14 @@ if (!Array.isArray(models) || models.length === 0) {
 const seen = new Set();
 for (const m of models) {
   const at = `models.json[${m.id ?? '?'}]`;
-  for (const k of ['id', 'name', 'provider', 'released', 'description', 'strengths']) {
+  for (const k of ['id', 'name', 'provider']) {
     if (typeof m[k] !== 'string' || !m[k]) errors.push(`${at}: missing string field "${k}"`);
   }
   if (seen.has(m.id)) errors.push(`${at}: duplicate id`);
   seen.add(m.id);
-  if (m.released && !YEAR_MONTH.test(m.released)) errors.push(`${at}: released must be YYYY-MM`);
   if (!ISO_DATE.test(m.trackedSince ?? '')) errors.push(`${at}: trackedSince must be YYYY-MM-DD`);
-  for (const k of ['coding', 'reasoning_score', 'speed']) {
-    if (k in m) errors.push(`${at}: remove unsupported numerical capability rating "${k}"`);
+  for (const k of ['coding', 'reasoning_score', 'speed', 'description', 'strengths', 'openSource', 'family', 'released', 'reasoning', 'multimodal']) {
+    if (k in m) errors.push(`${at}: retired model metadata "${k}" is not part of the catalogue`);
   }
   for (const k of ['inputPrice', 'outputPrice']) {
     if (m[k] !== null && (!Number.isFinite(m[k]) || m[k] < 0)) errors.push(`${at}: ${k} must be a number >= 0 or null for unknown`);
@@ -49,12 +48,8 @@ for (const m of models) {
   if (m.pricingSource !== 'https://openrouter.ai/api/v1/models') errors.push(`${at}: pricingSource must identify the catalogue`);
   if (m.pricingStatus === 'not-listed' && (m.inputPrice !== null || m.outputPrice !== null)) errors.push(`${at}: unlisted model prices must be unknown`);
   if (!Number.isInteger(m.contextK) || m.contextK < 0) errors.push(`${at}: contextK must be a non-negative integer`);
-  for (const k of ['openSource', 'reasoning', 'multimodal']) {
-    if (typeof m[k] !== 'boolean') errors.push(`${at}: ${k} must be boolean`);
-  }
-  if (m.description?.includes('PLACEHOLDER') || m.strengths?.includes('PLACEHOLDER')) {
-    errors.push(`${at}: PLACEHOLDER text must be edited before merge`);
-  }
+  for (const error of weightRecordErrors(m)) errors.push(`${at}: ${error}`);
+  if (m.rosterProposal !== undefined) errors.push(`${at}: rosterProposal must be reviewed and removed before merge`);
   if (m.radarRef !== undefined) {
     const match = RADAR_REF.exec(m.radarRef);
     if (!match) {

@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import { hasVerifiedPrice, priceLabel } from '../../lib/model-pricing.mjs';
+import { hasWeightRecord } from '../../lib/model-weights.mjs';
 import { parseWorkload, estimateWorkload, compareWorkloadRows, workloadMoney, workloadCsv } from '../../lib/model-workload.mjs';
 import modelsData from '../../data/models.json';
 import './ModelComparison.css';
@@ -32,7 +33,7 @@ export default function ModelComparison() {
   const rows = modelsData.filter(model =>
     (!query || `${model.name} ${model.id} ${model.provider}`.toLowerCase().includes(query)) &&
     (provider === 'all' || model.provider === provider) &&
-    (weights === 'all' || model.openSource === (weights === 'open'))
+    (weights === 'all' || hasWeightRecord(model) === (weights === 'recorded'))
   ).map(model => ({ model, estimate: estimateWorkload(model, workload) }))
     .sort((a, b) => compareWorkloadRows(a, b, sort, ascending ? 1 : -1));
   const estimatedCount = rows.filter(row => row.estimate.cost !== null).length;
@@ -73,7 +74,7 @@ export default function ModelComparison() {
       <div class="model-filters">
         <label>Find a model<input type="search" placeholder="Name, provider or exact model ID" value={search} onInput={event => setSearch(event.currentTarget.value)} /></label>
         <label>Provider<select value={provider} onChange={event => setProvider(event.currentTarget.value)}><option value="all">All providers</option>{providers.map(name => <option key={name} value={name}>{name}</option>)}</select></label>
-        <label>Weight tag<select value={weights} onChange={event => setWeights(event.currentTarget.value)}><option value="all">All models</option><option value="open">Open weights</option><option value="closed">Closed weights</option></select></label>
+        <label>Weight sources<select value={weights} onChange={event => setWeights(event.currentTarget.value)}><option value="all">All models</option><option value="recorded">With a weight source</option><option value="missing">No weight source recorded</option></select></label>
       </div>
       <p class="model-count" aria-live="polite">{rows.length} of {modelsData.length} models shown. {workload.ok ? `${estimatedCount} have an estimate for this workload.` : 'Enter a valid workload to calculate estimates.'}</p>
       {rows.length ? <>
@@ -82,14 +83,14 @@ export default function ModelComparison() {
           <table><caption class="sr-only">Recorded model rates and estimated workload costs. All amounts are US dollars. Saved context is reference data.</caption><thead><tr>
             {column('name', 'Model')}{column('contextK', 'Saved context')}{column('inputPrice', 'Input / 1M')}{column('outputPrice', 'Output / 1M')}{column('cost', 'Workload cost')}<th scope="col">Price snapshot</th>
           </tr></thead><tbody>{rows.map(({ model, estimate }) => <tr key={model.id}>
-            <th scope="row"><strong>{model.name}</strong><span class="model-provider">{model.provider} · {model.openSource ? 'Open weights' : 'Closed weights'}</span><div class="model-id"><code>{model.id}</code><button type="button" aria-label={`Copy ID for ${model.name}`} onClick={() => copyId(model.id)}>Copy ID</button></div></th>
+            <th scope="row"><strong>{model.name}</strong><span class="model-provider">{model.provider}</span><div class="model-id"><code>{model.id}</code><button type="button" aria-label={`Copy ID for ${model.name}`} onClick={() => copyId(model.id)}>Copy ID</button></div>{hasWeightRecord(model) && <div class="model-weights"><a href={model.weights!.source}>{model.weights!.access === 'gated' ? 'Weight files · gated access ↗' : 'Published weight files ↗'}</a><span>{model.weights!.licence === 'other' ? 'Custom licence, see model card' : model.weights!.licence} · checked {model.weights!.checkedAt.slice(0, 10)}</span></div>}</th>
             <td class="model-number">{contextLabel(model.contextK)}</td><td class="model-number">{priceLabel(model, 'inputPrice')}</td><td class="model-number">{priceLabel(model, 'outputPrice')}</td>
             <td class="model-estimate">{estimate.cost === null ? <span class="model-unavailable">{statusLabels[estimate.status]}</span> : <strong>{workloadMoney(estimate.cost)}</strong>}</td>
             <td class="model-snapshot"><time dateTime={model.pricingCheckedAt}>{model.pricingCheckedAt.slice(0, 10)}</time><span>{hasVerifiedPrice(model) ? 'Rates checked' : model.pricingStatus.replaceAll('-', ' ')}</span><a href={model.pricingSource}>Source ↗</a></td>
           </tr>)}</tbody></table>
         </div>
       </> : <div class="model-empty"><h3>No models match these filters.</h3><p>Try a shorter name or return to the full tracked list.</p><button type="button" onClick={resetFilters}>Clear filters</button></div>}
-      <p class="model-limit-note">Input plus output must fit the saved context to show an estimate. Context limits and weight tags are reference values. Check the provider's current limits, maximum output and licence. An open-weight tag does not certify an open-source licence.</p>
+      <p class="model-limit-note">Input plus output must fit the saved context to show an estimate. Context limits are reference values. Check the provider's current limits and maximum output. Weight links point to recorded repository revisions with published files. Licences vary, and gated files may require approval from their host. A missing weight record does not establish that a model is closed.</p>
       <p class="model-limit-note">Caching, reasoning tokens, images, tools, routing and long-context pricing can change the bill. Unknown rates stay unknown, including for zero calls. Open weights do not make hosted calls or hardware free.</p>
       <p class="model-action-notice" role="status">{notice}</p>
     </section>

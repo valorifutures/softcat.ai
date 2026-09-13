@@ -45,6 +45,9 @@
 .model-id { display: flex; align-items: baseline; gap: .7rem; flex-wrap: wrap; }
 .model-id code { font: .6rem/1.65 var(--font-mono); overflow-wrap: anywhere; color: #c1c7b8; }
 .model-id button { font-size: .62rem; color: #bddd96; text-decoration: underline; text-underline-offset: 3px; min-height: 30px; }
+.model-weights { margin-top: .4rem; font-size: .64rem; line-height: 1.65; }
+.model-weights a { color: #d1dfa9; text-decoration: underline; text-underline-offset: 3px; }
+.model-weights span { display: block; color: #a7b29a; font-size: .59rem; overflow-wrap: anywhere; }
 .model-number { font: .73rem var(--font-mono); white-space: nowrap; }
 .model-estimate { background: #bddd9608; font: .82rem var(--font-mono); min-width: 136px; }
 .model-estimate strong { font-weight: 500; color: var(--model-accent); }

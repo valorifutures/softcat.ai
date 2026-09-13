@@ -1,4 +1,5 @@
 import { hasVerifiedPrice } from './model-pricing.mjs';
+import { hasWeightRecord, weightLabel } from './model-weights.mjs';
 
 export function parseWorkload(input, output, calls) {
   const raw = [input, output, calls].map(value => String(value).trim());
@@ -48,11 +49,12 @@ export function csvCell(value) {
 }
 
 export function workloadCsv(rows, workload) {
-  const header = ['Model', 'OpenRouter ID', 'Provider', 'Weight tag (reference)', 'Saved context tokens', 'Input USD per 1M', 'Output USD per 1M', 'Pricing status', 'Pricing checked UTC', 'Pricing source', 'Input tokens per call', 'Output tokens per call', 'Calls', 'Estimate status', 'Estimated text-token USD'];
-  const records = rows.map(({ model, estimate }) => [model.name, model.id, model.provider, model.openSource ? 'Open weights' : 'Closed weights', model.contextK * 1000,
+  const header = ['Model', 'OpenRouter ID', 'Provider', 'Weight record', 'Saved context tokens', 'Input USD per 1M', 'Output USD per 1M', 'Pricing status', 'Pricing checked UTC', 'Pricing source', 'Input tokens per call', 'Output tokens per call', 'Calls', 'Estimate status', 'Estimated text-token USD', 'Weight source revision', 'Model card licence', 'Weight access', 'Weight source checked UTC'];
+  const records = rows.map(({ model, estimate }) => [model.name, model.id, model.provider, weightLabel(model), model.contextK * 1000,
     hasVerifiedPrice(model) ? model.inputPrice : null, hasVerifiedPrice(model) ? model.outputPrice : null,
     model.pricingStatus, model.pricingCheckedAt, model.pricingSource,
     workload.ok ? workload.inputTokens : null, workload.ok ? workload.outputTokens : null, workload.ok ? workload.calls : null,
-    estimate.status, estimate.cost]);
+    estimate.status, estimate.cost, hasWeightRecord(model) ? model.weights.source : null,
+    model.weights?.licence, model.weights?.access, model.weights?.checkedAt]);
   return [header, ...records].map(row => row.map(csvCell).join(',')).join('\r\n') + '\r\n';
 }
