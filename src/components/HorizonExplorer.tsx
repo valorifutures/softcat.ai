@@ -1,24 +1,32 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import { FUTURES, STANCES, horizonSearch, markPosition, parseTimeframe, readHorizonState, timelineDomain } from '../lib/horizon-explorer.mjs';
-import type reviewData from '../data/horizon/outlook-review.json';
+import { CLOCK_REFRESH_MS, clockHistory, validateClockPayload } from '../lib/horizon-clocks.mjs';
+import HorizonClocks from './HorizonClocks';
+import HorizonClockHistory from './HorizonClockHistory';
+import type { ClockData, Stance } from '../lib/horizon-types';
 
-type Stance = 'optimistic' | 'pragmatic' | 'sceptical';
-type Branch = { timeframe: string; assumptions: string; blockers: string; implication: string };
-type Scenario = { id: string; definition: string; optimistic: Branch; pragmatic: Branch; sceptical: Branch };
-type Props = { scenarios: Scenario[]; review: typeof reviewData; referenceYear: number };
+type Props = { initialData: ClockData; initialNow: number };
 const titleCase = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
 const dateLabel = (date: string) => new Date(`${date}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
-export default function HorizonExplorer({ scenarios, review, referenceYear }: Props) {
+export default function HorizonExplorer({ initialData, initialNow }: Props) {
+  const [data, setData] = useState(initialData);
+  const currentData = useRef(initialData);
+  const { scenarios, review, history, briefs } = data;
+  const referenceYear = new Date(initialNow).getUTCFullYear();
   const [state, setState] = useState({ future: 'agents', view: 'pragmatic' });
   const [ready, setReady] = useState(false);
   const [announcement, setAnnouncement] = useState('');
   const [copyState, setCopyState] = useState('');
   const [shareFallback, setShareFallback] = useState('');
+  const [refreshState, setRefreshState] = useState('');
+  const checkReview = useRef<() => void>(() => {});
   const ordered = FUTURES.map(future => ({ ...future, scenario: scenarios.find(s => s.id === future.id)!, record: review.futures.find(s => s.id === future.id)! }));
   const selected = ordered.find(s => s.key === state.future)!;
   const stance = state.view as Stance;
   const branch = selected.scenario[stance];
+  const brief = briefs.find(item => item.id === selected.id)!;
+  const reviewedAt = clockHistory(history, selected.id, stance).at(-1)!.date;
   const domain = timelineDomain(scenarios, referenceYear);
 
   useEffect(() => {
@@ -29,13 +37,44 @@ export default function HorizonExplorer({ scenarios, review, referenceYear }: Pr
     return () => window.removeEventListener('popstate', restore);
   }, []);
 
+  useEffect(() => {
+    let stopped = false;
+    let controller: AbortController | undefined;
+    const refresh = async () => {
+      if (stopped || controller || document.visibilityState === 'hidden') return;
+      controller = new AbortController();
+      const timeout = setTimeout(() => controller?.abort(), 10000);
+      setRefreshState('Checking published reviews…');
+      try {
+        const response = await fetch('/horizon/clock-data.json', { cache: 'no-cache', signal: controller.signal });
+        if (!response.ok) throw new Error('Review unavailable');
+        const next: ClockData = await response.json();
+        if (validateClockPayload(next, currentData.current.history).length) throw new Error('Review could not be verified');
+        if (stopped) return;
+        if (next.revision !== currentData.current.revision) {
+          currentData.current = next;
+          setData(next);
+          setAnnouncement('Published Horizon data updated. Your selected future and outlook are preserved.');
+          setRefreshState('Published data updated');
+        } else setRefreshState('Published reviews checked');
+      } catch {
+        if (!stopped) setRefreshState('Update check unavailable. Showing the last verified review.');
+      } finally { clearTimeout(timeout); controller = undefined; }
+    };
+    checkReview.current = refresh;
+    refresh();
+    const timer = setInterval(refresh, CLOCK_REFRESH_MS);
+    document.addEventListener('visibilitychange', refresh);
+    return () => { stopped = true; clearInterval(timer); controller?.abort(); document.removeEventListener('visibilitychange', refresh); };
+  }, []);
+
   function choose(next: typeof state) {
     if (state.future === next.future && state.view === next.view) return;
     setState(next);
     setCopyState('');
     setShareFallback('');
     const name = ordered.find(s => s.key === next.future)!.record.title;
-    setAnnouncement(`${titleCase(next.view)} scenario for ${name}. Details and evidence updated below the map.`);
+    setAnnouncement(`${titleCase(next.view)} scenario for ${name}. The decision brief, details, evidence and clock history are updated below.`);
     const url = `${window.location.pathname}${horizonSearch(window.location.search, next)}${window.location.hash}`;
     window.history.pushState(null, '', url);
   }
@@ -56,13 +95,22 @@ export default function HorizonExplorer({ scenarios, review, referenceYear }: Pr
 
   return <div class="hz-explorer" id="outlook">
     <div class="hz-toolbar">
-      <div><h2>Five possible futures</h2><p>Choose a future. Compare the outlook.</p></div>
+      <div><h2>Five futures. Five clocks.</h2><p>Choose a future. Change the outlook. Prepare your next move.</p></div>
       <div class="hz-switch" role="group" aria-label="Scenario outlook">
         {STANCES.map(view => <button type="button" disabled={!ready} aria-pressed={state.view === view} onClick={() => choose({ ...state, view })}>{titleCase(view)}</button>)}
       </div>
     </div>
+    <HorizonClocks data={data} stance={stance} selected={state.future} ready={ready} initialNow={initialNow} onSelect={future => choose({ ...state, future })} />
+    <div class="hz-refresh"><p role="status">{refreshState || 'Published evidence reviews refresh while this page is open.'}</p><button type="button" disabled={!ready || refreshState === 'Checking published reviews…'} onClick={() => checkReview.current()}>Check for a new review</button></div>
     <div class="hz-workspace">
-      <section class="hz-map" aria-label={`${titleCase(stance)} scenario date comparison`}>
+      <section class="hz-map" aria-label={`${selected.record.title} decision brief and comparison`}>
+        <div class="hz-decision" id="horizon-decision">
+          <p class="hz-label">The CEO question · {selected.record.title}</p><h3>{brief.question}</h3>
+          <p class="hz-tenfold">Use 10× as a design challenge. Measure the gain before claiming it.</p>
+          <div class="hz-next-move"><span aria-hidden="true">90</span><div><h4>Your next 90 days · {titleCase(stance)}</h4><p>{brief.moves[stance]}</p></div></div>
+          <p class="hz-measure"><strong>Know if it works</strong>{brief.measure}</p>
+        </div>
+        <details class="hz-timeline"><summary>Compare on the timeline <span aria-hidden="true">+</span></summary>
         <div class="hz-axis" aria-hidden="true"><span>{stance === 'sceptical' ? 'Open-ended outlooks' : 'Calendar year'}</span><div class="hz-ticks" style={{ visibility: stance === 'sceptical' ? 'hidden' : undefined }}>{domain.ticks.map((year, i) => <span style={{ left: `${i * 100 / 3}%` }}>{year === referenceYear ? `NOW · ${year}` : year}</span>)}</div></div>
         <div class="hz-rows" role="group" aria-label="Select a future">
           {ordered.map(({ key, record, scenario }, index) => {
@@ -80,6 +128,7 @@ export default function HorizonExplorer({ scenarios, review, referenceYear }: Pr
           })}
         </div>
         <p class="hz-legend">{stance === 'pragmatic' ? 'Bars show the stated date windows.' : stance === 'optimistic' ? 'Diamonds mark “by” dates, not exact arrival predictions.' : 'Open-ended claims keep their wording. No precise year is implied.'} Editorial scenarios, not probabilities. <a href="#method">Date assumptions from {dateLabel(review.dates_origin)}.</a></p>
+        </details>
         <div class="hz-watch"><p class="hz-label">What to watch · {selected.record.title}</p><p>{selected.record.watch}</p><a href="#horizon-evidence">Explore the evidence <span aria-hidden="true">↓</span></a></div>
         <div class="hz-map-actions"><a href="#horizon-detail" class="hz-mobile-detail">Read this future ↓</a><button type="button" class="hz-text-button" disabled={!ready} onClick={copyView}>Copy this view <span aria-hidden="true">↗</span></button><span role="status" class="hz-copy-status">{copyState}</span></div>
         {shareFallback && <label class="hz-share-fallback">Link to this view<input readOnly value={shareFallback} onFocus={event => event.currentTarget.select()} /></label>}
@@ -99,7 +148,7 @@ export default function HorizonExplorer({ scenarios, review, referenceYear }: Pr
     </div>
 
     <section class="hz-evidence" id="horizon-evidence" aria-labelledby="horizon-evidence-title">
-      <div class="hz-section-heading"><div><p class="hz-label">The evidence behind the question</p><h2 id="horizon-evidence-title">{selected.record.question}</h2></div><p>Sources checked <time dateTime={review.reviewed_at}>{dateLabel(review.reviewed_at)}</time></p></div>
+      <div class="hz-section-heading"><div><p class="hz-label">The evidence behind the question</p><h2 id="horizon-evidence-title">{selected.record.question}</h2></div><p>Sources checked <time dateTime={reviewedAt}>{dateLabel(reviewedAt)}</time></p></div>
       <p class="hz-assessment"><strong>Our assessment.</strong> {selected.record.assessment}</p>
       <div class="hz-source-grid">{selected.record.evidence.map((source, i) => <article class="hz-source" key={source.url}>
         <p class="hz-source-date">0{i + 1} / {source.date_label}</p><h3><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} <span aria-hidden="true">↗</span></a></h3>
@@ -107,7 +156,8 @@ export default function HorizonExplorer({ scenarios, review, referenceYear }: Pr
       </article>)}</div>
       {state.future === 'agi' && <a class="hz-inline-link" href="#agi-question">Explore the different definitions of AGI ↓</a>}
     </section>
+    <HorizonClockHistory history={history} id={selected.id} title={selected.record.title} stance={stance} />
     <p class="sr-only" aria-live="polite">{announcement}</p>
-    <noscript><p class="hz-noscript">The default outlook is shown above. <a href="/horizon/record#compare">Read all three views and all five definitions without JavaScript →</a></p></noscript>
+    <noscript><p class="hz-noscript">The clocks are a dated snapshot until JavaScript is available. The default outlook is shown above. <a href="/horizon/record#compare">Read all three views and all five definitions without JavaScript →</a></p></noscript>
   </div>;
 }

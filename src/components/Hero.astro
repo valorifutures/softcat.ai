@@ -17,10 +17,10 @@ const futures = FUTURES.map(future => ({ ...future, title: review.futures.find(i
   </div>
   <div class="hero-horizon">
     <div class="hero-horizon-top"><span>HORIZON</span><span>AN OPEN VIEW OF AI</span></div>
-    <h2>Five futures.<br />Plenty to question.</h2>
+    <h2>Five futures.<br />Five moving clocks.</h2>
     <p class="hero-horizon-label">A pragmatic scenario for each</p>
     <ul>{futures.map((future, index) => <li><a href={`/horizon?future=${future.key}&view=pragmatic`}><span class="hero-future-number" aria-hidden="true">0{index + 1}</span><span>{future.title}</span><span class="hero-future-date">{future.date}</span><span aria-hidden="true">↗</span></a></li>)}</ul>
-    <div class="hero-horizon-bottom"><span>Scenarios, not certainties.</span><a href="/horizon#agi-question">Is AGI already here? →</a></div>
+    <div class="hero-horizon-bottom"><span>Evidence can move the target.</span><a href="/horizon#outlook">See the clocks →</a></div>
   </div>
 </section>
 

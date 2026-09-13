@@ -1,0 +1,52 @@
+[
+  {
+    "id": "scenario-agi",
+    "question": "If intelligence became abundant, what would still make our business valuable?",
+    "measure": "Quality, total cost and human intervention for the same piece of work.",
+    "moves": {
+      "optimistic": "Test one offering built around a delivered outcome. Keep human approval for consequential decisions and learn where judgement still matters.",
+      "pragmatic": "Choose one expert workflow. Measure AI assistance against the current process before redesigning the role around it.",
+      "sceptical": "Build an advantage from useful tools and better organisational knowledge. Choose work whose value does not depend on an AGI deadline."
+    }
+  },
+  {
+    "id": "scenario-agentic-work",
+    "question": "What would we redesign if the same team could handle ten times as many routine cases?",
+    "measure": "Completed cases, time spent on exceptions, recovery effort and customer outcomes.",
+    "moves": {
+      "optimistic": "Trial one bounded queue with a named owner, clear approval limits and tested recovery. Measure completed outcomes across the whole process.",
+      "pragmatic": "Choose one repeatable queue. Establish a baseline, then test assistance and delegation in stages, including the awkward cases.",
+      "sceptical": "Make case owners faster with better context, drafting and triage. Keep responsibility clear and find which handovers cause the most rework."
+    }
+  },
+  {
+    "id": "scenario-robotics",
+    "question": "If routine physical work became easier to automate, where would we choose to operate?",
+    "measure": "Uptime, interventions, task variation, maintenance effort and safety performance.",
+    "moves": {
+      "optimistic": "Map one repetitive physical task, its exceptions and its safety boundaries. Define a small supervised trial before committing to a wider deployment.",
+      "pragmatic": "Identify a structured task and the changes its surroundings would need. Compare the full operating effort with the current process.",
+      "sceptical": "Improve the process, sensing and existing automation first. Keep a clear test for when a general-purpose robot would add enough value."
+    }
+  },
+  {
+    "id": "scenario-software-automation",
+    "question": "If producing code were ten times easier, what would still stop us shipping useful products?",
+    "measure": "Accepted changes, review time, escaped defects and recovery effort.",
+    "moves": {
+      "optimistic": "Test one path from a clear ticket to a reviewed release. Include monitoring and rollback so the experiment measures delivery, not just code generation.",
+      "pragmatic": "Improve acceptance tests, codebase context and review queues around one workflow. Track whether the entire delivery cycle gets better.",
+      "sceptical": "Use assistance where results are easy to inspect. Work on the requirements, coordination and maintenance problems that remain after code is written."
+    }
+  },
+  {
+    "id": "scenario-education-disruption",
+    "question": "If everyone had a patient personal tutor, how would we develop and recognise expertise?",
+    "measure": "Retained learning, transfer to unfamiliar problems and performance without assistance.",
+    "moves": {
+      "optimistic": "Pilot personalised practice for one defined skill. Agree how independent mastery will be assessed before expanding the learning programme.",
+      "pragmatic": "Add tutoring and feedback to an existing learning programme. Compare retained learning and teacher or mentor effort with the current approach.",
+      "sceptical": "Help teachers and mentors target their time. Test whether better preparation, feedback and practice improve learning within the existing programme."
+    }
+  }
+]
