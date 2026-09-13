@@ -2,6 +2,7 @@
 .prompt-diff button:hover { color: var(--workshop-lime); border-color: var(--workshop-lime); }
 .prompt-diff button:disabled { opacity: 0.45; cursor: not-allowed; }
 .prompt-diff .pd-primary { background: var(--workshop-lime); color: #26351c; border-color: var(--workshop-lime); }
+.prompt-diff .pd-primary:hover { color: #26351c; background: #dcf7b5; border-color: #dcf7b5; }
 .prompt-diff h2 { color: #e8eddf; font: 500 1.35rem/1.4 var(--font-sans); letter-spacing: -0.03em; }
 .pd-eyebrow { color: #afbd9e; font: 0.6rem/1.8 var(--font-mono); letter-spacing: 0.1em; margin-bottom: 0.65rem; }
 .pd-examples { padding: 1.5rem; border: 1px solid #3d4535; background: #171d12; border-radius: 0.4rem; margin-bottom: 1.5rem; }
