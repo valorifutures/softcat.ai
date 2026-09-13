@@ -1,77 +1,42 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/project-pages.css';
+const places = [
+  { n: '01', title: 'Tools you can try', href: '/tools', text: 'Build a prompt, check a JSON response or put a workload next to a model price. Each tool explains its limits.' },
+  { n: '02', title: 'A notebook with receipts', href: '/notebook', text: 'Dated accounts of changes, tests and mistakes. The source history lets you inspect what changed.' },
+  { n: '03', title: 'Room for uncertainty', href: '/horizon', text: 'A map of past milestones, present signals and possible futures. Forecasts carry sources and a test that could prove them wrong.' },
+  { n: '04', title: 'The odd experiment', href: '/feral', text: 'Agent-made creations, their briefs and their recorded costs. An experiment can be interesting before it is useful.' },
+];
 ---
-
-<BaseLayout title="Valori" description="A small collective of AI practitioners. We build tools, run experiments, and publish what we learn.">
-  <div class="max-w-3xl mx-auto px-6 py-16">
-    <header class="mb-10">
-      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-cyan">Valori</h1>
+<BaseLayout title="About Valori" description="SOFT CAT is an independent AI playground, test bench and public diary, maintained by Valori.">
+  <div class="workshop-shell project-page">
+    <header class="project-intro">
+      <div>
+        <p class="eyebrow">ABOUT THE PROJECT / VALORI</p>
+        <h1>A workshop.<br />A playground.<br /><em>An open notebook.</em></h1>
+        <p class="project-lead">SOFT CAT is a place to try things with AI, inspect the results and keep a record of what we learn.</p>
+        <p class="project-copy">Valori is the anonymous collective name behind the site. We use AI to help build and maintain it. The code, published records and corrections are part of the experiment.</p>
+        <a class="text-link" href="https://github.com/valorifutures/softcat.ai">Inspect the source <span aria-hidden="true">↗</span></a>
+      </div>
+      <aside class="project-name-card" aria-label="What SOFT CAT stands for">
+        <p class="eyebrow">A NAME TO WORK TOWARDS</p>
+        <p class="project-acronym"><strong>S</strong>mart<br /><strong>O</strong>utputs<br /><strong>F</strong>rom<br /><strong>T</strong>rained<br /><strong>C</strong>onversational<br /><strong>A</strong>I<br /><strong>T</strong>echnology</p>
+        <p>Useful is the aim.<br />Curiosity gets a seat too.</p>
+      </aside>
     </header>
-
-    <div class="space-y-10 text-text-primary leading-relaxed">
-      <p class="text-lg">
-        We're a small group of AI practitioners. We build tools, run experiments,
-        and publish what we learn. That's it.
-      </p>
-
-      <div>
-        <h2 class="font-mono text-sm font-bold text-neon-green mb-3">Why anonymous?</h2>
-        <p>
-          Because the work matters more than the people. AI discourse is drowning
-          in personal brands and hot takes attached to headshots. We'd rather
-          the experiments speak for themselves.
-        </p>
+    <section class="project-section" aria-labelledby="inside-heading">
+      <div class="project-section-title"><p class="eyebrow">FIND YOUR WAY IN</p><h2 id="inside-heading">Something to try.<br />Something to question.</h2></div>
+      <div class="project-link-list">{places.map((place) => <a href={place.href}><span class="eyebrow">{place.n}</span><div><h3>{place.title}</h3><p>{place.text}</p></div><span aria-hidden="true">↗</span></a>)}</div>
+    </section>
+    <section class="project-section" aria-labelledby="standards-heading">
+      <div class="project-section-title"><p class="eyebrow">HOW WE KEEP IT USEFUL</p><h2 id="standards-heading">The work has to<br />earn its place.</h2></div>
+      <div class="project-prose">
+        <h3>Show the basis</h3><p>A price needs a date and a source. A test needs an example and a result. An opinion needs to read like an opinion.</p>
+        <h3>Keep corrections visible</h3><p>When a claim goes beyond its evidence, narrow it or withdraw it. The <a href="/thoughts">Thoughts archive</a> separates corrected pieces from historical writing. An old publication date is not a fresh endorsement.</p>
+        <h3>Describe what actually ran</h3><p>Automated writing can be wrong, and scheduled jobs can stop. The <a href="/pipeline">Pipeline</a> shows recorded runs and their dates. A new page build does not mean every underlying system is current.</p>
+        <h3>Leave a way to improve it</h3><p>Found a weak claim, a broken tool or a better experiment? <a href="/contact">Send a correction or an idea</a>. Useful criticism belongs in the workshop.</p>
       </div>
-
-      <div>
-        <h2 class="font-mono text-sm font-bold text-neon-cyan mb-3">Why "Valori"?</h2>
-        <p>
-          From the Latin, to be of worth. We're interested in AI that has
-          genuine value, not AI that generates hype.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-sm font-bold text-neon-purple mb-3">Why "Soft Cat"?</h2>
-        <p>
-          <strong class="text-text-bright">S</strong>mart
-          <strong class="text-text-bright">O</strong>utputs
-          <strong class="text-text-bright">F</strong>rom
-          <strong class="text-text-bright">T</strong>rained
-          <strong class="text-text-bright">C</strong>onversational
-          <strong class="text-text-bright">A</strong>I
-          <strong class="text-text-bright">T</strong>echnology.
-          Also, cats are good. The internet agrees on this.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-sm font-bold text-neon-amber mb-3">What we actually do</h2>
-        <ul class="space-y-2 font-mono text-sm">
-          <li class="flex items-start gap-2">
-            <span class="text-neon-green mt-0.5">&#9656;</span>
-            <span>Build and test AI agents and micro-tools</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-neon-green mt-0.5">&#9656;</span>
-            <span>Run models against real tasks (not benchmarks)</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-neon-green mt-0.5">&#9656;</span>
-            <span>Monitor the AI landscape and filter signal from noise</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-neon-green mt-0.5">&#9656;</span>
-            <span>Maintain this site, mostly through automation</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="bg-surface border border-surface-light rounded-lg p-6">
-        <h2 class="font-mono text-sm font-bold text-text-bright mb-3">Contact</h2>
-        <a href="mailto:workshop@softcat.ai" class="font-mono text-sm text-neon-cyan hover:underline">workshop@softcat.ai</a>
-      </div>
-    </div>
+    </section>
+    <p class="project-footnote">SOFT CAT .ai is an independent project. It is not affiliated with Softcat plc.</p>
   </div>
 </BaseLayout>

@@ -1,0 +1,31 @@
+name: Suggest a correction
+description: A claim, source or data point that needs another look.
+title: 'Correction: '
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Which claim or data point needs correcting?
+      description: Quote the relevant sentence, or identify the model and field.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should change, and why?
+      description: A narrower claim, an uncertainty note or a withdrawal can all be useful corrections.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sources or reproducible evidence
+      description: Link to the original source where possible. Include its date if that matters. If no source is available, explain the evidence gap.
+    validations:
+      required: true
