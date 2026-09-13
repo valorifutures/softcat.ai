@@ -12,7 +12,7 @@
   {
     "id": "scenario-agentic-work",
     "question": "What would we redesign if the same team could handle ten times as many routine cases?",
-    "measure": "Completed cases, time spent on exceptions, recovery effort and customer outcomes.",
+    "measure": "For each 100 cases, compare completed work, exception handling time, recovery effort and customer outcomes with the baseline.",
     "moves": {
       "optimistic": "Trial one bounded queue with a named owner, clear approval limits and tested recovery. Measure completed outcomes across the whole process.",
       "pragmatic": "Choose one repeatable queue. Establish a baseline, then test assistance and delegation in stages, including the awkward cases.",

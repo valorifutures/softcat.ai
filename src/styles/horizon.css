@@ -79,6 +79,8 @@
 .hz-history-entry:last-child { border-bottom: 1px solid var(--hz-rule); }
 .hz-history-entry > summary { display: grid; grid-template-columns: 130px 1fr 1fr auto; align-items: center; gap: 1rem; min-height: 64px; cursor: pointer; padding: 0.8rem 0.2rem; font-size: 0.8rem; }
 .hz-history-entry time, .hz-history-open { font: 0.68rem/1.6 var(--font-mono); color: var(--hz-muted); }
+.hz-history-open > span:last-child, .hz-history-entry[open] .hz-history-open > span:first-child { display: none; }
+.hz-history-entry[open] .hz-history-open > span:last-child { display: inline; }
 .hz-history-movement { color: var(--hz-accent); }
 .hz-history-window { font: 0.78rem/1.6 var(--font-mono); }
 .hz-history-body { max-width: 900px; padding-bottom: 1.5rem; font-size: 0.8rem; line-height: 1.8; }
