@@ -2,16 +2,22 @@
 import ModelDataNotice from '../../components/ModelDataNotice.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TokenCostCalculator from '../../components/lab/TokenCostCalculator';
+import models from '../../data/models.json';
+import { hasVerifiedPrice } from '../../lib/model-pricing.mjs';
+const pricedModels = models.filter(hasVerifiedPrice).map(({ id, name, provider, inputPrice, outputPrice, pricingStatus, pricingCheckedAt, pricingSource, context }) => ({ id, name, provider, inputPrice, outputPrice, pricingStatus, pricingCheckedAt, pricingSource, context }));
 ---
-
-<BaseLayout title="Token Cost Calculator" description="Estimate the API cost of your prompts across AI models using a dated pricing snapshot.">
-  <div class="max-w-3xl mx-auto px-6 py-16">
-    <header class="mb-8">
-      <a href="/tools" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; tools</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">$ Token Cost Calculator</h1>
-      <p class="text-text-muted mt-2">Paste your prompt and expected output. Pick a model. See the cost before you commit.</p>
-    </header>
+<BaseLayout title="Token Cost Calculator" description="Estimate text-token costs for a request or growing conversation, including repeated system instructions and history. Inspect every parsed message and keep the assumptions.">
+  <div class="token-page workshop-shell">
+    <header><a href="/tools" class="text-link">← Tools</a><p class="eyebrow">A ROUGH COUNT. A CLEAR ASSUMPTION.</p><h1>The history<br /><em>comes back on the bill.</em></h1><p>Estimate the cost of supplied text. For a conversation, follow what gets sent again on each call and see which reply costs are still missing.</p></header>
     <ModelDataNotice />
-    <TokenCostCalculator client:load />
+    <TokenCostCalculator models={pricedModels} client:load />
   </div>
 </BaseLayout>
+<style>
+  .token-page { max-width: 1000px; padding-block: 3.5rem 5rem; }
+  header { max-width: 800px; margin-bottom: 2rem; }
+  header > .eyebrow { margin-top: 2rem; }
+  h1 { font: 600 clamp(2.4rem, 6vw, 4rem)/1.15 var(--font-sans); color: #eeeee5; letter-spacing: -.05em; margin-block: 1rem 1.5rem; }
+  h1 em { color: var(--workshop-lime); font-style: normal; }
+  header > p:not(.eyebrow) { color: #bcc5b1; font-size: 1rem; line-height: 1.9; }
+</style>

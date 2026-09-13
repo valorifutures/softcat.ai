@@ -1,290 +1,79 @@
 import { useState } from 'preact/hooks';
-import { hasVerifiedPrice } from '../../lib/model-pricing.mjs';
-import modelsData from '../../data/models.json';
-import { conversationUsage } from '../../lib/conversation-cost.mjs';
 import { estimateTokens } from '../../utils/tokens';
+import { estimateWorkload, workloadMoney } from '../../lib/model-workload.mjs';
+import { contextLimit, outputLimit } from '../../lib/model-context.mjs';
+import { parseCostTranscript, priceConversation, tokenCostReport, TOKEN_TEXT_LIMIT } from '../../lib/token-cost.mjs';
+import './TokenCostCalculator.css';
 
-interface Model {
-  id: string;
-  name: string;
-  provider: string;
-  inputPrice: number;
-  outputPrice: number;
-}
+type Model = { id: string; name: string; provider: string; inputPrice: number; outputPrice: number; pricingStatus: string; pricingCheckedAt: string; pricingSource: string; context: { status: string; catalogueTokens: number | null; providerTokens: number | null; outputTokens: number | null; checkedAt: string; source: string } };
+const example = [
+  { role: 'system', content: 'Answer in one sentence.' },
+  { role: 'user', content: 'What is a token?' },
+  { role: 'assistant', content: 'A token is a unit of text processed by a model, often a word or part of one.' },
+  { role: 'user', content: 'Why does a longer conversation cost more?' },
+  { role: 'assistant', content: 'Earlier messages are commonly sent again as input on each new call.' },
+  { role: 'user', content: 'Give me one way to reduce repeated input.' },
+];
+const labels = (items: typeof example) => items.map(item => `${item.role[0].toUpperCase() + item.role.slice(1)}: ${item.content}`).join('\n');
+const statusLabels: Record<string, string> = { 'above-saved-context': 'Estimated tokens exceed recorded context', 'above-output-limit': 'Estimated reply exceeds recorded output cap', 'unknown-context': 'Context limit unknown', 'unknown-price': 'Price unknown', 'invalid-workload': 'Cannot calculate this input' };
+const fmt = (value: number) => value.toLocaleString('en-GB');
+const date = (value: string) => new Date(value).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'UTC' }) + ' UTC';
 
-const models: Model[] = modelsData.filter(hasVerifiedPrice) as Model[];
-
-function formatCost(cost: number): string {
-  if (cost === 0) return '$0.0000';
-  if (cost < 0.0001) return `<$0.0001`;
-  return `$${cost.toFixed(4)}`;
-}
-
-interface ConversationTurn {
-  turnNumber: number;
-  role: string;
-  text: string;
-  tokens: number;
-}
-
-function parseConversation(text: string): ConversationTurn[] {
-  const lines = text.split('\n');
-  const turns: ConversationTurn[] = [];
-  let currentRole = '';
-  let currentLines: string[] = [];
-  let turnNumber = 0;
-
-  const rolePattern = /^(user|assistant|human|ai)\s*:/i;
-
-  for (const line of lines) {
-    const match = line.match(rolePattern);
-    if (match) {
-      // Save previous turn
-      if (currentRole && currentLines.length > 0) {
-        const turnText = currentLines.join('\n').trim();
-        if (turnText.length > 0) {
-          turnNumber++;
-          turns.push({
-            turnNumber,
-            role: currentRole,
-            text: turnText,
-            tokens: estimateTokens(turnText),
-          });
-        }
-      }
-      currentRole = match[1].toLowerCase();
-      if (currentRole === 'human') currentRole = 'user';
-      if (currentRole === 'ai') currentRole = 'assistant';
-      // Rest of this line after the marker
-      const rest = line.slice(match[0].length).trim();
-      currentLines = rest.length > 0 ? [rest] : [];
-    } else {
-      currentLines.push(line);
-    }
-  }
-
-  // Final turn
-  if (currentRole && currentLines.length > 0) {
-    const turnText = currentLines.join('\n').trim();
-    if (turnText.length > 0) {
-      turnNumber++;
-      turns.push({
-        turnNumber,
-        role: currentRole,
-        text: turnText,
-        tokens: estimateTokens(turnText),
-      });
-    }
-  }
-
-  return turns;
-}
-
-export default function TokenCostCalculator() {
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
-  const [conversationText, setConversationText] = useState('');
-  const [selectedId, setSelectedId] = useState(models[0]?.id ?? '');
-  const [conversationMode, setConversationMode] = useState(false);
-
-  const selectedModel = models.find((m) => m.id === selectedId) ?? models[0];
-
-  // Single-prompt mode calculations
-  const inputTokens = estimateTokens(inputText);
-  const outputTokens = estimateTokens(outputText);
-  const inputCost = selectedModel
-    ? (inputTokens / 1_000_000) * selectedModel.inputPrice
-    : 0;
-  const outputCost = selectedModel
-    ? (outputTokens / 1_000_000) * selectedModel.outputPrice
-    : 0;
-  const totalCost = inputCost + outputCost;
-
-  // Conversation mode calculations
-  const turns = conversationMode ? parseConversation(conversationText) : [];
-  const usage = conversationUsage(turns);
-  const convInputTokens = usage.inputTokens;
-  const convOutputTokens = usage.outputTokens;
-  const convInputCost = selectedModel ? (convInputTokens / 1_000_000) * selectedModel.inputPrice : 0;
-  const convOutputCost = selectedModel ? (convOutputTokens / 1_000_000) * selectedModel.outputPrice : 0;
-  const convTotalCost = convInputCost + convOutputCost;
-
-  if (!selectedModel) return <p class="text-text-muted">No verified model rates are available in this snapshot. <a href="/lab/model-comparison" class="text-neon-cyan underline">Check the model records</a>.</p>;
-
-  return (
-    <div class="space-y-6">
-      <div class="space-y-2">
-        <label class="font-mono text-xs text-text-muted uppercase tracking-wider block">
-          Model
-        </label>
-        <select
-          aria-label="Model for cost estimate"
-          value={selectedId}
-          onChange={(e) => setSelectedId((e.target as HTMLSelectElement).value)}
-          class="w-full bg-surface border border-surface-light rounded-lg px-4 py-2.5 font-mono text-sm text-text-primary focus:outline-none focus:border-neon-green/50"
-        >
-          {models.map((m) => (
-            <option key={m.id} value={m.id}>
-              {m.name} ({m.provider}) — ${m.inputPrice}/M in · ${m.outputPrice}/M out
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Mode toggle */}
-      <div class="flex items-center gap-3">
-        <button
-          onClick={() => setConversationMode(false)}
-          class={`px-4 py-1.5 rounded-lg font-mono text-xs transition-colors ${
-            !conversationMode
-              ? 'bg-neon-green/10 border border-neon-green/40 text-neon-green'
-              : 'bg-surface border border-surface-light text-text-muted hover:text-text-bright'
-          }`}
-        >
-          Single prompt
-        </button>
-        <button
-          onClick={() => setConversationMode(true)}
-          class={`px-4 py-1.5 rounded-lg font-mono text-xs transition-colors ${
-            conversationMode
-              ? 'bg-neon-cyan/10 border border-neon-cyan/40 text-neon-cyan'
-              : 'bg-surface border border-surface-light text-text-muted hover:text-text-bright'
-          }`}
-        >
-          Conversation
-        </button>
-      </div>
-
-      {!conversationMode ? (
-        <>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="space-y-2">
-              <label class="font-mono text-xs text-text-muted uppercase tracking-wider block">
-                Input text
-              </label>
-              <textarea
-                aria-label="Input text"
-                value={inputText}
-                onInput={(e) => setInputText((e.target as HTMLTextAreaElement).value)}
-                placeholder="Paste your prompt or input here..."
-                class="w-full h-40 bg-surface border border-surface-light rounded-lg p-4 font-mono text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-green/50 resize-y"
-              />
-            </div>
-            <div class="space-y-2">
-              <label class="font-mono text-xs text-text-muted uppercase tracking-wider block">
-                Expected output <span class="text-text-muted normal-case font-sans">(optional)</span>
-              </label>
-              <textarea
-                aria-label="Expected output"
-                value={outputText}
-                onInput={(e) => setOutputText((e.target as HTMLTextAreaElement).value)}
-                placeholder="Paste expected response here..."
-                class="w-full h-40 bg-surface border border-surface-light rounded-lg p-4 font-mono text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-green/50 resize-y"
-              />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-surface border border-surface-light rounded-lg p-4 text-center">
-              <div class="font-mono text-2xl font-bold text-neon-green">{inputTokens.toLocaleString()}</div>
-              <div class="font-mono text-xs text-text-muted mt-1">input tokens</div>
-            </div>
-            <div class="bg-surface border border-surface-light rounded-lg p-4 text-center">
-              <div class="font-mono text-2xl font-bold text-neon-green">{outputTokens.toLocaleString()}</div>
-              <div class="font-mono text-xs text-text-muted mt-1">output tokens</div>
-            </div>
-            <div class="bg-surface border border-surface-light rounded-lg p-4 text-center">
-              <div class="font-mono text-2xl font-bold text-text-bright">{formatCost(inputCost)}</div>
-              <div class="font-mono text-xs text-text-muted mt-1">input cost</div>
-            </div>
-            <div class="bg-surface border border-surface-light rounded-lg p-4 text-center">
-              <div class="font-mono text-2xl font-bold text-text-bright">{formatCost(outputCost)}</div>
-              <div class="font-mono text-xs text-text-muted mt-1">output cost</div>
-            </div>
-          </div>
-
-          <div class="bg-surface border border-neon-green/30 rounded-lg p-5 card-glow flex items-center justify-between">
-            <span class="font-mono text-sm text-text-muted">Total estimated cost</span>
-            <span class="font-mono text-2xl font-bold text-neon-green glow-green">{formatCost(totalCost)}</span>
-          </div>
-        </>
-      ) : (
-        <>
-          <div class="space-y-2">
-            <label class="font-mono text-xs text-text-muted uppercase tracking-wider block">
-              Conversation <span class="normal-case font-sans">(use User: / Assistant: / Human: / AI: markers)</span>
-            </label>
-            <textarea
-              aria-label="Conversation transcript"
-              value={conversationText}
-              onInput={(e) => setConversationText((e.target as HTMLTextAreaElement).value)}
-              placeholder={"User: What is the capital of France?\nAssistant: The capital of France is Paris.\nUser: And Germany?\nAssistant: The capital of Germany is Berlin."}
-              class="w-full h-56 bg-surface border border-surface-light rounded-lg p-4 font-mono text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-cyan/50 resize-y"
-            />
-          </div>
-
-          <p class="text-sm text-text-muted leading-relaxed">Each Assistant section is treated as one reply. Every call includes all earlier conversation text as input. A trailing User section is a planned call with no output estimate yet. System prompts, cached discounts and tool calls are excluded.</p>
-          {usage.calls.length > 0 && (
-            <div class="overflow-x-auto">
-              <table class="w-full text-left">
-                <thead>
-                  <tr class="border-b border-surface-light">
-                    <th class="py-2 px-3 font-mono text-xs text-text-muted">Call</th>
-                    <th class="py-2 px-3 font-mono text-xs text-text-muted">Input history</th>
-                    <th class="py-2 px-3 font-mono text-xs text-text-muted">Output tokens</th>
-                    <th class="py-2 px-3 font-mono text-xs text-text-muted">Est. Cost</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {usage.calls.map((call) => {
-                    const cost = (call.inputTokens * selectedModel.inputPrice + call.outputTokens * selectedModel.outputPrice) / 1_000_000;
-                    return <tr key={call.number} class="border-b border-surface-light/30">
-                      <td class="py-2 px-3 font-mono text-sm text-text-muted">{call.number}{call.pending ? ' (planned)' : ''}</td>
-                      <td class="py-2 px-3 font-mono text-sm text-text-primary">{call.inputTokens.toLocaleString()}</td>
-                      <td class="py-2 px-3 font-mono text-sm text-text-primary">{call.pending ? 'unknown' : call.outputTokens.toLocaleString()}</td>
-                      <td class="py-2 px-3 font-mono text-sm text-text-primary">{formatCost(cost)}</td>
-                    </tr>;
-                  })}
-                  <tr class="border-t border-surface-light">
-                    <td class="py-2 px-3 font-mono text-xs text-text-muted font-bold">Totals</td>
-                    <td class="py-2 px-3 font-mono text-sm text-text-bright font-bold">{convInputTokens.toLocaleString()}</td>
-                    <td class="py-2 px-3 font-mono text-sm text-text-bright font-bold">{convOutputTokens.toLocaleString()}</td>
-                    <td class="py-2 px-3 font-mono text-sm text-text-bright font-bold">{formatCost(convTotalCost)}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          )}
-
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-surface border border-surface-light rounded-lg p-4 text-center">
-              <div class="font-mono text-2xl font-bold text-neon-green">{convInputTokens.toLocaleString()}</div>
-              <div class="font-mono text-xs text-text-muted mt-1">input tokens</div>
-            </div>
-            <div class="bg-surface border border-surface-light rounded-lg p-4 text-center">
-              <div class="font-mono text-2xl font-bold text-neon-cyan">{convOutputTokens.toLocaleString()}</div>
-              <div class="font-mono text-xs text-text-muted mt-1">output tokens</div>
-            </div>
-            <div class="bg-surface border border-surface-light rounded-lg p-4 text-center">
-              <div class="font-mono text-2xl font-bold text-text-bright">{formatCost(convInputCost)}</div>
-              <div class="font-mono text-xs text-text-muted mt-1">input cost</div>
-            </div>
-            <div class="bg-surface border border-surface-light rounded-lg p-4 text-center">
-              <div class="font-mono text-2xl font-bold text-text-bright">{formatCost(convOutputCost)}</div>
-              <div class="font-mono text-xs text-text-muted mt-1">output cost</div>
-            </div>
-          </div>
-
-          <div class="bg-surface border border-neon-cyan/30 rounded-lg p-5 card-glow flex items-center justify-between">
-            <span class="font-mono text-sm text-text-muted">Total estimated cost</span>
-            <span class="font-mono text-2xl font-bold text-neon-cyan glow-cyan">{formatCost(convTotalCost)}</span>
-          </div>
-        </>
-      )}
-
-      <p class="font-mono text-xs text-text-muted">
-        Token counts use a rough character-based estimate, not a model tokenizer. Accuracy varies with language, code and encoding. Prices are saved API rates. Actual usage, caching and provider fees can differ.
-      </p>
-    </div>
-  );
+export default function TokenCostCalculator({ models }: { models: Model[] }) {
+  const [mode, setMode] = useState<'single' | 'conversation'>('single');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [transcript, setTranscript] = useState('');
+  const [format, setFormat] = useState<'labels' | 'json'>('labels');
+  const [selectedId, setSelectedId] = useState(models.find(model => model.id === 'anthropic/claude-sonnet-4')?.id ?? models[0]?.id ?? '');
+  const [notice, setNotice] = useState('');
+  const model = models.find(item => item.id === selectedId);
+  if (!model) return <p>No verified rates are available. <a href="/lab/model-comparison">Inspect the model records</a>.</p>;
+  const singleError = input.length > TOKEN_TEXT_LIMIT || output.length > TOKEN_TEXT_LIMIT ? `Keep each text field within ${fmt(TOKEN_TEXT_LIMIT)} characters. Your text has not been truncated.` : '';
+  const singleReady = !!input.trim() && !singleError;
+  const inputTokens = singleReady ? estimateTokens(input) : 0;
+  const outputTokens = singleReady ? estimateTokens(output) : 0;
+  const singlePrice = estimateWorkload(model, { ok: true, inputTokens, outputTokens, calls: 1 });
+  const parsed = mode === 'conversation' ? parseCostTranscript(transcript, format, estimateTokens) : null;
+  const conversationReady = !!parsed?.ok && parsed.messages.length > 0;
+  const conversation = conversationReady ? priceConversation(model, parsed!.usage) : null;
+  const ready = mode === 'single' ? singleReady : conversationReady;
+  const resultCost = mode === 'single' ? singlePrice.cost : conversation?.cost;
+  const partial = mode === 'single' ? output.length === 0 : conversation?.pending;
+  const report = () => tokenCostReport(model, { mode, input, output, transcript, format }, estimateTokens);
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(report()); setNotice('Copied the estimate, source and original text.'); }
+    catch { setNotice('Copy was unavailable. Download the estimate to keep the same record.'); }
+  };
+  const download = () => {
+    const url = URL.createObjectURL(new Blob([report()], { type: 'text/plain;charset=utf-8' }));
+    const link = document.createElement('a'); link.href = url; link.download = 'softcat-token-cost.txt'; link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000); setNotice('Downloaded the estimate with its assumptions and source.');
+  };
+  const change = (callback: () => void) => { callback(); setNotice(''); };
+  return <div class="token-calculator">
+    <div class="tc-mode" role="group" aria-label="Estimate mode"><button type="button" aria-pressed={mode === 'single'} onClick={() => change(() => setMode('single'))}>Single request</button><button type="button" aria-pressed={mode === 'conversation'} onClick={() => change(() => setMode('conversation'))}>Conversation</button></div>
+    <label class="tc-model">Model for cost estimate<select value={selectedId} onChange={event => change(() => setSelectedId(event.currentTarget.value))}>{models.map(item => <option value={item.id}>{item.name} · ${item.inputPrice}/M input · ${item.outputPrice}/M output</option>)}</select></label>
+    <p class="tc-help tc-id">{model.id} · USD per million text tokens</p>
+    {mode === 'single' ? <section aria-label="Single request text">
+      <div class="tc-intro"><p class="eyebrow">PASTE THE TEXT YOU WANT TO PRICE</p><button type="button" onClick={() => change(() => { setInput('Summarise this note in one sentence:\nThe search box lost focus when it closed. We fixed focus restoration and checked the keyboard controls.'); setOutput('The search dialog now returns keyboard focus to its opener.'); })}>Try an illustrative pair</button></div>
+      <div class="tc-editors"><label>Input text<textarea value={input} onInput={event => change(() => setInput(event.currentTarget.value))} placeholder="Include system instructions, the question and any history or documents sent with it." spellCheck={false} aria-describedby="tc-single-help" /></label><label>Expected output text <span>(optional)</span><textarea value={output} onInput={event => change(() => setOutput(event.currentTarget.value))} placeholder="Paste an example reply to include its estimated cost." spellCheck={false} aria-describedby="tc-single-help" /></label></div>
+      <p class="tc-help" id="tc-single-help">Each field supports {fmt(TOKEN_TEXT_LIMIT)} characters. Leaving output empty gives an input-only estimate. This tool does not predict a reply or call a model.</p>
+      {singleError && <p class="tc-error" role="alert">{singleError}</p>}
+      {singleReady && <dl class="tc-counts"><div><dt>Estimated input tokens</dt><dd>{fmt(inputTokens)}</dd></div><div><dt>Estimated output tokens</dt><dd>{output.length ? fmt(outputTokens) : 'Not supplied'}</dd></div></dl>}
+    </section> : <section aria-label="Conversation text">
+      <div class="tc-intro"><p class="eyebrow">PRICE THE HISTORY EACH CALL SENDS AGAIN</p><button type="button" onClick={() => change(() => setTranscript(format === 'json' ? JSON.stringify(example, null, 2) : labels(example)))}>Try a growing conversation</button></div>
+      <label class="tc-format">Transcript format<select value={format} onChange={event => change(() => setFormat(event.currentTarget.value as typeof format))}><option value="labels">Role-labelled text</option><option value="json">Message JSON</option></select></label>
+      <label>Conversation transcript<textarea class="tc-transcript" value={transcript} onInput={event => change(() => setTranscript(event.currentTarget.value))} placeholder={format === 'labels' ? 'System: Optional instructions\nUser: A question\nAssistant: The reply\nUser: The next question' : '[{"role":"user","content":"A question"},{"role":"assistant","content":"The reply"}]'} spellCheck={false} aria-describedby="tc-transcript-help" aria-invalid={parsed && !parsed.ok} /></label>
+      <p class="tc-help" id="tc-transcript-help">{format === 'labels' ? 'Start each message with System:, User: or Assistant: on its own line or before the text. Human: and AI: also work. Role labels inside fenced code remain content. Use message JSON for literal role labels outside code fences.' : 'Use an array of objects containing only role and content. Content must be a text string. This mode preserves literal role labels and code fences.'} Changing the format keeps your text. The example button loads a matching example. System instructions must come first. Each assistant reply needs a user message before it. Limit: 200 messages and {fmt(TOKEN_TEXT_LIMIT)} characters.</p>
+      {parsed && !parsed.ok && <p class="tc-error" role="alert">{parsed.error} No cost has been calculated.</p>}
+      {conversationReady && <>
+        <details class="tc-parsed"><summary>Check the {parsed!.messages.length} parsed messages</summary><ol>{parsed!.messages.map(message => <li><p>{message.role} <span>about {fmt(message.tokens)} tokens</span></p><pre tabIndex={0} role="region" aria-label={`Message ${message.turnNumber} text`}>{message.text}</pre></li>)}</ol></details>
+        <div class="tc-table-wrap" tabIndex={0} role="region" aria-label="Conversation costs by call"><table><caption>Each call includes all earlier system, user and assistant text. Token counts are estimates.</caption><thead><tr><th scope="col">Call</th><th scope="col">Input sent again</th><th scope="col">Reply tokens</th><th scope="col">Estimated USD</th></tr></thead><tbody>{conversation!.calls.map(call => <tr><th scope="row">{call.number}{call.pending && <span>planned</span>}</th><td>{fmt(call.inputTokens)}</td><td>{call.pending ? 'Not supplied' : fmt(call.outputTokens)}</td><td>{call.cost === null ? statusLabels[call.status] : workloadMoney(call.cost)}{call.pending && call.cost !== null && <span>input only</span>}</td></tr>)}</tbody></table></div>
+        <dl class="tc-counts"><div><dt>Total estimated input, including repeats</dt><dd>{fmt(parsed!.usage.inputTokens)}</dd></div><div><dt>Total supplied output, estimated</dt><dd>{fmt(parsed!.usage.outputTokens)}</dd></div></dl>
+      </>}
+    </section>}
+    {ready ? <section class="tc-result" aria-label="Estimate for supplied text"><p class="eyebrow">ESTIMATE FOR THE TEXT YOU SUPPLIED</p><div class="tc-price">{resultCost == null ? 'Unavailable' : workloadMoney(resultCost)}</div><p>{partial ? mode === 'single' ? 'Input only. No reply cost is included.' : 'Includes a planned call whose reply is not supplied. Its output cost is omitted.' : 'Includes the supplied input and output text.'}</p>{resultCost == null && <p>{mode === 'single' ? statusLabels[singlePrice.status] : 'At least one call exceeds a recorded limit or has unknown data, so a partial sum is not shown as the total.'}</p>}<p>Counts are approximate. A missing reply is unknown, not free.</p><div class="tc-actions"><button type="button" onClick={copy}>Copy estimate</button><button type="button" onClick={download}>Download estimate ↓</button></div><p class="tc-notice" role="status">{notice}</p></section> : <p class="tc-empty">{mode === 'single' ? 'Add input text to see an estimate.' : parsed?.ok ? 'Add a conversation or try the example.' : 'Fix the transcript above to calculate its cost.'}</p>}
+    <aside class="tc-assumptions"><h2>Keep the estimate in perspective.</h2><p>The token count uses a character heuristic, not the selected model's tokenizer. Language, code, punctuation and encoding can change the real count. Message formatting overhead is excluded.</p><p>Conversation mode assumes all previous text is sent again on every call. It includes system instructions, but not cache discounts, hidden reasoning, tool charges, images or audio. Provider routing and other fees can change the bill.</p><p>Rates checked <time dateTime={model.pricingCheckedAt}>{date(model.pricingCheckedAt)}</time> against the <a href={model.pricingSource}>OpenRouter catalogue</a>. Planning context: {contextLimit(model) === null ? 'unknown' : fmt(contextLimit(model))} tokens. Output cap: {outputLimit(model) === null ? 'unknown' : fmt(outputLimit(model))} tokens. The <a href="/lab/context-window">Context Budget Planner</a> shows the separate limit review.</p><p>For counts from an actual tokenizer or provider usage record, use <a href="/lab/model-comparison">Model Comparison</a>. Pasted text stays in this page and is not saved.</p></aside>
+  </div>;
 }

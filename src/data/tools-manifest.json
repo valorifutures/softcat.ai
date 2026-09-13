@@ -56,8 +56,8 @@
   {
     "id": "token-cost",
     "name": "Token Cost Calculator",
-    "description": "Estimate API costs per prompt or full conversation. Breakdown by turn, model comparison.",
-    "stat": "Single prompt + conversation mode",
+    "description": "Estimate supplied text and repeated conversation history. Inspect parsed messages, distinguish missing replies and export the assumptions.",
+    "stat": "Single request · conversation · inspectable estimate",
     "href": "/lab/token-cost",
     "icon": "$",
     "category": "cost",

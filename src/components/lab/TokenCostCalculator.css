@@ -1,0 +1,50 @@
+.token-calculator { color: #b9c1af; }
+.tc-mode, .tc-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.token-calculator button { background: #1b2216; color: #d5e5c7; border: 1px solid #46533a; border-radius: .35rem; padding: .65rem 1rem; min-height: 44px; cursor: pointer; font-size: .78rem; }
+.token-calculator button:hover { color: #f0f7e8; background: #2f3c25; }
+.tc-mode { margin-bottom: 1.5rem; }
+.tc-mode button[aria-pressed='true'] { color: #27371e; background: #cce4ac; border-color: #cce4ac; }
+.token-calculator label { display: block; color: #c9d5bd; font-size: .8rem; line-height: 1.8; }
+.token-calculator label > span { color: #a7b498; }
+.token-calculator select, .token-calculator textarea { display: block; width: 100%; padding: .85rem; margin-top: .45rem; border: 1px solid #435337; border-radius: .35rem; color: #e5eadd; background: #131a0e; font: .82rem/1.8 var(--font-mono); }
+.token-calculator select { min-height: 48px; }
+.token-calculator textarea { min-height: 220px; resize: vertical; }
+.token-calculator textarea[aria-invalid='true'] { border-color: #d7a68b; }
+.tc-help { font-size: .77rem; line-height: 1.85; color: #aebda1; margin-block: 1rem; }
+.tc-id { font: .65rem/1.8 var(--font-mono); overflow-wrap: anywhere; }
+.tc-intro { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin: 2rem 0 1.2rem; }
+.tc-editors { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.tc-format { max-width: 340px; margin-bottom: 1rem; }
+.token-calculator .tc-transcript { min-height: 300px; }
+.tc-error { border-left: 2px solid #d9a47e; padding: 1rem; background: #291f17; color: #edc7ac; font-size: .83rem; line-height: 1.8; margin-block: 1rem; }
+.tc-counts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+.tc-counts > div { border-top: 1px solid #394630; padding-top: 1rem; }
+.tc-counts dt { font-size: .72rem; line-height: 1.8; color: #b2c0a6; }
+.tc-counts dd { font: 500 1.45rem/1.8 var(--font-sans); color: #e0ead4; }
+.tc-result { background: #eae9de; color: #435338; border-radius: .45rem; padding: 1.7rem 2rem; margin-top: 2rem; }
+.tc-result .eyebrow { color: #5d6a50; }
+.tc-price { color: #293d21; font: 550 clamp(2.1rem, 5vw, 3.1rem)/1.3 var(--font-sans); letter-spacing: -.05em; margin-block: .8rem; overflow-wrap: anywhere; }
+.tc-result > p:not(.eyebrow) { font-size: .8rem; line-height: 1.85; margin-top: .5rem; }
+.tc-actions { margin-top: 1.3rem; }
+.tc-result .tc-actions button { background: #334d25; color: #eef5e7; border-color: #334d25; }
+.tc-result .tc-actions button:hover { background: #496537; color: #fff; }
+.tc-notice { min-height: 1.5em; }
+.tc-empty { padding: 1.5rem; border: 1px dashed #4d5b41; border-radius: .35rem; font-size: .83rem; margin-top: 2rem; }
+.tc-parsed { border-block: 1px solid #3a4831; margin-block: 1.5rem; }
+.tc-parsed summary { cursor: pointer; padding-block: 1rem; color: #d4e4c5; font-size: .83rem; }
+.tc-parsed li { padding-block: 1rem; border-top: 1px solid #2d3925; }
+.tc-parsed li p { font: .72rem/1.8 var(--font-mono); color: #c7dcb6; }
+.tc-parsed li p span { color: #a8b799; margin-left: .6rem; }
+.tc-parsed pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 220px; overflow: auto; font: .72rem/1.9 var(--font-mono); color: #c2ccb8; margin-top: .5rem; }
+.tc-table-wrap { overflow-x: auto; margin-top: 1.5rem; }
+.tc-table-wrap table { border-collapse: collapse; width: 100%; min-width: 540px; text-align: left; font-size: .78rem; line-height: 1.7; }
+.tc-table-wrap caption { text-align: left; color: #b2c0a6; font-size: .7rem; line-height: 1.8; padding-bottom: 1rem; }
+.tc-table-wrap th, .tc-table-wrap td { border-bottom: 1px solid #34402c; padding: .8rem .7rem; vertical-align: top; }
+.tc-table-wrap th { font-weight: 450; color: #d7e3cb; }
+.tc-table-wrap thead th { font-size: .67rem; }
+.tc-table-wrap span { display: block; font-size: .65rem; color: #afc09e; }
+.tc-assumptions { margin-top: 2.5rem; max-width: 78ch; }
+.tc-assumptions h2 { color: #e6eadf; font-weight: 500; font-size: 1.25rem; letter-spacing: -.035em; }
+.tc-assumptions p { font-size: .8rem; line-height: 1.9; margin-top: 1rem; }
+.tc-assumptions a { color: #cce2b0; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 600px) { .tc-editors { grid-template-columns: 1fr; } .tc-result { padding: 1.3rem; } .tc-counts { gap: .7rem; } }
