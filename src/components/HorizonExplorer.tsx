@@ -88,9 +88,10 @@ export default function HorizonExplorer({ scenarios, review, referenceYear }: Pr
       <aside class="hz-detail" id="horizon-detail" aria-labelledby="horizon-detail-title">
         <p class="hz-label">{titleCase(stance)} scenario</p><h3 id="horizon-detail-title">{selected.record.title}</h3>
         <p class="hz-definition">{selected.scenario.definition}</p>
+        {state.future === 'education' && stance === 'pragmatic' && <p class="hz-scope-note"><strong>Scope of this view</strong>Partial change within existing institutions. This date window does not describe the full replacement threshold above.</p>}
         <dl class="hz-brief">
-          <div><dt>What has to work</dt><dd>{branch.assumptions}</dd></div>
-          <div><dt>What could hold it back</dt><dd>{branch.blockers}</dd></div>
+          <div><dt>What this assumes</dt><dd>{branch.assumptions}</dd></div>
+          <div><dt>What could change this view</dt><dd>{branch.blockers}</dd></div>
           <div><dt>What this means</dt><dd>{branch.implication}</dd></div>
         </dl>
         <dl class="hz-date-comparison" aria-label="All three date claims">{STANCES.map(view => <div class={view === stance ? 'is-current' : ''}><dt>{titleCase(view)}</dt><dd>{parseTimeframe(selected.scenario[view as Stance].timeframe).label}</dd></div>)}</dl>
