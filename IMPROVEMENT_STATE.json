@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T01:20:33.002612+00:00",
-  "phase": "prompt-workbench-repair",
-  "active_branch": "codex/prompt-workbench-repair",
+  "updated_at": "2026-09-13T01:38:47.132605+00:00",
+  "phase": "prompt-diff-repair",
+  "active_branch": "codex/prompt-diff-repair",
   "last_verified_deployment": {
-    "sha": "a902f1c3a71b8ba4e90b3281d66e6a25427320a3",
-    "at": "2026-09-13T01:06:50Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34729677617"
+    "sha": "ccdd666e21ddb9609eff84e5681164a5cac2b20b",
+    "at": "2026-09-13T01:24:38Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34730422048"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -22,11 +22,12 @@
     "PR #204 merged and deployed. Live Thoughts shows six corrections and 124 historical essays in a compact monthly index. The prompt essay retains 3 July as its publication date and shows its 13 September correction separately. The new notebook entry records real validator tests.",
     "PR #205 merged and deployed. The live weight-source filter shows 19 models and two gated links. Source links and licence labels replace the old open/closed guesses, while workload price values remain unchanged. The homepage now recommends three actual build notes.",
     "PR #206 merged. Its first real GitHub price snapshot checked 445 provider entries, verified 37 tracked prices and kept two unlisted prices unknown. The data commit and Pages deployment succeeded. Live Pipeline shows the actual 00:54 UTC run and zero recorded inference cost, and the model comparison shows its new snapshot date.",
-    "PR #207 merged and deployed. The About and Contact pages were visually checked live. The three feedback links point to their matching bug, correction and experiment templates. Unsupported credentials, etymology and response promises are removed."
+    "PR #207 merged and deployed. The About and Contact pages were visually checked live. The three feedback links point to their matching bug, correction and experiment templates. Unsupported credentials, etymology and response promises are removed.",
+    "PR #208 merged and deployed. Live Workbench exported a filled OpenRouter request for the selected Sonnet ID, copied successfully and kept two named QA versions through a reload. The original question was restored. Both filled messages and the selected model transferred to Chat Playground, which stayed unsent and editable with no key. The two QA versions are retained temporarily for the next Diff integration check."
   ],
   "next": [
-    "Publish and verify Prompt Workbench: filled exports, saving two versions, explicit deletion of only the QA fixture and an unsent Chat Playground transfer.",
-    "Repair Prompt Diff next. Its current quadratic LCS table runs synchronously on every edit without a size limit, and its Workbench picker does not validate records or fill their variables.",
+    "Publish Prompt Diff and verify shorter-input cost signs, large-input blocks, stale-result clearing and loading the two QA Workbench versions. Delete only those named QA versions afterwards.",
+    "Review remaining historical content and archive presentation for unsupported claims, source gaps and misleading current recommendations.",
     "The separate systemd host remains unverified. Price migration does not restart those other bots.",
     "Leave a clean checkpoint for the next scheduled iteration."
   ],
