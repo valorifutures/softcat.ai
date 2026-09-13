@@ -404,3 +404,17 @@ Contact now gives visitors three specific routes: a reproducible bug, a sourced 
 The production build passes at 889 pages. Parsed the four feedback YAML files, checked unique form field IDs and required labels, and verified all 78 internal links across the two built pages. Layout changes are CSS-only with narrow-screen rules and no additional client script. Live visual checks follow publication.
 
 A further tool review found that Prompt Workbench emits Anthropic cURL requests containing OpenRouter IDs, fails to quote apostrophes safely, claims clipboard success before it resolves and only hands the system prompt to Chat Playground. Those concrete faults are the next batch.
+
+## 13 September 2026, Prompt Workbench repair
+
+PR #207 deployed successfully in [run 34729677617](https://github.com/valorifutures/softcat.ai/actions/runs/34729677617) at 01:06 UTC. The live About page and three Contact routes were inspected and screenshotted. The source and issue-template links match their intended destinations. No feedback message was submitted.
+
+Prompt Workbench's old cURL export paired OpenRouter model IDs with Anthropic's direct endpoint. A normal apostrophe could also break the surrounding shell quote. It now exports OpenRouter chat requests with the exact selected ID, standard message roles and a visible 2,048-token output limit. A POSIX shell fixture proves that apostrophes, quotes, backticks, dollar signs, command-substitution text, newlines and Unicode arrive unchanged at a stub request function. No network request or actual API key was used in that test.
+
+The editor now shows a complete export preview and offers copy and download. Clipboard success waits for the browser operation. Four worked examples replace eight generic templates, including a valid invoice JSON Schema and an example where the source cannot answer the question. Variable replacement uses only explicit string values, does not recursively expand input and stops oversized expansion before constructing a large result. Missing variables block request exports while remaining visible in plain text.
+
+Saved prompts retain the old library format and assistant prefixes. Each new save keeps earlier versions. Library reads validate the whole record set, writes detect another tab's changes, and failures leave the editor and existing storage intact. Backups can be downloaded and imported without replacing existing prompts. Invalid stored data can be downloaded for recovery. Loading over edited content and deleting a saved version have explicit in-page controls.
+
+Chat Playground now imports both the filled system prompt and user draft with the selected model, once through tab session storage. It never sends on import. Expired or malformed transfers are rejected. A model missing from the current verified list requires a new choice. The user draft can be edited before adding a key. Assistant prefixes remain exportable but do not transfer to the playground, which does not implement prefilling. Privacy text records the transfer behaviour.
+
+Validation: 65 JavaScript tests pass, including ten new regression tests. All content, model and Horizon validators pass. The production build has 889 pages. Live interaction checks follow deployment. A separate Prompt Diff review found an unbounded synchronous LCS allocation, which is queued next.

@@ -24,8 +24,8 @@
   {
     "id": "prompt-workbench",
     "name": "Prompt Workbench",
-    "description": "Full prompt IDE. System/user/assistant prefill, variables, 8 templates, save/load, multi-format export.",
-    "stat": "8 templates, localStorage persistence",
+    "description": "Build reusable prompts, inspect filled messages and export an OpenRouter request. Save versions locally and keep a backup.",
+    "stat": "4 worked examples, saved versions and export previews",
     "href": "/lab/prompt-workbench",
     "icon": "⚙",
     "category": "prompts",

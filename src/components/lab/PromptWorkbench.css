@@ -1,0 +1,60 @@
+.prompt-workbench { color: var(--color-text-primary); }
+.prompt-workbench button, .pw-import { font-size: 0.8rem; color: #d6ddce; border: 1px solid #3c4437; background: #171c17; border-radius: 0.3rem; padding: 0.65rem 0.9rem; min-height: 44px; cursor: pointer; }
+.prompt-workbench button:hover, .pw-import:hover { border-color: var(--workshop-lime); color: var(--workshop-lime); }
+.prompt-workbench button:disabled { opacity: 0.45; cursor: not-allowed; }
+.prompt-workbench button[aria-pressed="true"], .prompt-workbench .pw-primary { color: #26351c; background: var(--workshop-lime); border-color: var(--workshop-lime); }
+.pw-toolbar, .pw-toolbar > div, .pw-library-actions, .pw-export-actions, .pw-saved-actions, .pw-editor-intro { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+.pw-toolbar { justify-content: space-between; border-bottom: 1px solid #30382d; padding-bottom: 1rem; }
+.pw-notice { color: var(--workshop-lime); font-size: 0.85rem; line-height: 1.8; min-height: 1.5rem; margin-block: 0.7rem; }
+.prompt-workbench h2 { color: #edf0e7; font-size: 1.35rem; font-weight: 500; letter-spacing: -0.025em; margin-bottom: 0.7rem; }
+.pw-help { color: var(--color-text-muted); font-size: 0.78rem; line-height: 1.85; margin-block: 0.6rem; }
+.pw-help a { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 3px; }
+.pw-eyebrow { font: 0.6rem/1.8 var(--font-mono); letter-spacing: 0.1em; color: #a8b49a; }
+.pw-editor-intro { justify-content: space-between; margin-bottom: 1rem; }
+.pw-editor-intro button { border: 0; background: none; color: var(--workshop-lime); }
+.pw-editors, .pw-variables > div, .pw-examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.prompt-workbench label:not(.pw-import) { display: block; font-size: 0.8rem; color: #dbe1d4; margin-bottom: 0.6rem; }
+.prompt-workbench textarea, .prompt-workbench input:not([type="file"]), .prompt-workbench select { width: 100%; min-width: 0; border: 1px solid #384033; border-radius: 0.3rem; background: #111510; color: #dce2d6; padding: 0.8rem; font: 0.8rem/1.7 var(--font-mono); }
+.prompt-workbench textarea { resize: vertical; }
+.pw-editors textarea { min-height: 230px; }
+.pw-prefix { padding: 1rem 1.2rem; background: #151811; border: 1px solid #393e2f; border-radius: 0.3rem; margin-block: 1.3rem; }
+.pw-prefix summary { color: #bac5aa; font-size: 0.8rem; cursor: pointer; min-height: 30px; }
+.pw-prefix[open] summary { margin-bottom: 0.8rem; }
+.pw-prefix textarea { min-height: 100px; }
+.pw-variables { border-top: 1px solid #30382d; padding-top: 1.5rem; margin-top: 1.5rem; }
+.pw-variables > div { margin-top: 1rem; }
+.pw-save { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 0.7rem 1rem; padding: 1.3rem; margin-block: 1.5rem 3rem; border: 1px solid #35402b; border-radius: 0.3rem; background: #181e13; }
+.pw-save p { grid-column: 1 / -1; color: var(--color-text-muted); font-size: 0.73rem; }
+.pw-save label { margin-bottom: 0.3rem; }
+.pw-export { border-top: 1px solid #30382d; padding-top: 1.8rem; }
+.pw-export h2 { margin-top: 0.7rem; }
+.pw-export-options { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 1rem; margin-block: 1.4rem 1rem; }
+.pw-estimate { color: #c4cfba; font-size: 0.83rem; line-height: 1.9; }
+.pw-estimate strong { font-weight: 500; color: #e1ead7; }
+.pw-export-actions { margin-top: 1.2rem; }
+.prompt-workbench .pw-preview-label { margin-top: 1.1rem; }
+.prompt-workbench .pw-preview { background: #0d100c; color: #c7d5b9; min-height: 200px; max-height: 600px; white-space: pre; overflow: auto; }
+.pw-warning, .pw-confirm { padding: 1rem 1.2rem; border: 1px solid #68552e; background: #221d12; color: #dfcca2; border-radius: 0.3rem; font-size: 0.82rem; line-height: 1.8; margin-block: 1rem; overflow-wrap: anywhere; }
+.pw-confirm button { margin: 0.7rem 0.5rem 0 0; }
+.pw-examples { margin-top: 1.3rem; }
+.pw-examples button { display: flex; flex-direction: column; text-align: left; padding: 1.4rem; }
+.pw-examples strong { font-weight: 500; font-size: 1rem; color: #e4ebdc; }
+.pw-examples span { color: var(--color-text-muted); line-height: 1.8; margin-top: 0.6rem; }
+.pw-examples .pw-example-open { margin-top: 1.3rem; color: var(--workshop-lime); font-size: 0.75rem; }
+.pw-library-actions { margin-block: 1rem 1.5rem; }
+.pw-import { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; }
+.pw-import input { max-width: 200px; font-size: 0.7rem; }
+.pw-saved-list article { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1rem; padding-block: 1.2rem; border-top: 1px solid #30382d; }
+.pw-saved-list h3 { font-size: 0.9rem; overflow-wrap: anywhere; }
+.pw-saved-list time { color: var(--color-text-muted); font: 0.65rem/1.8 var(--font-mono); }
+.pw-saved-list .pw-confirm { grid-column: 1 / -1; margin: 0; }
+.pw-empty { padding-block: 2rem; color: var(--color-text-muted); font-size: 0.9rem; }
+.pw-bottom-note { margin-top: 1.5rem; }
+@media (max-width: 650px) {
+  .pw-editors, .pw-variables > div, .pw-examples, .pw-export-options { grid-template-columns: 1fr; }
+  .pw-editors textarea { min-height: 180px; }
+  .pw-save { grid-template-columns: 1fr; }
+  .pw-saved-list article { grid-template-columns: 1fr; }
+  .pw-export-actions { align-items: stretch; }
+  .pw-export-actions button { flex-grow: 1; }
+}

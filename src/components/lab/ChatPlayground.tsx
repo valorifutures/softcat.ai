@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'preact/hooks';
 import { readChatStream } from '../../lib/chat-stream.mjs';
+import { HANDOFF_KEY, FIELD_LIMIT, parseWorkbenchHandoff } from '../../lib/prompt-workbench.mjs';
 import { estimateTokens } from '../../utils/tokens';
 
 interface Message {
@@ -45,6 +46,7 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
   const [keyVisible, setKeyVisible] = useState(false);
   const [rememberKey, setRememberKey] = useState(false);
   const [storageError, setStorageError] = useState('');
+  const [handoffNotice, setHandoffNotice] = useState('');
   const [systemPrompt, setSystemPrompt] = useState('');
   const [input, setInput] = useState('');
   const [panes, setPanes] = useState<ChatPane[]>(() => [createPane(models[0]?.id || '')]);
@@ -56,6 +58,7 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
   const controllers = useRef(new Map<string, AbortController>());
   const sending = useRef(false);
   const busy = panes.some((pane) => pane.loading);
+  const modelsReady = panes.every((pane) => models.some((model) => model.id === pane.model));
 
   useEffect(() => () => { controllers.current.forEach((controller) => controller.abort()); }, []);
 
@@ -70,16 +73,31 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
     } catch {}
   }, []);
 
-  // Check for workbench handoff on mount
+  // Transfer a draft once within this tab. Importing never sends a request.
   useEffect(() => {
     try {
-      const handoff = localStorage.getItem('softcat-workbench-handoff');
-      if (handoff) {
-        const parsed = JSON.parse(handoff);
-        if (parsed.system) setSystemPrompt(parsed.system);
+      if (new URLSearchParams(window.location.search).get('from') === 'workbench') {
+        const raw = sessionStorage.getItem(HANDOFF_KEY);
+        sessionStorage.removeItem(HANDOFF_KEY);
+        const handoff = parseWorkbenchHandoff(raw);
+        if (!handoff) { setHandoffNotice('The Workbench draft was unavailable or expired. Open it again from the Workbench.'); return; }
+        setSystemPrompt(handoff.system); setInput(handoff.user);
+        const knownModel = models.some((model) => model.id === handoff.model);
+        setPanes([createPane(knownModel ? handoff.model : '')]);
+        setHandoffNotice(knownModel ? 'Draft imported from Prompt Workbench. Review the system prompt, message and model before choosing Send. Nothing has been sent.' : 'Draft imported. Its model is no longer in the verified list, so choose a model before sending. Nothing has been sent.');
+      } else {
+        // Older Workbench links transferred only a system prompt.
+        const raw = localStorage.getItem('softcat-workbench-handoff');
         localStorage.removeItem('softcat-workbench-handoff');
+        if (raw && raw.length <= FIELD_LIMIT + 100) {
+          const legacy = JSON.parse(raw);
+          if (legacy && typeof legacy.system === 'string' && legacy.system.length <= FIELD_LIMIT) {
+            setSystemPrompt(legacy.system);
+            setHandoffNotice('Imported a system prompt from an earlier Workbench transfer. Add your user message before sending.');
+          }
+        }
       }
-    } catch {}
+    } catch { setHandoffNotice('This browser could not import the Workbench draft. Your saved prompts remain in the Workbench.'); }
   }, []);
 
   const persistKey = (key: string, remember: boolean) => {
@@ -135,7 +153,7 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
   };
 
   const sendMessage = async () => {
-    if (!input.trim() || !apiKey || sending.current || !models.length) return;
+    if (!input.trim() || !apiKey || sending.current || !modelsReady) return;
     sending.current = true;
 
     const userMessage: Message = { role: 'user', content: input.trim() };
@@ -242,6 +260,7 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
 
   return (
     <div class="space-y-4">
+      {handoffNotice && <p role="status" class="rounded-lg border border-neon-green/30 bg-neon-green/5 p-4 text-sm leading-relaxed text-text-primary">{handoffNotice}</p>}
       {/* API Key */}
       <div class="bg-surface border border-surface-light rounded-lg p-4 space-y-3">
         <label for="openrouter-key" class="block font-mono text-xs text-text-muted uppercase tracking-wider">OpenRouter API key</label>
@@ -399,6 +418,7 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
                 onChange={(e) => updatePane(pane.id, { model: (e.target as HTMLSelectElement).value, messages: [], messageCosts: {}, error: '' })}
                 class="bg-void border border-surface-light rounded px-2 py-1 font-mono text-xs text-text-primary focus:outline-none flex-1 min-w-0"
               >
+                {!pane.model && <option value="">Choose a model</option>}
                 {models.map((m) => (
                   <option value={m.id}>
                     {m.name} ({m.provider})
@@ -455,14 +475,14 @@ export default function ChatPlayground({ models }: { models: ModelInfo[] }) {
           value={input}
           onInput={(e) => setInput((e.target as HTMLTextAreaElement).value)}
           onKeyDown={handleKeyDown}
-          placeholder={apiKey ? 'Type a message... (Enter to send, Shift+Enter for newline)' : 'Enter your OpenRouter API key above to start'}
-          disabled={!apiKey || busy}
+          placeholder="Draft your message here. Add an OpenRouter key when you want to send."
+          disabled={busy}
           class="min-w-0 flex-1 bg-surface border border-surface-light rounded-lg px-4 py-3 font-mono text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-green/50 resize-none disabled:opacity-50"
           rows={2}
         />
         <button
           onClick={sendMessage}
-          disabled={!apiKey || !input.trim() || busy}
+          disabled={!apiKey || !input.trim() || busy || !modelsReady}
           class="px-6 py-3 rounded-lg font-mono text-sm bg-neon-green/20 border border-neon-green text-neon-green hover:bg-neon-green/30 transition-all disabled:opacity-30 disabled:cursor-not-allowed self-end"
         >
           send
