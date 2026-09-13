@@ -604,3 +604,12 @@ Pause retained all five counter values while another future was selected. Resume
 The final refinement makes expanded history controls say Close, labels the clock windows as editorial beside the counters and removes a build-time review decision from the static method text. That last change prevents an old summary from contradicting newer evidence fetched by an already-open page. Current decisions remain in each future’s live assessment and preserved history. The agent measure now compares results per 100 cases, giving the tenfold design question a consistent baseline.
 
 Horizon validation, all eighteen focused date/history/bookmark tests, the production build and the complete 634-page publication audit pass after these refinements. Hosted checks remain required before the final merge. The already-open agent/optimistic view is retained for the final publication-refresh check. The reviewed dates and evidence are unchanged. Desktop rendering and keyboard interactions were checked, while responsive CSS inspection is not presented as a mobile device test. The recurring loop remains disabled.
+
+
+## 13 September 2026, published-update verification and the last layout fix
+
+PR #223 passed hosted validation in run 34783011652 and merged as fe8966567b88278985a888dab71fbf54c65102f8. Pages run 34783068673 deployed successfully at 21:12 UTC. The agent/optimistic page left open from the earlier release still showed its old success measure. Its Check for a new review action fetched the new measure per 100 cases, announced the published data update and preserved both Agents at work and Optimistic. The page was not reloaded. This verifies delivery of a published briefing update, while date-movement and rollback cases remain covered by the regression fixtures. No date revision was invented for this check.
+
+The reloaded page showed Close for its expanded September history entry and the corrected static method explanation. The final CEO briefing screenshot exposed a layout defect: the flex row could shrink the decorative 90 until its digits wrapped vertically. The final CSS prevents that numeral from shrinking or wrapping and allows the adjacent briefing column to wrap normally. The browser did not expose a mobile viewport, so narrow breakpoints remain a CSS review rather than a device test.
+
+The checkpoint records the verified clock releases and clears active work for handover. The recurring loop remains disabled. The final layout change still goes through the normal production build, publication audit and hosted checks before release.
