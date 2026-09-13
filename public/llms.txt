@@ -19,7 +19,8 @@
 
 Publication, correction and source-check dates have different meanings. A new site build does not make an old report current. Pipeline records do not establish live server health.
 
-- [Horizon Map](https://softcat.ai/horizon)
+- [Horizon: five possible AI futures](https://softcat.ai/horizon)
+- [Horizon evidence and history](https://softcat.ai/horizon/record)
 - [Horizon evidence review](https://softcat.ai/horizon/review)
 - [Pipeline records and known limits](https://softcat.ai/pipeline)
 - [Thoughts and visible corrections](https://softcat.ai/thoughts)

@@ -26,7 +26,7 @@ const original = new Map(review.original_forecasts.map(item => [item.id, item]))
       <div class="section-label"><h2 id="revised-title">Kept, with revisions</h2><span>The April clocks have not been restarted.</span></div>
       {active.map(entry => <details class="record" id={entry.data.id}>
         <summary><span>{entry.data.title}</span><small>{original.get(entry.data.id)?.confidence} → {entry.data.confidence}</small></summary>
-        <div class="record-body"><p class="label">Original claim · 11 April 2026</p><blockquote>{original.get(entry.data.id)?.why_it_matters}</blockquote><p class="label">Review · 12 September 2026</p><p>{entry.data.review_note}</p><a href={`/horizon#${entry.data.id}`}>Current claim, sources and resolution test ↗</a></div>
+        <div class="record-body"><p class="label">Original claim · 11 April 2026</p><blockquote>{original.get(entry.data.id)?.why_it_matters}</blockquote><p class="label">Review · 12 September 2026</p><p>{entry.data.review_note}</p><a href={`/horizon/record#${entry.data.id}`}>Current claim, sources and resolution test ↗</a></div>
       </details>)}
     </section>
     <section aria-labelledby="withdrawn-title">

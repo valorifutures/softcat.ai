@@ -19,6 +19,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { retiredThoughtReferenceError } from '../src/lib/editorial-retirements.mjs';
+import { validateOutlookReview } from '../src/lib/horizon-explorer.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -56,6 +57,7 @@ const next = readJson(join(HORIZON_DIR, 'next.json'));
 const retired = readJson(join(HORIZON_DIR, 'retired-forecasts.json'));
 const debates = readJson(join(HORIZON_DIR, 'debates.json'));
 const scenarios = readJson(join(HORIZON_DIR, 'scenarios.json'));
+errors.push(...validateOutlookReview(readJson(join(HORIZON_DIR, 'outlook-review.json')), scenarios));
 
 const radarRefs = listBasenames(RADAR_DIR, '.json');
 const thoughtRefs = listBasenames(THOUGHTS_DIR, '.md');
@@ -168,10 +170,8 @@ for (const s of scenarios) {
   }
 }
 
-// Five Horizons additions (2026-04-22).
-// Banded-axis boundaries are duplicated from src/lib/horizon-axis.ts because
-// this .mjs validator cannot import TypeScript. Keep in sync when the chart
-// thresholds change.
+// Retain validation of the April 2026 representative years and bands.
+// The current explorer plots timeframe wording, not these historical points.
 const BAND_NEAR_MAX_DELTA = 4;   // 0-4 years out of currentYear
 const BAND_MID_MAX_DELTA = 9;    // 5-9 years out
 const BAND_FAR_MAX_DELTA = 19;   // 10-19 years out; 20+ is indefinite
