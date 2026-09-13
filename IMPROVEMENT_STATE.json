@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T20:05:08.810475Z",
-  "phase": "horizon-handover-ready",
+  "updated_at": "2026-09-13T20:10:34.915374Z",
+  "phase": "horizon-release-handover",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "633c8f2027f4dcee0d9cca8c5f61d7d01b107b7a",
-    "at": "2026-09-13T19:57:28Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34779219315"
+    "sha": "acb645af72bae1079b0e760f3bc56a6513d8a0ad",
+    "at": "2026-09-13T20:08:02Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34779766500"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -33,7 +33,8 @@
     "PR #215 and PR #216 are merged and deployed. The new Tools directory was inspected live, showing eight tools, explicit OpenRouter data behaviour, three corrected guides and the 38-item retirement record. PR #216 passed fresh CI run 34746422029. Pages run 34746575258 succeeded. The earlier queued runs also completed successfully.",
     "PR #217 passed all hosted checks, merged and deployed. The live trace URL explains the removal with exact earlier source. The homepage links Context Budget. The live text export retains seven corrections, three tool reviews and twelve recipe targets/check sets. A genuinely missing URL returns HTTP 404 with the custom noindex recovery page. Keyboard Skip to content reaches the main region. Search opens with Enter, shows a clear zero-result state and finds the Context Budget tool and guide.",
     "PR #219 passed hosted checks, merged and deployed. The live homepage leads with Horizon. The map, sceptical wording, changing briefings and sources, all three AGI definitions, Enter/Space controls, shared bookmarks, browser Back, actual copy/paste and legacy route redirects were inspected. The live review found two wording/scope improvements and a search-entry priority adjustment, prepared in the final review branch.",
-    "The final review changes the assumption and counterevidence headings, makes the partial scope of pragmatic education visible beside its definition, and makes the main Horizon experience lead its own search results. The final production build, eleven focused regression cases and complete publication audit pass. This checkpoint travels with that final review PR."
+    "The final review changes the assumption and counterevidence headings, makes the partial scope of pragmatic education visible beside its definition, and makes the main Horizon experience lead its own search results. The final production build, eleven focused regression cases and complete publication audit pass. This checkpoint travels with that final review PR.",
+    "PR #220 passed all hosted checks and deployed. The live pragmatic education panel shows its partial scope and corrected counterevidence heading, and search offers Explore Horizon. A returning browser retained the earlier search index under its ten-minute cache policy even though an HTTP revalidation returned the new Horizon tag. The final cache fix requests revalidation when the page first loads its search index, retaining in-page reuse and abort/retry behaviour. Production build, search tests and publication audit pass."
   ],
   "next": [
     "Await maintainer feedback after the bounded Horizon release. The recurring loop remains disabled.",
