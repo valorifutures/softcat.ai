@@ -1,41 +1,36 @@
 ---
-title: "Prompt Optimisation"
-description: "Systematically improve an existing prompt: identify weaknesses, rewrite with fixes, add examples, and define evaluation criteria."
+title: "Shorten a prompt without losing a rule"
+description: "Compress repeated wording while preserving explicit constraints and showing how to check the revision."
 category: "prompt-engineering"
-tags: [prompt-engineering, llm, optimisation]
+tags: ["prompting","editing","evaluation"]
 prompt: |
-  I have a prompt I want to improve. Analyse it and produce an optimised version.
+  Shorten the prompt below without changing its task, required output or boundaries.
 
-  **Step 1: Diagnose**
-  - What is this prompt trying to achieve?
-  - Where is it ambiguous or underspecified?
-  - What context is missing that the model needs?
-  - Are there instructions that could be misread?
+  Return the revised prompt, then a compact requirement map showing where every original rule survives. Do not add new constraints or remove an abstention rule to save words. If rules conflict, identify the conflict instead of silently choosing one. Suggest two small test inputs that could expose a lost requirement. Do not promise that a shorter prompt will improve answer quality.
 
-  **Step 2: Rewrite**
-  Produce an improved version of the prompt. Apply:
-  - A clear task statement at the top
-  - Explicit output format and length expectations
-  - Any constraints or tone guidance the original implied but didn't state
-  - Removal of redundant or contradictory instructions
-
-  **Step 3: Add examples**
-  If few-shot examples would help, add one or two. Keep them short. Show the format, not just the content.
-
-  **Step 4: Evaluation criteria**
-  List three to five criteria for judging whether the improved prompt is working. These should be things you can check in the model's output, not vague quality signals.
-
-  **Step 5: Explain changes**
-  For each significant change, state: what you changed, why it was a problem in the original, and what the fix achieves.
-
-  Do not speculate about whether the prompt will work perfectly. Stick to what the text says and what it leaves out.
-
-  ```
-  [paste prompt here]
-  ```
+  Original prompt:
+  {{original}}
 draft: false
+recipe:
+  version: 1
+  reviewedAt: "2026-09-13"
+  previousRevision: "e59fc7636547de6973c200c9f844f4ddfd94c549"
+  when: "A working prompt repeats itself and you want a reviewable edit."
+  inputs:
+    original: "The complete prompt, including constraints and any abstention rule."
+  exampleValues:
+    original: |
+      Please summarise the supplied source. Make the answer exactly three bullet points. Please do not write an introduction or a conclusion. Use only the supplied source and do not add outside facts. If the source does not answer a requested point, write UNKNOWN for that point. Remember that the answer must contain exactly three bullets.
+  expected: |
+    Summarise the supplied source in exactly three bullets, with no introduction or conclusion. Use no outside facts. Write UNKNOWN for any requested point the source cannot answer.
+  checks:
+    - "Exactly three bullets, no surrounding prose and source-only answers remain required."
+    - "The UNKNOWN rule survives unchanged in meaning."
+    - "The requirement map identifies both duplicate and unique rules."
+  limits: "Compare revisions on the same task set. A lower estimated input cost is not evidence of better answers."
+  tool: "/lab/prompt-diff"
 ---
 
-Use this when a prompt is giving inconsistent results or the model keeps missing the point. Works better than tweaking by instinct.
+The worked example is a target to inspect, not a saved response from a model. Use the checks to judge an actual result.
 
-Paste your prompt, run the analysis, then decide which changes to keep. You don't have to accept every suggestion.
+This template was revised during the September prompt review. The [earlier text](https://github.com/valorifutures/softcat.ai/blob/e59fc7636547de6973c200c9f844f4ddfd94c549/src/content/prompts/prompt-optimisation.md) remains in Git history.

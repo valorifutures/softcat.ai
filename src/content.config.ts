@@ -58,6 +58,18 @@ const prompts = defineCollection({
     category: z.string(),
     prompt: z.string(),
     draft: z.boolean().default(false),
+    recipe: z.object({
+      version: z.literal(1),
+      reviewedAt: z.string(),
+      previousRevision: z.string(),
+      when: z.string(),
+      inputs: z.record(z.string()),
+      exampleValues: z.record(z.string()),
+      expected: z.string(),
+      checks: z.array(z.string()).min(2),
+      limits: z.string(),
+      tool: z.string().optional(),
+    }).optional(),
     ...pipelineMeta,
   }),
 });

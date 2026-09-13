@@ -3,7 +3,7 @@
 SOFT CAT content bot: Prompt Library
 
 Reads AI news feeds for inspiration on what developers need prompts for,
-generates 2 new copy-ready prompts, and commits them to the site repo.
+proposes two unpublished prompt drafts for editorial review.
 """
 
 import argparse
@@ -22,7 +22,7 @@ from dotenv import load_dotenv
 from anthropic import Anthropic
 
 from pipeline_log import log_run
-from prompt_output import normalise_frontmatter, split_prompt_response
+from prompt_drafts import prepare_prompt_drafts, assert_prompt_draft
 import git_safe
 
 # Paths
@@ -31,6 +31,7 @@ REPO_DIR = BOT_DIR.parent
 CONTENT_DIR = REPO_DIR / "src" / "content" / "prompts"
 HISTORY_FILE = BOT_DIR / "prompt_history.json"
 STYLE_GUIDE = REPO_DIR / "STYLE.md"
+RETIREMENTS_FILE = REPO_DIR / "src" / "data" / "prompt-retirements.json"
 
 FEEDS = [
     "https://www.marktechpost.com/feed/",
@@ -80,6 +81,8 @@ def get_existing_prompts() -> list[str]:
         cat_match = re.search(r'^category:\s*["\']?(.+?)["\']?\s*$', text, re.MULTILINE)
         if title_match:
             prompts.append(f"{title_match.group(1)} ({cat_match.group(1) if cat_match else 'unknown'})")
+    retired = json.loads(RETIREMENTS_FILE.read_text())
+    prompts.extend(f"{entry['title']} (retired, do not recreate)" for entry in retired["entries"])
     return prompts
 
 
@@ -93,7 +96,7 @@ def slugify(title: str) -> str:
 
 
 def generate_prompts(entries: list[dict], history: dict) -> list[str] | None:
-    """Use Claude to generate 2 new prompts for the library."""
+    """Propose two unpublished tasks for a later editorial review."""
     client = Anthropic()
     style_guide = STYLE_GUIDE.read_text()
 
@@ -108,58 +111,30 @@ def generate_prompts(entries: list[dict], history: dict) -> list[str] | None:
         for e in entries[:30]
     )
 
-    prompt = f"""You are creating copy-ready prompts for the SOFT CAT .ai Prompt Library. These are reusable prompt templates that developers can copy and paste into any AI model.
+    prompt = "\n\n".join([
+        "Propose exactly two small prompt tasks for editorial review at SOFT CAT .ai.",
+        "House style:\n" + style_guide,
+        "Current and retired templates. Do not recreate or lightly rename these:\n" + existing_text,
+        "Earlier generated titles:\n" + past_text,
+        "Feed material for topic inspiration only:\n" + feed_text,
+        """Return only a JSON array of exactly two objects. Each object must have
+these six fields and no others:
+- title: a short descriptive string
+- description: one sentence describing the proposed task
+- category: a lowercase-hyphenated string
+- tags: two to six lowercase-hyphenated strings
+- prompt: the complete reusable prompt, with named inputs such as {{source}}
+- notes: a short worked example, target result, checks and limitations for the reviewer
 
-## House style (follow this exactly):
-{style_guide}
-
-## Current prompts already in the library (do NOT duplicate these):
-{existing_text}
-
-## Previously generated prompts (do NOT repeat):
-{past_text}
-
-## Current AI news (use for inspiration on what developers need right now):
-{feed_text}
-
-## Your task:
-Generate EXACTLY 2 new prompts. Each must be a complete markdown file.
-
-Target categories that are NOT yet covered: testing, api-design, git-workflows, architecture, security, documentation, data-analysis, devops, prompt-engineering, agent-design, migration, monitoring, interviewing, accessibility.
-
-Pick categories that feel relevant to current AI trends in the news above.
-
-## Output format:
-Return EXACTLY 2 prompt files separated by the delimiter `---SPLIT---` on its own line.
-Each file must follow this exact format. Return raw Markdown without wrapping either file in code fences:
-
-```
----
-title: "Short Descriptive Title"
-description: "One sentence explaining what this prompt does."
-category: "lowercase-hyphenated-category"
-tags: [tag1, tag2, tag3]
-prompt: |
-  The actual prompt text here.
-  Use markdown formatting within the prompt.
-  Include placeholder text like [paste code here] where the user inserts their content.
-  Make the prompt specific and actionable.
-draft: false
----
-
-One short paragraph (2-3 sentences) explaining when and how to use this prompt. Keep it model-agnostic. Do not hardcode model versions or current pricing.
-```
-
-Rules:
-- Use British English ("optimising", "analyse", "colour")
-- Each prompt should be genuinely useful, not generic filler
-- The `prompt` field is the actual text users will copy. Make it detailed and structured.
-- The body after the frontmatter is a short usage note (2-3 sentences)
-- No em dashes
-- No corporate buzzwords ("leveraging", "robust", "comprehensive")
-- Prompts should be model-agnostic (work with any LLM)
-- Category must be lowercase and hyphenated
-- Tags must be lowercase and hyphenated"""
+These are unpublished proposals, not verified recipes. Do not include draft,
+recipe, reviewedAt, generated_by or any other publication metadata.
+Choose a bounded task with evidence the visitor can supply and a way to judge
+the answer. Distinguish a requested test from a test actually run. Do not
+promise validation, security, correctness, model compatibility or measured
+savings. Do not invent a score, benchmark, percentage or executed result.
+No broad all-purpose validator frameworks. No raw HTML in the notes.
+Use British English. Do not wrap the JSON in Markdown fences.""",
+    ])
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
@@ -171,7 +146,7 @@ Rules:
 
     if response.stop_reason == "max_tokens":
         raise ValueError("Prompt generation was truncated. Refusing to publish.")
-    return split_prompt_response(response.content[0].text)
+    return prepare_prompt_drafts(response.content[0].text)
 
 
 def extract_title(content: str) -> str:
@@ -186,51 +161,58 @@ def extract_category(content: str) -> str:
     return match.group(1) if match else "general"
 
 
-def save_and_push(prompts: list[str], history: dict, *, push: bool = True):
-    """Save prompts, update history, commit and optionally push."""
-    files_created = []
-
-    # Reject the whole batch before writing if any file has a broken wrapper.
-    prompts = [normalise_frontmatter(content) for content in prompts]
-    additions = []
-    for content in prompts:
-        title = extract_title(content)
-        category = extract_category(content)
+def save_and_push(prompts: list[str], history: dict, *, push: bool = True, run_details: dict | None = None):
+    """Validate the entire unpublished batch before writing any proposal."""
+    metadata = [assert_prompt_draft(content) for content in prompts]
+    retired = json.loads(RETIREMENTS_FILE.read_text())["entries"]
+    retired_ids = {entry["id"] for entry in retired}
+    retired_titles = {entry["title"].casefold() for entry in retired}
+    paths, titles, planned = set(), set(), []
+    for content, data in zip(prompts, metadata):
+        title, category = data["title"], data["category"]
         slug = slugify(title)
         filename = f"{slug}.md"
+        path = CONTENT_DIR / filename
+        if not slug or slug in retired_ids or title.casefold() in retired_titles:
+            raise ValueError("A retired prompt cannot be recreated by the draft writer")
+        if path.exists() or filename in paths or title.casefold() in titles:
+            raise ValueError("Prompt proposal duplicates an existing path or batch title")
+        paths.add(filename)
+        titles.add(title.casefold())
+        planned.append((content, path, title, category))
 
-        # Avoid overwriting existing files
-        output_path = CONTENT_DIR / filename
-        suffix = 2
-        while output_path.exists():
-            filename = f"{slug}-{suffix}.md"
-            output_path = CONTENT_DIR / filename
-            suffix += 1
-
-        output_path.write_text(content + "\n")
-        print(f"Written: {output_path}")
-        files_created.append(f"src/content/prompts/{filename}")
-
-        additions.append({
-            "date": datetime.now().strftime("%Y-%m-%d"),
-            "file": filename,
-            "title": title,
-            "category": category,
-        })
-
-    # Validate actual YAML with Astro's parser before touching history or git.
+    files_created, additions = [], []
     try:
+        for content, output_path, title, category in planned:
+            with output_path.open("x", encoding="utf-8") as output_file:
+                # Own the path only after exclusive creation succeeds. A write
+                # failure must remove our partial file, never a competing file.
+                files_created.append(f"src/content/prompts/{output_path.name}")
+                output_file.write(content + "\n")
+            print(f"Draft written: {output_path}")
+            additions.append({
+                "date": datetime.now().strftime("%Y-%m-%d"),
+                "file": output_path.name,
+                "title": title,
+                "category": category,
+                "status": "draft",
+            })
+
+        # Validate actual YAML with Astro's parser before history or git.
         subprocess.run(["node", "scripts/validate-content.mjs"], cwd=REPO_DIR, check=True)
     except (subprocess.CalledProcessError, OSError):
         for filename in files_created:
             (REPO_DIR / filename).unlink(missing_ok=True)
         raise
+    if run_details is not None:
+        log_run("prompt_bot", status="success", items_published=0,
+                items_drafted=len(files_created), output_files=files_created, **run_details)
     history.setdefault("prompts", []).extend(additions)
     save_history(history)
 
     # Commit and push (serialized + health-checked via git_safe)
     git_add = files_created + ["bot/prompt_history.json", "src/data/pipeline/runs.json"]
-    msg = f"bot: add {len(prompts)} prompt(s) to library"
+    msg = f"bot: propose {len(prompts)} unpublished prompt draft(s)"
     git_safe.safe_commit_and_push(git_add, msg, push=push)
 
 
@@ -289,16 +271,15 @@ def main():
             cost = (usage.input_tokens * 3 + usage.output_tokens * 15) / 1_000_000
             in_tok, out_tok = usage.input_tokens, usage.output_tokens
 
-        # Log BEFORE commit so the runs.json entry lands in the same commit
-        # as this bot's data changes, not the next bot's commit (issue #97).
-        log_run("prompt_bot", status="success", duration_s=_time.time() - t0,
-                feeds_scanned=len(FEEDS), items_found=len(entries),
-                items_published=len(prompts),
-                model="claude-sonnet-4-6", cost_usd=cost,
-                input_tokens=in_tok, output_tokens=out_tok)
+        # The writer logs only after all draft files pass validation, before
+        # the same atomic commit. No generated proposal counts as published.
+        run_details = dict(duration_s=_time.time() - t0,
+                           feeds_scanned=len(FEEDS), items_found=len(entries),
+                           model="claude-sonnet-4-6", cost_usd=cost,
+                           input_tokens=in_tok, output_tokens=out_tok)
 
         print(f"Generated {len(prompts)} prompt(s). Saving...")
-        save_and_push(prompts, history, push=not args.no_push)
+        save_and_push(prompts, history, push=not args.no_push, run_details=run_details)
 
         print("Done.")
         ping_healthcheck()

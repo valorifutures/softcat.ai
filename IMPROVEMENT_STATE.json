@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T02:59:10.556343+00:00",
-  "phase": "token-cost-transcripts",
-  "active_branch": "codex/token-cost-transcripts",
+  "updated_at": "2026-09-13T03:41:36.653Z",
+  "phase": "prompt-recipes",
+  "active_branch": "codex/prompt-recipes",
   "last_verified_deployment": {
-    "sha": "a15e2cec4e244f68de7c61f637bce1d5d24d15cc",
-    "at": "2026-09-13T02:49:02Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34733943861"
+    "sha": "e59fc7636547de6973c200c9f844f4ddfd94c549",
+    "at": "2026-09-13T03:05:03Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34734576478"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -15,7 +15,7 @@
     "PR #197 merged and deployed. Live model search confirms unlisted pricing for Laguna and paid OpenRouter rates for Qwen 2.5. All model data now carries per-entry source/check metadata.",
     "PR #198 merged and deployed. Live conversation estimates include repeated history. Streaming fixtures pass at every byte boundary. No paid chat call made.",
     "PR #199 merged and deployed. The new Feral gallery was visually checked. The generation, validation and publishing jobs are separate, with fresh-verdict regression coverage. A paid council run remains unverified.",
-    "PR #200 merged and deployed. Live review shows seven active, eight withdrawn and 39 archived records. The Memory forecast withdrawal expands correctly with the original claim. PRs #186\u2013193 were each closed with specific review reasons.",
+    "PR #200 merged and deployed. Live review shows seven active, eight withdrawn and 39 archived records. The Memory forecast withdrawal expands correctly with the original claim. PRs #186–193 were each closed with specific review reasons.",
     "PR #201 merged and deployed. Live search finds the agent tool first, ArrowDown selects the next result, and the Close control restores focus to the opener. Draft publication fixtures and all indexed routes passed checks.",
     "PR #202 merged and deployed. The live comparison finds exact model IDs, calculates ten Sonnet calls at $0.105 and keeps unlisted Laguna pricing unknown even with zero calls. CSV export confirms its source/assumption record. Search native Escape restores opener focus.",
     "PR #203 merged and deployed. The live JSON checker reports three deliberate classification failures, clears the result on edits, accepts the matching example and reports invoice date/quantity/price failures. A pathological pattern was stopped after 2.5 seconds and the page remained usable.",
@@ -27,12 +27,13 @@
     "PR #209 merged and deployed. Live Prompt Diff shows a negative cost change for the shorter example, clears an old result on edits, preserves large inputs in explicitly labelled blocks and fills the two saved QA versions correctly. Copy report succeeded. Both QA versions were then deleted through their individual controls, leaving the previously empty library empty again.",
     "PR #210 merged and deployed. Live primary-button hover retains dark rgb(38, 53, 28) text on the light rgb(220, 247, 181) background. The comparison remains usable.",
     "PR #211 merged and deployed. The public removal record shows 114 automated essays and three early opinions. Its May group expands and links the 14 May retirement notice to the exact original Git source. The launch article retains 13 March and shows its separate 13 September correction. The restored concept tag lists 18 glossary terms. Site search finds the removal record for removed articles.",
-    "PR #212 merged and deployed. The live planner shows a 274,000-token code budget exceeding Sonnet context by 74,000, and an 85,000-token request whose 70,000-token reply exceeds the separate 64,000 cap. Copy succeeded, zero-count Laguna stays unknown, GPT-4.1 shows exactly 1,047,576 context tokens, and negative input produces an error. Model Comparison rejects a 64,001-token Sonnet reply. Desktop layout and hover text were inspected."
+    "PR #212 merged and deployed. The live planner shows a 274,000-token code budget exceeding Sonnet context by 74,000, and an 85,000-token request whose 70,000-token reply exceeds the separate 64,000 cap. Copy succeeded, zero-count Laguna stays unknown, GPT-4.1 shows exactly 1,047,576 context tokens, and negative input produces an error. Model Comparison rejects a 64,001-token Sonnet reply. Desktop layout and hover text were inspected.",
+    "PR #213 merged and deployed. The live text calculator rejects an unlabelled prelude and unsupported JSON fields. The growing example has 127 repeated-history input tokens, 40 output tokens and an estimated USD 0.000981 total, with the last call labelled input-only. Copy succeeded. JSON preserves literal role labels and an unclosed fence inside a message. An empty single-request output is also labelled input-only. No model request was made."
   ],
   "next": [
-    "Publish and inspect the text-cost calculator, including rejected transcripts, system history, JSON messages, missing replies and exports.",
-    "Curate the 84-entry prompt collection. The inventory contains overlapping bot validators and numerical score prompts with unsupported claims of objective validation. Read and assess useful recipes before retaining or replacing them.",
-    "The separate systemd host remains unverified. Price migration does not restart those other bots.",
+    "Publish and inspect the twelve worked prompt recipes and 72 retirement notices, including recipe filters, template/example copying and the unsaved Workbench handoff.",
+    "Continue reviewing remaining high-value journeys and content. Prefer a reproducible improvement over adding another unmeasured claim.",
+    "The separate systemd host remains unverified. Price migration and draft-writer source changes do not restart those other bots.",
     "Leave a clean checkpoint before the 06:00 UTC overnight deadline."
   ],
   "constraints": [

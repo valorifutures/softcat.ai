@@ -73,8 +73,8 @@
   },
   {
     "id": "prompt_bot",
-    "name": "Prompt Library",
-    "description": "Generates 2 new copy-ready prompt templates per run, inspired by current AI trends.",
+    "name": "Prompt proposals",
+    "description": "Proposes two unpublished prompt drafts for editorial review. There is no automatic promotion to a published recipe.",
     "script": "bot/prompt_library_bot.py",
     "schedule": "Wednesday at 09:00 Europe/London",
     "schedule_cron": "0 9 * * 3",

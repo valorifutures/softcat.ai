@@ -1,39 +1,31 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PromptFilter from '../../components/PromptFilter.tsx';
+import PromptFilter from '../../components/PromptFilter';
 import { getCollection } from 'astro:content';
-
-const entries = (await getCollection('prompts'))
-  .filter((e) => !e.data.draft)
+import retirements from '../../data/prompt-retirements.json';
+import '../../styles/prompt-recipes.css';
+const entries = (await getCollection('prompts')).filter(entry => !entry.data.draft)
   .sort((a, b) => a.data.title.localeCompare(b.data.title));
-
-const prompts = entries.map((e) => ({
-  id: e.id,
-  title: e.data.title,
-  description: e.data.description,
-  category: e.data.category,
-  tags: e.data.tags,
-}));
+const prompts = entries.map(entry => ({ id: entry.id, title: entry.data.title, description: entry.data.description, category: entry.data.category, tags: entry.data.tags }));
 ---
-
-<BaseLayout title="Prompt Library" description="Copy-ready prompts for common developer tasks. Code review, debugging, refactoring, summarisation, and more.">
-  <div class="max-w-4xl mx-auto px-6 py-16">
-    <header class="mb-8">
-      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-amber">Prompt Library</h1>
-      <p class="text-text-muted mt-2">Copy-ready prompts for common developer tasks.</p>
-    </header>
-    <div class="section-banner mb-6" style="height: 180px; --banner-accent: rgba(212, 165, 74, 0.12); --banner-accent-mid: rgba(212, 165, 74, 0.04)" aria-hidden="true"></div>
-    <div class="glow-divider mb-10" style="--divider-color: rgba(212, 165, 74, 0.15)"></div>
-
-    {entries.length === 0 ? (
-      <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
-        <p class="font-mono text-sm text-text-muted">
-          <span class="text-neon-amber">&#9679;</span> awaiting first transmission...
-        </p>
-      </div>
-    ) : (
-      <PromptFilter client:load prompts={prompts} />
-    )}
+<BaseLayout title="Prompt recipes" description="A small collection of prompts with defined inputs, worked examples and explicit checks. Inspect the template, edit an example and judge the result.">
+  <div class="recipe-index workshop-shell">
+    <header><a href="/tools" class="text-link">← Tools</a><p class="eyebrow">SMALL TASKS. VISIBLE CHECKS.</p><h1>Give the prompt<br /><em>a job you can check.</em></h1><p>{entries.length} revised recipes with sample inputs, target results and explicit checks. Start with an example, adapt the template and inspect the answer.</p></header>
+    <aside class="recipe-review-link"><span>THE COLLECTION GOT SMALLER</span><p>We retired {retirements.entries.length} earlier templates, including overlapping validators and unsupported scoring promises. Their original URLs now link to preserved source history.</p><a href="/prompts/review">Read the collection review ↗</a></aside>
+    <PromptFilter prompts={prompts} client:load />
+    <p class="recipe-index-note">These are starting points, not guarantees of model behaviour. A worked example is a target to inspect, not a claim that a model produced it. Specific code or arithmetic checks are labelled where they were performed.</p>
   </div>
 </BaseLayout>
+<style>
+  .recipe-index { max-width: 1040px; padding-block: 3.5rem 5rem; }
+  header { max-width: 800px; margin-bottom: 2rem; }
+  header > .eyebrow { margin-top: 2rem; }
+  h1 { font: 600 clamp(2.6rem, 6vw, 4rem)/1.15 var(--font-sans); color: #eeeee5; letter-spacing: -.05em; margin-block: 1rem 1.5rem; }
+  h1 em { color: var(--workshop-lime); font-style: normal; }
+  header > p:not(.eyebrow) { font-size: 1rem; color: #bdc7b1; line-height: 1.9; }
+  .recipe-review-link { padding: 1.2rem 1.4rem; background: #1a2214; border: 1px solid #3c4b30; border-radius: .3rem; margin-bottom: 2rem; }
+  .recipe-review-link > span { font: .62rem/1.8 var(--font-mono); color: #c4d7af; letter-spacing: .06em; }
+  .recipe-review-link p { font-size: .78rem; line-height: 1.9; color: #b8c5aa; margin-block: .6rem; }
+  .recipe-review-link a { display: inline-flex; align-items: center; min-height: 44px; color: #cce3b0; font-size: .78rem; }
+  .recipe-index-note { border-top: 1px solid #33422a; padding-top: 1.5rem; color: #aebba1; font-size: .77rem; line-height: 1.9; margin-top: 2rem; max-width: 80ch; }
+</style>

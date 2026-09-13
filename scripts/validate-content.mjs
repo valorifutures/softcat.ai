@@ -5,6 +5,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateEditorialRetirements } from '../src/lib/editorial-retirements.mjs';
+import { recipeErrors, promptRetirementErrors } from '../src/lib/prompt-recipes.mjs';
 
 const require = createRequire(import.meta.resolve('astro/package.json'));
 const yaml = require('js-yaml');
@@ -32,6 +33,7 @@ function visit(dir) {
           if (typeof data[key] !== 'string' || !data[key].trim()) throw new Error(`${key} is required`);
         }
         if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(data.category)) throw new Error('category must be lowercase and hyphenated');
+        for (const error of recipeErrors(data)) errors.push(`${label}: ${error}`);
       }
       if (data.tags !== undefined && (!Array.isArray(data.tags) || data.tags.some(t => typeof t !== 'string'))) throw new Error('tags must be an array of strings');
       if (data.draft !== undefined && typeof data.draft !== 'boolean') throw new Error('draft must be a boolean');
@@ -44,6 +46,9 @@ visit(base);
 const editorialReview = JSON.parse(readFileSync(join(root, 'src/data/editorial-retirements.json'), 'utf8'));
 const thoughtIds = new Set(readdirSync(join(base, 'thoughts')).filter(name => name.endsWith('.md')).map(name => name.slice(0, -3)));
 errors.push(...validateEditorialRetirements(editorialReview, thoughtIds));
+const promptReview = JSON.parse(readFileSync(join(root, 'src/data/prompt-retirements.json'), 'utf8'));
+const promptIds = new Set(readdirSync(join(base, 'prompts')).filter(name => name.endsWith('.md')).map(name => name.slice(0, -3)));
+errors.push(...promptRetirementErrors(promptReview, promptIds));
 for (const error of errors) console.error(`ERROR ${error}`);
 console.log(`validate-content: ${count} Markdown files, ${errors.length} error(s)`);
 process.exitCode = errors.length ? 1 : 0;
