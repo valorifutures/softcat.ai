@@ -1,0 +1,680 @@
+{
+  "checkedAt": "2026-09-13T00:54:46.239Z",
+  "source": "https://openrouter.ai/api/v1/models",
+  "sourceSha256": "b19e5593f217a2f4c86a8aa2a230cb0b2bb70d37369fdcb9d23880de872b9c4d",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/34729167469",
+  "maxAutoDelta": 0.5,
+  "catalogueModels": 445,
+  "trackedModels": 39,
+  "matched": 37,
+  "verified": 37,
+  "notListed": 2,
+  "reviewNeeded": 0,
+  "unverified": 0,
+  "priceChanges": 0,
+  "checks": [
+    {
+      "id": "qwen/qwen-2.5-72b-instruct",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.36,
+        "outputPrice": 0.4
+      },
+      "quoted": {
+        "inputPrice": 0.36,
+        "outputPrice": 0.4
+      },
+      "applied": {
+        "inputPrice": 0.36,
+        "outputPrice": 0.4
+      },
+      "issues": []
+    },
+    {
+      "id": "qwen/qwen3.6-27b",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.3,
+        "outputPrice": 2
+      },
+      "quoted": {
+        "inputPrice": 0.3,
+        "outputPrice": 2
+      },
+      "applied": {
+        "inputPrice": 0.3,
+        "outputPrice": 2
+      },
+      "issues": []
+    },
+    {
+      "id": "qwen/qwen3.6-35b-a3b",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.1,
+        "outputPrice": 0.9
+      },
+      "quoted": {
+        "inputPrice": 0.1,
+        "outputPrice": 0.9
+      },
+      "applied": {
+        "inputPrice": 0.1,
+        "outputPrice": 0.9
+      },
+      "issues": []
+    },
+    {
+      "id": "anthropic/claude-fable-5",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 10,
+        "outputPrice": 50
+      },
+      "quoted": {
+        "inputPrice": 10,
+        "outputPrice": 50
+      },
+      "applied": {
+        "inputPrice": 10,
+        "outputPrice": 50
+      },
+      "issues": []
+    },
+    {
+      "id": "anthropic/claude-haiku-4.5",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 1,
+        "outputPrice": 5
+      },
+      "quoted": {
+        "inputPrice": 1,
+        "outputPrice": 5
+      },
+      "applied": {
+        "inputPrice": 1,
+        "outputPrice": 5
+      },
+      "issues": []
+    },
+    {
+      "id": "anthropic/claude-opus-4",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 15,
+        "outputPrice": 75
+      },
+      "quoted": {
+        "inputPrice": 15,
+        "outputPrice": 75
+      },
+      "applied": {
+        "inputPrice": 15,
+        "outputPrice": 75
+      },
+      "issues": []
+    },
+    {
+      "id": "anthropic/claude-opus-4.7",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 5,
+        "outputPrice": 25
+      },
+      "quoted": {
+        "inputPrice": 5,
+        "outputPrice": 25
+      },
+      "applied": {
+        "inputPrice": 5,
+        "outputPrice": 25
+      },
+      "issues": []
+    },
+    {
+      "id": "anthropic/claude-sonnet-4",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 3,
+        "outputPrice": 15
+      },
+      "quoted": {
+        "inputPrice": 3,
+        "outputPrice": 15
+      },
+      "applied": {
+        "inputPrice": 3,
+        "outputPrice": 15
+      },
+      "issues": []
+    },
+    {
+      "id": "arcee-ai/trinity-large-thinking",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.25,
+        "outputPrice": 0.8
+      },
+      "quoted": {
+        "inputPrice": 0.25,
+        "outputPrice": 0.8
+      },
+      "applied": {
+        "inputPrice": 0.25,
+        "outputPrice": 0.8
+      },
+      "issues": []
+    },
+    {
+      "id": "deepseek/deepseek-r1",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.7,
+        "outputPrice": 2.5
+      },
+      "quoted": {
+        "inputPrice": 0.7,
+        "outputPrice": 2.5
+      },
+      "applied": {
+        "inputPrice": 0.7,
+        "outputPrice": 2.5
+      },
+      "issues": []
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3-0324",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.25,
+        "outputPrice": 1
+      },
+      "quoted": {
+        "inputPrice": 0.25,
+        "outputPrice": 1
+      },
+      "applied": {
+        "inputPrice": 0.25,
+        "outputPrice": 1
+      },
+      "issues": []
+    },
+    {
+      "id": "google/gemini-2.0-flash-001",
+      "status": "not-listed",
+      "previous": {
+        "inputPrice": null,
+        "outputPrice": null
+      },
+      "quoted": {
+        "inputPrice": null,
+        "outputPrice": null
+      },
+      "applied": {
+        "inputPrice": null,
+        "outputPrice": null
+      },
+      "issues": []
+    },
+    {
+      "id": "google/gemini-2.5-flash",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.3,
+        "outputPrice": 2.5
+      },
+      "quoted": {
+        "inputPrice": 0.3,
+        "outputPrice": 2.5
+      },
+      "applied": {
+        "inputPrice": 0.3,
+        "outputPrice": 2.5
+      },
+      "issues": []
+    },
+    {
+      "id": "google/gemini-2.5-pro-preview",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 1.25,
+        "outputPrice": 10
+      },
+      "quoted": {
+        "inputPrice": 1.25,
+        "outputPrice": 10
+      },
+      "applied": {
+        "inputPrice": 1.25,
+        "outputPrice": 10
+      },
+      "issues": []
+    },
+    {
+      "id": "google/gemini-3.5-flash",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 1.5,
+        "outputPrice": 9
+      },
+      "quoted": {
+        "inputPrice": 1.5,
+        "outputPrice": 9
+      },
+      "applied": {
+        "inputPrice": 1.5,
+        "outputPrice": 9
+      },
+      "issues": []
+    },
+    {
+      "id": "meta-llama/llama-4-maverick",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.2,
+        "outputPrice": 0.696
+      },
+      "quoted": {
+        "inputPrice": 0.2,
+        "outputPrice": 0.696
+      },
+      "applied": {
+        "inputPrice": 0.2,
+        "outputPrice": 0.696
+      },
+      "issues": []
+    },
+    {
+      "id": "meta-llama/llama-4-scout",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.1,
+        "outputPrice": 0.3
+      },
+      "quoted": {
+        "inputPrice": 0.1,
+        "outputPrice": 0.3
+      },
+      "applied": {
+        "inputPrice": 0.1,
+        "outputPrice": 0.3
+      },
+      "issues": []
+    },
+    {
+      "id": "minimax/minimax-m2",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.255,
+        "outputPrice": 1.02
+      },
+      "quoted": {
+        "inputPrice": 0.255,
+        "outputPrice": 1.02
+      },
+      "applied": {
+        "inputPrice": 0.255,
+        "outputPrice": 1.02
+      },
+      "issues": []
+    },
+    {
+      "id": "minimax/minimax-m2.7",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.3,
+        "outputPrice": 1.2
+      },
+      "quoted": {
+        "inputPrice": 0.3,
+        "outputPrice": 1.2
+      },
+      "applied": {
+        "inputPrice": 0.3,
+        "outputPrice": 1.2
+      },
+      "issues": []
+    },
+    {
+      "id": "mistralai/mistral-large-2512",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.5,
+        "outputPrice": 1.5
+      },
+      "quoted": {
+        "inputPrice": 0.5,
+        "outputPrice": 1.5
+      },
+      "applied": {
+        "inputPrice": 0.5,
+        "outputPrice": 1.5
+      },
+      "issues": []
+    },
+    {
+      "id": "mistralai/mistral-small-3.1-24b-instruct",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.351,
+        "outputPrice": 0.555
+      },
+      "quoted": {
+        "inputPrice": 0.351,
+        "outputPrice": 0.555
+      },
+      "applied": {
+        "inputPrice": 0.351,
+        "outputPrice": 0.555
+      },
+      "issues": []
+    },
+    {
+      "id": "mistralai/mistral-small-2603",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.15,
+        "outputPrice": 0.6
+      },
+      "quoted": {
+        "inputPrice": 0.15,
+        "outputPrice": 0.6
+      },
+      "applied": {
+        "inputPrice": 0.15,
+        "outputPrice": 0.6
+      },
+      "issues": []
+    },
+    {
+      "id": "moonshotai/kimi-k2.6",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.95,
+        "outputPrice": 4
+      },
+      "quoted": {
+        "inputPrice": 0.95,
+        "outputPrice": 4
+      },
+      "applied": {
+        "inputPrice": 0.95,
+        "outputPrice": 4
+      },
+      "issues": []
+    },
+    {
+      "id": "moonshotai/kimi-k2",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.57,
+        "outputPrice": 2.3
+      },
+      "quoted": {
+        "inputPrice": 0.57,
+        "outputPrice": 2.3
+      },
+      "applied": {
+        "inputPrice": 0.57,
+        "outputPrice": 2.3
+      },
+      "issues": []
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.085,
+        "outputPrice": 0.4
+      },
+      "quoted": {
+        "inputPrice": 0.085,
+        "outputPrice": 0.4
+      },
+      "applied": {
+        "inputPrice": 0.085,
+        "outputPrice": 0.4
+      },
+      "issues": []
+    },
+    {
+      "id": "openai/gpt-4.1",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 2,
+        "outputPrice": 8
+      },
+      "quoted": {
+        "inputPrice": 2,
+        "outputPrice": 8
+      },
+      "applied": {
+        "inputPrice": 2,
+        "outputPrice": 8
+      },
+      "issues": []
+    },
+    {
+      "id": "openai/gpt-4o",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 2.5,
+        "outputPrice": 10
+      },
+      "quoted": {
+        "inputPrice": 2.5,
+        "outputPrice": 10
+      },
+      "applied": {
+        "inputPrice": 2.5,
+        "outputPrice": 10
+      },
+      "issues": []
+    },
+    {
+      "id": "openai/gpt-5",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 1.25,
+        "outputPrice": 10
+      },
+      "quoted": {
+        "inputPrice": 1.25,
+        "outputPrice": 10
+      },
+      "applied": {
+        "inputPrice": 1.25,
+        "outputPrice": 10
+      },
+      "issues": []
+    },
+    {
+      "id": "openai/gpt-5-mini",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.25,
+        "outputPrice": 2
+      },
+      "quoted": {
+        "inputPrice": 0.25,
+        "outputPrice": 2
+      },
+      "applied": {
+        "inputPrice": 0.25,
+        "outputPrice": 2
+      },
+      "issues": []
+    },
+    {
+      "id": "openai/gpt-5-nano",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.05,
+        "outputPrice": 0.4
+      },
+      "quoted": {
+        "inputPrice": 0.05,
+        "outputPrice": 0.4
+      },
+      "applied": {
+        "inputPrice": 0.05,
+        "outputPrice": 0.4
+      },
+      "issues": []
+    },
+    {
+      "id": "openai/gpt-5.4",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 2.5,
+        "outputPrice": 15
+      },
+      "quoted": {
+        "inputPrice": 2.5,
+        "outputPrice": 15
+      },
+      "applied": {
+        "inputPrice": 2.5,
+        "outputPrice": 15
+      },
+      "issues": []
+    },
+    {
+      "id": "openai/gpt-5.5",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 5,
+        "outputPrice": 30
+      },
+      "quoted": {
+        "inputPrice": 5,
+        "outputPrice": 30
+      },
+      "applied": {
+        "inputPrice": 5,
+        "outputPrice": 30
+      },
+      "issues": []
+    },
+    {
+      "id": "openai/gpt-5.5-pro",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 30,
+        "outputPrice": 180
+      },
+      "quoted": {
+        "inputPrice": 30,
+        "outputPrice": 180
+      },
+      "applied": {
+        "inputPrice": 30,
+        "outputPrice": 180
+      },
+      "issues": []
+    },
+    {
+      "id": "openai/o3",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 2,
+        "outputPrice": 8
+      },
+      "quoted": {
+        "inputPrice": 2,
+        "outputPrice": 8
+      },
+      "applied": {
+        "inputPrice": 2,
+        "outputPrice": 8
+      },
+      "issues": []
+    },
+    {
+      "id": "openai/o3-mini",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 1.1,
+        "outputPrice": 4.4
+      },
+      "quoted": {
+        "inputPrice": 1.1,
+        "outputPrice": 4.4
+      },
+      "applied": {
+        "inputPrice": 1.1,
+        "outputPrice": 4.4
+      },
+      "issues": []
+    },
+    {
+      "id": "poolside/laguna-xs.2",
+      "status": "not-listed",
+      "previous": {
+        "inputPrice": null,
+        "outputPrice": null
+      },
+      "quoted": {
+        "inputPrice": null,
+        "outputPrice": null
+      },
+      "applied": {
+        "inputPrice": null,
+        "outputPrice": null
+      },
+      "issues": []
+    },
+    {
+      "id": "z-ai/glm-5.1",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.966,
+        "outputPrice": 3.036
+      },
+      "quoted": {
+        "inputPrice": 0.966,
+        "outputPrice": 3.036
+      },
+      "applied": {
+        "inputPrice": 0.966,
+        "outputPrice": 3.036
+      },
+      "issues": []
+    },
+    {
+      "id": "z-ai/glm-5",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 0.6,
+        "outputPrice": 1.92
+      },
+      "quoted": {
+        "inputPrice": 0.6,
+        "outputPrice": 1.92
+      },
+      "applied": {
+        "inputPrice": 0.6,
+        "outputPrice": 1.92
+      },
+      "issues": []
+    },
+    {
+      "id": "x-ai/grok-4.3",
+      "status": "verified",
+      "previous": {
+        "inputPrice": 1.25,
+        "outputPrice": 2.5
+      },
+      "quoted": {
+        "inputPrice": 1.25,
+        "outputPrice": 2.5
+      },
+      "applied": {
+        "inputPrice": 1.25,
+        "outputPrice": 2.5
+      },
+      "issues": []
+    }
+  ]
+}
