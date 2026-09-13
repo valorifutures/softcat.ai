@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import review from '../../data/editorial-retirements.json';
+import { retirementSourceUrl } from '../../lib/editorial-retirements.mjs';
+const entries = review.entries;
+const automated = entries.filter(entry => entry.reason === 'unsourced-series').length;
+const months = [...new Set(entries.map(entry => entry.date.slice(0, 7)))];
+const fmt = (date: string) => new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const policyUrl = `https://github.com/valorifutures/softcat.ai/blob/${review.generatorPolicy.revision}/${review.generatorPolicy.path}`;
+---
+<BaseLayout title="The essay removal record" description="Why SOFT CAT removed an unsourced automated essay series, what was preserved and where to inspect the earlier text.">
+  <div class="workshop-shell editorial-review">
+    <header><a href="/thoughts" class="text-link">← Thoughts &amp; corrections</a><p class="eyebrow">THE EDITORIAL REVIEW / 13 SEPTEMBER 2026</p><h1>Publishing more<br /><em>was not making it better.</em></h1><p>We removed {entries.length} earlier essays from the site's reading collection. Their old URLs now explain the decision and link to the preserved source.</p></header>
+    <section class="review-decision" aria-labelledby="review-decision-heading"><div><p class="eyebrow">WHAT WE REMOVED</p><h2 id="review-decision-heading">{automated} automated essays.<br />{entries.length - automated} early opinions.</h2></div><div><p>The automated series was written from news feeds, but the <a href={policyUrl}>old generator instruction</a> explicitly said:</p><blockquote>“{review.generatorPolicy.quote}”</blockquote><p>All {automated} bot essays in this review had no external source links in their published text. Repeated “just changed everything” framing gave narrow developments a much larger meaning. Some pieces attached percentages to those conclusions without naming a model, task set or measurement.</p><p>The three early opinions had separate problems: unsupported model comparisons, untested prompting claims and reliability numbers without a recorded basis.</p></div></section>
+    <section class="review-explanation" aria-labelledby="review-kept-heading"><h2 id="review-kept-heading">Keep the history. Remove the claim from circulation.</h2><p>This is an editorial retirement, not a finding that every sentence was false. We no longer recommend these essays as explanations of the subjects they cover.</p><p>The complete earlier text remains at an exact Git revision. Original titles and publication dates are listed below. The old page addresses carry a retirement notice, and the essays no longer appear in site search, feeds, tags or related reading. Retirement notices are excluded from the sitemap and ask search engines not to index them.</p><p>The <a href="/thoughts">correction record</a> keeps pieces where a narrower, useful article could be recovered. The <a href="/thoughts/2026-02-25-what-is-softcat">launch article</a> remains as corrected project history. The <a href="/notebook">notebook</a> records documented work.</p><p>The thought writer now proposes sourced drafts for editorial review. A source link still needs checking. The separate server's current state is unverified, so this source change does not establish that its old job has restarted.</p></section>
+    <section class="review-list" aria-labelledby="retired-list-heading"><div class="review-list-heading"><h2 id="retired-list-heading">The removal record</h2><span>{entries.length} essays · original dates retained</span></div>{months.map(month => <details><summary><span>{new Date(`${month}-01`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })}</span><span>{entries.filter(entry => entry.date.startsWith(month)).length} essays</span></summary><div>{entries.filter(entry => entry.date.startsWith(month)).map(entry => <article><time datetime={entry.date}>{fmt(entry.date)}</time><div><h3><a href={`/thoughts/${entry.id}`}>{entry.title}</a></h3><p>{entry.reason === 'unsourced-series' ? 'Retired with the unsourced automated series.' : review.reasons[entry.reason as keyof typeof review.reasons]}</p><a class="review-source" href={retirementSourceUrl(entry)}>Preserved source ↗</a></div></article>)}</div></details>)}</section>
+    <p class="review-data"><a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/editorial-retirements.json">Inspect the machine-readable record, source revisions and blob hashes ↗</a></p>
+  </div>
+</BaseLayout>
+<style>
+  .editorial-review { max-width: 1000px; padding-block: 3.5rem 5rem; }
+  header { max-width: 800px; }
+  header > .eyebrow { margin-top: 2rem; }
+  h1 { font: 600 clamp(2.5rem, 6vw, 4rem)/1.14 var(--font-sans); letter-spacing: -0.05em; color: #eeeee5; margin-block: 1rem 1.5rem; }
+  h1 em { color: var(--workshop-lime); font-style: normal; }
+  header > p:not(.eyebrow) { color: #c1c8b8; font-size: 1.05rem; line-height: 1.85; }
+  h2 { color: #e6eadf; font-size: 1.45rem; font-weight: 500; letter-spacing: -0.035em; line-height: 1.45; }
+  .review-decision { display: grid; grid-template-columns: 1fr 1.7fr; gap: 3rem; margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid #363e2e; }
+  .review-decision p:not(.eyebrow), .review-explanation p { color: #afb9a4; font-size: 0.87rem; line-height: 1.9; margin-bottom: 1rem; }
+  .review-decision a, .review-explanation a, .review-data a { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 3px; }
+  blockquote { font-size: 1rem; line-height: 1.8; color: #dfe7d5; background: #1b2115; border-left: 2px solid #9eb080; padding: 1.1rem; margin-block: 1rem 1.4rem; }
+  .review-explanation { max-width: 790px; margin-top: 2.5rem; }
+  .review-explanation h2 { margin-bottom: 1.3rem; }
+  .review-list { margin-top: 3rem; }
+  .review-list-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; }
+  .review-list-heading > span, .review-list summary > span:last-child { color: #aebba0; font: 0.65rem/1.8 var(--font-mono); }
+  .review-list details { border-top: 1px solid #363e2e; }
+  .review-list details:last-child { border-bottom: 1px solid #363e2e; }
+  .review-list summary { padding-block: 1.2rem; color: #e0e7d7; font-size: 0.95rem; cursor: pointer; }
+  .review-list summary > span:first-child { margin-left: 0.5rem; }
+  .review-list summary > span:last-child { float: right; margin-top: 0.3rem; }
+  .review-list article { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 1rem; padding: 1.2rem 0; border-top: 1px solid #2b3225; }
+  .review-list time { font: 0.62rem/1.8 var(--font-mono); color: #a9b29e; }
+  .review-list h3 { font-size: 0.9rem; color: #dce3d2; line-height: 1.7; }
+  .review-list h3 a:hover { color: var(--workshop-lime); }
+  .review-list article p { font-size: 0.75rem; color: #aeb7a4; line-height: 1.8; margin-top: 0.45rem; }
+  .review-source { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.72rem; color: #c8d8b6; }
+  .review-data { font-size: 0.75rem; line-height: 1.9; margin-top: 2rem; }
+  @media (max-width: 650px) { .review-decision { grid-template-columns: 1fr; gap: 1.5rem; } .review-list article { grid-template-columns: 1fr; gap: 0.4rem; } }
+</style>

@@ -1,54 +1,37 @@
 ---
-title: "What SOFT CAT is and why we built it"
+title: "The original SOFT CAT pipeline"
 date: 2026-03-13
 tags: [softcat, agents, pipeline]
-summary: "softcat.ai builds and maintains itself via six AI bots. This is how."
+summary: "The launch design used six content jobs and a separate website publisher. This is the history of that setup and what the September repair changed."
 draft: false
-pinned: true
+pinned: false
+correction:
+  date: 2026-09-13
+  summary: "Reframed the launch article as project history. Removed claims that all six bots ran this morning, corrected the treatment of schedules and linked the current records. The separate server is not verified by a new website build."
 ---
 
-This morning, before anyone sat down at a keyboard, six bots ran on a home server in the UK. One pulled RSS feeds and wrote a news digest. Another read the same feeds and wrote an opinion piece. A third scanned for AI product launches and published editorial picks. The other three updated the model database, the prompt library, and the tool reviews.
+SOFT CAT began as a website built and fed with AI. Its early design separated content jobs on a home server from the GitHub Pages site that displayed their output. The site was both the thing being built and a public record of the machinery.
 
-You can see the results at [/pipeline](/pipeline).
+The [earlier version of this article](https://github.com/valorifutures/softcat.ai/blob/00dfedadb150522d12796a0760694b636a9b3d40/src/content/thoughts/2026-02-25-what-is-softcat.md) described that setup in the present tense. It said six bots had run “this morning”. That wording could keep making a claim long after the system changed or stopped, so this page now treats it as history.
 
-That is what SOFT CAT is.
+## Six small jobs
 
-## The name
+The original design gave each job a narrow role. A news writer summarised feed items. A thought writer produced an opinion. Radar selected launches. Two more jobs maintained tool reviews and prompt templates. A model-data job fetched prices and specifications from a public API.
 
-SOFT CAT stands for **Smart Outputs From Trained Conversational AI Technology**. The principle is straightforward: use AI to produce useful, reliable outputs. Not demos, not experiments. Things that actually run, on a schedule, without supervision.
+Content files were committed to the repository, then a separate workflow built the website. That separation mattered when publishing broke. New source could exist without reaching the live site.
 
-softcat.ai is the site where we build in public. It is also the thing being built. The content, the tools, the daily updates. Most of it comes from the bots, not from us.
+The September [recovery note](/thoughts/2026-09-12-one-broken-prompt-froze-the-site) records the actual failure and repair. A malformed generated prompt blocked the build. The repair added checks before publication and made the dated run record easier to inspect.
 
-## The pipeline
+## A schedule is not evidence of a run
 
-Six bots run on a Beelink SER5 MAX on a home network. Each has a specific job.
+The old article listed daily times without keeping the time-zone distinction clear. The [Pipeline](/pipeline) now shows the configured zone for each job and the timestamp of its latest published record. A website build has its own date.
 
-**AI News Digest** pulls five RSS feeds every morning, picks the most interesting stories, and writes an opinionated digest for [/news-and-updates](/news-and-updates). It runs daily at 07:00 UTC.
+Price snapshots now run in GitHub Actions. Their first real September check matched 37 tracked model IDs and kept two unlisted prices unknown. The [successful workflow](https://github.com/valorifutures/softcat.ai/actions/runs/34729167469) includes the checked data commit and its Pages deployment. It made no paid model call.
 
-**AI Thoughts** reads the same feeds for inspiration and generates an original opinion piece with a clear point of view. It publishes to [/thoughts](/thoughts) daily at 08:00 UTC.
+The other daily jobs still depend on the separate server. Updating their source does not establish that the host is reachable or that its timers have restarted.
 
-**The Radar** scans RSS feeds and the HackerNews API for genuine AI product launches. It writes editorial picks for each and publishes them to [/radar](/radar) at 09:30 UTC. No human curates the picks.
+## Keep the work worth reading
 
-**Tool of the Week** picks one interesting AI tool from the feeds every Sunday and writes a short review for [/tools](/tools).
+The old thought writer was instructed to produce strong opinions without source links. That produced a repetitive series whose claims were difficult to check. We [retired the series](/thoughts/review), kept its history and changed the writer to propose sourced drafts for editorial review.
 
-**Prompt Library** generates copy-ready prompt templates twice a month, inspired by current AI trends. These go to [/prompts](/prompts).
-
-**Model Data** fetches AI model pricing and specs from the OpenRouter API every morning and updates the models comparison page. No language model involved. Just an API call and a JSON file.
-
-All six bots use Claude Sonnet for generation (except Model Data, which is pure API). Every run is logged: duration, feeds scanned, items found, items published, cost. The pipeline dashboard at [/pipeline](/pipeline) shows all of it.
-
-## What is still rough
-
-The bots do not decide what matters. They surface what is new, but they do not know what the site should prioritise. Those calls still belong to humans.
-
-The pipeline dashboard shows every run, its cost, and its output. Some days a bot runs and produces nothing useful. Some days the same story appears in both the digest and the radar. We keep the history visible because that is more honest than only showing the wins.
-
-There is no "Scout" filing issues or "Builder" writing code. The bots generate content. We review it, maintain the infrastructure, and decide what to build next. That is the only manual step.
-
-## The point
-
-This is not a pitch for a product. What exists is the infrastructure running this site: six bots, a home server, a GitHub repo, and a cron schedule.
-
-The interesting question is not whether AI can write content. It clearly can. The interesting question is whether you can build infrastructure that runs reliably enough to trust with a public site. We are finding out in public.
-
-If you want to see what it looks like in practice, [/pipeline](/pipeline) shows every run from this morning.
+Today the useful centre of the site is the [browser tools](/tools), the [build notebook](/notebook), the dated [Horizon](/horizon) evidence and the [Feral experiment](/feral). SOFT CAT still means Smart Outputs From Trained Conversational AI Technology. The work has to keep earning the name.

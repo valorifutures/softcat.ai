@@ -4,6 +4,7 @@ import { createRequire } from 'node:module';
 import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { validateEditorialRetirements } from '../src/lib/editorial-retirements.mjs';
 
 const require = createRequire(import.meta.resolve('astro/package.json'));
 const yaml = require('js-yaml');
@@ -40,6 +41,9 @@ function visit(dir) {
   }
 }
 visit(base);
+const editorialReview = JSON.parse(readFileSync(join(root, 'src/data/editorial-retirements.json'), 'utf8'));
+const thoughtIds = new Set(readdirSync(join(base, 'thoughts')).filter(name => name.endsWith('.md')).map(name => name.slice(0, -3)));
+errors.push(...validateEditorialRetirements(editorialReview, thoughtIds));
 for (const error of errors) console.error(`ERROR ${error}`);
 console.log(`validate-content: ${count} Markdown files, ${errors.length} error(s)`);
 process.exitCode = errors.length ? 1 : 0;

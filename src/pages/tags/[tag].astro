@@ -1,175 +1,46 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { tagDotClass } from '../../utils/tagColor';
-import { getCollection } from 'astro:content';
+import { getTaggedContent } from '../../lib/tagged-content';
 
 export async function getStaticPaths() {
-  const news = (await getCollection('news-and-updates')).filter((e) => !e.data.draft);
-  const thoughts = (await getCollection('thoughts')).filter((e) => !e.data.draft);
-  const tools = (await getCollection('tools')).filter((e) => !e.data.draft);
-
-  const allTags = new Set([
-    ...news.flatMap((e) => e.data.tags),
-    ...thoughts.flatMap((e) => e.data.tags),
-    ...tools.flatMap((e) => e.data.tags),
-  ]);
-
-  return [...allTags].map((tag) => ({
-    params: { tag },
-    props: {
-      tag,
-      newsEntries: news.filter((e) => e.data.tags.includes(tag)),
-      thoughtEntries: thoughts.filter((e) => e.data.tags.includes(tag)),
-      toolEntries: tools.filter((e) => e.data.tags.includes(tag)),
-    },
-  }));
+  const entries = await getTaggedContent();
+  const tags = [...new Set(entries.flatMap(entry => entry.tags))];
+  return tags.map(tag => ({ params: { tag }, props: { tag, entries: entries.filter(entry => entry.tags.includes(tag)) } }));
 }
-
-const { tag, newsEntries, thoughtEntries, toolEntries } = Astro.props;
-const total = newsEntries.length + thoughtEntries.length + toolEntries.length;
+const { tag, entries } = Astro.props;
+const kinds = ['Notebook', 'Thoughts', 'Prompts', 'Tool write-ups', 'Glossary', 'News archive'];
+const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 ---
-
-<BaseLayout title={`#${tag}`} description={`All SOFT CAT .ai content tagged ${tag}.`}>
-  <div class="max-w-3xl mx-auto px-6 py-16">
-    <header class="mb-12">
-      <a href="/tags" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; all tags</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-cyan">#{tag}</h1>
-      <p class="text-text-muted mt-2">{total} {total === 1 ? 'post' : 'posts'} tagged {tag}.</p>
-    </header>
-
-    <div class="space-y-10">
-      {newsEntries.length > 0 && (
-        <section>
-          <h2 class="font-mono text-xs text-neon-green uppercase tracking-widest mb-4">News & Updates</h2>
-          <div class="grid gap-4">
-            {newsEntries
-              .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-              .map((entry) => (
-                <a
-                  href={`/news-and-updates/${entry.id}`}
-                  class="block bg-surface border border-surface-light rounded-lg p-5 card-glow group"
-                >
-                  <div class="flex items-start justify-between gap-4">
-                    <div class="min-w-0">
-                      <h3 class="font-mono text-sm font-bold text-text-bright group-hover:text-neon-green transition-colors">
-                        {entry.data.title}
-                      </h3>
-                      <p class="text-sm text-text-muted mt-1">{entry.data.summary}</p>
-                    </div>
-                    <time
-                      datetime={entry.data.date.toISOString()}
-                      class="font-mono text-xs text-text-muted shrink-0"
-                    >
-                      {entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
-                    </time>
-                  </div>
-                  {entry.data.tags.length > 0 && (
-                    <div class="flex flex-wrap gap-1.5 mt-3">
-                      {entry.data.tags.map((t) => (
-                        <a
-                          href={`/tags/${t}`}
-                          class="tag-badge"
-                          onclick="event.stopPropagation()"
-                        >
-                          <span class={`tag-dot ${tagDotClass(t)}`}></span>
-                          {t}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </a>
-              ))}
-          </div>
-        </section>
-      )}
-
-      {thoughtEntries.length > 0 && (
-        <section>
-          <h2 class="font-mono text-xs text-neon-cyan uppercase tracking-widest mb-4">Thoughts</h2>
-          <div class="grid gap-4">
-            {thoughtEntries
-              .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-              .map((entry) => (
-                <a
-                  href={`/thoughts/${entry.id}`}
-                  class="block bg-surface border border-surface-light rounded-lg p-5 card-glow group"
-                >
-                  <div class="flex items-start justify-between gap-4">
-                    <div class="min-w-0">
-                      <h3 class="font-mono text-sm font-bold text-text-bright group-hover:text-neon-cyan transition-colors">
-                        {entry.data.title}
-                      </h3>
-                      <p class="text-sm text-text-muted mt-1">{entry.data.summary}</p>
-                    </div>
-                    <time
-                      datetime={entry.data.date.toISOString()}
-                      class="font-mono text-xs text-text-muted shrink-0"
-                    >
-                      {entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
-                    </time>
-                  </div>
-                  {entry.data.tags.length > 0 && (
-                    <div class="flex flex-wrap gap-1.5 mt-3">
-                      {entry.data.tags.map((t) => (
-                        <a
-                          href={`/tags/${t}`}
-                          class="tag-badge"
-                          onclick="event.stopPropagation()"
-                        >
-                          <span class={`tag-dot ${tagDotClass(t)}`}></span>
-                          {t}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </a>
-              ))}
-          </div>
-        </section>
-      )}
-
-      {toolEntries.length > 0 && (
-        <section>
-          <h2 class="font-mono text-xs text-neon-purple uppercase tracking-widest mb-4">Tools & Experiments</h2>
-          <div class="grid gap-4">
-            {toolEntries.map((entry) => (
-              <a
-                href={`/tools/${entry.id}`}
-                class="block bg-surface border border-surface-light rounded-lg p-5 card-glow group"
-              >
-                <div class="flex items-start justify-between gap-4">
-                  <div class="min-w-0">
-                    <h3 class="font-mono text-sm font-bold text-text-bright group-hover:text-neon-purple transition-colors">
-                      {entry.data.title}
-                    </h3>
-                    <p class="text-sm text-text-muted mt-1">{entry.data.description}</p>
-                  </div>
-                  <span class={`shrink-0 px-2 py-0.5 rounded text-xs font-mono ${
-                    entry.data.status === 'active' ? 'bg-neon-green/10 text-neon-green' :
-                    entry.data.status === 'experimental' ? 'bg-neon-amber/10 text-neon-amber' :
-                    'bg-surface-light text-text-muted'
-                  }`}>
-                    {entry.data.status}
-                  </span>
-                </div>
-                {entry.data.tags.length > 0 && (
-                  <div class="flex flex-wrap gap-1.5 mt-3">
-                    {entry.data.tags.map((t) => (
-                      <a
-                        href={`/tags/${t}`}
-                        class={`px-1.5 py-0.5 bg-surface-light rounded text-xs font-mono transition-colors ${t === tag ? 'text-neon-cyan' : 'text-text-muted hover:text-neon-cyan'}`}
-                        onclick="event.stopPropagation()"
-                      >
-                        {t}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
-    </div>
+<BaseLayout title={`#${tag}`} description={`Writing, prompts, tool write-ups and glossary terms tagged ${tag}.`}>
+  <div class="tag-page workshop-shell">
+    <header><a href="/tags" class="text-link">← All tags</a><p class="eyebrow">BROWSE THE WORKSHOP</p><h1>#{tag}</h1><p>{entries.length} {entries.length === 1 ? 'entry' : 'entries'} across writing, prompts, tool write-ups and glossary terms.</p></header>
+    {kinds.map(kind => {
+      const group = entries.filter(entry => entry.kind === kind).sort((a, b) => (b.date?.valueOf() || 0) - (a.date?.valueOf() || 0) || a.title.localeCompare(b.title));
+      return group.length > 0 && <section aria-label={kind}><div class="tag-section-heading"><h2>{kind}</h2><span>{group.length}</span></div>{group.map(entry => <article><div class="tag-entry-top"><a href={entry.href}><h3>{entry.title}</h3><p>{entry.summary}</p></a><div>{entry.date && <time datetime={entry.date.toISOString()}>{fmt(entry.date)}</time>}{entry.status && <span class="tag-entry-status">{entry.status}</span>}</div></div><div class="tag-entry-tags">{entry.tags.map(item => <a href={`/tags/${item}`} class="tag-badge" aria-current={item === tag ? 'page' : undefined}><span class={`tag-dot ${tagDotClass(item)}`}></span>{item}</a>)}</div></article>)}</section>;
+    })}
   </div>
 </BaseLayout>
+<style>
+  .tag-page { max-width: 900px; padding-block: 3.5rem 5rem; }
+  header { margin-bottom: 3rem; }
+  header > .eyebrow { margin-top: 1.5rem; }
+  h1 { font: 600 clamp(2rem, 5vw, 3.3rem)/1.2 var(--font-sans); letter-spacing: -0.045em; color: #edf0e7; margin-block: 0.8rem 1.2rem; overflow-wrap: anywhere; }
+  header > p:not(.eyebrow) { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.85; }
+  section { margin-top: 2.7rem; }
+  .tag-section-heading { display: flex; justify-content: space-between; gap: 1rem; align-items: center; margin-bottom: 1.3rem; }
+  h2 { color: #dce5d1; font-size: 1.25rem; font-weight: 500; letter-spacing: -0.025em; }
+  .tag-section-heading > span { color: #a8b49b; font: 0.65rem var(--font-mono); }
+  article { border-top: 1px solid #333c2c; padding: 1.3rem 0; }
+  article:last-child { border-bottom: 1px solid #333c2c; }
+  .tag-entry-top { display: flex; align-items: start; justify-content: space-between; gap: 1.5rem; }
+  .tag-entry-top > a { min-width: 0; }
+  .tag-entry-top > div { flex-shrink: 0; text-align: right; }
+  h3 { color: #e3e8dc; font-size: 1rem; font-weight: 500; line-height: 1.65; }
+  .tag-entry-top a:hover h3 { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 3px; }
+  .tag-entry-top p { color: #aab3a1; font-size: 0.83rem; line-height: 1.85; margin-top: 0.5rem; }
+  time, .tag-entry-status { display: block; font: 0.65rem/1.8 var(--font-mono); color: #a7b497; }
+  .tag-entry-status { margin-top: 0.5rem; }
+  .tag-entry-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  @media (max-width: 600px) { .tag-entry-top { flex-direction: column; gap: 0.7rem; } .tag-entry-top > div { text-align: left; } }
+</style>
