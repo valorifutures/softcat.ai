@@ -20,7 +20,7 @@
   {
     "id": "thoughts_bot",
     "name": "AI Thoughts",
-    "description": "Reads the same feeds for inspiration, generates an original opinion piece with a clear point of view.",
+    "description": "Proposes sourced editorial drafts from RSS reporting. Drafts stay out of public routes and feeds until their claims are reviewed.",
     "script": "bot/ai_thoughts_bot.py",
     "schedule": "Daily at 08:00 Europe/London",
     "schedule_cron": "0 8 * * *",

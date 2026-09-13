@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-12T23:56:25.422752+00:00",
-  "phase": "structured-output-validation",
-  "active_branch": "codex/structured-output-validation",
+  "updated_at": "2026-09-13T00:13:17.177484+00:00",
+  "phase": "editorial-quality-pass",
+  "active_branch": "codex/editorial-quality-pass",
   "last_verified_deployment": {
-    "sha": "47397d09a57279924f97fe070263304b9f71f8c6",
-    "at": "2026-09-12T23:48:31Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34726346880"
+    "sha": "a83add0285366fd5305241742b05f0e0da0fbd42",
+    "at": "2026-09-13T00:00:45Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34726825234"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -17,13 +17,14 @@
     "PR #199 merged and deployed. The new Feral gallery was visually checked. The generation, validation and publishing jobs are separate, with fresh-verdict regression coverage. A paid council run remains unverified.",
     "PR #200 merged and deployed. Live review shows seven active, eight withdrawn and 39 archived records. The Memory forecast withdrawal expands correctly with the original claim. PRs #186\u2013193 were each closed with specific review reasons.",
     "PR #201 merged and deployed. Live search finds the agent tool first, ArrowDown selects the next result, and the Close control restores focus to the opener. Draft publication fixtures and all indexed routes passed checks.",
-    "PR #202 merged and deployed. The live comparison finds exact model IDs, calculates ten Sonnet calls at $0.105 and keeps unlisted Laguna pricing unknown even with zero calls. CSV export confirms its source/assumption record. Search native Escape restores opener focus."
+    "PR #202 merged and deployed. The live comparison finds exact model IDs, calculates ten Sonnet calls at $0.105 and keeps unlisted Laguna pricing unknown even with zero calls. CSV export confirms its source/assumption record. Search native Escape restores opener focus.",
+    "PR #203 merged and deployed. The live JSON checker reports three deliberate classification failures, clears the result on edits, accepts the matching example and reports invoice date/quantity/price failures. A pathological pattern was stopped after 2.5 seconds and the page remained usable."
   ],
   "next": [
-    "Publish the new JSON Schema validator and verify broken/matching examples, edited-input invalidation and the browser worker timeout live.",
-    "Correct unsupported claims in the two essays promoted by the homepage archive cards, then curate what the homepage recommends.",
+    "Publish the editorial corrections, sourced-draft bot and compact archive. Inspect the live correction record and diary links.",
     "Review model reference notes and weight tags for unsupported or misleading claims.",
-    "The separate systemd host is still unverified. No connection target is established.",
+    "Consider restoring an unpaid pricing snapshot job on GitHub Actions because the separate daily bot host remains unreachable. Preserve all validation and publication gates.",
+    "Review remaining tool and project journeys for concrete usability improvements.",
     "Leave a clean checkpoint for the next scheduled iteration."
   ],
   "constraints": [

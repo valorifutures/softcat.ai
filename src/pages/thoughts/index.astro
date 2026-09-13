@@ -1,65 +1,51 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { tagDotClass } from '../../utils/tagColor';
 
-const entries = (await getCollection('thoughts'))
-  .filter((e) => !e.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const entries = (await getCollection('thoughts')).filter(entry => !entry.data.draft && !entry.data.tags.includes('field-notes'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const corrections = entries.filter(entry => entry.data.correction)
+  .sort((a, b) => b.data.correction!.date.valueOf() - a.data.correction!.date.valueOf());
+const months = [...new Set(entries.map(entry => entry.data.date.toISOString().slice(0, 7)))];
+const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 ---
-
-<BaseLayout title="Thoughts" description="Observations, opinions, and hot takes on AI developments." breadcrumbs={[{name: 'Thoughts', url: '/thoughts'}]}>
-  <div class="max-w-4xl mx-auto px-6 py-16">
-    <header class="mb-8">
-      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-cyan">Thoughts</h1>
-      <p class="text-text-muted mt-2">Observations, opinions, and hot takes on AI developments.</p>
-    </header>
-    <div class="section-banner mb-6" style="height: 180px; --banner-accent: rgba(90, 184, 212, 0.12); --banner-accent-mid: rgba(90, 184, 212, 0.04)" aria-hidden="true"></div>
-    <div class="glow-divider mb-10" style="--divider-color: rgba(90, 184, 212, 0.15)"></div>
-
-    {entries.length === 0 ? (
-      <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
-        <p class="font-mono text-sm text-text-muted">
-          <span class="text-neon-cyan">&#9679;</span> awaiting first transmission...
-        </p>
-      </div>
-    ) : (
-      <div class="grid gap-5 ambient-glow" style="--glow-color: rgba(90, 184, 212, 0.035); --glow-color-alt: rgba(155, 122, 204, 0.025)">
-        {entries.map((entry, index) => (
-          <div
-            class="relative glass-card rounded-xl card-glow card-glow-cyan card-lift group animate-stagger border-l-2 border-l-neon-cyan/40 overflow-hidden"
-            style={`--stagger-index: ${index}`}
-          >
-            <a href={`/thoughts/${entry.id}`} class="block p-6 md:p-7">
-              <div class="flex items-start justify-between gap-4">
-                <div class="min-w-0">
-                  <h2 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-cyan transition-colors">
-                    {entry.data.title}
-                  </h2>
-                  <p class="text-sm text-text-muted mt-2 leading-relaxed">{entry.data.summary}</p>
-                </div>
-                <time
-                  datetime={entry.data.date.toISOString()}
-                  class="font-mono text-xs text-text-muted shrink-0"
-                >
-                  {entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
-                </time>
-              </div>
-            </a>
-            {entry.data.tags.length > 0 && (
-              <div class="flex flex-wrap gap-2 px-6 md:px-7 pb-5">
-                {entry.data.tags.map((tag) => (
-                  <a href={`/tags/${tag}`} class="tag-badge">
-                    <span class={`tag-dot ${tagDotClass(tag)}`}></span>
-                    {tag}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    )}
+<BaseLayout title="Thoughts & corrections" description="The earlier essays, their original dates, and a visible record of corrections. Follow the notebook for current work.">
+  <div class="thoughts-shell">
+    <header><a href="/notebook" class="thoughts-back">← The build notebook</a><p class="thoughts-eyebrow">THE LONGER RECORD</p><h1>Thoughts &amp; corrections.</h1><p>Earlier opinions, kept with their original dates. Some made claims their sources could not support. Corrections explain what changed and link to the earlier text.</p><p>For documented experiments and maintenance, start with <a href="/notebook">the notebook</a>.</p></header>
+    {corrections.length > 0 && <section class="thoughts-corrections" aria-labelledby="corrections-heading"><div><p class="thoughts-eyebrow">CHANGING OUR MINDS IN PUBLIC</p><h2 id="corrections-heading">The correction record</h2></div><div>{corrections.map(entry => <a href={`/thoughts/${entry.id}`}><div><h3>{entry.data.title}</h3><p>{entry.data.correction!.summary}</p></div><time datetime={entry.data.correction!.date.toISOString()}>Corrected<br />{fmt(entry.data.correction!.date)}</time></a>)}</div></section>}
+    <section class="thoughts-archive" aria-labelledby="thoughts-archive-heading"><div class="thoughts-archive-heading"><h2 id="thoughts-archive-heading">Browse by original publication date</h2><span>{entries.length} essays</span></div><p>This is an archive of opinions, not a current model or product guide. An unchanged entry has not been reverified by appearing here.</p>{months.map((month, index) => {
+      const group = entries.filter(entry => entry.data.date.toISOString().startsWith(month));
+      return <details open={index === 0} class="thoughts-month"><summary><span>{new Date(`${month}-01T00:00:00Z`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })}</span><span>{group.length} essays</span></summary><div>{group.map(entry => <a href={`/thoughts/${entry.id}`}><time datetime={entry.data.date.toISOString()}>{fmt(entry.data.date)}</time><div><h3>{entry.data.title}</h3>{entry.data.correction && <span class="thoughts-corrected">Correction recorded</span>}</div><span aria-hidden="true">↗</span></a>)}</div></details>;
+    })}</section>
   </div>
 </BaseLayout>
+<style>
+  .thoughts-shell { max-width: 960px; margin: auto; padding: 4rem 1.5rem 6rem; }
+  .thoughts-back { color: #bacbb0; font: .75rem var(--font-mono); display: inline-block; margin-bottom: 2.5rem; }
+  .thoughts-eyebrow { font: .65rem var(--font-mono); letter-spacing: .1em; color: #c7d8ae; margin-bottom: .8rem; }
+  h1 { font-size: clamp(2.25rem, 6vw, 3.3rem); font-weight: 650; letter-spacing: -.05em; color: #eeeee5; line-height: 1.15; }
+  header > p:not(.thoughts-eyebrow) { color: #b8b9be; max-width: 75ch; font-size: .95rem; line-height: 1.85; margin-top: 1.2rem; }
+  header > p a { text-decoration: underline; color: #c7d8ae; text-underline-offset: 4px; }
+  h2 { color: #eeeee5; font-weight: 600; font-size: 1.35rem; letter-spacing: -.025em; }
+  .thoughts-corrections { border: 1px solid #555340; background: #1a1b16; border-radius: 10px; padding: 1.6rem; margin: 2.5rem 0 3.5rem; }
+  .thoughts-corrections > div:first-child { margin-bottom: 1.4rem; }
+  .thoughts-corrections a { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; border-top: 1px solid #393e31; padding: 1rem 0; }
+  .thoughts-corrections h3 { color: #e6e9dc; font-size: .95rem; font-weight: 550; line-height: 1.5; }
+  .thoughts-corrections p:not(.thoughts-eyebrow) { font-size: .77rem; color: #b8bcae; line-height: 1.7; margin-top: .4rem; }
+  .thoughts-corrections time { font: .65rem/1.7 var(--font-mono); color: #c1c9af; }
+  .thoughts-archive-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem; }
+  .thoughts-archive-heading > span { font: .7rem var(--font-mono); color: #b9bcb0; }
+  .thoughts-archive > p { color: #aeb2b5; font-size: .78rem; line-height: 1.75; margin: 1rem 0 1.5rem; }
+  .thoughts-month { border-top: 1px solid #373b35; }
+  .thoughts-month:last-child { border-bottom: 1px solid #373b35; }
+  .thoughts-month summary { cursor: pointer; padding: 1.2rem .25rem; color: #dce5d0; }
+  .thoughts-month summary span:first-child { margin-left: .5rem; font-size: .95rem; }
+  .thoughts-month summary span:last-child { float: right; color: #a8b29f; font: .65rem var(--font-mono); margin-top: .4rem; }
+  .thoughts-month a { display: grid; grid-template-columns: 100px 1fr auto; align-items: baseline; gap: 1rem; padding: 1rem .25rem; border-top: 1px solid #272b2c; }
+  .thoughts-month h3 { font-size: .85rem; color: #d6d9d2; line-height: 1.65; }
+  .thoughts-month time { font: .6rem/1.8 var(--font-mono); color: #a4aca7; }
+  .thoughts-month a > span { color: #b9cda7; }
+  .thoughts-corrected { display: inline-block; color: #d9c295; font: .6rem var(--font-mono); margin-top: .5rem; }
+  .thoughts-corrections a:hover h3, .thoughts-month a:hover h3 { color: #d2f39b; }
+  @media (max-width: 560px) { .thoughts-corrections { padding: 1.2rem; } .thoughts-corrections a { grid-template-columns: 1fr; gap: .5rem; } .thoughts-corrections time br { display: none; } .thoughts-month a { grid-template-columns: 1fr auto; gap: .4rem; } .thoughts-month time { grid-column: 1 / -1; } }
+</style>

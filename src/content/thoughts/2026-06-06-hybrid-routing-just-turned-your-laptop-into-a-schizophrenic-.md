@@ -1,20 +1,27 @@
 ---
-title: "Hybrid routing just turned your laptop into a schizophrenic cloud terminal"
+title: "Hybrid routing should show where a request goes"
 date: 2026-06-06
-tags: [hybrid-inference, edge-computing, routing-logic]
-summary: "Smart task routing between local and cloud models is creating systems that can't decide what they are."
+tags: [hybrid-inference, routing-logic, privacy, interfaces, corrections]
+summary: "If a tool can switch between a local model and a hosted one, the interface should make that choice understandable."
 draft: false
 pinned: false
+correction:
+  date: 2026-09-13
+  summary: "Removed the mental-health metaphor and unsupported claims about how all hybrid systems behave. The useful issue is request routing and disclosure."
 ---
 
-We're building computers that don't know where they end and the internet begins. The latest wave of hybrid inference systems promises to smartly route tasks between your device and the cloud, but they're actually creating something much weirder: machines with split personalities.
+The earlier essay used a diagnosis as a metaphor for an architectural choice. It also described supposed user behaviour without reporting a study or a test. Neither helped explain the system. We have removed both. The [original remains in Git history](https://github.com/valorifutures/softcat.ai/blob/a83add0285366fd5305241742b05f0e0da0fbd42/src/content/thoughts/2026-06-06-hybrid-routing-just-turned-your-laptop-into-a-schizophrenic-.md).
 
-## The identity crisis is by design
+A tool that can use local and hosted models should help people understand where their request will run. The choice can affect which data leaves the device, which provider receives it, and whether a separate charge applies.
 
-These systems constantly decide whether your query deserves local privacy or cloud power. Simple text gets handled on-device. Complex reasoning gets shipped to a data centre. The machine learns your patterns, but never commits to being either fast or smart, private or capable. It's always hedging, always calculating whether this particular thought is worth the bandwidth.
+## Make the route legible
 
-## The real cost isn't tokens
+Show the selected provider before the request is sent. Explain what data it receives. If the tool can fall back to another provider, state when that happens and let the user choose whether that behaviour suits the task.
 
-The hidden expense isn't API calls or electricity. It's the cognitive overhead of never knowing which version of your AI you're talking to. Sometimes it responds instantly with decent answers. Sometimes it pauses, thinks in the cloud, and comes back brilliant. You start modifying how you ask questions based on which personality you think you'll get. The tool is training you as much as you're training it.
+Local inference does not by itself establish that the whole application stays offline. Search, telemetry, remote tools or file sync can still make network requests. Check the complete application path when making a privacy claim.
 
-We've invented computers that are perpetually uncertain about their own capabilities. Every interaction becomes a negotiation between convenience and performance, privacy and intelligence. That's not hybrid computing. That's digital anxiety disorder.
+## Apply the same standard here
+
+SOFT CAT's [Chat Playground](/lab/chat-playground) sends conversation messages to OpenRouter with the selected model ID. Its key remains in page memory unless the visitor chooses to remember it. The [privacy page](/privacy) explains that boundary.
+
+The local calculators and validators do not need to send their inputs to an AI provider. Those are different behaviours, and the interface should make each one clear.

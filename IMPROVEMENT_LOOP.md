@@ -28,6 +28,9 @@ Continue improving `valorifutures/softcat.ai` and `https://softcat.ai`.
    and useful additions made. Curate weak or misleading material, retaining a
    correction or audit record where it helps explain a meaningful change.
    A new experiment should do something interesting that visitors can use.
+   Inspect new sourced thought drafts during the editorial pass. Keep a draft
+   unpublished if its claims exceed its sources. Only documented work belongs
+   in the field notebook. Reviewing a draft is within the maintenance mandate.
 3. Define a small, complete outcome. Implement it on a focused branch. Use the
    existing Astro, Preact and Tailwind stack where it fits. Keep the site fast
    and resilient on GitHub Pages. Prefer an understandable solution.

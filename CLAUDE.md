@@ -62,7 +62,7 @@ The domain is softcat.ai. The GitHub repo is valorifutures/softcat.ai.
 - `/notebook` — build diary from thoughts tagged `field-notes`
 - `/lab/agent-check` — six-question deterministic design aid, rules in `src/lib/agent-check.mjs`
 - `/news-and-updates` — AI news digest posts (bot-generated daily)
-- `/thoughts` — opinion pieces (bot-generated daily)
+- `/thoughts` — dated essay archive and visible corrections. Current build notes live at `/notebook`. The thoughts bot proposes sourced drafts with canonical metadata. Review before publication. Drafts are excluded from routes, feeds and search.
 - `/tools` — merged tools page: provenance strip (staleness register), weekly-rotating featured spotlight (`featured: true` in tools-manifest.json pins as editorial override), interactive tools (Preact apps at `/lab/*`, data-driven ones show model-data stamps) + dated tool write-ups with tag filter and archive section. `/lab` redirects here. Design doc: `docs/designs/tools-page-showroom.md`
 - `/radar` — daily AI product launches (bot-generated)
 - `/prompts` — copy-ready AI prompts (bot-generated weekly)

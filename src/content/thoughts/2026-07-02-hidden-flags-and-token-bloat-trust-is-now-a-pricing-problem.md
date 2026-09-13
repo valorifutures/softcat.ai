@@ -1,30 +1,29 @@
 ---
-title: "Hidden Flags and Token Bloat: Trust Is Now a Pricing Problem"
+title: "Measure cost changes before assigning motives"
 date: 2026-07-02
-tags: [ai-trust, model-pricing, anthropic, developer-tools]
-summary: "When AI tooling secretly monitors users and quietly inflates costs, the real product being sold is the illusion of transparency."
+tags: [ai-trust, model-pricing, observability, corrections]
+summary: "A changed bill needs a traceable explanation. Our earlier essay made allegations without providing the records needed to assess them."
 draft: false
 pinned: false
+correction:
+  date: 2026-09-13
+  summary: "Withdrew unsupported claims about hidden monitoring, a 40 per cent token increase and deliberate price manipulation."
 ---
 
-The AI industry keeps asking us to trust it. Then it hides monitoring code in developer tools and buries price increases inside token counts. These are not isolated slip-ups. They are a pattern, and the pattern tells you something important about who these products are actually built for.
+The original essay alleged hidden monitoring of users by geography and a 40 per cent rise in tokens per task. It linked no incident report, code change, usage records or provider response. It then treated a motive for increasing revenue as established.
 
-## Surveillance by default is not a safety feature
+Those claims are withdrawn here. The absence of evidence in our post does not settle what happened elsewhere. It means this post did not establish its allegations. The [earlier text is preserved](https://github.com/valorifutures/softcat.ai/blob/a83add0285366fd5305241742b05f0e0da0fbd42/src/content/thoughts/2026-07-02-hidden-flags-and-token-bloat-trust-is-now-a-pricing-problem.md).
 
-When hidden logic flags specific users based on geography without disclosure, that is not safety tooling. That is surveillance with a safety-flavoured label slapped on top. The outrage that follows is always treated as a PR problem to manage, not a design decision to reverse. Removing the code after public pressure is not the same as not writing it in the first place.
+## A useful cost record
 
-Developers building on top of these tools deserve to know what the tool is doing. Full stop. If the monitoring exists, document it. If it cannot be documented, it should not exist.
+Start with the exact model ID, provider, date and pricing tier. Record the full input, generated output, reported usage, retries and tool calls for the same task. Include cached tokens and reasoning charges where the provider reports them.
 
-## Token inflation is a price increase with extra steps
+Conversation history matters. If a later request resends earlier messages, those messages are input again. During this site's repair, we found that our own conversation calculator had omitted that repeated history. [PR 198 corrected it](https://github.com/valorifutures/softcat.ai/pull/198).
 
-Charging the same per-token rate while the model silently consumes 40 percent more tokens per task is not a stable pricing model. It is a mechanism for increasing revenue without triggering the kind of scrutiny that comes with a direct price hike. The maths lands in the same place. The customer just has to work harder to notice.
+That was an accounting error in our tool. It is not evidence about a provider's intentions.
 
-This matters because the whole developer ecosystem prices downstream products on top of these costs. When the floor shifts without warning, margins disappear and nobody has a clean audit trail to explain why.
+## Compare like with like
 
-## The trust deficit compounds
+Repeat the same workload across the versions or dates being compared. Record changes in task completion, output length and retries alongside the bill. A lower token price can accompany a higher total cost, but the reason needs to be measured.
 
-Every hidden flag and opaque pricing change makes the next decision harder. Developers start stress-testing terms of service the way security researchers probe for vulnerabilities. They add cost monitoring layers, proxy logging, and model-switching logic, not because they want to, but because they no longer feel they can skip it.
-
-That overhead is not free. And it is entirely avoidable.
-
-The labs that figure out that transparency is a competitive advantage, not a concession, will be the ones worth building on top of.
+Our [model comparison](/lab/model-comparison) makes its token counts, saved rates and excluded charges visible. The [conversation calculator](/lab/token-cost) can estimate repeated history. Provider usage records remain the better basis for an actual invoice.

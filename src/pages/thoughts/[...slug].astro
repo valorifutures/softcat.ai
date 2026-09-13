@@ -18,6 +18,7 @@ const readingTime = Math.max(1, Math.ceil(words / 200));
 
 const allEntries = (await getCollection('thoughts')).filter((e) => !e.data.draft && e.id !== entry.id);
 const relatedPosts = allEntries
+  .filter((e) => !entry.data.tags.includes('field-notes') || e.data.tags.includes('field-notes'))
   .filter((e) => e.data.tags.some((t) => entry.data.tags.includes(t)))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3)
@@ -46,6 +47,7 @@ const breadcrumbSchema = {
   model={entry.data.model}
   generation_time_s={entry.data.generation_time_s}
   cost_usd={entry.data.cost_usd}
+  correction={entry.data.correction}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
