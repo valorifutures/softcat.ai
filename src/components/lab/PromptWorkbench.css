@@ -3,6 +3,7 @@
 .prompt-workbench button:hover, .pw-import:hover { border-color: var(--workshop-lime); color: var(--workshop-lime); }
 .prompt-workbench button:disabled { opacity: 0.45; cursor: not-allowed; }
 .prompt-workbench button[aria-pressed="true"], .prompt-workbench .pw-primary { color: #26351c; background: var(--workshop-lime); border-color: var(--workshop-lime); }
+.prompt-workbench .pw-primary:hover { color: #26351c; background: #dcf7b5; border-color: #dcf7b5; }
 .pw-toolbar, .pw-toolbar > div, .pw-library-actions, .pw-export-actions, .pw-saved-actions, .pw-editor-intro { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
 .pw-toolbar { justify-content: space-between; border-bottom: 1px solid #30382d; padding-bottom: 1rem; }
 .pw-notice { color: var(--workshop-lime); font-size: 0.85rem; line-height: 1.8; min-height: 1.5rem; margin-block: 0.7rem; }
