@@ -516,3 +516,11 @@ The content inventory uses the same locked YAML parser as the existing validator
 The gate runs after the build in PR validation, normal Pages deployment and the model-price candidate job. It adds no network requests and no write permissions. The price workflow's publishing job remains unchanged. Editing that workflow will also trigger its existing unpaid bootstrap snapshot after merge, subject to runner availability.
 
 Validation: all 97 JavaScript and 141 bot tests pass, along with twelve new standard-library publication fixtures. They exercise broken destinations, missing fragments and assets, path escapes, malformed indexes, nested links, duplicate IDs, draft leaks, stale tags, retirement metadata and source mismatches. Actionlint passes for the three workflows. The actual 632-page build passes 31,471 internal references and 3,246 local asset or metadata references, with 392 search entries, 183 content records and 227 verified retirement notices. The queued deployment and future live checks remain distinct from this offline result.
+
+## 13 September 2026, finishing the publication gate
+
+The maintainer stopped the overnight loop and then authorised completing the pending PRs and a content tidy-up. The recurring loop is disabled. PR #215 has a successful Pages build, but its deploy job remains queued. PR #216 has a queued CI build. GitHub refused to rerun either pending job because it considers the containing runs active. These states do not establish a build failure or a successful deployment.
+
+Added concurrency scoped to each PR so a future revision cancels its own obsolete validation run. Separate PRs remain independent and every validation step is retained. The earlier queued run predates this configuration and is not guaranteed to be cancelled by it. The next real commit receives fresh checks.
+
+Validation of this follow-up: actionlint passed for the updated workflow, all twelve publication-gate fixtures passed, and the production build produced 632 pages. The gate checked 31,471 internal links, 3,246 local assets and metadata references, 392 search entries and all 227 retirement records without errors. Hosted CI is still required before merging.

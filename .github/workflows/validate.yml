@@ -7,6 +7,12 @@ on:
 permissions:
   contents: read
 
+# An updated PR only needs checks for its current revision. Keep separate PRs
+# independent, and retain every validation step below.
+concurrency:
+  group: pr-validation-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
