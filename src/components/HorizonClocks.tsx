@@ -45,6 +45,6 @@ export default function HorizonClocks({ data, stance, selected, ready, initialNo
         </button>;
       })}
     </div>
-    <p class="hz-clock-note">Time ticks live. Targets change after a recorded evidence review. {stance === 'sceptical' ? 'These outlooks name no precise boundary, so there is no numeric countdown.' : 'Clocks use whole calendar years: the start of a window, then its end. “By” includes the final year.'} <a href="#method">How the clocks work ↓</a></p>
+    <p class="hz-clock-note">Editorial scenario windows. Time ticks live. Evidence reviews can move the targets. {stance === 'sceptical' ? 'These outlooks name no precise boundary, so there is no numeric countdown.' : 'Clocks use whole calendar years: the start of a window, then its end. “By” includes the final year.'} <a href="#method">How the clocks work ↓</a></p>
   </section>;
 }

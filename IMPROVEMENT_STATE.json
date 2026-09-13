@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T20:58:41.729603Z",
-  "phase": "horizon-clocks-release",
-  "active_branch": "improve/horizon-clocks",
+  "updated_at": "2026-09-13T21:09:01.364106Z",
+  "phase": "horizon-clocks-handover",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "b14046fb68e69790f77b71538e82f5b0867b6fd3",
-    "at": "2026-09-13T20:13:10Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34780043251"
+    "sha": "c0436c48d4a3b011563974f21adc859631d789ce",
+    "at": "2026-09-13T21:01:31Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34782508824"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -36,12 +36,13 @@
     "The final review changes the assumption and counterevidence headings, makes the partial scope of pragmatic education visible beside its definition, and makes the main Horizon experience lead its own search results. The final production build, eleven focused regression cases and complete publication audit pass. This checkpoint travels with that final review PR.",
     "PR #220 passed all hosted checks and deployed. The live pragmatic education panel shows its partial scope and corrected counterevidence heading, and search offers Explore Horizon. A returning browser retained the earlier search index under its ten-minute cache policy even though an HTTP revalidation returned the new Horizon tag. The final cache fix requests revalidation when the page first loads its search index, retaining in-page reuse and abort/retry behaviour. Production build, search tests and publication audit pass.",
     "PR #221 passed hosted validation and Pages run 34780043251. The returning browser now sees the refreshed Horizon search entry. The maintainer then authorised five evidence-responsive countdowns, CEO planning prompts, repeated checks and release.",
-    "The five live clocks, pause/resume, per-future revision history and next-90-days briefs are built. A published data endpoint refreshes open pages after schema and append-only history validation. All 119 JavaScript tests, 141 bot tests, twelve publication fixtures, data validators and the 634-page build/audit pass. Hosted release and live visual checks are next."
+    "The five live clocks, pause/resume, per-future revision history and next-90-days briefs are built. A published data endpoint refreshes open pages after schema and append-only history validation. All 119 JavaScript tests, 141 bot tests, twelve publication fixtures, data validators and the 634-page build/audit pass. Hosted release and live visual checks are next.",
+    "PR #222 passed all hosted gates in run 34782457263 and deployed in Pages run 34782508824. Live checks confirmed five ticking clocks, pause/resume, every future briefing, all three outlooks, pragmatic education scope, expandable evidence history, the timeline, keyboard controls, browser Back, actual copy/paste and countdown search. No desktop overflow was observed. Final wording/control refinements and a per-100-case agent measure pass focused tests, production build and the publication audit."
   ],
   "next": [
-    "Publish the reviewed clocks branch through passing hosted PR checks, then verify Pages and live interactions.",
-    "Refine any concrete issue found in the live visual review through a passing follow-up PR.",
-    "The recurring loop remains disabled. The separate bot host and paid model runs remain outside this release."
+    "Finish the passing final review PR and verify that an already-open page receives the revised agent measure without losing its selected outlook.",
+    "The bounded clocks release then awaits maintainer feedback. The recurring loop remains disabled.",
+    "Real mobile device coverage and the separate bot host remain unverified."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
