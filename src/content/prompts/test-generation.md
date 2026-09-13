@@ -1,43 +1,44 @@
 ---
-title: "Test Suite Generator"
-description: "Generate unit tests, integration tests, edge cases, and mock suggestions for any function or module."
+title: "Find the test that would catch the bug"
+description: "Generate small counterexamples from a behavioural contract instead of copying the implementation into tests."
 category: "testing"
-tags: [testing, unit-tests, tdd, developer-tools]
+tags: ["testing","regression-tests","code"]
 prompt: |
-  Generate a test suite for the code below.
+  Propose a minimal regression test for each distinct mismatch between the contract and the code below.
 
-  Work through it in four steps:
+  Use the named test framework. For every test, state the input, expected result from the contract and the specific failure it is meant to catch. Do not derive the expected result by repeating the implementation. Do not invent an executed test result. If the contract is ambiguous, identify the missing decision before writing that assertion. Keep the production code unchanged.
 
-  1. **Identify what needs testing**
-     - List every function, method, or exported value.
-     - Note which paths through the code are non-trivial and need coverage.
+  Framework and contract:
+  {{contract}}
 
-  2. **Write unit tests**
-     - Cover the happy path first.
-     - Then cover edge cases: empty inputs, boundary values, null/undefined, unexpected types.
-     - Each test should have a clear name that describes what it checks.
-
-  3. **Suggest mocks and stubs**
-     - Identify external dependencies (databases, APIs, file system, timers, random).
-     - For each, describe what to mock and why.
-     - If a dependency is hard to mock cleanly, flag it as a testing risk.
-
-  4. **Flag untestable patterns**
-     - Identify any code that is difficult to test: hidden state, tight coupling, missing dependency injection.
-     - Suggest the minimal refactor needed to make it testable, if any.
-
-  Use the test framework I specify. If I don't specify one, use the most common choice for the language.
-
-  Format: one test block per function. Include import/setup boilerplate at the top.
-
-  **Language / framework:** [e.g. TypeScript + Vitest, Python + pytest]
-  **Code to test:**
-  ```
-  [paste here]
-  ```
+  Code:
+  {{code}}
 draft: false
+recipe:
+  version: 1
+  reviewedAt: "2026-09-13"
+  previousRevision: "e59fc7636547de6973c200c9f844f4ddfd94c549"
+  when: "A short function has a clear contract and you want tests that distinguish correct from incorrect behaviour."
+  inputs:
+    contract: "The test framework and externally defined behaviour."
+    code: "The smallest relevant function or module."
+  exampleValues:
+    contract: |
+      JavaScript with node:test and node:assert/strict. admitted(count, limit) is true only when count is a non-negative integer strictly below limit. limit is a positive integer.
+    code: |
+      export const admitted = (count, limit) => count <= limit;
+  expected: |
+    assert.equal(admitted(-1, 10), false);
+    assert.equal(admitted(10, 10), false);
+    assert.equal(admitted(9, 10), true);
+  checks:
+    - "The negative count and equality boundary are both covered."
+    - "The expected values come from the contract and expose the current implementation."
+    - "The response does not say tests passed unless it actually ran them and reports the run."
+  limits: "The target assertions are examples, not proof of a complete test suite. The two failure cases were reproduced directly during this recipe review."
+  tool: "/lab/prompt-workbench"
 ---
 
-Covers the full testing workflow in one prompt: test discovery, edge case generation, mock suggestions, and testability feedback.
+The worked example is a target to inspect, not a saved response from a model. Use the checks to judge an actual result.
 
-Good for getting a first-pass test suite quickly. Review the output and delete tests that don't add value. The mock suggestions are especially useful for spotting hidden dependencies.
+This template was revised during the September prompt review. The [earlier text](https://github.com/valorifutures/softcat.ai/blob/e59fc7636547de6973c200c9f844f4ddfd94c549/src/content/prompts/test-generation.md) remains in Git history.

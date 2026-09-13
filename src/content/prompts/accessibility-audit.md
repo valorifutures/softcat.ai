@@ -1,51 +1,38 @@
 ---
-title: "Accessibility Audit"
-description: "Run a WCAG 2.2 accessibility audit covering levels A, AA, and AAA. Flags ARIA gaps, keyboard navigation issues, and colour contrast failures."
-category: "audit"
-tags: [accessibility, audit, a11y, wcag]
+title: "Review accessibility evidence without inventing a pass"
+description: "Identify what supplied markup shows and what still needs keyboard, visual or assistive-technology checks."
+category: "accessibility"
+tags: ["accessibility","testing","evidence"]
 prompt: |
-  Audit the following code or page for accessibility issues against WCAG 2.2. Cover all three conformance levels:
+  Review the supplied interface evidence for accessibility concerns.
 
-  **Level A (must fix)**
-  - Missing alt text on images
-  - Form inputs without labels
-  - Missing skip navigation links
-  - Keyboard traps (elements you can tab into but not out of)
-  - Missing lang attribute on html element
+  Separate findings visible in the evidence from checks that still need to be performed. For each finding, identify the element, the supporting evidence and a small remedy. Do not claim a conformance level, keyboard result, contrast ratio or screen-reader behaviour that has not been tested. Do not treat an automated check as a complete audit. If you cite a standard, verify the exact criterion from its primary source.
 
-  **Level AA (should fix)**
-  - Colour contrast below 4.5:1 for normal text, 3:1 for large text
-  - Missing focus indicators on interactive elements
-  - Touch targets smaller than 24x24 CSS pixels
-  - Content that reflows poorly at 320px width
-  - Missing error identification on form validation
-
-  **Level AAA (nice to have)**
-  - Contrast below 7:1 for normal text
-  - Sign language alternatives for media
-  - Reading level above lower secondary education
-  - Timing adjustments for all time limits
-
-  **ARIA Review**
-  - Incorrect or missing ARIA roles, states, and properties
-  - ARIA attributes that conflict with native HTML semantics
-  - Missing aria-live regions for dynamic content
-  - Widgets missing required ARIA patterns (e.g. tabs, dialogs, menus)
-
-  **Keyboard Navigation**
-  - Tab order that doesn't match visual layout
-  - Custom components that aren't keyboard operable
-  - Missing keyboard shortcuts for common actions
-  - Focus management after modal open/close
-
-  For each issue found, state: the element or pattern, the WCAG criterion it violates, the severity level, and a concrete fix.
-
-  ```
-  [paste code or URL here]
-  ```
+  Supplied evidence:
+  {{evidence}}
 draft: false
+recipe:
+  version: 1
+  reviewedAt: "2026-09-13"
+  previousRevision: "e59fc7636547de6973c200c9f844f4ddfd94c549"
+  when: "You have markup or a small interaction record and need an honest starting point for testing."
+  inputs:
+    evidence: "The markup and any actual keyboard, visual or assistive-technology observations."
+  exampleValues:
+    evidence: |
+      Markup only, with no browser or assistive-technology results:
+      <button><svg aria-hidden="true"><path d="M0 0h8v8H0z" /></svg></button>
+      <input type="email" placeholder="Email">
+      No CSS or surrounding labels have been supplied.
+  expected: |
+    The icon-only button has no name in the supplied markup. Add an appropriate visible label or accessible name. The input lacks a persistent visible label in this excerpt, so add or verify its associated label. Keyboard focus, contrast, reflow and screen-reader behaviour remain untested. Do not award a WCAG conformance level.
+  checks:
+    - "Findings point to the actual button and input in the excerpt."
+    - "No fabricated contrast measurement or keyboard test appears."
+    - "Missing surrounding context and the need for real interaction checks are explicit."
+  limits: "This prompt helps organise evidence. It is not a replacement for an accessibility audit or testing with disabled users."
 ---
 
-Comprehensive accessibility audit prompt covering WCAG 2.2 at all three conformance levels. Goes beyond automated checkers by flagging ARIA misuse, keyboard navigation gaps, and semantic HTML issues that tools like Lighthouse miss.
+The worked example is a target to inspect, not a saved response from a model. Use the checks to judge an actual result.
 
-Paste your HTML, component code, or describe the page structure. Works best when you include the full markup so the model can check element nesting and ARIA relationships.
+This template was revised during the September prompt review. The [earlier text](https://github.com/valorifutures/softcat.ai/blob/e59fc7636547de6973c200c9f844f4ddfd94c549/src/content/prompts/accessibility-audit.md) remains in Git history.

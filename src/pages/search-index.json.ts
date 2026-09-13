@@ -100,6 +100,8 @@ export const GET: APIRoute = async () => {
 
   // Static pages
   const pages = [
+    { title: 'Prompt recipes', summary: 'A small collection of reusable templates with sample inputs, target results and explicit checks.', url: '/prompts', type: 'page', tags: ['recipes', 'prompts', 'templates', 'library'] },
+    { title: 'Prompt collection review', summary: 'The retired prompt templates, preserved source history and the move to worked recipes with explicit checks.', url: '/prompts/review', type: 'page', tags: ['retired', 'removed', 'templates', 'recipes'] },
     { title: 'Essay removal record', summary: 'The retired automated essay series, original dates, removal reasons and preserved source history.', url: '/thoughts/review', type: 'page', tags: ['retired', 'removed', 'articles', 'archive', 'corrections'] },
     { title: 'Thoughts and corrections', summary: 'Revised essays and the record of what changed.', url: '/thoughts', type: 'page' },
     { title: 'About Valori', summary: 'SOFT CAT is an independent AI playground, workshop and public notebook.', url: '/valori', type: 'page' },

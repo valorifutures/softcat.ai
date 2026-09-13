@@ -6,7 +6,8 @@ import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import { readFileSync } from 'node:fs';
 const retirementReview = JSON.parse(readFileSync(new URL('./src/data/editorial-retirements.json', import.meta.url), 'utf8'));
-const retiredPaths = new Set(retirementReview.entries.map(entry => `/thoughts/${entry.id}`));
+const promptRetirements = JSON.parse(readFileSync(new URL('./src/data/prompt-retirements.json', import.meta.url), 'utf8'));
+const retiredPaths = new Set([...retirementReview.entries.map(entry => `/thoughts/${entry.id}`), ...promptRetirements.entries.map(entry => `/prompts/${entry.id}`)]);
 
 export default defineConfig({
   site: 'https://softcat.ai',

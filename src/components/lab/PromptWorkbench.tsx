@@ -1,16 +1,18 @@
-import { useState, useEffect, useRef } from 'preact/hooks';
+import { useState, useEffect, useLayoutEffect, useRef } from 'preact/hooks';
 import { estimateTokens } from '../../utils/tokens';
 import { WORKBENCH_KEY, HANDOFF_KEY, FIELD_LIMIT, LIBRARY_LIMIT, variableKeys, renderPrompt, promptMessages, requestBody, curlRequest, exportText, parsePromptLibrary, writePromptLibrary } from '../../lib/prompt-workbench.mjs';
 import { workbenchPresets } from '../../lib/prompt-workbench-presets.mjs';
+import { recipeDraft } from '../../lib/prompt-recipes.mjs';
 import './PromptWorkbench.css';
 
 interface PromptDraft { name: string; system: string; user: string; assistant: string; vars: Record<string, string>; model?: string; }
 interface SavedPrompt extends PromptDraft { id?: string; timestamp: number; }
 interface ModelInfo { id: string; name: string; provider: string; inputPrice: number; outputPrice: number; }
+interface RecipeInfo { id: string; title: string; prompt: string; recipe: { exampleValues: Record<string, string> }; }
 const blank = (): PromptDraft => ({ name: '', system: '', user: '', assistant: '', vars: {} });
 const fingerprint = (p: PromptDraft) => JSON.stringify([p.name.trim(), p.system, p.user, p.assistant, Object.entries(p.vars).sort(([a], [b]) => a.localeCompare(b)), p.model || '']);
 
-export default function PromptWorkbench({ models }: { models: ModelInfo[] }) {
+export default function PromptWorkbench({ models, recipes = [] }: { models: ModelInfo[]; recipes?: RecipeInfo[] }) {
   const [draft, setDraft] = useState<PromptDraft>(() => ({ ...blank(), model: models[0]?.id || '' }));
   const [baseline, setBaseline] = useState(() => fingerprint({ ...blank(), model: models[0]?.id || '' }));
   const [saved, setSaved] = useState<SavedPrompt[]>([]);
@@ -65,6 +67,15 @@ export default function PromptWorkbench({ models }: { models: ModelInfo[] }) {
     if (fingerprint(draft) !== baseline) setPendingLoad(next);
     else applyDraft(next);
   };
+  useLayoutEffect(() => {
+    const id = new URLSearchParams(window.location.search).get('recipe');
+    if (!id) return;
+    const recipe = recipes.find(item => item.id === id);
+    if (recipe) {
+      applyDraft(recipeDraft(recipe));
+      setNotice('Opened the recipe with its example inputs. It has not been saved or sent.');
+    } else setNotice('That recipe is not in the current collection. Your saved library has not been changed.');
+  }, []);
   const savePrompt = () => {
     if (!draft.name.trim()) { setNotice('Give this prompt a name before saving.'); return; }
     if (saved.some((prompt) => fingerprint(prompt) === fingerprint(draft))) { setNotice('This version is already saved in this browser.'); return; }
