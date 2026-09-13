@@ -7,12 +7,12 @@ import modelsData from '../../data/models.json';
 const models = modelsData.filter(hasVerifiedPrice).map((m: any) => ({ id: m.id, name: m.name, provider: m.provider, inputPrice: m.inputPrice, outputPrice: m.outputPrice }));
 ---
 
-<BaseLayout title="Prompt Workbench" description="Full prompt IDE with templates, variables, token counting, and multi-format export.">
-  <div class="max-w-5xl mx-auto px-6 py-16">
+<BaseLayout title="Prompt Workbench" description="Build reusable prompts, inspect filled messages and export an OpenRouter request. Save versions locally and keep a backup.">
+  <div class="workshop-shell py-12 md:py-16">
     <header class="mb-8">
       <a href="/tools" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; tools</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-amber">Prompt Workbench</h1>
-      <p class="text-text-muted mt-2">Build, test, and export prompts with templates, variables, and token estimates.</p>
+      <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight text-text-bright">Prompt Workbench</h1>
+      <p class="text-text-muted mt-4 leading-relaxed max-w-3xl">Write the messages, fill the variables and inspect the export. Save useful versions in this browser. No model call happens here.</p>
     </header>
     <ModelDataNotice />
     <PromptWorkbench client:load models={models} />

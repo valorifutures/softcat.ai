@@ -1,354 +1,145 @@
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect, useRef } from 'preact/hooks';
 import { estimateTokens } from '../../utils/tokens';
+import { WORKBENCH_KEY, HANDOFF_KEY, FIELD_LIMIT, LIBRARY_LIMIT, variableKeys, renderPrompt, promptMessages, requestBody, curlRequest, exportText, parsePromptLibrary, writePromptLibrary } from '../../lib/prompt-workbench.mjs';
+import { workbenchPresets } from '../../lib/prompt-workbench-presets.mjs';
+import './PromptWorkbench.css';
 
-interface SavedPrompt {
-  name: string;
-  system: string;
-  user: string;
-  assistant: string;
-  vars: Record<string, string>;
-  timestamp: number;
-}
-
-interface ModelInfo {
-  id: string;
-  name: string;
-  provider: string;
-  inputPrice: number;
-  outputPrice: number;
-}
-
-const builtInTemplates: Record<string, Omit<SavedPrompt, 'timestamp'>> = {
-  'RAG System': {
-    name: 'RAG System',
-    system: 'You are a helpful assistant. Answer questions based ONLY on the provided context. If the context does not contain the answer, say "I don\'t have enough information to answer that."',
-    user: 'Context:\n"""\n{{context}}\n"""\n\nQuestion: {{question}}',
-    assistant: 'Based on the provided context,',
-    vars: { context: '', question: '' },
-  },
-  'Code Reviewer': {
-    name: 'Code Reviewer',
-    system: 'You are a senior {{language}} developer performing a thorough code review. Focus on:\n1. Correctness and edge cases\n2. Performance implications\n3. Security concerns\n4. Code readability\n\nBe specific. Reference line numbers. Suggest fixes.',
-    user: 'Review this {{language}} code:\n\n```{{language}}\n{{code}}\n```',
-    assistant: '',
-    vars: { language: 'Python', code: '' },
-  },
-  'JSON Extractor': {
-    name: 'JSON Extractor',
-    system: 'You extract structured data from unstructured text. Always respond with valid JSON matching the schema provided. No additional text or explanation.',
-    user: 'Extract the following fields from the text below:\n\nSchema: {{schema}}\n\nText:\n"""\n{{text}}\n"""',
-    assistant: '{',
-    vars: { schema: '{"name": string, "date": string, "amount": number}', text: '' },
-  },
-  'Chain of Thought': {
-    name: 'Chain of Thought',
-    system: 'You are a careful analytical thinker. Break down problems step by step. Show your reasoning before giving a final answer. If you are unsure about any step, say so.',
-    user: '{{problem}}\n\nThink through this step by step.',
-    assistant: 'Let me work through this step by step.\n\nStep 1:',
-    vars: { problem: '' },
-  },
-  'Persona Chat': {
-    name: 'Persona Chat',
-    system: 'You are {{persona}}. Stay in character at all times. Respond as this person would, using their speech patterns, knowledge, and personality. Never break character.',
-    user: '{{message}}',
-    assistant: '',
-    vars: { persona: 'a grumpy but brilliant Unix sysadmin from the 1990s', message: '' },
-  },
-  'Text Analysis': {
-    name: 'Text Analysis',
-    system: 'You are an analytical assistant. Be thorough and structured in your analysis.',
-    user: 'Analyse the following text:\n\n"{{text}}"\n\nFocus on: {{focus}}',
-    assistant: '',
-    vars: { text: '', focus: 'tone, key arguments, and potential biases' },
-  },
-  'Data Transformation': {
-    name: 'Data Transformation',
-    system: 'You are a data engineer. Write efficient, correct transformations.',
-    user: 'Transform the following {{input_format}} data to {{output_format}}:\n\n```\n{{data}}\n```\n\nAdditional rules: {{rules}}',
-    assistant: '',
-    vars: { input_format: 'JSON', output_format: 'CSV', data: '', rules: 'none' },
-  },
-  'Explain Concept': {
-    name: 'Explain Concept',
-    system: 'You are a technical educator. Explain concepts clearly with practical examples. Target audience: {{audience}}.',
-    user: 'Explain {{concept}} in {{depth}}.\n\nInclude a practical example.',
-    assistant: '',
-    vars: { concept: '', depth: 'moderate detail', audience: 'intermediate developers' },
-  },
-};
-
-function fillTemplate(template: string, vars: Record<string, string>): string {
-  return template.replace(/\{\{(\w+)\}\}/g, (_, key) => vars[key] || `{{${key}}}`);
-}
+interface PromptDraft { name: string; system: string; user: string; assistant: string; vars: Record<string, string>; model?: string; }
+interface SavedPrompt extends PromptDraft { id?: string; timestamp: number; }
+interface ModelInfo { id: string; name: string; provider: string; inputPrice: number; outputPrice: number; }
+const blank = (): PromptDraft => ({ name: '', system: '', user: '', assistant: '', vars: {} });
+const fingerprint = (p: PromptDraft) => JSON.stringify([p.name.trim(), p.system, p.user, p.assistant, Object.entries(p.vars).sort(([a], [b]) => a.localeCompare(b)), p.model || '']);
 
 export default function PromptWorkbench({ models }: { models: ModelInfo[] }) {
-  const [system, setSystem] = useState('');
-  const [user, setUser] = useState('');
-  const [assistant, setAssistant] = useState('');
-  const [vars, setVars] = useState<Record<string, string>>({});
+  const [draft, setDraft] = useState<PromptDraft>(() => ({ ...blank(), model: models[0]?.id || '' }));
+  const [baseline, setBaseline] = useState(() => fingerprint({ ...blank(), model: models[0]?.id || '' }));
   const [saved, setSaved] = useState<SavedPrompt[]>([]);
-  const [promptName, setPromptName] = useState('');
-  const [copied, setCopied] = useState('');
-  const [activeTab, setActiveTab] = useState<'editor' | 'templates' | 'saved'>('editor');
-  const [exportModelId, setExportModelId] = useState(models.length > 0 ? models[0].id : '');
-
-  const selectedModel = models.find((m) => m.id === exportModelId) || models[0] || { id: '', name: 'Unknown', inputPrice: 0, outputPrice: 0 };
-
-  useEffect(() => {
+  const [libraryReady, setLibraryReady] = useState(false);
+  const [libraryProblem, setLibraryProblem] = useState('');
+  const [notice, setNotice] = useState('');
+  const [tab, setTab] = useState<'editor' | 'templates' | 'saved'>('editor');
+  const [format, setFormat] = useState<'text' | 'json' | 'curl'>('text');
+  const [pendingLoad, setPendingLoad] = useState<PromptDraft | null>(null);
+  const [pendingDelete, setPendingDelete] = useState<number | null>(null);
+  const rawLibrary = useRef<string | null>(null);
+  const fileInput = useRef<HTMLInputElement | null>(null);
+  const selectedModel = models.find((model) => model.id === draft.model);
+  const keys = variableKeys(draft.system, draft.user, draft.assistant);
+  let rendered = { system: '', user: '', assistant: '', missing: [] as string[] };
+  let renderError = '';
+  try { rendered = renderPrompt(draft); } catch (error) { renderError = (error as Error).message; }
+  let body: ReturnType<typeof requestBody> | null = null;
+  let requestError = renderError;
+  if (!requestError) {
     try {
-      const data = localStorage.getItem('softcat-workbench');
-      if (data) setSaved(JSON.parse(data));
-    } catch {}
-  }, []);
+      if (!selectedModel) throw new Error('Choose a model with a recorded price before exporting a request.');
+      body = requestBody(rendered, selectedModel.id);
+    } catch (error) { requestError = (error as Error).message; }
+  }
+  const preview = renderError ? '' : format === 'text' ? exportText(rendered) : body ? format === 'json' ? JSON.stringify(body, null, 2) : curlRequest(body) : '';
+  const inputTokens = renderError ? 0 : promptMessages(rendered).reduce((sum: number, message: { content: string }) => sum + estimateTokens(message.content), 0);
+  const inputCost = selectedModel ? inputTokens / 1_000_000 * selectedModel.inputPrice : null;
+  const update = (change: Partial<PromptDraft>) => { setDraft((current) => ({ ...current, ...change })); setNotice(''); };
 
-  // Extract variables from all fields
-  const allText = system + user + assistant;
-  const varMatches = allText.match(/\{\{(\w+)\}\}/g) || [];
-  const varKeys = [...new Set(varMatches.map((m) => m.slice(2, -2)))];
-
-  const filledSystem = fillTemplate(system, vars);
-  const filledUser = fillTemplate(user, vars);
-  const filledAssistant = fillTemplate(assistant, vars);
-
-  const tokens = {
-    system: estimateTokens(filledSystem),
-    user: estimateTokens(filledUser),
-    assistant: estimateTokens(filledAssistant),
-    total: estimateTokens(filledSystem + filledUser + filledAssistant),
-  };
-
-  const loadTemplate = (t: Omit<SavedPrompt, 'timestamp'>) => {
-    setSystem(t.system);
-    setUser(t.user);
-    setAssistant(t.assistant);
-    setVars({ ...t.vars });
-    setPromptName(t.name);
-    setActiveTab('editor');
-  };
-
-  const savePrompt = () => {
-    if (!promptName) return;
-    const prompt: SavedPrompt = { name: promptName, system, user, assistant, vars, timestamp: Date.now() };
-    const updated = [...saved.filter((s) => s.name !== promptName), prompt];
-    setSaved(updated);
-    localStorage.setItem('softcat-workbench', JSON.stringify(updated));
-  };
-
-  const deletePrompt = (name: string) => {
-    const updated = saved.filter((s) => s.name !== name);
-    setSaved(updated);
-    localStorage.setItem('softcat-workbench', JSON.stringify(updated));
-  };
-
-  const exportAs = (format: string) => {
-    let text = '';
-    if (format === 'text') {
-      text = `[System]\n${filledSystem}\n\n[User]\n${filledUser}`;
-      if (filledAssistant) text += `\n\n[Assistant prefill]\n${filledAssistant}`;
-    } else if (format === 'json') {
-      const messages: any[] = [{ role: 'user', content: filledUser }];
-      if (filledAssistant) messages.push({ role: 'assistant', content: filledAssistant });
-      text = JSON.stringify({ system: filledSystem, messages }, null, 2);
-    } else if (format === 'curl') {
-      const messages: any[] = [{ role: 'user', content: filledUser }];
-      if (filledAssistant) messages.push({ role: 'assistant', content: filledAssistant });
-      text = `curl -X POST https://api.anthropic.com/v1/messages \\
-  -H "Content-Type: application/json" \\
-  -H "x-api-key: YOUR_API_KEY" \\
-  -H "anthropic-version: 2023-06-01" \\
-  -d '${JSON.stringify({ model: selectedModel.id, max_tokens: 4096, system: filledSystem, messages })}'`;
+  const readLibrary = () => {
+    setLibraryReady(false); setLibraryProblem(''); setPendingDelete(null);
+    try {
+      rawLibrary.current = localStorage.getItem(WORKBENCH_KEY);
+      setSaved(parsePromptLibrary(rawLibrary.current)); setLibraryReady(true);
+    } catch (error) {
+      setLibraryProblem(`Saved data could not be opened. It has been left untouched. ${(error as Error).message}`);
     }
-    navigator.clipboard.writeText(text);
-    setCopied(format);
-    setTimeout(() => setCopied(''), 2000);
+  };
+  useEffect(readLibrary, []);
+
+  const persist = (prompts: SavedPrompt[]) => {
+    if (!libraryReady) throw new Error('Saved data is unavailable. Download your editor or saved data before reloading.');
+    const raw = writePromptLibrary(localStorage, rawLibrary.current, prompts);
+    rawLibrary.current = raw; setSaved(prompts);
+  };
+  const applyDraft = (next: PromptDraft) => {
+    const value = { name: next.name, system: next.system, user: next.user, assistant: next.assistant, vars: { ...next.vars }, model: next.model ?? draft.model };
+    setDraft(value); setBaseline(fingerprint(value)); setTab('editor'); setPendingLoad(null); setNotice('');
+  };
+  const loadDraft = (next: PromptDraft) => {
+    if (fingerprint(draft) !== baseline) setPendingLoad(next);
+    else applyDraft(next);
+  };
+  const savePrompt = () => {
+    if (!draft.name.trim()) { setNotice('Give this prompt a name before saving.'); return; }
+    if (saved.some((prompt) => fingerprint(prompt) === fingerprint(draft))) { setNotice('This version is already saved in this browser.'); return; }
+    try {
+      persist([...saved, { ...draft, name: draft.name.trim(), id: crypto.randomUUID(), timestamp: Date.now() }]);
+      setBaseline(fingerprint(draft)); setNotice('Saved a new version in this browser. Earlier versions have been kept.');
+    } catch (error) { setNotice(`Could not save. Your editor is still here. ${(error as Error).message}`); }
+  };
+  const deletePrompt = (index: number) => {
+    try { persist(saved.filter((_, i) => i !== index)); setPendingDelete(null); setNotice('Deleted that saved version.'); }
+    catch (error) { setNotice(`Could not delete. ${(error as Error).message}`); }
+  };
+  const download = (text: string, filename: string, type = 'application/json') => {
+    try {
+      const url = URL.createObjectURL(new Blob([text], { type }));
+      const link = document.createElement('a'); link.href = url; link.download = filename;
+      document.body.append(link); link.click(); link.remove(); window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      setNotice('Download prepared. Check your browser downloads.');
+    } catch { setNotice('The download could not be prepared. You can select and copy the export preview.'); }
+  };
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(preview); setNotice('Copied the export.'); }
+    catch { setNotice('Copy was unavailable. Select the export below, or download it.'); }
+  };
+  const importLibrary = async (file: File | undefined) => {
+    if (!file) return;
+    const expectedRaw = rawLibrary.current;
+    try {
+      if (file.size > LIBRARY_LIMIT) throw new Error('Keep a library file below 5 MB.');
+      const imported = parsePromptLibrary(await file.text());
+      if (rawLibrary.current !== expectedRaw) throw new Error('The saved library changed during import. Try importing the file again.');
+      const merged = [...saved]; let added = 0;
+      for (const prompt of imported) {
+        if (merged.some((existing) => fingerprint(existing) === fingerprint(prompt) && existing.timestamp === prompt.timestamp)) continue;
+        merged.push({ ...prompt, id: crypto.randomUUID() }); added++;
+      }
+      if (added) persist(merged);
+      setNotice(`Imported ${added} saved ${added === 1 ? 'version' : 'versions'}. Existing prompts were kept.`);
+    } catch (error) { setNotice(`Could not import. Existing prompts were kept. ${(error as Error).message}`); }
+    finally { if (fileInput.current) fileInput.current.value = ''; }
+  };
+  const openPlayground = () => {
+    if (!body || rendered.assistant) return;
+    try {
+      sessionStorage.setItem(HANDOFF_KEY, JSON.stringify({ version: 2, system: rendered.system, user: rendered.user, model: draft.model, createdAt: Date.now() }));
+      window.location.assign('/lab/chat-playground?from=workbench');
+    } catch { setNotice('This browser could not transfer the draft. Copy the text export and paste it into Chat Playground.'); }
   };
 
-  const openInPlayground = () => {
-    localStorage.setItem('softcat-workbench-handoff', JSON.stringify({ system: filledSystem }));
-    window.location.href = '/lab/chat-playground';
-  };
+  return <div class="prompt-workbench">
+    <div class="pw-toolbar"><div role="group" aria-label="Workbench views">{(['editor', 'templates', 'saved'] as const).map((view) => <button type="button" aria-pressed={tab === view} onClick={() => setTab(view)}>{view === 'editor' ? 'Editor' : view === 'templates' ? 'Examples' : `Saved (${saved.length})`}</button>)}</div><button type="button" onClick={() => loadDraft(blank())}>New prompt</button></div>
+    {pendingLoad && <div class="pw-confirm" role="alert"><p>Your editor has unsaved edits. Replace them with the selected prompt?</p><button type="button" onClick={() => applyDraft(pendingLoad)}>Replace editor</button><button type="button" onClick={() => setPendingLoad(null)}>Keep editing</button></div>}
+    {libraryProblem && <p class="pw-warning" role="alert">{libraryProblem} Use “Download saved data” in the Saved view to keep a copy.</p>}
+    <p class="pw-notice" role="status">{notice}</p>
 
-  return (
-    <div class="space-y-4">
-      {/* Tabs */}
-      <div class="flex gap-2 border-b border-surface-light pb-2">
-        {(['editor', 'templates', 'saved'] as const).map((tab) => (
-          <button
-            onClick={() => setActiveTab(tab)}
-            class={`px-3 py-1.5 rounded-t font-mono text-xs transition-all ${
-              activeTab === tab
-                ? 'bg-surface border border-surface-light border-b-void text-neon-green'
-                : 'text-text-muted hover:text-text-primary'
-            }`}
-          >
-            {tab}
-            {tab === 'saved' && saved.length > 0 && ` (${saved.length})`}
-          </button>
-        ))}
-      </div>
+    {tab === 'templates' && <section aria-labelledby="pw-examples-heading"><h2 id="pw-examples-heading">Start with a question you can check.</h2><p class="pw-help">These are illustrative examples. Loading one makes no model call. Edit the inputs, then inspect the filled export.</p><div class="pw-examples">{workbenchPresets.map((preset) => <button type="button" onClick={() => loadDraft(preset)}><strong>{preset.name}</strong><span>{preset.description}</span><span class="pw-example-open">Use this example ↗</span></button>)}</div></section>}
 
-      {activeTab === 'templates' && (
-        <div class="grid gap-3">
-          {Object.entries(builtInTemplates).map(([key, t]) => (
-            <button
-              onClick={() => loadTemplate(t)}
-              class="block text-left bg-surface border border-surface-light rounded-lg p-4 card-glow"
-            >
-              <div class="font-mono text-sm font-bold text-text-bright">{t.name}</div>
-              <div class="font-mono text-xs text-text-muted mt-1 truncate">{t.system.slice(0, 100)}...</div>
-            </button>
-          ))}
-        </div>
-      )}
+    {tab === 'saved' && <section aria-labelledby="pw-saved-heading"><h2 id="pw-saved-heading">A library in this browser.</h2><p class="pw-help">Saving creates a version. It keeps earlier versions, even when the name is the same. Download a backup before clearing site data or moving devices.</p><div class="pw-library-actions"><button type="button" onClick={readLibrary}>Reload saved library</button><button type="button" disabled={!libraryReady && rawLibrary.current === null} onClick={() => download(libraryReady ? JSON.stringify({ version: 1, prompts: saved }, null, 2) : rawLibrary.current || '', 'softcat-prompt-library.json')}>Download saved data</button><label class="pw-import">Import library<input ref={fileInput} type="file" accept="application/json,.json" disabled={!libraryReady} onChange={event => importLibrary(event.currentTarget.files?.[0])} /></label></div>{libraryReady && saved.length === 0 && <p class="pw-empty">No saved prompts yet. Name a prompt in the editor and save its first version.</p>}<div class="pw-saved-list">{saved.map((prompt, index) => <article key={prompt.id || `${prompt.name}-${prompt.timestamp}-${index}`}><div><h3>{prompt.name}</h3><time dateTime={new Date(prompt.timestamp).toISOString()}>{new Date(prompt.timestamp).toLocaleString('en-GB')}</time></div><div class="pw-saved-actions"><button type="button" onClick={() => loadDraft(prompt)} aria-label={`Load ${prompt.name}`}>Load</button><button type="button" onClick={() => setPendingDelete(index)} aria-label={`Delete ${prompt.name}`}>Delete</button></div>{pendingDelete === index && <div class="pw-confirm"><p>Delete this saved version of “{prompt.name}”?</p><button type="button" onClick={() => deletePrompt(index)}>Delete this version</button><button type="button" onClick={() => setPendingDelete(null)}>Keep it</button></div>}</article>)}</div></section>}
 
-      {activeTab === 'saved' && (
-        <div class="grid gap-3">
-          {saved.length === 0 ? (
-            <div class="bg-surface border border-surface-light rounded-lg p-6 text-center">
-              <p class="font-mono text-sm text-text-muted">No saved prompts yet. Build one and save it.</p>
-            </div>
-          ) : (
-            saved.map((s) => (
-              <div class="flex items-center gap-3 bg-surface border border-surface-light rounded-lg p-4">
-                <button onClick={() => loadTemplate(s)} class="flex-1 text-left">
-                  <div class="font-mono text-sm font-bold text-text-bright">{s.name}</div>
-                  <div class="font-mono text-xs text-text-muted mt-1">
-                    {new Date(s.timestamp).toLocaleDateString('en-GB')}
-                  </div>
-                </button>
-                <button
-                  onClick={() => deletePrompt(s.name)}
-                  class="font-mono text-xs text-text-muted hover:text-red-400 transition-colors px-2"
-                >
-                  ✕
-                </button>
-              </div>
-            ))
-          )}
-        </div>
-      )}
-
-      {activeTab === 'editor' && (
-        <>
-          {/* Variables */}
-          {varKeys.length > 0 && (
-            <div class="bg-surface border border-surface-light rounded-lg p-4 space-y-3">
-              <div class="font-mono text-xs text-text-muted uppercase tracking-wider">Variables detected</div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {varKeys.map((key) => (
-                  <div>
-                    <label class="font-mono text-xs text-neon-purple block mb-1">{`{{${key}}}`}</label>
-                    <input
-                      type="text"
-                      value={vars[key] || ''}
-                      onInput={(e) => setVars((prev) => ({ ...prev, [key]: (e.target as HTMLInputElement).value }))}
-                      class="w-full bg-void border border-surface-light rounded px-3 py-1.5 font-mono text-sm text-text-primary focus:outline-none focus:border-neon-green/50"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* System prompt */}
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <label class="font-mono text-xs text-neon-green">System prompt</label>
-              <span class="font-mono text-xs text-text-muted">~{tokens.system} tokens</span>
-            </div>
-            <textarea
-              value={system}
-              onInput={(e) => setSystem((e.target as HTMLTextAreaElement).value)}
-              class="w-full h-32 bg-surface border border-surface-light rounded-lg p-3 font-mono text-sm text-text-primary focus:outline-none focus:border-neon-green/50 resize-y"
-              placeholder="System instructions..."
-            />
-          </div>
-
-          {/* User prompt */}
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <label class="font-mono text-xs text-neon-cyan">User prompt</label>
-              <span class="font-mono text-xs text-text-muted">~{tokens.user} tokens</span>
-            </div>
-            <textarea
-              value={user}
-              onInput={(e) => setUser((e.target as HTMLTextAreaElement).value)}
-              class="w-full h-40 bg-surface border border-surface-light rounded-lg p-3 font-mono text-sm text-text-primary focus:outline-none focus:border-neon-green/50 resize-y"
-              placeholder="Your prompt..."
-            />
-          </div>
-
-          {/* Assistant prefill */}
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <label class="font-mono text-xs text-neon-amber">Assistant prefill (optional)</label>
-              <span class="font-mono text-xs text-text-muted">~{tokens.assistant} tokens</span>
-            </div>
-            <textarea
-              value={assistant}
-              onInput={(e) => setAssistant((e.target as HTMLTextAreaElement).value)}
-              class="w-full h-20 bg-surface border border-surface-light rounded-lg p-3 font-mono text-sm text-text-primary focus:outline-none focus:border-neon-green/50 resize-y"
-              placeholder="Start the assistant's response with..."
-            />
-          </div>
-
-          {/* Token total and actions */}
-          <div class="flex flex-wrap items-center justify-between gap-4 bg-surface border border-surface-light rounded-lg p-4">
-            <div class="font-mono text-sm">
-              <span class="text-text-muted">Total: </span>
-              <span class="text-text-bright font-bold">~{tokens.total} tokens</span>
-              <span class="text-text-muted ml-2">{selectedModel.id ? `(~$${((tokens.total / 1_000_000) * selectedModel.inputPrice).toFixed(4)} on ${selectedModel.name})` : '(No verified price available)'}</span>
-            </div>
-
-            <div class="flex items-center gap-2">
-              <select
-                value={exportModelId}
-                onChange={(e) => setExportModelId((e.target as HTMLSelectElement).value)}
-                class="bg-void border border-surface-light rounded px-2 py-1.5 font-mono text-xs text-text-primary focus:outline-none focus:border-neon-green/50"
-              >
-                {models.map((m) => (
-                  <option value={m.id}>{m.name} ({m.provider})</option>
-                ))}
-              </select>
-              {['text', 'json', 'curl'].map((fmt) => (
-                <button
-                  onClick={() => exportAs(fmt)}
-                  class={`px-3 py-1.5 rounded font-mono text-xs transition-all ${
-                    copied === fmt
-                      ? 'bg-neon-green/20 border border-neon-green text-neon-green'
-                      : 'bg-void border border-surface-light text-text-muted hover:text-text-primary'
-                  }`}
-                >
-                  {copied === fmt ? 'copied!' : fmt}
-                </button>
-              ))}
-              <button
-                onClick={openInPlayground}
-                class="px-3 py-1.5 rounded font-mono text-xs transition-all bg-void border border-surface-light text-neon-cyan hover:bg-neon-cyan/10 hover:border-neon-cyan/30"
-              >
-                open in playground
-              </button>
-            </div>
-          </div>
-
-          {/* Save */}
-          <div class="flex gap-2">
-            <input
-              type="text"
-              value={promptName}
-              onInput={(e) => setPromptName((e.target as HTMLInputElement).value)}
-              placeholder="Prompt name..."
-              class="flex-1 bg-surface border border-surface-light rounded px-3 py-1.5 font-mono text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-neon-green/50"
-            />
-            <button
-              onClick={savePrompt}
-              class="px-4 py-1.5 rounded font-mono text-xs bg-surface border border-neon-green/30 text-neon-green hover:bg-neon-green/10 transition-all"
-            >
-              save
-            </button>
-          </div>
-        </>
-      )}
-    </div>
-  );
+    {tab === 'editor' && <>
+      <div class="pw-editor-intro"><p class="pw-eyebrow">01 / WRITE THE MESSAGES</p><button type="button" onClick={() => setTab('templates')}>Try an example ↗</button></div>
+      <div class="pw-editors">{([{ key: 'system', label: 'System prompt', placeholder: 'Instructions, boundaries and the output you need…' }, { key: 'user', label: 'User message', placeholder: 'The task and the material to work with…' }] as const).map((field) => <div><label for={`pw-${field.key}`}>{field.label}</label><textarea id={`pw-${field.key}`} value={draft[field.key]} maxLength={FIELD_LIMIT} onInput={event => update({ [field.key]: event.currentTarget.value })} placeholder={field.placeholder} spellCheck={false} /><p class="pw-help">Use {'{{variable}}'} to add a reusable input.</p></div>)}</div>
+      <details class="pw-prefix" open={!!draft.assistant}><summary>Assistant prefix, for models that support it</summary><label for="pw-assistant">Assistant prefix (optional)</label><textarea id="pw-assistant" value={draft.assistant} maxLength={FIELD_LIMIT} onInput={event => update({ assistant: event.currentTarget.value })} spellCheck={false} /><p class="pw-help">This becomes a final assistant message in the export. Prefilling depends on the model and provider. Chat Playground does not import a prefix. Earlier saved prefixes are preserved here.</p></details>
+      {!!keys.length && <section class="pw-variables" aria-labelledby="pw-variables-heading"><h2 id="pw-variables-heading">Fill the variables</h2><p class="pw-help">Empty values leave their markers in the text. Complete them before exporting a request.</p><div>{keys.map((key, index) => <div><label for={`pw-var-${index}`}>{`{{${key}}}`}</label><textarea id={`pw-var-${index}`} value={Object.hasOwn(draft.vars, key) ? draft.vars[key] : ''} maxLength={FIELD_LIMIT} rows={3} onInput={event => update({ vars: { ...draft.vars, [key]: event.currentTarget.value } })} spellCheck={false} /></div>)}</div></section>}
+      <form class="pw-save" onSubmit={event => { event.preventDefault(); savePrompt(); }}><div><label for="pw-name">Prompt name</label><input id="pw-name" value={draft.name} maxLength={160} onInput={event => update({ name: event.currentTarget.value })} placeholder="Give this version a useful name" /></div><button type="submit" disabled={!libraryReady || !draft.name.trim()}>Save a version</button><p>Saved only when you choose. No account or cloud sync.</p></form>
+      <section class="pw-export" aria-labelledby="pw-export-heading"><p class="pw-eyebrow">02 / INSPECT AND TAKE IT WITH YOU</p><h2 id="pw-export-heading">See exactly what you are copying.</h2><div class="pw-export-options"><div><label for="pw-model">OpenRouter model</label><select id="pw-model" value={draft.model} onChange={event => update({ model: event.currentTarget.value })}>{!selectedModel && <option value={draft.model || ''}>{draft.model ? `${draft.model} (not in the verified list)` : 'Choose a model'}</option>}{models.map((model) => <option value={model.id}>{model.name} ({model.provider})</option>)}</select></div><div><label for="pw-format">Export format</label><select id="pw-format" value={format} onChange={event => setFormat(event.currentTarget.value as typeof format)}><option value="text">Plain text</option><option value="json">OpenRouter request JSON</option><option value="curl">cURL for a POSIX shell</option></select></div></div>
+        <p class="pw-estimate">{renderError ? 'The filled text is too large to estimate.' : <>About <strong>{inputTokens.toLocaleString('en-GB')} input tokens</strong>{inputCost !== null && <> · approximately <strong>${inputCost.toLocaleString('en-US', { maximumFractionDigits: 8 })}</strong> at the saved input rate</>}.</>}</p><p class="pw-help">This is a rough text estimate. It excludes message overhead, output, reasoning and caching. Tokenisation varies by model. Request exports set a 2,048-token output limit, which you can edit.</p>
+        {(renderError || rendered.missing.length > 0) && <p class="pw-warning">{renderError || `Unfilled variables: ${rendered.missing.join(', ')}.`}</p>}
+        {format !== 'text' && requestError && <p class="pw-warning">{requestError}</p>}
+        {format === 'curl' && <p class="pw-help">Uses OpenRouter's chat endpoint. Set OPENROUTER_API_KEY in your shell before running it. Copying or downloading does not send a request. Running it may incur provider charges.</p>}
+        <div class="pw-export-actions"><button type="button" class="pw-primary" disabled={!preview} onClick={copy}>Copy export</button><button type="button" disabled={!preview} onClick={() => download(preview, `softcat-prompt.${format === 'json' ? 'json' : format === 'curl' ? 'sh' : 'txt'}`, format === 'json' ? 'application/json' : 'text/plain')}>Download export</button><button type="button" disabled={!body || !!rendered.assistant} onClick={openPlayground}>Open draft in Chat Playground ↗</button></div>
+        <p class="pw-help">The playground receives the filled system prompt, user draft and model choice in this tab. Nothing is sent until you choose Send. {rendered.assistant && 'Remove the assistant prefix to use this transfer.'}</p>
+        <label class="pw-preview-label" for="pw-preview">Export preview</label><textarea id="pw-preview" class="pw-preview" readOnly value={preview} spellCheck={false} rows={12} placeholder="Your filled messages will appear here." />
+      </section>
+      <p class="pw-help pw-bottom-note">Each message and filled result is limited to 200,000 characters. Libraries hold up to 500 versions within 5 MB of JSON. Prompts and exports stay in your browser. Check model output with the <a href="/lab/json-validator">JSON validator</a> or compare prompt versions in <a href="/lab/prompt-diff">Prompt Diff</a>.</p>
+    </>}
+  </div>;
 }
