@@ -1,31 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/project-pages.css';
+const routes = [
+  { n: '01', title: 'Something broke', text: 'Tell us which page, what you tried and what happened. A small example makes a fault much easier to reproduce.', action: 'Report a bug', template: 'bug_report.yml' },
+  { n: '02', title: 'Something is wrong', text: 'Point to the claim or data, explain the correction and include a source we can check. Uncertainty is a useful finding too.', action: 'Suggest a correction', template: 'correction.yml' },
+  { n: '03', title: 'Something is worth trying', text: 'Describe the task or question, the smallest useful experiment and how we would judge the result.', action: 'Propose an experiment', template: 'experiment.yml' },
+];
 ---
-
-<BaseLayout title="Contact" description="Get in touch with the Valori team.">
-  <div class="max-w-3xl mx-auto px-6 py-16">
-    <header class="mb-10">
-      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">Contact</h1>
+<BaseLayout title="Contact" description="Report a broken tool, correct a claim or suggest the next SOFT CAT experiment.">
+  <div class="workshop-shell project-page">
+    <header class="project-contact-intro">
+      <p class="eyebrow">FEEDBACK / THE NEXT ITERATION</p>
+      <h1>What should<br /><em>we try next?</em></h1>
+      <p class="project-lead">A broken example, a better source or a question worth testing. Give us something concrete to work with.</p>
     </header>
-
-    <div class="space-y-8 text-text-primary leading-relaxed">
-      <p>
-        We read everything. If you have a question, suggestion, or just want to say hello, drop us a line.
-      </p>
-
-      <div class="bg-surface border border-surface-light rounded-lg p-6">
-        <h2 class="font-mono text-sm font-bold text-neon-green mb-3">Email</h2>
-        <a href="mailto:workshop@softcat.ai" class="font-mono text-sm text-neon-cyan hover:underline">workshop@softcat.ai</a>
-      </div>
-
-      <div>
-        <h2 class="font-mono text-sm font-bold text-neon-cyan mb-3">GitHub</h2>
-        <p>
-          Found a bug or have a feature request? Open an issue on the
-          <a href="https://github.com/valorifutures/softcat.ai" class="text-neon-cyan hover:underline" target="_blank" rel="noopener noreferrer">repo</a>.
-        </p>
-      </div>
-    </div>
+    <section class="feedback-routes" aria-label="Ways to contribute">
+      {routes.map((route) => <article><p class="eyebrow">{route.n} / FEEDBACK</p><h2>{route.title}</h2><p>{route.text}</p><a class="text-link" href={`https://github.com/valorifutures/softcat.ai/issues/new?template=${route.template}`}>{route.action} <span aria-hidden="true">↗</span></a></article>)}
+    </section>
+    <p class="project-footnote">These links open GitHub. You will need an account to submit an issue, and its contents will be public. Use a small, redacted example without API keys or private conversations.</p>
+    <section class="project-contact-details" aria-labelledby="email-heading">
+      <div><p class="eyebrow">PREFER EMAIL?</p><h2 id="email-heading">Say hello.</h2><a class="project-email" href="mailto:workshop@softcat.ai">workshop@softcat.ai</a></div>
+      <div class="project-prose"><p>For a question about the project, or feedback that does not fit an issue, use email.</p><p>You can also <a href="https://github.com/valorifutures/softcat.ai/issues">browse existing issues</a> or read <a href="/valori">how the project works</a>.</p></div>
+    </section>
   </div>
 </BaseLayout>

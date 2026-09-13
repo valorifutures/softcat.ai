@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T00:45:53.510046+00:00",
-  "phase": "github-price-snapshots",
-  "active_branch": "codex/github-price-snapshots",
+  "updated_at": "2026-09-13T01:02:07.405822+00:00",
+  "phase": "project-feedback",
+  "active_branch": "codex/project-feedback",
   "last_verified_deployment": {
-    "sha": "9ffbd62c380e2b1f7413d6c7fb4b234ca97b0259",
-    "at": "2026-09-13T00:32:12Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34728191461"
+    "sha": "43abdfed732c03072f4b6e64dc5a91fc59b43880",
+    "at": "2026-09-13T00:55:31Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34729167469"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -20,11 +20,12 @@
     "PR #202 merged and deployed. The live comparison finds exact model IDs, calculates ten Sonnet calls at $0.105 and keeps unlisted Laguna pricing unknown even with zero calls. CSV export confirms its source/assumption record. Search native Escape restores opener focus.",
     "PR #203 merged and deployed. The live JSON checker reports three deliberate classification failures, clears the result on edits, accepts the matching example and reports invoice date/quantity/price failures. A pathological pattern was stopped after 2.5 seconds and the page remained usable.",
     "PR #204 merged and deployed. Live Thoughts shows six corrections and 124 historical essays in a compact monthly index. The prompt essay retains 3 July as its publication date and shows its 13 September correction separately. The new notebook entry records real validator tests.",
-    "PR #205 merged and deployed. The live weight-source filter shows 19 models and two gated links. Source links and licence labels replace the old open/closed guesses, while workload price values remain unchanged. The homepage now recommends three actual build notes."
+    "PR #205 merged and deployed. The live weight-source filter shows 19 models and two gated links. Source links and licence labels replace the old open/closed guesses, while workload price values remain unchanged. The homepage now recommends three actual build notes.",
+    "PR #206 merged. Its first real GitHub price snapshot checked 445 provider entries, verified 37 tracked prices and kept two unlisted prices unknown. The data commit and Pages deployment succeeded. Live Pipeline shows the actual 00:54 UTC run and zero recorded inference cost, and the model comparison shows its new snapshot date."
   ],
   "next": [
-    "Publish the GitHub price workflow and wait for its first real snapshot and Pages deployment. Inspect the actual run, data commit and live pipeline record.",
-    "Review the project/about/contact pages and remaining tool journeys for concrete improvements.",
+    "Publish and inspect the About and Contact refresh, including the three GitHub feedback templates.",
+    "Repair Prompt Workbench: the cURL export currently uses the wrong provider endpoint and unsafe shell quoting. Review saving failures, template examples and the handoff to Chat Playground.",
     "The separate systemd host remains unverified. Price migration does not restart those other bots.",
     "Leave a clean checkpoint for the next scheduled iteration."
   ],

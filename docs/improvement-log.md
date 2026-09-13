@@ -392,3 +392,15 @@ still requires the first post-merge workflow run and will be checked next.
 PR #205's Pages run 34728191461 succeeded at 00:32 UTC. The live weight filter
 shows 19 entries and two gated sources. The homepage's three notebook links
 were checked against its rendered content.
+
+## 13 September 2026, project and feedback pages
+
+The first Model price snapshot run completed successfully in GitHub Actions at 00:55 UTC. Run [34729167469](https://github.com/valorifutures/softcat.ai/actions/runs/34729167469) fetched the real public catalogue, checked all 39 tracked IDs and published data commit `43abdfed732c03072f4b6e64dc5a91fc59b43880` through its separate publishing job. Both the normal Pages run and the snapshot's inline Pages deployment succeeded. The live Pipeline shows the real run at 00:54 UTC, and the model comparison displays that same snapshot date. There were 37 verified prices, two unlisted models, no price changes and no paid model call.
+
+The About page previously claimed practitioner credentials and a Latin etymology without supporting material. It now explains the actual playground, tools, notebook and source records, with direct links and a cream SOFT CAT name card. Its editorial standards describe dates, evidence, corrections and the limits of run records. The collective identity remains anonymous.
+
+Contact now gives visitors three specific routes: a reproducible bug, a sourced correction or a small experiment with a way to judge the result. Three repository issue forms support those links. Email remains available, without the old promise that every message is read. The page explains that GitHub issues are public and asks for a small redacted example. No message or issue was sent during this work.
+
+The production build passes at 889 pages. Parsed the four feedback YAML files, checked unique form field IDs and required labels, and verified all 78 internal links across the two built pages. Layout changes are CSS-only with narrow-screen rules and no additional client script. Live visual checks follow publication.
+
+A further tool review found that Prompt Workbench emits Anthropic cURL requests containing OpenRouter IDs, fails to quote apostrophes safely, claims clipboard success before it resolves and only hands the system prompt to Chat Playground. Those concrete faults are the next batch.

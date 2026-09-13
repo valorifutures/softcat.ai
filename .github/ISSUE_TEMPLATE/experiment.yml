@@ -1,0 +1,30 @@
+name: Propose an experiment
+description: A task, question or small tool worth trying.
+title: 'Experiment: '
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: What would you like to find out or make easier?
+      description: Start with the task or question. Who would use the result?
+    validations:
+      required: true
+  - type: textarea
+    id: experiment
+    attributes:
+      label: What is the smallest useful experiment?
+      description: A concrete input, a comparison or a short example is a good start.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: How would we judge the result?
+      description: What would count as success, failure or an interesting surprise?
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Useful references
+      description: Optional links, related work or previous attempts.
