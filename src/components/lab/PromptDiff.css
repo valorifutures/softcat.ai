@@ -1,0 +1,52 @@
+.prompt-diff button { color: #d9dfd2; border: 1px solid #3e4638; border-radius: 0.3rem; background: #181d15; min-height: 44px; padding: 0.65rem 0.9rem; font-size: 0.8rem; cursor: pointer; }
+.prompt-diff button:hover { color: var(--workshop-lime); border-color: var(--workshop-lime); }
+.prompt-diff button:disabled { opacity: 0.45; cursor: not-allowed; }
+.prompt-diff .pd-primary { background: var(--workshop-lime); color: #26351c; border-color: var(--workshop-lime); }
+.prompt-diff h2 { color: #e8eddf; font: 500 1.35rem/1.4 var(--font-sans); letter-spacing: -0.03em; }
+.pd-eyebrow { color: #afbd9e; font: 0.6rem/1.8 var(--font-mono); letter-spacing: 0.1em; margin-bottom: 0.65rem; }
+.pd-examples { padding: 1.5rem; border: 1px solid #3d4535; background: #171d12; border-radius: 0.4rem; margin-bottom: 1.5rem; }
+.pd-examples p:not(.pd-eyebrow), .pd-library p, .pd-measures > p, .pd-result-heading p:not(.pd-eyebrow), .pd-method p { color: var(--color-text-muted); font-size: 0.83rem; line-height: 1.85; margin-top: 0.7rem; }
+.pd-examples > div:last-child { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.2rem; }
+.pd-library, .pd-method { border: 1px solid #343a30; border-radius: 0.3rem; padding: 1rem 1.2rem; margin-block: 1.3rem; }
+.pd-library summary, .pd-method summary { color: #bcc7af; min-height: 30px; cursor: pointer; font-size: 0.85rem; }
+.pd-library > button { margin-block: 1rem; }
+.pd-library-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 0.8rem; }
+.pd-library-controls > div { flex: 1 1 240px; min-width: 0; }
+.prompt-diff label:not(.pd-spacing) { display: block; color: #d5deca; font-size: 0.82rem; margin-bottom: 0.6rem; }
+.prompt-diff textarea, .prompt-diff select { width: 100%; min-width: 0; background: #11150e; color: #dde5d3; border: 1px solid #3b4334; border-radius: 0.3rem; padding: 0.85rem; font: 0.8rem/1.8 var(--font-mono); }
+.pd-editors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.8rem; }
+.pd-editors textarea { min-height: 235px; resize: vertical; }
+.pd-editors p { font: 0.65rem/1.8 var(--font-mono); color: var(--color-text-muted); margin-top: 0.5rem; }
+.pd-actions, .pd-report-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem; margin-block: 1.2rem; }
+.pd-actions > span, .pd-report-actions > span { font-size: 0.74rem; color: var(--color-text-muted); }
+.pd-measures { border-top: 1px solid #30372a; padding-top: 1.8rem; margin-top: 2.2rem; }
+.pd-model { max-width: 550px; margin-block: 1.4rem; }
+.pd-table-wrap { overflow-x: auto; border: 1px solid #323a2c; border-radius: 0.3rem; }
+.pd-measures table { width: 100%; border-collapse: collapse; min-width: 430px; }
+.pd-measures caption { text-align: left; color: var(--color-text-muted); padding: 1rem; font-size: 0.74rem; }
+.pd-measures th, .pd-measures td { padding: 0.85rem 1rem; border-top: 1px solid #30372a; text-align: right; font: 0.8rem/1.7 var(--font-mono); }
+.pd-measures th:first-child { text-align: left; font-family: var(--font-sans); color: #d5ddcb; }
+.pd-measures thead { color: #a9b69c; background: #171d13; }
+.pd-measures td { color: #dbe4d1; }
+.pd-result { margin-top: 2.5rem; border-top: 1px solid #3d4931; padding-top: 1.8rem; }
+.pd-result-heading { display: flex; align-items: start; justify-content: space-between; gap: 1.3rem; }
+.pd-result-heading > div { max-width: 650px; }
+.pd-spacing { display: flex; align-items: center; gap: 0.7rem; font-size: 0.75rem; color: #c2ceb5; line-height: 1.7; min-height: 44px; }
+.pd-spacing input { width: 17px; height: 17px; flex-shrink: 0; accent-color: var(--workshop-lime); }
+.pd-legend { display: flex; flex-wrap: wrap; gap: 1rem; margin-block: 1.5rem 1rem; font-size: 0.75rem; color: var(--color-text-muted); }
+.prompt-diff del { color: #edb6a8; background: #ad46352b; text-decoration: line-through; }
+.prompt-diff ins { color: #c4e0a9; background: #79a05026; text-decoration: underline; text-decoration-style: double; text-underline-offset: 3px; }
+.pd-diff-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.pd-diff-panels > div { min-width: 0; border: 1px solid #39412f; background: #10140d; border-radius: 0.3rem; }
+.pd-diff-panels h3 { color: #a8b698; font: 0.6rem/1.8 var(--font-mono); letter-spacing: 0.08em; padding: 0.85rem 1.1rem; border-bottom: 1px solid #30372a; }
+.pd-diff-text { padding: 1.1rem; font: 0.85rem/1.9 var(--font-mono); white-space: pre-wrap; overflow-wrap: anywhere; max-height: 450px; overflow: auto; }
+.pd-empty { color: #8d9783; font-style: italic; }
+.pd-notice { color: var(--workshop-lime); font-size: 0.82rem; line-height: 1.85; margin-top: 1rem; min-height: 1.5rem; }
+.pd-method a { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 650px) {
+  .pd-editors, .pd-diff-panels { grid-template-columns: 1fr; }
+  .pd-editors textarea { min-height: 180px; }
+  .pd-result-heading { flex-direction: column; gap: 0.7rem; }
+  .pd-actions > span { flex-basis: 100%; margin-top: 0.4rem; }
+  .pd-examples { padding: 1.3rem; }
+}

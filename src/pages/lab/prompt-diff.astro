@@ -2,16 +2,19 @@
 import ModelDataNotice from '../../components/ModelDataNotice.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PromptDiff from '../../components/lab/PromptDiff';
+import modelsData from '../../data/models.json';
+import { hasVerifiedPrice } from '../../lib/model-pricing.mjs';
+const models = modelsData.filter(hasVerifiedPrice).map((model) => ({ id: model.id, name: model.name, provider: model.provider, inputPrice: model.inputPrice, pricingCheckedAt: model.pricingCheckedAt, pricingSource: model.pricingSource }));
 ---
 
-<BaseLayout title="Prompt Diff" description="Compare two prompt versions side-by-side. See word-level changes, token delta, and cost difference at a glance.">
-  <div class="max-w-5xl mx-auto px-6 py-16">
+<BaseLayout title="Prompt Diff" description="Inspect two prompt versions, including whitespace, estimated token counts and signed input-cost changes. Compare saved Workbench versions locally.">
+  <div class="workshop-shell py-12 md:py-16">
     <header class="mb-8">
       <a href="/tools" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; tools</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-cyan">~Δ Prompt Diff</h1>
-      <p class="text-text-muted mt-2">Paste two prompt versions and see exactly what changed. Word-level diff, token delta, and cost comparison.</p>
+      <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight text-text-bright">Prompt Diff</h1>
+      <p class="text-text-muted mt-4 leading-relaxed max-w-3xl">Compare the words, the whitespace and the cost assumptions. Keep the full text in view, and judge answer quality with a separate test.</p>
     </header>
     <ModelDataNotice />
-    <PromptDiff client:load />
+    <PromptDiff client:load models={models} />
   </div>
 </BaseLayout>

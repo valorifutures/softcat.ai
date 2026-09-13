@@ -56,8 +56,8 @@
   {
     "id": "prompt-diff",
     "name": "Prompt Diff",
-    "description": "Compare two prompt versions with word-level diff, token delta, and cost difference.",
-    "stat": "LCS diff + load saved prompts",
+    "description": "Compare prompt words and whitespace, estimated token counts and signed input costs. Load saved Workbench versions and export the result.",
+    "stat": "Saved versions, bounded comparisons and a report",
     "href": "/lab/prompt-diff",
     "icon": "~Δ",
     "category": "prompts",
