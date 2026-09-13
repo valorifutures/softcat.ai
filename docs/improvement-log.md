@@ -504,3 +504,23 @@ Corrected the three local guides against the implementation. The context guide e
 The tool bot now accepts a bounded JSON proposal with a supplied source link and writes only a canonical unpublished draft. It rejects model-authored review state, duplicate keys, invented source URLs, truncated responses, retired titles or sources, and existing paths. Failed content validation removes the created draft before history changes. The link verifier skips drafts and cannot promote them. Run records distinguish one proposal from zero publications. No paid generation or external product test was run, and the separate server was not restarted.
 
 Validation: 97 JavaScript tests, 141 bot tests and all three data validators pass. A temporary tool draft stayed out of every built HTML page, search entry, tag route and text export. It was then removed. Clean production output has 632 HTML pages, 392 search entries and 152 tag pages. The full crawl checked 30,534 internal links without broken destinations. All 38 tool source blobs were checked, alongside the 72 prompt and 117 essay records. The new directory, review, guide and retirement pages have one main heading and unique IDs. Live visual and navigation checks follow publication.
+
+## 13 September 2026, a permanent offline publication gate
+
+PR #215 passed CI in run 34737099587 and merged as 4da2cddc3daeb798ebc3a5929e65c90edf531cfa. Its Pages run 34737190807 remained queued for a GitHub-hosted runner during this pass, with no build steps executed. The prior site remained available. This checkpoint does not claim that the directory was already live.
+
+Turned the one-off built-output audits into a repository check. The read-only gate follows local links, fragment targets, redirects, HTML-referenced assets and discovery-index destinations. It detects duplicate IDs, nested links and missing or repeated main headings in the shared site layout. Standalone art rooms retain their own document designs, while their links, assets and IDs are still checked. This is not a claim of complete accessibility or external-link verification.
+
+The content inventory uses the same locked YAML parser as the existing validator. Published records must have built routes. Drafts must not acquire routes or index entries, and removed or draft-only tags must not leave stale output behind. Each retirement notice needs a heading and noindex metadata, must stay out of search, feed and sitemap, and must match its preserved Git blob. A future custom 404 page must also remain outside discovery indexes.
+
+The gate runs after the build in PR validation, normal Pages deployment and the model-price candidate job. It adds no network requests and no write permissions. The price workflow's publishing job remains unchanged. Editing that workflow will also trigger its existing unpaid bootstrap snapshot after merge, subject to runner availability.
+
+Validation: all 97 JavaScript and 141 bot tests pass, along with twelve new standard-library publication fixtures. They exercise broken destinations, missing fragments and assets, path escapes, malformed indexes, nested links, duplicate IDs, draft leaks, stale tags, retirement metadata and source mismatches. Actionlint passes for the three workflows. The actual 632-page build passes 31,471 internal references and 3,246 local asset or metadata references, with 392 search entries, 183 content records and 227 verified retirement notices. The queued deployment and future live checks remain distinct from this offline result.
+
+## 13 September 2026, finishing the publication gate
+
+The maintainer stopped the overnight loop and then authorised completing the pending PRs and a content tidy-up. The recurring loop is disabled. PR #215 has a successful Pages build, but its deploy job remains queued. PR #216 has a queued CI build. GitHub refused to rerun either pending job because it considers the containing runs active. These states do not establish a build failure or a successful deployment.
+
+Added concurrency scoped to each PR so a future revision cancels its own obsolete validation run. Separate PRs remain independent and every validation step is retained. The earlier queued run predates this configuration and is not guaranteed to be cancelled by it. The next real commit receives fresh checks.
+
+Validation of this follow-up: actionlint passed for the updated workflow, all twelve publication-gate fixtures passed, and the production build produced 632 pages. The gate checked 31,471 internal links, 3,246 local assets and metadata references, 392 search entries and all 227 retirement records without errors. Hosted CI is still required before merging.

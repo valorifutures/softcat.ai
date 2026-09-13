@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-13T04:05:12.363Z",
-  "phase": "workshop-directory",
-  "active_branch": "codex/workshop-directory",
+  "updated_at": "2026-09-13T07:54:44.784167Z",
+  "phase": "finishing-publication-integrity",
+  "active_branch": "codex/publication-integrity",
   "last_verified_deployment": {
     "sha": "2ad8c7664293603ebde46ca9332fd17aae1b0fc5",
     "at": "2026-09-13T03:45:21Z",
@@ -9,7 +9,7 @@
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
-    "Hourly continuation is enabled. GitHub uses supported Allow all actions permission, authorised by the maintainer.",
+    "The overnight continuation was used for the recovery. It is now disabled at the maintainer’s stop request. GitHub uses the supported Allow all actions permission.",
     "PR #195 merged and deployed. Live pipeline shows July dates and stale records. Pricing stamps, privacy disclosure and opt-in key storage are implemented.",
     "PR #196 merged and live. Workshop homepage, sourced notebook entry and agent decision tool published. All 324 answer combinations covered by passing tests.",
     "PR #197 merged and deployed. Live model search confirms unlisted pricing for Laguna and paid OpenRouter rates for Qwen 2.5. All model data now carries per-entry source/check metadata.",
@@ -32,15 +32,21 @@
     "PR #214 merged and deployed. Live recipe search for regression shows one result, Source work narrows it to zero and Clear filters restores twelve. Keyboard activation loads the filled extraction example and copying succeeds. Workbench receives its template and variables as an unsaved draft with Saved (0). An unknown recipe leaves the saved library unchanged. The old validator URL preserves its 25 March Git date and exact source. Search finds the current recipes and review, not the retired validator."
   ],
   "next": [
-    "Publish and inspect the rebuilt Tools directory, six-link navigation, corrected local guides and 38 retirement notices.",
-    "Add durable built-site integrity checks and inspect missing-page recovery and machine-readable exports. Keep the notebook tied to actual work.",
-    "The separate systemd host remains unverified. Source changes do not restart those other bots.",
-    "Observe the next real GitHub price snapshot if it runs before the 06:00 UTC overnight deadline, then leave a clean handover."
+    "Complete PR #216 after its GitHub checks pass. The first CI run has a queued build job and cannot currently be rerun while GitHub considers it active.",
+    "Verify the PR #215 directory changes once Pages deploys. Its build passed, but its deploy job is queued.",
+    "Retire the hard-coded trace demo, preserve correction notices and recipe checks in the text export, and add 404 recovery in a separate tidy-up PR."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven active forecasts with explicit tests and withdraws eight. Their original April claims are preserved."
   ],
-  "stop_at": "2026-09-13T06:00:00Z"
+  "stop_at": "2026-09-13T06:00:00Z",
+  "pending_deployment": {
+    "pr": 215,
+    "sha": "4da2cddc3daeb798ebc3a5929e65c90edf531cfa",
+    "run": 34737190807,
+    "status": "Build job 103670588401 succeeded. Deploy job 103672390382 remains queued. A rerun request was refused because GitHub considers the run active. Last verified live content is PR #214."
+  },
+  "session": "The maintainer asked to finish the remaining PRs and remove redundant content on 13 September. This is a bounded follow-up, with the recurring loop disabled."
 }
