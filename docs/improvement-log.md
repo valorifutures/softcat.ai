@@ -524,3 +524,15 @@ The maintainer stopped the overnight loop and then authorised completing the pen
 Added concurrency scoped to each PR so a future revision cancels its own obsolete validation run. Separate PRs remain independent and every validation step is retained. The earlier queued run predates this configuration and is not guaranteed to be cancelled by it. The next real commit receives fresh checks.
 
 Validation of this follow-up: actionlint passed for the updated workflow, all twelve publication-gate fixtures passed, and the production build produced 632 pages. The gate checked 31,471 internal links, 3,246 local assets and metadata references, 392 search entries and all 227 retirement records without errors. Hosted CI is still required before merging.
+
+## 13 September 2026, removing the last misleading demo and finishing the reading paths
+
+PR #216 passed hosted CI in run 34746422029 and merged as 4849b59127f1ca9a71018259344042092eba0120. Pages run 34746575258 succeeded at 08:00 UTC. The earlier PR #215 deployment and PR #216 validation runs also completed successfully. The live Tools page was visually inspected and its DOM confirmed eight tools, the OpenRouter disclosure, three corrected guides and the 38-entry removal record.
+
+Removed the 1,000-line trace renderer. Its hard-coded run date, counts, timings and LIVE status had been promoted by the homepage as recorded activity. The old route now carries a noindex retirement explanation, links to actual pipeline records and preserves the exact earlier source in Git. The homepage card now opens the existing Context Budget Planner. The retired demo is excluded from the sitemap.
+
+The reading export now preserves all seven thought correction notices, all three tool reviews and the examples, checks and limits for all twelve recipes. Original dates and per-entry URLs remain explicit. Illustrative targets are distinguished from recorded model responses, and historical news is labelled as an archive. The export states its scope and excludes drafts. Updated llms.txt and the worker context to reflect the curated directory and recipes.
+
+Added a custom 404 page with working recovery links, removal-record links and the shared keyboard-accessible search control. The publication gate caught a canonical URL pointing to Astro's intermediate /404/ route. The page now declares its actual /404.html canonical path through the shared layout, and stays out of the sitemap and search index.
+
+Validation: 101 JavaScript tests, 141 bot tests and twelve publication-gate fixtures pass. Content, model and Horizon validators pass. The 633-page production build passes 31,558 internal-link checks, 3,256 local asset and metadata checks, all 392 search entries and all 227 preserved retirement records. Export inspection found seven corrections, three reviews and twelve explicit recipe check sets. The local browser preview was blocked by the browser environment, so visual and keyboard checks of the new pages follow deployment. No paid model call was made. The separate server remains unverified.

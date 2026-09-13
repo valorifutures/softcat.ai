@@ -12,6 +12,7 @@ interface Props {
   breadcrumbs?: Array<{name: string, url: string}>;
   type?: string;
   ogImage?: string;
+  canonicalPath?: string;
 }
 
 const {
@@ -20,10 +21,12 @@ const {
   breadcrumbs,
   type = 'website',
   ogImage = '/og-default.png',
+  canonicalPath = Astro.url.pathname,
 } = Astro.props;
 
 const pageTitle = title === 'SOFT CAT .ai' ? title : `${title} | SOFT CAT .ai`;
 const ogImageUrl = `https://softcat.ai${ogImage}`;
+const canonicalUrl = new URL(canonicalPath, 'https://softcat.ai').href;
 
 const websiteSchema = {
   "@context": "https://schema.org",
@@ -78,7 +81,7 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={type} />
-    <meta property="og:url" content={`https://softcat.ai${Astro.url.pathname}`} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="SOFT CAT .ai" />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
@@ -87,7 +90,7 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
-    <link rel="canonical" href={`https://softcat.ai${Astro.url.pathname}`} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
