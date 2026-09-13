@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T02:27:43.882353+00:00",
-  "phase": "editorial-retirements",
-  "active_branch": "codex/editorial-retirements",
+  "updated_at": "2026-09-13T02:44:53.349761+00:00",
+  "phase": "context-budget",
+  "active_branch": "codex/context-budget",
   "last_verified_deployment": {
-    "sha": "02adbb4387f7b047327108a11e170839049f8793",
-    "at": "2026-09-13T01:58:26Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34731828772"
+    "sha": "3a148692435f4e3de34183709ab898a783c87aa1",
+    "at": "2026-09-13T02:31:43Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34733242231"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -25,13 +25,14 @@
     "PR #207 merged and deployed. The About and Contact pages were visually checked live. The three feedback links point to their matching bug, correction and experiment templates. Unsupported credentials, etymology and response promises are removed.",
     "PR #208 merged and deployed. Live Workbench exported a filled OpenRouter request for the selected Sonnet ID, copied successfully and kept two named QA versions through a reload. The original question was restored. Both filled messages and the selected model transferred to Chat Playground, which stayed unsent and editable with no key. The two QA versions are retained temporarily for the next Diff integration check.",
     "PR #209 merged and deployed. Live Prompt Diff shows a negative cost change for the shorter example, clears an old result on edits, preserves large inputs in explicitly labelled blocks and fills the two saved QA versions correctly. Copy report succeeded. Both QA versions were then deleted through their individual controls, leaving the previously empty library empty again.",
-    "PR #210 merged and deployed. Live primary-button hover retains dark rgb(38, 53, 28) text on the light rgb(220, 247, 181) background. The comparison remains usable."
+    "PR #210 merged and deployed. Live primary-button hover retains dark rgb(38, 53, 28) text on the light rgb(220, 247, 181) background. The comparison remains usable.",
+    "PR #211 merged and deployed. The public removal record shows 114 automated essays and three early opinions. Its May group expands and links the 14 May retirement notice to the exact original Git source. The launch article retains 13 March and shows its separate 13 September correction. The restored concept tag lists 18 glossary terms. Site search finds the removal record for removed articles."
   ],
   "next": [
-    "Publish and inspect the editorial retirement record, representative notices, corrected launch history and restored glossary/prompt tag journeys.",
-    "Continue reviewing useful tools and remaining content against actual behaviour and source evidence.",
+    "Publish and inspect the Context Budget Planner, its same-request comparisons, exact limits and output-cap failure states.",
+    "Review remaining useful content and tools against actual behaviour, removing weak material where warranted.",
     "The separate systemd host remains unverified. Price migration does not restart those other bots.",
-    "Leave a clean checkpoint for the next scheduled iteration."
+    "Leave a clean checkpoint before the 06:00 UTC overnight deadline."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",

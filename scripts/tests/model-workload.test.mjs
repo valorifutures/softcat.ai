@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parseWorkload, estimateWorkload, compareWorkloadRows, workloadMoney, workloadCsv, csvCell } from '../../src/lib/model-workload.mjs';
 
-const paid = { name: 'Example', id: 'example/model', provider: 'Example', inputPrice: 3, outputPrice: 15, contextK: 200, pricingStatus: 'verified', pricingCheckedAt: '2026-09-12T21:57:43Z', pricingSource: 'https://openrouter.ai/api/v1/models', openSource: false };
+const paid = { name: 'Example', id: 'example/model', provider: 'Example', inputPrice: 3, outputPrice: 15, context: { status: 'reported', catalogueTokens: 1_000_000, providerTokens: 200_000, outputTokens: 64_000, checkedAt: '2026-09-13T02:31:34Z', source: 'https://openrouter.ai/api/v1/models' }, pricingStatus: 'verified', pricingCheckedAt: '2026-09-12T21:57:43Z', pricingSource: 'https://openrouter.ai/api/v1/models', openSource: false };
 
 test('workload accepts explicit whole counts and rejects blank, fractional and unsafe totals', () => {
   assert.deepEqual(parseWorkload('1000', '500', '1000'), { ok: true, inputTokens: 1000, outputTokens: 500, calls: 1000 });
@@ -31,7 +31,7 @@ test('known prices calculate both directions of tokens for every call without ma
 test('saved context includes output, with explicit boundary and unknown states', () => {
   assert.equal(estimateWorkload(paid, parseWorkload('199500', '500', '1')).status, 'estimated');
   assert.deepEqual(estimateWorkload(paid, parseWorkload('199501', '500', '1')), { status: 'above-saved-context', cost: null });
-  assert.equal(estimateWorkload({ ...paid, contextK: 0 }, parseWorkload('1', '1', '1')).status, 'unknown-context');
+  assert.equal(estimateWorkload({ ...paid, context: null }, parseWorkload('1', '1', '1')).status, 'unknown-context');
   assert.equal(estimateWorkload(paid, parseWorkload('', '500', '1')).cost, null);
 });
 
@@ -49,7 +49,16 @@ test('CSV preserves assumptions and source dates, leaves unknown amounts blank a
   const rows = [paid, { ...paid, name: 'Unknown', pricingStatus: 'not-listed', inputPrice: null, outputPrice: null }].map(model => ({ model, estimate: estimateWorkload(model, workload) }));
   const csv = workloadCsv(rows, workload);
   assert.match(csv, /"2026-09-12T21:57:43Z","https:\/\/openrouter.ai\/api\/v1\/models","1000","500","1000","estimated","10.5"/);
-  assert.match(csv, /"unknown-price","","","","",""\r\n$/);
+  assert.match(csv, /"unknown-price","","","","","","1000000","200000","64000"/);
+  assert.ok(csv.includes('Context checked UTC'));
   for (const value of ['=1+1', ' +cmd', '-5', '@SUM(A1)', '\tunsafe', '\nunsafe']) assert.ok(csvCell(value).startsWith('"\''));
   assert.equal(csvCell('A, "quoted" model'), '"A, ""quoted"" model"');
+});
+
+
+test('workload rejects an output cap violation even when the total fits the context', () => {
+  assert.equal(estimateWorkload(paid, parseWorkload('1000', '64000', '1')).status, 'estimated');
+  assert.equal(estimateWorkload(paid, parseWorkload('1000', '64001', '1')).status, 'above-output-limit');
+  const unknown = { ...paid, context: { ...paid.context, outputTokens: null } };
+  assert.equal(estimateWorkload(unknown, parseWorkload('1000', '64001', '1')).status, 'estimated');
 });

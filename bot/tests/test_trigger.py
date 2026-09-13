@@ -54,7 +54,8 @@ def test_proposal_entry_is_marked_for_review_without_invented_metadata():
     assert entry["rosterProposal"] is True
     assert entry["weights"] is None
     assert entry["radarRef"] == "2026-06-10#ph-claude-fable-5"
-    assert entry["contextK"] == 1000
+    assert entry["context"] is None
+    assert "contextK" not in entry
     assert not {"coding", "reasoning_score", "speed", "description", "strengths", "released", "family", "reasoning", "multimodal", "openSource"}.intersection(entry)
 
 

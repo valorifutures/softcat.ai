@@ -43,6 +43,17 @@
     "dataSource": "models.json"
   },
   {
+    "id": "context-window",
+    "name": "Context Budget Planner",
+    "description": "Budget instructions, history, documents, tools and the reply. Compare the same request against dated context and output limits.",
+    "stat": "39 model records · exact limits · copyable plan",
+    "href": "/lab/context-window",
+    "icon": "▤",
+    "category": "models",
+    "addedDate": "2026-09-13",
+    "dataSource": "models.json"
+  },
+  {
     "id": "token-cost",
     "name": "Token Cost Calculator",
     "description": "Estimate API costs per prompt or full conversation. Breakdown by turn, model comparison.",

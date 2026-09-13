@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { pricePerMillion, planPriceSnapshot, PRICE_SOURCE } from '../model-price-snapshot.mjs';
 
 const checkedAt = '2026-09-13T00:35:00Z';
-const roster = () => Array.from({ length: 5 }, (_, i) => ({ id: `example/model-${i}`, name: `Model ${i}`, provider: 'Example', contextK: 128,
+const roster = () => Array.from({ length: 5 }, (_, i) => ({ id: `example/model-${i}`, name: `Model ${i}`, provider: 'Example', context: { status: 'reported', catalogueTokens: 128000, providerTokens: 64000, outputTokens: 16000, checkedAt: '2026-09-13T02:31:34Z', source: 'https://openrouter.ai/api/v1/models' },
   inputPrice: 1, outputPrice: 2, pricingStatus: 'verified', pricingCheckedAt: '2026-09-12T12:00:00Z', pricingSource: PRICE_SOURCE,
   weights: { source: 'kept-exactly', licence: 'custom' }, trackedSince: '2026-02-01' }));
 const catalogue = () => ({ data: roster().map(model => ({ id: model.id, pricing: { prompt: '0.000001', completion: '0.000002' }, context_length: 999999 })) });
@@ -24,7 +24,7 @@ test('snapshot uses exact roster IDs, preserves non-price data and never mutates
   assert.deepEqual(models, original);
   assert.equal(plan.models.length, models.length);
   assert.equal(plan.models[0].inputPrice, 1.5);
-  assert.equal(plan.models[0].contextK, 128);
+  assert.deepEqual(plan.models[0].context, roster()[0].context);
   assert.deepEqual(plan.models[0].weights, original[0].weights);
   assert.equal(plan.models[0].trackedSince, original[0].trackedSince);
   assert.equal(plan.models[0].pricingCheckedAt, checkedAt);

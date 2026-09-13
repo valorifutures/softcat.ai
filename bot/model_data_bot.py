@@ -2,19 +2,18 @@
 """
 SOFT CAT data bot: Model Data Updater
 
-Fetches current AI model pricing and specs from the OpenRouter API,
+Fetches current AI model pricing from the OpenRouter API,
 merges with the tracked model roster in models.json,
 and pushes if anything changed.
 
-Auto-updated fields: contextK, inputPrice, outputPrice
-Manual fields (preserved): id, name, provider, weights, trackedSince, radarRef
+Auto-updated fields: inputPrice, outputPrice
+Reviewed fields (preserved): id, name, provider, context, weights, trackedSince, radarRef
 
 Trust model (issue #96):
-  - Every change is gated by MAX_AUTO_DELTA. Anything larger is rejected
+  - Price changes are gated by MAX_AUTO_DELTA. Larger moves are rejected
     from the auto-commit and written to a staging file for Valori review.
-    OpenRouter sometimes reports beta/max values (e.g. Claude Sonnet's 1M
-    beta context instead of the 200K default), and has had stale pricing
-    for Mistral Small. A 6x swing should never auto-land.
+  - Context limits are reviewed separately. The catalogue and its top-provider
+    entry can disagree, so this price job preserves the exact reviewed record.
   - Per-model `lockedFields` let us freeze a field that OpenRouter keeps
     getting wrong without editing bot code.
   - On start we reset models.json from HEAD if it has drifted. Stops a
@@ -50,10 +49,10 @@ SUSPECTS_FILE = STAGING_DIR / "model-bot-suspects.json"
 MAX_AUTO_DELTA = 0.5
 
 # Fields eligible for the delta check. Non-numeric fields skip the guardrail.
-GUARDED_NUMERIC_FIELDS = {"contextK", "inputPrice", "outputPrice"}
+GUARDED_NUMERIC_FIELDS = {"inputPrice", "outputPrice"}
 
 # The roster IS src/data/models.json (eng review E1). Job 1 refreshes
-# prices/specs for whatever ids that file contains. New models enter the
+# prices for whatever ids that file contains. New models enter the
 # roster only through Job 2's proposal PRs (radar-gated), reviewed by Valori.
 # There is deliberately NO bootstrap path that can publish placeholder
 # entries to main.
@@ -63,6 +62,7 @@ GUARDED_NUMERIC_FIELDS = {"contextK", "inputPrice", "outputPrice"}
 # They are never committed to main by the bot.
 NEW_MODEL_DEFAULTS = {
     "weights": None,
+    "context": None,
     "rosterProposal": True,
 }
 
@@ -162,11 +162,7 @@ def extract_auto_fields(api_model):
     input_price = rate(pricing.get("prompt"))
     output_price = rate(pricing.get("completion"))
 
-    context_length = api_model.get("context_length", 0)
-    context_k = context_length // 1000 if context_length else 0
-
     return {
-        "contextK": context_k,
         "inputPrice": input_price,
         "outputPrice": output_price,
     }
@@ -570,7 +566,7 @@ def main():
             print("Committing and pushing...")
             git_commit_and_push()
         else:
-            print("No price/spec changes detected.")
+            print("No price changes detected.")
             log_run("model_bot", status="success", duration_s=_time.time() - t0,
                     items_found=len(api_models), items_published=0, job="prices")
 

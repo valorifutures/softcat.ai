@@ -13,6 +13,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { contextRecordErrors } from '../src/lib/model-context.mjs';
 import { weightRecordErrors } from '../src/lib/model-weights.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -36,7 +37,7 @@ for (const m of models) {
   if (seen.has(m.id)) errors.push(`${at}: duplicate id`);
   seen.add(m.id);
   if (!ISO_DATE.test(m.trackedSince ?? '')) errors.push(`${at}: trackedSince must be YYYY-MM-DD`);
-  for (const k of ['coding', 'reasoning_score', 'speed', 'description', 'strengths', 'openSource', 'family', 'released', 'reasoning', 'multimodal']) {
+  for (const k of ['contextK', 'coding', 'reasoning_score', 'speed', 'description', 'strengths', 'openSource', 'family', 'released', 'reasoning', 'multimodal']) {
     if (k in m) errors.push(`${at}: retired model metadata "${k}" is not part of the catalogue`);
   }
   for (const k of ['inputPrice', 'outputPrice']) {
@@ -47,7 +48,7 @@ for (const m of models) {
   if (!Number.isFinite(Date.parse(m.pricingCheckedAt)) || Date.parse(m.pricingCheckedAt) > Date.now() + 60_000) errors.push(`${at}: pricingCheckedAt must be a valid, non-future timestamp`);
   if (m.pricingSource !== 'https://openrouter.ai/api/v1/models') errors.push(`${at}: pricingSource must identify the catalogue`);
   if (m.pricingStatus === 'not-listed' && (m.inputPrice !== null || m.outputPrice !== null)) errors.push(`${at}: unlisted model prices must be unknown`);
-  if (!Number.isInteger(m.contextK) || m.contextK < 0) errors.push(`${at}: contextK must be a non-negative integer`);
+  for (const error of contextRecordErrors(m)) errors.push(`${at}: ${error}`);
   for (const error of weightRecordErrors(m)) errors.push(`${at}: ${error}`);
   if (m.rosterProposal !== undefined) errors.push(`${at}: rosterProposal must be reviewed and removed before merge`);
   if (m.radarRef !== undefined) {
