@@ -536,3 +536,13 @@ The reading export now preserves all seven thought correction notices, all three
 Added a custom 404 page with working recovery links, removal-record links and the shared keyboard-accessible search control. The publication gate caught a canonical URL pointing to Astro's intermediate /404/ route. The page now declares its actual /404.html canonical path through the shared layout, and stays out of the sitemap and search index.
 
 Validation: 101 JavaScript tests, 141 bot tests and twelve publication-gate fixtures pass. Content, model and Horizon validators pass. The 633-page production build passes 31,558 internal-link checks, 3,256 local asset and metadata checks, all 392 search entries and all 227 preserved retirement records. Export inspection found seven corrections, three reviews and twelve explicit recipe check sets. The local browser preview was blocked by the browser environment, so visual and keyboard checks of the new pages follow deployment. No paid model call was made. The separate server remains unverified.
+
+## 13 September 2026, live verification and a paused handover
+
+PR #217 passed every hosted validation step in run 34746811362 and merged as c1a05997fbd657e637bfc9203e117d837ec27203. Pages run 34746872537 completed successfully at 08:08 UTC. The live homepage opens the Context Budget Planner in place of the trace demo. The old trace URL explains the fixed figures and links to its exact earlier source.
+
+The live text export returns HTTP 200 and contains seven correction notices, three tool reviews, twelve illustrative recipe targets and twelve check sets. A deliberately missing URL returns HTTP 404 with the custom noindex page. Keyboard Tab reaches Skip to content and Enter moves focus to the main region. Enter on the header search control opens the dialog. A nonsense query shows an explicit zero-result message, and context budget finds the tool and its corrected guide.
+
+The desktop recovery page was visually inspected. Its two primary recovery links, one on 404 and one on the trace notice, now use the existing filled button style for a clearer next action. Responsive wrapping and the shared mobile breakpoints were inspected in CSS. An actual mobile browser viewport was not available in this follow-up. This is not recorded as a mobile browser test.
+
+The checkpoint has no active branch. The recurring loop remains disabled, and there is no promise of further unattended execution. The separate bot server and fresh paid model runs remain outside what was verified. The final checkpoint and button classes still pass the normal PR and Pages gates.
