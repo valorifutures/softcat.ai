@@ -35,11 +35,11 @@ def test_price_refresh_lands_small_changes():
 
 
 def test_locked_fields_never_change():
-    existing = [dict(BASE, lockedFields=["contextK"])]
-    api = {"anthropic/claude-sonnet-4": api_model(ctx=1000000)}
+    existing = [dict(BASE, lockedFields=["inputPrice"])]
+    api = {"anthropic/claude-sonnet-4": api_model(prompt="0.0000035")}
     updated, _, suspects = bot.update_models(existing, api)
-    assert updated[0]["contextK"] == 200
-    assert all(s["field"] != "contextK" for s in suspects)
+    assert updated[0]["inputPrice"] == 3
+    assert all(s["field"] != "inputPrice" for s in suspects)
 
 
 def test_big_delta_goes_to_suspects_not_data():
@@ -118,3 +118,13 @@ def test_unchanged_price_has_a_real_source_check_timestamp():
     assert updated[0]["pricingStatus"] == "verified"
     assert updated[0]["pricingCheckedAt"]
     assert updated[0]["pricingSource"] == "https://openrouter.ai/api/v1/models"
+
+
+def test_price_refresh_preserves_reviewed_context_and_does_not_add_rounded_limits():
+    context = {"status": "reported", "catalogueTokens": 1000000, "providerTokens": 200000, "outputTokens": 64000, "checkedAt": "2026-09-13T02:31:34Z"}
+    existing = {k: v for k, v in BASE.items() if k != "contextK"}
+    existing["context"] = context
+    updated, _, _ = bot.update_models([existing], {BASE["id"]: api_model(ctx=9000000)})
+    assert updated[0]["context"] == context
+    assert "contextK" not in updated[0]
+    assert set(bot.extract_auto_fields(api_model())) == {"inputPrice", "outputPrice"}

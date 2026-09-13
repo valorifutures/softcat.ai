@@ -1,15 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContextWindowViz from '../../components/lab/ContextWindowViz';
+import models from '../../data/models.json';
+const records = models.map(({ id, name, provider, context }) => ({ id, name, provider, context }));
 ---
-
-<BaseLayout title="Context Window Visualiser" description="Compare context window sizes across 8 major AI models with interactive usage simulation.">
-  <div class="max-w-3xl mx-auto px-6 py-16">
-    <header class="mb-8">
-      <a href="/tools" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; tools</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">Context Window Visualiser</h1>
-      <p class="text-text-muted mt-2">See how context window sizes compare across models. Simulate usage to spot capacity limits.</p>
-    </header>
-    <ContextWindowViz client:load />
+<BaseLayout title="Context Budget Planner" description="Budget the whole request, reserve space for the reply and compare the same counts against dated model limits. Runs locally in your browser.">
+  <div class="context-page workshop-shell">
+    <header><a href="/tools" class="text-link">← Tools</a><p class="eyebrow">PLAN THE NEXT REQUEST</p><h1>Give the answer<br /><em>room to arrive.</em></h1><p>A context window has to hold more than the question. Budget the instructions, history, documents and tools, then leave space for the reply.</p></header>
+    <ContextWindowViz models={records} client:load />
   </div>
 </BaseLayout>
+<style>
+  .context-page { max-width: 1000px; padding-block: 3.5rem 5rem; }
+  header { max-width: 780px; margin-bottom: 3rem; }
+  header > .eyebrow { margin-top: 2rem; }
+  h1 { font: 600 clamp(2.7rem, 6vw, 4.2rem)/1.13 var(--font-sans); letter-spacing: -.05em; color: #eeeee5; margin-block: 1rem 1.5rem; }
+  h1 em { font-style: normal; color: var(--workshop-lime); }
+  header > p:not(.eyebrow) { font-size: 1.02rem; line-height: 1.85; color: #bcc5b1; }
+</style>

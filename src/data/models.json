@@ -3,7 +3,6 @@
     "id": "qwen/qwen-2.5-72b-instruct",
     "name": "Qwen 2.5 72B",
     "provider": "Alibaba",
-    "contextK": 32,
     "inputPrice": 0.36,
     "outputPrice": 0.4,
     "trackedSince": "2026-02-23",
@@ -16,13 +15,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 37
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 32768,
+      "providerTokens": 32768,
+      "outputTokens": 16384,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "qwen/qwen3.6-27b",
     "name": "Qwen3.6 27B",
     "provider": "Alibaba",
-    "contextK": 262,
     "inputPrice": 0.3,
     "outputPrice": 2,
     "trackedSince": "2026-06-11",
@@ -36,13 +42,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 15
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 262144,
+      "providerTokens": 262144,
+      "outputTokens": 65536,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "qwen/qwen3.6-35b-a3b",
     "name": "Qwen3.6 35B A3B",
     "provider": "Alibaba",
-    "contextK": 262,
     "inputPrice": 0.1,
     "outputPrice": 0.9,
     "trackedSince": "2026-06-11",
@@ -56,13 +69,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 26
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 262144,
+      "providerTokens": 262144,
+      "outputTokens": 235929,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "anthropic/claude-fable-5",
     "name": "Claude Fable 5",
     "provider": "Anthropic",
-    "contextK": 1000,
     "inputPrice": 10,
     "outputPrice": 50,
     "trackedSince": "2026-06-10",
@@ -70,39 +90,60 @@
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1000000,
+      "providerTokens": 1000000,
+      "outputTokens": 128000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "anthropic/claude-haiku-4.5",
     "name": "Claude Haiku 4.5",
     "provider": "Anthropic",
-    "contextK": 200,
     "inputPrice": 1,
     "outputPrice": 5,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 200000,
+      "providerTokens": 200000,
+      "outputTokens": 64000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "anthropic/claude-opus-4",
     "name": "Claude Opus 4",
     "provider": "Anthropic",
-    "contextK": 200,
     "inputPrice": 15,
     "outputPrice": 75,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 200000,
+      "providerTokens": 200000,
+      "outputTokens": 32000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "anthropic/claude-opus-4.7",
     "name": "Claude Opus 4.7",
     "provider": "Anthropic",
-    "contextK": 1000,
     "inputPrice": 5,
     "outputPrice": 25,
     "trackedSince": "2026-06-10",
@@ -110,29 +151,40 @@
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1000000,
+      "providerTokens": 1000000,
+      "outputTokens": 128000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "anthropic/claude-sonnet-4",
     "name": "Claude Sonnet 4",
     "provider": "Anthropic",
-    "contextK": 200,
     "inputPrice": 3,
     "outputPrice": 15,
-    "lockedFields": [
-      "contextK"
-    ],
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1000000,
+      "providerTokens": 200000,
+      "outputTokens": 64000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "arcee-ai/trinity-large-thinking",
     "name": "Trinity Large Thinking",
     "provider": "Arcee-Ai",
-    "contextK": 262,
     "inputPrice": 0.25,
     "outputPrice": 0.8,
     "trackedSince": "2026-06-11",
@@ -146,13 +198,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 31
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 262144,
+      "providerTokens": 262144,
+      "outputTokens": 80000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "deepseek/deepseek-r1",
     "name": "DeepSeek R1",
     "provider": "DeepSeek",
-    "contextK": 64,
     "inputPrice": 0.7,
     "outputPrice": 2.5,
     "trackedSince": "2026-02-23",
@@ -165,13 +224,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 163
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 64000,
+      "providerTokens": 64000,
+      "outputTokens": 16000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "deepseek/deepseek-chat-v3-0324",
     "name": "DeepSeek V3",
     "provider": "DeepSeek",
-    "contextK": 163,
     "inputPrice": 0.25,
     "outputPrice": 1,
     "trackedSince": "2026-02-23",
@@ -184,52 +250,80 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 163
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 163840,
+      "providerTokens": 163840,
+      "outputTokens": 147456,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "google/gemini-2.0-flash-001",
     "name": "Gemini 2.0 Flash",
     "provider": "Google",
-    "contextK": 1000,
     "inputPrice": null,
     "outputPrice": null,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "not-listed",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "not-listed",
+      "catalogueTokens": null,
+      "providerTokens": null,
+      "outputTokens": null,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "google/gemini-2.5-flash",
     "name": "Gemini 2.5 Flash",
     "provider": "Google",
-    "contextK": 1048,
     "inputPrice": 0.3,
     "outputPrice": 2.5,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1048576,
+      "providerTokens": 1048576,
+      "outputTokens": 65535,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "google/gemini-2.5-pro-preview",
     "name": "Gemini 2.5 Pro",
     "provider": "Google",
-    "contextK": 1048,
     "inputPrice": 1.25,
     "outputPrice": 10,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1048576,
+      "providerTokens": 1048576,
+      "outputTokens": 65536,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "google/gemini-3.5-flash",
     "name": "Gemini 3.5 Flash",
     "provider": "Google",
-    "contextK": 1048,
     "inputPrice": 1.5,
     "outputPrice": 9,
     "trackedSince": "2026-06-10",
@@ -237,13 +331,20 @@
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1048576,
+      "providerTokens": 1048576,
+      "outputTokens": 65536,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "meta-llama/llama-4-maverick",
     "name": "Llama 4 Maverick",
     "provider": "Meta",
-    "contextK": 1048,
     "inputPrice": 0.2,
     "outputPrice": 0.696,
     "trackedSince": "2026-02-23",
@@ -256,13 +357,20 @@
       "access": "gated",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 55
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1048576,
+      "providerTokens": 128000,
+      "outputTokens": 115200,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "meta-llama/llama-4-scout",
     "name": "Llama 4 Scout",
     "provider": "Meta",
-    "contextK": 327,
     "inputPrice": 0.1,
     "outputPrice": 0.3,
     "trackedSince": "2026-02-23",
@@ -275,13 +383,20 @@
       "access": "gated",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 50
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1310720,
+      "providerTokens": 327680,
+      "outputTokens": 16384,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "minimax/minimax-m2",
     "name": "MiniMax M2",
     "provider": "Minimax",
-    "contextK": 204,
     "inputPrice": 0.255,
     "outputPrice": 1.02,
     "trackedSince": "2026-06-11",
@@ -295,13 +410,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 130
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 204800,
+      "providerTokens": 204800,
+      "outputTokens": 131072,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "minimax/minimax-m2.7",
     "name": "MiniMax M2.7",
     "provider": "Minimax",
-    "contextK": 204,
     "inputPrice": 0.3,
     "outputPrice": 1.2,
     "trackedSince": "2026-06-22",
@@ -315,13 +437,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 125
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 204800,
+      "providerTokens": 204800,
+      "outputTokens": 131072,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "mistralai/mistral-large-2512",
     "name": "Mistral Large 3",
     "provider": "Mistral",
-    "contextK": 262,
     "inputPrice": 0.5,
     "outputPrice": 1.5,
     "trackedSince": "2026-02-23",
@@ -334,13 +463,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 272
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 262144,
+      "providerTokens": 262144,
+      "outputTokens": 209715,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "mistralai/mistral-small-3.1-24b-instruct",
     "name": "Mistral Small 3.1",
     "provider": "Mistral",
-    "contextK": 128,
     "inputPrice": 0.351,
     "outputPrice": 0.555,
     "trackedSince": "2026-02-23",
@@ -353,13 +489,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 11
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 128000,
+      "providerTokens": 128000,
+      "outputTokens": 102400,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "mistralai/mistral-small-2603",
     "name": "Mistral Small 4",
     "provider": "Mistral",
-    "contextK": 262,
     "inputPrice": 0.15,
     "outputPrice": 0.6,
     "trackedSince": "2026-06-11",
@@ -373,13 +516,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 10
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 262144,
+      "providerTokens": 262144,
+      "outputTokens": 209715,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "moonshotai/kimi-k2.6",
     "name": "Kimi K2.6",
     "provider": "Moonshot AI",
-    "contextK": 262,
     "inputPrice": 0.95,
     "outputPrice": 4,
     "trackedSince": "2026-06-10",
@@ -393,13 +543,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 64
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 262144,
+      "providerTokens": 262144,
+      "outputTokens": 235929,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "moonshotai/kimi-k2",
     "name": "Kimi k2",
     "provider": "Moonshot AI",
-    "contextK": 131,
     "inputPrice": 0.57,
     "outputPrice": 2.3,
     "trackedSince": "2026-02-23",
@@ -412,13 +569,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 61
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 131072,
+      "providerTokens": 131072,
+      "outputTokens": 100352,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "nvidia/nemotron-3-super-120b-a12b",
     "name": "Nemotron 3 Super",
     "provider": "Nvidia",
-    "contextK": 1000,
     "inputPrice": 0.085,
     "outputPrice": 0.4,
     "trackedSince": "2026-06-11",
@@ -432,78 +596,120 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 26
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 262144,
+      "providerTokens": 262144,
+      "outputTokens": 16384,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "openai/gpt-4.1",
     "name": "GPT-4.1",
     "provider": "OpenAI",
-    "contextK": 1047,
     "inputPrice": 2,
     "outputPrice": 8,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1047576,
+      "providerTokens": 1047576,
+      "outputTokens": 32768,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "openai/gpt-4o",
     "name": "GPT-4o",
     "provider": "OpenAI",
-    "contextK": 128,
     "inputPrice": 2.5,
     "outputPrice": 10,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 128000,
+      "providerTokens": 128000,
+      "outputTokens": 16384,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "openai/gpt-5",
     "name": "GPT-5",
     "provider": "OpenAI",
-    "contextK": 400,
     "inputPrice": 1.25,
     "outputPrice": 10,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 400000,
+      "providerTokens": 400000,
+      "outputTokens": 128000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "openai/gpt-5-mini",
     "name": "GPT-5 Mini",
     "provider": "OpenAI",
-    "contextK": 400,
     "inputPrice": 0.25,
     "outputPrice": 2,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 400000,
+      "providerTokens": 400000,
+      "outputTokens": 128000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "openai/gpt-5-nano",
     "name": "GPT-5 Nano",
     "provider": "OpenAI",
-    "contextK": 400,
     "inputPrice": 0.05,
     "outputPrice": 0.4,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 400000,
+      "providerTokens": 400000,
+      "outputTokens": 128000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "openai/gpt-5.4",
     "name": "GPT-5.4",
     "provider": "OpenAI",
-    "contextK": 1050,
     "inputPrice": 2.5,
     "outputPrice": 15,
     "trackedSince": "2026-06-11",
@@ -511,13 +717,20 @@
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1050000,
+      "providerTokens": 1050000,
+      "outputTokens": 128000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "openai/gpt-5.5",
     "name": "GPT-5.5",
     "provider": "OpenAI",
-    "contextK": 1050,
     "inputPrice": 5,
     "outputPrice": 30,
     "trackedSince": "2026-06-10",
@@ -525,13 +738,20 @@
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1050000,
+      "providerTokens": 1050000,
+      "outputTokens": 128000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "openai/gpt-5.5-pro",
     "name": "GPT-5.5 Pro",
     "provider": "OpenAI",
-    "contextK": 1050,
     "inputPrice": 30,
     "outputPrice": 180,
     "trackedSince": "2026-06-11",
@@ -539,39 +759,60 @@
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1050000,
+      "providerTokens": 1050000,
+      "outputTokens": 128000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "openai/o3",
     "name": "o3",
     "provider": "OpenAI",
-    "contextK": 200,
     "inputPrice": 2,
     "outputPrice": 8,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 200000,
+      "providerTokens": 200000,
+      "outputTokens": 100000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "openai/o3-mini",
     "name": "o3-mini",
     "provider": "OpenAI",
-    "contextK": 200,
     "inputPrice": 1.1,
     "outputPrice": 4.4,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 200000,
+      "providerTokens": 200000,
+      "outputTokens": 100000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   },
   {
     "id": "poolside/laguna-xs.2",
     "name": "Laguna XS.2",
     "provider": "Poolside",
-    "contextK": 262,
     "inputPrice": null,
     "outputPrice": null,
     "trackedSince": "2026-06-21",
@@ -585,13 +826,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 14
+    },
+    "context": {
+      "status": "not-listed",
+      "catalogueTokens": null,
+      "providerTokens": null,
+      "outputTokens": null,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "z-ai/glm-5.1",
     "name": "GLM 5.1",
     "provider": "Z.ai",
-    "contextK": 202,
     "inputPrice": 0.966,
     "outputPrice": 3.036,
     "trackedSince": "2026-06-11",
@@ -605,13 +853,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 282
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 204800,
+      "providerTokens": 200000,
+      "outputTokens": 128000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "z-ai/glm-5",
     "name": "GLM-5",
     "provider": "Z.ai",
-    "contextK": 202,
     "inputPrice": 0.6,
     "outputPrice": 1.92,
     "trackedSince": "2026-06-10",
@@ -625,13 +880,20 @@
       "access": "public",
       "checkedAt": "2026-09-13T00:25:24.433594+00:00",
       "fileCount": 282
+    },
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 204800,
+      "providerTokens": 198000,
+      "outputTokens": 128000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
     }
   },
   {
     "id": "x-ai/grok-4.3",
     "name": "Grok 4.3",
     "provider": "xAI",
-    "contextK": 1000,
     "inputPrice": 1.25,
     "outputPrice": 2.5,
     "trackedSince": "2026-06-10",
@@ -639,6 +901,14 @@
     "pricingSource": "https://openrouter.ai/api/v1/models",
     "pricingCheckedAt": "2026-09-13T00:54:46.239Z",
     "pricingStatus": "verified",
-    "weights": null
+    "weights": null,
+    "context": {
+      "status": "reported",
+      "catalogueTokens": 1000000,
+      "providerTokens": 1000000,
+      "outputTokens": 900000,
+      "checkedAt": "2026-09-13T02:31:34.755272+00:00",
+      "source": "https://openrouter.ai/api/v1/models"
+    }
   }
 ]

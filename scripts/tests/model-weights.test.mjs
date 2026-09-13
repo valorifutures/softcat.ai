@@ -22,7 +22,7 @@ test('weight records require an exact revision, real file count, date and licenc
 });
 
 test('CSV preserves weight provenance and does not turn published weights into free API pricing', () => {
-  const model = { name: 'Example', id: 'example/model', provider: 'Example', contextK: 128, pricingStatus: 'not-listed', inputPrice: null, outputPrice: null, weights: record };
+  const model = { name: 'Example', id: 'example/model', provider: 'Example', context: null, pricingStatus: 'not-listed', inputPrice: null, outputPrice: null, weights: record };
   const csv = workloadCsv([{ model, estimate: { status: 'unknown-price', cost: null } }], { ok: true, inputTokens: 1000, outputTokens: 500, calls: 1000 });
   assert.match(csv, /"unknown-price","","https:\/\/huggingface.co\/example\/model\/tree\/a{40}","custom-licence","gated","2026-09-13T00:00:00Z"/);
 });

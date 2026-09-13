@@ -1,21 +1,22 @@
 import { useState } from 'preact/hooks';
 import { hasVerifiedPrice, priceLabel } from '../../lib/model-pricing.mjs';
+import { contextLimit, outputLimit } from '../../lib/model-context.mjs';
 import { hasWeightRecord } from '../../lib/model-weights.mjs';
 import { parseWorkload, estimateWorkload, compareWorkloadRows, workloadMoney, workloadCsv } from '../../lib/model-workload.mjs';
 import modelsData from '../../data/models.json';
 import './ModelComparison.css';
 
-type SortKey = 'name' | 'contextK' | 'inputPrice' | 'outputPrice' | 'cost';
+type SortKey = 'name' | 'context' | 'inputPrice' | 'outputPrice' | 'cost';
 const presets = [
   { name: 'Short replies', input: '500', output: '150', calls: '1000' },
   { name: 'Document summaries', input: '12000', output: '800', calls: '1000' },
   { name: 'Long conversations', input: '40000', output: '2000', calls: '1000' },
 ];
 const providers = [...new Set(modelsData.map(model => model.provider))].sort();
-const contextLabel = (k: number) => k > 0 ? (k >= 1000 ? `${k / 1000}M` : `${k}K`) : 'Unknown';
+const contextLabel = (tokens: number | null) => tokens === null ? 'Unknown' : tokens.toLocaleString('en-GB');
 const statusLabels: Record<string, string> = {
   'invalid-workload': 'Check the workload', 'unknown-price': 'Price unknown',
-  'unknown-context': 'Saved context unknown', 'above-saved-context': 'Above saved context',
+  'unknown-context': 'Context unknown', 'above-saved-context': 'Above recorded context', 'above-output-limit': 'Above recorded output limit',
 };
 
 export default function ModelComparison() {
@@ -81,16 +82,16 @@ export default function ModelComparison() {
         <p class="model-scroll-hint">Scroll the table sideways on smaller screens. Select a column heading to sort.</p>
         <div class="model-table-scroll" role="region" aria-label="Model comparison table, scroll horizontally for all columns" tabIndex={0}>
           <table><caption class="sr-only">Recorded model rates and estimated workload costs. All amounts are US dollars. Saved context is reference data.</caption><thead><tr>
-            {column('name', 'Model')}{column('contextK', 'Saved context')}{column('inputPrice', 'Input / 1M')}{column('outputPrice', 'Output / 1M')}{column('cost', 'Workload cost')}<th scope="col">Price snapshot</th>
+            {column('name', 'Model')}{column('context', 'Context / tokens')}{column('inputPrice', 'Input / 1M')}{column('outputPrice', 'Output / 1M')}{column('cost', 'Workload cost')}<th scope="col">Price snapshot</th>
           </tr></thead><tbody>{rows.map(({ model, estimate }) => <tr key={model.id}>
             <th scope="row"><strong>{model.name}</strong><span class="model-provider">{model.provider}</span><div class="model-id"><code>{model.id}</code><button type="button" aria-label={`Copy ID for ${model.name}`} onClick={() => copyId(model.id)}>Copy ID</button></div>{hasWeightRecord(model) && <div class="model-weights"><a href={model.weights!.source}>{model.weights!.access === 'gated' ? 'Weight files · gated access ↗' : 'Published weight files ↗'}</a><span>{model.weights!.licence === 'other' ? 'Custom licence, see model card' : model.weights!.licence} · checked {model.weights!.checkedAt.slice(0, 10)}</span></div>}</th>
-            <td class="model-number">{contextLabel(model.contextK)}</td><td class="model-number">{priceLabel(model, 'inputPrice')}</td><td class="model-number">{priceLabel(model, 'outputPrice')}</td>
+            <td class="model-number">{contextLabel(contextLimit(model))}<span class="model-context-output">Reply cap: {contextLabel(outputLimit(model))}</span></td><td class="model-number">{priceLabel(model, 'inputPrice')}</td><td class="model-number">{priceLabel(model, 'outputPrice')}</td>
             <td class="model-estimate">{estimate.cost === null ? <span class="model-unavailable">{statusLabels[estimate.status]}</span> : <strong>{workloadMoney(estimate.cost)}</strong>}</td>
             <td class="model-snapshot"><time dateTime={model.pricingCheckedAt}>{model.pricingCheckedAt.slice(0, 10)}</time><span>{hasVerifiedPrice(model) ? 'Rates checked' : model.pricingStatus.replaceAll('-', ' ')}</span><a href={model.pricingSource}>Source ↗</a></td>
           </tr>)}</tbody></table>
         </div>
       </> : <div class="model-empty"><h3>No models match these filters.</h3><p>Try a shorter name or return to the full tracked list.</p><button type="button" onClick={resetFilters}>Clear filters</button></div>}
-      <p class="model-limit-note">Input plus output must fit the saved context to show an estimate. Context limits are reference values. Check the provider's current limits and maximum output. Weight links point to recorded repository revisions with published files. Licences vary, and gated files may require approval from their host. A missing weight record does not establish that a model is closed.</p>
+      <p class="model-limit-note">Input plus output must fit the smaller recorded context limit, and a known output cap is checked separately. These are dated catalogue quotes, not a promise that every provider route accepts the request. Inspect both source values in the <a href="/lab/context-window">Context Budget Planner</a>. Weight links point to recorded repository revisions with published files. Licences vary, and gated files may require approval from their host. A missing weight record does not establish that a model is closed.</p>
       <p class="model-limit-note">Caching, reasoning tokens, images, tools, routing and long-context pricing can change the bill. Unknown rates stay unknown, including for zero calls. Open weights do not make hosted calls or hardware free.</p>
       <p class="model-action-notice" role="status">{notice}</p>
     </section>

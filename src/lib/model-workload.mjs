@@ -1,5 +1,6 @@
 import { hasVerifiedPrice } from './model-pricing.mjs';
 import { hasWeightRecord, weightLabel } from './model-weights.mjs';
+import { contextLimit, outputLimit } from './model-context.mjs';
 
 export function parseWorkload(input, output, calls) {
   const raw = [input, output, calls].map(value => String(value).trim());
@@ -17,16 +18,19 @@ export function parseWorkload(input, output, calls) {
 export function estimateWorkload(model, workload) {
   if (!workload.ok) return { status: 'invalid-workload', cost: null };
   if (!hasVerifiedPrice(model)) return { status: 'unknown-price', cost: null };
-  if (!(model.contextK > 0)) return { status: 'unknown-context', cost: null };
-  if (workload.inputTokens + workload.outputTokens > model.contextK * 1000) {
+  const context = contextLimit(model), output = outputLimit(model);
+  if (context === null) return { status: 'unknown-context', cost: null };
+  if (workload.inputTokens + workload.outputTokens > context) {
     return { status: 'above-saved-context', cost: null };
   }
+  if (output !== null && workload.outputTokens > output) return { status: 'above-output-limit', cost: null };
   const cost = (workload.inputTokens * model.inputPrice + workload.outputTokens * model.outputPrice) * workload.calls / 1_000_000;
   return Number.isFinite(cost) ? { status: 'estimated', cost } : { status: 'invalid-workload', cost: null };
 }
 
 export function compareWorkloadRows(a, b, key, direction = 1) {
   const value = row => key === 'cost' ? row.estimate.cost
+    : key === 'context' ? contextLimit(row.model)
     : ['inputPrice', 'outputPrice'].includes(key) ? (hasVerifiedPrice(row.model) ? row.model[key] : null)
     : row.model[key];
   const av = value(a), bv = value(b);
@@ -49,12 +53,14 @@ export function csvCell(value) {
 }
 
 export function workloadCsv(rows, workload) {
-  const header = ['Model', 'OpenRouter ID', 'Provider', 'Weight record', 'Saved context tokens', 'Input USD per 1M', 'Output USD per 1M', 'Pricing status', 'Pricing checked UTC', 'Pricing source', 'Input tokens per call', 'Output tokens per call', 'Calls', 'Estimate status', 'Estimated text-token USD', 'Weight source revision', 'Model card licence', 'Weight access', 'Weight source checked UTC'];
-  const records = rows.map(({ model, estimate }) => [model.name, model.id, model.provider, weightLabel(model), model.contextK * 1000,
+  const header = ['Model', 'OpenRouter ID', 'Provider', 'Weight record', 'Planning context tokens', 'Input USD per 1M', 'Output USD per 1M', 'Pricing status', 'Pricing checked UTC', 'Pricing source', 'Input tokens per call', 'Output tokens per call', 'Calls', 'Estimate status', 'Estimated text-token USD', 'Weight source revision', 'Model card licence', 'Weight access', 'Weight source checked UTC', 'Catalogue context tokens', 'Top-provider context tokens', 'Top-provider output tokens', 'Context status', 'Context checked UTC', 'Context source'];
+  const records = rows.map(({ model, estimate }) => [model.name, model.id, model.provider, weightLabel(model), contextLimit(model),
     hasVerifiedPrice(model) ? model.inputPrice : null, hasVerifiedPrice(model) ? model.outputPrice : null,
     model.pricingStatus, model.pricingCheckedAt, model.pricingSource,
     workload.ok ? workload.inputTokens : null, workload.ok ? workload.outputTokens : null, workload.ok ? workload.calls : null,
     estimate.status, estimate.cost, hasWeightRecord(model) ? model.weights.source : null,
-    model.weights?.licence, model.weights?.access, model.weights?.checkedAt]);
+    model.weights?.licence, model.weights?.access, model.weights?.checkedAt,
+    model.context?.catalogueTokens, model.context?.providerTokens, model.context?.outputTokens,
+    model.context?.status, model.context?.checkedAt, model.context?.source]);
   return [header, ...records].map(row => row.map(csvCell).join(',')).join('\r\n') + '\r\n';
 }
