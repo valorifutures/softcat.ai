@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T03:41:36.653Z",
-  "phase": "prompt-recipes",
-  "active_branch": "codex/prompt-recipes",
+  "updated_at": "2026-09-13T04:05:12.363Z",
+  "phase": "workshop-directory",
+  "active_branch": "codex/workshop-directory",
   "last_verified_deployment": {
-    "sha": "e59fc7636547de6973c200c9f844f4ddfd94c549",
-    "at": "2026-09-13T03:05:03Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34734576478"
+    "sha": "2ad8c7664293603ebde46ca9332fd17aae1b0fc5",
+    "at": "2026-09-13T03:45:21Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34736228880"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -28,13 +28,14 @@
     "PR #210 merged and deployed. Live primary-button hover retains dark rgb(38, 53, 28) text on the light rgb(220, 247, 181) background. The comparison remains usable.",
     "PR #211 merged and deployed. The public removal record shows 114 automated essays and three early opinions. Its May group expands and links the 14 May retirement notice to the exact original Git source. The launch article retains 13 March and shows its separate 13 September correction. The restored concept tag lists 18 glossary terms. Site search finds the removal record for removed articles.",
     "PR #212 merged and deployed. The live planner shows a 274,000-token code budget exceeding Sonnet context by 74,000, and an 85,000-token request whose 70,000-token reply exceeds the separate 64,000 cap. Copy succeeded, zero-count Laguna stays unknown, GPT-4.1 shows exactly 1,047,576 context tokens, and negative input produces an error. Model Comparison rejects a 64,001-token Sonnet reply. Desktop layout and hover text were inspected.",
-    "PR #213 merged and deployed. The live text calculator rejects an unlabelled prelude and unsupported JSON fields. The growing example has 127 repeated-history input tokens, 40 output tokens and an estimated USD 0.000981 total, with the last call labelled input-only. Copy succeeded. JSON preserves literal role labels and an unclosed fence inside a message. An empty single-request output is also labelled input-only. No model request was made."
+    "PR #213 merged and deployed. The live text calculator rejects an unlabelled prelude and unsupported JSON fields. The growing example has 127 repeated-history input tokens, 40 output tokens and an estimated USD 0.000981 total, with the last call labelled input-only. Copy succeeded. JSON preserves literal role labels and an unclosed fence inside a message. An empty single-request output is also labelled input-only. No model request was made.",
+    "PR #214 merged and deployed. Live recipe search for regression shows one result, Source work narrows it to zero and Clear filters restores twelve. Keyboard activation loads the filled extraction example and copying succeeds. Workbench receives its template and variables as an unsaved draft with Saved (0). An unknown recipe leaves the saved library unchanged. The old validator URL preserves its 25 March Git date and exact source. Search finds the current recipes and review, not the retired validator."
   ],
   "next": [
-    "Publish and inspect the twelve worked prompt recipes and 72 retirement notices, including recipe filters, template/example copying and the unsaved Workbench handoff.",
-    "Continue reviewing remaining high-value journeys and content. Prefer a reproducible improvement over adding another unmeasured claim.",
-    "The separate systemd host remains unverified. Price migration and draft-writer source changes do not restart those other bots.",
-    "Leave a clean checkpoint before the 06:00 UTC overnight deadline."
+    "Publish and inspect the rebuilt Tools directory, six-link navigation, corrected local guides and 38 retirement notices.",
+    "Add durable built-site integrity checks and inspect missing-page recovery and machine-readable exports. Keep the notebook tied to actual work.",
+    "The separate systemd host remains unverified. Source changes do not restart those other bots.",
+    "Observe the next real GitHub price snapshot if it runs before the 06:00 UTC overnight deadline, then leave a clean handover."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",

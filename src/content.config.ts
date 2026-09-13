@@ -41,11 +41,18 @@ const tools = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     last_verified: z.coerce.date().optional(),
+    review: z.object({
+      reviewedAt: z.string(),
+      previousRevision: z.string(),
+      summary: z.string().min(1),
+      evidence: z.array(z.string()).min(1),
+    }).optional(),
     url: z.string().optional(),
     labUrl: z.string().optional(),
     status: z.enum(['active', 'experimental', 'archived']).default('experimental'),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    ...pipelineMeta,
   }),
 });
 

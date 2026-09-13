@@ -1,0 +1,13 @@
+---
+import PostLayout from '../layouts/PostLayout.astro';
+import { render, type CollectionEntry } from 'astro:content';
+interface Props { entry: CollectionEntry<'tools'>; }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const review = entry.data.review!;
+---
+<PostLayout title={entry.data.title} date={entry.data.date} tags={entry.data.tags} summary={entry.data.description} backLink="/tools" backLabel="Tools" correction={{ date: new Date(review.reviewedAt), summary: review.summary }}>
+  <Content />
+  <section class="guide-evidence" aria-labelledby="guide-evidence-heading"><h2 id="guide-evidence-heading">Inspect the work</h2><ul>{review.evidence.map((url, i) => <li><a href={url}>Implementation and checks {i + 1} ↗</a></li>)}</ul><p><a href={`https://github.com/valorifutures/softcat.ai/blob/${review.previousRevision}/src/content/tools/${entry.id}.md`}>Earlier version of this guide ↗</a></p></section>
+  {entry.data.labUrl && <p><a href={entry.data.labUrl}>Open the tool ↗</a></p>}
+</PostLayout>

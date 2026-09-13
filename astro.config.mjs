@@ -7,7 +7,8 @@ import sitemap from '@astrojs/sitemap';
 import { readFileSync } from 'node:fs';
 const retirementReview = JSON.parse(readFileSync(new URL('./src/data/editorial-retirements.json', import.meta.url), 'utf8'));
 const promptRetirements = JSON.parse(readFileSync(new URL('./src/data/prompt-retirements.json', import.meta.url), 'utf8'));
-const retiredPaths = new Set([...retirementReview.entries.map(entry => `/thoughts/${entry.id}`), ...promptRetirements.entries.map(entry => `/prompts/${entry.id}`)]);
+const toolRetirements = JSON.parse(readFileSync(new URL('./src/data/tool-retirements.json', import.meta.url), 'utf8'));
+const retiredPaths = new Set([...retirementReview.entries.map(entry => `/thoughts/${entry.id}`), ...promptRetirements.entries.map(entry => `/prompts/${entry.id}`), ...toolRetirements.entries.map(entry => `/tools/${entry.id}`)]);
 
 export default defineConfig({
   site: 'https://softcat.ai',

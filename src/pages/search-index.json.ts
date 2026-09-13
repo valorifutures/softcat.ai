@@ -58,6 +58,8 @@ export const GET: APIRoute = async () => {
     });
   }
 
+  entries.push({ title: 'The tool collection review', summary: 'Retired external recommendations, corrected local tool guides and preserved source history.', url: '/tools/review', type: 'page', tags: ['tools', 'review', 'retired', 'corrections', 'removed'] });
+
   for (const e of prompts.filter((p) => !p.data.draft)) {
     entries.push({
       title: e.data.title,
