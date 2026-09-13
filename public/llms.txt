@@ -1,23 +1,36 @@
 # SOFT CAT .ai
 
-> Smart Outputs From Trained Conversational AI Technology. An independent AI workshop with useful tools, agent experiments and a public notebook.
+> Smart Outputs From Trained Conversational AI Technology. An independent AI workshop by Valori, with useful tools, inspectable experiments and a public notebook.
 
-## Key Pages
+## Workshop
 
 - [Home](https://softcat.ai/)
+- [Browser tools and data behaviour](https://softcat.ai/tools)
+- [Worked prompt recipes, examples and checks](https://softcat.ai/prompts)
 - [Notebook](https://softcat.ai/notebook)
 - [Should this be an agent?](https://softcat.ai/lab/agent-check)
-- [Model comparison and workload costs](https://softcat.ai/lab/model-comparison)
-- [News & Updates](https://softcat.ai/news-and-updates)
-- [Thoughts](https://softcat.ai/thoughts)
-- [The Radar](https://softcat.ai/radar)
-- [Tools](https://softcat.ai/tools)
-- [Prompt Library](https://softcat.ai/prompts)
+- [Prompt Workbench](https://softcat.ai/lab/prompt-workbench)
+- [Model comparison and dated workload costs](https://softcat.ai/lab/model-comparison)
+- [Context Budget Planner](https://softcat.ai/lab/context-window)
+- [Feral experiment and published artefacts](https://softcat.ai/feral)
+- [About Valori](https://softcat.ai/valori)
+
+## Records and evidence
+
+Publication, correction and source-check dates have different meanings. A new site build does not make an old report current. Pipeline records do not establish live server health.
+
 - [Horizon Map](https://softcat.ai/horizon)
 - [Horizon evidence review](https://softcat.ai/horizon/review)
-- [Pipeline](https://softcat.ai/pipeline)
-- [Valori](https://softcat.ai/valori)
+- [Pipeline records and known limits](https://softcat.ai/pipeline)
+- [Thoughts and visible corrections](https://softcat.ai/thoughts)
+- [Historical news archive](https://softcat.ai/news-and-updates)
+- [Historical Radar archive](https://softcat.ai/radar)
+- [Essay removal record](https://softcat.ai/thoughts/review)
+- [Prompt collection review](https://softcat.ai/prompts/review)
+- [Tool collection review](https://softcat.ai/tools/review)
 
-## Full Content
+## Reading export
 
-- [Full text export](https://softcat.ai/llms-full.txt)
+- [Published text with corrections, recipe checks and source links](https://softcat.ai/llms-full.txt)
+
+The text export contains the published news archive, notebook and thoughts, local tool guides, prompt recipes and glossary. It excludes retired material and unpublished drafts. Interactive tools, Horizon data and Feral artefacts are available through the pages above. Recipe examples are targets to inspect, not recorded model responses.

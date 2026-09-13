@@ -13,7 +13,7 @@ const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', m
 const experiments = [
   { index: '02', title: 'Prompt Workbench', text: 'Build, compare and keep the prompts that earn their place.', href: '/lab/prompt-workbench', category: 'MAKE SOMETHING', glyph: '{ }', colour: 'cyan' },
   { index: '03', title: 'JSON Output Validator', text: 'Check what a model returned before your next step depends on it.', href: '/lab/json-validator', category: 'CHECK THE OUTPUT', glyph: '✓', colour: 'lilac' },
-  { index: '04', title: 'Agent Trace Tape', text: 'Explore a visual artefact of the pipeline, one recorded step at a time.', href: '/trace/', category: 'LOOK UNDERNEATH', glyph: '≋', colour: 'peach' },
+  { index: '04', title: 'Context Budget', text: 'Make room for instructions, sources and the reply before a request outgrows the model.', href: '/lab/context-window', category: 'PLAN THE REQUEST', glyph: '≋', colour: 'peach' },
 ];
 ---
 <BaseLayout description="An independent AI workshop by Valori. Useful browser tools, inspectable agent experiments and a public notebook of what we learn.">

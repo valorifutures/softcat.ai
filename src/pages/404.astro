@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page not found" description="Find your way back to SOFT CAT's tools, recipes and notebook." canonicalPath="/404.html">
+  <meta slot="head" name="robots" content="noindex" />
+  <section class="workshop-shell recovery">
+    <p class="eyebrow">404 / A LOOSE THREAD</p>
+    <h1>That page has wandered off.</h1>
+    <p>The address may be incomplete, or the page may have moved. There is still plenty on the workbench.</p>
+    <div class="recovery-actions"><a class="workshop-button" href="/tools">Explore the tools <span aria-hidden="true">↗</span></a><a class="text-link" href="/">Back to the workshop →</a></div>
+    <nav aria-label="Find a page"><a href="/prompts">Worked prompt recipes</a><a href="/notebook">The build notebook</a><a href="/horizon">The Horizon Map</a></nav>
+    <p class="recovery-note">Looking for something we removed? The <a href="/thoughts/review">essay</a>, <a href="/prompts/review">prompt</a> and <a href="/tools/review">tool reviews</a> keep the original titles and source history. You can also use the search control above.</p>
+  </section>
+</BaseLayout>
+<style>
+  .recovery { max-width: 850px; padding-block: clamp(3rem, 8vw, 6rem); }
+  h1 { color: var(--color-text-bright); font: 500 clamp(2.4rem, 6vw, 4rem)/1.12 var(--font-sans); letter-spacing: -0.045em; max-width: 700px; margin: 1.2rem 0 1.5rem; }
+  p:not(.eyebrow) { max-width: 640px; color: var(--color-text-muted); line-height: 1.8; }
+  .recovery-actions { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; margin-block: 2rem; }
+  nav { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; border-block: 1px solid var(--workshop-rule); padding-block: 1rem; margin-bottom: 1.5rem; }
+  nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.9rem; }
+  .recovery-note { font-size: 0.85rem; }
+  .recovery-note a, nav a { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 4px; }
+</style>
