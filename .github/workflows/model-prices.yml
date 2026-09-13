@@ -1,0 +1,125 @@
+name: Model price snapshot
+
+on:
+  schedule:
+    - cron: '30 5 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/model-prices.yml'
+      - 'scripts/model-price-snapshot.mjs'
+
+concurrency:
+  group: model-price-snapshot
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      candidate_sha: ${{ steps.candidate.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Check the existing catalogue
+        run: node scripts/validate-tools-data.mjs
+      - name: Fetch the public price catalogue
+        run: node scripts/model-price-snapshot.mjs --write
+      - name: Validate the candidate data and site
+        run: |
+          node scripts/validate-content.mjs
+          node scripts/validate-tools-data.mjs
+          node scripts/validate-horizon-refs.mjs
+          node --test scripts/tests/*.test.mjs
+          npm run build
+      - name: Preserve the exact checked candidate
+        id: candidate
+        env:
+          BASE_SHA: ${{ github.sha }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/data/models.json src/data/model-price-snapshot.json src/data/pipeline/runs.json
+          TREE="$(git write-tree)"
+          CANDIDATE="$(git commit-tree "$TREE" -p "$BASE_SHA" -m "data: record model price snapshot $GITHUB_RUN_ID")"
+          git update-ref refs/heads/price-snapshot-candidate "$CANDIDATE"
+          git bundle create "$RUNNER_TEMP/price-snapshot.bundle" "$BASE_SHA..refs/heads/price-snapshot-candidate"
+          echo "sha=$CANDIDATE" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: price-snapshot-candidate
+          path: ${{ runner.temp }}/price-snapshot.bundle
+          retention-days: 14
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  publish:
+    needs: refresh
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # No provider requests, npm scripts or data processing in the write job.
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: price-snapshot-candidate
+          path: ${{ runner.temp }}/price-input
+      - name: Publish only the checked data commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_SHA: ${{ github.sha }}
+          CANDIDATE_SHA: ${{ needs.refresh.outputs.candidate_sha }}
+        run: |
+          git fetch "$RUNNER_TEMP/price-input/price-snapshot.bundle" refs/heads/price-snapshot-candidate:refs/heads/price-snapshot-candidate
+          test "$(git rev-parse price-snapshot-candidate)" = "$CANDIDATE_SHA"
+          test "$(git show -s --format=%P "$CANDIDATE_SHA")" = "$BASE_SHA"
+          while IFS= read -r FILE; do
+            case "$FILE" in
+              src/data/models.json|src/data/model-price-snapshot.json|src/data/pipeline/runs.json) ;;
+              *) echo "Unexpected candidate path: $FILE" >&2; exit 1 ;;
+            esac
+            test "$(git ls-tree "$CANDIDATE_SHA" -- "$FILE" | cut -d ' ' -f 1)" = '100644'
+          done < <(git diff --name-only "$BASE_SHA" "$CANDIDATE_SHA")
+          gh auth setup-git
+          SNAPSHOT_BRANCH="data/price-snapshot-$GITHUB_RUN_ID"
+          git push origin "$CANDIDATE_SHA:refs/heads/$SNAPSHOT_BRANCH"
+          # Normal fast-forward only. A concurrent main change or a branch rule
+          # rejects publication. The candidate branch and artifact are retained.
+          git push origin "$CANDIDATE_SHA:refs/heads/main"
+          echo "Published checked price snapshot $CANDIDATE_SHA" >> "$GITHUB_STEP_SUMMARY"
+      # GITHUB_TOKEN pushes do not start deploy.yml. Deploy the already checked
+      # artifact here, without rebuilding or running source with write access.
+      - id: deployment
+        uses: actions/deploy-pages@v5

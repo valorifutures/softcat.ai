@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T00:27:15.717876+00:00",
-  "phase": "model-reference-quality",
-  "active_branch": "codex/model-reference-quality",
+  "updated_at": "2026-09-13T00:45:53.510046+00:00",
+  "phase": "github-price-snapshots",
+  "active_branch": "codex/github-price-snapshots",
   "last_verified_deployment": {
-    "sha": "7ce80e1c5cacee2e38a2125fd39037acc060d19b",
-    "at": "2026-09-13T00:18:21Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34727595474"
+    "sha": "9ffbd62c380e2b1f7413d6c7fb4b234ca97b0259",
+    "at": "2026-09-13T00:32:12Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34728191461"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -19,12 +19,13 @@
     "PR #201 merged and deployed. Live search finds the agent tool first, ArrowDown selects the next result, and the Close control restores focus to the opener. Draft publication fixtures and all indexed routes passed checks.",
     "PR #202 merged and deployed. The live comparison finds exact model IDs, calculates ten Sonnet calls at $0.105 and keeps unlisted Laguna pricing unknown even with zero calls. CSV export confirms its source/assumption record. Search native Escape restores opener focus.",
     "PR #203 merged and deployed. The live JSON checker reports three deliberate classification failures, clears the result on edits, accepts the matching example and reports invoice date/quantity/price failures. A pathological pattern was stopped after 2.5 seconds and the page remained usable.",
-    "PR #204 merged and deployed. Live Thoughts shows six corrections and 124 historical essays in a compact monthly index. The prompt essay retains 3 July as its publication date and shows its 13 September correction separately. The new notebook entry records real validator tests."
+    "PR #204 merged and deployed. Live Thoughts shows six corrections and 124 historical essays in a compact monthly index. The prompt essay retains 3 July as its publication date and shows its 13 September correction separately. The new notebook entry records real validator tests.",
+    "PR #205 merged and deployed. The live weight-source filter shows 19 models and two gated links. Source links and licence labels replace the old open/closed guesses, while workload price values remain unchanged. The homepage now recommends three actual build notes."
   ],
   "next": [
-    "Publish the weight-source audit and verify source filters, gated labels and unchanged workload prices live.",
-    "Consider restoring an unpaid pricing snapshot job on GitHub Actions because the separate daily bot host remains unreachable. Preserve all validation and publication gates.",
+    "Publish the GitHub price workflow and wait for its first real snapshot and Pages deployment. Inspect the actual run, data commit and live pipeline record.",
     "Review the project/about/contact pages and remaining tool journeys for concrete improvements.",
+    "The separate systemd host remains unverified. Price migration does not restart those other bots.",
     "Leave a clean checkpoint for the next scheduled iteration."
   ],
   "constraints": [

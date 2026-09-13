@@ -351,3 +351,44 @@ PR #204's Pages run 34727595474 succeeded at 00:18 UTC. Its live correction
 record was visually inspected. The prompt essay keeps its original 3 July
 date, separately displays the 13 September correction and links the original
 text. The archive shows six corrections and 124 earlier essays.
+
+
+## 13 September 2026: restore a verifiable daily price job
+
+The separate bot server remains unverified, so source repairs alone cannot
+restore its daily timers. The new Model price snapshot workflow runs the unpaid
+public-catalogue check in GitHub Actions, daily at 05:30 UTC. A push affecting
+its script or workflow also starts a check, making the first deployment a real
+integration test. No AI provider key or inference call is needed.
+
+Only existing model IDs and token-price fields can change. The planner rejects
+empty, duplicate or badly incomplete catalogues. It preserves all other model
+metadata. Missing quotes stay unknown. Changes over 50 per cent, zero-to-paid
+changes and changed locked prices are held as review-needed, excluded from
+cost calculations and recorded with their actual quoted values. The snapshot
+records all 39 comparisons and a hash of the public response.
+
+A read-only job checks the candidate data and builds the site. It passes an
+exact commit bundle and Pages artifact to a separate publishing job. That job
+checks the commit, parent, allowed paths and file modes before a normal
+fast-forward push. A concurrent change or repository branch rule rejects it.
+The candidate is retained if publishing fails. Since a GitHub token push does
+not start the ordinary Pages workflow, this workflow deploys its checked
+artifact without running project code with publication credentials.
+
+The ordinary Pages build now also runs model, Horizon and JavaScript checks,
+so a direct bot commit cannot skip the same data gates. Pages credentials are
+limited to its deployment job. Pipeline copy distinguishes the GitHub price
+job from the still-unverified server bots. New run records link to the actual
+workflow and describe the zero inference cost separately from hosting.
+
+Validation before first execution: 55 JavaScript tests and 107 bot tests pass.
+All content, model and Horizon checks pass, and Actionlint reports no workflow
+errors. The production build has 889 pages. Replaying the previously fetched
+445-model catalogue gives 37 verified prices, two unlisted IDs and zero price
+changes. No live refresh was invoked locally. Actual scheduled publication
+still requires the first post-merge workflow run and will be checked next.
+
+PR #205's Pages run 34728191461 succeeded at 00:32 UTC. The live weight filter
+shows 19 entries and two gated sources. The homepage's three notebook links
+were checked against its rendered content.
