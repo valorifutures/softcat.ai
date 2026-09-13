@@ -18,8 +18,11 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
+import { isDeepStrictEqual } from 'node:util';
 import { retiredThoughtReferenceError } from '../src/lib/editorial-retirements.mjs';
-import { validateOutlookReview } from '../src/lib/horizon-explorer.mjs';
+import { FUTURES, STANCES } from '../src/lib/horizon-explorer.mjs';
+import { validateClockPayload } from '../src/lib/horizon-clocks.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -57,7 +60,38 @@ const next = readJson(join(HORIZON_DIR, 'next.json'));
 const retired = readJson(join(HORIZON_DIR, 'retired-forecasts.json'));
 const debates = readJson(join(HORIZON_DIR, 'debates.json'));
 const scenarios = readJson(join(HORIZON_DIR, 'scenarios.json'));
-errors.push(...validateOutlookReview(readJson(join(HORIZON_DIR, 'outlook-review.json')), scenarios));
+const review = readJson(join(HORIZON_DIR, 'outlook-review.json'));
+const history = readJson(join(HORIZON_DIR, 'clock-history.json'));
+const briefs = readJson(join(HORIZON_DIR, 'decision-briefs.json'));
+const payload = { schema: 1, revision: '0'.repeat(64), scenarios, review, history, briefs };
+errors.push(...validateClockPayload(payload));
+
+// A review is an append-only record, checked against the published Git history.
+// Full checkout history is required by the PR, Pages and automation workflows.
+const git = args => execFileSync('git', args, { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
+const historyPath = 'src/data/horizon/clock-history.json';
+try {
+  const originalSha = '3066df13e0493ef1446c9a3e48f307aa8bf30e5f';
+  const original = JSON.parse(git(['show', `${originalSha}:src/data/horizon/scenarios.json`]));
+  const baseline = FUTURES.map(({ id }) => {
+    const scenario = original.find(item => item.id === id);
+    return { id, definition: scenario.definition, timeframes: Object.fromEntries(STANCES.map(stance => [stance, scenario[stance].timeframe])) };
+  });
+  if (!isDeepStrictEqual(history[0]?.records, baseline) || history[0]?.source !== `https://github.com/valorifutures/softcat.ai/blob/${originalSha}/src/data/horizon/scenarios.json`) errors.push('The clock baseline differs from its preserved original Git source.');
+  const refs = new Set(['HEAD']);
+  // A source checkout without a remote can still validate its tracked records.
+  if (git(['for-each-ref', '--format=%(refname)', 'refs/remotes/origin/main'])) refs.add('origin/main');
+  if (process.env.GITHUB_EVENT_PATH) {
+    const event = readJson(process.env.GITHUB_EVENT_PATH);
+    const before = event.pull_request?.base?.sha || event.before;
+    if (before && /^[a-f0-9]{40}$/.test(before) && !/^0+$/.test(before)) refs.add(before);
+  }
+  for (const ref of refs) {
+    if (!git(['ls-tree', '-r', '--name-only', ref, '--', historyPath])) continue; // introduction of this file
+    const previous = JSON.parse(git(['show', `${ref}:${historyPath}`]));
+    errors.push(...validateClockPayload(payload, previous).map(error => `${ref}: ${error}`));
+  }
+} catch (error) { errors.push(`Clock history could not be checked against Git: ${error.message}`); }
 
 const radarRefs = listBasenames(RADAR_DIR, '.json');
 const thoughtRefs = listBasenames(THOUGHTS_DIR, '.md');

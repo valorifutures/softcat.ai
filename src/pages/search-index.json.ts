@@ -109,7 +109,7 @@ export const GET: APIRoute = async () => {
     { title: 'About Valori', summary: 'SOFT CAT is an independent AI playground, workshop and public notebook.', url: '/valori', type: 'page' },
     { title: 'Contact and feedback', summary: 'Report a bug, suggest a correction or propose an experiment.', url: '/contact', type: 'page' },
     { title: 'Notebook', summary: 'The public build diary: experiments, decisions and failures with evidence.', url: '/notebook', type: 'page' },
-    { title: 'Horizon: five possible AI futures', summary: 'What comes after now? Compare AGI, agents, robotics, software and education, with visible dates, evidence and uncertainty.', url: '/horizon', type: 'page', tags: ['horizon', 'agi', 'future', 'scenarios', 'timeline'] },
+    { title: 'Horizon: five possible AI futures', summary: 'Five live scenario countdowns for AGI, agents, robotics, software and education. Follow evidence revisions, ask the 10× CEO question and plan your next 90 days.', url: '/horizon', type: 'page', tags: ['horizon', 'agi', 'future', 'scenarios', 'timeline', 'clocks', 'countdown', 'ceo'] },
     { title: 'Horizon review record', summary: 'Original claims, withdrawn forecasts, archived signals and the evidence behind our revisions.', url: '/horizon/review', type: 'page' },
     { title: 'Horizon evidence and history', summary: 'Dated AI observations, unresolved forecasts, debates and past turning points.', url: '/horizon/record', type: 'page' },
     { title: 'Is AGI already here?', summary: 'Explore definitions of general intelligence through breadth, economic work and adaptation.', url: '/horizon#agi-question', type: 'page', tags: ['agi', 'definitions', 'intelligence'] },

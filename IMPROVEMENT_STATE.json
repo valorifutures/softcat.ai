@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T20:10:34.915374Z",
-  "phase": "horizon-release-handover",
-  "active_branch": null,
+  "updated_at": "2026-09-13T20:58:41.729603Z",
+  "phase": "horizon-clocks-release",
+  "active_branch": "improve/horizon-clocks",
   "last_verified_deployment": {
-    "sha": "acb645af72bae1079b0e760f3bc56a6513d8a0ad",
-    "at": "2026-09-13T20:08:02Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34779766500"
+    "sha": "b14046fb68e69790f77b71538e82f5b0867b6fd3",
+    "at": "2026-09-13T20:13:10Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34780043251"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -34,19 +34,21 @@
     "PR #217 passed all hosted checks, merged and deployed. The live trace URL explains the removal with exact earlier source. The homepage links Context Budget. The live text export retains seven corrections, three tool reviews and twelve recipe targets/check sets. A genuinely missing URL returns HTTP 404 with the custom noindex recovery page. Keyboard Skip to content reaches the main region. Search opens with Enter, shows a clear zero-result state and finds the Context Budget tool and guide.",
     "PR #219 passed hosted checks, merged and deployed. The live homepage leads with Horizon. The map, sceptical wording, changing briefings and sources, all three AGI definitions, Enter/Space controls, shared bookmarks, browser Back, actual copy/paste and legacy route redirects were inspected. The live review found two wording/scope improvements and a search-entry priority adjustment, prepared in the final review branch.",
     "The final review changes the assumption and counterevidence headings, makes the partial scope of pragmatic education visible beside its definition, and makes the main Horizon experience lead its own search results. The final production build, eleven focused regression cases and complete publication audit pass. This checkpoint travels with that final review PR.",
-    "PR #220 passed all hosted checks and deployed. The live pragmatic education panel shows its partial scope and corrected counterevidence heading, and search offers Explore Horizon. A returning browser retained the earlier search index under its ten-minute cache policy even though an HTTP revalidation returned the new Horizon tag. The final cache fix requests revalidation when the page first loads its search index, retaining in-page reuse and abort/retry behaviour. Production build, search tests and publication audit pass."
+    "PR #220 passed all hosted checks and deployed. The live pragmatic education panel shows its partial scope and corrected counterevidence heading, and search offers Explore Horizon. A returning browser retained the earlier search index under its ten-minute cache policy even though an HTTP revalidation returned the new Horizon tag. The final cache fix requests revalidation when the page first loads its search index, retaining in-page reuse and abort/retry behaviour. Production build, search tests and publication audit pass.",
+    "PR #221 passed hosted validation and Pages run 34780043251. The returning browser now sees the refreshed Horizon search entry. The maintainer then authorised five evidence-responsive countdowns, CEO planning prompts, repeated checks and release.",
+    "The five live clocks, pause/resume, per-future revision history and next-90-days briefs are built. A published data endpoint refreshes open pages after schema and append-only history validation. All 119 JavaScript tests, 141 bot tests, twelve publication fixtures, data validators and the 634-page build/audit pass. Hosted release and live visual checks are next."
   ],
   "next": [
-    "Await maintainer feedback after the bounded Horizon release. The recurring loop remains disabled.",
-    "If a later improvement is requested, review the dated scenario assumptions and obtain real mobile device coverage.",
-    "The separate bot host and fresh paid model runs remain outside this release."
+    "Publish the reviewed clocks branch through passing hosted PR checks, then verify Pages and live interactions.",
+    "Refine any concrete issue found in the live visual review through a passing follow-up PR.",
+    "The recurring loop remains disabled. The separate bot host and paid model runs remain outside this release."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven active forecasts with explicit tests and withdraws eight. Their original April claims are preserved."
   ],
-  "session": "The maintainer authorised building, repeated review, improvement and release of the new Horizon experience on 13 September. This is a bounded design and implementation release. The recurring loop remains disabled.",
+  "session": "The maintainer explicitly authorised plan, build, improve, check and release of five Horizon scenario clocks on 13 September. This is a bounded follow-up release. The recurring improvement loop remains disabled.",
   "verification_limits": [
     "Live desktop rendering and keyboard interactions were inspected. Narrow layout breakpoints and wrapping were reviewed in CSS. The browser did not expose a mobile viewport, and a zoom shortcut did not change its viewport. This is not recorded as a mobile device test."
   ]
