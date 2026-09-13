@@ -56,8 +56,8 @@
   },
   {
     "id": "tool_bot",
-    "name": "Tool of the Week",
-    "description": "Picks one interesting AI tool from RSS feeds and writes a short review.",
+    "name": "Tool discovery proposals",
+    "description": "Proposes one unpublished, sourced discovery for editorial review. Link checks record reachability only and do not promote drafts.",
     "script": "bot/tool_of_the_week.py",
     "schedule": "Sunday at 10:00 Europe/London",
     "schedule_cron": "0 10 * * 0",

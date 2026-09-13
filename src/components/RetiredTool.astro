@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import review from '../data/tool-retirements.json';
+import '../styles/workshop-directory.css';
+interface Props { retirement: typeof review.entries[number]; }
+const { retirement } = Astro.props;
+const fmt = (value: string) => new Date(value).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+<BaseLayout title="Retired tool write-up" description="This earlier SOFT CAT tool write-up has left the recommendation collection. Its original title, date and exact source remain recorded.">
+  <Fragment slot="head"><meta name="robots" content="noindex, follow" /></Fragment>
+  <article class="directory-record workshop-shell">
+    <header><a href="/tools/review" class="text-link">← The tool collection review</a><p class="eyebrow">EDITORIAL RECORD / RETIRED WRITE-UP</p><h1>This write-up has left<br /><em>the recommendation shelf.</em></h1><p>Retired <time datetime={retirement.retiredAt}>{fmt(retirement.retiredAt)}</time></p></header>
+    <aside class="directory-explanation"><h2>Why it was removed</h2><p>{review.reason}</p></aside>
+    <section><p class="eyebrow">ORIGINAL TITLE</p><h2>{retirement.title}</h2><p>Original publication date: <time datetime={retirement.date}>{fmt(retirement.date)}</time>.</p>{retirement.lastLinkCheck && <p>The old record also contains a <time datetime={retirement.lastLinkCheck}>{fmt(retirement.lastLinkCheck)}</time> link check. That recorded an HTTP response, not a product test or editorial review.</p>}<a class="text-link" href={`https://github.com/valorifutures/softcat.ai/blob/${retirement.sourceRevision}/${retirement.sourcePath}`}>Read the preserved write-up ↗</a></section>
+    <p>For browser tools you can try and inspect, visit <a href="/tools">the current workbench</a>.</p>
+  </article>
+</BaseLayout>

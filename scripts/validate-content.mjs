@@ -6,6 +6,7 @@ import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateEditorialRetirements } from '../src/lib/editorial-retirements.mjs';
 import { recipeErrors, promptRetirementErrors } from '../src/lib/prompt-recipes.mjs';
+import { toolReviewErrors, toolRetirementErrors } from '../src/lib/tool-editorial.mjs';
 
 const require = createRequire(import.meta.resolve('astro/package.json'));
 const yaml = require('js-yaml');
@@ -28,6 +29,7 @@ function visit(dir) {
       const data = yaml.load(match[1]);
       if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('frontmatter must be a mapping');
       if (typeof data.title !== 'string' || !data.title.trim()) throw new Error('title is required');
+      if (label.includes('content/tools/')) for (const error of toolReviewErrors(data)) errors.push(`${label}: ${error}`);
       if (label.includes('content/prompts/')) {
         for (const key of ['description', 'category', 'prompt']) {
           if (typeof data[key] !== 'string' || !data[key].trim()) throw new Error(`${key} is required`);
@@ -49,6 +51,9 @@ errors.push(...validateEditorialRetirements(editorialReview, thoughtIds));
 const promptReview = JSON.parse(readFileSync(join(root, 'src/data/prompt-retirements.json'), 'utf8'));
 const promptIds = new Set(readdirSync(join(base, 'prompts')).filter(name => name.endsWith('.md')).map(name => name.slice(0, -3)));
 errors.push(...promptRetirementErrors(promptReview, promptIds));
+const toolReview = JSON.parse(readFileSync(join(root, 'src/data/tool-retirements.json'), 'utf8'));
+const toolIds = new Set(readdirSync(join(base, 'tools')).filter(name => name.endsWith('.md')).map(name => name.slice(0, -3)));
+errors.push(...toolRetirementErrors(toolReview, toolIds));
 for (const error of errors) console.error(`ERROR ${error}`);
 console.log(`validate-content: ${count} Markdown files, ${errors.length} error(s)`);
 process.exitCode = errors.length ? 1 : 0;

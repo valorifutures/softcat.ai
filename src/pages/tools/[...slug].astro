@@ -1,37 +1,15 @@
 ---
-import PostLayout from '../../layouts/PostLayout.astro';
-import { getCollection, render } from 'astro:content';
-
+import ToolGuide from '../../components/ToolGuide.astro';
+import RetiredTool from '../../components/RetiredTool.astro';
+import { getCollection } from 'astro:content';
+import review from '../../data/tool-retirements.json';
 export async function getStaticPaths() {
-  const entries = await getCollection('tools');
-  return entries.filter((entry) => !entry.data.draft).map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry },
-  }));
+  const entries = (await getCollection('tools')).filter(entry => !entry.data.draft);
+  return [
+    ...entries.map(entry => ({ params: { slug: entry.id }, props: { entry } })),
+    ...review.entries.map(retirement => ({ params: { slug: retirement.id }, props: { retirement } })),
+  ];
 }
-
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { entry, retirement } = Astro.props;
 ---
-
-<PostLayout
-  title={entry.data.title}
-  tags={entry.data.tags}
-  summary={entry.data.description}
-  backLink="/tools"
-  backLabel="Tools & Experiments"
->
-  <Content />
-
-  <div class="mt-10 pt-6 border-t border-surface-light">
-    {entry.data.labUrl ? (
-      <a href={entry.data.labUrl} class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-neon-green/10 border border-neon-green/30 font-mono text-sm text-neon-green hover:bg-neon-green/20 transition-all">
-        Try it in the lab &rarr;
-      </a>
-    ) : (
-      <p class="font-mono text-sm text-text-muted">
-        No interactive tool for this one yet. <a href="/tools" class="text-neon-cyan hover:underline">Browse all tools</a> for more.
-      </p>
-    )}
-  </div>
-</PostLayout>
+{retirement ? <RetiredTool retirement={retirement} /> : <ToolGuide entry={entry!} />}
