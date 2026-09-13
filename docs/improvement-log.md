@@ -272,3 +272,42 @@ Sonnet by its exact model ID, changed 1,000 calls to ten and produced $0.105,
 kept Laguna's unlisted price unknown for zero calls, and confirmed CSV export.
 The model page was visually inspected. Search's native Escape key check also
 closed the dialog and restored focus to its opening button.
+
+
+## 13 September 2026: fewer claims, a better record
+
+Five earlier essays were rewritten with explicit corrections. Removed
+unsupported pricing and monitoring allegations, a claimed 80 per cent prompt
+reduction, an undocumented whole-project test, blanket dismissals of agent
+controls and a mental-health metaphor for hybrid routing. The replacement
+articles state what was withdrawn and offer concrete evaluation questions.
+Original dates and URLs remain, with links to the earlier Git versions. The
+OCR correction from the previous pass now shares the same structured record.
+
+A correction date and summary render prominently on the article and provide
+its actual dateModified metadata. The Thoughts page leads with six corrections
+and uses a compact monthly archive instead of a long stack of decorative cards.
+The homepage and related links for field notes recommend actual build notes.
+A third notebook entry documents the JSON validator failure and its real tests.
+
+The cause of the unsourced essays was explicit in the old thoughts prompt:
+it required a strong hot take and forbade source links. The new bot includes
+feed URLs, asks for attributed claims and a concrete uncertainty, and forbids
+invented first-person tests. A strict JSON response is converted into canonical
+frontmatter with draft true. Unknown source URLs, missing citations, raw HTML,
+incomplete output and false field-note/correction tags are rejected. Existing
+files cannot be overwritten, and truncation is a failed generation. Drafts
+are counted separately from published items. No live generation was invoked,
+and the separate systemd host is still unverified.
+
+Validation: 107 bot tests and 46 JavaScript tests pass. Fifteen new bot cases
+cover canonical metadata, source restrictions, insufficient-input early exit,
+truncation and refusal to overwrite or publish an unchecked draft. Content,
+model and Horizon checks pass. The ten changed reading journeys have 578 valid
+local links and the 610 search entries resolve. Original tag routes are kept.
+
+PR #203's Pages run 34726825234 succeeded at 00:00 UTC. The live JSON tool was
+visually inspected. Classification failed on the three expected constraints,
+the matching example passed, edits cleared the result, and invoice extraction
+identified the date and two numeric errors. A pathological pattern stopped
+after the browser timeout and the next example remained usable.

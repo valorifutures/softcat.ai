@@ -8,7 +8,7 @@ const thoughts = (await getCollection('thoughts')).filter((entry) => !entry.data
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const notes = thoughts.filter((entry) => entry.data.tags.includes('field-notes'));
 const latestNote = notes[0];
-const archive = thoughts.filter((entry) => !entry.data.tags.includes('field-notes')).slice(0, 2);
+const earlierNotes = notes.slice(1, 3);
 const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 const experiments = [
   { index: '02', title: 'Prompt Workbench', text: 'Build, compare and keep the prompts that earn their place.', href: '/lab/prompt-workbench', category: 'MAKE SOMETHING', glyph: '{ }', colour: 'cyan' },
@@ -35,8 +35,8 @@ const experiments = [
       <div class="notebook-date"><span>FIELD NOTE</span><time datetime={latestNote.data.date.toISOString()}>{fmt(latestNote.data.date)}</time><span class="notebook-mark" aria-hidden="true">↳</span></div>
       <div><h3>{latestNote.data.title}</h3><p>{latestNote.data.summary}</p><span class="text-link">Read the entry <span aria-hidden="true">→</span></span></div>
     </a>}
-    <div class="archive-note"><span class="eyebrow">FROM THE ARCHIVE</span><a href="/thoughts" class="text-link">All thoughts →</a></div>
-    <div class="archive-grid">{archive.map((entry) => <a href={`/thoughts/${entry.id}`}><time datetime={entry.data.date.toISOString()}>{fmt(entry.data.date)}</time><h3>{entry.data.title}</h3></a>)}</div>
+    <div class="archive-note"><span class="eyebrow">MORE FROM THE BUILD DIARY</span><a href="/thoughts" class="text-link">Thoughts &amp; corrections →</a></div>
+    <div class="archive-grid">{earlierNotes.map((entry) => <a href={`/thoughts/${entry.id}`}><time datetime={entry.data.date.toISOString()}>{fmt(entry.data.date)}</time><h3>{entry.data.title}</h3></a>)}</div>
   </section>
 
   <section class="workshop-shell workshop-section horizon-feral" aria-label="Explore the wider experiment">

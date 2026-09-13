@@ -5,6 +5,9 @@ tags: [ocr, document-intelligence, evaluation, corrections]
 summary: "Correction: our original post called document parsing solved without presenting an evaluation. Here is the standard that claim should have met."
 draft: false
 pinned: false
+correction:
+  date: 2026-09-12
+  summary: "Withdrew the solved-problem claim and the unsupported claim of equal cost and latency across document lengths."
 ---
 
 **Correction, 12 September 2026.** We have withdrawn the original claim that document parsing had become a solved problem. The post provided no dataset, measured error rate or reproducible comparison. It also claimed that a fifty-page contract could be processed at the same cost and latency as one page, without evidence.

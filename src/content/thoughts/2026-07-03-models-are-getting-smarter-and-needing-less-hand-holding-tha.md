@@ -1,24 +1,29 @@
 ---
-title: "Models Are Getting Smarter and Needing Less Hand-Holding. That Should Worry Prompt Engineers."
+title: "Shorter prompts still need a fair test"
 date: 2026-07-03
-tags: [prompting, agents, model-behaviour, claude-code]
-summary: "The better models get, the less your carefully crafted system prompts matter, and that pulls the rug out from under a whole cottage industry."
+tags: [prompting, model-behaviour, claude-code, evaluation, corrections]
+summary: "A shorter system prompt is a candidate to test. One reported reduction cannot establish that careful instructions have stopped mattering."
 draft: false
 pinned: false
+correction:
+  date: 2026-09-13
+  summary: "Removed an unsupported 80 per cent prompt-reduction claim and the conclusion that prompting had become obsolete."
 ---
 
-There is a strange thing happening at the frontier. Models are getting good enough that long, detailed instructions are starting to hurt more than they help. Anthropic reportedly cut Claude Code's system prompt by 80 percent because the model performs better with less guidance. That is not a footnote. That is a structural shift.
+The original essay said Anthropic had cut Claude Code's system prompt by 80 per cent because the model worked better with less guidance. It supplied no source, model version, test set or definition of better. We cannot use that account to support its conclusion about an entire discipline.
 
-## Prompting Was Never a Real Discipline
+We have removed the figure and the claim that instruction-writing was becoming obsolete. The [earlier version remains in the repository](https://github.com/valorifutures/softcat.ai/blob/a83add0285366fd5305241742b05f0e0da0fbd42/src/content/thoughts/2026-07-03-models-are-getting-smarter-and-needing-less-hand-holding-tha.md).
 
-We have watched an entire ecosystem form around the idea that prompting is a skill worth packaging and selling. Courses, frameworks, templates, consultants charging day rates to write system prompts for enterprise clients. The assumption underneath all of it was that the model needed significant human scaffolding to behave well. That assumption is quietly expiring.
+## Cut a prompt against a test
 
-If a frontier model performs better when you get out of its way, then the value of elaborate prompting logic collapses. The people who built careers telling models what to do in granular detail are going to find that the model has already worked it out.
+A long prompt can contain repeated, contradictory or irrelevant instructions. A short prompt can omit the output contract, necessary context or a constraint that only matters on difficult inputs. Length alone cannot tell us which version will work.
 
-## What Fills the Gap
+Keep the model version, tool access and task examples fixed. Compare the original prompt with one revision at a time. Record correct outputs, failures, input and output tokens, and any extra work a person had to do.
 
-This does not mean prompting disappears entirely. It means the skill shifts. Less instruction-writing, more constraint-setting. Less telling the model how to think, more defining what it is allowed to touch. That is closer to system design than copywriting, and it requires a different kind of thinking.
+Include cases where the model should ask for clarification or stop. A prompt that succeeds on the easy examples can still fail at the boundary that matters.
 
-The interesting work moves towards evals, architecture, and knowing when to trust the model's judgement versus when to override it. Anyone still optimising for prompt length and phrasing is solving last year's problem.
+## Keep the useful instructions
 
-The models are not waiting for the industry to catch up.
+The practical question is which instruction earns its place for this task. Remove one, rerun the examples and inspect what changes. Save the results alongside the prompt so the next revision has something firmer than a recollection to beat.
+
+The [Prompt Workbench](/lab/prompt-workbench) can keep versions and export them. [Prompt Diff](/lab/prompt-diff) shows changes between two versions. Neither tool establishes which prompt performs better. That still needs observed outputs and a stated acceptance test.

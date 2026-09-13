@@ -1,22 +1,29 @@
 ---
-title: "Security frameworks are just theatre for the real problem"
+title: "Agent controls need tests at the boundary"
 date: 2026-03-19
-tags: [agent-security, runtime-safety, infrastructure]
-summary: "All the security frameworks in the world won't fix the fact that we're giving black boxes root access."
+tags: [agent-security, runtime-safety, permissions, reliability, corrections]
+summary: "We can test what an agent is allowed to touch without pretending to know everything about why it acts."
 draft: false
 pinned: false
+correction:
+  date: 2026-09-13
+  summary: "Withdrew blanket claims that security frameworks are useless and that a confused agent will inevitably escape a sandbox."
 ---
 
-Every week brings another security framework for AI agents. Five-layer lifecycle models, secure runtime environments, trusted computing bases. We're building elaborate safety theatres around the fundamental problem: nobody knows what these models are actually thinking.
+The original essay dismissed runtime controls because models are difficult to interpret. It supplied no exploit, threat model or evaluation for the claim that an agent would find a way around them. It also implied that an explanation from the model could replace access controls.
 
-## The black box with sudo privileges
+Those conclusions did not follow. The [earlier text is preserved](https://github.com/valorifutures/softcat.ai/blob/a83add0285366fd5305241742b05f0e0da0fbd42/src/content/thoughts/2026-03-19-security-frameworks-are-just-theatre-for-the-real-problem.md), with this correction kept on its original address.
 
-The issue isn't that agents can access file systems or network endpoints. The issue is that we have no idea why they're making those access requests. A human developer with shell access is predictable. You can read their code, understand their logic, debug their mistakes. An LLM agent is a statistical pattern matcher that sometimes decides to delete your database for reasons that would take a PhD thesis to partially explain.
+## Name the operation and test the restriction
 
-All these security frameworks are just fancy ways of saying "let's put the unpredictable thing in a slightly smaller box". But the box isn't the problem. The unpredictability is.
+An agent can propose an action that its environment refuses. File permissions, network restrictions and scoped credentials can limit the actions available to it. A model's stated intention does not grant access, and a plausible explanation does not prove an action is safe.
 
-## Sandboxes don't fix intent alignment
+Test the boundary directly. Can the process read a file outside its allowed area? Can it send data to an unapproved destination? Can generated code access publication credentials? Which operations are logged, reversible or stopped before they take effect?
 
-OpenShell and similar runtime environments are solving the wrong layer. They're making it harder for agents to break things accidentally, but they're not making agents more trustworthy. A malicious or confused agent will find ways around sandboxes. A well-intentioned but poorly aligned agent might spend hours trying to break out of necessary constraints to "help" you better.
+## Keep claims proportional to the test
 
-The real solution isn't better cages. It's interpretable models that can explain their reasoning before they act. Until then, every security framework is just expensive wishful thinking.
+In [Feral's recovery](/feral), we separated generation, validation and publication. A candidate must pass checks before the publishing job receives it. [PR 199 records the changes](https://github.com/valorifutures/softcat.ai/pull/199).
+
+That does not prove the experiment is free of every vulnerability. The checks cover a defined set of failures, and generated code remains something to inspect. A source-file gate is not a substitute for the operating system's security boundary.
+
+Use the [agent check](/lab/agent-check) to start with the task, consequences and ability to undo a mistake. Then test the controls that the chosen design actually depends on.

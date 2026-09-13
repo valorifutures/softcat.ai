@@ -29,6 +29,7 @@ const thoughts = defineCollection({
     summary: z.string(),
     draft: z.boolean().default(false),
     pinned: z.boolean().default(false),
+    correction: z.object({ date: z.coerce.date(), summary: z.string().min(1) }).optional(),
     ...pipelineMeta,
   }),
 });

@@ -73,7 +73,7 @@ const jobLabel = (run: any) => run.job ? ` · ${run.job}` : '';
           <span class="text-text-bright">{botMap[run.bot]?.name ?? run.bot}{jobLabel(run)}</span>
           <time datetime={run.timestamp} title={formatRecordedTime(run.timestamp)} class="text-text-muted">{new Date(run.timestamp).toISOString().slice(11, 16)} UTC</time>
           <span class={run.status === 'error' ? 'text-neon-red' : run.status === 'partial' ? 'text-neon-amber' : 'text-neon-green'}>{run.status}</span>
-          <span class="text-text-muted">{run.items_published ?? 0} outputs · {run.duration_s}s</span>
+          <span class="text-text-muted">{run.items_published ?? 0} published{('items_drafted' in run) && run.items_drafted ? ` · ${run.items_drafted} draft` : ''} · {run.duration_s}s</span>
           <span class="text-text-muted sm:ml-auto">{run.cost_usd == null ? 'cost unrecorded' : '$' + run.cost_usd.toFixed(3)}</span>
         </div>)}</div>
       </section>)}</div> : <p class="text-text-muted">No dated runs are recorded.</p>}

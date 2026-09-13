@@ -49,6 +49,7 @@ def log_run(
     items_found: int = 0,
     items_rejected: int = 0,
     items_published: int = 0,
+    items_drafted: int = 0,
     model: str = "",
     cost_usd: float | None = None,
     input_tokens: int = 0,
@@ -81,6 +82,8 @@ def log_run(
         entry["error_msg"] = error_msg
     if job:
         entry["job"] = job
+    if items_drafted:
+        entry["items_drafted"] = items_drafted
 
     # Ensure directory exists
     RUNS_FILE.parent.mkdir(parents=True, exist_ok=True)

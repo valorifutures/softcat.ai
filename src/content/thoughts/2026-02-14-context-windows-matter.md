@@ -1,21 +1,28 @@
 ---
-title: "Context windows matter more than benchmarks"
+title: "Context size needs a retrieval test"
 date: 2026-02-14
-tags: [context-window, models, opinion]
-summary: "A model that can hold your entire project in context beats a slightly smarter model that can't."
+tags: [context-window, evaluation, models, corrections]
+summary: "Fitting a project into a model's input is useful. Finding the right facts and producing a correct answer still need to be measured."
 draft: false
+correction:
+  date: 2026-09-13
+  summary: "Removed an undocumented whole-project test and the blanket conclusion that a larger context window beats a more capable model."
 ---
 
-Everyone argues about benchmark scores. Which model is 2% better on MMLU. Which one tops the coding leaderboard this week. Most of that is noise.
+The original essay described giving Claude an entire project and obtaining better cross-file answers. It recorded no model version, file set, prompts, outputs or comparison. We cannot reproduce that account from the post, so we have withdrawn it as supporting evidence.
 
-The thing that actually changes how you work is context window size. A model with 200k context that can hold your entire codebase in memory is more useful than a marginally smarter model that forgets what you said 10 messages ago.
+The earlier claim that context size measures usefulness while benchmarks measure intelligence was also too broad. The [original version remains available](https://github.com/valorifutures/softcat.ai/blob/a83add0285366fd5305241742b05f0e0da0fbd42/src/content/thoughts/2026-02-14-context-windows-matter.md).
 
-## Real world example
+## Ask questions with known answers
 
-We gave Claude our whole project. Every file, every config, every test. It could answer questions about how things connected, suggest changes that were consistent with the existing patterns, and catch bugs that spanned multiple files. Try that with a 4k context window.
+Choose questions that require specific facts from the project or document set. Write down the expected answer and its source before testing. Include a fact near the beginning, one in the middle, one near the end and a question whose answer is absent.
 
-## The next frontier
+Compare the full input with a smaller selection of relevant files. Keep the question, model version and evaluation rule fixed. Check the cited evidence as well as the final answer. If the task spans files, include a case that requires connecting them correctly.
 
-The models that win won't just be smarter. They'll be the ones that can hold an entire workday in context. Your morning conversation, the code you wrote, the emails you read, the meeting notes. Persistent, long-running context is the unlock nobody talks about enough.
+## Count the whole request
 
-Benchmarks measure intelligence. Context windows measure usefulness. We know which one we care about more.
+The available window must accommodate more than the document. System instructions, tools, conversation history and the intended output consume part of the allowance. A provider's maximum output limit may also be smaller than its total context limit.
+
+Our [model comparison](/lab/model-comparison) labels context sizes as saved reference values. It does not treat them as measured retrieval performance. The [conversation calculator](/lab/token-cost) also counts repeated history in later requests.
+
+A larger allowance can make a workflow possible. A task-specific evaluation tells us whether that workflow works.
