@@ -49,7 +49,9 @@ export default function SearchOverlay() {
     if (!open || index !== null) return;
     const controller = new AbortController();
     setStatus('loading');
-    fetch('/search-index.json', { signal: controller.signal })
+    // Revalidate on the first search in this page. A fresh UI must not inherit
+    // the previous deployment's still-fresh browser cache entry.
+    fetch('/search-index.json', { signal: controller.signal, cache: 'no-cache' })
       .then(response => { if (!response.ok) throw new Error('Index unavailable'); return response.json(); })
       .then(data => { setIndex(validateSearchIndex(data)); setStatus('ready'); })
       .catch(error => { if (error.name !== 'AbortError') setStatus('error'); });
