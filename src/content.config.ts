@@ -335,10 +335,8 @@ const horizonDebates = defineCollection({
     .strict(),
 });
 
-// Banded axis for the /horizon/five Five Horizons strip (2026-04-22).
-// year is required unless band === 'indefinite' (see superRefine below).
-// yearToBand auto-derivation lives in src/lib/horizon-axis.ts — the schema
-// accepts whatever value is written, so manual overrides are honoured.
+// Retain the April 2026 representative years and bands for the audit record.
+// The current explorer plots explicit timeframe wording instead of these points.
 const horizonBand = z.enum(['near', 'mid', 'far', 'indefinite']);
 
 const horizonScenarioBranch = z
@@ -365,8 +363,7 @@ const horizonScenarios = defineCollection({
       // Outside #7: scenarios need theme + related binding.
       themes: horizonThemeArray,
       related: z.array(z.string()).optional(),
-      // Five Horizons additions (2026-04-22): crisp definition rendered at top
-      // of Compare View cards AND in the /horizon/five chart tooltip.
+      // The same threshold appears in the explorer and the supporting record.
       definition: z.string().min(1).max(200),
       contested: z.boolean().optional(),
       debate_ref: z.string().regex(DEBATE_ID).optional(),

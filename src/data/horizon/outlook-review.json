@@ -1,0 +1,56 @@
+{
+  "reviewed_at": "2026-09-13",
+  "dates_origin": "2026-04-22",
+  "decision": "We reassessed the five futures against the sources below. They support specific capabilities and expose important gaps, but do not calibrate arrival years. We retain the April windows as illustrative scenarios, not measured forecasts or expert consensus. No arrival date has been moved in this review.",
+  "futures": [
+    {
+      "id": "scenario-agi", "title": "General intelligence", "subtitle": "Beyond narrow tasks", "question": "Is AGI already here?",
+      "timeframes": {"optimistic": "by end of 2028", "pragmatic": "2032-2035", "sceptical": "not before the 2040s"},
+      "assessment": "The threshold depends on the definition. We retain these windows as prompts for discussion. Neither a definition nor a benchmark result establishes a universal arrival year.",
+      "watch": "Independent tests across unfamiliar domains, with the task selection, human comparison, cost and required assistance published.",
+      "evidence": [
+        {"title": "Google DeepMind: Levels of AGI", "url": "https://deepmind.google/research/publications/66938/", "date_label": "ICML 2024", "finding": "This framework distinguishes breadth and depth of capability, with autonomy considered separately.", "limit": "A framework for describing progress is not a certification that a current model has passed every threshold."},
+        {"title": "ARC Prize: ARC-AGI-3", "url": "https://arcprize.org/arc-agi/3", "date_label": "2026 benchmark", "finding": "Interactive environments test how agents explore, discover goals and adapt to unfamiliar tasks.", "limit": "This measures a particular form of adaptation. A score alone cannot establish competence across all cognitive or economic work."}
+      ]
+    },
+    {
+      "id": "scenario-agentic-work", "title": "Agents at work", "subtitle": "Owning whole workflows", "question": "When does assistance become ownership?",
+      "timeframes": {"optimistic": "by end of 2027", "pragmatic": "2029-2031", "sceptical": "mid-2030s or later"},
+      "assessment": "Task completion is measurable, but reliable ownership of a workplace process is a broader claim. The dates remain illustrative, with no new adoption probability assigned.",
+      "watch": "Repeated production workflows that report completion, human intervention, recovery, cost and failures, including changed tools and missing context.",
+      "evidence": [
+        {"title": "METR: task-completion time horizons", "url": "https://metr.org/time-horizons/", "date_label": "Page updated 8 May 2026", "finding": "METR estimates task difficulty at specified success rates, using human completion time as the reference.", "limit": "These are mainly well-specified software tasks. A time horizon is not continuous autonomous runtime or proof that a whole job can be automated."},
+        {"title": "METR: metrics of agent ability", "url": "https://metr.org/notes/2026-07-24-metrics-of-model-ability/", "date_label": "24 July 2026", "finding": "The research note compares performance measures that account for time, cost and the human baseline.", "limit": "It analyses measurement choices. It does not establish widespread enterprise adoption."}
+      ]
+    },
+    {
+      "id": "scenario-robotics", "title": "Robotics", "subtitle": "Beyond the demonstration", "question": "When do robots become routine?",
+      "timeframes": {"optimistic": "by 2030", "pragmatic": "2033-2036", "sceptical": "not before the late 2030s"},
+      "assessment": "The July model cards provide concrete evidence of robotics work and its limits. They do not establish fleet economics or commercial general-purpose reliability. The date windows remain illustrative.",
+      "watch": "Independently reported deployments with uptime, task variation, intervention rates, maintenance costs and safety performance over time.",
+      "evidence": [
+        {"title": "Google DeepMind: Gemini Robotics ER 2", "url": "https://deepmind.google/models/model-cards/gemini-robotics-er-2/", "date_label": "30 July 2026", "finding": "The model card describes spatial and temporal reasoning, tool orchestration and success detection for physical agents.", "limit": "The publisher restricts safety-critical uses. Reasoning capability alone does not demonstrate reliable physical deployment."},
+        {"title": "Google DeepMind: Robotics On-Device 2", "url": "https://deepmind.google/models/model-cards/gemini-robotics-on-device-2/", "date_label": "30 July 2026", "finding": "The card describes local robot action generation and evaluations of manipulation across several robot platforms.", "limit": "Access is limited to trusted testers. The card identifies limits on unfamiliar tasks and complex robot control."}
+      ]
+    },
+    {
+      "id": "scenario-software-automation", "title": "Software creation", "subtitle": "From ticket to production", "question": "Who owns the finished software?",
+      "timeframes": {"optimistic": "by end of 2028", "pragmatic": "2030-2032", "sceptical": "not before the mid-2030s"},
+      "assessment": "The evidence supports testing useful delegation, with careful measurement of the whole task. It does not establish an arrival year for autonomous production delivery. The original windows remain illustrative.",
+      "watch": "Accepted production changes, review time, escaped defects, incident recovery and total cost against a stated human baseline.",
+      "evidence": [
+        {"title": "METR: revising its productivity experiment", "url": "https://metr.org/blog/2026-02-24-uplift-update/", "date_label": "24 February 2026", "finding": "METR reports that selection effects make its later developer experiment an unreliable estimate of the current productivity effect.", "limit": "This is a reason to improve measurement. It establishes neither universal slowdown nor a reliable universal speedup."},
+        {"title": "METR: task-completion methodology", "url": "https://metr.org/time-horizons/", "date_label": "Page updated 8 May 2026", "finding": "The published methodology makes the task set, human reference and success thresholds inspectable.", "limit": "Successful benchmark tasks do not include every responsibility involved in maintaining a live software service."}
+      ]
+    },
+    {
+      "id": "scenario-education-disruption", "title": "Education", "subtitle": "Learning and credentials", "question": "Does better tutoring change the institution?",
+      "timeframes": {"optimistic": "by 2030", "pragmatic": "2032-2035", "sceptical": "not this generation"},
+      "assessment": "Better tutoring and replacement of institutional education are different claims. The pragmatic case describes improvement within institutions, so it is a partial transformation rather than fulfilment of the full replacement definition. The dates remain illustrative.",
+      "watch": "Independent replication, retained learning, transfer to new problems, effects on teachers, and changes in how employers recognise learning.",
+      "evidence": [
+        {"title": "Kestin and colleagues: AI tutoring trial", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12179260/", "date_label": "Scientific Reports, 2025", "finding": "A randomised trial in undergraduate physics reported higher immediate learning gains with a specifically designed AI tutor than with the comparison lessons.", "limit": "A study of selected lessons does not establish long-term learning across subjects, replacement of teachers or a change in credentials."}
+      ]
+    }
+  ]
+}

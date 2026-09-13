@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-13T08:11:55.640422Z",
-  "phase": "paused-after-final-tidy",
-  "active_branch": null,
+  "updated_at": "2026-09-13T19:52:36.892637Z",
+  "phase": "horizon-release-checks",
+  "active_branch": "improve/horizon-experience",
   "last_verified_deployment": {
     "sha": "c1a05997fbd657e637bfc9203e117d837ec27203",
     "at": "2026-09-13T08:08:12Z",
@@ -34,16 +34,16 @@
     "PR #217 passed all hosted checks, merged and deployed. The live trace URL explains the removal with exact earlier source. The homepage links Context Budget. The live text export retains seven corrections, three tool reviews and twelve recipe targets/check sets. A genuinely missing URL returns HTTP 404 with the custom noindex recovery page. Keyboard Skip to content reaches the main region. Search opens with Enter, shows a clear zero-result state and finds the Context Budget tool and guide."
   ],
   "next": [
-    "Await maintainer feedback before another improvement batch. The recurring loop remains disabled.",
-    "If server automation is resumed, establish access to the separate systemd host and inspect real run records. Repository access alone does not verify that host.",
-    "A paid Chat Playground request and a new paid Feral cycle were not exercised in this follow-up."
+    "Complete hosted PR checks, merge and verify the Horizon release live.",
+    "Record visual, keyboard, navigation and sharing results and address concrete defects.",
+    "The separate bot host and paid model runs remain outside this release."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven active forecasts with explicit tests and withdraws eight. Their original April claims are preserved."
   ],
-  "session": "The maintainer asked to finish the remaining PRs and remove redundant content on 13 September. This is a bounded follow-up, with the recurring loop disabled.",
+  "session": "The maintainer authorised building, repeated review, improvement and release of the new Horizon experience on 13 September. This is a bounded design and implementation release. The recurring loop remains disabled.",
   "verification_limits": [
     "The live desktop pages, keyboard recovery, search states and HTTP status were checked. Responsive wrapping and mobile breakpoints were inspected in CSS. A mobile browser viewport was not available in this follow-up."
   ]
