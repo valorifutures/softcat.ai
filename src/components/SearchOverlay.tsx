@@ -6,7 +6,7 @@ interface SearchEntry { title: string; summary: string; url: string; type: strin
 const labels: Record<string, string> = { news: 'News archive', thought: 'Notebook & thoughts', tool: 'Interactive tool', guide: 'Tool guide', prompt: 'Prompt', radar: 'Radar archive', glossary: 'Glossary', forecast: 'Forecast', page: 'Page', experiment: 'Experiment' };
 const shortcuts = [
   ['Should this be an agent?', '/lab/agent-check'], ['Model comparison', '/lab/model-comparison'],
-  ['The build notebook', '/notebook'], ['Horizon review', '/horizon/review'],
+  ['The build notebook', '/notebook'], ['Explore Horizon', '/horizon'],
 ];
 
 export default function SearchOverlay() {

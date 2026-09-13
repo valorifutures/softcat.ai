@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T19:52:36.892637Z",
-  "phase": "horizon-release-checks",
-  "active_branch": "improve/horizon-experience",
+  "updated_at": "2026-09-13T20:05:08.810475Z",
+  "phase": "horizon-handover-ready",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "c1a05997fbd657e637bfc9203e117d837ec27203",
-    "at": "2026-09-13T08:08:12Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34746872537"
+    "sha": "633c8f2027f4dcee0d9cca8c5f61d7d01b107b7a",
+    "at": "2026-09-13T19:57:28Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34779219315"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -31,12 +31,14 @@
     "PR #213 merged and deployed. The live text calculator rejects an unlabelled prelude and unsupported JSON fields. The growing example has 127 repeated-history input tokens, 40 output tokens and an estimated USD 0.000981 total, with the last call labelled input-only. Copy succeeded. JSON preserves literal role labels and an unclosed fence inside a message. An empty single-request output is also labelled input-only. No model request was made.",
     "PR #214 merged and deployed. Live recipe search for regression shows one result, Source work narrows it to zero and Clear filters restores twelve. Keyboard activation loads the filled extraction example and copying succeeds. Workbench receives its template and variables as an unsaved draft with Saved (0). An unknown recipe leaves the saved library unchanged. The old validator URL preserves its 25 March Git date and exact source. Search finds the current recipes and review, not the retired validator.",
     "PR #215 and PR #216 are merged and deployed. The new Tools directory was inspected live, showing eight tools, explicit OpenRouter data behaviour, three corrected guides and the 38-item retirement record. PR #216 passed fresh CI run 34746422029. Pages run 34746575258 succeeded. The earlier queued runs also completed successfully.",
-    "PR #217 passed all hosted checks, merged and deployed. The live trace URL explains the removal with exact earlier source. The homepage links Context Budget. The live text export retains seven corrections, three tool reviews and twelve recipe targets/check sets. A genuinely missing URL returns HTTP 404 with the custom noindex recovery page. Keyboard Skip to content reaches the main region. Search opens with Enter, shows a clear zero-result state and finds the Context Budget tool and guide."
+    "PR #217 passed all hosted checks, merged and deployed. The live trace URL explains the removal with exact earlier source. The homepage links Context Budget. The live text export retains seven corrections, three tool reviews and twelve recipe targets/check sets. A genuinely missing URL returns HTTP 404 with the custom noindex recovery page. Keyboard Skip to content reaches the main region. Search opens with Enter, shows a clear zero-result state and finds the Context Budget tool and guide.",
+    "PR #219 passed hosted checks, merged and deployed. The live homepage leads with Horizon. The map, sceptical wording, changing briefings and sources, all three AGI definitions, Enter/Space controls, shared bookmarks, browser Back, actual copy/paste and legacy route redirects were inspected. The live review found two wording/scope improvements and a search-entry priority adjustment, prepared in the final review branch.",
+    "The final review changes the assumption and counterevidence headings, makes the partial scope of pragmatic education visible beside its definition, and makes the main Horizon experience lead its own search results. The final production build, eleven focused regression cases and complete publication audit pass. This checkpoint travels with that final review PR."
   ],
   "next": [
-    "Complete hosted PR checks, merge and verify the Horizon release live.",
-    "Record visual, keyboard, navigation and sharing results and address concrete defects.",
-    "The separate bot host and paid model runs remain outside this release."
+    "Await maintainer feedback after the bounded Horizon release. The recurring loop remains disabled.",
+    "If a later improvement is requested, review the dated scenario assumptions and obtain real mobile device coverage.",
+    "The separate bot host and fresh paid model runs remain outside this release."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
@@ -45,6 +47,6 @@
   ],
   "session": "The maintainer authorised building, repeated review, improvement and release of the new Horizon experience on 13 September. This is a bounded design and implementation release. The recurring loop remains disabled.",
   "verification_limits": [
-    "The live desktop pages, keyboard recovery, search states and HTTP status were checked. Responsive wrapping and mobile breakpoints were inspected in CSS. A mobile browser viewport was not available in this follow-up."
+    "Live desktop rendering and keyboard interactions were inspected. Narrow layout breakpoints and wrapping were reviewed in CSS. The browser did not expose a mobile viewport, and a zoom shortcut did not change its viewport. This is not recorded as a mobile device test."
   ]
 }

@@ -68,6 +68,8 @@
 .hz-detail { background: var(--hz-panel); padding: 1.6rem; border-radius: 3px; scroll-margin-top: 1.5rem; }
 .hz-detail h3 { font-size: 1.9rem; line-height: 1.1; font-weight: 500; letter-spacing: -0.05em; margin-top: 0.6rem; }
 .hz-definition { font-size: 0.82rem; line-height: 1.65; color: var(--hz-muted); margin-top: 0.8rem; }
+.hz-scope-note { font-size: 0.8rem; line-height: 1.65; border-left: 2px solid var(--hz-line); padding-left: 0.7rem; margin-top: 1rem; }
+.hz-scope-note strong { display: block; font-weight: 500; margin-bottom: 0.2rem; }
 .hz-brief > div { padding-top: 0.85rem; border-top: 1px solid var(--hz-rule); margin-top: 0.9rem; }
 .hz-brief dt { font: 0.65rem/1.6 var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; color: var(--hz-accent); }
 .hz-brief dd { font-size: 0.81rem; line-height: 1.65; margin-top: 0.4rem; }
