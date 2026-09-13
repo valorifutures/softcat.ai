@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-13T02:44:53.349761+00:00",
-  "phase": "context-budget",
-  "active_branch": "codex/context-budget",
+  "updated_at": "2026-09-13T02:59:10.556343+00:00",
+  "phase": "token-cost-transcripts",
+  "active_branch": "codex/token-cost-transcripts",
   "last_verified_deployment": {
-    "sha": "3a148692435f4e3de34183709ab898a783c87aa1",
-    "at": "2026-09-13T02:31:43Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34733242231"
+    "sha": "a15e2cec4e244f68de7c61f637bce1d5d24d15cc",
+    "at": "2026-09-13T02:49:02Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/34733943861"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -26,11 +26,12 @@
     "PR #208 merged and deployed. Live Workbench exported a filled OpenRouter request for the selected Sonnet ID, copied successfully and kept two named QA versions through a reload. The original question was restored. Both filled messages and the selected model transferred to Chat Playground, which stayed unsent and editable with no key. The two QA versions are retained temporarily for the next Diff integration check.",
     "PR #209 merged and deployed. Live Prompt Diff shows a negative cost change for the shorter example, clears an old result on edits, preserves large inputs in explicitly labelled blocks and fills the two saved QA versions correctly. Copy report succeeded. Both QA versions were then deleted through their individual controls, leaving the previously empty library empty again.",
     "PR #210 merged and deployed. Live primary-button hover retains dark rgb(38, 53, 28) text on the light rgb(220, 247, 181) background. The comparison remains usable.",
-    "PR #211 merged and deployed. The public removal record shows 114 automated essays and three early opinions. Its May group expands and links the 14 May retirement notice to the exact original Git source. The launch article retains 13 March and shows its separate 13 September correction. The restored concept tag lists 18 glossary terms. Site search finds the removal record for removed articles."
+    "PR #211 merged and deployed. The public removal record shows 114 automated essays and three early opinions. Its May group expands and links the 14 May retirement notice to the exact original Git source. The launch article retains 13 March and shows its separate 13 September correction. The restored concept tag lists 18 glossary terms. Site search finds the removal record for removed articles.",
+    "PR #212 merged and deployed. The live planner shows a 274,000-token code budget exceeding Sonnet context by 74,000, and an 85,000-token request whose 70,000-token reply exceeds the separate 64,000 cap. Copy succeeded, zero-count Laguna stays unknown, GPT-4.1 shows exactly 1,047,576 context tokens, and negative input produces an error. Model Comparison rejects a 64,001-token Sonnet reply. Desktop layout and hover text were inspected."
   ],
   "next": [
-    "Publish and inspect the Context Budget Planner, its same-request comparisons, exact limits and output-cap failure states.",
-    "Review remaining useful content and tools against actual behaviour, removing weak material where warranted.",
+    "Publish and inspect the text-cost calculator, including rejected transcripts, system history, JSON messages, missing replies and exports.",
+    "Curate the 84-entry prompt collection. The inventory contains overlapping bot validators and numerical score prompts with unsupported claims of objective validation. Read and assess useful recipes before retaining or replacing them.",
     "The separate systemd host remains unverified. Price migration does not restart those other bots.",
     "Leave a clean checkpoint before the 06:00 UTC overnight deadline."
   ],
