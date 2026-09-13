@@ -311,3 +311,43 @@ visually inspected. Classification failed on the three expected constraints,
 the matching example passed, edits cleared the result, and invoice extraction
 identified the date and two numeric errors. A pathological pattern stopped
 after the browser timeout and the next example remained usable.
+
+
+## 13 September 2026: model weights with sources
+
+The model browser still carried four incorrect closed-weight labels: Mistral
+Large 3, Mistral Small 3.1, Kimi K2 and Kimi K2.6. The old boolean also blurred
+public files, gated access and different licences. We checked publisher model
+repositories using their public metadata and recorded exact revisions,
+published weight-file counts, model-card licence labels and access conditions.
+Nineteen tracked models now have those records, including Laguna XS.2.
+
+The comparison links directly to those revisions. Its filter asks whether a
+weight source is recorded. Missing evidence does not become a closed-weight
+claim. Llama's gated files are labelled as gated, and custom model-card terms
+are not represented as an open-source certification. The CSV includes the
+weight source, licence, access condition and check date. No weights were
+downloaded and no model inference ran during the audit.
+
+Removed 273 unused reference values: promotional descriptions, strengths,
+openSource booleans, model-family labels, release dates and capability flags.
+They were no longer used by any tool, and some contradicted the recorded data.
+The catalogue keeps exact IDs, names, providers, context references, dated
+prices, tracking links and checked weight records. All price and context
+values were compared before and after and remain unchanged.
+
+The roster bot no longer guesses a release month or supplies capability
+defaults. New entries carry rosterProposal true and an unknown weight record.
+Validation prevents that marker from merging until the entry is reviewed.
+The legacy price delta and locked-field checks remain. An audit file records
+the 19 sources and four incorrect prior labels.
+
+Validation: 49 JavaScript tests and 107 bot tests pass. All content, model and
+Horizon checks pass. The production build has 889 pages. Tests cover missing
+weight evidence, gated access, malformed records and provenance in CSV output.
+The unlisted Laguna API price remains unknown despite its published weights.
+
+PR #204's Pages run 34727595474 succeeded at 00:18 UTC. Its live correction
+record was visually inspected. The prompt essay keeps its original 3 July
+date, separately displays the 13 September correction and links the original
+text. The archive shows six corrections and 124 earlier essays.

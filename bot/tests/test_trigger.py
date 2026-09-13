@@ -47,15 +47,15 @@ def test_gate_keeps_latest_radar_date():
     assert cands[0]["radar_entry_id"] == "ph-claude-fable-5"
 
 
-def test_proposal_entry_is_placeholder_marked():
+def test_proposal_entry_is_marked_for_review_without_invented_metadata():
     cand = bot.find_roster_candidates(set(), API, RADAR)[0]
     entry = bot.build_proposal_entry(cand, API)
     assert entry["id"] == "anthropic/claude-fable-5"
-    assert "PLACEHOLDER" in entry["description"]
+    assert entry["rosterProposal"] is True
+    assert entry["weights"] is None
     assert entry["radarRef"] == "2026-06-10#ph-claude-fable-5"
     assert entry["contextK"] == 1000
-    assert entry["multimodal"] is True
-    assert not {"coding", "reasoning_score", "speed"}.intersection(entry)
+    assert not {"coding", "reasoning_score", "speed", "description", "strengths", "released", "family", "reasoning", "multimodal", "openSource"}.intersection(entry)
 
 
 def test_radar_scan_loud_on_malformed_file(tmp_path, monkeypatch):

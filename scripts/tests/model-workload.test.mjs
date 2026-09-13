@@ -49,7 +49,7 @@ test('CSV preserves assumptions and source dates, leaves unknown amounts blank a
   const rows = [paid, { ...paid, name: 'Unknown', pricingStatus: 'not-listed', inputPrice: null, outputPrice: null }].map(model => ({ model, estimate: estimateWorkload(model, workload) }));
   const csv = workloadCsv(rows, workload);
   assert.match(csv, /"2026-09-12T21:57:43Z","https:\/\/openrouter.ai\/api\/v1\/models","1000","500","1000","estimated","10.5"/);
-  assert.match(csv, /"unknown-price",""\r\n$/);
+  assert.match(csv, /"unknown-price","","","","",""\r\n$/);
   for (const value of ['=1+1', ' +cmd', '-5', '@SUM(A1)', '\tunsafe', '\nunsafe']) assert.ok(csvCell(value).startsWith('"\''));
   assert.equal(csvCell('A, "quoted" model'), '"A, ""quoted"" model"');
 });

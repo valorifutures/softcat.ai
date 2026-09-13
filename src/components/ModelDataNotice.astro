@@ -10,7 +10,7 @@ const range = pricingRange(models);
     <p>{range.count} of {models.length} tracked models have verified token rates in the saved catalogue. Rates come from the <a href="https://openrouter.ai/api/v1/models" class="text-neon-cyan underline underline-offset-4">OpenRouter public API</a>. Models missing from that catalogue have unknown pricing and are excluded from cost estimates and chat selection.</p>
     {range.first !== range.last && range.last && <p>Newest pricing check: <RecordedTime value={range.last} relative={false} />.</p>}
     <p>Rates are USD per million text tokens. Caching, reasoning tokens, images, tool charges, provider routing and long-context tiers can change the bill. Check the provider before budgeting.</p>
-    <p>Context windows, weight tags and capability notes are saved reference values. Check the provider's current limits and licence. Open weights do not make a hosted API or self-hosting free.</p>
+    <p>Context windows are saved reference values. Weight links identify repository revisions whose file lists were checked. Licence labels come from the model cards and are not an open-source certification. Check the actual terms and access conditions. Published weights do not make a hosted API or self-hosting free.</p>
     <p><a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/models.json" class="text-neon-cyan underline underline-offset-4">Inspect the dated data</a> · <a href="/pipeline" class="text-neon-cyan underline underline-offset-4">Bot records</a></p>
   </div>
 </details>
