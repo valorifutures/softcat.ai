@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-13T04:05:12.363Z",
-  "phase": "workshop-directory",
-  "active_branch": "codex/workshop-directory",
+  "updated_at": "2026-09-13T04:23:33.468Z",
+  "phase": "publication-integrity",
+  "active_branch": "codex/publication-integrity",
   "last_verified_deployment": {
     "sha": "2ad8c7664293603ebde46ca9332fd17aae1b0fc5",
     "at": "2026-09-13T03:45:21Z",
@@ -32,15 +32,21 @@
     "PR #214 merged and deployed. Live recipe search for regression shows one result, Source work narrows it to zero and Clear filters restores twelve. Keyboard activation loads the filled extraction example and copying succeeds. Workbench receives its template and variables as an unsaved draft with Saved (0). An unknown recipe leaves the saved library unchanged. The old validator URL preserves its 25 March Git date and exact source. Search finds the current recipes and review, not the retired validator."
   ],
   "next": [
-    "Publish and inspect the rebuilt Tools directory, six-link navigation, corrected local guides and 38 retirement notices.",
-    "Add durable built-site integrity checks and inspect missing-page recovery and machine-readable exports. Keep the notebook tied to actual work.",
-    "The separate systemd host remains unverified. Source changes do not restart those other bots.",
-    "Observe the next real GitHub price snapshot if it runs before the 06:00 UTC overnight deadline, then leave a clean handover."
+    "Verify the queued directory deployment and its navigation, guides and retirement notices. PR #215 passed CI and merged, but has not yet been observed live.",
+    "Publish the offline built-site integrity gate after its own CI. It covers the exact directory build while that deployment waits.",
+    "Repair the reading export so it retains corrections and recipe checks. Add a useful 404 recovery page. The old 3D trace also contains hard-coded LIVE figures and needs honest labelling or real recorded data.",
+    "Observe the next real GitHub price snapshot if it runs before the 06:00 UTC overnight deadline. The separate systemd host remains unverified. Leave a clean handover."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven active forecasts with explicit tests and withdraws eight. Their original April claims are preserved."
   ],
-  "stop_at": "2026-09-13T06:00:00Z"
+  "stop_at": "2026-09-13T06:00:00Z",
+  "pending_deployment": {
+    "pr": 215,
+    "sha": "4da2cddc3daeb798ebc3a5929e65c90edf531cfa",
+    "run": 34737190807,
+    "status": "Queued for a GitHub-hosted runner. Last verified live content is PR #214."
+  }
 }

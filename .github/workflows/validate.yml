@@ -30,6 +30,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - name: Offline publication gate
+        run: |
+          python -m unittest discover -s scripts/tests -p 'test_*.py'
+          python scripts/validate-built-site.py
       - name: Bot unit tests
         run: |
           pip install -q pytest httpx python-dotenv feedparser anthropic
