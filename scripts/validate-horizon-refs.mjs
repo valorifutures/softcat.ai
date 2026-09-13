@@ -18,6 +18,7 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { retiredThoughtReferenceError } from '../src/lib/editorial-retirements.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -58,6 +59,7 @@ const scenarios = readJson(join(HORIZON_DIR, 'scenarios.json'));
 
 const radarRefs = listBasenames(RADAR_DIR, '.json');
 const thoughtRefs = listBasenames(THOUGHTS_DIR, '.md');
+const retiredThoughtRefs = new Set(readJson(join(ROOT, 'src/data/editorial-retirements.json')).entries.map(entry => entry.id));
 const newsRefs = listBasenames(NEWS_DIR, '.md');
 
 // 1. Global id uniqueness.
@@ -101,6 +103,11 @@ function checkEvidenceRef(type, ref, owner, source) {
       errors.push(`${source}: "${owner}" evidence radar ref "${ref}" has no src/data/radar/${ref}.json`);
     }
   } else if (type === 'thought') {
+    if (retiredThoughtRefs.has(ref)) {
+      const error = retiredThoughtReferenceError(type, ref, source, retiredThoughtRefs);
+      if (error) errors.push(error);
+      return;
+    }
     if (!thoughtRefs.has(ref)) {
       errors.push(`${source}: "${owner}" evidence thought ref "${ref}" has no src/content/thoughts/${ref}.md`);
     }

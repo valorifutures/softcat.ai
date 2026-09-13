@@ -1,22 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import retirements from '../../data/editorial-retirements.json';
 
 const entries = (await getCollection('thoughts')).filter(entry => !entry.data.draft && !entry.data.tags.includes('field-notes'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const corrections = entries.filter(entry => entry.data.correction)
   .sort((a, b) => b.data.correction!.date.valueOf() - a.data.correction!.date.valueOf());
-const months = [...new Set(entries.map(entry => entry.data.date.toISOString().slice(0, 7)))];
+const otherEssays = entries.filter(entry => !entry.data.correction);
+const months = [...new Set(otherEssays.map(entry => entry.data.date.toISOString().slice(0, 7)))];
 const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 ---
-<BaseLayout title="Thoughts & corrections" description="The earlier essays, their original dates, and a visible record of corrections. Follow the notebook for current work.">
+<BaseLayout title="Thoughts & corrections" description="Revised essays, visible corrections and the record of an unsourced series removed from SOFT CAT. Follow the notebook for current work.">
   <div class="thoughts-shell">
-    <header><a href="/notebook" class="thoughts-back">← The build notebook</a><p class="thoughts-eyebrow">THE LONGER RECORD</p><h1>Thoughts &amp; corrections.</h1><p>Earlier opinions, kept with their original dates. Some made claims their sources could not support. Corrections explain what changed and link to the earlier text.</p><p>For documented experiments and maintenance, start with <a href="/notebook">the notebook</a>.</p></header>
-    {corrections.length > 0 && <section class="thoughts-corrections" aria-labelledby="corrections-heading"><div><p class="thoughts-eyebrow">CHANGING OUR MINDS IN PUBLIC</p><h2 id="corrections-heading">The correction record</h2></div><div>{corrections.map(entry => <a href={`/thoughts/${entry.id}`}><div><h3>{entry.data.title}</h3><p>{entry.data.correction!.summary}</p></div><time datetime={entry.data.correction!.date.toISOString()}>Corrected<br />{fmt(entry.data.correction!.date)}</time></a>)}</div></section>}
-    <section class="thoughts-archive" aria-labelledby="thoughts-archive-heading"><div class="thoughts-archive-heading"><h2 id="thoughts-archive-heading">Browse by original publication date</h2><span>{entries.length} essays</span></div><p>This is an archive of opinions, not a current model or product guide. An unchanged entry has not been reverified by appearing here.</p>{months.map((month, index) => {
-      const group = entries.filter(entry => entry.data.date.toISOString().startsWith(month));
+    <header><a href="/notebook" class="thoughts-back">← The build notebook</a><p class="thoughts-eyebrow">THE LONGER RECORD</p><h1>Thoughts &amp; corrections.</h1><p>Earlier writing that still has a useful point, revised where its claims went beyond the evidence. Corrections explain what changed and link to the earlier text.</p><p>For documented experiments and maintenance, start with <a href="/notebook">the notebook</a>.</p></header>
+    <aside class="thoughts-removals"><p class="thoughts-eyebrow">ALSO PART OF THE RECORD</p><h2>{retirements.entries.length} essays removed.</h2><p>We retired the unsourced automated series and three weak early opinions. Their old URLs explain the decision, and the original text remains in Git history.</p><a href="/thoughts/review">Read the removal record ↗</a></aside>
+    {corrections.length > 0 && <section class="thoughts-corrections" aria-labelledby="corrections-heading"><div><p class="thoughts-eyebrow">CHANGING OUR MINDS IN PUBLIC</p><h2 id="corrections-heading">The correction record</h2></div><div>{corrections.map(entry => <a href={`/thoughts/${entry.id}`}><div><h3>{entry.data.title}</h3><p>{entry.data.correction!.summary}</p><span class="thoughts-original">Originally published {fmt(entry.data.date)}</span></div><time datetime={entry.data.correction!.date.toISOString()}>Corrected<br />{fmt(entry.data.correction!.date)}</time></a>)}</div></section>}
+    {otherEssays.length > 0 && <section class="thoughts-archive" aria-labelledby="thoughts-archive-heading"><div class="thoughts-archive-heading"><h2 id="thoughts-archive-heading">Other retained essays</h2><span>{otherEssays.length} essays</span></div><p>This is an archive of opinions, not a current model or product guide. An unchanged entry has not been reverified by appearing here.</p>{months.map((month, index) => {
+      const group = otherEssays.filter(entry => entry.data.date.toISOString().startsWith(month));
       return <details open={index === 0} class="thoughts-month"><summary><span>{new Date(`${month}-01T00:00:00Z`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })}</span><span>{group.length} essays</span></summary><div>{group.map(entry => <a href={`/thoughts/${entry.id}`}><time datetime={entry.data.date.toISOString()}>{fmt(entry.data.date)}</time><div><h3>{entry.data.title}</h3>{entry.data.correction && <span class="thoughts-corrected">Correction recorded</span>}</div><span aria-hidden="true">↗</span></a>)}</div></details>;
-    })}</section>
+    })}</section>}
   </div>
 </BaseLayout>
 <style>
@@ -27,6 +30,10 @@ const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', m
   header > p:not(.thoughts-eyebrow) { color: #b8b9be; max-width: 75ch; font-size: .95rem; line-height: 1.85; margin-top: 1.2rem; }
   header > p a { text-decoration: underline; color: #c7d8ae; text-underline-offset: 4px; }
   h2 { color: #eeeee5; font-weight: 600; font-size: 1.35rem; letter-spacing: -.025em; }
+  .thoughts-removals { padding: 1.5rem; margin-top: 2rem; border: 1px solid #3c4830; border-radius: 0.4rem; background: #171d12; }
+  .thoughts-removals > p:not(.thoughts-eyebrow) { color: #b8c1ad; font-size: .85rem; line-height: 1.85; margin-top: .8rem; }
+  .thoughts-removals a { display: inline-flex; align-items: center; min-height: 44px; margin-top: .5rem; color: var(--workshop-lime); font-size: .8rem; }
+  .thoughts-original { display: block; color: #a8b49b; font: .62rem/1.8 var(--font-mono); margin-top: .55rem; }
   .thoughts-corrections { border: 1px solid #555340; background: #1a1b16; border-radius: 10px; padding: 1.6rem; margin: 2.5rem 0 3.5rem; }
   .thoughts-corrections > div:first-child { margin-bottom: 1.4rem; }
   .thoughts-corrections a { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; border-top: 1px solid #393e31; padding: 1rem 0; }

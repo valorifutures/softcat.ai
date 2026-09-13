@@ -100,6 +100,10 @@ export const GET: APIRoute = async () => {
 
   // Static pages
   const pages = [
+    { title: 'Essay removal record', summary: 'The retired automated essay series, original dates, removal reasons and preserved source history.', url: '/thoughts/review', type: 'page', tags: ['retired', 'removed', 'articles', 'archive', 'corrections'] },
+    { title: 'Thoughts and corrections', summary: 'Revised essays and the record of what changed.', url: '/thoughts', type: 'page' },
+    { title: 'About Valori', summary: 'SOFT CAT is an independent AI playground, workshop and public notebook.', url: '/valori', type: 'page' },
+    { title: 'Contact and feedback', summary: 'Report a bug, suggest a correction or propose an experiment.', url: '/contact', type: 'page' },
     { title: 'Notebook', summary: 'The public build diary: experiments, decisions and failures with evidence.', url: '/notebook', type: 'page' },
     { title: 'Horizon Map', summary: 'A dated map of AI history, signals and possible futures.', url: '/horizon', type: 'page' },
     { title: 'Horizon review record', summary: 'Original claims, withdrawn forecasts, archived signals and the evidence behind our revisions.', url: '/horizon/review', type: 'page' },
