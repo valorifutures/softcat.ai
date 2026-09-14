@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-09-13T10:32:55.984Z",
+  "checkedAt": "2026-09-14T10:55:47.416Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "02d1ee8a0c139b6ab2e72f2b1f969eec8a8a43eca7d83f815f92120deebfd889",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/34752132404",
+  "sourceSha256": "4ec86d780634a9031a2084a9436586e5628c0b9cbeb7aaa62f066f3dd2e0a50c",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/34835569223",
   "maxAutoDelta": 0.5,
   "catalogueModels": 445,
   "trackedModels": 39,
