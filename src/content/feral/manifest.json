@@ -48,5 +48,15 @@
     "concept_by": "feral-director",
     "type": "tool",
     "born": "2026-06-30"
+  },
+  {
+    "slug": "pocket-weather",
+    "title": "Pocket Weather",
+    "blurb": "Twelve hours. One invented square metre. Issue the weather and let a small patch get on with it.",
+    "route": "/feral/pocket-weather",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "interactive",
+    "born": "2026-09-15"
   }
 ]
