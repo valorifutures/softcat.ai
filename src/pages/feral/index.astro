@@ -37,7 +37,7 @@ const awaitingCycle = (latest?.cycle ?? 0) <= maintenance.lastRecordedCycle;
       <aside class="status" aria-label="Recorded activity">
         <p><span class="status-label">Last recorded cycle</span><strong>{latest ? <time datetime={latest.date}>{dateLabel(latest.date)}</time> : 'None recorded'}</strong></p>
         {awaitingCycle && <p>{maintenance.summary} <a href={maintenance.recoveryUrl}>Recovery record ↗</a></p>}
-        <p class="small">The workflow is configured for Tuesdays and Fridays at 07:00 UTC. A schedule is not proof of a successful run. <a href={maintenance.workflowUrl}>Check workflow runs ↗</a></p>
+        <p class="small">The cloud council is scheduled for Tuesday and Friday afternoons, Europe/London. The ledger records what actually shipped. <a href="/pipeline">See the site schedule ↗</a></p>
       </aside>
 
       <section aria-labelledby="creations-title">

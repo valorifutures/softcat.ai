@@ -2,9 +2,10 @@
   {
     "id": "news_bot",
     "name": "AI News Digest",
-    "description": "Pulls 5 RSS feeds, picks the most interesting stories, writes an opinionated daily digest.",
+    "description": "Previously generated daily digests from five RSS feeds. The news section remains a historical archive.",
     "script": "bot/ai_news_digest.py",
-    "schedule": "Daily at 07:00 Europe/London",
+    "schedule": "Former schedule: daily at 07:00 Europe/London",
+    "schedule_status": "inactive",
     "schedule_cron": "0 7 * * *",
     "feeds": [
       "marktechpost.com",
@@ -20,9 +21,10 @@
   {
     "id": "thoughts_bot",
     "name": "AI Thoughts",
-    "description": "Proposes sourced editorial drafts from RSS reporting. Drafts stay out of public routes and feeds until their claims are reviewed.",
+    "description": "The inactive writer can propose sourced editorial drafts from RSS reporting. Drafts stay unpublished until their claims are reviewed.",
     "script": "bot/ai_thoughts_bot.py",
-    "schedule": "Daily at 08:00 Europe/London",
+    "schedule": "Former schedule: daily at 08:00 Europe/London",
+    "schedule_status": "inactive",
     "schedule_cron": "0 8 * * *",
     "feeds": [
       "marktechpost.com",
@@ -38,9 +40,10 @@
   {
     "id": "radar_bot",
     "name": "The Radar",
-    "description": "Scans RSS feeds and HackerNews Algolia API for genuine AI product launches, writes editorial picks.",
+    "description": "Previously generated product-launch picks from RSS feeds and Hacker News. The Radar remains a historical archive.",
     "script": "bot/radar_bot.py",
-    "schedule": "Daily at 09:30 Europe/London",
+    "schedule": "Former schedule: daily at 09:30 Europe/London",
+    "schedule_status": "inactive",
     "schedule_cron": "30 9 * * *",
     "feeds": [
       "marktechpost.com",
@@ -57,9 +60,10 @@
   {
     "id": "tool_bot",
     "name": "Tool discovery proposals",
-    "description": "Proposes one unpublished, sourced discovery for editorial review. Link checks record reachability only and do not promote drafts.",
+    "description": "The inactive writer can propose an unpublished discovery for review. Its link checker records reachability and does not promote drafts.",
     "script": "bot/tool_of_the_week.py",
-    "schedule": "Sunday at 10:00 Europe/London",
+    "schedule": "Former schedule: Sunday at 10:00 Europe/London",
+    "schedule_status": "inactive",
     "schedule_cron": "0 10 * * 0",
     "feeds": [
       "marktechpost.com",
@@ -74,9 +78,10 @@
   {
     "id": "prompt_bot",
     "name": "Prompt proposals",
-    "description": "Proposes two unpublished prompt drafts for editorial review. There is no automatic promotion to a published recipe.",
+    "description": "The inactive writer can propose two unpublished prompt drafts. Reviewed recipes are maintained through the current editorial schedule.",
     "script": "bot/prompt_library_bot.py",
-    "schedule": "Wednesday at 09:00 Europe/London",
+    "schedule": "Former schedule: Wednesday at 09:00 Europe/London",
+    "schedule_status": "inactive",
     "schedule_cron": "0 9 * * 3",
     "feeds": [
       "marktechpost.com",
@@ -95,6 +100,7 @@
     "description": "Checks the tracked model IDs against OpenRouter's public price catalogue in GitHub Actions. Changed data passes validation and a site build before publication. No paid model call.",
     "script": "scripts/model-price-snapshot.mjs",
     "schedule": "Daily at 05:30 UTC in GitHub Actions",
+    "schedule_status": "active",
     "schedule_cron": "30 5 * * *",
     "feeds": [],
     "model": "",
@@ -103,10 +109,11 @@
   },
   {
     "id": "horizon_bot",
-    "name": "Horizon",
-    "description": "Proposes Now-lane entries and Past-promotion candidates from the archive, flags stale Next forecasts with fresh supporting evidence. Writes proposals to a staging file for Valori review; never writes canonical lane data.",
+    "name": "Horizon archive proposals",
+    "description": "The inactive bot proposed updates to the earlier Horizon lanes. Our five current predictions are assessed through the new evidence-review schedule.",
     "script": "bot/horizon_bot.py",
-    "schedule": "Daily at 10:00 Europe/London",
+    "schedule": "Former schedule: daily at 10:00 Europe/London",
+    "schedule_status": "inactive",
     "schedule_cron": "0 10 * * *",
     "feeds": [
       "src/data/radar/",

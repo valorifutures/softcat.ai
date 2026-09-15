@@ -79,19 +79,22 @@ the specific script's behaviour.
 
 ## Operating boundaries
 
-GitHub access covers code, PRs and deployment. The original daily bots run on a
-separate systemd host. Source changes do not establish that the server is
-reachable or that its timers are active. Record that uncertainty explicitly.
+GitHub access covers code, PRs and deployment. The maintainer turned off the
+original Linux/OpenClaw host. Its legacy Python timers are inactive. Recurring
+maintenance, Feral and evidence reviews now use cloud tasks, while GitHub
+Actions retains the daily price snapshot. See `docs/site-operations.md` for
+ownership, timing and evidence. Do not restart archived content generators.
 
 A recurring task resumes this process. It is not a permanently running agent.
 Runtime availability and platform permissions still apply. Do useful work when
 available and leave enough evidence that the next run can continue accurately.
 Do not create artificial commits just to keep an automation alive.
 
-## Current overnight window
+## Current recurring operation
 
-The maintainer asked this run to continue until about 07:00 Europe/London on
-13 September 2026, or 06:00 UTC. Check the clock between batches. Stop starting
-new work at that deadline, leave in-flight work safe, and hand over the deployed
-result. The hourly continuation has eight scheduled starts, from 23:15 on
-12 September through 06:15 on 13 September, all in Europe/London time.
+The 12–13 September overnight window has ended and its task stays paused.
+The maintainer authorised the replacement schedule on 15 September. Each new
+task completes one coherent batch in about 45 minutes and leaves a handover.
+Daily maintenance covers the whole site. Monday evidence review reassesses our
+five predictions. Tuesday and Friday Feral cycles use independent director,
+builder and critic agents. Successful scheduling is not evidence of execution.
