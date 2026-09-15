@@ -523,7 +523,8 @@ const endings = {
       }
 
       function tickCommit(now) {
-        if (committed || reduceMotion) return;
+        // Arriving stars start outside the refusal band. Wait for the visitor's hand.
+        if (committed || reduceMotion || grabsSeen === 0) return;
         const frac = avgDistFrac();
         updateMeter(frac);
         let state = 0;
