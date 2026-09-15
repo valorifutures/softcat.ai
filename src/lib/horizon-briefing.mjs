@@ -38,6 +38,6 @@ export function horizonBriefing(data, selection) {
     `What to watch\n${record.watch}`,
     `Our assessment\n${record.assessment}`,
     `Primary sources and their limits\n\n${sources}`,
-    `Selected view\nhttps://softcat.ai/horizon/${horizonSearch('', state)}`,
+    `Selected view\nhttps://softcat.ai/horizon/scenarios/${horizonSearch('', state)}`,
   ].join('\n\n');
 }

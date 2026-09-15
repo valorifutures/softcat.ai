@@ -1,0 +1,171 @@
+[
+  {
+    "id": "predictions-2026-09-15",
+    "date": "2026-09-15",
+    "reason": "We are publishing our own forecasts with explicit milestones and year-end deadlines. Earlier countdowns followed illustrative scenario windows. Those remain in the alternative-scenario record, not as earlier versions of these predictions. The dates below are our editorial judgements after reviewing these sources, not dates supplied by the sources.",
+    "records": [
+      {
+        "id": "scenario-agi",
+        "title": "General intelligence",
+        "milestone": "A general-purpose AI will independently demonstrate skilled-human performance across a broad set of unfamiliar cognitive tasks.",
+        "target_date": "2031-12-31",
+        "resolution": [
+          "Two evaluation teams independent of the model provider test the same frozen general-purpose system on independently created tasks. Each preregisters task-construction rules, scoring and human recruitment before testing, then publishes its protocol, human comparison, tools, time budgets and results.",
+          "Each evaluation covers language, mathematics, coding, factual synthesis, scientific reasoning, visual-spatial reasoning, planning, social reasoning, learning new rules and switching between tasks. Each domain contains at least 100 tasks created after the system was frozen. No task-specific retraining is allowed.",
+          "The system reaches or exceeds the median of relevant skilled adult participants in every domain under the same stated time allowance. This is our operational AGI threshold, not a claim that every definition of AGI has been satisfied."
+        ],
+        "rationale": "We expect broader reasoning, memory and tool use to improve over several more development cycles. We put our date at the end of 2031 because unfamiliar tasks, consistency across domains and independent replication are a much higher bar than a strong benchmark score. This is our judgement about the remaining work, not a trend line fitted to the sources.",
+        "uncertainty": "Very uncertain timing. A generalisation breakthrough could bring this forward sharply, while persistent failures on unfamiliar tasks could put it beyond 2031. Our test is a declared working definition, not an industry standard.",
+        "earlier": "Independent teams reproduce skilled-human performance across newly created domains without task-specific tuning or undisclosed human help.",
+        "later": "Public benchmark gains fail to transfer to fresh tasks, or broad competence continues to depend on specialist retraining and extensive human correction.",
+        "evidence": [
+          {
+            "title": "Google DeepMind: Levels of AGI",
+            "url": "https://deepmind.google/research/publications/66938/",
+            "date_label": "21 July 2024",
+            "finding": "The framework separates the breadth of a system's abilities, its performance and its autonomy. This informs our use of a broad human comparison.",
+            "limit": "It defines a way to discuss capability. It does not establish that our threshold has been met or predict an arrival year."
+          },
+          {
+            "title": "ARC Prize: ARC-AGI-3",
+            "url": "https://arcprize.org/arc-agi/3",
+            "date_label": "2026 benchmark; checked 15 September 2026",
+            "finding": "Interactive tasks examine learning unfamiliar rules, exploring environments and adapting through experience.",
+            "limit": "Adaptive reasoning is only part of general intelligence. This benchmark alone cannot resolve our broader forecast."
+          }
+        ]
+      },
+      {
+        "id": "scenario-agentic-work",
+        "title": "Agents at work",
+        "milestone": "AI agents will run repeatable business workflows across at least ten organisations, with people managing exceptions.",
+        "target_date": "2028-12-31",
+        "resolution": [
+          "Customer-confirmed or independently evaluated public reports name ten organisations across at least three sectors. Each runs two distinct production workflows spanning at least two business systems.",
+          "Each workflow reports at least 1,000 consecutive eligible cases over at least 90 days. At least 80% finish without a person executing workflow steps. Eligibility, acceptance tests and escalation rules are fixed before the reporting period.",
+          "People may authorise consequential decisions and handle exceptions. Reports include failures and escalations in the denominator. This predicts repeatable operation at ten organisations, not majority adoption or unattended businesses."
+        ],
+        "rationale": "Bounded workflow execution already exists. We expect the next two years to turn isolated deployments into repeatable operations across sectors, with permissions, recovery and ownership becoming part of the product. End-2028 is our forecast for that operational milestone.",
+        "uncertainty": "Timing remains uncertain. Vendor case studies rarely publish consecutive-case failure and intervention data, so the milestone could occur before enough public evidence exists to verify it.",
+        "earlier": "Customer-confirmed 90-day results show high autonomous completion across multiple systems and sectors, including failures and recovery costs.",
+        "later": "Manual rescue, fragile integrations or operating costs prevent teams expanding beyond isolated queues.",
+        "evidence": [
+          {
+            "title": "Salesforce and Air India: workflow expansion",
+            "url": "https://www.salesforce.com/in/news/press-releases/2026/09/15/air-india-accelerates-customer-service-transformation-with-agentforce/",
+            "date_label": "15 September 2026",
+            "finding": "The announcement describes multi-system refund handling, passenger-name changes and actions across several customer-service intents.",
+            "limit": "This is a vendor announcement. It does not publish the autonomous completion share or independently assessed failure rates required by our forecast."
+          },
+          {
+            "title": "Anthropic: measuring agent autonomy",
+            "url": "https://www.anthropic.com/research/measuring-agent-autonomy",
+            "date_label": "18 February 2026",
+            "finding": "The provider's interaction analysis examines how tool-using agents operate alongside human involvement and safeguards.",
+            "limit": "Tool-call activity from one provider does not establish end-to-end workflow success or representative enterprise adoption."
+          }
+        ]
+      },
+      {
+        "id": "scenario-robotics",
+        "title": "Robotics",
+        "milestone": "Adaptable robots will perform several useful jobs routinely across factories and warehouses, with demonstrated operating economics.",
+        "target_date": "2031-12-31",
+        "resolution": [
+          "One commercially available robot platform using a shared general-purpose control model runs for six months at ten production sites belonging to at least three unrelated customers. It performs at least three materially different task families overall and at least two at each site. Customers demonstrate a new task learned from instructions or examples without writing task-specific control code.",
+          "Customer-confirmed reporting shows at least 95% of task cycles completed without human intervention. The reporting period, task mix, failures and supervised or teleoperated time are disclosed.",
+          "Customer-published cost per successful task matches or beats the incumbent process, including maintenance and supervision. This is a commercial-site milestone, not a prediction of routine household humanoids."
+        ],
+        "rationale": "Useful paid robot work is already happening. Our end-2031 forecast allows time for broader task handling, several years of deployment and credible customer economics to follow today's more specialised systems. The remaining challenge is repeatability across sites and tasks.",
+        "uncertainty": "The date is uncertain because reliability, safety and manufacturing must improve together. Strong demonstrations or a product launch would not be enough to count this as achieved.",
+        "earlier": "Customers publish six-month multi-task fleet results, lower intervention rates and repeat purchases supported by full operating costs.",
+        "later": "Maintenance, low utilisation, teleoperation or poor transfer between tasks keeps the cost of successful work above the existing process.",
+        "evidence": [
+          {
+            "title": "BMW: Figure 03 production programme",
+            "url": "https://www.press.bmwgroup.com/global/article/detail/T0458778EN/bmw-group-advances-the-use-of-physical-ai-in-production-with-figure-03-project-in-spartanburg?language=en",
+            "date_label": "25 June 2026",
+            "finding": "The customer describes earlier humanoid work in production and a programme extending towards logistics sequencing.",
+            "limit": "A customer programme does not establish broad multi-site task coverage or the comparative costs in our resolution rules."
+          },
+          {
+            "title": "Agility Robotics: Digit 5 announcement",
+            "url": "https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale",
+            "date_label": "15 September 2026",
+            "finding": "Agility reports substantial operational experience with Digit 4 and plans wider task capabilities for Digit 5, with availability expected by end-2027.",
+            "limit": "Operational figures are vendor-reported. Digit 5 capabilities and availability are forward-looking plans, not completed outcomes."
+          }
+        ]
+      },
+      {
+        "id": "scenario-software-automation",
+        "title": "Software creation",
+        "milestone": "Coding agents will take most routine software tickets from specification to monitored production in at least ten organisations, with human approval.",
+        "target_date": "2027-12-31",
+        "resolution": [
+          "Ten named organisations each publish customer-confirmed or independently evaluated results for at least 100 consecutive eligible tickets over at least 90 days. Eligibility is fixed before assignment: routine fixes or small features estimated at no more than one engineer-day.",
+          "More than half reach implementation, tests, review responses, approved deployment and seven days of monitoring without people writing or correcting the code. Humans still set requirements, review and authorise release.",
+          "Failed deployments, rollbacks and manually rescued tickets remain in the denominator. Merged pull requests alone do not meet the milestone. This does not predict autonomous ownership of all engineering work."
+        ],
+        "rationale": "Substantial execution already works in well-prepared engineering environments. We expect reproducible routine delivery across ten organisations by end-2027, with deployment and monitoring included. Human approval makes this a nearer milestone than unsupervised engineering across arbitrary codebases.",
+        "uncertainty": "This is an assertive forecast. Repository preparation, review effort and access to credible post-deployment results could delay verification. The date is our judgement, not a provider's commitment.",
+        "earlier": "Organisations publish consecutive-ticket results with little manual rescue and reliable post-deployment checks.",
+        "later": "Review effort, rollback rates or legacy-system failures prevent agents reliably completing the whole delivery cycle.",
+        "evidence": [
+          {
+            "title": "OpenAI: harness engineering",
+            "url": "https://openai.com/index/harness-engineering/",
+            "date_label": "11 February 2026",
+            "finding": "An engineering team describes agents producing changes, verifying application behaviour, responding to feedback and progressing work to merge.",
+            "limit": "The results rely on that repository's structure and tooling. They do not prove general performance or autonomous production monitoring."
+          },
+          {
+            "title": "Stripe: Minions coding agents",
+            "url": "https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents",
+            "date_label": "9 February 2026",
+            "finding": "Stripe reports a substantial weekly volume of agent-generated merged pull requests with human review.",
+            "limit": "Merged change volume does not reveal the eligible-ticket completion fraction, rescue rate or full production-delivery performance."
+          },
+          {
+            "title": "METR: developer productivity experiment update",
+            "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+            "date_label": "24 February 2026",
+            "finding": "The follow-up experiment describes selection effects that make the size of current productivity gains difficult to measure reliably.",
+            "limit": "A productivity experiment is not an end-to-end autonomy test. It cautions against generalising from selected demonstrations."
+          }
+        ]
+      },
+      {
+        "id": "scenario-education-disruption",
+        "title": "Education",
+        "milestone": "Generative AI tutoring will show repeatable learning gains that last after the AI is put away, across schools or colleges.",
+        "target_date": "2029-12-31",
+        "resolution": [
+          "Two independently evaluated, preregistered randomised trials of generative AI tutoring collectively cover at least 2,000 learners across at least 20 schools or colleges, with an intervention lasting at least one academic term. Each compares against a non-AI control with comparable teaching and learning time.",
+          "Both trials show statistically positive effects on unassisted assessments at least eight weeks after the intervention. Their combined standardised effect is at least 0.2, using an inverse-variance weighted mean of the reported primary outcomes.",
+          "Human teachers and safeguarding remain in place. The reports disclose attrition and assistance. This predicts demonstrated durable learning gains, not the replacement of teachers, schools or credentials."
+        ],
+        "rationale": "Promising short trials and larger programmes are already under way, while retained learning remains less certain. We expect stronger designs, full-term studies and independent replication over the next three school years to meet this milestone by end-2029.",
+        "uncertainty": "Benefits may depend heavily on tutor design, subject and student group. Immediate performance with assistance can improve without producing durable independent learning.",
+        "earlier": "Multi-site trials show replicated gains on delayed, unassisted tests across learner groups.",
+        "later": "Gains disappear without AI, fail to transfer, or depend on levels of human support that do not scale.",
+        "evidence": [
+          {
+            "title": "Kestin and colleagues: AI tutoring trial",
+            "url": "https://www.nature.com/articles/s41598-025-97652-6",
+            "date_label": "3 June 2025",
+            "finding": "A randomised undergraduate physics study reports stronger immediate learning with a specifically designed AI tutor.",
+            "limit": "The short intervention at one institution does not demonstrate long-term retention or broad institutional scale."
+          },
+          {
+            "title": "NBER: large-scale AI tutoring experiment",
+            "url": "https://www.nber.org/papers/w35621",
+            "date_label": "August 2026 working paper",
+            "finding": "A trial involving thousands of pupils reports improved recovery after mistakes but slower progress, with limited evidence of delayed learning gains.",
+            "limit": "The reported delayed assessment is much shorter than our eight-week threshold, and a working paper is not independent replication."
+          }
+        ]
+      }
+    ]
+  }
+]

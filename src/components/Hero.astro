@@ -1,14 +1,16 @@
 ---
-import scenarios from '../data/horizon/scenarios.json';
-import review from '../data/horizon/outlook-review.json';
-import { FUTURES, parseTimeframe } from '../lib/horizon-explorer.mjs';
-const futures = FUTURES.map(future => ({ ...future, title: review.futures.find(item => item.id === future.id)!.title, date: parseTimeframe(scenarios.find(item => item.id === future.id)!.pragmatic.timeframe).label }));
+import predictionHistory from '../data/horizon/prediction-history.json';
+import { latestPredictions } from '../lib/horizon-predictions.mjs';
+import { FUTURES } from '../lib/horizon-explorer.mjs';
+const predictions = latestPredictions(predictionHistory);
+const futures = FUTURES.map(future => ({ ...future, ...predictions.find(item => item.id === future.id) }));
+const targetDate = (value: string) => new Date(`${value}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 ---
 <section class="workshop-shell workshop-hero">
   <div class="hero-copy">
     <p class="eyebrow"><span class="status-square" aria-hidden="true"></span> AN INDEPENDENT AI WORKSHOP</p>
     <h1>Understand what’s <em>next.</em><br />Try what works.</h1>
-    <p class="hero-description">Explore possible AI futures with Horizon.<br class="hidden sm:block" /> Follow the evidence, question the assumptions,<br class="hidden sm:block" /> then try the tools for yourself.</p>
+    <p class="hero-description">Our predictions for what AI does next.<br class="hidden sm:block" /> See our target dates, inspect the evidence,<br class="hidden sm:block" /> then try the tools for yourself.</p>
     <div class="hero-actions">
       <a href="/horizon" class="workshop-button primary">Explore Horizon <span aria-hidden="true">↗</span></a>
       <a href="/tools" class="workshop-button quiet">Try the tools <span aria-hidden="true">→</span></a>
@@ -16,11 +18,11 @@ const futures = FUTURES.map(future => ({ ...future, title: review.futures.find(i
     <p class="hero-footnote">BUILT WITH AI. KEPT OPEN TO INSPECTION.</p>
   </div>
   <div class="hero-horizon">
-    <div class="hero-horizon-top"><span>HORIZON</span><span>AN OPEN VIEW OF AI</span></div>
-    <h2>Five futures.<br />Five moving clocks.</h2>
-    <p class="hero-horizon-label">A pragmatic scenario for each</p>
-    <ul>{futures.map((future, index) => <li><a href={`/horizon?future=${future.key}&view=pragmatic`}><span class="hero-future-number" aria-hidden="true">0{index + 1}</span><span>{future.title}</span><span class="hero-future-date">{future.date}</span><span aria-hidden="true">↗</span></a></li>)}</ul>
-    <div class="hero-horizon-bottom"><span>Evidence can move the target.</span><a href="/horizon#outlook">See the clocks →</a></div>
+    <div class="hero-horizon-top"><span>HORIZON</span><span>OUR PUBLISHED VIEW</span></div>
+    <h2>Our predictions.<br />Five countdowns.</h2>
+    <p class="hero-horizon-label">Our target date for each defined milestone</p>
+    <ul>{futures.map((future, index) => <li><a href={`/horizon?future=${future.key}`}><span class="hero-future-number" aria-hidden="true">0{index + 1}</span><span>{future.title}</span><time class="hero-future-date" datetime={future.target_date}>{targetDate(future.target_date)}</time><span aria-hidden="true">↗</span></a></li>)}</ul>
+    <div class="hero-horizon-bottom"><span>Evidence can change our prediction.</span><a href="/horizon">See the countdowns →</a></div>
   </div>
 </section>
 

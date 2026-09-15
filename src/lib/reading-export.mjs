@@ -1,3 +1,5 @@
+import { FUTURES } from './horizon-explorer.mjs';
+
 const site = 'https://softcat.ai';
 const date = value => new Date(value).toISOString().slice(0, 10);
 const published = entries => entries.filter(entry => !entry.data.draft);
@@ -44,13 +46,34 @@ function recipe(entry) {
 
 // Use the same published collection records as the HTML pages. The export must
 // carry their corrections and example limitations, not just the original body.
-export function readingExport({ news = [], thoughts = [], tools = [], prompts = [], glossary = [] } = {}) {
+export function readingExport({ news = [], thoughts = [], tools = [], prompts = [], glossary = [], predictions = [] } = {}) {
   const sections = [
     '# SOFT CAT .ai - Published reading export',
-    'Scope: published news archive, notebook and thoughts, local tool guides, prompt recipes and glossary. Interactive tools, Horizon data and Feral artefacts are linked from https://softcat.ai/llms.txt and are not reproduced here.',
+    'Scope: current Horizon predictions with their target dates, resolution tests and evidence limits, plus the published news archive, notebook and thoughts, local tool guides, prompt recipes and glossary. Interactive tools, alternative Horizon scenarios and Feral artefacts are linked from https://softcat.ai/llms.txt and are not reproduced here.',
     'Dates belong to individual records. Exporting an article does not recheck its claims. Correction and review notices qualify the text that follows. Retired material and unpublished drafts are excluded.',
     'Removal records: https://softcat.ai/thoughts/review | https://softcat.ai/prompts/review | https://softcat.ai/tools/review',
   ];
+  if (predictions.length) {
+    sections.push('\n## Horizon: our predictions, five countdowns\n', 'These are our editorial judgements, not guarantees or dates supplied by the cited sources. Each year-end target is a deadline for the defined milestone, not a prediction of an exact arrival day. An elapsed countdown does not establish that the milestone was achieved.\n');
+    for (const record of predictions) {
+      const future = FUTURES.find(future => future.id === record.id);
+      sections.push(
+        `### ${record.title}`,
+        `URL: ${site}/horizon/?future=${future.key}`,
+        `Our prediction: ${record.milestone}`,
+        `Prediction deadline: ${record.target_date} (end of year, UTC)`,
+        `Reviewed: ${record.reviewed_at}`,
+        '\nWhat would count:', ...record.resolution.map(rule => `- ${rule}`),
+        `\nWhy we predict this: ${record.rationale}`,
+        `Uncertainty: ${record.uncertainty}`,
+        `What would move it earlier: ${record.earlier}`,
+        `What would move it later: ${record.later}`,
+        '\nEvidence and its limits:',
+      );
+      for (const source of record.evidence) sections.push(`- ${source.title} (${source.date_label})`, `  ${source.url}`, `  Finding: ${source.finding}`, `  Limit: ${source.limit}`);
+      sections.push('\n---\n');
+    }
+  }
   const groups = [
     ['News archive', news, 'news-and-updates', byDate],
     ['Notebook and thoughts', thoughts, 'thoughts', byDate],

@@ -1,40 +1,39 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HorizonExplorer from './HorizonExplorer';
+import HorizonPredictions from './HorizonPredictions';
 import HorizonDefinition from './HorizonDefinition';
 import scenarios from '../data/horizon/scenarios.json';
 import review from '../data/horizon/outlook-review.json';
-import { horizonClockData } from '../lib/horizon-clock-data';
+import { horizonPredictionData } from '../lib/horizon-prediction-data';
+import briefs from '../data/horizon/decision-briefs.json';
 import past from '../data/horizon/past.json';
 import now from '../data/horizon/now.json';
 import next from '../data/horizon/next.json';
 import debates from '../data/horizon/debates.json';
 import '../styles/horizon.css';
-const fmt = (value: string) => new Date(`${value}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 const legacyIds = [...new Set([...past, ...now, ...next, ...debates, ...scenarios].map(entry => entry.id).concat(['past', 'now', 'next', 'compare', 'debates', 'shifts']))];
 ---
-<BaseLayout title="Horizon: five futures, five clocks" description="Five live AI scenario clocks, evidence review history and practical CEO questions. Compare the outlooks and decide what to try in the next 90 days.">
+<BaseLayout title="Horizon: our predictions, five countdowns" description="Our predictions for five AI milestones, with days to each forecast deadline, explicit tests, primary evidence and an honest revision history.">
   <div class="horizon-page"><div class="hz-shell">
     <header class="hz-hero">
-      <div><p class="hz-label">Horizon / An open view of AI</p><h1>What comes<br />after now?</h1></div>
-      <div class="hz-hero-intro"><p><strong>The future moves. Your thinking should too.</strong><br />Follow five scenario clocks, see what the evidence changes and work out your next move.</p><nav class="hz-hero-links" aria-label="Explore Horizon"><a href="#horizon-decision">Think 10×. Start with 90 days. ↓</a><a href="#agi-question">Is AGI already here? ↓</a></nav></div>
+      <div><p class="hz-label">Horizon / The SOFT CAT .ai forecast</p><h1>Our predictions.<br />Five countdowns.</h1></div>
+      <div class="hz-hero-intro"><p><strong>What we expect. When we expect it.</strong><br />Five calls on AI’s future, with the evidence behind them and a clear test of whether we were right.</p><nav class="hz-hero-links" aria-label="Explore Horizon"><a href="#horizon-decision">Think 10×. Start with 90 days. ↓</a><a href="#agi-question">Is AGI already here? ↓</a></nav></div>
     </header>
-    <HorizonExplorer client:load initialData={horizonClockData} initialNow={Date.now()} />
+    <HorizonPredictions client:load initialData={horizonPredictionData} initialNow={Date.now()} briefs={briefs} />
     <HorizonDefinition client:load reviewedAt={review.reviewed_at} />
     <section class="hz-reading" aria-label="Go deeper into Horizon">
       <a href="/horizon/record#now"><p class="hz-label">01 / What we can observe</p><h2>The signals</h2><p>Dated observations, the original sources and what each one actually establishes.</p><span>Read the current record ↗</span></a>
-      <a href="/horizon/record#past"><p class="hz-label">02 / How we got here</p><h2>The turning points</h2><p>From earlier breakthroughs to the tools and ideas that shaped today’s AI.</p><span>Explore the history ↗</span></a>
+      <a href="/horizon/scenarios/"><p class="hz-label">02 / What else could happen</p><h2>Alternative scenarios</h2><p>Explore the optimistic, pragmatic and sceptical assumptions beside our central predictions.</p><span>Compare the possibilities ↗</span></a>
       <a href="/horizon/review"><p class="hz-label">03 / When our view changes</p><h2>The review record</h2><p>Original claims, revisions and withdrawals. A useful outlook has room to change its mind.</p><span>Inspect the decisions ↗</span></a>
     </section>
     <details class="hz-method" id="method">
-      <summary>How the clocks work · dates, evidence and uncertainty</summary>
-      <p>These windows are editorial scenarios. They do not have calibrated probabilities. The current assessment and dated decisions for each future appear in its evidence and clock history above.</p><p>The original arrival windows date from {fmt(review.dates_origin)}. Source publication dates and our review dates are shown separately. A new site build does not renew either.</p>
-      <p>The large number shows whole days remaining, with hours, minutes and seconds underneath. Less than one day is shown as &lt;1 day. The counters use UTC and your device’s clock. A year range counts to 1 January of its opening year, then to the end of its final year. A “by” claim counts to the end of that year. These are display conventions for broad scenarios, not predictions of an exact day. Seconds show the passage of time, not forecast precision.</p>
-      <p>When a boundary passes, the display says the window or deadline has elapsed. It never declares that a scenario has arrived. Open-ended wording has no numeric countdown. Pause stops the counters; resume catches up with the current time.</p>
-      <p>Targets change only when we publish a recorded evidence review. The open page checks for published updates every five minutes and when you return to it. It retains the last verified review if that check fails. This does not mean new research is being assessed continuously. Earlier entries remain visible when we change a window, revise its scope or keep it unchanged.</p>
-      <p>Optimistic, pragmatic and sceptical describe different assumptions. “Pragmatic” is a scenario label, not a claim of expert consensus or a statistically most likely outcome. The education scenarios include both institutional change and improvement within existing institutions.</p>
-      <p>We link primary research and publisher documentation, state their limits, and describe our own interpretation as an assessment. <a href="/horizon/record#next">The separate, testable forecasts</a> retain their September 2026 review and resolution criteria.</p>
-      <p><a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/horizon/clock-history.json">Inspect the clock history ↗</a> · <a href="/horizon/clock-data.json">Read the published clock data ↗</a> · <a href="https://github.com/valorifutures/softcat.ai/blob/3066df13e0493ef1446c9a3e48f307aa8bf30e5f/src/data/horizon/scenarios.json">Read the original scenario wording ↗</a></p>
+      <summary>How we make the call · predictions, dates and uncertainty</summary>
+      <p>These are our editorial predictions: we expect each stated milestone to be met by the end of its forecast year. We choose the dates by assessing current capability, the remaining obstacles and the time needed to demonstrate reliable results. The sources inform that judgement; they do not calculate the year for us. We do not assign calibrated probabilities or claim expert consensus.</p>
+      <p>Each prediction has its own published resolution criteria. Those thresholds are our definitions of a meaningful milestone, not universal industry standards. When evidence meets or fails them, we will record our assessment. A countdown reaching zero only means its deadline has passed; it never declares success automatically.</p>
+      <p>The large number shows whole days remaining, with hours, minutes and seconds underneath. Less than one day is shown as &lt;1 day. The counters use UTC and your device’s clock, including all of 31 December in the stated year. Year end is a display convention for a forecast made at year-level precision. Seconds show time passing, not certainty about an exact arrival day. Pause stops the counters; resume catches up with the current time.</p>
+      <p>We first published these predictions on 15 September 2026. Earlier clocks showed illustrative scenario windows. Those remain in <a href="/horizon/scenarios/">the alternative scenarios</a>, with their original histories. They are not retroactively counted as our predictions. <a href="/horizon/record#next">The earlier supporting forecasts</a> also retain their own review and resolution criteria.</p>
+      <p>A changed prediction requires an appended, dated review. Earlier dates, milestones, reasoning and evidence remain visible in the prediction history. Source publication dates and our review dates are separate; a site build does not renew them. The open page checks for published reviews every five minutes and on return, retaining the last verified data if a check fails. This does not mean research is being assessed continuously.</p>
+      <p><a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/horizon/prediction-history.json">Inspect the prediction history ↗</a> · <a href="/horizon/prediction-data.json">Read the published prediction data ↗</a> · <a href="/horizon/record#past">Explore the earlier turning points ↗</a></p>
     </details>
     {legacyIds.map(id => <div class="hz-legacy-anchor" id={id} data-horizon-record><a href={`/horizon/record#${id}`}>This entry is in the supporting Horizon record. Continue to the entry →</a></div>)}
   </div></div>

@@ -4,6 +4,9 @@ import toolsManifest from '../data/tools-manifest.json';
 import feralManifest from '../content/feral/manifest.json';
 import radarManifest from '../data/radar/index.json';
 import { RADAR_VISIBLE_DAYS } from '../utils/radar';
+import predictionHistory from '../data/horizon/prediction-history.json';
+import { latestPredictions } from '../lib/horizon-predictions.mjs';
+import { FUTURES } from '../lib/horizon-explorer.mjs';
 
 export const GET: APIRoute = async () => {
   const [news, thoughts, tools, prompts, glossary, forecasts, scenarios] = await Promise.all([
@@ -71,8 +74,15 @@ export const GET: APIRoute = async () => {
   }
 
   for (const entry of glossary.filter(item => !item.data.draft)) entries.push({ title: entry.data.title, summary: entry.data.description, url: `/glossary/${entry.id}`, type: 'glossary', tags: entry.data.tags });
-  for (const entry of forecasts) entries.push({ title: entry.data.title, summary: entry.data.why_it_matters, url: `/horizon#${entry.data.id}`, type: 'forecast', tags: entry.data.themes, date: entry.data.confidence_last_reviewed });
-  for (const entry of scenarios) entries.push({ title: `${entry.data.topic}: three scenarios`, summary: entry.data.definition, url: `/horizon#${entry.id}`, type: 'page', tags: entry.data.themes });
+  for (const entry of forecasts) entries.push({ title: entry.data.title, summary: entry.data.why_it_matters, url: `/horizon/record#${entry.data.id}`, type: 'forecast', tags: entry.data.themes, date: entry.data.confidence_last_reviewed });
+  for (const entry of scenarios) {
+    const future = FUTURES.find(item => item.id === entry.data.id || item.id === entry.id);
+    entries.push({ title: `${entry.data.topic}: three alternative scenarios`, summary: entry.data.definition, url: future ? `/horizon/scenarios?future=${future.key}` : `/horizon/record#${entry.id}`, type: 'page', tags: entry.data.themes });
+  }
+  for (const prediction of latestPredictions(predictionHistory)) {
+    const future = FUTURES.find(item => item.id === prediction.id);
+    entries.push({ title: `Our prediction: ${prediction.title}`, summary: `${prediction.milestone} Our target date: ${prediction.target_date}.`, url: `/horizon?future=${future.key}`, type: 'forecast', tags: ['horizon', 'prediction', 'countdown', future.key] });
+  }
   for (const room of feralManifest) entries.push({ title: room.title, summary: room.blurb, url: room.route, type: 'experiment', tags: ['feral', room.type], date: room.born });
 
   // Load radar data, bounded to the visible window. Older day-files stay on
@@ -109,7 +119,8 @@ export const GET: APIRoute = async () => {
     { title: 'About Valori', summary: 'SOFT CAT is an independent AI playground, workshop and public notebook.', url: '/valori', type: 'page' },
     { title: 'Contact and feedback', summary: 'Report a bug, suggest a correction or propose an experiment.', url: '/contact', type: 'page' },
     { title: 'Notebook', summary: 'The public build diary: experiments, decisions and failures with evidence.', url: '/notebook', type: 'page' },
-    { title: 'Horizon: five possible AI futures', summary: 'Five live scenario countdowns for AGI, agents, robotics, software and education. Follow evidence revisions, ask the 10× CEO question and plan your next 90 days.', url: '/horizon', type: 'page', tags: ['horizon', 'agi', 'future', 'scenarios', 'timeline', 'clocks', 'countdown', 'ceo'] },
+    { title: 'Horizon: our predictions, five countdowns', summary: 'Our published predictions for AGI, agents, robotics, software and education. Each countdown leads to our target date for a defined milestone, with evidence, resolution tests and an open revision history.', url: '/horizon', type: 'page', tags: ['horizon', 'agi', 'future', 'predictions', 'timeline', 'clocks', 'countdown', 'ceo'] },
+    { title: 'Alternative AI scenarios', summary: 'Compare optimistic, pragmatic and sceptical assumptions for five AI futures. The original scenario windows and their review history remain open to inspection.', url: '/horizon/scenarios', type: 'page', tags: ['horizon', 'scenarios', 'optimistic', 'pragmatic', 'sceptical'] },
     { title: 'Horizon review record', summary: 'Original claims, withdrawn forecasts, archived signals and the evidence behind our revisions.', url: '/horizon/review', type: 'page' },
     { title: 'Horizon evidence and history', summary: 'Dated AI observations, unresolved forecasts, debates and past turning points.', url: '/horizon/record', type: 'page' },
     { title: 'Is AGI already here?', summary: 'Explore definitions of general intelligence through breadth, economic work and adaptation.', url: '/horizon#agi-question', type: 'page', tags: ['agi', 'definitions', 'intelligence'] },
