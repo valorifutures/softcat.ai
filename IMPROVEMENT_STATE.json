@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-15T22:21:47.802685+00:00",
-  "phase": "horizon-day-count-release",
+  "updated_at": "2026-09-15T22:26:59.367853+00:00",
+  "phase": "horizon-day-count-handover",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "9f1a9b6eeda26a085f6080735ebbb1f170385628",
-    "at": "2026-09-15T22:04:52.282162+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35028658302"
+    "sha": "29ec181a5bcc3318bc632cbe88966d6c3a415ba5",
+    "at": "2026-09-15T22:26:59.367869+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35030734134"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -49,22 +49,23 @@
     "The maintainer requested a Feral run and recurring operation of the whole site after turning off Linux/OpenClaw. Three cloud tasks were created and confirmed enabled: daily maintenance, Tuesday/Friday Feral and Monday evidence review. The existing daily GitHub price schedule remains active. Pipeline, operating instructions and manual-only Feral workflow configuration are prepared for publication. The expired overnight task remains paused.",
     "PR #231 passed all hosted gates in run 35028279865, merged and deployed in Pages run 35028420982. Live Pipeline shows the four actual schedules, first future run dates, six inactive legacy timers and preserved records. Feral points to the new cloud schedule. The three new tasks were independently rechecked as enabled; the expired overnight task remains paused.",
     "PR #232 shipped genuine Feral cycle 6, Pocket Weather. Independent Codex director, builder and critic followed the constitution, with PASS on attempt 1. Exactly three files inside the walls changed and old ledger/manifest entries remain intact. Trusted gate, 134 JS tests, 141 bot tests, 12 publication fixtures, validators, 636-page build and offline audit passed. Hosted PR run 35028587178 and Pages run 35028658302 succeeded. Live checks verified assignment, Enter-key stepping, actual timed playback, pause persistence, all 12 hours, completion, reset and bottom-page access at scrollY 803. No horizontal overflow was observed. The returning gallery showed its cached five-room page until a normal reload; the refreshed page shows six creations and the 15 September cycle 6 PASS.",
-    "The maintainer clarified that Horizon should count down recalculated days. The identical hours/minutes/seconds were remainders to midnight. Main Horizon now shows only day counters, refreshing at UTC day boundaries, on return and on published review. Each review exposes its numeric target shift separately from elapsed time. Exact ISO target dates are respected rather than forced to year end. Existing forecasts and review history are unchanged. All 138 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and 636-page build/audit pass. Independent review also caught and fixed rounding at midnight + 1 ms."
+    "The maintainer clarified that Horizon should count down recalculated days. The identical hours/minutes/seconds were remainders to midnight. Main Horizon now shows only day counters, refreshing at UTC day boundaries, on return and on published review. Each review exposes its numeric target shift separately from elapsed time. Exact ISO target dates are respected rather than forced to year end. Existing forecasts and review history are unchanged. All 138 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and 636-page build/audit pass. Independent review also caught and fixed rounding at midnight + 1 ms.",
+    "PR #234 passed all hosted checks in run 35030633590 and deployed in Pages run 35030734134. Live Horizon has five day counters and zero sub-day timers. The observed day counts were AGI 1,933, agents 838, robotics 1,933, software 472 and education 1,203. Keyboard selection showed the matching software 472-day calculation and 2027 target. Manual update checking completed while retaining selection and actual review history. Clipboard writing fell back to selectable text containing the correct 472-day UTC snapshot and full briefing. No desktop horizontal overflow was observed."
   ],
   "next": [
-    "Verify the day-counter release live, including selection, explained calculation, absence of sub-day timers, history and copyable briefing.",
     "Inspect the first scheduled maintenance run from 16 September, Feral run from 18 September and evidence review from 21 September. Keep the new cloud tasks enabled and old generators off.",
-    "Future justified day-level prediction revisions can use real ISO dates. Record numeric target movement and preserve all earlier dates, milestones and evidence. Never move dates to differentiate the cards."
+    "Future justified prediction revisions can use real ISO dates. Record numeric target movement separately from elapsed days and preserve earlier targets, milestones and evidence. Never move dates merely to differentiate cards.",
+    "Future Feral and Horizon work should preserve document scrolling and usable narrow layouts. Mobile touch-device coverage remains unverified."
   ],
   "constraints": [
     "GitHub access is verified. The maintainer reports the old Linux/OpenClaw host is switched off. Cloud tasks do not require that host.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "The maintainer clarified the Horizon clocks should count down days and recalculate with prediction changes. Implemented days-only display and direct-date arithmetic, without rewriting forecasts. Hosted release and live checks follow.",
+  "session": "Completed and verified the days-only Horizon correction. Counters follow each current target date and support justified day-level revisions. Forecast evidence/history was not rewritten. The recurring cloud tasks remain enabled.",
   "verification_limits": [
-    "The new day counters passed 138 JS tests, including 14 focused prediction cases and a 37-day partial-review fixture. The production page contains five day counters and zero hours/minutes/seconds counters. Hosted checks and live review follow.",
-    "No prediction was re-reviewed or moved during this display/calculation fix. The first future cloud task executions remain pending.",
-    "Live browser mobile-device emulation remains unavailable."
+    "A 37-day partial-review fixture and UTC midnight boundaries are tested. No new forecast or fabricated evidence revision was published for demonstration.",
+    "The live clipboard fallback contains the correct day count and UTC snapshot. Clipboard writing itself did not complete in this browser, so successful pasted content is not claimed.",
+    "The first future cloud task executions and mobile-device coverage remain pending."
   ]
 }
