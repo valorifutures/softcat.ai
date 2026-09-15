@@ -623,3 +623,13 @@ The review line now explicitly says Window unchanged, Deadline unchanged or Stil
 Copy briefing complements the existing shareable view link. It includes the selected outlook, original date wording, threshold and applicable scope, assumptions, next-90-days move, success measure, assessment and every primary source with its limitations. It carries the selected future’s actual review date and the illustrative-scenario qualification. Clipboard failures expose selectable text. Selection changes, browser history and published data revisions clear stale copy feedback.
 
 Local validation passes: 123 JavaScript tests, 141 bot tests, twelve publication fixtures, all data validators and the 634-page production build. The publication audit passes 31,662 internal links, 3,262 asset and metadata references and 393 search entries. An independent review found no must-fix issue. The supported browser cannot open the local preview (ERR_BLOCKED_BY_CLIENT), so live layout and interaction checks follow the gated deployment. Narrow CSS wrapping was reviewed without claiming a mobile device test. The recurring improvement loop remains disabled.
+
+## 15 September 2026, days release verified live
+
+PR #225 passed every hosted validation step in run 35014721692 and merged as fa54dbd0c1a5298c300316dc44692e86d834c7c3. Pages run 35014825378 completed successfully at 19:39 UTC. The remote feature tree matched the locally tested tree exactly.
+
+The live desktop page shows prominent day totals, quieter residual times, explicit countdown destinations and the recorded 13 September evidence date. All five pragmatic clocks name the window opening. Optimistic clocks name their deadlines and retain inclusive final years. Sceptical clocks remain open-ended with Still undated review labels. Pause retained the five displayed times while Enter selected Education. Resume returned the clocks to running. The default agent view was restored at the end.
+
+Copy briefing reported success for pragmatic Education, and changing the outlook cleared that message. The accompanying regression tests cover every selected action, the education scope qualification, per-future dates and complete source findings and limitations across all 15 briefings. The browser’s virtual clipboard returned no data and rejected the independent paste action, so an actual pasted-content check is not claimed. A temporary local validator field used for that check was restored. No external message or model request was sent.
+
+The page was visually inspected on desktop. Responsive CSS was reviewed, but no mobile device or viewport test was available. The checkpoint records these limits, clears active work and leaves the recurring loop disabled. This final handover only updates the records.
