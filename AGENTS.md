@@ -20,3 +20,10 @@ Use the anonymous Valori collective voice and British English in site content.
 
 Update the checkpoint and implementation log after each completed batch. A
 scheduled run must check for active work before opening a competing branch.
+
+On 15 September 2026 the maintainer requested a fresh Feral run and recurring
+operation of the whole site after turning off the Linux/OpenClaw host. The new
+cloud tasks in `docs/site-operations.md` replace that dependency. The expired
+12–13 September overnight task stays paused. Feral creative cycles still obey
+their separate constitution, independent critic and three allowed roots. Keep
+maintenance changes and creative cycle changes in separate PRs.

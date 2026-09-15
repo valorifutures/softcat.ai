@@ -17,15 +17,36 @@ const totalCost = costedRuns.reduce((sum, run) => sum + run.cost_usd, 0);
 const lastRun = newestRun(runs);
 const dates = [...new Set(runs.slice(0, 100).map((run) => new Date(run.timestamp).toISOString().slice(0, 10)))].slice(0, 14);
 const jobLabel = (run: any) => run.job ? ` · ${run.job}` : '';
+const currentSchedule = [
+  { name: 'Site maintenance', cadence: 'Daily, around 08:00 Europe/London', start: 'From 16 September 2026', description: 'Checks the site, fixes useful small problems and reviews pending work. Changes pass review and publication checks.', href: 'https://github.com/valorifutures/softcat.ai/blob/main/docs/improvement-log.md', link: 'Maintenance record' },
+  { name: 'Feral council', cadence: 'Tuesday and Friday, around 15:00 Europe/London', start: 'From 18 September 2026', description: 'One bounded council cycle. New experiments must pass critique and publication checks before they appear.', href: '/feral/#ledger', link: 'Feral ledger' },
+  { name: 'Evidence review', cadence: 'Monday, around 15:00 Europe/London', start: 'From 21 September 2026', description: 'Reviews our five predictions against primary evidence, checks model records and considers useful prompt and tool updates.', href: '/horizon/', link: 'Our predictions' },
+  { name: 'Model price snapshots', cadence: 'Daily at 05:30 UTC', start: 'Existing GitHub Actions schedule', description: 'Checks tracked prices against the public provider catalogue. Validated changes are published with their actual check dates.', href: 'https://github.com/valorifutures/softcat.ai/actions/workflows/model-prices.yml', link: 'Price-check runs' },
+];
 ---
-<BaseLayout title="Pipeline" description="The published record of SOFT CAT's automation: dated runs, outcomes and recorded API costs.">
+<BaseLayout title="Pipeline" description="SOFT CAT's current cloud schedule, published run records and recorded API costs.">
   <div class="max-w-5xl mx-auto px-6 py-12 md:py-16">
     <header class="mb-8">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan mb-4 inline-block">← home</a>
       <p class="font-mono text-xs text-neon-green uppercase tracking-widest mb-3">The machinery, with receipts</p>
       <h1 class="font-mono text-3xl font-bold text-text-bright">Pipeline</h1>
-      <p class="text-text-muted mt-4 max-w-2xl leading-relaxed">A record of what the bots did and when. Model price checks run in GitHub Actions. The other daily bots still depend on a separate server whose current state is unverified.</p>
+      <p class="text-text-muted mt-4 max-w-2xl leading-relaxed">What we schedule, what actually ran and what changed. Maintenance, Feral and evidence reviews are now scheduled in the cloud. The old Linux bot host is switched off.</p>
     </header>
+
+    <section class="mb-10" aria-labelledby="schedule-heading">
+      <h2 id="schedule-heading" class="font-mono text-lg text-text-bright mb-2">Current schedule</h2>
+      <p class="text-sm text-text-muted mb-5 max-w-3xl leading-relaxed">Configuration confirmed on <time datetime="2026-09-15">15 September 2026</time>. The three editorial tasks run in Codex cloud, with start times that may vary by up to an hour. Scheduled work is recorded only after it runs.</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        {currentSchedule.map((job) => <article class="rounded-lg border border-neon-green/20 bg-surface p-5">
+          <h3 class="font-mono text-base text-text-bright">{job.name}</h3>
+          <p class="text-sm text-neon-green mt-3">{job.cadence}</p>
+          <p class="text-xs text-text-muted mt-1">{job.start}</p>
+          <p class="text-sm text-text-muted leading-relaxed mt-4">{job.description}</p>
+          <a href={job.href} class="inline-block mt-4 text-sm text-neon-cyan underline underline-offset-4">{job.link} →</a>
+        </article>)}
+      </div>
+      <p class="text-sm text-text-muted mt-4 leading-relaxed">Completed work appears in the maintenance record, Feral ledger and GitHub checks. The historical bot log below remains separate. News and Radar stay as archives.</p>
+    </section>
 
     <aside class="mb-10 border border-neon-amber/30 bg-neon-amber/5 rounded-lg p-5 text-sm text-text-muted leading-relaxed">
       <p><strong class="text-text-primary">Snapshot built <RecordedTime value={snapshot.toISOString()} relative={false} />.</strong></p>
@@ -34,8 +55,8 @@ const jobLabel = (run: any) => run.job ? ` · ${run.job}` : '';
     </aside>
 
     <section class="mb-12" aria-labelledby="snapshot-heading">
-      <h2 id="snapshot-heading" class="font-mono text-lg text-text-bright mb-2">Seven-day snapshot</h2>
-      <p class="text-sm text-text-muted mb-5">Window ending {formatRecordedTime(snapshot.toISOString())}. Counts include only runs present in this build.</p>
+      <h2 id="snapshot-heading" class="font-mono text-lg text-text-bright mb-2">Seven-day bot log</h2>
+      <p class="text-sm text-text-muted mb-5">Window ending {formatRecordedTime(snapshot.toISOString())}. Counts cover price checks and historical bot records present in this build.</p>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div class="bg-surface border border-surface-light rounded-lg p-5"><div class="font-mono text-2xl text-text-bright">{recentRuns.length}</div><p class="text-sm text-text-muted mt-2">recorded runs</p></div>
         <div class="bg-surface border border-surface-light rounded-lg p-5"><div class="font-mono text-2xl text-text-bright">{recentRuns.length ? Math.round(successRuns / recentRuns.length * 100) + '%' : '—'}</div><p class="text-sm text-text-muted mt-2">successful results</p></div>
@@ -46,19 +67,21 @@ const jobLabel = (run: any) => run.job ? ` · ${run.job}` : '';
     </section>
 
     <section class="mb-12" aria-labelledby="roster-heading">
-      <h2 id="roster-heading" class="font-mono text-lg text-text-bright mb-2">{allBots.length} configured bots</h2>
-      <p class="text-sm text-text-muted mb-5">Schedules are the configuration in the repository, using the time zone shown for each bot. Status describes the latest published record.</p>
+      <h2 id="roster-heading" class="font-mono text-lg text-text-bright mb-2">Price checks and historical bots</h2>
+      <p class="text-sm text-text-muted mb-5">Price snapshots remain active in GitHub Actions. The six Python content timers below are inactive. Their former schedules and actual run records are preserved.</p>
       <div class="grid gap-4">
         {allBots.map((bot) => {
-          const latest = newestRun(runs, (run) => run.bot === bot.id);
+          const latest = newestRun(runs, (run) => run.bot === bot.id && (bot.id !== 'model_bot' || !('job' in run) || run.job !== 'roster'));
           return <article class="bg-surface border border-surface-light rounded-lg p-5">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <h3 class="font-mono text-base text-text-bright">{bot.name}</h3>
-              <RunState run={latest} threshold={overdueHours(bot.schedule_cron)} />
+              {bot.schedule_status === 'active'
+                ? <RunState run={latest} threshold={overdueHours(bot.schedule_cron)} />
+                : <span class="text-xs font-mono text-text-muted border border-surface-light rounded px-2 py-1">Inactive</span>}
             </div>
             <p class="text-sm text-text-muted mt-3 leading-relaxed">{bot.description}</p>
             <p class="text-xs font-mono text-text-muted mt-4">{bot.schedule}</p>
-            {latest && <p class="text-xs font-mono text-text-muted mt-2">Latest{jobLabel(latest)}: <RecordedTime value={latest.timestamp} relative={false} /> · <RecordedTime value={latest.timestamp} /></p>}
+            {latest && <p class="text-xs font-mono text-text-muted mt-2">Last recorded{jobLabel(latest)}: <RecordedTime value={latest.timestamp} relative={false} /> · {latest.status} · <RecordedTime value={latest.timestamp} /></p>}
           </article>;
         })}
       </div>
@@ -84,9 +107,9 @@ const jobLabel = (run: any) => run.job ? ` · ${run.job}` : '';
       <h2 class="font-mono text-lg text-text-bright mb-3">How it works</h2>
       <div class="text-sm text-text-muted leading-relaxed space-y-3">
         <p>The model price job reads OpenRouter's public catalogue in GitHub Actions. It calls no AI model. Large price changes and locked fields are held for review, and missing quotes stay unknown. It publishes the validated data commit, then deploys the site already built from that data.</p>
-        <p>The other daily Python bots are configured on systemd timers on a separate server. Depending on the job, they read feeds or use an AI model to draft content. Source changes here do not confirm that those timers are running.</p>
-        <p>GitHub Actions validates and builds the site, then publishes it to GitHub Pages. These records are evidence of past execution. Missing recent records may mean a stopped bot, a failed publication or a server we cannot observe from this page.</p>
-        <p><a href="https://github.com/valorifutures/softcat.ai/actions/workflows/model-prices.yml" class="text-neon-cyan underline underline-offset-4">Price-check workflow</a> · <a href="https://github.com/valorifutures/softcat.ai/tree/main/bot" class="text-neon-cyan underline underline-offset-4">Other bot source</a> · <a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/pipeline/runs.json" class="text-neon-cyan underline underline-offset-4">Inspect the raw log</a></p>
+        <p>Cloud maintenance works through reviewed changes and GitHub publication checks. Evidence reviews can revise a prediction when the sources justify it. They preserve the original call and explain the change.</p>
+        <p>The old Python timers are stopped with their Linux host. Their recorded runs and costs remain available here. A configured schedule is a plan, while a dated execution record tells us what actually happened.</p>
+        <p><a href="https://github.com/valorifutures/softcat.ai/actions/workflows/model-prices.yml" class="text-neon-cyan underline underline-offset-4">Price-check workflow</a> · <a href="https://github.com/valorifutures/softcat.ai/tree/main/bot" class="text-neon-cyan underline underline-offset-4">Historical bot source</a> · <a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/pipeline/runs.json" class="text-neon-cyan underline underline-offset-4">Inspect the raw log</a></p>
       </div>
     </section>
   </div>

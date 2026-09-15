@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-15T21:34:28.337880+00:00",
-  "phase": "feral-scroll-handover",
+  "updated_at": "2026-09-15T21:54:04.243413+00:00",
+  "phase": "cloud-schedule-prepared",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "691a22f9bacf8859af31047d18693219cac78ffa",
-    "at": "2026-09-15T21:30:33Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35025879272"
+    "sha": "512a2004cd59297281398e7fc9f2c6427f126a3e",
+    "at": "2026-09-15T21:36:55Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35026538109"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -44,21 +44,24 @@
     "Five evidence-informed editorial predictions now have explicit milestones, year-end deadlines, resolution criteria, source limits and separate append-only history. The main page counts towards our predictions; prior alternative scenarios and histories remain available. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures and the 635-page production build/audit pass. Independent review tightened robotics adaptability, AGI preregistration and education controls, and added a direct jump to the selected prediction.",
     "PR #227 passed all hosted gates in run 35020999034 and deployed successfully in Pages run 35023866953. Live desktop review confirmed our five forecast deadlines, full criteria, selected detail/evidence, original prediction history, keyboard selection, pause/resume and browser Back. The old URL now opens our own agent prediction. The alternative scenario route and sceptical view remain functional. A pending clipboard write exposed no feedback, so the final refinement adds Copying and a 1.5-second selectable-text fallback.",
     "Reproduced Drift clipping live: document height exceeded the viewport, the ending was below it, and a wheel scroll left scrollY at zero. Drift and Echo now allow vertical document scrolling. A shared measured dock reserves space for wrapped controls and navigation. Drift permits vertical touch panning, exposes direct ending choices and cancels touch drags without fling velocity. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures, validators and the 635-page production build/audit pass.",
-    "PR #229 passed hosted validation run 35025780297 and deployed in Pages run 35025879272. Live scrolling reached the full Drift ending at scrollY484 and Echo ending at scrollY48. Both endings sat about47px above the dock, with96px reserved content padding and no clipped final text. Drift exposes pan-y/pinch-zoom. A cached Drift page required normal reload to receive the fix. Live review also caught pre-existing automatic refusal before any interaction; the final one-line guard waits for a star grab or a direct button choice."
+    "PR #229 passed hosted validation run 35025780297 and deployed in Pages run 35025879272. Live scrolling reached the full Drift ending at scrollY484 and Echo ending at scrollY48. Both endings sat about47px above the dock, with96px reserved content padding and no clipped final text. Drift exposes pan-y/pinch-zoom. A cached Drift page required normal reload to receive the fix. Live review also caught pre-existing automatic refusal before any interaction; the final one-line guard waits for a star grab or a direct button choice.",
+    "PR #230 passed hosted checks and deployed in Pages run 35026538109. Live Drift stayed undecided while idle, accepted a direct warm choice, and its full ending was readable at scrollY514 above the dock.",
+    "The maintainer requested a Feral run and recurring operation of the whole site after turning off Linux/OpenClaw. Three cloud tasks were created and confirmed enabled: daily maintenance, Tuesday/Friday Feral and Monday evidence review. The existing daily GitHub price schedule remains active. Pipeline, operating instructions and manual-only Feral workflow configuration are prepared for publication. The expired overnight task remains paused."
   ],
   "next": [
-    "Await maintainer feedback on Feral scrolling. The recurring improvement loop remains disabled.",
-    "Future Feral rooms must preserve scroll access and account for fixed controls at narrow widths.",
-    "Mobile touch-device coverage and the separate bot host remain unverified."
+    "Publish and verify the cloud scheduling changes, then finish the separately scoped Feral cycle and its gated release.",
+    "Inspect the first daily maintenance run from 16 September, Feral run from 18 September and evidence review from 21 September. Configuration alone is not proof of execution.",
+    "Keep retired news/Radar and legacy Python timers off. Review our five predictions against real evidence and preserve append-only histories."
   ],
   "constraints": [
-    "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
+    "GitHub access is verified. The maintainer reports the old Linux/OpenClaw host is switched off. Cloud tasks do not require that host.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
-    "The September review retains seven active forecasts with explicit tests and withdraws eight. Their original April claims are preserved."
+    "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "The maintainer reported Feral text running below the viewport. Restore scrolling in Drift and Echo, preserve the canvas interactions and keep bottom controls clear of the text. The recurring loop remains disabled.",
+  "session": "The maintainer authorised running Feral now and scheduling whole-site operation. Cloud schedules are confirmed enabled. A separate genuine council cycle is in progress under its constitution.",
   "verification_limits": [
-    "Live desktop scrolling, full ending layout and measured dock clearance were inspected in Drift and Echo. Responsive wrapping, short viewport caps and touch cancellation were reviewed in code. The browser exposes no mobile viewport/device, and its zoom shortcut did not change viewport size.",
-    "The final idle-ending guard passes independent review, production build and publication audit; final hosted checks and live direct-choice verification follow."
+    "The first future executions of the three new cloud tasks remain pending. Existing GitHub price checks have successful scheduled runs.",
+    "The 15 September Feral GitHub job passed council and validation but failed publication. Its logs return 404 through the connected API; the specific publishing cause is unconfirmed.",
+    "Live desktop Feral scrolling is verified. No mobile touch-device coverage is claimed."
   ]
 }
