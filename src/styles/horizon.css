@@ -17,7 +17,7 @@
 .horizon-page button { cursor: pointer; font: inherit; }
 .horizon-page button:disabled { cursor: default; }
 .horizon-page a:hover { color: var(--hz-accent); }
-.horizon-page :is(a, button, summary, input):focus-visible { outline: 3px solid #3d692b; outline-offset: 4px; }
+.horizon-page :is(a, button, summary, input, textarea):focus-visible { outline: 3px solid #3d692b; outline-offset: 4px; }
 .hz-hero { display: grid; grid-template-columns: 1.5fr 1fr; align-items: end; gap: 3rem; padding-block: 3.4rem 2.6rem; }
 .hz-label { font: 0.68rem/1.6 var(--font-mono); letter-spacing: 0.09em; text-transform: uppercase; color: var(--hz-accent); }
 .hz-hero h1 { font: 500 clamp(3rem, 5.4vw, 5rem)/1.02 var(--font-sans); letter-spacing: -0.065em; margin-top: 1rem; }
@@ -43,11 +43,11 @@
 .horizon-page .hz-clock[aria-pressed="true"] { background: #c4e599; border-color: #c4e599; color: #203018; }
 .hz-clock-top { display: flex; justify-content: space-between; gap: 0.4rem; font: 0.6rem/1.5 var(--font-mono); opacity: 0.85; margin-bottom: 1rem; }
 .hz-clock-title { font-size: 1.05rem; line-height: 1.25; font-weight: 500; letter-spacing: -0.03em; min-height: 2.7rem; }
-.hz-clock-label { font: 0.6rem/1.5 var(--font-mono); margin-top: 1.2rem; opacity: 0.85; }
-.hz-clock-face { display: flex; flex-direction: column; justify-content: center; min-height: 6.4rem; font-variant-numeric: tabular-nums; }
-.hz-clock-days { display: block; font: 500 clamp(2rem, 3vw, 3rem)/1.2 var(--font-sans); letter-spacing: -0.065em; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.hz-clock-days small { font: 0.62rem var(--font-mono); letter-spacing: 0; margin-left: 0.35rem; }
-.hz-clock-time { display: flex; align-items: baseline; gap: 0.3rem; font: 0.9rem/1.6 var(--font-mono); margin-top: 0.4rem; }
+.hz-clock-label { font: 0.76rem/1.5 var(--font-sans); margin-top: 0.35rem; max-width: 13rem; }
+.hz-clock-face { display: flex; flex-direction: column; justify-content: center; min-height: 9.1rem; margin-top: 0.5rem; font-variant-numeric: tabular-nums; }
+.hz-clock-days { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.4rem; font: 500 clamp(2.4rem, 3.6vw, 3.5rem)/1.1 var(--font-sans); letter-spacing: -0.065em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hz-clock-days small { font: 0.84rem var(--font-sans); letter-spacing: 0; }
+.hz-clock-time { display: flex; align-items: baseline; gap: 0.3rem; font: 0.68rem/1.6 var(--font-mono); margin-top: 0.75rem; opacity: 0.8; }
 .hz-clock-time small { font-size: 0.6rem; margin-left: -0.2rem; opacity: 0.8; }
 .hz-clock-time > span { opacity: 0.5; }
 .hz-clock-undated { font-size: 1.35rem; letter-spacing: -0.04em; }
@@ -55,6 +55,7 @@
 .hz-clock-change { display: flex; flex-direction: column; gap: 0.2rem; padding-top: 0.7rem; border-top: 1px solid currentColor; margin-top: auto; font-size: 0.66rem; }
 .hz-clock-change > span { font: 0.59rem/1.5 var(--font-mono); opacity: 0.8; }
 .hz-clock-note { font-size: 0.7rem; line-height: 1.7; color: #c6d3be; margin: 0.85rem 0.1rem 0; }
+.hz-clock-note strong { font-weight: 500; color: #eff2e7; }
 .hz-clock-note a { text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 .hz-clocks a:hover { color: #e4f7c9; }
 .hz-clocks :is(a, button):focus-visible { outline-color: #eff2e7; }
@@ -123,7 +124,8 @@
 .hz-copy-status { font-size: 0.75rem; color: var(--hz-accent); }
 .hz-mobile-detail { display: none; }
 .hz-share-fallback { display: block; font-size: 0.8rem; margin-top: 0.8rem; }
-.hz-share-fallback input { width: 100%; font: 0.9rem var(--font-sans); padding: 0.8rem; border: 1px solid var(--hz-rule); border-radius: 3px; margin-top: 0.4rem; background: var(--hz-paper); }
+.hz-share-fallback :is(input, textarea) { display: block; width: 100%; box-sizing: border-box; font: 0.9rem/1.6 var(--font-sans); padding: 0.8rem; border: 1px solid var(--hz-rule); border-radius: 3px; margin-top: 0.4rem; background: var(--hz-paper); color: var(--hz-ink); }
+.hz-share-fallback textarea { min-height: 16rem; resize: vertical; }
 .hz-detail { background: var(--hz-panel); padding: 1.6rem; border-radius: 3px; scroll-margin-top: 1.5rem; }
 .hz-detail h3 { font-size: 1.9rem; line-height: 1.1; font-weight: 500; letter-spacing: -0.05em; margin-top: 0.6rem; }
 .hz-definition { font-size: 0.82rem; line-height: 1.65; color: var(--hz-muted); margin-top: 0.8rem; }
@@ -184,7 +186,7 @@
 @media (max-width: 1100px) {
   .hz-clock-grid { gap: 0.45rem; }
   .horizon-page .hz-clock { padding: 0.8rem 0.65rem; }
-  .hz-clock-time { gap: 0.25rem; font-size: 0.75rem; }
+  .hz-clock-time { gap: 0.25rem; }
   .hz-shell { width: min(100% - 3rem, 1000px); }
   .hz-workspace { grid-template-columns: minmax(0, 1fr) 290px; gap: 1.5rem; }
   .hz-axis, .hz-row { grid-template-columns: 160px minmax(0, 1fr); }
@@ -195,7 +197,7 @@
 @media (max-width: 880px) {
   .hz-clock-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.65rem; }
   .horizon-page .hz-clock { padding: 1rem; }
-  .hz-clock-days { font-size: 2.5rem; }
+  .hz-clock-days { font-size: 2.8rem; }
   .hz-clock-title { min-height: 0; }
   .hz-workspace { grid-template-columns: 1fr; }
   .hz-detail { display: block; }
@@ -212,9 +214,9 @@
   .hz-clock-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
   .horizon-page .hz-clock { padding: 0.8rem; }
   .hz-clock-title { font-size: 0.95rem; min-height: 2.4rem; }
-  .hz-clock-label { margin-top: 0.7rem; }
-  .hz-clock-face { min-height: 5.6rem; }
-  .hz-clock-days { font-size: 2.1rem; }
+  .hz-clock-label { font-size: 0.74rem; }
+  .hz-clock-face { min-height: 8.5rem; }
+  .hz-clock-days { font-size: 2.5rem; }
   .hz-clock-grid > :last-child { grid-column: 1 / -1; }
   .hz-clock-grid > :last-child .hz-clock-title { min-height: 0; }
   .hz-clocks-heading { font-size: 0.6rem; }
@@ -252,7 +254,7 @@
   .hz-definition-choices button { flex: 1 1 100%; text-align: left; }
   .hz-reading { grid-template-columns: 1fr; gap: 0.5rem; }
   .hz-label, .hz-source-date, .hz-section-heading > p { font-size: 0.7rem; }
-  .hz-share-fallback input { font-size: 1rem; }
+  .hz-share-fallback :is(input, textarea) { font-size: 1rem; }
 }
 @media (max-width: 370px) { .hz-clock-grid { grid-template-columns: 1fr; } .hz-clock-title { min-height: 0; } }
 @media (prefers-reduced-motion: reduce) { .hz-row, .hz-range, .horizon-page .hz-clock { transition: none; } }
