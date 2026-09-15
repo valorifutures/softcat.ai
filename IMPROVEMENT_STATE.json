@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-15T21:54:04.243413+00:00",
-  "phase": "cloud-schedule-prepared",
+  "updated_at": "2026-09-15T22:04:52.282150+00:00",
+  "phase": "cloud-operations-handover",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "512a2004cd59297281398e7fc9f2c6427f126a3e",
-    "at": "2026-09-15T21:36:55Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35026538109"
+    "sha": "9f1a9b6eeda26a085f6080735ebbb1f170385628",
+    "at": "2026-09-15T22:04:52.282162+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35028658302"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -46,22 +46,25 @@
     "Reproduced Drift clipping live: document height exceeded the viewport, the ending was below it, and a wheel scroll left scrollY at zero. Drift and Echo now allow vertical document scrolling. A shared measured dock reserves space for wrapped controls and navigation. Drift permits vertical touch panning, exposes direct ending choices and cancels touch drags without fling velocity. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures, validators and the 635-page production build/audit pass.",
     "PR #229 passed hosted validation run 35025780297 and deployed in Pages run 35025879272. Live scrolling reached the full Drift ending at scrollY484 and Echo ending at scrollY48. Both endings sat about47px above the dock, with96px reserved content padding and no clipped final text. Drift exposes pan-y/pinch-zoom. A cached Drift page required normal reload to receive the fix. Live review also caught pre-existing automatic refusal before any interaction; the final one-line guard waits for a star grab or a direct button choice.",
     "PR #230 passed hosted checks and deployed in Pages run 35026538109. Live Drift stayed undecided while idle, accepted a direct warm choice, and its full ending was readable at scrollY514 above the dock.",
-    "The maintainer requested a Feral run and recurring operation of the whole site after turning off Linux/OpenClaw. Three cloud tasks were created and confirmed enabled: daily maintenance, Tuesday/Friday Feral and Monday evidence review. The existing daily GitHub price schedule remains active. Pipeline, operating instructions and manual-only Feral workflow configuration are prepared for publication. The expired overnight task remains paused."
+    "The maintainer requested a Feral run and recurring operation of the whole site after turning off Linux/OpenClaw. Three cloud tasks were created and confirmed enabled: daily maintenance, Tuesday/Friday Feral and Monday evidence review. The existing daily GitHub price schedule remains active. Pipeline, operating instructions and manual-only Feral workflow configuration are prepared for publication. The expired overnight task remains paused.",
+    "PR #231 passed all hosted gates in run 35028279865, merged and deployed in Pages run 35028420982. Live Pipeline shows the four actual schedules, first future run dates, six inactive legacy timers and preserved records. Feral points to the new cloud schedule. The three new tasks were independently rechecked as enabled; the expired overnight task remains paused.",
+    "PR #232 shipped genuine Feral cycle 6, Pocket Weather. Independent Codex director, builder and critic followed the constitution, with PASS on attempt 1. Exactly three files inside the walls changed and old ledger/manifest entries remain intact. Trusted gate, 134 JS tests, 141 bot tests, 12 publication fixtures, validators, 636-page build and offline audit passed. Hosted PR run 35028587178 and Pages run 35028658302 succeeded. Live checks verified assignment, Enter-key stepping, actual timed playback, pause persistence, all 12 hours, completion, reset and bottom-page access at scrollY 803. No horizontal overflow was observed. The returning gallery showed its cached five-room page until a normal reload; the refreshed page shows six creations and the 15 September cycle 6 PASS."
   ],
   "next": [
-    "Publish and verify the cloud scheduling changes, then finish the separately scoped Feral cycle and its gated release.",
-    "Inspect the first daily maintenance run from 16 September, Feral run from 18 September and evidence review from 21 September. Configuration alone is not proof of execution.",
-    "Keep retired news/Radar and legacy Python timers off. Review our five predictions against real evidence and preserve append-only histories."
+    "Inspect the first scheduled maintenance run from 16 September, Feral run from 18 September and evidence review from 21 September. Configuration is confirmed; these future executions remain pending.",
+    "Review significant evidence for our five predictions without moving targets merely because time passes. Preserve append-only histories and original forecast dates.",
+    "Keep one recurring owner for each task. Leave legacy Python generators, the old Feral GitHub cron and expired overnight loop off.",
+    "Mobile touch-device coverage remains unverified. Future Feral rooms must preserve scroll access and clearance for controls."
   ],
   "constraints": [
     "GitHub access is verified. The maintainer reports the old Linux/OpenClaw host is switched off. Cloud tasks do not require that host.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "The maintainer authorised running Feral now and scheduling whole-site operation. Cloud schedules are confirmed enabled. A separate genuine council cycle is in progress under its constitution.",
+  "session": "Completed the requested Feral run and configured recurring whole-site cloud operation. Pocket Weather and Pipeline were verified live. The next work belongs to the new scheduled tasks.",
   "verification_limits": [
-    "The first future executions of the three new cloud tasks remain pending. Existing GitHub price checks have successful scheduled runs.",
-    "The 15 September Feral GitHub job passed council and validation but failed publication. Its logs return 404 through the connected API; the specific publishing cause is unconfirmed.",
-    "Live desktop Feral scrolling is verified. No mobile touch-device coverage is claimed."
+    "The first future executions of the three new cloud tasks remain pending; all three are confirmed enabled. Existing GitHub price checks have successful scheduled runs.",
+    "The old 15 September Feral GitHub job failed publication after passing council/validation. Its logs returned 404 through the connected API, so the specific publishing cause remains unconfirmed. Its cron has been removed in favour of the cloud task.",
+    "Live desktop interaction and scrolling are verified. The browser does not expose a mobile viewport/device, so mobile touch coverage is not claimed."
   ]
 }
