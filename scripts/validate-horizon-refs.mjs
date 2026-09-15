@@ -23,6 +23,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { retiredThoughtReferenceError } from '../src/lib/editorial-retirements.mjs';
 import { FUTURES, STANCES } from '../src/lib/horizon-explorer.mjs';
 import { validateClockPayload } from '../src/lib/horizon-clocks.mjs';
+import { validatePredictionPayload } from '../src/lib/horizon-predictions.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -92,6 +93,27 @@ try {
     errors.push(...validateClockPayload(payload, previous).map(error => `${ref}: ${error}`));
   }
 } catch (error) { errors.push(`Clock history could not be checked against Git: ${error.message}`); }
+
+// Our predictions have their own history. The older scenario calendar and its
+// original evidence stay intact when a new editorial prediction is published.
+try {
+  const predictionPath = 'src/data/horizon/prediction-history.json';
+  const predictionHistory = readJson(join(ROOT, predictionPath));
+  const predictionPayload = { schema: 1, revision: '0'.repeat(64), history: predictionHistory };
+  errors.push(...validatePredictionPayload(predictionPayload));
+  const refs = new Set(['HEAD']);
+  if (git(['for-each-ref', '--format=%(refname)', 'refs/remotes/origin/main'])) refs.add('origin/main');
+  if (process.env.GITHUB_EVENT_PATH) {
+    const event = readJson(process.env.GITHUB_EVENT_PATH);
+    const before = event.pull_request?.base?.sha || event.before;
+    if (before && /^[a-f0-9]{40}$/.test(before) && !/^0+$/.test(before)) refs.add(before);
+  }
+  for (const ref of refs) {
+    if (!git(['ls-tree', '-r', '--name-only', ref, '--', predictionPath])) continue;
+    const previous = JSON.parse(git(['show', `${ref}:${predictionPath}`]));
+    errors.push(...validatePredictionPayload(predictionPayload, previous).map(error => `${ref}: ${error}`));
+  }
+} catch (error) { errors.push(`Prediction history could not be checked against Git: ${error.message}`); }
 
 const radarRefs = listBasenames(RADAR_DIR, '.json');
 const thoughtRefs = listBasenames(THOUGHTS_DIR, '.md');

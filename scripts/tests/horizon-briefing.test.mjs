@@ -17,7 +17,7 @@ test('all fifteen briefings preserve their selected claim, action and complete s
     assert.ok(text.includes(`Scenario date wording: ${scenario[view].timeframe}\n`));
     assert.ok(text.includes('Illustrative editorial scenarios, not calibrated probabilities.'));
     assert.ok(text.includes('It does not predict an exact arrival date.'));
-    assert.ok(text.includes(`https://softcat.ai/horizon/?future=${future}&view=${view}`));
+    assert.ok(text.includes(`https://softcat.ai/horizon/scenarios/?future=${future}&view=${view}`));
     for (const source of record.evidence) for (const value of [source.title, source.url, source.date_label, source.finding, source.limit]) assert.ok(text.includes(value));
     for (const otherView of STANCES.filter(item => item !== view)) assert.ok(!text.includes(brief.moves[otherView]));
     assert.equal(text.includes(EDUCATION_PRAGMATIC_SCOPE), future === 'education' && view === 'pragmatic');

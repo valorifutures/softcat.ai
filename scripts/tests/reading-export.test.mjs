@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { readingExport } from '../../src/lib/reading-export.mjs';
+import { latestPredictions } from '../../src/lib/horizon-predictions.mjs';
+import { FUTURES } from '../../src/lib/horizon-explorer.mjs';
 
 const entry = (id, data = {}, body = 'Original body.') => ({ id, body, data: { title: id, date: new Date('2026-03-01'), tags: [], ...data } });
 
@@ -45,4 +48,19 @@ test('tool corrections include exact earlier text and evidence without changing 
   assert.match(output, /https:\/\/github.com\/valorifutures\/softcat.ai\/pull\/213/);
   assert.deepEqual(entries.map(record => record.id), ['z', 'a']);
   assert.ok(output.indexOf('### a') < output.indexOf('### z'));
+});
+
+test('Horizon exports the current predictions with exact targets, tests, review dates and evidence limitations', () => {
+  const history = JSON.parse(readFileSync(new URL('../../src/data/horizon/prediction-history.json', import.meta.url)));
+  const predictions = latestPredictions(history);
+  const output = readingExport({ predictions });
+  assert.equal(predictions.length, 5);
+  assert.match(output, /not guarantees or dates supplied by the cited sources/);
+  assert.match(output, /An elapsed countdown does not establish that the milestone was achieved/);
+  for (const record of predictions) {
+    const { key } = FUTURES.find(future => future.id === record.id);
+    assert.ok(output.includes(`URL: https://softcat.ai/horizon/?future=${key}`));
+    for (const value of [record.title, record.milestone, record.target_date, record.reviewed_at, record.rationale, record.uncertainty, record.earlier, record.later, ...record.resolution]) assert.ok(output.includes(value), value);
+    for (const source of record.evidence) for (const value of [source.title, source.url, source.date_label, source.finding, source.limit]) assert.ok(output.includes(value), value);
+  }
 });

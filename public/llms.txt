@@ -19,7 +19,8 @@
 
 Publication, correction and source-check dates have different meanings. A new site build does not make an old report current. Pipeline records do not establish live server health.
 
-- [Horizon: five possible AI futures](https://softcat.ai/horizon)
+- [Horizon: our predictions, five countdowns](https://softcat.ai/horizon)
+- [Alternative AI scenarios](https://softcat.ai/horizon/scenarios)
 - [Horizon evidence and history](https://softcat.ai/horizon/record)
 - [Horizon evidence review](https://softcat.ai/horizon/review)
 - [Pipeline records and known limits](https://softcat.ai/pipeline)
@@ -34,4 +35,4 @@ Publication, correction and source-check dates have different meanings. A new si
 
 - [Published text with corrections, recipe checks and source links](https://softcat.ai/llms-full.txt)
 
-The text export contains the published news archive, notebook and thoughts, local tool guides, prompt recipes and glossary. It excludes retired material and unpublished drafts. Interactive tools, Horizon data and Feral artefacts are available through the pages above. Recipe examples are targets to inspect, not recorded model responses.
+The text export contains our current Horizon predictions with their target dates, resolution tests and evidence limits, plus the published news archive, notebook and thoughts, local tool guides, prompt recipes and glossary. It excludes retired material and unpublished drafts. Interactive tools, alternative Horizon scenarios and Feral artefacts are available through the pages above. Recipe examples are targets to inspect, not recorded model responses.
