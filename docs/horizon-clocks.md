@@ -1,8 +1,48 @@
 # Maintaining the Horizon clocks
 
-The counters display the passage of time against published editorial scenarios.
-They are not calibrated probabilities, deadlines for a visitor to act or claims
-that a capability will arrive on a particular day.
+## Our prediction day counters
+
+The main `/horizon/` page displays one remaining-day count for each of our five
+predictions in `prediction-history.json`. Each count uses the end of its actual
+`target_date` in UTC minus the current time. Full days are rounded down and the
+last 24 hours display `<1 day`. An elapsed target requests review, not a claim
+that the milestone was achieved.
+
+The matching hours/minutes/seconds were removed on 15 September: every target
+ended at midnight, so those remainders added no information. The page now
+recalculates just after UTC midnight, on return to a visible page and when a new
+published review arrives. There is no per-second animation or pause control.
+
+Current targets retain their original year-end precision. A future evidence
+review can publish any valid ISO date when its reasoning justifies it. The
+countdown must use that date without snapping it back to 31 December. Showing
+days is arithmetic, not evidence that the forecast is accurate to a day. Never
+invent a target adjustment to make the five counters look different.
+
+Append reviews without changing earlier records. A partial review affects only
+the included futures. Each revised card and history entry reports the change in
+days between its old and new targets. This excludes ordinary time passing.
+Changed milestones retain a separate scope-change label even if their dates
+also move. The card shows the actual last evidence-review date. A build or a
+client update check does not count as reassessing evidence.
+
+`/horizon/prediction-data.json` refreshes on load, every five visible minutes and
+when the page becomes visible. Validate the whole payload and its append-only
+history before atomic replacement. Retain selection and the last verified data
+on failure. Briefings copied from the page include the displayed day count and
+its UTC snapshot time, alongside the forecast date and sources.
+
+The weekly evidence task reviews these five predictions. See
+`docs/site-operations.md`. The browser only retrieves published decisions. It
+does not itself research or generate a fresh prediction. Regression fixtures
+cover a 37-day partial revision, elapsed time separately from evidence movement,
+leap days, midnight boundaries, invalid dates and rejected history rewrites.
+
+## Alternative scenario clocks
+
+The original clocks remain at `/horizon/scenarios/`. They display time against
+published editorial scenarios. They are not calibrated probabilities, deadlines
+for a visitor to act or claims that a capability will arrive on a particular day.
 
 ## Display conventions
 
@@ -58,7 +98,8 @@ payload and retained history before replacing it atomically. An older cached
 response cannot roll back a recorded review. Selection and URL state survive.
 Failures retain the last verified review and expose a manual retry.
 
-This refreshes published decisions. It does not scrape new research, assess
-sources automatically or reactivate the disabled recurring improvement loop.
+This refreshes published scenario decisions. It does not scrape new research
+or assess sources automatically. The current scheduled evidence task reviews
+our separate predictions, not these scenarios by implication.
 The one-second counters do not generate network traffic or screen-reader live
 announcements. The visitor can pause them without losing their selected view.

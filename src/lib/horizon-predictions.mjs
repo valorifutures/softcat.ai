@@ -1,5 +1,5 @@
 import { FUTURES } from './horizon-explorer.mjs';
-import { scenarioClock } from './horizon-clocks.mjs';
+import { formatClockDate } from './horizon-clocks.mjs';
 
 function canonical(value) {
   if (Array.isArray(value)) return value.map(canonical);
@@ -9,7 +9,8 @@ function canonical(value) {
 const same = (a, b) => JSON.stringify(canonical(a)) === JSON.stringify(canonical(b));
 const text = value => typeof value === 'string' && value.trim().length > 0;
 const realDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;
-const predictionDate = value => realDate(value) && /^[1-9]\d{3}-12-31$/.test(value);
+const predictionDate = value => realDate(value) && /^[1-9]\d{3}-\d{2}-\d{2}$/.test(value);
+const DAY_MS = 86400000;
 const safeSource = value => {
   if (typeof value !== 'string' || /\s/.test(value)) return false;
   try { const url = new URL(value); return url.protocol === 'https:' && !!url.hostname && !url.username && !url.password; } catch { return false; }
@@ -25,12 +26,17 @@ export function latestPredictions(history) {
 }
 
 export function predictionMovement(previous, current) {
-  if (!previous) return { kind: 'baseline', label: 'First prediction' };
-  if (previous.milestone !== current.milestone || !same(previous.resolution, current.resolution)) return { kind: 'scope', label: 'Milestone changed' };
-  if (previous.target_date === current.target_date) return { kind: 'unchanged', label: 'Prediction unchanged' };
-  return current.target_date < previous.target_date
-    ? { kind: 'earlier', label: 'Prediction moved earlier' }
-    : { kind: 'later', label: 'Prediction moved later' };
+  if (!previous) return { kind: 'baseline', label: 'Initial estimate', deltaDays: null, dateChangeLabel: null };
+  // Compare published dates, never countdown snapshots taken on different days.
+  const deltaDays = predictionDate(previous.target_date) && predictionDate(current.target_date)
+    ? (Date.parse(current.target_date) - Date.parse(previous.target_date)) / DAY_MS
+    : null;
+  const days = Math.abs(deltaDays ?? 0);
+  const dateChangeLabel = deltaDays ? `${days.toLocaleString('en-GB')} ${days === 1 ? 'day' : 'days'} ${deltaDays < 0 ? 'earlier' : 'later'}` : null;
+  if (previous.milestone !== current.milestone || !same(previous.resolution, current.resolution)) return { kind: 'scope', label: 'Milestone changed', deltaDays, dateChangeLabel };
+  if (deltaDays === null) return { kind: 'undated', label: 'Date comparison unavailable', deltaDays, dateChangeLabel };
+  if (deltaDays === 0) return { kind: 'unchanged', label: 'No days added or removed', deltaDays, dateChangeLabel };
+  return { kind: deltaDays < 0 ? 'earlier' : 'later', label: dateChangeLabel, deltaDays, dateChangeLabel };
 }
 
 export function predictionHistory(history, id) {
@@ -44,11 +50,26 @@ export function predictionHistory(history, id) {
   });
 }
 
-// A year-end editorial forecast is not a prediction of an exact arrival day.
-// Reuse the inclusive UTC year boundary, including the whole of 31 December.
+export function predictionTargetLabel(record) {
+  if (!predictionDate(record?.target_date)) return 'No prediction date';
+  return record.target_date.endsWith('-12-31')
+    ? `By end of ${record.target_date.slice(0, 4)}`
+    : `By ${formatClockDate(record.target_date)}`;
+}
+
+// Count through the complete published date in UTC. Day totals are countdown
+// arithmetic, not evidence of precision in the underlying editorial forecast.
 export function predictionClock(record, now) {
-  const clock = scenarioClock(predictionDate(record?.target_date) ? `by end of ${record.target_date.slice(0, 4)}` : '', now);
-  return { ...clock, label: clock.phase === 'deadline' ? 'Our prediction deadline in' : clock.phase === 'elapsed' ? 'Prediction deadline elapsed' : 'No prediction date' };
+  const wording = predictionTargetLabel(record);
+  if (!predictionDate(record?.target_date) || !Number.isFinite(now)) return { phase: 'undated', label: 'No prediction date', target: null, wording };
+  const target = Date.parse(record.target_date) + DAY_MS;
+  if (now >= target) return { phase: 'elapsed', label: 'Prediction deadline elapsed', target: null, wording };
+  const remaining = Math.ceil((target - now) / 1000);
+  return {
+    phase: 'deadline', label: 'Our prediction deadline in', target, wording,
+    days: Math.floor((target - now) / DAY_MS), hours: Math.floor(remaining / 3600) % 24,
+    minutes: Math.floor(remaining / 60) % 60, seconds: remaining % 60,
+  };
 }
 
 export function predictionCaption(clock) {
@@ -59,7 +80,7 @@ export function predictionCaption(clock) {
   return { value, unit, destination, summary: `${clock.days === 0 ? 'Less than 1 day' : `${value} ${unit}`} ${destination}` };
 }
 
-export function predictionBriefing(history, id, brief) {
+export function predictionBriefing(history, id, brief, now) {
   const future = FUTURES.find(future => future.id === id) ?? FUTURES.find(future => future.key === 'agents');
   const record = latestPredictions(history).find(record => record.id === future.id);
   if (!record || brief?.id !== future.id) throw new Error('The selected prediction needs its matching decision brief.');
@@ -67,11 +88,17 @@ export function predictionBriefing(history, id, brief) {
     `${index + 1}. ${source.title} (${source.date_label})`, source.url,
     `Finding: ${source.finding}`, `The limit: ${source.limit}`,
   ].join('\n')).join('\n\n');
+  const targetLabel = predictionTargetLabel(record);
+  const targetWording = targetLabel.replace(/^By end of /, 'by the end of ').replace(/^By /, 'by ');
+  const snapshot = Number.isFinite(now)
+    ? [`Countdown snapshot, ${new Date(now).toISOString()} (UTC)\n${predictionCaption(predictionClock(record, now)).summary}. The days count down with time and are recalculated when we publish a changed prediction.`]
+    : [];
   return [
     `SOFT CAT .ai / Our Horizon prediction\n${record.title}`,
-    `We predict this milestone by the end of ${record.target_date.slice(0, 4)}. This is our editorial judgement, not a guarantee or a prediction of an exact arrival day.`,
+    `We predict this milestone ${targetWording}. This is our editorial judgement, not a guarantee or a prediction of an exact arrival day.`,
     `Our prediction\n${record.milestone}`,
-    `Prediction deadline: ${record.target_date} (end of year, UTC)\nReviewed: ${record.reviewed_at}`,
+    `Prediction deadline: ${record.target_date} (inclusive, UTC)\n${targetLabel}\nReviewed: ${record.reviewed_at}`,
+    ...snapshot,
     `What would count\n${record.resolution.map(item => `• ${item}`).join('\n')}`,
     `Why we predict this\n${record.rationale}`,
     `Uncertainty\n${record.uncertainty}`,
@@ -104,7 +131,7 @@ export function validatePredictionHistory(history, today = new Date().toISOStrin
       if (!futureIds.has(record.id) || reviewed.has(record.id)) errors.push(`Prediction history entry ${index}: unknown or repeated future.`);
       reviewed.add(record.id);
       for (const key of ['title', 'milestone', 'rationale', 'uncertainty', 'earlier', 'later']) if (!text(record[key])) errors.push(`${record.id}: missing or malformed ${key}.`);
-      if (!predictionDate(record.target_date)) errors.push(`${record.id}: prediction target_date must be a real ISO year-end date (YYYY-12-31).`);
+      if (!predictionDate(record.target_date)) errors.push(`${record.id}: prediction target_date must be a real ISO date (YYYY-MM-DD).`);
       if (!Array.isArray(record.resolution) || !record.resolution.length || record.resolution.some(item => !text(item))) errors.push(`${record.id}: explicit resolution criteria are required.`);
       if (!Array.isArray(record.evidence) || !record.evidence.length) errors.push(`${record.id}: direct evidence and its limits are required.`);
       else for (const source of record.evidence) if (!source || typeof source !== 'object' || !safeSource(source.url) || !['title', 'date_label', 'finding', 'limit'].every(key => text(source[key]))) errors.push(`${record.id}: incomplete or unsafe evidence snapshot.`);

@@ -37,6 +37,9 @@
 .hz-clocks-heading > p { display: flex; gap: 0.5rem; align-items: center; }
 .hz-clock-dot { width: 6px; height: 6px; border-radius: 50%; background: #c4e599; flex-shrink: 0; }
 .hz-clocks-heading button { min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
+.hz-predictions .hz-clocks-heading { flex-wrap: wrap; }
+.hz-predictions .hz-clocks-heading a { min-height: 44px; display: inline-flex; align-items: center; text-decoration: underline; text-underline-offset: 4px; }
+.hz-predictions .hz-clock-face { min-height: 7rem; }
 .hz-clock-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.65rem; }
 .horizon-page .hz-clock { display: flex; flex-direction: column; min-width: 0; text-align: left; padding: 1rem; background: #2c3c2e; border: 1px solid #4b5e45; border-radius: 3px; color: #eff2e7; transition: background 160ms ease, border-color 160ms ease; }
 .horizon-page .hz-clock:hover { background: #3a4c36; border-color: #a4bd8f; }
@@ -193,6 +196,9 @@
 .hz-prediction-detail .hz-prediction-claim { font-size: 1.16rem !important; line-height: 1.6 !important; margin-top: 1.2rem !important; }
 .hz-prediction-detail .hz-prediction-stamp { font: 0.66rem/1.8 var(--font-mono) !important; color: var(--hz-muted); margin-top: 1rem !important; }
 .hz-prediction-detail h3 { font-weight: 500; font-size: 0.86rem; margin-top: 1.5rem; color: var(--hz-accent); }
+.hz-day-calculation { border-block: 1px solid var(--hz-rule); padding: 1rem 0; margin-top: 1.25rem; }
+.hz-day-calculation h3 { margin-top: 0; }
+.hz-day-calculation p { font-size: 0.83rem; line-height: 1.7; margin-top: 0.5rem; }
 .hz-prediction-test { border-block: 1px solid var(--hz-rule); margin-top: 1.6rem; padding-block: 0.3rem; }
 .hz-prediction-test summary { min-height: 48px; align-content: center; cursor: pointer; font-weight: 500; }
 .hz-prediction-test[open] { padding-bottom: 1rem; }
