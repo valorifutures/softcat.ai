@@ -102,13 +102,18 @@ export default function HorizonPredictions({ initialData, initialNow, briefs }: 
 
   async function copy(value: string, kind: 'link' | 'briefing') {
     clearCopy(); const request = copyRequest.current;
+    setCopyState('Copying…');
+    let timeout: ReturnType<typeof setTimeout> | undefined;
     try {
-      await navigator.clipboard.writeText(value);
+      await Promise.race([
+        navigator.clipboard.writeText(value),
+        new Promise((_, reject) => { timeout = setTimeout(() => reject(new Error('Clipboard unavailable')), 1500); }),
+      ]);
       if (request === copyRequest.current) setCopyState(kind === 'link' ? 'Prediction link copied' : 'Prediction briefing copied with sources');
     } catch {
       if (request !== copyRequest.current) return;
       setCopyState('Select and copy the text below'); setCopyFallback(value);
-    }
+    } finally { clearTimeout(timeout); }
   }
 
   return <div class="hz-explorer hz-predictions" id="outlook">
