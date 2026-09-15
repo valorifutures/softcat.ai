@@ -54,14 +54,14 @@ export function readingExport({ news = [], thoughts = [], tools = [], prompts = 
     'Removal records: https://softcat.ai/thoughts/review | https://softcat.ai/prompts/review | https://softcat.ai/tools/review',
   ];
   if (predictions.length) {
-    sections.push('\n## Horizon: our predictions, five countdowns\n', 'These are our editorial judgements, not guarantees or dates supplied by the cited sources. Each year-end target is a deadline for the defined milestone, not a prediction of an exact arrival day. An elapsed countdown does not establish that the milestone was achieved.\n');
+    sections.push('\n## Horizon: our predictions, five countdowns\n', 'These are our editorial judgements, not guarantees or dates supplied by the cited sources. Each target date is a deadline for the defined milestone. The initial forecasts use year-end targets. Their day counts decrease with time and are recalculated when an evidence review changes a target. An elapsed countdown does not establish that the milestone was achieved.\n');
     for (const record of predictions) {
       const future = FUTURES.find(future => future.id === record.id);
       sections.push(
         `### ${record.title}`,
         `URL: ${site}/horizon/?future=${future.key}`,
         `Our prediction: ${record.milestone}`,
-        `Prediction deadline: ${record.target_date} (end of year, UTC)`,
+        `Prediction deadline: ${record.target_date} (inclusive, UTC)`,
         `Reviewed: ${record.reviewed_at}`,
         '\nWhat would count:', ...record.resolution.map(rule => `- ${rule}`),
         `\nWhy we predict this: ${record.rationale}`,
