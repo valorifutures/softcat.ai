@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { FUTURES, STANCES, horizonSearch, markPosition, parseTimeframe, readHorizonState, timelineDomain } from '../lib/horizon-explorer.mjs';
 import { CLOCK_REFRESH_MS, clockHistory, validateClockPayload } from '../lib/horizon-clocks.mjs';
+import { EDUCATION_PRAGMATIC_SCOPE, horizonBriefing } from '../lib/horizon-briefing.mjs';
 import HorizonClocks from './HorizonClocks';
 import HorizonClockHistory from './HorizonClockHistory';
 import type { ClockData, Stance } from '../lib/horizon-types';
@@ -19,6 +20,8 @@ export default function HorizonExplorer({ initialData, initialNow }: Props) {
   const [announcement, setAnnouncement] = useState('');
   const [copyState, setCopyState] = useState('');
   const [shareFallback, setShareFallback] = useState('');
+  const [briefingFallback, setBriefingFallback] = useState('');
+  const copyRequest = useRef(0);
   const [refreshState, setRefreshState] = useState('');
   const checkReview = useRef<() => void>(() => {});
   const ordered = FUTURES.map(future => ({ ...future, scenario: scenarios.find(s => s.id === future.id)!, record: review.futures.find(s => s.id === future.id)! }));
@@ -30,7 +33,7 @@ export default function HorizonExplorer({ initialData, initialNow }: Props) {
   const domain = timelineDomain(scenarios, referenceYear);
 
   useEffect(() => {
-    const restore = () => { setState(readHorizonState(window.location.search)); setCopyState(''); setShareFallback(''); };
+    const restore = () => { setState(readHorizonState(window.location.search)); clearCopy(); };
     restore();
     setReady(true);
     window.addEventListener('popstate', restore);
@@ -54,6 +57,7 @@ export default function HorizonExplorer({ initialData, initialNow }: Props) {
         if (next.revision !== currentData.current.revision) {
           currentData.current = next;
           setData(next);
+          clearCopy();
           setAnnouncement('Published Horizon data updated. Your selected future and outlook are preserved.');
           setRefreshState('Published data updated');
         } else setRefreshState('Published reviews checked');
@@ -68,29 +72,43 @@ export default function HorizonExplorer({ initialData, initialNow }: Props) {
     return () => { stopped = true; clearInterval(timer); controller?.abort(); document.removeEventListener('visibilitychange', refresh); };
   }, []);
 
+  function clearCopy() {
+    copyRequest.current += 1;
+    setCopyState('');
+    setShareFallback('');
+    setBriefingFallback('');
+  }
+
   function choose(next: typeof state) {
     if (state.future === next.future && state.view === next.view) return;
     setState(next);
-    setCopyState('');
-    setShareFallback('');
+    clearCopy();
     const name = ordered.find(s => s.key === next.future)!.record.title;
     setAnnouncement(`${titleCase(next.view)} scenario for ${name}. The decision brief, details, evidence and clock history are updated below.`);
     const url = `${window.location.pathname}${horizonSearch(window.location.search, next)}${window.location.hash}`;
     window.history.pushState(null, '', url);
   }
 
-  async function copyView() {
+  async function copyText(value: string, kind: 'link' | 'briefing') {
+    clearCopy();
+    const request = copyRequest.current;
+    try {
+      await navigator.clipboard.writeText(value);
+      if (request !== copyRequest.current) return;
+      setCopyState(kind === 'link' ? 'Link copied' : 'Briefing copied with sources');
+    } catch {
+      if (request !== copyRequest.current) return;
+      setCopyState(kind === 'link' ? 'Copy the link below' : 'Select and copy the briefing below');
+      if (kind === 'link') setShareFallback(value);
+      else setBriefingFallback(value);
+    }
+  }
+
+  function copyView() {
     const url = new URL(window.location.href);
     url.search = horizonSearch(url.search, state);
     url.hash = '';
-    try {
-      await navigator.clipboard.writeText(url.href);
-      setCopyState('Link copied');
-      setShareFallback('');
-    } catch {
-      setCopyState('Copy the link below');
-      setShareFallback(url.href);
-    }
+    return copyText(url.href, 'link');
   }
 
   return <div class="hz-explorer" id="outlook">
@@ -130,14 +148,15 @@ export default function HorizonExplorer({ initialData, initialNow }: Props) {
         <p class="hz-legend">{stance === 'pragmatic' ? 'Bars show the stated date windows.' : stance === 'optimistic' ? 'Diamonds mark “by” dates, not exact arrival predictions.' : 'Open-ended claims keep their wording. No precise year is implied.'} Editorial scenarios, not probabilities. <a href="#method">Date assumptions from {dateLabel(review.dates_origin)}.</a></p>
         </details>
         <div class="hz-watch"><p class="hz-label">What to watch · {selected.record.title}</p><p>{selected.record.watch}</p><a href="#horizon-evidence">Explore the evidence <span aria-hidden="true">↓</span></a></div>
-        <div class="hz-map-actions"><a href="#horizon-detail" class="hz-mobile-detail">Read this future ↓</a><button type="button" class="hz-text-button" disabled={!ready} onClick={copyView}>Copy this view <span aria-hidden="true">↗</span></button><span role="status" class="hz-copy-status">{copyState}</span></div>
+        <div class="hz-map-actions"><a href="#horizon-detail" class="hz-mobile-detail">Read this future ↓</a><button type="button" class="hz-text-button" disabled={!ready} onClick={copyView}>Copy this view <span aria-hidden="true">↗</span></button><button type="button" class="hz-text-button" disabled={!ready} onClick={() => copyText(horizonBriefing(data, state), 'briefing')}>Copy briefing</button><span role="status" class="hz-copy-status">{copyState}</span></div>
         {shareFallback && <label class="hz-share-fallback">Link to this view<input readOnly value={shareFallback} onFocus={event => event.currentTarget.select()} /></label>}
+        {briefingFallback && <label class="hz-share-fallback">Briefing with sources<textarea readOnly rows={12} value={briefingFallback} onFocus={event => event.currentTarget.select()} /></label>}
       </section>
 
       <aside class="hz-detail" id="horizon-detail" aria-labelledby="horizon-detail-title">
         <p class="hz-label">{titleCase(stance)} scenario</p><h3 id="horizon-detail-title">{selected.record.title}</h3>
         <p class="hz-definition">{selected.scenario.definition}</p>
-        {state.future === 'education' && stance === 'pragmatic' && <p class="hz-scope-note"><strong>Scope of this view</strong>Partial change within existing institutions. This date window does not describe the full replacement threshold above.</p>}
+        {state.future === 'education' && stance === 'pragmatic' && <p class="hz-scope-note"><strong>Scope of this view</strong>{EDUCATION_PRAGMATIC_SCOPE}</p>}
         <dl class="hz-brief">
           <div><dt>What this assumes</dt><dd>{branch.assumptions}</dd></div>
           <div><dt>What could change this view</dt><dd>{branch.blockers}</dd></div>

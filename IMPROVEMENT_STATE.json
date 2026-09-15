@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-13T21:14:26.809516Z",
-  "phase": "horizon-clocks-handover",
-  "active_branch": null,
+  "updated_at": "2026-09-15T19:35:54.641202+00:00",
+  "phase": "horizon-days-release",
+  "active_branch": "improve/horizon-days",
   "last_verified_deployment": {
     "sha": "fe8966567b88278985a888dab71fbf54c65102f8",
     "at": "2026-09-13T21:12:13Z",
@@ -38,19 +38,19 @@
     "PR #221 passed hosted validation and Pages run 34780043251. The returning browser now sees the refreshed Horizon search entry. The maintainer then authorised five evidence-responsive countdowns, CEO planning prompts, repeated checks and release.",
     "The five live clocks, pause/resume, per-future revision history and next-90-days briefs are built. A published data endpoint refreshes open pages after schema and append-only history validation. All 119 JavaScript tests, 141 bot tests, twelve publication fixtures, data validators and the 634-page build/audit pass. Hosted release and live visual checks are next.",
     "PR #222 passed all hosted gates in run 34782457263 and deployed in Pages run 34782508824. Live checks confirmed five ticking clocks, pause/resume, every future briefing, all three outlooks, pragmatic education scope, expandable evidence history, the timeline, keyboard controls, browser Back, actual copy/paste and countdown search. No desktop overflow was observed. Final wording/control refinements and a per-100-case agent measure pass focused tests, production build and the publication audit.",
-    "PR #223 passed hosted run 34783011652 and deployed successfully in Pages run 34783068673. An already-open agent/optimistic page received the new per-100-case briefing through its review check without reloading or losing selection. The new page shows Close for an expanded history entry and the corrected method explanation. The live decision screenshot exposed a flex layout that split 90 across two lines; the final CSS keeps that numeral together and lets the adjacent briefing wrap."
+    "PR #223 passed hosted run 34783011652 and deployed successfully in Pages run 34783068673. An already-open agent/optimistic page received the new per-100-case briefing through its review check without reloading or losing selection. The new page shows Close for an expanded history entry and the corrected method explanation. The live decision screenshot exposed a flex layout that split 90 across two lines; the final CSS keeps that numeral together and lets the adjacent briefing wrap.",
+    "The days-first countdowns and copyable Horizon briefings pass 123 JavaScript tests, 141 bot tests, twelve publication fixtures, all data validators and the 634-page production audit. Independent review found no must-fix issues. The local browser preview is blocked by the environment; hosted release and live interaction checks are next."
   ],
   "next": [
-    "Await maintainer feedback after the bounded clocks release. The recurring loop remains disabled.",
-    "Keep any future scenario changes tied to an appended evidence review, including changes of scope and decisions to retain dates.",
-    "Real mobile device coverage and the separate bot host remain unverified."
+    "Complete the gated release of improve/horizon-days and verify the live clock cards, all outlooks, pause/resume and briefing copy.",
+    "Keep future scenario changes tied to an appended evidence review. The recurring loop remains disabled."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven active forecasts with explicit tests and withdraws eight. Their original April claims are preserved."
   ],
-  "session": "The maintainer explicitly authorised plan, build, improve, check and release of five Horizon scenario clocks on 13 September. This is a bounded follow-up release. The recurring improvement loop remains disabled.",
+  "session": "The maintainer authorised clearer day countdowns and useful companion improvements on 15 September. This bounded release adds explicit countdown destinations, evidence labels and a copyable briefing. The recurring loop remains disabled.",
   "verification_limits": [
     "Live desktop rendering and keyboard interactions were inspected. Narrow layout breakpoints and wrapping were reviewed in CSS. The browser did not expose a mobile viewport, and a zoom shortcut did not change its viewport. This is not recorded as a mobile device test."
   ]

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { clockHistory, clockMovement, scenarioClock, validateClockHistory, validateClockPayload } from '../../src/lib/horizon-clocks.mjs';
+import { clockCaption, clockHistory, clockMovement, scenarioClock, validateClockHistory, validateClockPayload } from '../../src/lib/horizon-clocks.mjs';
 import { FUTURES, STANCES } from '../../src/lib/horizon-explorer.mjs';
 
 const read = name => JSON.parse(readFileSync(new URL(`../../src/data/horizon/${name}.json`, import.meta.url)));
@@ -46,6 +46,21 @@ test('a fractional last second remains visible; time passing cannot move the tar
   const seconds = clock => clock.days * 86400 + clock.hours * 3600 + clock.minutes * 60 + clock.seconds;
   assert.equal(first.target, later.target);
   assert.equal(seconds(first) - seconds(later), 1);
+});
+
+test('day captions do not report zero days before a boundary or mistake an open window for an arrival', () => {
+  const boundary = Date.UTC(2029, 0, 1);
+  const lastDay = clockCaption(scenarioClock('2029–2031', boundary - 86400000));
+  assert.equal(lastDay.summary, '1 day until this scenario’s window opens');
+  for (const remaining of [86399000, 100]) {
+    const caption = clockCaption(scenarioClock('2029–2031', boundary - remaining));
+    assert.equal(caption.value, '<1');
+    assert.equal(caption.summary, 'Less than 1 day until this scenario’s window opens');
+  }
+  assert.match(clockCaption(scenarioClock('2029–2031', boundary)).summary, /days until this scenario’s window closes$/);
+  assert.match(clockCaption(scenarioClock('by 2028', boundary - 100)).summary, /until this scenario’s deadline$/);
+  assert.equal(clockCaption(scenarioClock('by 2028', boundary)).summary, 'Review due. Deadline elapsed');
+  assert.equal(clockCaption(scenarioClock('not this generation', now)).summary, 'Open-ended. No dated boundary');
 });
 
 test('all five sceptical views and invalid time inputs have no invented countdown', () => {

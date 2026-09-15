@@ -613,3 +613,13 @@ PR #223 passed hosted validation in run 34783011652 and merged as fe8966567b8827
 The reloaded page showed Close for its expanded September history entry and the corrected static method explanation. The final CEO briefing screenshot exposed a layout defect: the flex row could shrink the decorative 90 until its digits wrapped vertically. The final CSS prevents that numeral from shrinking or wrapping and allows the adjacent briefing column to wrap normally. The browser did not expose a mobile viewport, so narrow breakpoints remain a CSS review rather than a device test.
 
 The checkpoint records the verified clock releases and clears active work for handover. The recurring loop remains disabled. The final layout change still goes through the normal production build, publication audit and hosted checks before release.
+
+## 15 September 2026, making the days unmistakable
+
+The maintainer asked for the large number of days to be the centrepiece of each countdown, and authorised useful companion improvements. Each dated card now reads as a day count followed by its destination: the scenario window opening, the window closing or the scenario deadline. Hours, minutes and seconds are smaller. A final partial day displays <1 day, with an accessible label of “Less than 1 day”. Existing UTC arithmetic, inclusive final years, pause/resume, undated outlooks and elapsed-window review states are preserved.
+
+The review line now explicitly says Window unchanged, Deadline unchanged or Still undated, followed by Reviewed and the actual evidence date. The clock note distinguishes time counting down from evidence moving the target. No scenario date, source or historical review was changed.
+
+Copy briefing complements the existing shareable view link. It includes the selected outlook, original date wording, threshold and applicable scope, assumptions, next-90-days move, success measure, assessment and every primary source with its limitations. It carries the selected future’s actual review date and the illustrative-scenario qualification. Clipboard failures expose selectable text. Selection changes, browser history and published data revisions clear stale copy feedback.
+
+Local validation passes: 123 JavaScript tests, 141 bot tests, twelve publication fixtures, all data validators and the 634-page production build. The publication audit passes 31,662 internal links, 3,262 asset and metadata references and 393 search entries. An independent review found no must-fix issue. The supported browser cannot open the local preview (ERR_BLOCKED_BY_CLIENT), so live layout and interaction checks follow the gated deployment. Narrow CSS wrapping was reviewed without claiming a mobile device test. The recurring improvement loop remains disabled.

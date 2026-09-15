@@ -27,6 +27,14 @@ export function scenarioClock(timeframe, now) {
   };
 }
 
+export function clockCaption(clock) {
+  if (clock.target === null) return { summary: `${clock.phase === 'elapsed' ? 'Review due' : 'Open-ended'}. ${clock.label}` };
+  const destination = clock.phase === 'opening' ? 'until this scenario’s window opens' : clock.phase === 'open' ? 'until this scenario’s window closes' : 'until this scenario’s deadline';
+  const value = clock.days === 0 ? '<1' : clock.days.toLocaleString('en-GB');
+  const unit = clock.days <= 1 ? 'day' : 'days';
+  return { value, unit, destination, summary: `${clock.days === 0 ? 'Less than 1 day' : `${value} ${unit}`} ${destination}` };
+}
+
 export function clockMovement(previous, current, stance) {
   if (!previous) return { kind: 'baseline', label: 'Baseline' };
   if (previous.definition !== current.definition) return { kind: 'scope', label: 'Scope changed' };

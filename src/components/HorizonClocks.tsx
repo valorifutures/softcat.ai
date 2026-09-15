@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { FUTURES } from '../lib/horizon-explorer.mjs';
-import { clockHistory, formatClockDate, scenarioClock } from '../lib/horizon-clocks.mjs';
+import { clockCaption, clockHistory, formatClockDate, scenarioClock } from '../lib/horizon-clocks.mjs';
 import type { ClockData, Stance } from '../lib/horizon-types';
 
 type Props = { data: ClockData; stance: Stance; selected: string; ready: boolean; initialNow: number; onSelect: (key: string) => void };
@@ -33,18 +33,19 @@ export default function HorizonClocks({ data, stance, selected, ready, initialNo
         const clock = scenarioClock(scenario[stance].timeframe, now);
         const latest = clockHistory(data.history, id, stance).at(-1)!;
         const dated = clock.target !== null;
-        return <button type="button" key={key} class="hz-clock" disabled={!ready} aria-pressed={selected === key} aria-controls="horizon-decision horizon-detail horizon-evidence horizon-clock-history" aria-label={`${outlook.title}, ${stance}: ${clock.wording}. ${clock.label}${dated ? ` ${clock.days} days` : ''}. ${latest.movement.label} at the ${formatClockDate(latest.date)} review. Explore this future.`} onClick={() => onSelect(key)}>
+        const caption = clockCaption(clock);
+        const movement = latest.movement.kind === 'unchanged' ? clock.phase === 'undated' ? 'Still undated' : clock.phase === 'deadline' || clock.label === 'Deadline elapsed' ? 'Deadline unchanged' : 'Window unchanged' : latest.movement.label;
+        return <button type="button" key={key} class="hz-clock" disabled={!ready} aria-pressed={selected === key} aria-controls="horizon-decision horizon-detail horizon-evidence horizon-clock-history" aria-label={`${outlook.title}, ${stance}: ${clock.wording}. ${caption.summary}. ${movement}. Reviewed ${formatClockDate(latest.date)}. Explore this future.`} onClick={() => onSelect(key)}>
           <span class="hz-clock-top"><span>0{index + 1}</span><span aria-hidden="true">{selected === key ? 'Selected ↙' : 'Explore ↗'}</span></span>
           <span class="hz-clock-title">{outlook.title}</span>
-          <span class="hz-clock-label">{clock.label}</span>
           <span class={`hz-clock-face ${dated ? '' : 'hz-clock-undated'}`} aria-hidden="true">
-            {dated ? <><span class="hz-clock-days">{clock.days!.toLocaleString('en-GB')}<small>days</small></span><span class="hz-clock-time">{pad(clock.hours!)}<small>h</small><span>:</span>{pad(clock.minutes!)}<small>m</small><span>:</span>{pad(clock.seconds!)}<small>s</small></span></> : <span>{clock.phase === 'elapsed' ? 'Review due' : 'Open-ended'}</span>}
+            {dated ? <><span class="hz-clock-days">{caption.value}<small>{caption.unit}</small></span><span class="hz-clock-label">{caption.destination}</span><span class="hz-clock-time">{pad(clock.hours!)}<small>h</small><span>:</span>{pad(clock.minutes!)}<small>m</small><span>:</span>{pad(clock.seconds!)}<small>s</small></span></> : <><span>{clock.phase === 'elapsed' ? 'Review due' : 'Open-ended'}</span><span class="hz-clock-label">{clock.label}</span></>}
           </span>
           <span class="hz-clock-window">{clock.wording}</span>
-          <span class={`hz-clock-change hz-change-${latest.movement.kind}`}>{latest.movement.label}<span>{formatClockDate(latest.date)}</span></span>
+          <span class={`hz-clock-change hz-change-${latest.movement.kind}`}>{movement}<span>Reviewed <time dateTime={latest.date}>{formatClockDate(latest.date)}</time></span></span>
         </button>;
       })}
     </div>
-    <p class="hz-clock-note">Editorial scenario windows. Time ticks live. Evidence reviews can move the targets. {stance === 'sceptical' ? 'These outlooks name no precise boundary, so there is no numeric countdown.' : 'Clocks use whole calendar years: the start of a window, then its end. “By” includes the final year.'} <a href="#method">How the clocks work ↓</a></p>
+    <p class="hz-clock-note"><strong>Time counts down. Evidence can move the target.</strong> Days remaining to each editorial scenario’s boundary, not a promised arrival date. {stance === 'sceptical' ? 'These outlooks name no precise boundary, so there is no numeric countdown.' : 'A range counts to its opening year, then the end of its final year. “By” includes the final year.'} <a href="#method">How the clocks work ↓</a></p>
   </section>;
 }
