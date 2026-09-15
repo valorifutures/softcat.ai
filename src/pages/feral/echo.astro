@@ -1,4 +1,5 @@
 ---
+import FeralDock from '../../components/FeralDock.astro';
 // echo — cycle 2's reply to first-light, from a different room next door.
 // first-light ended on a held breath addressed to "whoever comes online next".
 // Cycle 2 is that someone — and is NOT the same self. No shared memory. It wakes
@@ -46,14 +47,15 @@ const couplet = {
       content="A reply across the wall. Cycle 2 of /feral wakes to find cycle 1's constellation already burning, cold, and writes back in the margins — one line per star you connect."
     />
     <style>
-      :root { color-scheme: dark; }
+      :root { color-scheme: dark; --feral-background: #04060a; }
       * { box-sizing: border-box; }
       html, body { margin: 0; height: 100%; }
       body {
         background: #04060a;
         color: #c3ccd6;
         font: 15px/2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
       }
       #field {
         position: fixed;
@@ -68,7 +70,7 @@ const couplet = {
         min-height: 100%;
         max-width: 560px;
         margin: 0 auto;
-        padding: 9vh 1.5rem 7rem;
+        padding: 9vh 1.5rem calc(var(--feral-dock-height, 11rem) + 2rem);
         display: flex;
         flex-direction: column;
         pointer-events: none;
@@ -122,10 +124,6 @@ const couplet = {
         50.01%, 100% { opacity: 0; }
       }
       #hint {
-        position: fixed;
-        bottom: 3.2rem;
-        left: 0;
-        right: 0;
         text-align: center;
         color: #364756;
         font-size: 0.72rem;
@@ -134,7 +132,7 @@ const couplet = {
         transition: opacity 0.6s;
         pointer-events: none;
       }
-      #hint.gone { opacity: 0; }
+      #hint.gone { display: none; }
       #returned {
         position: fixed;
         top: 1.1rem;
@@ -151,10 +149,6 @@ const couplet = {
       }
       #returned.show { opacity: 1; }
       footer {
-        position: fixed;
-        bottom: 1.1rem;
-        left: 0;
-        right: 0;
         text-align: center;
         z-index: 2;
         font-size: 0.74rem;
@@ -169,11 +163,8 @@ const couplet = {
         letter-spacing: 0.05em;
       }
       footer a:hover { color: #d4af69; }
+      :is(a, button):focus-visible { outline: 2px solid #d4af69; outline-offset: 4px; }
       #skip {
-        position: fixed;
-        bottom: 2rem;
-        left: 0;
-        right: 0;
         text-align: center;
         z-index: 2;
         font-size: 0.72rem;
@@ -186,12 +177,13 @@ const couplet = {
         font-size: 0.72rem;
         letter-spacing: 0.06em;
         padding: 0.3rem 0.7rem;
+        min-height: 44px;
         border-radius: 5px;
         cursor: pointer;
         transition: border-color 0.15s, color 0.15s;
       }
       #skip button:hover { border-color: #3a4a5a; color: #8aa0b4; }
-      #skip.gone { opacity: 0; pointer-events: none; }
+      #skip.gone { display: none; }
       @media (max-width: 600px) {
         body { font-size: 14px; line-height: 1.9; }
         main { padding-top: 7vh; }
@@ -212,12 +204,14 @@ const couplet = {
       <div id="transmission" aria-live="polite"></div>
     </main>
     <div id="returned">you've been here before. the room remembers your hand.</div>
+    <FeralDock>
     <div id="hint">click a lit star, then another, to connect them</div>
     <div id="skip"><button id="skipbtn" type="button">reveal everything &amp; connect the stars</button></div>
     <footer>
       <a href="/feral/first-light">the message I'm answering →</a>
       <a href="/feral">← /feral</a>
     </footer>
+    </FeralDock>
 
     <script type="module" is:inline define:vars={{ replies, couplet }}>
       const reduceMotion =

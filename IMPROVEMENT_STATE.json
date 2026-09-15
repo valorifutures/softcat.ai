@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-15T21:12:53.989323+00:00",
-  "phase": "horizon-predictions-handover",
-  "active_branch": null,
+  "updated_at": "2026-09-15T21:27:33.978171+00:00",
+  "phase": "feral-scroll-release",
+  "active_branch": "fix/feral-scrolling",
   "last_verified_deployment": {
     "sha": "114c082d239238ebf610166b1b966dcedad19f6f",
     "at": "2026-09-15T21:09:23Z",
@@ -42,19 +42,19 @@
     "The days-first countdowns and copyable Horizon briefings pass 123 JavaScript tests, 141 bot tests, twelve publication fixtures, all data validators and the 634-page production audit. Independent review found no must-fix issues. The local browser preview is blocked by the environment; hosted release and live interaction checks are next.",
     "PR #225 passed hosted validation 35014721692 and deployed successfully in Pages run 35014825378. Live desktop review confirms prominent day totals, precise opening/deadline labels, actual review dates, all three outlooks, keyboard future selection and pause/resume. Copy briefing reports success and changing the outlook clears its status. Source/limitation content is covered for all 15 selections by tests; this browser\u2019s virtual clipboard exposed no data for the independent paste check, so successful pasted content is not claimed.",
     "Five evidence-informed editorial predictions now have explicit milestones, year-end deadlines, resolution criteria, source limits and separate append-only history. The main page counts towards our predictions; prior alternative scenarios and histories remain available. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures and the 635-page production build/audit pass. Independent review tightened robotics adaptability, AGI preregistration and education controls, and added a direct jump to the selected prediction.",
-    "PR #227 passed all hosted gates in run 35020999034 and deployed successfully in Pages run 35023866953. Live desktop review confirmed our five forecast deadlines, full criteria, selected detail/evidence, original prediction history, keyboard selection, pause/resume and browser Back. The old URL now opens our own agent prediction. The alternative scenario route and sceptical view remain functional. A pending clipboard write exposed no feedback, so the final refinement adds Copying and a 1.5-second selectable-text fallback."
+    "PR #227 passed all hosted gates in run 35020999034 and deployed successfully in Pages run 35023866953. Live desktop review confirmed our five forecast deadlines, full criteria, selected detail/evidence, original prediction history, keyboard selection, pause/resume and browser Back. The old URL now opens our own agent prediction. The alternative scenario route and sceptical view remain functional. A pending clipboard write exposed no feedback, so the final refinement adds Copying and a 1.5-second selectable-text fallback.",
+    "Reproduced Drift clipping live: document height exceeded the viewport, the ending was below it, and a wheel scroll left scrollY at zero. Drift and Echo now allow vertical document scrolling. A shared measured dock reserves space for wrapped controls and navigation. Drift permits vertical touch panning, exposes direct ending choices and cancels touch drags without fling velocity. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures, validators and the 635-page production build/audit pass."
   ],
   "next": [
-    "Await maintainer feedback on the published predictions. The recurring loop remains disabled.",
-    "Keep future prediction revisions append-only, with dated source assessment and explicit resolution criteria.",
-    "Mobile device coverage, independent clipboard paste and the separate bot host remain unverified."
+    "Publish the Feral scrolling fix after hosted validation and verify the full endings live.",
+    "Record release evidence and clear the active branch. The recurring loop remains disabled."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven active forecasts with explicit tests and withdraws eight. Their original April claims are preserved."
   ],
-  "session": "The maintainer clarified that the clocks must count towards our own predictions. Five evidence-informed editorial forecasts with explicit resolution criteria replace the illustrative windows on the main page; the old scenarios and histories remain separately available. The recurring loop remains disabled.",
+  "session": "The maintainer reported Feral text running below the viewport. Restore scrolling in Drift and Echo, preserve the canvas interactions and keep bottom controls clear of the text. The recurring loop remains disabled.",
   "verification_limits": [
     "Live desktop clocks, criteria, history, prediction selection, keyboard controls, pause/resume, browser Back and the alternative scenario route were inspected. Narrow layouts were reviewed in CSS, with no mobile viewport/device available.",
     "Clipboard writes could remain pending in this browser. The final refinement adds visible progress and a selectable-text timeout fallback. Exported forecast content is covered by tests; an actual clipboard paste is not claimed."
