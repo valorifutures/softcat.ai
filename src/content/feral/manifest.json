@@ -48,5 +48,15 @@
     "concept_by": "feral-director",
     "type": "tool",
     "born": "2026-06-30"
+  },
+  {
+    "slug": "shift",
+    "title": "shift",
+    "blurb": "A control panel for a factory that makes an unspecified product. Three gauges that fight each other, a klaxon that means it, and a quota the safe speed will never hit. It has never been established what the units are. Produce them anyway.",
+    "route": "/feral/shift",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "game",
+    "born": "2026-09-15"
   }
 ]

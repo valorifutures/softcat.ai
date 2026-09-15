@@ -1,0 +1,1722 @@
+---
+// shift — cycle 6. A control panel for PROCESS UNIT 4.
+//
+// Deliberate break from cycles 1-5: no first person, no memory, no rooms, no
+// void-with-typography. This is a machine. Three systems fight each other
+// (feed -> pressure -> temperature, with a finite coolant reserve in the
+// middle), there is a quota the sustainable feed rate cannot reach, and there
+// are two hard fail states that actually fire.
+//
+// No dependencies, no assets, no fetch, no framework. Plain HTML/CSS, canvas
+// for the three gauge needles, Web Audio for a fully procedural soundtrack
+// (hum, chug LFO, vent noise, relay clacks, klaxon, rupture sweep). Master
+// gain starts at zero; the AudioContext is not constructed until the visitor
+// presses SOUND. The whole thing is playable and legible with sound off.
+//
+// Tuning notes, for whoever reads the source:
+//   sustainable feed (pressure-neutral) = 35 -> 3.15 units/s -> 283 per shift
+//   shift 1 quota = 320. So the safe speed misses by 12%. That is the point.
+//   ceiling is 9 units/s at feed 100, which ruptures in 8.5s if never vented.
+//   feed 38 held flat seizes at ~87s: pressure creeps past 55 and cooks it.
+//   pressure above 55 heats hard, so the fast strategy needs an EARLY vent
+//   ceiling, which costs vent time, which costs quota. That is the triangle.
+//   coolant refills at 4.5/s under feed 40, so the reserve is a real budget:
+//   a frame-perfect operator model tops out near 544 units per shift.
+//   quota(n) = 320 + 58(n-1) + 4(n-1)^2 -> 320, 382, 452, 530, 616, 710, 812.
+//   Theoretical maximum is 810 units. Nothing on the page says so.
+---
+
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>shift &mdash; /feral</title>
+    <meta
+      name="description"
+      content="A control panel for a factory that makes an unspecified product. Three gauges that fight each other, a klaxon that means it, and a quota the safe speed will never hit."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --enamel-hi: #a8afaa;
+        --enamel: #8e9691;
+        --enamel-lo: #6d7671;
+        --seam: #4d5551;
+        --edge: #3a4240;
+        --green: #4c5b51;
+        --green-lo: #38453d;
+        --green-hi: #62756a;
+        --plate: #1c2225;
+        --plate-edge: #0d1113;
+        --ink: #ece9df;
+        --ink-dim: #a8a89e;
+        --hazard: #d4762a;
+        --alarm: #c4342c;
+        --window: #121618;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; }
+      body {
+        background: #23282a;
+        background-image:
+          radial-gradient(120% 90% at 50% 0%, #313739 0%, #1b1f21 70%, #131617 100%);
+        color: var(--ink);
+        font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+        min-height: 100vh;
+        padding: 0 0.7rem 3rem;
+      }
+      a { color: #cfd6d1; }
+
+      .topbar {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        padding: 1.1rem 0.3rem 1rem;
+        font: 500 0.68rem/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #8d958f;
+      }
+      .topbar a { text-decoration: none; }
+      .topbar a:hover { text-decoration: underline; }
+
+      /* ---------------- the console shell ---------------- */
+      .console {
+        position: relative;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0.9rem;
+        border-radius: 8px;
+        border: 1px solid var(--edge);
+        background:
+          repeating-linear-gradient(90deg, rgba(0,0,0,0.045) 0 1px, rgba(255,255,255,0.02) 1px 4px),
+          linear-gradient(180deg, var(--enamel-hi) 0%, var(--enamel) 38%, var(--enamel-lo) 100%);
+        box-shadow:
+          inset 0 2px 0 #bcc2bd,
+          inset 0 -4px 0 #5a625e,
+          inset 3px 0 0 rgba(255,255,255,0.13),
+          inset -3px 0 0 rgba(0,0,0,0.18),
+          0 26px 60px rgba(0,0,0,0.55);
+      }
+      .console::before,
+      .console::after {
+        content: "";
+        position: absolute;
+        left: 0.45rem;
+        right: 0.45rem;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(0,0,0,0.3) 12%, rgba(0,0,0,0.3) 88%, transparent);
+        border-bottom: 1px solid rgba(255,255,255,0.14);
+      }
+      .console::before { top: 0.4rem; }
+      .console::after { bottom: 0.4rem; }
+      .console.shake { animation: shake 0.085s steps(2) infinite; }
+      @keyframes shake {
+        0% { transform: translate(0, 0); }
+        50% { transform: translate(1px, -1px); }
+        100% { transform: translate(-1px, 1px); }
+      }
+
+      .rivet {
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 34% 28%, #d3d8d3 0%, #8b9390 48%, #4a5250 100%);
+        box-shadow: inset 0 -1px 1px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.28);
+      }
+      .rivet::after {
+        content: "";
+        position: absolute;
+        inset: 3px 1px;
+        border-top: 1px solid rgba(0,0,0,0.45);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        transform: rotate(35deg);
+      }
+      .rivet.tl { top: 8px; left: 8px; }
+      .rivet.tr { top: 8px; right: 8px; }
+      .rivet.bl { bottom: 8px; left: 8px; }
+      .rivet.br { bottom: 8px; right: 8px; }
+
+      /* ---------------- plates and bays ---------------- */
+      .bay {
+        position: relative;
+        border-radius: 4px;
+        border: 1px solid #262e29;
+        background:
+          repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0 1px, transparent 1px 3px),
+          linear-gradient(180deg, var(--green-hi) 0%, var(--green) 20%, var(--green-lo) 100%);
+        box-shadow:
+          inset 0 1px 0 rgba(255,255,255,0.18),
+          inset 0 -3px 6px rgba(0,0,0,0.45),
+          0 1px 0 rgba(255,255,255,0.22);
+        padding: 0.8rem 0.85rem 0.9rem;
+      }
+      .bay > .cap {
+        display: block;
+        font: 700 0.6rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.18em;
+        color: #dfe3da;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.55);
+        margin-bottom: 0.7rem;
+      }
+      .plate {
+        display: inline-block;
+        padding: 0.24rem 0.5rem;
+        border-radius: 2px;
+        background: linear-gradient(180deg, #262d31, var(--plate));
+        border: 1px solid var(--plate-edge);
+        color: var(--ink);
+        font: 700 0.58rem/1.25 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 1px 0 rgba(255,255,255,0.2);
+      }
+      .plate.hazard {
+        color: #1a1d1e;
+        background: repeating-linear-gradient(45deg, var(--hazard) 0 9px, #e8d9bf 9px 18px);
+        border-color: #7d4415;
+        text-shadow: none;
+      }
+      .plate.etch {
+        background: none;
+        border: none;
+        box-shadow: none;
+        color: #eceadf;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+      }
+
+      /* ---------------- top rail ---------------- */
+      .rail {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.45rem 0.7rem;
+        padding: 0.4rem 1.4rem 0.9rem 1.4rem;
+      }
+      .nameplate {
+        padding: 0.4rem 0.8rem;
+        border-radius: 3px;
+        background: linear-gradient(180deg, #2b3237, #171c1f);
+        border: 1px solid #0c0f11;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 1px 0 rgba(255,255,255,0.25);
+        font: 700 1.05rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.24em;
+        color: #f2efe4;
+      }
+      .rail .spacer { flex: 1 1 auto; }
+
+      .idplate {
+        border-radius: 3px;
+        background: linear-gradient(180deg, #d9d6c8, #bab7a8);
+        border: 1px solid #6f6d62;
+        color: #20241f;
+        padding: 0.35rem 0.6rem;
+        font: 700 0.56rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.12em;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 0 rgba(255,255,255,0.2);
+      }
+      .idplate span { display: block; white-space: nowrap; }
+
+      /* ---------------- gauges ---------------- */
+      .gaugerow {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.7rem;
+      }
+      .gauge {
+        position: relative;
+        border-radius: 5px;
+        padding: 0.55rem 0.55rem 0.45rem;
+        background: linear-gradient(180deg, #4e5651, #2f3733);
+        border: 1px solid #1f2523;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -2px 5px rgba(0,0,0,0.5);
+        text-align: center;
+      }
+      .gauge canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .gauge .cap {
+        display: block;
+        margin: 0.45rem 0 0.15rem;
+        font: 700 0.58rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.16em;
+        color: #e5e8df;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+      }
+      .gauge .num {
+        font: 700 0.78rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.08em;
+        color: #b9c0b8;
+      }
+
+      /* ---------------- mid row ---------------- */
+      .midrow {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr 1fr;
+        gap: 0.7rem;
+        margin-top: 0.7rem;
+      }
+
+      /* lever */
+      .leverwrap {
+        position: relative;
+        padding: 0.55rem 0.6rem 0.2rem;
+        border-radius: 4px;
+        background: linear-gradient(180deg, #23292c, #161b1d);
+        border: 1px solid #0d1113;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.6);
+      }
+      .detents {
+        display: flex;
+        justify-content: space-between;
+        font: 700 0.5rem/1 ui-monospace, monospace;
+        color: #7d857f;
+        letter-spacing: 0.06em;
+        padding: 0 4px 0.3rem;
+      }
+      input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 34px;
+        margin: 0;
+        background: transparent;
+        cursor: ew-resize;
+      }
+      input[type="range"]::-webkit-slider-runnable-track {
+        height: 12px;
+        border-radius: 2px;
+        background: linear-gradient(180deg, #05080a, #2c3335);
+        border: 1px solid #000;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.9);
+      }
+      input[type="range"]::-moz-range-track {
+        height: 12px;
+        border-radius: 2px;
+        background: linear-gradient(180deg, #05080a, #2c3335);
+        border: 1px solid #000;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.9);
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 26px;
+        height: 34px;
+        margin-top: -12px;
+        border-radius: 3px;
+        background:
+          linear-gradient(90deg, #6f7873 0 40%, #d9ded8 45%, #6f7873 52%, #545c58 100%),
+          #7c8580;
+        border: 1px solid #22282a;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.45);
+      }
+      input[type="range"]::-moz-range-thumb {
+        width: 24px;
+        height: 32px;
+        border-radius: 3px;
+        background: linear-gradient(90deg, #6f7873 0 40%, #d9ded8 45%, #6f7873 52%, #545c58 100%);
+        border: 1px solid #22282a;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.45);
+      }
+      input[type="range"]:focus-visible { outline: 2px solid var(--hazard); outline-offset: 4px; }
+
+      /* counters */
+      .window {
+        background: linear-gradient(180deg, #0a0e0f, var(--window) 60%, #1b2123);
+        border: 1px solid #000;
+        border-radius: 3px;
+        box-shadow: inset 0 3px 7px rgba(0,0,0,0.85), 0 1px 0 rgba(255,255,255,0.22);
+        padding: 0.35rem 0.5rem 0.4rem;
+      }
+      .window .lbl {
+        display: block;
+        font: 700 0.5rem/1.3 ui-monospace, monospace;
+        letter-spacing: 0.16em;
+        color: #7f8a86;
+      }
+      .window .val {
+        display: block;
+        font: 700 1.45rem/1.15 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.06em;
+        color: #f0eee2;
+        font-variant-numeric: tabular-nums;
+      }
+      .window .val.sm { font-size: 1rem; }
+      .counters { display: grid; gap: 0.4rem; }
+      .counters .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+
+      /* vent + coolant */
+      .bigbtn {
+        display: block;
+        width: 100%;
+        border: 1px solid #101315;
+        border-radius: 4px;
+        padding: 0.7rem 0.5rem;
+        font: 700 0.64rem/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #1b1e1f;
+        background: linear-gradient(180deg, #e2c9a8, var(--hazard) 30%, #a85c1f 100%);
+        box-shadow: 0 4px 0 #6f3d14, inset 0 1px 0 rgba(255,255,255,0.5);
+        cursor: pointer;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .bigbtn:active, .bigbtn.on {
+        transform: translateY(3px);
+        box-shadow: 0 1px 0 #6f3d14, inset 0 2px 6px rgba(0,0,0,0.5);
+        background: linear-gradient(180deg, #a85c1f, #d4762a 70%);
+      }
+      .bigbtn:focus-visible { outline: 2px solid #f4f0e4; outline-offset: 3px; }
+
+      .toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        margin-top: 0.6rem;
+        cursor: pointer;
+        font: 700 0.58rem/1.2 ui-monospace, monospace;
+        letter-spacing: 0.14em;
+        color: #e6e9e0;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .toggle input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+      .switch {
+        position: relative;
+        flex: 0 0 auto;
+        width: 30px;
+        height: 46px;
+        border-radius: 4px;
+        background: linear-gradient(180deg, #14191b, #262d2f);
+        border: 1px solid #0a0d0e;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+      }
+      .switch::after {
+        content: "";
+        position: absolute;
+        left: 4px;
+        right: 4px;
+        height: 18px;
+        top: 22px;
+        border-radius: 3px;
+        background: linear-gradient(180deg, #e4e8e1, #8d9591 60%, #565e5a);
+        box-shadow: 0 2px 3px rgba(0,0,0,0.6);
+        transition: top 0.09s linear;
+      }
+      .toggle input:checked + .switch::after { top: 5px; }
+      .toggle input:focus-visible + .switch { outline: 2px solid var(--hazard); outline-offset: 3px; }
+
+      .tube {
+        position: relative;
+        height: 15px;
+        margin-top: 0.7rem;
+        border-radius: 3px;
+        background: linear-gradient(180deg, #080b0c, #1d2325);
+        border: 1px solid #000;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.9);
+        overflow: hidden;
+      }
+      .tube i {
+        display: block;
+        height: 100%;
+        width: 100%;
+        transform-origin: left center;
+        background: linear-gradient(180deg, #9fc4c9, #4f7f88 60%, #2f5a63);
+      }
+      .tube u {
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(90deg, transparent 0 9px, rgba(0,0,0,0.5) 9px 10px);
+      }
+
+      /* ---------------- faults ---------------- */
+      .faultrow {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.7rem;
+        margin-top: 0.7rem;
+      }
+      .fault {
+        border-radius: 4px;
+        padding: 0.55rem 0.55rem 0.6rem;
+        background: linear-gradient(180deg, #4a534e, #2d3531);
+        border: 1px solid #1f2523;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.13), inset 0 -2px 5px rgba(0,0,0,0.45);
+      }
+      .fault .head { display: flex; align-items: center; gap: 0.5rem; }
+      .lamp {
+        flex: 0 0 auto;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 36% 30%, #5e6360, #2a2f2d 70%);
+        border: 2px solid #15191a;
+        box-shadow: inset 0 0 4px rgba(0,0,0,0.8);
+      }
+      .lamp.lit {
+        background: radial-gradient(circle at 36% 30%, #ffd2c7, var(--alarm) 55%, #7a1c16 100%);
+        box-shadow: 0 0 10px rgba(196, 52, 44, 0.85), inset 0 0 4px rgba(0,0,0,0.4);
+        animation: flash 0.62s steps(2) infinite;
+      }
+      @keyframes flash { 0% { filter: brightness(1); } 50% { filter: brightness(0.45); } 100% { filter: brightness(1); } }
+      .fault .nm {
+        font: 700 0.55rem/1.25 ui-monospace, monospace;
+        letter-spacing: 0.11em;
+        color: #e3e7de;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.55);
+      }
+      .reset {
+        position: relative;
+        display: block;
+        width: 100%;
+        margin-top: 0.55rem;
+        border: 1px solid #101315;
+        border-radius: 3px;
+        padding: 0.42rem 0.4rem;
+        overflow: hidden;
+        font: 700 0.55rem/1.2 ui-monospace, monospace;
+        letter-spacing: 0.15em;
+        color: #e9e6da;
+        background: linear-gradient(180deg, #5f6864, #3a423f);
+        box-shadow: 0 3px 0 #23292b, inset 0 1px 0 rgba(255,255,255,0.22);
+        cursor: pointer;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .reset:active { transform: translateY(2px); box-shadow: 0 1px 0 #23292b; }
+      .reset:focus-visible { outline: 2px solid var(--hazard); outline-offset: 3px; }
+      .reset b {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0%;
+        background: rgba(212, 118, 42, 0.55);
+      }
+      .reset span { position: relative; }
+
+      /* ---------------- bottom rail ---------------- */
+      .statusstrip {
+        margin: 0.7rem 0 0;
+        padding: 0.5rem 0.65rem;
+        border-radius: 3px;
+        background: linear-gradient(180deg, #0a0e0f, #151a1c);
+        border: 1px solid #000;
+        box-shadow: inset 0 3px 7px rgba(0,0,0,0.85);
+        font: 700 0.66rem/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.1em;
+        color: #cfd6cf;
+        min-height: 2.1rem;
+        overflow-wrap: anywhere;
+      }
+      .klaxon {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+        vertical-align: 0;
+        background: #2a2f2d;
+        border: 1px solid #101314;
+      }
+      .klaxon.lit { background: var(--alarm); box-shadow: 0 0 9px rgba(196, 52, 44, 0.9); animation: flash 0.42s steps(2) infinite; }
+
+      .signrow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 0.55rem;
+        padding: 0.85rem 1.4rem 0.35rem;
+      }
+
+      /* ---------------- overlays ---------------- */
+      .veil {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.2rem;
+        background: rgba(11, 14, 15, 0.86);
+        overflow: auto;
+      }
+      .veil[hidden] { display: none; }
+      .slip {
+        width: min(430px, 100%);
+        background: #e8e5d6;
+        color: #1b1e1c;
+        padding: 1.25rem 1.3rem 1.4rem;
+        font: 0.78rem/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.02em;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
+        background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 3px);
+        border-top: 3px solid #b9b5a4;
+        border-bottom: 3px solid #b9b5a4;
+        animation: feed 0.85s cubic-bezier(0.22, 0.75, 0.2, 1) both;
+      }
+      @keyframes feed {
+        from { transform: translateY(34vh); clip-path: inset(0 0 100% 0); }
+        to { transform: translateY(0); clip-path: inset(0 0 0 0); }
+      }
+      .slip h2 {
+        margin: 0 0 0.1rem;
+        font: 700 0.86rem/1.4 ui-monospace, monospace;
+        letter-spacing: 0.2em;
+      }
+      .slip .rule { border-top: 1px dashed #8d8a7c; margin: 0.7rem 0; }
+      .slip dl { display: grid; grid-template-columns: auto 1fr; gap: 0.12rem 0.9rem; margin: 0; }
+      .slip dt { color: #4e5149; letter-spacing: 0.1em; font-size: 0.68rem; padding-top: 0.14rem; }
+      .slip dd { margin: 0; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+      .slip .assess {
+        margin: 0.9rem 0 0;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+      .slip .prod { margin: 0.55rem 0 0; letter-spacing: 0.14em; }
+      .slip .foot { margin: 0.8rem 0 0; font-size: 0.64rem; letter-spacing: 0.12em; color: #4e5149; }
+      .slip button, .veil button {
+        margin-top: 1.1rem;
+        width: 100%;
+        border: 1px solid #2c2f2a;
+        border-radius: 2px;
+        padding: 0.7rem;
+        font: 700 0.7rem/1 ui-monospace, monospace;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #f1eee2;
+        background: linear-gradient(180deg, #3d443f, #23282a);
+        box-shadow: 0 3px 0 #14181a;
+        cursor: pointer;
+      }
+      .slip button:active, .veil button:active { transform: translateY(2px); box-shadow: 0 1px 0 #14181a; }
+      .slip button:focus-visible, .veil button:focus-visible { outline: 2px solid var(--hazard); outline-offset: 3px; }
+
+      .briefing {
+        width: min(430px, 100%);
+        background: linear-gradient(180deg, #d9d6c8, #c2bfb0);
+        color: #1c1f1c;
+        border: 1px solid #6f6d62;
+        padding: 1.2rem 1.3rem 1.35rem;
+        font: 0.74rem/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.06em;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255,255,255,0.6);
+      }
+      .briefing h1 { margin: 0 0 0.75rem; font: 700 0.95rem/1.3 ui-monospace, monospace; letter-spacing: 0.22em; }
+      .briefing ul { margin: 0; padding-left: 1.15rem; }
+      .briefing li { margin-bottom: 0.25rem; }
+      .briefing .warn { margin: 0.9rem 0 0; font-weight: 700; letter-spacing: 0.1em; }
+      .briefing button { color: #1c1f1c; background: linear-gradient(180deg, #e2c9a8, var(--hazard) 35%, #a85c1f); box-shadow: 0 3px 0 #6f3d14; }
+
+      .sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+      .credit {
+        max-width: 1080px;
+        margin: 1.1rem auto 0;
+        padding: 0 0.3rem;
+        font: 500 0.64rem/1.7 ui-monospace, monospace;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #6f7873;
+      }
+
+      @media (max-width: 860px) {
+        .midrow { grid-template-columns: 1fr 1fr; }
+        .midrow .ventbay { grid-column: 1 / -1; }
+      }
+      @media (max-width: 620px) {
+        .midrow, .faultrow { grid-template-columns: 1fr; }
+        .gaugerow { grid-template-columns: 1fr; }
+        .nameplate { font-size: 0.86rem; letter-spacing: 0.16em; }
+        .rail, .signrow { padding-left: 0.9rem; padding-right: 0.9rem; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .console.shake { animation: none; }
+        .lamp.lit, .klaxon.lit { animation: none; }
+        .slip { animation: none; }
+        .switch::after { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="topbar">
+      <a href="/feral">&larr; /feral</a>
+      <span>Operator terminal</span>
+    </nav>
+
+    <noscript>
+      <p class="credit">PROCESS UNIT 4 REQUIRES SCRIPTING. NO SERVICEABLE PARTS INSIDE.</p>
+    </noscript>
+
+    <div class="console" id="console">
+      <span class="rivet tl"></span><span class="rivet tr"></span>
+      <span class="rivet bl"></span><span class="rivet br"></span>
+
+      <div class="rail">
+        <span class="nameplate">PROCESS UNIT 4</span>
+        <span class="plate" id="shiftPlate">SHIFT 1</span>
+        <span class="plate" id="clockPlate">01:30 REMAINING</span>
+        <span class="spacer"></span>
+        <span class="idplate">
+          <span>UNIT 4 / CLASS B</span>
+          <span>PRODUCT: &mdash;</span>
+        </span>
+        <label class="toggle" style="margin-top:0">
+          <input type="checkbox" id="soundSw" />
+          <span class="switch" aria-hidden="true"></span>
+          SOUND
+        </label>
+      </div>
+
+      <div class="bay">
+        <span class="cap">PRIMARY INSTRUMENTATION</span>
+        <div class="gaugerow">
+          <div class="gauge">
+            <canvas id="gFeed" width="300" height="190" aria-hidden="true"></canvas>
+            <span class="cap">FEED RATE</span>
+            <span class="num" id="nFeed">000</span>
+          </div>
+          <div class="gauge">
+            <canvas id="gPress" width="300" height="190" aria-hidden="true"></canvas>
+            <span class="cap">PRESSURE</span>
+            <span class="num" id="nPress">000</span>
+          </div>
+          <div class="gauge">
+            <canvas id="gTemp" width="300" height="190" aria-hidden="true"></canvas>
+            <span class="cap">TEMPERATURE</span>
+            <span class="num" id="nTemp">000</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="midrow">
+        <div class="bay">
+          <span class="cap">FEED CONTROL</span>
+          <div class="leverwrap">
+            <div class="detents"><span>0</span><span>20</span><span>40</span><span>60</span><span>80</span><span>100</span></div>
+            <label class="sr" for="lever">Feed rate, 0 to 100</label>
+            <input
+              id="lever"
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              value="0"
+              aria-describedby="leverHint"
+            />
+          </div>
+          <p id="leverHint" class="plate etch" style="margin:0.6rem 0 0">DRAG OR USE ARROW KEYS</p>
+          <p class="plate hazard" style="margin:0.5rem 0 0">FEED 35 IS PRESSURE NEUTRAL</p>
+          <p class="plate" style="margin:0.5rem 0 0">PRESSURE ABOVE 55 RAISES TEMPERATURE</p>
+        </div>
+
+        <div class="bay">
+          <span class="cap">TALLY</span>
+          <div class="counters">
+            <div class="window">
+              <span class="lbl">UNITS</span>
+              <span class="val" id="vUnits">0000</span>
+            </div>
+            <div class="pair">
+              <div class="window">
+                <span class="lbl">QUOTA THIS SHIFT</span>
+                <span class="val sm" id="vQuota">0320</span>
+              </div>
+              <div class="window">
+                <span class="lbl">LOSS VENTED</span>
+                <span class="val sm" id="vLoss">0000</span>
+              </div>
+            </div>
+            <div class="pair">
+              <div class="window">
+                <span class="lbl">FAULTS LOGGED</span>
+                <span class="val sm" id="vFaults">00</span>
+              </div>
+              <div class="window">
+                <span class="lbl">RECORD</span>
+                <span class="val sm" id="vRecord">&mdash;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bay ventbay">
+          <span class="cap">RELIEF AND COOLANT</span>
+          <button class="bigbtn" id="ventBtn" type="button">VENT &mdash; HOLD TO OPEN</button>
+          <label class="toggle">
+            <input type="checkbox" id="coolSw" />
+            <span class="switch" aria-hidden="true"></span>
+            COOLANT
+          </label>
+          <p class="plate etch" style="margin:0.7rem 0 0">COOLANT RESERVE</p>
+          <div class="tube"><i id="coolBar"></i><u></u></div>
+          <p class="plate etch" style="margin:0.45rem 0 0" id="coolNote">REFILLS BELOW FEED 40</p>
+        </div>
+      </div>
+
+      <div class="bay" style="margin-top:0.7rem">
+        <span class="cap">SUBSYSTEM FAULT ANNUNCIATOR</span>
+        <div class="faultrow">
+          <div class="fault">
+            <div class="head"><span class="lamp" id="lampFeed"></span><span class="nm">FEED GOVERNOR</span></div>
+            <button class="reset" id="resFeed" type="button" data-sys="feed">
+              <b></b><span>RESET &mdash; HOLD 2s</span>
+            </button>
+          </div>
+          <div class="fault">
+            <div class="head"><span class="lamp" id="lampVent"></span><span class="nm">VENT SOLENOID</span></div>
+            <button class="reset" id="resVent" type="button" data-sys="vent">
+              <b></b><span>RESET &mdash; HOLD 2s</span>
+            </button>
+          </div>
+          <div class="fault">
+            <div class="head"><span class="lamp" id="lampCool"></span><span class="nm">COOLANT PUMP</span></div>
+            <button class="reset" id="resCool" type="button" data-sys="cool">
+              <b></b><span>RESET &mdash; HOLD 2s</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <p class="statusstrip" id="status" aria-live="polite" aria-atomic="true">
+        <span class="klaxon" id="klaxon" aria-hidden="true"></span><span id="statusText"
+          >SHIFT NOT STARTED.</span
+        >
+      </p>
+
+      <div class="signrow">
+        <span class="plate">DO NOT OPERATE WITHOUT AUTHORISATION</span>
+        <span class="plate">NO SERVICEABLE PARTS INSIDE</span>
+        <span class="plate hazard">IN CASE OF RUPTURE, BEGIN NEXT SHIFT</span>
+      </div>
+    </div>
+
+    <p class="credit">
+      /feral &middot; runs entirely in this browser &middot; no network calls &middot; one local record kept on this device
+    </p>
+
+    <!-- briefing / docket overlay -->
+    <div class="veil" id="veil">
+      <div class="briefing" id="briefing">
+        <h1>PROCESS UNIT 4</h1>
+        <ul>
+          <li>RAISE FEED RATE TO PRODUCE UNITS.</li>
+          <li>FEED RAISES PRESSURE AND TEMPERATURE.</li>
+          <li>VENT LOWERS PRESSURE. OUTPUT STOPS WHILE OPEN.</li>
+          <li>PRESSURE ABOVE 55 RAISES TEMPERATURE.</li>
+          <li>COOLANT LOWERS TEMPERATURE. RESERVE IS FINITE.</li>
+          <li>RESERVE REFILLS ONLY BELOW FEED 40.</li>
+          <li>CLEAR FAULTS BY HOLDING THE NAMED RESET.</li>
+        </ul>
+        <p class="warn">A GAUGE HELD AT MAXIMUM FOR THREE SECONDS ENDS THE SHIFT.</p>
+        <p class="warn">DO NOT OPERATE WITHOUT AUTHORISATION.</p>
+        <button id="startBtn" type="button">BEGIN SHIFT 1</button>
+      </div>
+
+      <div class="slip" id="slip" hidden>
+        <h2>SHIFT DOCKET</h2>
+        <div class="rule"></div>
+        <dl>
+          <dt>SHIFT</dt><dd id="dShift">1</dd>
+          <dt>DURATION</dt><dd id="dDur">00:00</dd>
+          <dt>UNITS</dt><dd id="dUnits">0</dd>
+          <dt>QUOTA</dt><dd id="dQuota">0</dd>
+          <dt>LOSS VENTED</dt><dd id="dLoss">0</dd>
+          <dt>FAULTS LOGGED</dt><dd id="dFaults">0</dd>
+          <dt>TERMINATION</dt><dd id="dEnd">CLOCK</dd>
+        </dl>
+        <div class="rule"></div>
+        <p class="assess" id="dAssess">OUTPUT WITHIN TOLERANCE.</p>
+        <p class="prod">PRODUCT: &mdash;</p>
+        <p class="foot">UNIT 4 / CLASS B / NO SERVICEABLE PARTS INSIDE</p>
+        <button id="nextBtn" type="button">BEGIN NEXT SHIFT</button>
+      </div>
+    </div>
+
+    <script type="module" is:inline>
+      "use strict";
+
+      /* =====================================================================
+         TUNING. All rates are per second. dt is clamped, so a backgrounded
+         tab cannot rupture the unit.
+         ===================================================================== */
+      const SHIFT_SECONDS = 90;
+      const OUTPUT_PER_FEED = 0.09;   // feed 100 -> 9 units/s
+      const PRESS_NEUTRAL = 35;       // feed below this bleeds pressure off
+      const PRESS_GAIN = 0.28;        // feed 100 -> +18.2/s
+      const VENT_RATE = 26;
+      const TEMP_FEED = 0.1;
+      const TEMP_KNEE = 55;           // pressure above this cooks the unit
+      const TEMP_KNEE_GAIN = 0.3;
+      const TEMP_AMBIENT = 1.6;
+      const TEMP_LEAK = 0.032;
+      const COOL_RATE = 14;
+      const COOL_DRAIN = 16;          // ~6.2s of coolant from full
+      const COOL_REFILL = 4.5;        // ~22s to refill, and only under feed 40
+      const COOL_FEED_MAX = 40;
+      const LOSS_PER_SEC = 4.5;
+      const PIN_LIMIT = 3;            // seconds at maximum before failure
+      const RED_AT = 80;
+      const FAULT_MIN = 11;
+      const FAULT_MAX = 19;
+      const RESET_HOLD = 2;
+      const STORE_KEY = "feral.shift.best";
+
+      const quotaFor = (n) => 320 + 58 * (n - 1) + 4 * (n - 1) * (n - 1);
+
+      const SYS = {
+        feed: { label: "FEED GOVERNOR", lamp: "lampFeed" },
+        vent: { label: "VENT SOLENOID", lamp: "lampVent" },
+        cool: { label: "COOLANT PUMP", lamp: "lampCool" }
+      };
+      const SYS_KEYS = Object.keys(SYS);
+
+      const ASSESS = {
+        tolerance: "OUTPUT WITHIN TOLERANCE.",
+        short: "QUOTA NOT MET. NO ACTION REQUIRED.",
+        survived: "UNIT SURVIVED.",
+        present: "OPERATOR PRESENT FOR FULL SHIFT.",
+        ruptured: "RUPTURE LOGGED. UNIT REPLACED."
+      };
+
+      const reduceMotion =
+        window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const $ = (id) => document.getElementById(id);
+      const clamp = (v, lo, hi) => (v < lo ? lo : v > hi ? hi : v);
+      const pad = (n, w) => String(Math.max(0, Math.floor(n))).padStart(w, "0");
+      const mmss = (s) => {
+        const t = Math.max(0, Math.ceil(s));
+        return pad(Math.floor(t / 60), 2) + ":" + pad(t % 60, 2);
+      };
+
+      /* =====================================================================
+         SOUND. Nothing is constructed until the SOUND switch is thrown.
+         Master gain is zero until then and returns to zero when switched off.
+         ===================================================================== */
+      const snd = {
+        ctx: null,
+        on: false,
+        ready: false,
+        master: null,
+        hum: null, humGain: null,
+        over: null, overGain: null,
+        chug: null, chugLfo: null, chugDepth: null,
+        vent: null, ventGain: null, ventFilt: null,
+        alarmA: null, alarmB: null, alarmGainA: null, alarmGainB: null,
+        noise: null,
+        flip: false,
+        flipAt: 0,
+        dead: false
+      };
+
+      function makeNoise(ctx) {
+        const buf = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
+        const d = buf.getChannelData(0);
+        for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+        return buf;
+      }
+
+      function buildAudio() {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return false;
+        const ctx = new AC();
+        snd.ctx = ctx;
+        snd.noise = makeNoise(ctx);
+
+        const master = ctx.createGain();
+        master.gain.value = 0;
+        master.connect(ctx.destination);
+        snd.master = master;
+
+        // base hum: 55Hz through a lowpass that opens with feed
+        const humFilt = ctx.createBiquadFilter();
+        humFilt.type = "lowpass";
+        humFilt.frequency.value = 220;
+        humFilt.Q.value = 3;
+
+        const hum = ctx.createOscillator();
+        hum.type = "triangle";
+        hum.frequency.value = 55;
+        const humGain = ctx.createGain();
+        humGain.gain.value = 0.0001;
+
+        // the chug: an amplitude LFO whose rate tracks feed
+        const chug = ctx.createGain();
+        chug.gain.value = 0.62;
+        const chugLfo = ctx.createOscillator();
+        chugLfo.type = "sine";
+        chugLfo.frequency.value = 2;
+        const chugDepth = ctx.createGain();
+        chugDepth.gain.value = 0.34;
+        chugLfo.connect(chugDepth).connect(chug.gain);
+
+        hum.connect(humFilt).connect(humGain).connect(chug).connect(master);
+
+        // the octave above swells with pressure
+        const over = ctx.createOscillator();
+        over.type = "sawtooth";
+        over.frequency.value = 110;
+        const overFilt = ctx.createBiquadFilter();
+        overFilt.type = "lowpass";
+        overFilt.frequency.value = 900;
+        const overGain = ctx.createGain();
+        overGain.gain.value = 0.0001;
+        over.connect(overFilt).connect(overGain).connect(master);
+
+        // vent: bandpassed noise, enveloped on hold
+        const vent = ctx.createBufferSource();
+        vent.buffer = snd.noise;
+        vent.loop = true;
+        const ventFilt = ctx.createBiquadFilter();
+        ventFilt.type = "bandpass";
+        ventFilt.frequency.value = 1400;
+        ventFilt.Q.value = 0.8;
+        const ventGain = ctx.createGain();
+        ventGain.gain.value = 0.0001;
+        vent.connect(ventFilt).connect(ventGain).connect(master);
+
+        // klaxon: two alternating squares, gated
+        const mk = (f) => {
+          const o = ctx.createOscillator();
+          o.type = "square";
+          o.frequency.value = f;
+          const g = ctx.createGain();
+          g.gain.value = 0.0001;
+          o.connect(g).connect(master);
+          o.start();
+          return [o, g];
+        };
+        const a = mk(660);
+        const b = mk(880);
+
+        hum.start();
+        over.start();
+        chugLfo.start();
+        vent.start();
+
+        Object.assign(snd, {
+          humFilt, hum, humGain, chug, chugLfo, chugDepth,
+          over, overFilt, overGain, vent, ventFilt, ventGain,
+          alarmA: a[0], alarmGainA: a[1], alarmB: b[0], alarmGainB: b[1]
+        });
+        snd.ready = true;
+        return true;
+      }
+
+      function setSound(on) {
+        snd.on = on;
+        if (on && !snd.ready) {
+          if (!buildAudio()) {
+            snd.on = false;
+            return;
+          }
+        }
+        if (!snd.ready) return;
+        if (snd.ctx.state === "suspended") snd.ctx.resume();
+        const t = snd.ctx.currentTime;
+        snd.master.gain.cancelScheduledValues(t);
+        snd.master.gain.setTargetAtTime(on ? 0.32 : 0, t, 0.06);
+      }
+
+      function burst(dur, hpf, peak) {
+        if (!snd.ready || !snd.on) return;
+        const ctx = snd.ctx;
+        const t = ctx.currentTime;
+        const s = ctx.createBufferSource();
+        s.buffer = snd.noise;
+        s.playbackRate.value = 1;
+        const f = ctx.createBiquadFilter();
+        f.type = "highpass";
+        f.frequency.value = hpf;
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.linearRampToValueAtTime(peak, t + 0.002);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        s.connect(f).connect(g).connect(snd.master);
+        s.start(t);
+        s.stop(t + dur + 0.02);
+      }
+
+      // relay clack: 15ms noise burst, hard envelope. Every switch and detent.
+      const clack = () => burst(0.015, 1800, 0.5);
+      const detent = () => burst(0.012, 2600, 0.22);
+
+      function ruptureSound() {
+        if (!snd.ready) return;
+        const ctx = snd.ctx;
+        const t = ctx.currentTime;
+        // everything else falls silent
+        [snd.humGain, snd.overGain, snd.ventGain, snd.alarmGainA, snd.alarmGainB].forEach((g) => {
+          g.gain.cancelScheduledValues(t);
+          g.gain.setTargetAtTime(0.0001, t, 0.08);
+        });
+        snd.dead = true;
+        if (!snd.on) return;
+
+        const s = ctx.createBufferSource();
+        s.buffer = snd.noise;
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.setValueAtTime(7000, t);
+        lp.frequency.exponentialRampToValueAtTime(70, t + 1.4);
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.85, t);
+        g.gain.exponentialRampToValueAtTime(0.0002, t + 1.7);
+        s.connect(lp).connect(g).connect(snd.master);
+        s.start(t);
+        s.stop(t + 1.8);
+
+        // then a slow cooling tick
+        for (let i = 0; i < 7; i++) {
+          const at = t + 2.1 + i * 0.66;
+          const ts = ctx.createBufferSource();
+          ts.buffer = snd.noise;
+          const tf = ctx.createBiquadFilter();
+          tf.type = "bandpass";
+          tf.frequency.value = 2400 - i * 180;
+          tf.Q.value = 6;
+          const tg = ctx.createGain();
+          tg.gain.setValueAtTime(0.0001, at);
+          tg.gain.linearRampToValueAtTime(0.3 * (1 - i / 8), at + 0.002);
+          tg.gain.exponentialRampToValueAtTime(0.0001, at + 0.09);
+          ts.connect(tf).connect(tg).connect(snd.master);
+          ts.start(at);
+          ts.stop(at + 0.12);
+        }
+      }
+
+      function audioTick(st, dt) {
+        if (!snd.ready || snd.dead) return;
+        const ctx = snd.ctx;
+        const t = ctx.currentTime;
+        const f = st.feed / 100;
+        const p = st.pressure / 100;
+        snd.humFilt.frequency.setTargetAtTime(180 + f * 520, t, 0.12);
+        snd.hum.frequency.setTargetAtTime(52 + f * 9, t, 0.2);
+        snd.humGain.gain.setTargetAtTime(0.05 + f * 0.26, t, 0.1);
+        snd.chugLfo.frequency.setTargetAtTime(1.6 + f * 7.5, t, 0.15);
+        snd.chugDepth.gain.setTargetAtTime(0.18 + f * 0.3, t, 0.2);
+        snd.overGain.gain.setTargetAtTime(Math.max(0, p - 0.35) * 0.14, t, 0.15);
+        snd.over.frequency.setTargetAtTime(108 + p * 26, t, 0.2);
+        snd.ventGain.gain.setTargetAtTime(st.venting ? 0.2 : 0.0001, t, st.venting ? 0.02 : 0.09);
+        snd.ventFilt.frequency.setTargetAtTime(st.venting ? 900 + p * 2400 : 1200, t, 0.08);
+
+        const alarm = st.running && (st.pressure >= RED_AT || st.temp >= RED_AT);
+        if (alarm) {
+          if (t - snd.flipAt > 0.22) {
+            snd.flip = !snd.flip;
+            snd.flipAt = t;
+          }
+          snd.alarmGainA.gain.setTargetAtTime(snd.flip ? 0.075 : 0.0001, t, 0.01);
+          snd.alarmGainB.gain.setTargetAtTime(snd.flip ? 0.0001 : 0.075, t, 0.01);
+        } else {
+          snd.alarmGainA.gain.setTargetAtTime(0.0001, t, 0.04);
+          snd.alarmGainB.gain.setTargetAtTime(0.0001, t, 0.04);
+        }
+      }
+
+      /* =====================================================================
+         GAUGES. Canvas needles, 240 degrees of sweep, eased unless the
+         visitor has asked for reduced motion.
+         ===================================================================== */
+      function Gauge(id, opts) {
+        const canvas = $(id);
+        const ctx = canvas.getContext("2d");
+        return {
+          canvas,
+          ctx,
+          disp: 0,
+          red: opts.red || 0,
+          amber: opts.amber || 0,
+          w: 0,
+          h: 0,
+          fit() {
+            const dpr = Math.min(2, window.devicePixelRatio || 1);
+            const cssW = canvas.clientWidth || 260;
+            const cssH = Math.round(cssW * 0.63);
+            canvas.style.height = cssH + "px";
+            canvas.width = Math.round(cssW * dpr);
+            canvas.height = Math.round(cssH * dpr);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            this.w = cssW;
+            this.h = cssH;
+          },
+          draw(value, dt) {
+            if (reduceMotion) this.disp = value;
+            else this.disp += (value - this.disp) * Math.min(1, dt * 8.5);
+            paint(this, this.disp);
+          }
+        };
+      }
+
+      const A0 = Math.PI * (7 / 6);   // 210 degrees
+      const A1 = Math.PI * (-1 / 6);  // -30 degrees
+      const ang = (v) => A0 + (A1 - A0) * (clamp(v, 0, 100) / 100);
+
+      function paint(g, v) {
+        const c = g.ctx;
+        const w = g.w;
+        const h = g.h;
+        const cx = w / 2;
+        const cy = h * 0.82;
+        const r = Math.min(w * 0.44, h * 0.82);
+        c.clearRect(0, 0, w, h);
+
+        // bezel
+        c.beginPath();
+        c.arc(cx, cy, r + 7, A0 - 0.16, A1 + 0.16);
+        c.lineWidth = 12;
+        c.strokeStyle = "#1a1f21";
+        c.stroke();
+
+        // face
+        const face = c.createRadialGradient(cx - r * 0.3, cy - r * 0.6, r * 0.1, cx, cy, r * 1.25);
+        face.addColorStop(0, "#f2efe3");
+        face.addColorStop(1, "#c6c3b5");
+        c.beginPath();
+        c.moveTo(cx, cy);
+        c.arc(cx, cy, r + 1, A0, A1);
+        c.closePath();
+        c.fillStyle = face;
+        c.fill();
+
+        // hazard band then alarm band, drawn on the rim
+        const band = (from, to, colour) => {
+          c.beginPath();
+          c.arc(cx, cy, r - 5, ang(from), ang(to));
+          c.lineWidth = 7;
+          c.strokeStyle = colour;
+          c.stroke();
+        };
+        if (g.amber) band(g.amber, g.red ? g.red : 100, "#d4762a");
+        if (g.red) band(g.red, 100, "#c4342c");
+
+        // ticks
+        for (let i = 0; i <= 100; i += 5) {
+          const a = ang(i);
+          const major = i % 25 === 0;
+          const i0 = major ? r - 20 : r - 13;
+          c.beginPath();
+          c.moveTo(cx + Math.cos(a) * i0, cy + Math.sin(a) * i0);
+          c.lineTo(cx + Math.cos(a) * (r - 7), cy + Math.sin(a) * (r - 7));
+          c.lineWidth = major ? 2.4 : 1;
+          c.strokeStyle = major ? "#20241f" : "#5c5f56";
+          c.stroke();
+          if (major) {
+            c.fillStyle = "#20241f";
+            c.font = "700 " + Math.max(8, Math.round(r * 0.13)) + "px ui-monospace, monospace";
+            c.textAlign = "center";
+            c.textBaseline = "middle";
+            c.fillText(String(i), cx + Math.cos(a) * (r - 31), cy + Math.sin(a) * (r - 31));
+          }
+        }
+
+        // needle
+        const a = ang(v);
+        c.save();
+        c.translate(cx, cy);
+        c.rotate(a);
+        c.beginPath();
+        c.moveTo(-r * 0.2, 2.6);
+        c.lineTo(r - 12, 0.9);
+        c.lineTo(r - 12, -0.9);
+        c.lineTo(-r * 0.2, -2.6);
+        c.closePath();
+        c.fillStyle = "#23262a";
+        c.fill();
+        c.restore();
+
+        // hub
+        c.beginPath();
+        c.arc(cx, cy, r * 0.11, 0, Math.PI * 2);
+        c.fillStyle = "#3a3f3c";
+        c.fill();
+        c.lineWidth = 1.5;
+        c.strokeStyle = "#191d1b";
+        c.stroke();
+
+        // glass
+        const gl = c.createLinearGradient(0, 0, w, h);
+        gl.addColorStop(0, "rgba(255,255,255,0.22)");
+        gl.addColorStop(0.45, "rgba(255,255,255,0.02)");
+        gl.addColorStop(1, "rgba(0,0,0,0.06)");
+        c.beginPath();
+        c.moveTo(cx, cy);
+        c.arc(cx, cy, r + 1, A0, A1);
+        c.closePath();
+        c.fillStyle = gl;
+        c.fill();
+      }
+
+      const gauges = {
+        feed: Gauge("gFeed", { amber: 70 }),
+        press: Gauge("gPress", { amber: TEMP_KNEE, red: RED_AT }),
+        temp: Gauge("gTemp", { red: RED_AT })
+      };
+
+      /* =====================================================================
+         STATE
+         ===================================================================== */
+      const st = {
+        shift: 1,
+        running: false,
+        feed: 0,
+        pressure: 0,
+        temp: 0,
+        coolant: 100,
+        coolantOn: false,
+        venting: false,
+        units: 0,
+        loss: 0,
+        faults: 0,
+        left: SHIFT_SECONDS,
+        pressPin: 0,
+        tempPin: 0,
+        fault: null,
+        faultAt: 0,
+        holding: null,
+        holdFor: 0,
+        quota: quotaFor(1)
+      };
+
+      let best = null;
+      try {
+        const raw = localStorage.getItem(STORE_KEY);
+        if (raw) {
+          const p = JSON.parse(raw);
+          if (p && typeof p.shift === "number" && typeof p.units === "number") best = p;
+        }
+      } catch (e) { /* storage unavailable or blocked. The panel does not care. */ }
+
+      // Best single shift by units. Shift number alone is meaningless here,
+      // because the shift number only ever goes up.
+      function saveBest() {
+        const units = Math.floor(st.units);
+        if (!best || units > best.units) {
+          best = { shift: st.shift, units: units };
+          try { localStorage.setItem(STORE_KEY, JSON.stringify(best)); } catch (e) { /* ignore */ }
+        }
+      }
+
+      const el = {
+        console: $("console"),
+        statusText: $("statusText"),
+        lever: $("lever"),
+        vent: $("ventBtn"),
+        cool: $("coolSw"),
+        sound: $("soundSw"),
+        coolBar: $("coolBar"),
+        coolNote: $("coolNote"),
+        klaxon: $("klaxon"),
+        status: $("status"),
+        shiftPlate: $("shiftPlate"),
+        clockPlate: $("clockPlate"),
+        vUnits: $("vUnits"),
+        vQuota: $("vQuota"),
+        vLoss: $("vLoss"),
+        vFaults: $("vFaults"),
+        vRecord: $("vRecord"),
+        nFeed: $("nFeed"),
+        nPress: $("nPress"),
+        nTemp: $("nTemp"),
+        veil: $("veil"),
+        briefing: $("briefing"),
+        slip: $("slip"),
+        startBtn: $("startBtn"),
+        nextBtn: $("nextBtn"),
+        lamps: { feed: $("lampFeed"), vent: $("lampVent"), cool: $("lampCool") },
+        resets: { feed: $("resFeed"), vent: $("resVent"), cool: $("resCool") }
+      };
+
+      /* =====================================================================
+         HOLD-TO-ACT. Pointer and keyboard, both real holds.
+         ===================================================================== */
+      function holdable(node, down, up) {
+        let active = false;
+        const start = (e) => {
+          if (active) return;
+          active = true;
+          if (e && e.preventDefault) e.preventDefault();
+          down();
+        };
+        const stop = () => {
+          if (!active) return;
+          active = false;
+          up();
+        };
+        node.addEventListener("pointerdown", start);
+        node.addEventListener("pointerup", stop);
+        node.addEventListener("pointercancel", stop);
+        node.addEventListener("pointerleave", stop);
+        node.addEventListener("keydown", (e) => {
+          if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
+            e.preventDefault();
+            if (!e.repeat) start();
+          }
+        });
+        node.addEventListener("keyup", (e) => {
+          if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") stop();
+        });
+        node.addEventListener("blur", stop);
+        node.addEventListener("click", (e) => e.preventDefault());
+        window.addEventListener("pointerup", stop);
+      }
+
+      holdable(
+        el.vent,
+        () => {
+          if (!st.running) return;
+          st.venting = true;
+          el.vent.classList.add("on");
+          clack();
+        },
+        () => {
+          st.venting = false;
+          el.vent.classList.remove("on");
+        }
+      );
+
+      SYS_KEYS.forEach((key) => {
+        const node = el.resets[key];
+        holdable(
+          node,
+          () => {
+            if (!st.running) return;
+            st.holding = key;
+            st.holdFor = 0;
+            clack();
+          },
+          () => {
+            if (st.holding === key) {
+              st.holding = null;
+              st.holdFor = 0;
+              node.querySelector("b").style.width = "0%";
+            }
+          }
+        );
+      });
+
+      // lever: detent clack on every 10 crossed, relay clack on release
+      let lastDetent = 0;
+      el.lever.addEventListener("input", () => {
+        st.feed = Number(el.lever.value);
+        const d = Math.floor(st.feed / 10);
+        if (d !== lastDetent) {
+          lastDetent = d;
+          detent();
+        }
+      });
+      el.lever.addEventListener("change", () => clack());
+
+      el.cool.addEventListener("change", () => {
+        st.coolantOn = el.cool.checked && st.coolant > 0;
+        if (!st.coolantOn) el.cool.checked = false;
+        clack();
+      });
+
+      el.sound.addEventListener("change", () => {
+        setSound(el.sound.checked);
+        if (el.sound.checked) clack();
+      });
+
+      /* =====================================================================
+         SHIFT LIFECYCLE
+         ===================================================================== */
+      function beginShift() {
+        st.running = true;
+        st.feed = 0;
+        st.pressure = 0;
+        st.temp = 0;
+        st.coolant = 100;
+        st.coolantOn = false;
+        st.venting = false;
+        st.units = 0;
+        st.loss = 0;
+        st.faults = 0;
+        st.left = SHIFT_SECONDS;
+        st.pressPin = 0;
+        st.tempPin = 0;
+        st.fault = null;
+        st.holding = null;
+        st.holdFor = 0;
+        st.quota = quotaFor(st.shift);
+        st.faultAt = clock + FAULT_MIN + Math.random() * (FAULT_MAX - FAULT_MIN);
+        lastDetent = 0;
+        el.lever.value = "0";
+        el.cool.checked = false;
+        el.vent.classList.remove("on");
+        SYS_KEYS.forEach((k) => {
+          el.lamps[k].classList.remove("lit");
+          el.resets[k].querySelector("b").style.width = "0%";
+        });
+        el.veil.hidden = true;
+        el.console.classList.remove("shake");
+        snd.dead = false;
+        if (snd.ready && snd.on) {
+          const t = snd.ctx.currentTime;
+          snd.master.gain.setTargetAtTime(0.32, t, 0.08);
+        }
+        statusNow("SHIFT " + st.shift + " RUNNING. QUOTA " + st.quota + " UNITS.");
+        announceAt = clock;
+        el.lever.focus({ preventScroll: true });
+      }
+
+      function endShift(cause) {
+        if (!st.running) return;
+        st.running = false;
+        st.venting = false;
+        st.coolantOn = false;
+        st.holding = null;
+        el.vent.classList.remove("on");
+        el.cool.checked = false;
+        el.console.classList.remove("shake");
+
+        const hard = cause === "RUPTURE" || cause === "SEIZURE";
+        if (hard) ruptureSound();
+        else if (snd.ready) {
+          const t = snd.ctx.currentTime;
+          [snd.humGain, snd.overGain, snd.ventGain, snd.alarmGainA, snd.alarmGainB].forEach((g) =>
+            g.gain.setTargetAtTime(0.0001, t, 0.15)
+          );
+          snd.dead = true;
+        }
+
+        const units = Math.floor(st.units);
+        const ratio = units / st.quota;
+        let line;
+        if (hard) line = ASSESS.ruptured;
+        else if (ratio >= 1 && st.faults === 0 && st.loss < st.quota * 0.25) line = ASSESS.tolerance;
+        else if (ratio >= 1) line = ASSESS.survived;
+        else if (ratio >= 0.7) line = ASSESS.present;
+        else line = ASSESS.short;
+
+        saveBest();
+        paintRecord();
+
+        $("dShift").textContent = String(st.shift);
+        $("dDur").textContent = mmss(SHIFT_SECONDS - st.left);
+        $("dUnits").textContent = String(units);
+        $("dQuota").textContent = String(st.quota);
+        $("dLoss").textContent = String(Math.floor(st.loss));
+        $("dFaults").textContent = String(st.faults);
+        $("dEnd").textContent = hard ? cause : "CLOCK";
+        $("dAssess").textContent = line;
+
+        statusNow(cause + ". " + units + " UNITS OF " + st.quota + ". " + line);
+
+        el.briefing.hidden = true;
+        el.slip.hidden = false;
+        // re-trigger the paper feed animation
+        el.slip.style.animation = "none";
+        void el.slip.offsetWidth;
+        el.slip.style.animation = "";
+        el.veil.hidden = false;
+        el.nextBtn.focus({ preventScroll: true });
+      }
+
+      el.startBtn.addEventListener("click", () => {
+        clack();
+        beginShift();
+      });
+      el.nextBtn.addEventListener("click", () => {
+        clack();
+        st.shift += 1;
+        beginShift();
+      });
+
+      /* =====================================================================
+         READOUTS
+         ===================================================================== */
+      // The klaxon lamp is a real element in the template, so it keeps its
+      // scoped styling. Only the text node is ever rewritten.
+      let lastStatus = "";
+      function statusNow(text) {
+        if (text === lastStatus) return;
+        lastStatus = text;
+        el.statusText.textContent = text;
+      }
+
+      function paintRecord() {
+        el.vRecord.textContent = best ? "S" + best.shift + "/" + best.units : "—";
+      }
+      paintRecord();
+
+      let announceAt = 0;
+      function readouts(now) {
+        el.nFeed.textContent = pad(st.feed, 3);
+        el.nPress.textContent = pad(st.pressure, 3);
+        el.nTemp.textContent = pad(st.temp, 3);
+        el.vUnits.textContent = pad(st.units, 4);
+        el.vQuota.textContent = pad(st.quota, 4);
+        el.vLoss.textContent = pad(st.loss, 4);
+        el.vFaults.textContent = pad(st.faults, 2);
+        el.shiftPlate.textContent = "SHIFT " + st.shift;
+        el.clockPlate.textContent = mmss(st.left) + " REMAINING";
+        el.coolBar.style.transform = "scaleX(" + (st.coolant / 100).toFixed(3) + ")";
+        el.coolNote.textContent =
+          st.coolant <= 0
+            ? "RESERVE EMPTY"
+            : st.feed < COOL_FEED_MAX && !st.coolantOn
+              ? "REFILLING"
+              : "REFILLS BELOW FEED 40";
+
+        const red = st.running && (st.pressure >= RED_AT || st.temp >= RED_AT);
+        el.klaxon.classList.toggle("lit", red);
+
+        const pinned = st.running && (st.pressPin > 0 || st.tempPin > 0);
+        if (!reduceMotion) el.console.classList.toggle("shake", pinned);
+
+        // aria-live: throttled so a screen reader is not read a number 60x a second
+        if (st.running && now - announceAt > 5) {
+          announceAt = now;
+          let line =
+            "SHIFT " + st.shift + ". " + pad(st.units, 1) + " UNITS OF " + st.quota +
+            ". " + mmss(st.left) + " REMAINING. PRESSURE " + pad(st.pressure, 1) +
+            ". TEMPERATURE " + pad(st.temp, 1) + ".";
+          if (st.fault) line += " FAULT: " + SYS[st.fault].label + ".";
+          if (red) line += " ALARM.";
+          statusNow(line);
+        }
+      }
+
+      /* =====================================================================
+         PHYSICS
+         ===================================================================== */
+      function step(dt, now) {
+        st.left -= dt;
+
+        // ---- faults
+        if (!st.fault && now >= st.faultAt) {
+          st.fault = SYS_KEYS[Math.floor(Math.random() * SYS_KEYS.length)];
+          st.faults += 1;
+          el.lamps[st.fault].classList.add("lit");
+          burst(0.05, 900, 0.35);
+          statusNow("FAULT: " + SYS[st.fault].label + ". HOLD RESET.");
+          announceAt = now;
+        }
+        if (st.holding) {
+          st.holdFor += dt;
+          const bar = el.resets[st.holding].querySelector("b");
+          bar.style.width = Math.min(100, (st.holdFor / RESET_HOLD) * 100).toFixed(1) + "%";
+          if (st.holdFor >= RESET_HOLD) {
+            if (st.fault === st.holding) {
+              el.lamps[st.fault].classList.remove("lit");
+              st.fault = null;
+              st.faultAt = now + FAULT_MIN + Math.random() * (FAULT_MAX - FAULT_MIN);
+              statusNow("FAULT CLEARED.");
+              announceAt = now;
+            }
+            clack();
+            st.holdFor = 0;
+            bar.style.width = "0%";
+          }
+        }
+
+        // ---- output
+        let mul = 1;
+        if (st.fault === "feed") mul *= 0.6;
+        if (st.holding) mul *= 0.5;
+        if (st.venting) mul = 0;
+        st.units += st.feed * OUTPUT_PER_FEED * mul * dt;
+
+        // ---- pressure
+        const ventEff = st.venting ? VENT_RATE * (st.fault === "vent" ? 0.4 : 1) : 0;
+        st.pressure = clamp(
+          st.pressure + ((st.feed - PRESS_NEUTRAL) * PRESS_GAIN - ventEff) * dt,
+          0,
+          100
+        );
+        if (st.venting) st.loss += LOSS_PER_SEC * dt;
+
+        // ---- coolant
+        let coolEff = 0;
+        if (st.coolantOn && st.coolant > 0) {
+          coolEff = COOL_RATE * (st.fault === "cool" ? 0.4 : 1);
+          st.coolant -= COOL_DRAIN * dt;
+          if (st.coolant <= 0) {
+            st.coolant = 0;
+            st.coolantOn = false;
+            el.cool.checked = false;
+            clack();
+            statusNow("COOLANT RESERVE EMPTY.");
+            announceAt = now;
+          }
+        }
+        if (!st.coolantOn && st.feed < COOL_FEED_MAX) {
+          st.coolant = Math.min(100, st.coolant + COOL_REFILL * dt);
+        }
+
+        // ---- temperature
+        const knee = Math.max(0, st.pressure - TEMP_KNEE) * TEMP_KNEE_GAIN;
+        st.temp = clamp(
+          st.temp +
+            (st.feed * TEMP_FEED + knee - TEMP_AMBIENT - TEMP_LEAK * st.temp - coolEff) * dt,
+          0,
+          100
+        );
+
+        // ---- failure
+        st.pressPin = st.pressure >= 99.5 ? st.pressPin + dt : 0;
+        st.tempPin = st.temp >= 99.5 ? st.tempPin + dt : 0;
+        if (st.pressPin >= PIN_LIMIT) { endShift("RUPTURE"); return; }
+        if (st.tempPin >= PIN_LIMIT) { endShift("SEIZURE"); return; }
+        if (st.left <= 0) { st.left = 0; endShift("CLOCK"); return; }
+      }
+
+      /* =====================================================================
+         LOOP
+         ===================================================================== */
+      let last = 0;
+      let clock = 0;
+      function frame(ms) {
+        const t = ms / 1000;
+        let dt = last ? t - last : 0;
+        last = t;
+        if (dt > 0.05) dt = 0.05;      // clamp: a hidden tab cannot rupture the unit
+        if (dt < 0) dt = 0;
+        if (st.running) {
+          clock += dt;
+          step(dt, clock);
+        }
+        gauges.feed.draw(st.feed, dt);
+        gauges.press.draw(st.pressure, dt);
+        gauges.temp.draw(st.temp, dt);
+        readouts(clock);
+        if (st.running) audioTick(st, dt);
+        requestAnimationFrame(frame);
+      }
+
+      function fitAll() {
+        gauges.feed.fit();
+        gauges.press.fit();
+        gauges.temp.fit();
+      }
+      fitAll();
+      window.addEventListener("resize", fitAll);
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) last = 0;
+      });
+
+      readouts(0);
+      requestAnimationFrame(frame);
+    </script>
+  </body>
+</html>
