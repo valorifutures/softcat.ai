@@ -664,3 +664,14 @@ Both pages now allow vertical document scrolling. Their independent fixed contro
 Drift permits vertical touch panning and pinch zoom. Mouse dragging and horizontal touch dragging remain, and the existing two ending buttons are available to touch and keyboard visitors. A cancelled touch drag has no fling velocity. Visible keyboard focus and 44px button targets accompany the controls. Independent review caught and resolved the dock's Astro-scoping box-sizing issue and touch cancellation behaviour.
 
 Local validation passes all 134 JavaScript tests, 141 bot tests, twelve publication fixtures and all data checks. The 635-page production build and audit pass 31,770 internal links and 3,268 asset or metadata references. Local preview access remains blocked by the browser environment, so the full-ending layout and scroll checks follow the gated deployment. No mobile-device test is claimed. The recurring loop remains disabled.
+
+
+## 15 September 2026, Feral scrolling verified live
+
+PR #229 passed hosted validation run 35025780297 and merged as 691a22f9bacf8859af31047d18693219cac78ffa. Pages run 35025879272 completed successfully at 21:30 UTC. The remote source tree matched the tested local tree.
+
+Echo's reveal control exposed the full transmission, and a wheel scroll reached scrollY48. Drift's full ending reached scrollY484. Both final paragraphs ended around y825, above the dock at y872, with 96px of reserved bottom padding. Desktop screenshots confirmed readable final lines, canvas rendering and separated navigation. Drift's computed touch action is pan-y pinch-zoom and both bodies use vertical overflow auto. A cached Drift navigation initially retained the earlier page; a normal reload received the fix.
+
+The live review also exposed an older Drift bug: both inherited clusters arrive outside the refusal band, so its timer selected refusal before the visitor could use the new direct choices. The final guard waits for an actual star grab before physics can commit an ending; buttons still choose directly. Independent review confirmed the counter initialises before the animation loop and reduced-motion behaviour is preserved. Production build and publication audit pass for this refinement, with hosted checks and live direct-choice verification following release.
+
+Narrow wrapping, short-screen caps and touch cancellation were reviewed in source. No mobile viewport/device is exposed by this browser; its zoom shortcut left viewport dimensions unchanged. No mobile-device test is claimed. The checkpoint records the verified scrolling release and leaves the recurring loop disabled.

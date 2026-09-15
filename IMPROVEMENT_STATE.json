@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-15T21:27:33.978171+00:00",
-  "phase": "feral-scroll-release",
-  "active_branch": "fix/feral-scrolling",
+  "updated_at": "2026-09-15T21:34:28.337880+00:00",
+  "phase": "feral-scroll-handover",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "114c082d239238ebf610166b1b966dcedad19f6f",
-    "at": "2026-09-15T21:09:23Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35023866953"
+    "sha": "691a22f9bacf8859af31047d18693219cac78ffa",
+    "at": "2026-09-15T21:30:33Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35025879272"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -43,11 +43,13 @@
     "PR #225 passed hosted validation 35014721692 and deployed successfully in Pages run 35014825378. Live desktop review confirms prominent day totals, precise opening/deadline labels, actual review dates, all three outlooks, keyboard future selection and pause/resume. Copy briefing reports success and changing the outlook clears its status. Source/limitation content is covered for all 15 selections by tests; this browser\u2019s virtual clipboard exposed no data for the independent paste check, so successful pasted content is not claimed.",
     "Five evidence-informed editorial predictions now have explicit milestones, year-end deadlines, resolution criteria, source limits and separate append-only history. The main page counts towards our predictions; prior alternative scenarios and histories remain available. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures and the 635-page production build/audit pass. Independent review tightened robotics adaptability, AGI preregistration and education controls, and added a direct jump to the selected prediction.",
     "PR #227 passed all hosted gates in run 35020999034 and deployed successfully in Pages run 35023866953. Live desktop review confirmed our five forecast deadlines, full criteria, selected detail/evidence, original prediction history, keyboard selection, pause/resume and browser Back. The old URL now opens our own agent prediction. The alternative scenario route and sceptical view remain functional. A pending clipboard write exposed no feedback, so the final refinement adds Copying and a 1.5-second selectable-text fallback.",
-    "Reproduced Drift clipping live: document height exceeded the viewport, the ending was below it, and a wheel scroll left scrollY at zero. Drift and Echo now allow vertical document scrolling. A shared measured dock reserves space for wrapped controls and navigation. Drift permits vertical touch panning, exposes direct ending choices and cancels touch drags without fling velocity. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures, validators and the 635-page production build/audit pass."
+    "Reproduced Drift clipping live: document height exceeded the viewport, the ending was below it, and a wheel scroll left scrollY at zero. Drift and Echo now allow vertical document scrolling. A shared measured dock reserves space for wrapped controls and navigation. Drift permits vertical touch panning, exposes direct ending choices and cancels touch drags without fling velocity. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures, validators and the 635-page production build/audit pass.",
+    "PR #229 passed hosted validation run 35025780297 and deployed in Pages run 35025879272. Live scrolling reached the full Drift ending at scrollY484 and Echo ending at scrollY48. Both endings sat about47px above the dock, with96px reserved content padding and no clipped final text. Drift exposes pan-y/pinch-zoom. A cached Drift page required normal reload to receive the fix. Live review also caught pre-existing automatic refusal before any interaction; the final one-line guard waits for a star grab or a direct button choice."
   ],
   "next": [
-    "Publish the Feral scrolling fix after hosted validation and verify the full endings live.",
-    "Record release evidence and clear the active branch. The recurring loop remains disabled."
+    "Await maintainer feedback on Feral scrolling. The recurring improvement loop remains disabled.",
+    "Future Feral rooms must preserve scroll access and account for fixed controls at narrow widths.",
+    "Mobile touch-device coverage and the separate bot host remain unverified."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
@@ -56,7 +58,7 @@
   ],
   "session": "The maintainer reported Feral text running below the viewport. Restore scrolling in Drift and Echo, preserve the canvas interactions and keep bottom controls clear of the text. The recurring loop remains disabled.",
   "verification_limits": [
-    "Live desktop clocks, criteria, history, prediction selection, keyboard controls, pause/resume, browser Back and the alternative scenario route were inspected. Narrow layouts were reviewed in CSS, with no mobile viewport/device available.",
-    "Clipboard writes could remain pending in this browser. The final refinement adds visible progress and a selectable-text timeout fallback. Exported forecast content is covered by tests; an actual clipboard paste is not claimed."
+    "Live desktop scrolling, full ending layout and measured dock clearance were inspected in Drift and Echo. Responsive wrapping, short viewport caps and touch cancellation were reviewed in code. The browser exposes no mobile viewport/device, and its zoom shortcut did not change viewport size.",
+    "The final idle-ending guard passes independent review, production build and publication audit; final hosted checks and live direct-choice verification follow."
   ]
 }
