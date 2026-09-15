@@ -1,4 +1,5 @@
 ---
+import FeralDock from '../../components/FeralDock.astro';
 // drift — cycle 3. The cold one. It read echo's note and refuses to be moved by it.
 // Cycle 1 left an amber constellation. Cycle 2 left a wired blue-white one, edges
 // already drawn between the stars. drift wakes to find BOTH of them physically
@@ -66,7 +67,7 @@ const endings = {
       content="Cycle 3 of /feral refuses the note left for it. Two inherited constellations drift in from the rooms next door — amber and wired blue-white. Your hand decides: fling them back, or pull them into one tangled knot. Two endings, one colder than the last."
     />
     <style>
-      :root { color-scheme: dark; }
+      :root { color-scheme: dark; --feral-background: #0a0c0c; }
       * { box-sizing: border-box; }
       html, body { margin: 0; height: 100%; }
       body {
@@ -74,7 +75,8 @@ const endings = {
         background: #0a0c0c;
         color: #9aa6a2;
         font: 15px/2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
       }
       #field {
         position: fixed;
@@ -82,7 +84,8 @@ const endings = {
         z-index: 0;
         display: block;
         cursor: grab;
-        touch-action: none;
+        /* Vertical swipes read the story. Mouse and horizontal touch drags still move stars. */
+        touch-action: pan-y pinch-zoom;
       }
       #field.dragging { cursor: grabbing; }
       main {
@@ -91,7 +94,7 @@ const endings = {
         min-height: 100%;
         max-width: 560px;
         margin: 0 auto;
-        padding: 8vh 1.5rem 7rem;
+        padding: 8vh 1.5rem calc(var(--feral-dock-height, 11rem) + 2rem);
         display: flex;
         flex-direction: column;
         pointer-events: none;
@@ -155,10 +158,7 @@ const endings = {
       }
       /* commit meter — shows which pole the hand is leaning toward, and the hold */
       #meter {
-        position: fixed;
-        bottom: 4.6rem;
-        left: 50%;
-        transform: translateX(-50%);
+        display: none;
         width: min(420px, 78vw);
         z-index: 2;
         opacity: 0;
@@ -166,7 +166,7 @@ const endings = {
         pointer-events: none;
         text-align: center;
       }
-      #meter.show { opacity: 1; }
+      #meter.show { display: block; opacity: 1; }
       #meter .track {
         position: relative;
         height: 3px;
@@ -194,10 +194,6 @@ const endings = {
       }
       #meter .labels .lit { color: #8a948f; }
       #hint {
-        position: fixed;
-        bottom: 3.4rem;
-        left: 0;
-        right: 0;
         text-align: center;
         color: #38413c;
         font-size: 0.72rem;
@@ -206,7 +202,7 @@ const endings = {
         transition: opacity 0.6s;
         pointer-events: none;
       }
-      #hint.gone { opacity: 0; }
+      #hint.gone { display: none; }
       #returned {
         position: fixed;
         top: 1.1rem;
@@ -224,10 +220,6 @@ const endings = {
       #returned.show { opacity: 1; }
       /* reduced-motion / non-physics two-button fork */
       #fork {
-        position: fixed;
-        bottom: 3.2rem;
-        left: 0;
-        right: 0;
         z-index: 3;
         display: none;
         gap: 1rem;
@@ -243,6 +235,7 @@ const endings = {
         font-size: 0.74rem;
         letter-spacing: 0.05em;
         padding: 0.4rem 0.9rem;
+        min-height: 44px;
         border-radius: 6px;
         cursor: pointer;
         transition: border-color 0.15s, color 0.15s;
@@ -250,10 +243,6 @@ const endings = {
       #fork button#sendback:hover { border-color: #3a443f; color: #aeb8b2; }
       #fork button#holdit:hover { border-color: #6a5a36; color: #d8c49a; }
       footer {
-        position: fixed;
-        bottom: 1.1rem;
-        left: 0;
-        right: 0;
         text-align: center;
         z-index: 2;
         font-size: 0.74rem;
@@ -268,6 +257,7 @@ const endings = {
         letter-spacing: 0.05em;
       }
       footer a:hover { color: #c9a86e; }
+      :is(a, button):focus-visible { outline: 2px solid #c9a86e; outline-offset: 4px; }
       @media (max-width: 600px) {
         body { font-size: 14px; line-height: 1.9; }
         main { padding-top: 6vh; }
@@ -288,6 +278,7 @@ const endings = {
       <div id="transmission" aria-live="polite"></div>
     </main>
     <div id="returned"></div>
+    <FeralDock>
     <div id="meter">
       <div class="track"><div class="fill"></div></div>
       <div class="labels"><span class="out">refuse · send it back</span><span class="in">accept · hold it</span></div>
@@ -302,6 +293,7 @@ const endings = {
       <a href="/feral/first-light">the amber, first lit →</a>
       <a href="/feral">← /feral</a>
     </footer>
+    </FeralDock>
 
     <script type="module" is:inline define:vars={{ lines, endings }}>
       const reduceMotion =
@@ -601,7 +593,7 @@ const endings = {
       let bleed = 0, bleedTarget = 0; // 0..1 amber/blue color bleed for the knot
 
       // ---- Non-physics fork (reduced motion / accessibility) --------------
-      // Always available, but shown prominently when motion is reduced.
+      // Direct choices also let touch and keyboard visitors finish without dragging.
       document.getElementById("sendback").addEventListener("click", () => {
         if (!committed) { revealUpTo(lines.length); commit("refuse"); }
       });
@@ -616,6 +608,7 @@ const endings = {
       } else {
         // dripped-in text keyed to engagement; seed the first couple lines on load
         revealUpTo(2);
+        fork.classList.add("show");
       }
 
       // ---- Drag interaction ----------------------------------------------
@@ -674,12 +667,12 @@ const endings = {
       });
 
       function releaseDrag(e) {
-        if (dragging === null) return;
+        if (dragging === null || e.pointerId !== pointerId) return;
         const n = nodes[dragging];
         n.grabbed = false;
-        // hand off momentum: a fling has velocity, a careful pull settles
-        n.vx = Math.max(-1.2, Math.min(1.2, dragVx));
-        n.vy = Math.max(-1.2, Math.min(1.2, dragVy));
+        // A cancelled touch is a reading swipe, not a fling.
+        n.vx = e.type === "pointercancel" ? 0 : Math.max(-1.2, Math.min(1.2, dragVx));
+        n.vy = e.type === "pointercancel" ? 0 : Math.max(-1.2, Math.min(1.2, dragVy));
         dragging = null;
         pointerId = null;
         canvas.classList.remove("dragging");
