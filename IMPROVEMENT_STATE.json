@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-15T20:38:28.314957+00:00",
-  "phase": "horizon-predictions-release",
-  "active_branch": "improve/horizon-our-predictions",
+  "updated_at": "2026-09-15T21:12:53.989323+00:00",
+  "phase": "horizon-predictions-handover",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "fa54dbd0c1a5298c300316dc44692e86d834c7c3",
-    "at": "2026-09-15T19:39:15Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35014825378"
+    "sha": "114c082d239238ebf610166b1b966dcedad19f6f",
+    "at": "2026-09-15T21:09:23Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35023866953"
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -41,11 +41,13 @@
     "PR #223 passed hosted run 34783011652 and deployed successfully in Pages run 34783068673. An already-open agent/optimistic page received the new per-100-case briefing through its review check without reloading or losing selection. The new page shows Close for an expanded history entry and the corrected method explanation. The live decision screenshot exposed a flex layout that split 90 across two lines; the final CSS keeps that numeral together and lets the adjacent briefing wrap.",
     "The days-first countdowns and copyable Horizon briefings pass 123 JavaScript tests, 141 bot tests, twelve publication fixtures, all data validators and the 634-page production audit. Independent review found no must-fix issues. The local browser preview is blocked by the environment; hosted release and live interaction checks are next.",
     "PR #225 passed hosted validation 35014721692 and deployed successfully in Pages run 35014825378. Live desktop review confirms prominent day totals, precise opening/deadline labels, actual review dates, all three outlooks, keyboard future selection and pause/resume. Copy briefing reports success and changing the outlook clears its status. Source/limitation content is covered for all 15 selections by tests; this browser\u2019s virtual clipboard exposed no data for the independent paste check, so successful pasted content is not claimed.",
-    "Five evidence-informed editorial predictions now have explicit milestones, year-end deadlines, resolution criteria, source limits and separate append-only history. The main page counts towards our predictions; prior alternative scenarios and histories remain available. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures and the 635-page production build/audit pass. Independent review tightened robotics adaptability, AGI preregistration and education controls, and added a direct jump to the selected prediction."
+    "Five evidence-informed editorial predictions now have explicit milestones, year-end deadlines, resolution criteria, source limits and separate append-only history. The main page counts towards our predictions; prior alternative scenarios and histories remain available. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures and the 635-page production build/audit pass. Independent review tightened robotics adaptability, AGI preregistration and education controls, and added a direct jump to the selected prediction.",
+    "PR #227 passed all hosted gates in run 35020999034 and deployed successfully in Pages run 35023866953. Live desktop review confirmed our five forecast deadlines, full criteria, selected detail/evidence, original prediction history, keyboard selection, pause/resume and browser Back. The old URL now opens our own agent prediction. The alternative scenario route and sceptical view remain functional. A pending clipboard write exposed no feedback, so the final refinement adds Copying and a 1.5-second selectable-text fallback."
   ],
   "next": [
-    "Publish the tested prediction correction after hosted validation.",
-    "Verify live countdown targets, selection, keyboard controls, history, copies and preserved scenarios."
+    "Await maintainer feedback on the published predictions. The recurring loop remains disabled.",
+    "Keep future prediction revisions append-only, with dated source assessment and explicit resolution criteria.",
+    "Mobile device coverage, independent clipboard paste and the separate bot host remain unverified."
   ],
   "constraints": [
     "GitHub access is verified as valorifutures. Access to the separate bot host is not established.",
@@ -54,7 +56,7 @@
   ],
   "session": "The maintainer clarified that the clocks must count towards our own predictions. Five evidence-informed editorial forecasts with explicit resolution criteria replace the illustrative windows on the main page; the old scenarios and histories remain separately available. The recurring loop remains disabled.",
   "verification_limits": [
-    "Live desktop rendering, labelled controls, three outlooks, pause/resume and keyboard future selection were inspected. Narrow layouts were reviewed in CSS, with no mobile viewport/device available.",
-    "Copy briefing reported success, but the browser virtual clipboard returned no data and could not paste. Tests verify exact exported data, dates, scope and source limitations; an independent pasted-content check remains unverified."
+    "Live desktop clocks, criteria, history, prediction selection, keyboard controls, pause/resume, browser Back and the alternative scenario route were inspected. Narrow layouts were reviewed in CSS, with no mobile viewport/device available.",
+    "Clipboard writes could remain pending in this browser. The final refinement adds visible progress and a selectable-text timeout fallback. Exported forecast content is covered by tests; an actual clipboard paste is not claimed."
   ]
 }
