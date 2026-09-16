@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-09-15T10:21:30.907Z",
+  "checkedAt": "2026-09-16T10:14:48.427Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "008fbf5c5f98bb29b0c05b2293030f0a3870cffca0c72c95f74af2a4c02e4d60",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/34957491798",
+  "sourceSha256": "ee4d18e6ee4194eb748333a4bbf166291ac651ed07a56e8794a25ff1d397ac3e",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/35083907204",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 445,
+  "catalogueModels": 443,
   "trackedModels": 39,
   "matched": 37,
   "verified": 37,
   "notListed": 2,
   "reviewNeeded": 0,
   "unverified": 0,
-  "priceChanges": 2,
+  "priceChanges": 0,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -272,8 +272,8 @@
       "id": "meta-llama/llama-4-maverick",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.2,
-        "outputPrice": 0.696
+        "inputPrice": 0.1875,
+        "outputPrice": 0.6525
       },
       "quoted": {
         "inputPrice": 0.1875,
@@ -425,8 +425,8 @@
       "id": "nvidia/nemotron-3-super-120b-a12b",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.085,
-        "outputPrice": 0.4
+        "inputPrice": 0.08,
+        "outputPrice": 0.45
       },
       "quoted": {
         "inputPrice": 0.08,
