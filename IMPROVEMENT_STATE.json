@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-16T09:05:43+00:00",
-  "phase": "cloud-publishing-guide-verified",
-  "active_branch": null,
+  "updated_at": "2026-09-16T09:24:34+00:00",
+  "phase": "horizon-evidence-review-and-feral-council",
+  "active_branch": "review/horizon-2026-09-16",
   "last_verified_deployment": {
     "sha": "8ad3e230e6644eb45d3ff36932b224be8e7e849f",
     "at": "2026-09-16T09:05:43+00:00",
@@ -70,7 +70,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "PR #236 passed hosted checks, merged normally on its reviewed head and deployed successfully. The publishing guide is verified live with its original date, updated correction, cloud ownership and preserved earlier version. All 141 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and 636-page build/audit passed. Behavioural spot-checks passed on Horizon, JSON validation, recipes, glossary navigation and Drift scrolling. No prediction, historical evidence, price data or creative output changed. This receipt records the first completed maintenance pass.",
+  "session": "The maintainer requested Horizon and Feral together after the completed maintenance pass. A real 16 September evidence review of all five predictions is appended, retaining their dates, milestones and resolution criteria. All 141 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and 636-page build/audit passed. Hosted checks and live verification are pending. An independent Feral director chose Parcel Bureau for cycle 7 and a separate builder is implementing it in an isolated worktree. Feral will have its own critic and PR within the three allowed roots. This active marker covers both in-progress releases.",
   "verification_limits": [
     "A 37-day partial-review fixture and UTC midnight boundaries are tested. No new forecast or fabricated evidence revision was published for demonstration.",
     "The live clipboard fallback contains the correct day count and UTC snapshot. Clipboard writing itself did not complete in this browser, so successful pasted content is not claimed.",
