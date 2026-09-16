@@ -1,5 +1,17 @@
 # Improvement log
 
+## 16 September 2026, first scheduled maintenance pass
+
+Current main was `4296b1af038d528a2c879fa3bd967f2158f90905`. There were no open PRs or active-work markers. The operating guide and the Feral migration from PR #231 are present on main. The old Feral workflow has only a manual trigger, defaulting to propose. The daily GitHub price snapshot remains the sole automatic price writer. No migration mismatch was found.
+
+The latest observed Pages run, [35031138122](https://github.com/valorifutures/softcat.ai/actions/runs/35031138122), succeeded. The latest observed price snapshot, [34957491798](https://github.com/valorifutures/softcat.ai/actions/runs/34957491798), succeeded on 15 September. No 16 September price run was visible during the initial inspection. We did not launch another refresh or run a legacy content generator. The content inventory contained no unpublished drafts.
+
+The publishing guide still described the separate server as unverified and the older writers as current proposal generators. We checked it against the operating guide and workflow source, corrected the cloud ownership, and preserved its February publication date and September correction history. Three regression tests protect the manual-only Feral trigger, the daily price owner and the guide's dated evidence record. No workflow configuration, prediction, Feral creation or retired content changed.
+
+Validation: 141 JavaScript tests, 141 bot tests, 12 publication fixtures and all data validators pass. The production build contains 636 pages. Its offline audit checked 31,782 internal links and 3,270 local asset/metadata references with zero errors. Live Horizon showed the current day counts, Enter selected Software creation with 471 days, and its review check completed without changing selection. The JSON validator reported all three deliberate classification errors, cleared them on loading the matching example and then passed that example. Those are behavioural checks, not just URL checks.
+
+The browser cannot access the local preview (`ERR_BLOCKED_BY_CLIENT`). Hosted checks, publication and live inspection of the corrected guide are pending. Mobile viewport and touch-device coverage remain unverified.
+
 ## 12 September 2026: publishing recovery
 
 The last successful Pages deployment was on 1 July at 07:00 UTC, commit

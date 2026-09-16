@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-15T22:26:59.367853+00:00",
-  "phase": "horizon-day-count-handover",
-  "active_branch": null,
+  "updated_at": "2026-09-16T09:00:37+00:00",
+  "phase": "cloud-publishing-guide-release",
+  "active_branch": "maintenance/2026-09-16-reliability",
   "last_verified_deployment": {
     "sha": "29ec181a5bcc3318bc632cbe88966d6c3a415ba5",
     "at": "2026-09-15T22:26:59.367869+00:00",
@@ -62,7 +62,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Completed and verified the days-only Horizon correction. Counters follow each current target date and support justified day-level revisions. Forecast evidence/history was not rewritten. The recurring cloud tasks remain enabled.",
+  "session": "First scheduled maintenance pass confirmed docs/site-operations.md and manual-only Feral workflow on main, with no conflicting work. Corrected the publishing guide's retired-server description and added three operating-contract tests. All 141 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and the 636-page build/audit pass. Hosted checks and publication are pending. Latest observed price run is the successful 15 September run 34957491798; no duplicate refresh was started. Live Horizon keyboard selection and review refresh, plus broken/matching JSON validation, passed. No prediction or historical evidence was changed.",
   "verification_limits": [
     "A 37-day partial-review fixture and UTC midnight boundaries are tested. No new forecast or fabricated evidence revision was published for demonstration.",
     "The live clipboard fallback contains the correct day count and UTC snapshot. Clipboard writing itself did not complete in this browser, so successful pasted content is not claimed.",
