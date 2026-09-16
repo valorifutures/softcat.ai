@@ -1,5 +1,17 @@
 # Improvement log
 
+## 16 September 2026, requested Horizon evidence review
+
+The maintainer asked to run Horizon and Feral. Current main was `09d22b3817b7a458e006e08ab61cdc47c4652b9c`, with no open PR or active marker. We used fresh isolated worktrees. The Feral council is a separate creative cycle and will have its own in-scope PR and ledger.
+
+We reassessed all five predictions against their exact published resolution tests and appended one review. Dates, milestones and criteria remain unchanged. The original 15 September event is preserved. The decision briefs were reviewed and remain appropriate. No alternative-scenario review is implied.
+
+The review distinguishes Air India's confidence threshold from a measured completion rate, longer agent turns from successful workflows, and Digit 5's development plans from deployed customer economics. The education record now links to the authors' accessible Annenberg working-paper page. It is the same study as NBER 35621, not replication: its delayed assessment is one week later and the most encouraging gains are limited to practised material. Software retains its assertive 2027 date with uncertainty, not an extrapolation from merged PR volume.
+
+Source-access limits: the NBER endpoint returned 403, so we read the authors' [Annenberg abstract](https://edworkingpapers.com/ai26-1552). Nature's direct endpoint failed, so we read the publisher-supplied Kestin paper text on [ResearchGate](https://www.researchgate.net/publication/392839220_AI_tutoring_outperforms_in-class_active_learning_an_RCT_introducing_a_novel_research-based_design_in_an_authentic_educational_setting). Stripe's article body was not exposed by the reader. Its own linked summary corroborates the limited merged-PR claim retained from the earlier review, and no further Stripe finding is added. The other cited framework, benchmark, deployment, autonomy and productivity pages were read directly. These sources inform our judgement, not the forecast dates themselves.
+
+Validation passes all 141 JavaScript tests, 141 bot tests, 12 publication fixtures and data validators. The 636-page production build and offline audit pass 31,782 internal links and 3,270 local asset/metadata references with zero errors. A direct comparison against the base confirms the original event is unchanged, all five milestones and criteria match, and every target movement is zero. Hosted checks and live publication verification are pending. No forecast movement or successful publication is claimed at this checkpoint.
+
 ## 16 September 2026, first scheduled maintenance pass
 
 Current main was `4296b1af038d528a2c879fa3bd967f2158f90905`. There were no open PRs or active-work markers. The operating guide and the Feral migration from PR #231 are present on main. The old Feral workflow has only a manual trigger, defaulting to propose. The daily GitHub price snapshot remains the sole automatic price writer. No migration mismatch was found.
