@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-16T09:24:34+00:00",
-  "phase": "horizon-evidence-review-and-feral-council",
-  "active_branch": "review/horizon-2026-09-16",
+  "updated_at": "2026-09-16T09:47:20+00:00",
+  "phase": "horizon-review-and-feral-7-verified",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "8ad3e230e6644eb45d3ff36932b224be8e7e849f",
-    "at": "2026-09-16T09:05:43+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35077288618"
+    "sha": "aa811c80e544ae23e350761b6dc8c2a5f59dc564",
+    "at": "2026-09-16T09:47:20+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35080793238"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -14,6 +14,22 @@
     "outcome": "Published and verified the corrected cloud publishing guide. Three new operating-contract tests passed. The old host and generators remain retired, and the Feral cron migration matches the operating guide.",
     "live_checks": ["Guide dates, correction, cloud ownership, source-history links and desktop layout", "Horizon Enter-key selection and published-review refresh", "JSON validator broken/matching examples and cleared stale result", "Recipe search and zero-result filtering", "Glossary keyboard letter anchor", "Drift explicit ending choice and complete ending above the dock at scrollY 514"],
     "price_status": "Latest observed scheduled run 34957491798 succeeded on 15 September. No 16 September price run observed during the pass. No duplicate refresh launched."
+  },
+  "horizon_review_receipt": {
+    "date": "2026-09-16",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/238",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35079376021",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/35079494551",
+    "outcome": "All five predictions genuinely reassessed. Dates, milestones and criteria unchanged, with zero days added or removed. Original history preserved. The already-open Education page received the review and retained selection. Every forecast and both history entries were checked live by keyboard."
+  },
+  "feral_receipt": {
+    "date": "2026-09-16",
+    "cycle": 7,
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/239",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35080580192",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/35080793238",
+    "route": "https://softcat.ai/feral/parcel-bureau/",
+    "outcome": "Independent director, builder and critic completed one cycle, PASS on attempt 1. Five files remain inside Feral roots. All 312 tests, data validators, trusted exact-commit gate, 637-page build and offline audit passed. Live checks verified all three initial failures, a twelve-rotation unassisted Thursday solution, thirteen-pipe solutions for Rain and Room, assistance disclosure, Enter/Space/arrow controls, trace clearing and reset. Full receipt and footer reachable at scrollY 747. Gallery shows seven creations and the dated cycle 7 PASS."
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -61,7 +77,7 @@
     "PR #234 passed all hosted checks in run 35030633590 and deployed in Pages run 35030734134. Live Horizon has five day counters and zero sub-day timers. The observed day counts were AGI 1,933, agents 838, robotics 1,933, software 472 and education 1,203. Keyboard selection showed the matching software 472-day calculation and 2027 target. Manual update checking completed while retaining selection and actual review history. Clipboard writing fell back to selectable text containing the correct 472-day UTC snapshot and full briefing. No desktop horizontal overflow was observed."
   ],
   "next": [
-    "First maintenance pass completed on 16 September. Check the next price snapshot, Feral run from 18 September and evidence review from 21 September. Keep the recurring tasks enabled and old generators off.",
+    "The first maintenance pass and the separately requested Horizon review and Feral cycle 7 completed on 16 September. Do not generate another Feral cycle that day. Check the next price snapshot, first scheduled Feral run from 18 September and evidence review from 21 September. Keep recurring tasks enabled and old generators off.",
     "Future justified prediction revisions can use real ISO dates. Record numeric target movement separately from elapsed days and preserve earlier targets, milestones and evidence. Never move dates merely to differentiate cards.",
     "Future Feral and Horizon work should preserve document scrolling and usable narrow layouts. Mobile touch-device coverage remains unverified."
   ],
@@ -70,11 +86,11 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "The maintainer requested Horizon and Feral together after the completed maintenance pass. A real 16 September evidence review of all five predictions is appended, retaining their dates, milestones and resolution criteria. All 141 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and 636-page build/audit passed. Hosted checks and live verification are pending. An independent Feral director chose Parcel Bureau for cycle 7 and a separate builder is implementing it in an isolated worktree. Feral will have its own critic and PR within the three allowed roots. This active marker covers both in-progress releases.",
+  "session": "Completed the maintainer-requested Horizon review and one independent Feral council cycle in separate PRs. PR #238 and PR #239 passed hosted checks and were normally merged on their exact reviewed heads, with current main re-read before each merge. Both Pages deployments and affected live interactions are verified. All five prediction targets remain unchanged. Parcel Bureau is the seventh Feral creation. The ledger links to its PR publication record. No price refresh, legacy generator, extra creative cycle or schedule change was made. Active work is cleared.",
   "verification_limits": [
-    "A 37-day partial-review fixture and UTC midnight boundaries are tested. No new forecast or fabricated evidence revision was published for demonstration.",
-    "The live clipboard fallback contains the correct day count and UTC snapshot. Clipboard writing itself did not complete in this browser, so successful pasted content is not claimed.",
-    "The first scheduled Feral and evidence-review executions remain pending. Mobile viewport and touch-device coverage remain unverified.",
-    "The local browser preview was blocked by ERR_BLOCKED_BY_CLIENT. The deployed guide was inspected in the live desktop browser instead. External links were not exhaustively revalidated and this was not a new editorial review of every tool or recipe."
+    "The 16 September review is real and unchanged, not a demonstration of moving a forecast. Fixture tests separately cover a 37-day partial revision and UTC midnight boundaries.",
+    "The 16 September briefing control reported copied. Successful pasted content was not independently verified. The earlier selectable-text fallback check remains in the historical log.",
+    "The first scheduled Feral and evidence-review executions remain pending. The 16 September council and review were explicitly requested by the maintainer. Mobile viewport and touch-device coverage remain unverified.",
+    "The local browser preview was blocked by ERR_BLOCKED_BY_CLIENT, so visible changes were verified on the live desktop site after gated release. One scroll command timed out at the browser transport, but subsequent DOM measurements and a screenshot confirmed scrollY 747 with the complete receipt and footer visible. Source-access limits are recorded in the improvement log."
   ]
 }
