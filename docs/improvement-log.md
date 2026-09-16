@@ -10,7 +10,11 @@ The publishing guide still described the separate server as unverified and the o
 
 Validation: 141 JavaScript tests, 141 bot tests, 12 publication fixtures and all data validators pass. The production build contains 636 pages. Its offline audit checked 31,782 internal links and 3,270 local asset/metadata references with zero errors. Live Horizon showed the current day counts, Enter selected Software creation with 471 days, and its review check completed without changing selection. The JSON validator reported all three deliberate classification errors, cleared them on loading the matching example and then passed that example. Those are behavioural checks, not just URL checks.
 
-The browser cannot access the local preview (`ERR_BLOCKED_BY_CLIENT`). Hosted checks, publication and live inspection of the corrected guide are pending. Mobile viewport and touch-device coverage remain unverified.
+The browser cannot access the local preview (`ERR_BLOCKED_BY_CLIENT`). Mobile viewport and touch-device coverage remain unverified.
+
+Release receipt: [PR #236](https://github.com/valorifutures/softcat.ai/pull/236) passed [hosted checks 35077174861](https://github.com/valorifutures/softcat.ai/actions/runs/35077174861) on exact reviewed head `94a7871f4784d59bc719315dac80a84336288c0a`. We re-read main before normal squash merge `8ad3e230e6644eb45d3ff36932b224be8e7e849f`. [Pages run 35077288618](https://github.com/valorifutures/softcat.ai/actions/runs/35077288618) succeeded. The live guide shows 23 February as its publication date, 16 September as its correction date, the cloud ownership and preserved earlier guide. Its desktop layout was visually inspected with no horizontal overflow. The connected GitHub app published the exact locally tested tree because terminal Git had no write credential.
+
+Additional live spot-checks: recipe search for regression returned one result, and Source work narrowed it to zero. Enter on the glossary's Z anchor scrolled to that section without horizontal overflow. Drift's explicit hold choice exposed its complete ending. Scrolling reached 514 px, with the final paragraph ending at y825 above the footer at y896 in a 936 px viewport. These checks do not establish mobile-device coverage or a new editorial review of every recipe or glossary entry. No external source crawl, paid model request, duplicate price refresh or extra Feral creation was performed.
 
 ## 12 September 2026: publishing recovery
 

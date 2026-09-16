@@ -1,11 +1,19 @@
 {
-  "updated_at": "2026-09-16T09:00:37+00:00",
-  "phase": "cloud-publishing-guide-release",
-  "active_branch": "maintenance/2026-09-16-reliability",
+  "updated_at": "2026-09-16T09:05:43+00:00",
+  "phase": "cloud-publishing-guide-verified",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "29ec181a5bcc3318bc632cbe88966d6c3a415ba5",
-    "at": "2026-09-15T22:26:59.367869+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35030734134"
+    "sha": "8ad3e230e6644eb45d3ff36932b224be8e7e849f",
+    "at": "2026-09-16T09:05:43+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35077288618"
+  },
+  "maintenance_receipt": {
+    "date": "2026-09-16",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/236",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35077174861",
+    "outcome": "Published and verified the corrected cloud publishing guide. Three new operating-contract tests passed. The old host and generators remain retired, and the Feral cron migration matches the operating guide.",
+    "live_checks": ["Guide dates, correction, cloud ownership, source-history links and desktop layout", "Horizon Enter-key selection and published-review refresh", "JSON validator broken/matching examples and cleared stale result", "Recipe search and zero-result filtering", "Glossary keyboard letter anchor", "Drift explicit ending choice and complete ending above the dock at scrollY 514"],
+    "price_status": "Latest observed scheduled run 34957491798 succeeded on 15 September. No 16 September price run observed during the pass. No duplicate refresh launched."
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
@@ -53,7 +61,7 @@
     "PR #234 passed all hosted checks in run 35030633590 and deployed in Pages run 35030734134. Live Horizon has five day counters and zero sub-day timers. The observed day counts were AGI 1,933, agents 838, robotics 1,933, software 472 and education 1,203. Keyboard selection showed the matching software 472-day calculation and 2027 target. Manual update checking completed while retaining selection and actual review history. Clipboard writing fell back to selectable text containing the correct 472-day UTC snapshot and full briefing. No desktop horizontal overflow was observed."
   ],
   "next": [
-    "Inspect the first scheduled maintenance run from 16 September, Feral run from 18 September and evidence review from 21 September. Keep the new cloud tasks enabled and old generators off.",
+    "First maintenance pass completed on 16 September. Check the next price snapshot, Feral run from 18 September and evidence review from 21 September. Keep the recurring tasks enabled and old generators off.",
     "Future justified prediction revisions can use real ISO dates. Record numeric target movement separately from elapsed days and preserve earlier targets, milestones and evidence. Never move dates merely to differentiate cards.",
     "Future Feral and Horizon work should preserve document scrolling and usable narrow layouts. Mobile touch-device coverage remains unverified."
   ],
@@ -62,10 +70,11 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "First scheduled maintenance pass confirmed docs/site-operations.md and manual-only Feral workflow on main, with no conflicting work. Corrected the publishing guide's retired-server description and added three operating-contract tests. All 141 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and the 636-page build/audit pass. Hosted checks and publication are pending. Latest observed price run is the successful 15 September run 34957491798; no duplicate refresh was started. Live Horizon keyboard selection and review refresh, plus broken/matching JSON validation, passed. No prediction or historical evidence was changed.",
+  "session": "PR #236 passed hosted checks, merged normally on its reviewed head and deployed successfully. The publishing guide is verified live with its original date, updated correction, cloud ownership and preserved earlier version. All 141 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and 636-page build/audit passed. Behavioural spot-checks passed on Horizon, JSON validation, recipes, glossary navigation and Drift scrolling. No prediction, historical evidence, price data or creative output changed. This receipt records the first completed maintenance pass.",
   "verification_limits": [
     "A 37-day partial-review fixture and UTC midnight boundaries are tested. No new forecast or fabricated evidence revision was published for demonstration.",
     "The live clipboard fallback contains the correct day count and UTC snapshot. Clipboard writing itself did not complete in this browser, so successful pasted content is not claimed.",
-    "The first future cloud task executions and mobile-device coverage remain pending."
+    "The first scheduled Feral and evidence-review executions remain pending. Mobile viewport and touch-device coverage remain unverified.",
+    "The local browser preview was blocked by ERR_BLOCKED_BY_CLIENT. The deployed guide was inspected in the live desktop browser instead. External links were not exhaustively revalidated and this was not a new editorial review of every tool or recipe."
   ]
 }
