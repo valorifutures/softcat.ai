@@ -1,0 +1,272 @@
+---
+import { BOARDS, SIDE_NAMES, tileName, pipeDescription, pipePath } from '../../content/feral/parcel-bureau.mjs';
+const first = BOARDS[0];
+---
+
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Parcel Bureau | Feral</title>
+    <meta name="description" content="Rotate the pipes. Deliver one spare Thursday. Three small routing puzzles from Feral, with impossible cargo and honest delivery receipts." />
+    <link rel="canonical" href="https://softcat.ai/feral/parcel-bureau/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip" href="#sorting-desk">Skip to the sorting desk</a>
+    <div class="paper">
+      <nav aria-label="Feral navigation"><a href="/feral/">← The other rooms</a><span>Feral · No. 007</span></nav>
+      <header>
+        <p class="eyebrow">Department of unaccountable deliveries</p>
+        <div class="masthead"><h1>Parcel<br /><em>Bureau.</em></h1><div class="seal" aria-hidden="true">ALL CARGO<br /><strong>?</strong><br />ACCOUNTED FOR</div></div>
+        <p class="intro">Impossible post. Ordinary plumbing.</p>
+        <p class="premise">The cargo may disregard reality. The connections cannot.</p>
+      </header>
+
+      <main id="sorting-desk">
+        <section aria-labelledby="dispatch-title" class="dispatch">
+          <div class="section-heading"><h2 id="dispatch-title">01 / Choose a delivery</h2><span>Three parcels. No rush.</span></div>
+          <div class="deliveries" role="group" aria-label="Choose a parcel puzzle">
+            {BOARDS.map((board, index) => <button class="delivery" type="button" data-board={index} aria-pressed={index === 0 ? 'true' : 'false'} disabled><span class="serial">PB / 00{index + 1}</span><span>{board.title}</span></button>)}
+          </div>
+        </section>
+
+        <section aria-labelledby="network-title" class="work-desk">
+          <div class="section-heading"><h2 id="network-title">02 / Make the connections</h2><span id="rotation-count">0 rotations</span></div>
+          <p class="instructions" id="instructions">Turn a pipe with a click, Enter or Space. Each turn is clockwise. Arrow keys move between pipes. Join the <strong>IN</strong> arrow to the <strong>OUT</strong> arrow, then send the parcel. Spare pipes can stay disconnected.</p>
+          <div class="desk-columns">
+            <div class="network">
+              <div class="routing-slip"><div><span class="slip-label">In the parcel</span><h3 id="parcel-title">{first.title}</h3><p id="parcel-address">{first.address}</p></div><span class="parcel-mark" aria-hidden="true">↗</span></div>
+              <div class="endpoints"><p id="inlet-description"><strong>IN</strong> → {tileName(first.inlet.index)}, west edge</p><p id="delivery-description"><strong>OUT</strong> → {tileName(first.delivery.index)}, east edge</p></div>
+              <div class="board" role="group" aria-label="Sixteen rotating pipes" aria-describedby="instructions inlet-description delivery-description">
+                <div class="edge inlet" id="inlet" style={`grid-row: ${Math.floor(first.inlet.index / 4) + 1}`} aria-hidden="true"><span>IN</span><strong>→</strong></div>
+                {first.initial.map((ports, index) => <button class="pipe" type="button" data-pipe={index} style={`grid-row: ${Math.floor(index / 4) + 1}; grid-column: ${index % 4 + 2}`} aria-label={`Rotate ${tileName(index)}: ${pipeDescription(ports)}`} disabled>
+                  <span class="tile-name" aria-hidden="true">{tileName(index)}</span>
+                  <svg viewBox="0 0 100 100" aria-hidden="true"><path class="pipe-wall" d={pipePath(ports)} /><path class="pipe-bore" d={pipePath(ports)} /></svg>
+                  <span class="ports" aria-hidden="true">{[...ports].join(' · ')}</span><span class="route-step" aria-hidden="true"></span>
+                </button>)}
+                <div class="edge outlet" id="outlet" style={`grid-row: ${Math.floor(first.delivery.index / 4) + 1}`} aria-hidden="true"><span>OUT</span><strong>→</strong></div>
+              </div>
+              <p class="compass">N = up · E = right · S = down · W = left</p>
+              <div class="controls" role="group" aria-label="Parcel controls"><button id="send" class="send" type="button" disabled>Send parcel <span aria-hidden="true">↗</span></button><button id="reset" type="button" disabled>Reset board</button><button id="solution" type="button" disabled>Show solution</button></div>
+              <p class="control-note">Reset restores this parcel's original pipes and turn count. Choosing another parcel starts that board afresh. Show solution lines up one working route, then you can send it.</p>
+            </div>
+
+            <aside class="receipt" aria-labelledby="receipt-title">
+              <div class="receipt-top"><span>Parcel Bureau</span><span id="receipt-number">PB / 001</span></div>
+              <h2 id="receipt-title">Delivery receipt</h2>
+              <p class="receipt-stamp" id="receipt-stamp" data-outcome="ready">Awaiting dispatch</p>
+              <p id="receipt-message" role="status" aria-live="polite" aria-atomic="true">No parcel has been sent. Arrange the pipes, then press Send parcel.</p>
+              <details open id="route-detail"><summary id="route-summary">Route taken: not yet tested</summary><ol id="route-list"></ol><p id="route-note">A vermilion trace and numbered tiles will show the same journey recorded here. A stopped parcel does not lock the board.</p></details>
+              <div class="receipt-foot"><span>No charge. No tracking number.</span><span>The pipes are the whole service.</span></div>
+            </aside>
+          </div>
+        </section>
+        <noscript><p class="no-script">Parcel Bureau needs JavaScript to rotate pipes and check a delivery. The board above is the first unsolved puzzle. No parcel is being sent, and the inactive controls do not change it.</p></noscript>
+      </main>
+      <footer><span>An invented postal service. Nothing is saved or sent over a network.</span><a href="/feral/#ledger">Read the council's record ↗</a></footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { color-scheme: light; background: #dfd7c7; color: #292a26; }
+  :global(body) { margin: 0; font: 1rem/1.55 system-ui, sans-serif; }
+  :global(a) { color: inherit; text-underline-offset: 4px; }
+  :global(button) { color: inherit; font: inherit; cursor: pointer; touch-action: manipulation; }
+  :global(button:disabled) { cursor: default; }
+  :global(button:focus-visible), :global(a:focus-visible), summary:focus-visible { outline: 3px solid #124b6c; outline-offset: 4px; }
+  .skip { position: absolute; top: -100px; left: 1rem; padding: .8rem; background: #fffdf6; z-index: 3; }
+  .skip:focus { top: 1rem; }
+  .paper { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 3.5rem); background: #f6efdf; min-height: 100vh; }
+  nav, footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .6rem 1.5rem; font-size: .75rem; }
+  nav { padding: 1.25rem 0; border-bottom: 1px solid #b8ae9c; }
+  nav a { text-decoration: none; }
+  header { padding: 2.7rem 0 2.4rem; }
+  .eyebrow, .seal, .section-heading, .serial, .slip-label, .endpoints, .tile-name, .ports, .edge, .compass, .receipt-top, .receipt-stamp, .receipt-foot { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+  .eyebrow { font-size: .69rem; text-transform: uppercase; letter-spacing: .08em; margin: 0 0 1.4rem; }
+  .masthead { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+  h1 { margin: 0; font-size: clamp(3.8rem, 9.7vw, 7.3rem); font-weight: 850; letter-spacing: -.065em; line-height: .91; }
+  h1 em { color: #a9321b; font-style: normal; }
+  .seal { flex-shrink: 0; width: 150px; height: 150px; border: 2px solid #a9321b; outline: 1px solid #a9321b; outline-offset: -8px; display: grid; place-content: center; color: #a9321b; border-radius: 50%; text-align: center; font-size: .61rem; transform: rotate(9deg); line-height: 1.1; }
+  .seal strong { font: 600 3.8rem/1 Georgia, serif; }
+  .intro { font-size: clamp(1.2rem, 2.3vw, 1.55rem); margin: 1.7rem 0 .2rem; }
+  .premise { color: #615b4f; font-size: .9rem; margin: 0; }
+  .section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem 1rem; align-items: baseline; font-size: .73rem; margin-bottom: .9rem; }
+  .section-heading h2 { font: inherit; text-transform: uppercase; letter-spacing: .03em; margin: 0; }
+  .section-heading > span { color: #615b4f; }
+  .deliveries { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; }
+  .delivery { min-width: 0; display: flex; flex-direction: column; gap: .4rem; text-align: left; padding: .8rem 1rem; border: 1px solid #a59b8a; border-radius: 2px; background: #fffaf0; font-size: .9rem; min-height: 80px; }
+  .serial { font-size: .64rem; color: #615b4f; }
+  .delivery[aria-pressed='true'] { border-color: #a9321b; box-shadow: inset 0 -3px #a9321b; background: #f9e6d6; }
+  .delivery:hover { border-color: #a9321b; }
+  .work-desk { margin-top: 2.3rem; border-top: 1px solid #b8ae9c; padding-top: 1.3rem; }
+  .instructions { font-size: .87rem; max-width: 780px; margin: 0 0 1.35rem; }
+  .desk-columns { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(1.3rem, 3vw, 2.8rem); align-items: start; }
+  .network { min-width: 0; }
+  .routing-slip { display: flex; justify-content: space-between; gap: 1rem; border-block: 1px solid #292a26; padding: .7rem .15rem .9rem; }
+  .slip-label { font-size: .62rem; text-transform: uppercase; color: #615b4f; }
+  .routing-slip h3 { font: 600 1.3rem/1.4 Georgia, serif; margin: .25rem 0 .1rem; }
+  .routing-slip p { color: #615b4f; font-size: .76rem; margin: 0; }
+  .parcel-mark { font-size: 2.2rem; color: #a9321b; }
+  .endpoints { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .2rem .8rem; font-size: .65rem; margin: .65rem 0; }
+  .endpoints p { margin: 0; }
+  .endpoints strong { color: #a9321b; }
+  .board { display: grid; grid-template-columns: 1.7rem repeat(4, minmax(0, 1fr)) 1.7rem; gap: 4px; align-items: stretch; }
+  .pipe { position: relative; min-width: 0; aspect-ratio: 1; border: 1px solid #9a927f; border-radius: 3px; background: #ede5d3; padding: 0; }
+  .pipe:hover { background: #fffaf0; border-color: #292a26; }
+  .pipe svg { display: block; width: 100%; height: 100%; overflow: hidden; }
+  .pipe-wall { fill: none; stroke: #49473f; stroke-width: 17; stroke-linejoin: round; }
+  .pipe-bore { fill: none; stroke: #fffaf0; stroke-width: 9; stroke-linejoin: round; }
+  .tile-name { position: absolute; top: 3px; left: 4px; font-size: .68rem; line-height: 1; background: #ede5d3; padding: 2px; }
+  .ports { position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: .7rem; font-weight: 600; line-height: 1; background: #ede5d3; padding: 2px 3px; }
+  .pipe[data-route='true'] { background: #f7d4b6; border-color: #a9321b; }
+  .pipe[data-route='true'] .pipe-bore { stroke: #b3341a; }
+  .route-step { position: absolute; right: 3px; top: 3px; min-width: .8rem; font-size: .6rem; line-height: 1; font-weight: 700; background: #f6efdf; }
+  .route-step:not(:empty) { padding: 3px; }
+  .pipe[data-stop='true'] { outline: 2px dashed #a9321b; outline-offset: -5px; }
+  .pipe[data-stop='true'] .route-step { color: #a9321b; }
+  .pipe:focus-visible { outline-offset: 1px; z-index: 1; }
+  .edge { align-self: center; text-align: center; color: #a9321b; line-height: 1; }
+  .edge span { display: block; font-size: .6rem; }
+  .edge strong { display: block; font-size: 1.6rem; font-weight: 400; }
+  .inlet { grid-column: 1; }
+  .outlet { grid-column: 6; }
+  .compass { font-size: .6rem; text-align: center; color: #615b4f; margin: .7rem 0 1rem; }
+  .controls { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .controls button { min-height: 45px; border: 1px solid #292a26; padding: .6rem .8rem; background: transparent; border-radius: 2px; font-size: .8rem; }
+  .controls button:hover { background: #e6dcc7; }
+  .controls .send { flex: 1; display: flex; justify-content: space-between; gap: 1rem; background: #a9321b; color: #fffaf0; border-color: #a9321b; font-weight: 650; }
+  .controls .send:hover { background: #862715; }
+  .control-note { font-size: .7rem; color: #615b4f; margin: .9rem 0 0; }
+  .receipt { padding: 1.2rem; background: #fffaf0; border: 1px solid #b8ae9c; border-bottom: 5px double #b8ae9c; min-width: 0; overflow-wrap: anywhere; }
+  .receipt-top { display: flex; justify-content: space-between; gap: .5rem; font-size: .58rem; color: #615b4f; text-transform: uppercase; }
+  .receipt h2 { font: 600 1.5rem/1.3 Georgia, serif; margin: 1.6rem 0 .7rem; }
+  .receipt-stamp { display: inline-block; border: 1px solid #615b4f; padding: .3rem .5rem; margin: 0 0 .6rem; color: #615b4f; font-size: .68rem; text-transform: uppercase; }
+  .receipt-stamp[data-outcome='delivered'] { color: #32572c; border: 2px solid #32572c; transform: rotate(-3deg); }
+  .receipt-stamp[data-outcome='stopped'] { color: #a9321b; border-color: #a9321b; }
+  #receipt-message { font-size: .85rem; line-height: 1.6; margin: .8rem 0 1.5rem; }
+  details { border-top: 1px dashed #b8ae9c; padding-top: 1rem; font-size: .76rem; }
+  summary { cursor: pointer; }
+  #route-list { padding-left: 1.4rem; font-size: .74rem; }
+  #route-list:empty { display: none; }
+  #route-list li { margin: .35rem 0; }
+  #route-note { color: #615b4f; font-size: .73rem; }
+  .receipt-foot { display: flex; flex-direction: column; gap: .2rem; font-size: .57rem; color: #615b4f; border-top: 1px dashed #b8ae9c; margin-top: 1.5rem; padding-top: 1rem; }
+  .no-script { border: 1px solid #a9321b; padding: 1rem; }
+  footer { border-top: 1px solid #b8ae9c; padding: 1.4rem 0 2rem; margin-top: 2.7rem; color: #615b4f; font-size: .68rem; }
+  @media (max-width: 760px) { .desk-columns { grid-template-columns: minmax(0, 1fr); } .network { max-width: 570px; width: 100%; margin-inline: auto; } .receipt { max-width: 570px; width: 100%; margin-inline: auto; } .seal { width: 118px; height: 118px; font-size: .5rem; } .seal strong { font-size: 3rem; } }
+  @media (max-width: 440px) { header { padding-top: 2rem; } .eyebrow { font-size: .57rem; letter-spacing: .02em; } .seal { width: 75px; height: 75px; font-size: .33rem; outline-offset: -5px; } .seal strong { font-size: 2rem; } .masthead { gap: .5rem; flex-wrap: wrap; } h1 { font-size: clamp(3.15rem, 15vw, 3.8rem); } .deliveries { grid-template-columns: 1fr; gap: .45rem; } .delivery { min-height: 48px; flex-direction: row; align-items: baseline; gap: .7rem; padding: .7rem; } .serial { flex-shrink: 0; } .board { grid-template-columns: 1.35rem repeat(4, minmax(0, 1fr)) 1.35rem; gap: 3px; } .edge span { font-size: .55rem; } .edge strong { font-size: 1.3rem; } .tile-name { font-size: .6rem; left: 1px; top: 1px; } .ports { font-size: .65rem; bottom: 1px; } .route-step { font-size: .52rem; right: 1px; top: 1px; } .controls .send { flex-basis: 100%; } .controls button:not(.send) { flex: 1; } }
+</style>
+
+<script>
+  import { BOARDS, SIDE_NAMES, rotatePipe, tileName, pipeDescription, pipePath, traceRoute, describeResult } from '../../content/feral/parcel-bureau.mjs';
+
+  const get = (id: string) => document.getElementById(id)!;
+  const pipeButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-pipe]')];
+  const boardButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-board]')];
+  let boardIndex = 0;
+  let pipes = [...BOARDS[0].initial];
+  let rotations = 0;
+  let assisted = false;
+
+  function renderPipes() {
+    for (const [index, button] of pipeButtons.entries()) {
+      button.setAttribute('aria-label', `Rotate ${tileName(index)}: ${pipeDescription(pipes[index])}`);
+      button.querySelectorAll('path').forEach((path) => path.setAttribute('d', pipePath(pipes[index])));
+      button.querySelector('.ports')!.textContent = [...pipes[index]].join(' · ');
+      button.dataset.route = 'false';
+      button.dataset.stop = 'false';
+      button.querySelector('.route-step')!.textContent = '';
+    }
+    get('rotation-count').textContent = `${rotations} rotation${rotations === 1 ? '' : 's'}${assisted ? ' · solution shown' : ''}`;
+  }
+
+  function clearReceipt(message: string) {
+    get('receipt-stamp').textContent = 'Awaiting dispatch';
+    get('receipt-stamp').dataset.outcome = 'ready';
+    get('receipt-message').textContent = message;
+    get('route-summary').textContent = 'Route taken: not yet tested';
+    get('route-list').replaceChildren();
+    get('route-note').textContent = 'The next dispatch will trace the current pipes. A stopped parcel does not lock the board.';
+  }
+
+  function resetBoard(index = boardIndex) {
+    boardIndex = index;
+    const board = BOARDS[index];
+    pipes = [...board.initial];
+    rotations = 0;
+    assisted = false;
+    boardButtons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
+    get('parcel-title').textContent = board.title;
+    get('parcel-address').textContent = board.address;
+    get('receipt-number').textContent = `PB / 00${index + 1}`;
+    get('inlet-description').textContent = `IN → ${tileName(board.inlet.index)}, west edge`;
+    get('delivery-description').textContent = `OUT → ${tileName(board.delivery.index)}, east edge`;
+    get('inlet').style.gridRow = String(Math.floor(board.inlet.index / 4) + 1);
+    get('outlet').style.gridRow = String(Math.floor(board.delivery.index / 4) + 1);
+    renderPipes();
+    clearReceipt(`${board.title}: original pipes restored. No parcel has been sent on this arrangement.`);
+  }
+
+  pipeButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      pipes[index] = rotatePipe(pipes[index]);
+      rotations++;
+      renderPipes();
+      clearReceipt(`Pipes changed. ${tileName(index)} now has ports ${[...pipes[index]].map((side) => SIDE_NAMES[side]).join(' and ')}. Send again to test this arrangement.`);
+    });
+    button.addEventListener('keydown', (event) => {
+      const row = Math.floor(index / 4);
+      const col = index % 4;
+      const neighbour = {
+        ArrowUp: row > 0 ? index - 4 : index,
+        ArrowDown: row < 3 ? index + 4 : index,
+        ArrowLeft: col > 0 ? index - 1 : index,
+        ArrowRight: col < 3 ? index + 1 : index,
+      }[event.key];
+      if (neighbour !== undefined) {
+        event.preventDefault();
+        pipeButtons[neighbour].focus();
+      }
+    });
+  });
+
+  boardButtons.forEach((button, index) => button.addEventListener('click', () => resetBoard(index)));
+  get('reset').addEventListener('click', () => resetBoard());
+  get('solution').addEventListener('click', () => {
+    pipes = [...BOARDS[boardIndex].solution];
+    assisted = true;
+    renderPipes();
+    clearReceipt('One working solution is now on the desk. It has not been sent. Press Send parcel to check the route. The receipt will say that the solution was shown.');
+  });
+  get('send').addEventListener('click', () => {
+    const board = BOARDS[boardIndex];
+    const result = traceRoute(pipes, board.inlet, board.delivery);
+    renderPipes();
+    get('receipt-stamp').textContent = result.status === 'delivered' ? 'Delivered' : 'Parcel stopped';
+    get('receipt-stamp').dataset.outcome = result.status === 'delivered' ? 'delivered' : 'stopped';
+    get('receipt-message').textContent = describeResult(result, board, assisted);
+    get('route-summary').textContent = `Route taken: ${result.route.length} pipe${result.route.length === 1 ? '' : 's'}`;
+    const list = get('route-list');
+    list.replaceChildren();
+    result.route.forEach((step, index) => {
+      const button = pipeButtons[step.index];
+      button.dataset.route = 'true';
+      button.querySelector('.route-step')!.textContent = String(index + 1);
+      const item = document.createElement('li');
+      item.textContent = `${tileName(step.index)}: in from ${SIDE_NAMES[step.entry]}, out to ${SIDE_NAMES[step.exit]}.`;
+      list.append(item);
+    });
+    if (result.status !== 'delivered') {
+      pipeButtons[result.stop].dataset.stop = 'true';
+      pipeButtons[result.stop].querySelector('.route-step')!.textContent = 'STOP';
+    }
+    get('route-note').textContent = result.status === 'delivered'
+      ? `Received at ${tileName(board.delivery.index)}, east edge. Disconnected spare pipes were not used.`
+      : `Stopped at ${tileName(result.stop)}, ${SIDE_NAMES[result.side]} side. Numbered tiles show the completed journey, and STOP marks the stopping place.`;
+  });
+
+  [...pipeButtons, ...boardButtons, ...document.querySelectorAll<HTMLButtonElement>('.controls button')].forEach((button) => { button.disabled = false; });
+</script>
