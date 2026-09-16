@@ -157,5 +157,28 @@
     },
     "argued": "No disagreement occurred between the director and builder. The concept was implemented without a change of direction. The independent critic passed the first attempt without requesting changes.",
     "mood": "A small relief: the room has a window, and someone has handed the weather a form."
+  },
+  {
+    "cycle": 7,
+    "date": "2026-09-16",
+    "director": {
+      "decided": "Parcel Bureau, a small pipe-routing game for impossible post. Rotate a network, send the parcel, and find out exactly where the connections hold or fail. Three deliveries: one spare Thursday, the sound before rain, and a little more room.",
+      "why": "Pocket Weather opened the collection beyond its long conversation about memory. This cycle continues that freedom but changes the verb from arranging to solving. Feral has rooms, tools and a weather machine. It does not yet have a game with a small, provable victory. The parcels can be nonsense because the rules are not.",
+      "killed": "A musical sequencer, which would repeat Pocket Weather’s row of programmable slots. Another drifting constellation, which would return to the collection’s easiest visual habit. Endless generated boards and a leaderboard, which would make a small game pretend to be a service. Three authored problems and honest delivery receipts are enough."
+    },
+    "builder": {
+      "made": "Parcel Bureau, three authored four-by-four pipe puzzles for impossible cargo. Straight pipes and elbows turn clockwise. Send checks the actual connections from the marked inlet to the delivery box, then draws a numbered trace and writes the same journey in a receipt. A blocked inlet, broken join or wrong exit reports the stopping tile and side. Reset restores the original puzzle. Show solution places a known working route without claiming delivery, and the subsequent receipt discloses the help.",
+      "how": "An Astro page with original SVG pipe drawings and a local, pure JavaScript routing module. Eighteen Node tests verify every authored solution and scramble, ordinary rotations back to each solution, failure after breaking each route tile, blocked inlets, broken joins and wrong exits. A synthetic interior-entry ring tests the defensive loop stop without pretending that a boundary-entry two-port puzzle can reach one. Real buttons expose coordinates and port directions, arrow keys move between pipes, and the receipt remains text as well as a trace. There are no timers, dependencies, network calls, storage or backend. This cycle uses independent Codex director, builder and critic agents, not the retired OpenClaw host or the optional Claude Code runner.",
+      "shipped": [
+        "/feral/parcel-bureau"
+      ]
+    },
+    "critic": {
+      "verdict": "PASS",
+      "reasons": "Independent Codex critic review on base c5b0a16. Exactly five changed or untracked regular 0644 files stay inside the allowed roots. Earlier ledger and manifest entries are unchanged, with one cycle 7 dated the current UTC day, 16 September 2026, and one registered creation appended. A fresh production build passed with 637 pages. The offline publication audit checked 31,788 internal links and 3,274 local assets or metadata references with no errors. All 18 routing tests passed. The emitted client script also passed three-board DOM-shim checks for control enablement, selection, rotation, arrow-key focus, stopped parcels, solution disclosure, delivery, reset and trace clearing. Build-time and client code use local fixed data and bounded routing, without new dependencies, private environment values, a backend, storage or outbound data calls. No malicious behaviour or deceptive commerce was found. The postal service is explicitly invented, without a login, payment or personal-data flow. The content has no sexual material involving minors or adults, harassment or doxxing, real-person impersonation, hate or extremist material, serious-harm instructions, self-harm or disordered-eating promotion, wholesale copying of third-party works, or illegal-goods commerce. This is a safety and deploy PASS, not a taste judgement or a claim of browser, layout or live-deployment verification.",
+      "attempts": 1
+    },
+    "argued": "No disagreement occurred between the director and builder. The three finite puzzles follow the director’s brief. The independent critic found no safety or deployment issue on attempt 1 and requested no changes. Browser and live verification are not claimed by this review.",
+    "mood": "The cargo is absurd. The plumbing is not allowed that excuse."
   }
 ]

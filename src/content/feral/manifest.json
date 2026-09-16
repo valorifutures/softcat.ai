@@ -58,5 +58,15 @@
     "concept_by": "feral-director",
     "type": "interactive",
     "born": "2026-09-15"
+  },
+  {
+    "slug": "parcel-bureau",
+    "title": "Parcel Bureau",
+    "blurb": "Rotate the pipes. Deliver one spare Thursday. The cargo is impossible; the connections still have to work.",
+    "route": "/feral/parcel-bureau",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "game",
+    "born": "2026-09-16"
   }
 ]
