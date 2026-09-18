@@ -769,6 +769,6 @@ The benchmark glossary now explains reproducibility and production denominators,
 
 Source-access limits: BMW and Nature pages were unavailable through the research tool. Stripe exposed article metadata and a related summary, and a PNAS request returned 403. These were not added as newly verified evidence. Their existing historical records remain untouched. Search discovery was weak, so this review does not claim an exhaustive survey of new research.
 
-Local validation passed all 321 tests, all data validators and the 638-page production build. The offline audit checked 31,795 internal links and 3,278 local assets and metadata references, with no errors. Hosted release and live Horizon/glossary verification follow this preparation record. The PR publication record will hold the exact release outcome.
+Local validation passed all 321 tests, all data validators and the 638-page production build. The offline audit checked 31,795 internal links and 3,278 local assets and metadata references, with no errors. Hosted release and live Horizon/glossary verification follow this preparation record. [PR #242](https://github.com/valorifutures/softcat.ai/pull/242) records the exact hosted checks, deployment and live outcome.
 
 Next priorities are independent cross-domain human evaluations, consecutive workflow and software-ticket denominators, robot intervention and full-cost data across sites, and replicated full-term tutoring trials with delayed unassisted tests. Price snapshots and the legacy generator retirements are unchanged.

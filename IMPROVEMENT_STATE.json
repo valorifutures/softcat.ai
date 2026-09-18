@@ -1,6 +1,6 @@
 {
   "updated_at": "2026-09-18T17:37:39+00:00",
-  "phase": "feral-8-live-and-horizon-review-prepared",
+  "phase": "feral-8-live-and-horizon-review-recorded",
   "active_branch": null,
   "last_verified_deployment": {
     "sha": "e72dd345c5e116b0bb6ca4e92b6cf64bb23918e6",
@@ -42,7 +42,8 @@
   },
   "horizon_review_2026_09_18": {
     "date": "2026-09-18",
-    "outcome": "All five forecasts reassessed against nine retrieved primary source pages. Targets, milestones and resolution rules unchanged. One review appended, all earlier records preserved. Benchmark glossary clarifies reproducibility and production denominators. Local 321 tests, validators, 638-page build and offline audit passed. Hosted publication receipt will be linked here before merge."
+    "publication_record": "https://github.com/valorifutures/softcat.ai/pull/242",
+    "outcome": "All five forecasts reassessed against nine retrieved primary source pages. Targets, milestones and resolution rules unchanged. One review appended, all earlier records preserved. Benchmark glossary clarifies reproducibility and production denominators. Local 321 tests, validators, 638-page build and offline audit passed. The linked PR records the actual hosted publication and live verification outcome."
   },
   "prior_verification_limits": {
     "date": "2026-09-16",
