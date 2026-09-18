@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-18T17:37:39+00:00",
-  "phase": "feral-8-live-and-horizon-review-recorded",
+  "updated_at": "2026-09-18T17:47:00+00:00",
+  "phase": "feral-8-and-horizon-review-live",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "e72dd345c5e116b0bb6ca4e92b6cf64bb23918e6",
-    "at": "2026-09-18T17:37:39+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35374303253"
+    "sha": "d9fb0e3858d9bbc246822ae3fad38b37a160c147",
+    "at": "2026-09-18T17:47:00+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35375867261"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -43,6 +43,9 @@
   "horizon_review_2026_09_18": {
     "date": "2026-09-18",
     "publication_record": "https://github.com/valorifutures/softcat.ai/pull/242",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35375769021",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/35375867261",
+    "live_verification": "All five predictions show the 18 September review, zero target movement and all three preserved history entries. An already-open Education view received the new review and retained its selection. The benchmark page shows its original 3 April date and separate 18 September editorial review.",
     "outcome": "All five forecasts reassessed against nine retrieved primary source pages. Targets, milestones and resolution rules unchanged. One review appended, all earlier records preserved. Benchmark glossary clarifies reproducibility and production denominators. Local 321 tests, validators, 638-page build and offline audit passed. The linked PR records the actual hosted publication and live verification outcome."
   },
   "prior_verification_limits": {
@@ -101,7 +104,7 @@
     "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned."
   ],
   "next": [
-    "Verify the 18 September Horizon review publication receipt before beginning another writer. The Feral cycle is resolved and no stale candidate remains. Do not create another cycle on 18 September.",
+    "Feral cycle 8 and the 18 September Horizon review are published and verified. No stale candidate remains. Do not create another cycle on 18 September. The final receipt follow-up clarifies that excluded benchmark work is reported separately from eligible cases.",
     "Next evidence priorities: independent broad-domain human comparisons; consecutive workflow and software-ticket denominators including manual rescue and monitoring; multi-site robot interventions and cost per successful task; full-term replicated tutoring trials with eight-week unassisted retention.",
     "Preserve target movement separately from elapsed days. Keep historical forecasts, retired output and the daily GitHub price owner unchanged. Keep recurring tasks enabled and legacy generators off."
   ],
@@ -110,7 +113,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Resolved the retained Feral cycle 8 rendering failure under the maintainer's continuation request and published PR #241 after independent re-review. Resumed the deferred evidence pass in a separate fresh worktree, reassessed all five milestones and retained every target. This checkpoint accompanies the evidence review branch; hosted release and live receipt are recorded separately. No price refresh, legacy generator or additional creative cycle was run.",
+  "session": "Resolved the retained Feral cycle 8 rendering failure and published PR #241 after independent re-review. Resumed the deferred evidence pass in a fresh worktree, reassessed all five milestones and retained every target. PR #242 passed hosted checks, deployed and was verified live, including refresh of an already-open Education view. This follow-up records the actual release and clarifies the glossary denominator wording. No price refresh, legacy generator or additional creative cycle was run.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",

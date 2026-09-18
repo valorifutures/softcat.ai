@@ -772,3 +772,11 @@ Source-access limits: BMW and Nature pages were unavailable through the research
 Local validation passed all 321 tests, all data validators and the 638-page production build. The offline audit checked 31,795 internal links and 3,278 local assets and metadata references, with no errors. Hosted release and live Horizon/glossary verification follow this preparation record. [PR #242](https://github.com/valorifutures/softcat.ai/pull/242) records the exact hosted checks, deployment and live outcome.
 
 Next priorities are independent cross-domain human evaluations, consecutive workflow and software-ticket denominators, robot intervention and full-cost data across sites, and replicated full-term tutoring trials with delayed unassisted tests. Price snapshots and the legacy generator retirements are unchanged.
+
+## 18 September 2026, evidence review verified live
+
+[PR #242](https://github.com/valorifutures/softcat.ai/pull/242) passed [hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/35375769021) and [Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/35375867261). The deployed commit is `d9fb0e3858d9bbc246822ae3fad38b37a160c147`. An already-open Education view received the new review through its update button, preserved the selection and kept its end-2029 target.
+
+We selected all five predictions on the live page. Each showed the actual 18 September review, zero days added or removed, and all three history entries. Day counts observed on 18 September were 1,930 for AGI and robotics, 835 for agents, 469 for software and 1,200 for education. The glossary retained its 3 April publication date and displayed the separate 18 September editorial review.
+
+Final proofreading identified an ambiguous denominator sentence. This follow-up specifies that failures and manual rescues stay among eligible cases, while excluded work is reported separately. It changes no forecast or source judgement. The existing browser and source-access limits remain recorded in the checkpoint.
