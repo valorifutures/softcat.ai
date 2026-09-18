@@ -1,0 +1,181 @@
+---
+import { INKS, initialPlates, renderPrint, registrationSummary } from '../../content/feral/off-register.mjs';
+const initial = initialPlates();
+---
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Off Register | Feral</title>
+    <meta name="description" content="Misalign three inks, find a colour in the overlap, and pull a print to keep. A local, three-ink printmaking toy." />
+    <link rel="canonical" href="https://softcat.ai/feral/off-register/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip" href="#print-desk">Skip to the print desk</a>
+    <div class="room">
+      <nav aria-label="Feral navigation"><a href="/feral/">← Feral</a><span>A little ink on everything / 008</span></nav>
+      <header><h1>Off <span>Register</span><i aria-hidden="true">.</i></h1><p>Three inks. None of them obliged to agree.</p></header>
+      <main id="print-desk">
+        <section class="desk" aria-labelledby="live-title">
+          <div class="working-print">
+            <div class="section-line"><h2 id="live-title">On the press</h2><span>Still yours to move</span></div>
+            <div class="sheet" id="live-art" set:html={renderPrint(initial)} />
+            <details class="registration"><summary>Current registration</summary><p id="registration-text">{registrationSummary(initial)}</p></details>
+          </div>
+          <div class="tools">
+            <fieldset id="ink-controls" disabled>
+              <legend>01 / Pick an ink</legend>
+              <div class="inks">{INKS.map((ink, index) => <label class="ink" style={`--ink: ${ink.colour}`}><input type="radio" name="ink" value={index} checked={index === 0} /><span class="swatch" aria-hidden="true"/><span>{ink.name}</span></label>)}</div>
+            </fieldset>
+            <fieldset id="registration-controls" disabled>
+              <legend>02 / Let it slip</legend>
+              <p class="selected" id="selected-ink">Moving Raspberry</p>
+              <div class="slider"><label for="horizontal">Horizontal offset <output id="horizontal-value" for="horizontal">−18</output></label><input id="horizontal" type="range" min="-90" max="90" step="1" value="-18" data-axis="x"/><div class="ends" aria-hidden="true"><span>← left</span><span>right →</span></div></div>
+              <div class="slider"><label for="vertical">Vertical offset <output id="vertical-value" for="vertical">14</output></label><input id="vertical" type="range" min="-90" max="90" step="1" value="14" data-axis="y"/><div class="ends" aria-hidden="true"><span>↑ up</span><span>down ↓</span></div></div>
+              <div class="slider"><label for="rotation">Rotation <output id="rotation-value" for="rotation">−8°</output></label><input id="rotation" type="range" min="-30" max="30" step="1" value="-8" data-axis="rotation"/><div class="ends" aria-hidden="true"><span>−30°</span><span>+30°</span></div></div>
+              <button type="button" id="reset-plate" class="quiet">Reset this plate</button>
+              <p class="hint">Offsets are in print units. Arrow keys nudge. Home and End reach the limits. Reset puts this ink back where it began.</p>
+            </fieldset>
+            <div class="press-actions"><button type="button" id="pull" class="pull" disabled>Pull a print <span aria-hidden="true">↘</span></button><button type="button" id="align" class="quiet" disabled>Align all plates</button><button type="button" id="restart" class="quiet" disabled>Start again</button></div>
+            <p class="hint">Align zeros every offset and angle. Start again restores the opening arrangement. Neither changes a pulled print.</p>
+          </div>
+        </section>
+        <section class="proof-section" aria-labelledby="proof-title">
+          <div class="proof-copy"><p class="eyebrow">03 / Off the press</p><h2 id="proof-title">A print to keep.</h2><p>Pulled from these plates. No edition limit.</p><p id="proof-status" role="status" aria-live="polite" aria-atomic="true">Nothing pulled yet. When it looks right, or interestingly wrong, pull a print.</p><button type="button" id="download" disabled>Download this print <span aria-hidden="true">↓</span></button><p class="hint">A self-contained SVG, exactly as pulled. Made here in your browser. Nothing is uploaded or saved for you.</p><details id="proof-details" hidden><summary>Registration in this print</summary><p id="proof-registration"></p></details></div>
+          <div class="proof-mount"><div id="proof-art" class="proof-empty"><span>No print yet.<br/>The paper is patient.</span></div></div>
+        </section>
+        <noscript><p class="no-script">The opening print is shown above. JavaScript is needed to move the plates, pull a print and download it. The controls are inactive without it.</p></noscript>
+      </main>
+      <footer><span>Three original plates. Seven possible ink colours.</span><a href="/feral/#ledger">The council’s record ↗</a></footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { background: #eee4cd; color: #29291f; color-scheme: light; }
+  :global(body) { margin: 0; font: 1rem/1.5 system-ui, sans-serif; }
+  :global(a) { color: inherit; text-underline-offset: 4px; }
+  :global(button), :global(input) { font: inherit; }
+  :global(button) { cursor: pointer; touch-action: manipulation; }
+  :global(button:disabled) { cursor: default; opacity: .5; }
+  :global(:focus-visible) { outline: 3px solid #254bc8; outline-offset: 5px; }
+  .room { max-width: 1280px; margin: auto; padding: 0 clamp(1.2rem, 4vw, 4rem); }
+  .skip { position: absolute; top: -100px; left: 1rem; background: #fff8e8; padding: 1rem; z-index: 5; }
+  .skip:focus { top: 1rem; }
+  nav, footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .8rem 2rem; font-size: .75rem; }
+  nav { padding: 1.4rem 0; border-bottom: 1px solid #aca48f; }
+  nav a { font-weight: 750; text-decoration: none; }
+  header { padding: 2.7rem 0 3rem; }
+  h1 { margin: 0; font-size: clamp(3.3rem, 10.5vw, 8rem); line-height: .95; letter-spacing: -.075em; font-weight: 900; }
+  h1 span { color: #c82152; display: inline-block; transform: rotate(-3deg); }
+  h1 i { color: #254bc8; font-style: normal; }
+  header > p { font-size: clamp(1rem, 2vw, 1.35rem); margin: 1.7rem 0 0; }
+  .desk { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(270px, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .section-line { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: space-between; align-items: baseline; margin-bottom: 1.2rem; font-size: .7rem; text-transform: uppercase; letter-spacing: .09em; }
+  .section-line h2 { margin: 0; font: inherit; font-weight: 800; }
+  .sheet { background: #fff8e8; box-shadow: 5px 8px 0 #d8cdb6, 0 1px 8px #55452215; }
+  .sheet :global(svg), #proof-art :global(svg) { display: block; width: 100%; height: auto; }
+  .registration { margin-top: 1.5rem; font-size: .75rem; }
+  summary { cursor: pointer; width: fit-content; }
+  .registration p, #proof-registration { line-height: 1.8; }
+  fieldset { margin: 0 0 1.8rem; padding: 0; border: 0; min-width: 0; }
+  legend, .eyebrow { padding: 0; margin: 0 0 1rem; font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .11em; }
+  .inks { display: flex; gap: .55rem; }
+  .ink { flex: 1; min-width: 0; position: relative; display: grid; justify-items: center; gap: .6rem; padding: .8rem .3rem; border: 1px solid #aca48f; cursor: pointer; font-size: .74rem; font-weight: 700; }
+  .ink:has(input:checked) { background: #fff8e8; border: 2px solid #29291f; padding: calc(.8rem - 1px) calc(.3rem - 1px); box-shadow: 3px 3px 0 #29291f; }
+  .ink input { position: absolute; top: .4rem; left: .4rem; margin: 0; accent-color: var(--ink); }
+  .swatch { background: var(--ink); width: 2rem; height: 2rem; border-radius: 50%; margin-top: .35rem; }
+  .selected { font-size: 1.2rem; font-weight: 750; margin: -.25rem 0 1.2rem; }
+  .slider { margin-bottom: 1.25rem; }
+  .slider label { display: flex; justify-content: space-between; gap: 1rem; font-size: .85rem; }
+  output { font-weight: 800; font-variant-numeric: tabular-nums; }
+  input[type='range'] { width: 100%; height: 30px; margin: .35rem 0 0; accent-color: #c82152; cursor: pointer; }
+  .ends { display: flex; justify-content: space-between; font-size: .65rem; color: #625c4e; }
+  button { border: 1px solid #29291f; background: transparent; color: #29291f; padding: .8rem 1rem; min-height: 46px; }
+  button:hover:not(:disabled) { background: #fff8e8; }
+  .quiet { font-size: .77rem; }
+  .hint { font-size: .72rem; color: #625c4e; line-height: 1.6; margin: .85rem 0 0; }
+  .press-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .pull { flex-basis: 100%; display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 800; background: #254bc8; border-color: #254bc8; color: #fff8e8; box-shadow: 4px 4px 0 #29291f; margin-bottom: .7rem; }
+  .pull:hover:not(:disabled) { background: #1c3b9e; }
+  .proof-section { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; border-top: 2px solid #29291f; padding-top: 2.5rem; margin-top: 3.5rem; }
+  .proof-copy h2 { font-size: clamp(2.1rem, 4vw, 3.3rem); line-height: 1.05; letter-spacing: -.045em; margin: 0 0 1rem; }
+  #proof-status { font-size: .88rem; margin: 1.5rem 0; max-width: 32em; }
+  #download { display: flex; justify-content: space-between; gap: 2rem; background: #29291f; color: #fff8e8; font-weight: 700; }
+  #download:hover:not(:disabled) { background: #444337; }
+  #proof-details { margin-top: 1rem; font-size: .75rem; }
+  .proof-mount { background: #ded3ba; padding: clamp(1rem, 3vw, 2rem); }
+  #proof-art { transform: rotate(2deg); box-shadow: 3px 5px 0 #c8bca1; background: #fff8e8; }
+  .proof-empty { aspect-ratio: 5 / 6; display: grid; place-items: center; border: 1px dashed #9f947d; text-align: center; color: #625c4e; font: italic 1.4rem/1.4 Georgia, serif; }
+  .no-script { padding: 1rem; border: 2px solid #254bc8; }
+  footer { border-top: 1px solid #aca48f; margin-top: 3rem; padding: 1.4rem 0 2rem; color: #625c4e; }
+  @media (max-width: 740px) { .desk { grid-template-columns: 1fr; } .working-print { max-width: 530px; width: 100%; margin: auto; } .tools { max-width: 530px; width: 100%; margin: auto; } header { padding-block: 2rem; } .proof-section { grid-template-columns: 1fr; } .proof-mount { max-width: 450px; width: 100%; margin: auto; } nav span { font-size: .65rem; } h1 { font-size: clamp(3rem, 11vw, 5rem); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }
+</style>
+
+<script>
+  import { INKS, initialPlates, adjustPlate, alignPlates, resetPlate, renderPrint, registrationSummary, pullPrint } from '../../content/feral/off-register.mjs';
+  const get = (id: string) => document.getElementById(id)!;
+  const ranges = [...document.querySelectorAll<HTMLInputElement>('[data-axis]')];
+  let plates = initialPlates();
+  let selected = 0;
+  let proof: ReturnType<typeof pullPrint> | null = null;
+
+  function renderControls() {
+    get('selected-ink').textContent = `Moving ${INKS[selected].name}`;
+    for (const input of ranges) {
+      const key = input.dataset.axis as 'x' | 'y' | 'rotation';
+      input.value = String(plates[selected][key]);
+      input.setAttribute('aria-valuetext', `${plates[selected][key]}${key === 'rotation' ? ' degrees' : ' print units'}`);
+      get(`${input.id}-value`).textContent = `${plates[selected][key]}${key === 'rotation' ? '°' : ''}`;
+      input.style.accentColor = INKS[selected].colour;
+    }
+  }
+  function renderLive() {
+    // SVG includes only fixed authored geometry and validated, bounded numeric state.
+    get('live-art').innerHTML = renderPrint(plates);
+    get('registration-text').textContent = registrationSummary(plates);
+    renderControls();
+  }
+  document.querySelectorAll<HTMLInputElement>('input[name="ink"]').forEach(input => input.addEventListener('change', () => {
+    selected = Number(input.value);
+    renderControls();
+  }));
+  ranges.forEach(input => input.addEventListener('input', () => {
+    plates = adjustPlate(plates, selected, input.dataset.axis, input.value);
+    renderLive();
+  }));
+  get('reset-plate').addEventListener('click', () => { plates = resetPlate(plates, selected); renderLive(); });
+  get('align').addEventListener('click', () => { plates = alignPlates(); renderLive(); });
+  get('restart').addEventListener('click', () => { plates = initialPlates(); renderLive(); });
+  get('pull').addEventListener('click', () => {
+    const replacing = proof !== null;
+    proof = pullPrint(plates);
+    const art = get('proof-art');
+    art.classList.remove('proof-empty');
+    // Prefix only internal IDs/references for this inline copy; exported bytes stay untouched.
+    art.innerHTML = proof.svg.replaceAll('id="', 'id="proof-').replaceAll('url(#', 'url(#proof-').replace('aria-labelledby="print-title print-description"', 'aria-labelledby="proof-print-title proof-print-description"');
+    get('proof-status').textContent = `${replacing ? 'New print pulled. The previous print has been replaced.' : 'Print pulled.'} This print is frozen. Moving the plates will not change it. Pull again to replace it.`;
+    get('proof-registration').textContent = proof.summary;
+    get('proof-details').hidden = false;
+    (get('download') as HTMLButtonElement).disabled = false;
+    get('pull').firstChild!.textContent = 'Pull a new print ';
+  });
+  get('download').addEventListener('click', () => {
+    if (!proof) return;
+    const url = URL.createObjectURL(new Blob([proof.svg], { type: 'image/svg+xml;charset=utf-8' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'off-register.svg';
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+  (get('ink-controls') as HTMLFieldSetElement).disabled = false;
+  (get('registration-controls') as HTMLFieldSetElement).disabled = false;
+  for (const id of ['pull', 'align', 'restart']) (get(id) as HTMLButtonElement).disabled = false;
+  renderControls();
+</script>
