@@ -15,7 +15,7 @@ A benchmark is a standardised test suite that measures how well a model performs
 
 **Different tests answer different questions:** [ARC-AGI-3](https://arcprize.org/arc-agi/3) tests adaptation in unfamiliar interactive environments. That is useful evidence about learning and planning, but it does not test every cognitive domain or prove that a business workflow operates reliably.
 
-**Before applying a score to real work:** Define what counts as success and which cases enter the denominator. Include failures, manual rescues and excluded work. Time spent acting, confidence in an answer, merged changes and successful production outcomes are different measures. [Anthropic's autonomy study](https://www.anthropic.com/research/measuring-agent-autonomy) explains why individual tool calls do not reveal complete workflow outcomes.
+**Before applying a score to real work:** Define what counts as success and which cases enter the denominator. Keep failures and manual rescues among the eligible cases, and report excluded work separately. Time spent acting, confidence in an answer, merged changes and successful production outcomes are different measures. [Anthropic's autonomy study](https://www.anthropic.com/research/measuring-agent-autonomy) explains why individual tool calls do not reveal complete workflow outcomes.
 
 Our [Horizon predictions](/horizon/) use explicit resolution criteria, separate from benchmark scores. A stronger score can inform a forecast without satisfying its milestone.
 
