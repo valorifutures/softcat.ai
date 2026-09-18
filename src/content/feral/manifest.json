@@ -68,5 +68,15 @@
     "concept_by": "feral-director",
     "type": "game",
     "born": "2026-09-16"
+  },
+  {
+    "slug": "off-register",
+    "title": "Off Register",
+    "blurb": "Misalign three inks, find a colour in the overlap, and pull a print to keep.",
+    "route": "/feral/off-register",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "interactive",
+    "born": "2026-09-18"
   }
 ]
