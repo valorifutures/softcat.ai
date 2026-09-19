@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-09-18T10:00:27.522Z",
+  "checkedAt": "2026-09-19T09:41:28.952Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "7f6c6d5b843e5bdf19b4f432ec1ba8c10ba04906814acfc9ab616e11f81ac3d3",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/35332426132",
+  "sourceSha256": "a7cd37d46fa6a5fb8790a919ade65ff1e30cce2d97264b6e5294dc2333031165",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/35435382829",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 445,
+  "catalogueModels": 447,
   "trackedModels": 39,
   "matched": 36,
   "verified": 36,
   "notListed": 3,
   "reviewNeeded": 0,
   "unverified": 0,
-  "priceChanges": 1,
+  "priceChanges": 0,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -340,8 +340,8 @@
       "id": "mistralai/mistral-large-2512",
       "status": "not-listed",
       "previous": {
-        "inputPrice": 0.5,
-        "outputPrice": 1.5
+        "inputPrice": null,
+        "outputPrice": null
       },
       "quoted": {
         "inputPrice": null,
