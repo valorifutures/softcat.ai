@@ -1,192 +1,5 @@
 [
   {
-    "bot": "news_bot",
-    "timestamp": "2026-06-21T09:48:00.268933+00:00",
-    "status": "success",
-    "duration_s": 24.7,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0324,
-    "input_tokens": 6960,
-    "output_tokens": 768,
-    "output_files": [
-      "src/content/news-and-updates/2026-06-21-ai-digest.md"
-    ]
-  },
-  {
-    "bot": "thoughts_bot",
-    "timestamp": "2026-06-21T09:48:22.232659+00:00",
-    "status": "success",
-    "duration_s": 18.3,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0205,
-    "input_tokens": 4536,
-    "output_tokens": 458,
-    "output_files": [
-      "src/content/thoughts/2026-06-21-agents-that-learn-from-their-own-mistakes-are-more-dangerous.md"
-    ]
-  },
-  {
-    "bot": "radar_bot",
-    "timestamp": "2026-06-21T09:49:21.804203+00:00",
-    "status": "success",
-    "duration_s": 56.1,
-    "feeds_scanned": 10,
-    "items_found": 67,
-    "items_rejected": 58,
-    "items_published": 9,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0769,
-    "input_tokens": 9574,
-    "output_tokens": 3212,
-    "output_files": [
-      "src/data/radar/2026-06-21.json"
-    ]
-  },
-  {
-    "bot": "horizon_bot",
-    "timestamp": "2026-06-21T09:49:47.355528+00:00",
-    "status": "success",
-    "duration_s": 22,
-    "feeds_scanned": 0,
-    "items_found": 11,
-    "items_rejected": 0,
-    "items_published": 8,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0197,
-    "input_tokens": 1955,
-    "output_tokens": 920,
-    "output_files": [
-      "src/data/horizon/shifts.json"
-    ]
-  },
-  {
-    "bot": "tool_bot",
-    "timestamp": "2026-06-21T10:59:56.623999+00:00",
-    "status": "success",
-    "duration_s": 12.6,
-    "feeds_scanned": 4,
-    "items_found": 30,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0192,
-    "input_tokens": 4544,
-    "output_tokens": 370,
-    "output_files": [
-      "src/content/tools/2026-06-21-fapo.md"
-    ]
-  },
-  {
-    "bot": "tool_bot",
-    "timestamp": "2026-06-21T11:00:10.935047+00:00",
-    "status": "success",
-    "duration_s": 26.9,
-    "feeds_scanned": 0,
-    "items_found": 37,
-    "items_rejected": 32,
-    "items_published": 5,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": [],
-    "error_msg": "32 unverifiable: 2026-02-23-trulens.md, 2026-02-24-composio-agent-orchestrator.md, 2026-02-24-openai-websocket-mode.md, 2026-03-01-sakana-ais-doctolora-and-texttolora.md, 2026-03-08-liquid-ai-localcowork.md",
-    "job": "verify"
-  },
-  {
-    "bot": "model_bot",
-    "timestamp": "2026-06-22T05:00:06.582029+00:00",
-    "status": "success",
-    "duration_s": 0.3,
-    "feeds_scanned": 0,
-    "items_found": 340,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": [],
-    "job": "prices"
-  },
-  {
-    "bot": "model_bot",
-    "timestamp": "2026-06-22T05:00:12.190781+00:00",
-    "status": "success",
-    "duration_s": 5.9,
-    "feeds_scanned": 0,
-    "items_found": 128,
-    "items_rejected": 0,
-    "items_published": 4,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": [
-      "https://github.com/valorifutures/softcat.ai/pull/169"
-    ],
-    "job": "roster"
-  },
-  {
-    "bot": "news_bot",
-    "timestamp": "2026-06-22T06:00:24.854468+00:00",
-    "status": "success",
-    "duration_s": 22.5,
-    "feeds_scanned": 5,
-    "items_found": 35,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0215,
-    "input_tokens": 3495,
-    "output_tokens": 734,
-    "output_files": [
-      "src/content/news-and-updates/2026-06-22-ai-digest.md"
-    ]
-  },
-  {
-    "bot": "thoughts_bot",
-    "timestamp": "2026-06-22T07:00:29.456127+00:00",
-    "status": "success",
-    "duration_s": 22.8,
-    "feeds_scanned": 5,
-    "items_found": 35,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0239,
-    "input_tokens": 5516,
-    "output_tokens": 489,
-    "output_files": [
-      "src/content/thoughts/2026-06-22-government-bans-are-free-marketing-for-ai-labs.md"
-    ]
-  },
-  {
-    "bot": "radar_bot",
-    "timestamp": "2026-06-22T08:30:55.505685+00:00",
-    "status": "success",
-    "duration_s": 48.8,
-    "feeds_scanned": 10,
-    "items_found": 45,
-    "items_rejected": 39,
-    "items_published": 6,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0638,
-    "input_tokens": 8115,
-    "output_tokens": 2632,
-    "output_files": [
-      "src/data/radar/2026-06-22.json"
-    ]
-  },
-  {
     "bot": "model_bot",
     "timestamp": "2026-06-23T05:00:06.575735+00:00",
     "status": "success",
@@ -1555,5 +1368,29 @@
     "models_verified": 36,
     "models_not_listed": 3,
     "workflow_url": "https://github.com/valorifutures/softcat.ai/actions/runs/35435382829"
+  },
+  {
+    "bot": "model_bot",
+    "job": "prices",
+    "runner": "github-actions",
+    "timestamp": "2026-09-20T10:01:09.555Z",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 1,
+    "items_found": 446,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "",
+    "cost_usd": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [
+      "src/data/models.json",
+      "src/data/model-price-snapshot.json"
+    ],
+    "models_checked": 39,
+    "models_verified": 36,
+    "models_not_listed": 3,
+    "workflow_url": "https://github.com/valorifutures/softcat.ai/actions/runs/35503868129"
   }
 ]
