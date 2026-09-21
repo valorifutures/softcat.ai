@@ -794,3 +794,11 @@ Figure's report also exposed an editorial gap in the zero-shot glossary. Zero-sh
 We read the current tool guides, the agentic-loop and benchmark glossary entries, and the code-review and model-evaluation recipes. No new behavioural verification was performed, so their review dates remain unchanged. Search discovery did not surface a new qualifying education replication. This is a retrieved primary-source review, not an exhaustive literature survey.
 
 Local validation passed 168 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators and the 638-page production build. The offline audit checked 31,795 internal links and 3,278 local assets and metadata references with no errors. [PR #244](https://github.com/valorifutures/softcat.ai/pull/244) records the exact hosted release and live Horizon and glossary outcome.
+
+## 21 September 2026, evidence review verified live
+
+[PR #244](https://github.com/valorifutures/softcat.ai/pull/244) passed [required hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/35610709208), merged as `700d04c27286fc55abd3db6c5e5ed72e3f8a8915` and completed its [Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/35610834664).
+
+We selected each forecast on the live Horizon page. All five showed the 21 September review, zero days added or removed and the complete 15, 16, 18 and 21 September history. The observed counts were 1,927 days for AGI and robotics, 832 for agents, 466 for software and 1,197 for education. Robotics kept its end-2031 target while displaying Figure's 56% result and the missing commercial evidence.
+
+The live zero-shot glossary distinguishes prompts, tasks, objects and environments. It links to Figure's evaluation, preserves 3 April as the publication date and shows the separate 21 September editorial review. This browser check covered the desktop experience. No mobile-device or clipboard result is claimed.
