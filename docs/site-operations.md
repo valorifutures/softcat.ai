@@ -19,7 +19,9 @@ Configuration is not an execution receipt. The first maintenance pass completed
 on 16 September, as recorded below. Feral cycle 8 began on 18 September and
 completed after a rendering correction and a maintainer-requested continuation.
 The overlapping evidence pass deferred, then resumed after that release. The
-first regular Monday evidence-review start remains 21 September.
+first regular Monday evidence review completed on 21 September through
+[PR #244](https://github.com/valorifutures/softcat.ai/pull/244), with all five
+targets retained after primary-source reassessment.
 
 ## One owner for each job
 

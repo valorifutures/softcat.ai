@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-21T14:10:00+00:00",
-  "phase": "horizon-review-2026-09-21-prepared",
-  "active_branch": "review/horizon-2026-09-21",
+  "updated_at": "2026-09-21T14:16:00+00:00",
+  "phase": "horizon-review-2026-09-21-live",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "d9fb0e3858d9bbc246822ae3fad38b37a160c147",
-    "at": "2026-09-18T17:47:00+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35375867261"
+    "sha": "700d04c27286fc55abd3db6c5e5ed72e3f8a8915",
+    "at": "2026-09-21T14:16:00+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35610834664"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -52,8 +52,11 @@
     "date": "2026-09-21",
     "branch": "review/horizon-2026-09-21",
     "publication_record": "https://github.com/valorifutures/softcat.ai/pull/244",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35610709208",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/35610834664",
+    "live_verification": "All five selections show the 21 September review, zero target movement and all four preserved history entries. The zero-shot glossary shows its clarified scope, Figure source, original 3 April publication date and separate 21 September editorial review.",
     "outcome": "All five forecasts reassessed against retrieved primary material. Targets, milestones and resolution rules remain unchanged, with zero days added or removed. New evidence strengthens bounded long-horizon mathematics, enterprise workflow and cross-environment robot capability, but does not meet the forecasts' breadth, denominator, economics, production-monitoring or delayed-learning tests. The zero-shot glossary now distinguishes a withheld prompt from a withheld task, object or environment. Earlier prediction records are byte-for-byte unchanged.",
-    "validation": "168 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators, a 638-page build and an offline audit of 31,795 internal links and 3,278 assets/metadata passed locally. Hosted release and live verification remain pending."
+    "validation": "168 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators, a 638-page build and an offline audit of 31,795 internal links and 3,278 assets/metadata passed locally. Required hosted validation and Pages deployment succeeded on the linked exact head and merge."
   },
   "prior_verification_limits": {
     "date": "2026-09-16",
@@ -111,7 +114,7 @@
     "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned."
   ],
   "next": [
-    "Publish and verify the 21 September Horizon review on its exact checked head, then clear its active branch. Do not begin another writer while this branch or its PR is active.",
+    "The 21 September Horizon review is published and verified. Begin no additional evidence review merely because time has passed.",
     "Next evidence priorities: independent broad-domain replication of long-horizon results; predeclared consecutive workflow and software-ticket denominators including rescue and monitoring; customer-confirmed multi-site robot interventions and cost per successful task; full-term replicated tutoring trials with eight-week unassisted retention.",
     "Preserve target movement separately from elapsed days. Keep historical forecasts, retired output and the daily GitHub price owner unchanged. Keep recurring tasks enabled and legacy generators off."
   ],
@@ -120,7 +123,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Ran the first regular Monday evidence review from current main. Reassessed all five explicit milestones against retrieved primary sources and retained every target and resolution rule. Added one append-only review and clarified the scope of zero-shot claims. The daily price run remained under its GitHub owner. No price refresh, legacy generator or Feral cycle was run.",
+  "session": "Completed the first regular Monday evidence review from current main. Reassessed all five explicit milestones against retrieved primary sources and retained every target and resolution rule. PR #244 passed hosted checks, deployed and was verified live across all five selections and the zero-shot glossary. The daily price run remained under its GitHub owner. No duplicate refresh, legacy generator or Feral cycle was run.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
