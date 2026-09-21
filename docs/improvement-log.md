@@ -780,3 +780,17 @@ Next priorities are independent cross-domain human evaluations, consecutive work
 We selected all five predictions on the live page. Each showed the actual 18 September review, zero days added or removed, and all three history entries. Day counts observed on 18 September were 1,930 for AGI and robotics, 835 for agents, 469 for software and 1,200 for education. The glossary retained its 3 April publication date and displayed the separate 18 September editorial review.
 
 Final proofreading identified an ambiguous denominator sentence. This follow-up specifies that failures and manual rescues stay among eligible cases, while excluded work is reported separately. It changes no forecast or source judgement. The existing browser and source-access limits remain recorded in the checkpoint.
+
+## 21 September 2026, bounded progress without a forecast move
+
+We reassessed all five predictions against their explicit resolution rules. Anthropic reports an 11-day, largely autonomous computer-checked formalisation of Fermat's Last Theorem. OpenAI's customer stories report 41,000 Wayfair supplier tickets automated each month and a 65% autonomous resolution rate across supported Circles workflows. Figure reports 56% end-to-end success for three behaviours across 30 unseen homes, compared with 9% without its broad pretraining. These are meaningful signals of bounded progress.
+
+None meets the published forecast tests. The mathematics result is one specialist domain rather than two independent comparisons across ten domains. The workflow stories omit our predeclared consecutive eligible-case, rescue and 90-day reporting across ten organisations. The robot evaluation is vendor-run, below our 95% intervention-free threshold and has no six-month multi-customer economics. The coding evidence does not follow consecutive tickets through deployment and seven days of monitoring. The large tutoring experiment still tests retention after one week, not eight, and has no independent term-long replication.
+
+We therefore retain AGI and robotics at end-2031, agents at end-2028, software at end-2027 and education at end-2029. All milestones and resolution rules remain unchanged. The new history entry records zero days added or removed, and every earlier record is preserved byte-for-byte.
+
+Figure's report also exposed an editorial gap in the zero-shot glossary. Zero-shot can refer to the prompt, task, object or evaluation environment. Helix 2.5 withheld the 30 homes and objects, but still used task-specific adaptation data gathered elsewhere. The glossary now tells readers to inspect what was actually withheld and preserves its original publication date.
+
+We read the current tool guides, the agentic-loop and benchmark glossary entries, and the code-review and model-evaluation recipes. No new behavioural verification was performed, so their review dates remain unchanged. Search discovery did not surface a new qualifying education replication. This is a retrieved primary-source review, not an exhaustive literature survey.
+
+Local validation passed 168 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators and the 638-page production build. The offline audit checked 31,795 internal links and 3,278 local assets and metadata references with no errors. [PR #244](https://github.com/valorifutures/softcat.ai/pull/244) records the exact hosted release and live Horizon and glossary outcome.
