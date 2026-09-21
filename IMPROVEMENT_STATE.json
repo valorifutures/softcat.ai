@@ -51,6 +51,7 @@
   "horizon_review_2026_09_21": {
     "date": "2026-09-21",
     "branch": "review/horizon-2026-09-21",
+    "publication_record": "https://github.com/valorifutures/softcat.ai/pull/244",
     "outcome": "All five forecasts reassessed against retrieved primary material. Targets, milestones and resolution rules remain unchanged, with zero days added or removed. New evidence strengthens bounded long-horizon mathematics, enterprise workflow and cross-environment robot capability, but does not meet the forecasts' breadth, denominator, economics, production-monitoring or delayed-learning tests. The zero-shot glossary now distinguishes a withheld prompt from a withheld task, object or environment. Earlier prediction records are byte-for-byte unchanged.",
     "validation": "168 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators, a 638-page build and an offline audit of 31,795 internal links and 3,278 assets/metadata passed locally. Hosted release and live verification remain pending."
   },

@@ -793,4 +793,4 @@ Figure's report also exposed an editorial gap in the zero-shot glossary. Zero-sh
 
 We read the current tool guides, the agentic-loop and benchmark glossary entries, and the code-review and model-evaluation recipes. No new behavioural verification was performed, so their review dates remain unchanged. Search discovery did not surface a new qualifying education replication. This is a retrieved primary-source review, not an exhaustive literature survey.
 
-Local validation passed 168 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators and the 638-page production build. The offline audit checked 31,795 internal links and 3,278 local assets and metadata references with no errors. Hosted release and live Horizon and glossary checks follow.
+Local validation passed 168 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators and the 638-page production build. The offline audit checked 31,795 internal links and 3,278 local assets and metadata references with no errors. [PR #244](https://github.com/valorifutures/softcat.ai/pull/244) records the exact hosted release and live Horizon and glossary outcome.
