@@ -498,5 +498,160 @@
         "uncertainty": "Benefits may depend heavily on tutor design, subject and student group. Immediate performance with assistance can improve without producing durable independent learning."
       }
     ]
+  },
+  {
+    "date": "2026-09-21",
+    "id": "predictions-2026-09-21",
+    "reason": "We reassessed all five milestones against primary material retrieved on 21 September. Long-horizon formal mathematics, high-volume customer workflows and cross-environment robot generalisation strengthen the evidence that bounded systems are improving. They still do not provide the independent breadth, consecutive eligible-case results, production-ticket outcomes, commercial robot economics or delayed learning replication in our tests. We therefore retain every target and resolution rule, with zero days added or removed.",
+    "records": [
+      {
+        "earlier": "Independent teams reproduce skilled-human performance across newly created domains without task-specific tuning or undisclosed human help.",
+        "evidence": [
+          {
+            "title": "Anthropic: formalising Fermat's Last Theorem",
+            "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem",
+            "date_label": "4 September 2026",
+            "finding": "Anthropic reports that Claude worked largely autonomously for 11 days to produce a computer-checked formalisation spanning 13 million lines of Lean and 29,500 intermediate theorems used in the final proof.",
+            "limit": "This formalises a known proof in one specialist domain with occasional high-level human direction. It is provider-reported evidence of long-horizon work, not our independent two-team comparison across ten unfamiliar cognitive domains."
+          },
+          {
+            "title": "ARC Prize: ARC-AGI-3",
+            "url": "https://arcprize.org/arc-agi/3",
+            "date_label": "Benchmark definition, checked 21 September 2026",
+            "finding": "ARC-AGI-3 tests experience-driven adaptation, long-horizon planning and skill acquisition in novel interactive environments.",
+            "limit": "The published benchmark definition does not establish that one frozen system has met our broad human threshold. We did not verify a qualifying independent result."
+          }
+        ],
+        "id": "scenario-agi",
+        "later": "Public benchmark gains fail to transfer to fresh tasks, or broad competence continues to depend on specialist retraining and extensive human correction.",
+        "milestone": "A general-purpose AI will independently demonstrate skilled-human performance across a broad set of unfamiliar cognitive tasks.",
+        "rationale": "We retain end-2031 with very high uncertainty. The computer-checked Fermat formalisation is striking evidence of sustained execution in a specialist domain, while ARC-AGI-3 tests adaptation in unfamiliar interactive environments. Neither supplies two independent, preregistered evaluations of the same frozen system across our ten domains. The new evidence raises our view of bounded long-horizon capability, but does not give a defensible basis for moving the broad forecast.",
+        "resolution": [
+          "Two evaluation teams independent of the model provider test the same frozen general-purpose system on independently created tasks. Each preregisters task-construction rules, scoring and human recruitment before testing, then publishes its protocol, human comparison, tools, time budgets and results.",
+          "Each evaluation covers language, mathematics, coding, factual synthesis, scientific reasoning, visual-spatial reasoning, planning, social reasoning, learning new rules and switching between tasks. Each domain contains at least 100 tasks created after the system was frozen. No task-specific retraining is allowed.",
+          "The system reaches or exceeds the median of relevant skilled adult participants in every domain under the same stated time allowance. This is our operational AGI threshold, not a claim that every definition of AGI has been satisfied."
+        ],
+        "target_date": "2031-12-31",
+        "title": "General intelligence",
+        "uncertainty": "Very uncertain timing. A generalisation breakthrough could bring this forward sharply, while persistent failures on unfamiliar tasks could put it beyond 2031. Our test is a declared working definition, not an industry standard."
+      },
+      {
+        "earlier": "Customer-confirmed 90-day results show high autonomous completion across multiple systems and sectors, including failures and recovery costs.",
+        "evidence": [
+          {
+            "title": "OpenAI and Wayfair: supplier workflow automation",
+            "url": "https://openai.com/index/wayfair/",
+            "date_label": "11 March 2026; checked 21 September 2026",
+            "finding": "The customer story reports 41,000 supplier support tickets automated per month and model use in core supplier and catalogue workflows.",
+            "limit": "It does not publish a predeclared consecutive eligible-case denominator, autonomous completion share, manual-rescue count or 90-day acceptance results. It is a provider-hosted customer story for one organisation."
+          },
+          {
+            "title": "OpenAI and Circles: CareX customer support",
+            "url": "https://openai.com/index/circles/",
+            "date_label": "3 August 2026; checked 21 September 2026",
+            "finding": "The customer story reports a 65% autonomous resolution rate across supported workflows, with specialist agents and human escalation.",
+            "limit": "The rate is below our 80% threshold and the story does not disclose 1,000 consecutive eligible cases, a 90-day period or results for ten named organisations. Supported-workflow selection may narrow the denominator."
+          }
+        ],
+        "id": "scenario-agentic-work",
+        "later": "Manual rescue, fragile integrations or operating costs prevent teams expanding beyond isolated queues.",
+        "milestone": "AI agents will run repeatable business workflows across at least ten organisations, with people managing exceptions.",
+        "rationale": "We retain end-2028. Wayfair's reported monthly volume and Circles' reported autonomous resolution rate are stronger operational signals than activity or response confidence alone. They still lack our predeclared consecutive-case denominator, rescue accounting, 90-day window and ten-organisation coverage. The evidence moves the judgement from isolated examples towards scaled bounded workflows, but not enough to change the deadline.",
+        "resolution": [
+          "Customer-confirmed or independently evaluated public reports name ten organisations across at least three sectors. Each runs two distinct production workflows spanning at least two business systems.",
+          "Each workflow reports at least 1,000 consecutive eligible cases over at least 90 days. At least 80% finish without a person executing workflow steps. Eligibility, acceptance tests and escalation rules are fixed before the reporting period.",
+          "People may authorise consequential decisions and handle exceptions. Reports include failures and escalations in the denominator. This predicts repeatable operation at ten organisations, not majority adoption or unattended businesses."
+        ],
+        "target_date": "2028-12-31",
+        "title": "Agents at work",
+        "uncertainty": "Timing remains uncertain. Vendor case studies rarely publish consecutive-case failure and intervention data, so the milestone could occur before enough public evidence exists to verify it."
+      },
+      {
+        "earlier": "Customers publish six-month multi-task fleet results, lower intervention rates and repeat purchases supported by full operating costs.",
+        "evidence": [
+          {
+            "title": "Figure: Helix 2.5 zero-shot generalisation",
+            "url": "https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization",
+            "date_label": "17 September 2026",
+            "finding": "Figure reports one pretrained base model adapted to three whole-body behaviours and evaluated across 30 unseen homes. Its blind evaluation reports 56% zero-shot task success, versus 9% without Index pretraining.",
+            "limit": "The vendor-run home evaluation is not a six-month commercial deployment. Its 56% result is well below our 95% intervention-free threshold and it supplies no multi-customer operating cost per successful task."
+          },
+          {
+            "title": "Figure: Figure 03 at BMW",
+            "url": "https://www.figure.ai/news/f-03-at-bmw",
+            "date_label": "30 June 2026; checked 21 September 2026",
+            "finding": "Figure describes a new sequencing demonstration at BMW after its earlier robot contributed to production of 30,000 vehicles.",
+            "limit": "A demonstration and earlier single-task deployment do not establish three task families, ten production sites, customer-confirmed intervention rates or comparative economics."
+          }
+        ],
+        "id": "scenario-robotics",
+        "later": "Maintenance, low utilisation, teleoperation or poor transfer between tasks keeps the cost of successful work above the existing process.",
+        "milestone": "Adaptable robots will perform several useful jobs routinely across factories and warehouses, with demonstrated operating economics.",
+        "rationale": "We retain end-2031. Helix 2.5 materially improves the evidence for transfer across unfamiliar environments: one base model supported three behaviours in 30 unseen homes. The reported 56% end-to-end success also makes the remaining reliability gap visible. These were vendor-run home trials, not six-month paid operations across customers, and no comparative cost per successful task was published. This is meaningful capability evidence without the commercial proof needed to move our date.",
+        "resolution": [
+          "One commercially available robot platform using a shared general-purpose control model runs for six months at ten production sites belonging to at least three unrelated customers. It performs at least three materially different task families overall and at least two at each site. Customers demonstrate a new task learned from instructions or examples without writing task-specific control code.",
+          "Customer-confirmed reporting shows at least 95% of task cycles completed without human intervention. The reporting period, task mix, failures and supervised or teleoperated time are disclosed.",
+          "Customer-published cost per successful task matches or beats the incumbent process, including maintenance and supervision. This is a commercial-site milestone, not a prediction of routine household humanoids."
+        ],
+        "target_date": "2031-12-31",
+        "title": "Robotics",
+        "uncertainty": "The date is uncertain because reliability, safety and manufacturing must improve together. Strong demonstrations or a product launch would not be enough to count this as achieved."
+      },
+      {
+        "earlier": "Organisations publish consecutive-ticket results with little manual rescue and reliable post-deployment checks.",
+        "evidence": [
+          {
+            "title": "OpenAI: harness engineering",
+            "url": "https://openai.com/index/harness-engineering/",
+            "date_label": "11 February 2026; reassessed 21 September 2026",
+            "finding": "An engineering team describes agents producing changes, checking application behaviour, responding to feedback and progressing work towards merge in a deliberately prepared repository.",
+            "limit": "The account does not publish 100 consecutive eligible tickets across ten organisations or follow them through approved deployment and seven days of monitoring."
+          },
+          {
+            "title": "OpenAI and Circles: Codex development efficiency",
+            "url": "https://openai.com/index/circles/",
+            "date_label": "3 August 2026; checked 21 September 2026",
+            "finding": "Circles reports a 29% increase in development efficiency across design, coding assistance and unit testing, while specialists retain validation and final review.",
+            "limit": "A productivity figure is not the share of eligible tickets completed autonomously. The story does not report deployment, rollback, manual correction or seven-day monitoring outcomes."
+          }
+        ],
+        "id": "scenario-software-automation",
+        "later": "Review effort, rollback rates or legacy-system failures prevent agents reliably completing the whole delivery cycle.",
+        "milestone": "Coding agents will take most routine software tickets from specification to monitored production in at least ten organisations, with human approval.",
+        "rationale": "We retain end-2027 as an assertive forecast. Prepared agent-first repositories and Circles' reported development-efficiency gain support useful execution across design, code and tests. Neither source measures the proportion of predeclared routine tickets completed without human code correction through deployment and seven days of monitoring. We still lack the ten-organisation consecutive-ticket evidence required to move the forecast.",
+        "resolution": [
+          "Ten named organisations each publish customer-confirmed or independently evaluated results for at least 100 consecutive eligible tickets over at least 90 days. Eligibility is fixed before assignment: routine fixes or small features estimated at no more than one engineer-day.",
+          "More than half reach implementation, tests, review responses, approved deployment and seven days of monitoring without people writing or correcting the code. Humans still set requirements, review and authorise release.",
+          "Failed deployments, rollbacks and manually rescued tickets remain in the denominator. Merged pull requests alone do not meet the milestone. This does not predict autonomous ownership of all engineering work."
+        ],
+        "target_date": "2027-12-31",
+        "title": "Software creation",
+        "uncertainty": "This is an assertive forecast. Repository preparation, review effort and access to credible post-deployment results could delay verification. The date is our judgement, not a provider's commitment."
+      },
+      {
+        "earlier": "Multi-site trials show replicated gains on delayed, unassisted tests across learner groups.",
+        "evidence": [
+          {
+            "title": "Oreopoulos and colleagues: mastery-based AI tutoring experiment",
+            "url": "https://edworkingpapers.com/ai26-1552",
+            "date_label": "August 2026 working paper; reassessed 21 September 2026",
+            "finding": "The randomised field experiment covers more than 6,000 middle-school pupils. Structured AI support improved recovery after mistakes, while the clearest delayed gains were marginal and concentrated on practised material.",
+            "limit": "The delayed assessment was one week later, not eight weeks. The intervention was not a full academic term and this remains one study rather than two independent replications."
+          }
+        ],
+        "id": "scenario-education-disruption",
+        "later": "Gains disappear without AI, fail to transfer, or depend on levels of human support that do not scale.",
+        "milestone": "Generative AI tutoring will show repeatable learning gains that last after the AI is put away, across schools or colleges.",
+        "rationale": "We retain end-2029 with substantial uncertainty. Rechecking the large maths experiment confirms that it is relevant scale evidence, but not evidence of our required durability. Its delayed assessment was one week later, the encouraging gains were marginal and concentrated on practised material, and there is no independent term-long replication. We found no retrieved result that warrants moving the forecast.",
+        "resolution": [
+          "Two independently evaluated, preregistered randomised trials of generative AI tutoring collectively cover at least 2,000 learners across at least 20 schools or colleges, with an intervention lasting at least one academic term. Each compares against a non-AI control with comparable teaching and learning time.",
+          "Both trials show statistically positive effects on unassisted assessments at least eight weeks after the intervention. Their combined standardised effect is at least 0.2, using an inverse-variance weighted mean of the reported primary outcomes.",
+          "Human teachers and safeguarding remain in place. The reports disclose attrition and assistance. This predicts demonstrated durable learning gains, not the replacement of teachers, schools or credentials."
+        ],
+        "target_date": "2029-12-31",
+        "title": "Education",
+        "uncertainty": "Benefits may depend heavily on tutor design, subject and student group. Immediate performance with assistance can improve without producing durable independent learning."
+      }
+    ]
   }
 ]
