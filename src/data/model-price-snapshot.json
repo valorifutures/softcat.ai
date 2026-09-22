@@ -1,14 +1,14 @@
 {
-  "checkedAt": "2026-09-21T11:00:43.489Z",
+  "checkedAt": "2026-09-22T10:15:04.657Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "87b937d2320c23335cd686c3eaabc133decaa462bc928ebbb1c3cfd088a513dc",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/35591730008",
+  "sourceSha256": "817012b6ae70c5c3d1d0dc886d5d1b153a13f2ba3dc41014022b8376f382cf81",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/35714906288",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 446,
+  "catalogueModels": 444,
   "trackedModels": 39,
-  "matched": 36,
-  "verified": 36,
-  "notListed": 3,
+  "matched": 35,
+  "verified": 35,
+  "notListed": 4,
   "reviewNeeded": 0,
   "unverified": 0,
   "priceChanges": 2,
@@ -51,8 +51,8 @@
       "id": "qwen/qwen3.6-35b-a3b",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.1,
-        "outputPrice": 0.9
+        "inputPrice": 0.15,
+        "outputPrice": 1
       },
       "quoted": {
         "inputPrice": 0.15,
@@ -100,18 +100,18 @@
     },
     {
       "id": "anthropic/claude-opus-4",
-      "status": "verified",
+      "status": "not-listed",
       "previous": {
         "inputPrice": 15,
         "outputPrice": 75
       },
       "quoted": {
-        "inputPrice": 15,
-        "outputPrice": 75
+        "inputPrice": null,
+        "outputPrice": null
       },
       "applied": {
-        "inputPrice": 15,
-        "outputPrice": 75
+        "inputPrice": null,
+        "outputPrice": null
       },
       "issues": []
     },
@@ -272,16 +272,16 @@
       "id": "meta-llama/llama-4-maverick",
       "status": "verified",
       "previous": {
+        "inputPrice": 0.2,
+        "outputPrice": 0.8
+      },
+      "quoted": {
         "inputPrice": 0.1875,
         "outputPrice": 0.6525
       },
-      "quoted": {
-        "inputPrice": 0.2,
-        "outputPrice": 0.8
-      },
       "applied": {
-        "inputPrice": 0.2,
-        "outputPrice": 0.8
+        "inputPrice": 0.1875,
+        "outputPrice": 0.6525
       },
       "issues": []
     },
