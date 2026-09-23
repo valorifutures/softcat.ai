@@ -7,7 +7,7 @@
     "outputPrice": 0.4,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct/tree/495f39366efef23836d0cfae4fbe635880d2be31",
@@ -29,12 +29,12 @@
     "id": "qwen/qwen3.6-27b",
     "name": "Qwen3.6 27B",
     "provider": "Alibaba",
-    "inputPrice": 0.3,
-    "outputPrice": 2,
+    "inputPrice": 0.32,
+    "outputPrice": 2.7,
     "trackedSince": "2026-06-11",
     "radarRef": "2026-04-23#ph-qwen36-27b",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/Qwen/Qwen3.6-27B/tree/6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
@@ -61,7 +61,7 @@
     "trackedSince": "2026-06-11",
     "radarRef": "2026-04-17#ph-qwen36-35b-a3b",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B/tree/995ad96eacd98c81ed38be0c5b274b04031597b0",
@@ -88,7 +88,7 @@
     "trackedSince": "2026-06-10",
     "radarRef": "2026-06-10#ph-claude-fable-5",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -108,7 +108,7 @@
     "outputPrice": 5,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -128,7 +128,7 @@
     "outputPrice": null,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "not-listed",
     "weights": null,
     "context": {
@@ -149,7 +149,7 @@
     "trackedSince": "2026-06-10",
     "radarRef": "2026-04-20#ph-claude-opus-4-7",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -169,7 +169,7 @@
     "outputPrice": 15,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -190,7 +190,7 @@
     "trackedSince": "2026-06-11",
     "radarRef": "2026-04-03#ph-trinity-large-thinking",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking/tree/dc6a99b6b74202880e31491a445a94884c97890c",
@@ -216,7 +216,7 @@
     "outputPrice": 2.5,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1/tree/56d4cbbb4d29f4355bab4b9a39ccb717a14ad5ad",
@@ -242,7 +242,7 @@
     "outputPrice": 1,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324/tree/e9b33add76883f293d6bf61f6bd89b497e80e335",
@@ -268,7 +268,7 @@
     "outputPrice": null,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "not-listed",
     "weights": null,
     "context": {
@@ -288,7 +288,7 @@
     "outputPrice": 2.5,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -308,7 +308,7 @@
     "outputPrice": 10,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -329,7 +329,7 @@
     "trackedSince": "2026-06-10",
     "radarRef": "2026-06-10#ph-gemini-live-translate",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -349,7 +349,7 @@
     "outputPrice": 0.6525,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct/tree/73d14711bcc77c16df3470856949c3764056b617",
@@ -375,7 +375,7 @@
     "outputPrice": 0.3,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct/tree/92f3b1597a195b523d8d9e5700e57e4fbb8f20d3",
@@ -402,7 +402,7 @@
     "trackedSince": "2026-06-11",
     "radarRef": "2026-04-12#ph-minimax-m2-7",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2/tree/757303d492a50514c312788b5247a4f696a4c6a3",
@@ -429,7 +429,7 @@
     "trackedSince": "2026-06-22",
     "radarRef": "2026-04-12#ph-minimax-m2-7",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7/tree/d494266a4affc0d2995ba1fa35c8481cbd84294b",
@@ -455,7 +455,7 @@
     "outputPrice": null,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "not-listed",
     "weights": {
       "source": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512/tree/383ffea2c7d60dfd44ca960e8e691709d4fdb9cd",
@@ -481,7 +481,7 @@
     "outputPrice": 0.555,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/tree/68faf511d618ef198fef186659617cfd2eb8e33a",
@@ -508,7 +508,7 @@
     "trackedSince": "2026-06-11",
     "radarRef": "2026-03-17#ph-mistral-small-4",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/mistralai/Mistral-Small-4-119B-2603/tree/a11f36bebf709121056b1dbcc943d1c6afbe494d",
@@ -535,7 +535,7 @@
     "trackedSince": "2026-06-10",
     "radarRef": "2026-04-21#ph-kimi-k26",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/moonshotai/Kimi-K2.6/tree/7eb5002f6aadc958aed6a9177b7ed26bb94011bb",
@@ -561,7 +561,7 @@
     "outputPrice": 2.3,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct/tree/fd1984e2b7a3350dbf7305fe73a4ede25c14de50",
@@ -588,7 +588,7 @@
     "trackedSince": "2026-06-11",
     "radarRef": "2026-03-13#ph-nemotron-3-super",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8/tree/744b1880a37996c5d56bf454ae164dfd74d77c4e",
@@ -614,7 +614,7 @@
     "outputPrice": 8,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -634,7 +634,7 @@
     "outputPrice": 10,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -654,7 +654,7 @@
     "outputPrice": 10,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -674,7 +674,7 @@
     "outputPrice": 2,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -694,7 +694,7 @@
     "outputPrice": 0.4,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -715,7 +715,7 @@
     "trackedSince": "2026-06-11",
     "radarRef": "2026-04-20#ph-gpt-5-4-cyber",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -736,7 +736,7 @@
     "trackedSince": "2026-06-10",
     "radarRef": "2026-05-06#ph-gpt-55-instant",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -757,7 +757,7 @@
     "trackedSince": "2026-06-11",
     "radarRef": "2026-04-24#ph-gpt-55",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -777,7 +777,7 @@
     "outputPrice": 8,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -797,7 +797,7 @@
     "outputPrice": 4.4,
     "trackedSince": "2026-02-23",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {
@@ -818,7 +818,7 @@
     "trackedSince": "2026-06-21",
     "radarRef": "2026-04-29#ph-laguna-coding-models",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "not-listed",
     "weights": {
       "source": "https://huggingface.co/poolside/Laguna-XS.2/tree/69e3f4046616e40fb55ac54e0e2e6accbe5cadfe",
@@ -845,7 +845,7 @@
     "trackedSince": "2026-06-11",
     "radarRef": "2026-04-08#ph-glm-5-1",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/zai-org/GLM-5.1/tree/26e1bd6e011feb778d25ae34b09b07074139d92d",
@@ -872,7 +872,7 @@
     "trackedSince": "2026-06-10",
     "radarRef": "2026-04-02#ph-glm-5v-turbo",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": {
       "source": "https://huggingface.co/zai-org/GLM-5/tree/c183ef8c61faee82855eca1ed9bb3a9a7ce3b0b2",
@@ -899,7 +899,7 @@
     "trackedSince": "2026-06-10",
     "radarRef": "2026-05-02#ph-grok-43",
     "pricingSource": "https://openrouter.ai/api/v1/models",
-    "pricingCheckedAt": "2026-09-22T10:15:04.657Z",
+    "pricingCheckedAt": "2026-09-23T10:14:19.123Z",
     "pricingStatus": "verified",
     "weights": null,
     "context": {

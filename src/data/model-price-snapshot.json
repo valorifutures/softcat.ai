@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-09-22T10:15:04.657Z",
+  "checkedAt": "2026-09-23T10:14:19.123Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "817012b6ae70c5c3d1d0dc886d5d1b153a13f2ba3dc41014022b8376f382cf81",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/35714906288",
+  "sourceSha256": "0904deb86fb75e98b1430687cec84291829ef32c2af9699d58c43f7110f6f9ac",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/35847594819",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 444,
+  "catalogueModels": 454,
   "trackedModels": 39,
   "matched": 35,
   "verified": 35,
   "notListed": 4,
   "reviewNeeded": 0,
   "unverified": 0,
-  "priceChanges": 2,
+  "priceChanges": 1,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -38,12 +38,12 @@
         "outputPrice": 2
       },
       "quoted": {
-        "inputPrice": 0.3,
-        "outputPrice": 2
+        "inputPrice": 0.32,
+        "outputPrice": 2.7
       },
       "applied": {
-        "inputPrice": 0.3,
-        "outputPrice": 2
+        "inputPrice": 0.32,
+        "outputPrice": 2.7
       },
       "issues": []
     },
@@ -102,8 +102,8 @@
       "id": "anthropic/claude-opus-4",
       "status": "not-listed",
       "previous": {
-        "inputPrice": 15,
-        "outputPrice": 75
+        "inputPrice": null,
+        "outputPrice": null
       },
       "quoted": {
         "inputPrice": null,
@@ -272,8 +272,8 @@
       "id": "meta-llama/llama-4-maverick",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.2,
-        "outputPrice": 0.8
+        "inputPrice": 0.1875,
+        "outputPrice": 0.6525
       },
       "quoted": {
         "inputPrice": 0.1875,
