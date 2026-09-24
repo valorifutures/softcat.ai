@@ -1,105 +1,6 @@
 [
   {
     "bot": "model_bot",
-    "timestamp": "2026-06-26T05:00:06.652381+00:00",
-    "status": "success",
-    "duration_s": 0.3,
-    "feeds_scanned": 0,
-    "items_found": 339,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": [],
-    "job": "prices"
-  },
-  {
-    "bot": "model_bot",
-    "timestamp": "2026-06-26T05:00:09.668520+00:00",
-    "status": "error",
-    "duration_s": 3.3,
-    "feeds_scanned": 0,
-    "items_found": 0,
-    "items_rejected": 0,
-    "items_published": 0,
-    "model": "",
-    "cost_usd": null,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "output_files": [],
-    "error_msg": "Command '['git', 'push', 'origin', 'model-bot/roster-proposals']' returned non-zero exit status 1.",
-    "job": "roster"
-  },
-  {
-    "bot": "news_bot",
-    "timestamp": "2026-06-26T06:00:26.994877+00:00",
-    "status": "success",
-    "duration_s": 25.3,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0328,
-    "input_tokens": 6895,
-    "output_tokens": 805,
-    "output_files": [
-      "src/content/news-and-updates/2026-06-26-ai-digest.md"
-    ]
-  },
-  {
-    "bot": "thoughts_bot",
-    "timestamp": "2026-06-26T07:00:23.804965+00:00",
-    "status": "success",
-    "duration_s": 17.1,
-    "feeds_scanned": 5,
-    "items_found": 57,
-    "items_rejected": 0,
-    "items_published": 1,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0204,
-    "input_tokens": 4330,
-    "output_tokens": 496,
-    "output_files": [
-      "src/content/thoughts/2026-06-26-speculative-decoding-just-made-inference-speed-a-red-herring.md"
-    ]
-  },
-  {
-    "bot": "radar_bot",
-    "timestamp": "2026-06-26T08:30:47.673635+00:00",
-    "status": "success",
-    "duration_s": 41,
-    "feeds_scanned": 10,
-    "items_found": 67,
-    "items_rejected": 62,
-    "items_published": 5,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0649,
-    "input_tokens": 9258,
-    "output_tokens": 2473,
-    "output_files": [
-      "src/data/radar/2026-06-26.json"
-    ]
-  },
-  {
-    "bot": "horizon_bot",
-    "timestamp": "2026-06-26T09:00:27.120770+00:00",
-    "status": "success",
-    "duration_s": 25.2,
-    "feeds_scanned": 0,
-    "items_found": 52,
-    "items_rejected": 0,
-    "items_published": 12,
-    "model": "claude-sonnet-4-6",
-    "cost_usd": 0.0274,
-    "input_tokens": 3524,
-    "output_tokens": 1123,
-    "output_files": []
-  },
-  {
-    "bot": "model_bot",
     "timestamp": "2026-06-27T05:00:06.568778+00:00",
     "status": "success",
     "duration_s": 0.3,
@@ -1144,5 +1045,29 @@
     "models_verified": 35,
     "models_not_listed": 4,
     "workflow_url": "https://github.com/valorifutures/softcat.ai/actions/runs/35847594819"
+  },
+  {
+    "bot": "model_bot",
+    "job": "prices",
+    "runner": "github-actions",
+    "timestamp": "2026-09-24T10:25:09.656Z",
+    "status": "success",
+    "duration_s": 0.3,
+    "feeds_scanned": 1,
+    "items_found": 458,
+    "items_rejected": 0,
+    "items_published": 1,
+    "model": "",
+    "cost_usd": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [
+      "src/data/models.json",
+      "src/data/model-price-snapshot.json"
+    ],
+    "models_checked": 39,
+    "models_verified": 35,
+    "models_not_listed": 4,
+    "workflow_url": "https://github.com/valorifutures/softcat.ai/actions/runs/35987069672"
   }
 ]
