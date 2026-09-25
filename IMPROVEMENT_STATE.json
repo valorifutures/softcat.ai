@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-25T20:22:38.270812+00:00",
-  "phase": "offline-delegation-harness-validated",
-  "active_branch": "research/delegation-harness-20260925",
+  "updated_at": "2026-09-25T20:30:25.285999+00:00",
+  "phase": "offline-delegation-harness-live",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "79ee9e3424d3b8e805b8f0c31ae650bf4b6e338c",
-    "at": "2026-09-25T19:43:26.698206+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/36181040799"
+    "sha": "a0b12ba3fdf6cbe51c44c8bc0d43fccca01de478",
+    "at": "2026-09-25T20:30:25.285999+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/36185665727"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -131,7 +131,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Gate 2 offline delegation harness implemented with separate simulator builder, grader author and independent critic. Four valid scripted conditions accepted, three deficient controls rejected, 26 seeded bad outcomes rejected. Full local validation passed. Hosted checks, publication and live verification remain pending.",
+  "session": "Published and verified the first offline delegation harness through PR #250. Required hosted checks and Pages succeeded. Four valid conditions pass, three deliberately deficient controls fail, and 26 seeded wrong outcomes are rejected. Live desktop trace, keyboard disclosures, bottom-page access, homepage, About, constitution links and search verified. JSON receipt navigation was blocked by browser URL policy. This is gate 2 only, not an agent comparison.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -195,7 +195,7 @@
     "screenshot": "docs/evidence/2026-09-25-constitution.jpg"
   },
   "research_harness_2026_09_25": {
-    "status": "locally validated, publication pending",
+    "status": "published and verified live with recorded browser limitation",
     "base": "6f20e4ed7691709f58a973d1b330ed16457e7188",
     "branch": "research/delegation-harness-20260925",
     "research_status": "offline deterministic development harness, no model or framework execution",
@@ -205,12 +205,28 @@
       "deficient_controls_rejected": 3,
       "seeded_wrong_outcomes_rejected": 26
     },
-    "validation": "203 script JavaScript tests (including 52 harness tests), 27 Feral tests, 141 bot tests, 12 publication fixtures, all data validators, 640-page build and offline audit passed. Audit checked 33,159 internal links, 3,292 assets/metadata and 405 search entries with zero errors.",
+    "validation": "203 script JavaScript tests (including 52 harness tests), 27 Feral tests, 141 bot tests, 12 publication fixtures, all data validators, 640-page build and offline audit passed. Audit checked 33,159 internal links, 3,292 assets/metadata and 405 search entries with zero errors. Required hosted validation and Pages succeeded on the linked exact head and merge.",
     "review_record": "research/delegation/review.md",
     "limits": [
       "Public development fixture uses pre-labelled evidence and fixed voting. No agent intelligence, distributed guarantee, unknown attack or independent reproduction tested.",
-      "Local preview was blocked in the preceding pass. This batch still requires live desktop verification. Mobile/touch coverage remains unverified.",
+      "Desktop was verified live after successful gated deployment. No mobile/touch-device coverage is claimed. Direct JSON receipt navigation was blocked by the cloud browser URL policy and entered chrome-error://chromewebdata/. It was not bypassed or independently verified live. The generated endpoint, receipt hashes and replay passed local and hosted gates.",
       "No provider calls or duplicate price refresh. Horizon history, Feral ledger and task ownership unchanged."
+    ],
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/250",
+    "reviewed_head": "53dc38ba2c9241bf6c850f463244bf4e19ad0008",
+    "reviewed_tree": "9b97b5c283b8502bf183d9740524ff750b997424",
+    "critic": "PASS for bounded gate 2 on exact tree. Critic independently reran all 52 harness tests and receipt verification, checked all 12 source hashes, and verified targeted fixes.",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36185532836",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36185665727",
+    "route": "https://softcat.ai/research/",
+    "receipt_sha256": "2098e9db92c6ae54e5722c53717ad1f05f008338886fe539122c55f5d1f8fb33",
+    "screenshot": "docs/evidence/2026-09-25-research-harness.jpg",
+    "live_checks": [
+      "The live page shows actual 4/4 valid conditions, 3/3 failed controls and 26/26 detected corruptions, recorded 25 September 20:21 UTC.",
+      "Enter on Inspect the record placed the section at y95.9. Enter opened all 18 combined trace events and the actual revoked A-main commit denial.",
+      "Space opened the global-stop control and displayed lost Job B. Enter opened the action-evidence substitution regression and its UNSUPPORTED_ACTION_EVIDENCE code.",
+      "All five section anchors resolve. With disclosures open, desktop width1348 stayed within viewport1363. Wheel scrolling reached scrollY5912 and footer bottom936.4 in a936px viewport.",
+      "Home exposes the new experiment. Search for delegation returns exactly one Research result. About and constitution links identify the completed offline gate and future agent comparisons."
     ]
   }
 }
