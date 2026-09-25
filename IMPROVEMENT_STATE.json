@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-25T19:37:06.650301+00:00",
-  "phase": "research-constitution-2026-09-25-validated",
-  "active_branch": "improve/research-constitution-20260925",
+  "updated_at": "2026-09-25T19:43:26.698206+00:00",
+  "phase": "research-constitution-2026-09-25-live",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "0e6c59484343a888db56a9cfff9c19295619568a",
-    "at": "2026-09-25T19:00:31+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/36176391957"
+    "sha": "79ee9e3424d3b8e805b8f0c31ae650bf4b6e338c",
+    "at": "2026-09-25T19:43:26.698206+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/36181040799"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -131,7 +131,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Maintainer-requested constitutional shift to open research into verifiable agent cooperation. Root charter, operating priorities, licensed research component, first experiment specification and canonical public page prepared. Local validation passed. Independent governance/source review found no blocking issue. Hosted checks, publication and live verification pending. No research execution or result is claimed.",
+  "session": "Root research constitution and first experiment specification published through PR #248 after independent review and successful required hosted checks. Pages succeeded. Canonical constitution, section navigation, bottom-page access, About/Home copy and search were verified live. Next: implement the offline harness and grader. No agent experiment was executed and no research result is claimed.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -169,11 +169,29 @@
     "screenshot": "docs/evidence/2026-09-25-workshop.jpg"
   },
   "research_constitution_2026_09_25": {
-    "status": "locally validated; hosted publication pending",
+    "status": "published and verified live",
     "base": "80fb819da06f0a7fc289539b4abd0e2bce6a3471",
     "change": "Root constitution for verifiable agent cooperation, aligned operating rules, canonical public constitution page, scoped Apache-2.0 research licence and first registered experiment specification.",
     "research_status": "specified, not implemented or run",
-    "validation": "151 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators, 639-page production build and offline audit passed. Audit checked 32,481 internal links, 3,286 assets/metadata and 404 search entries with zero errors.",
-    "review": "Independent critic found no blocking issue. Review tightened trusted-base assumptions and structured outcome reports. Rendered live and mobile behaviour not yet verified."
+    "validation": "151 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures, all validators, 639-page build and offline audit passed locally. Required hosted validation and Pages deployment passed.",
+    "review": "Independent critic PASS on exact candidate tree. Scoped licensing, Feral autonomy, research assumptions, source descriptions and public claims reviewed.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/248",
+    "reviewed_head": "b4aaca01f5605a62db60d2891d01345a67ceeced",
+    "reviewed_tree": "7088fbf297fdfa248487ee0feb1ec988f466e337",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36180940341",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36181040799",
+    "route": "https://softcat.ai/constitution/",
+    "live_checks": [
+      "All ten canonical sections render and every contents anchor resolves.",
+      "Enter on the final section link navigated to its matching heading at y96.",
+      "Wheel scrolling reached scrollY4137 and the footer at y936 in a 936px viewport. Document width1348 did not exceed viewport1363.",
+      "About and Home show the research mission and specified/not implemented status.",
+      "Search for constitution returned the single correct dated result."
+    ],
+    "limits": [
+      "Mobile and touch-device rendering was not verified. Narrow layouts and keyboard focus styles were reviewed in source.",
+      "This is a governance and specification publication. The research runner, model evaluation, measured findings and independent reproduction remain future gates."
+    ],
+    "screenshot": "docs/evidence/2026-09-25-constitution.jpg"
   }
 }
