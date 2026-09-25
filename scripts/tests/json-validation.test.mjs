@@ -1,11 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Worker as NodeWorker } from 'node:worker_threads';
+import { createRequire } from 'node:module';
+import { readFileSync } from 'node:fs';
 import { validateStructuredOutput } from '../../src/lib/json-validation.mjs';
 import { startJsonValidation } from '../../src/lib/json-validation-runner.mjs';
-import { jsonValidationPresets } from '../../src/lib/json-validation-presets.mjs';
+import { jsonValidationPresets, jsonValidationPresetIndex, jsonValidationRecipeHref } from '../../src/lib/json-validation-presets.mjs';
 
 const check = (schema, value) => validateStructuredOutput(JSON.stringify(schema), JSON.stringify(value));
+const extraction = jsonValidationPresets[jsonValidationPresetIndex('recipe-invoice')];
 
 test('each example rejects its broken output and accepts its matching output', () => {
   for (const preset of jsonValidationPresets) {
@@ -13,6 +16,63 @@ test('each example rejects its broken output and accepts its matching output', (
     assert.equal(check(preset.schema, preset.invalid).status, 'fail', preset.name);
   }
   assert.deepEqual(check(jsonValidationPresets[0].schema, jsonValidationPresets[0].invalid).errors.map(error => error.rule), ['additionalProperties', 'enum', 'maximum']);
+});
+
+test('the recipe handoff preserves the published target and its source', () => {
+  const require = createRequire(import.meta.resolve('astro/package.json'));
+  const yaml = require('js-yaml');
+  const text = readFileSync(new URL('../../src/content/prompts/data-extraction.md', import.meta.url), 'utf8');
+  const recipe = yaml.load(text.split(/^---\s*$/m)[1]);
+  assert.deepEqual(extraction.valid, JSON.parse(recipe.recipe.expected));
+  assert.equal(extraction.source, recipe.recipe.exampleValues.source.trim());
+  assert.equal(check(extraction.schema, JSON.parse(recipe.recipe.expected)).status, 'pass');
+  assert.equal(jsonValidationRecipeHref('data-extraction'), '/lab/json-validator?preset=recipe-invoice');
+  assert.equal(jsonValidationRecipeHref('unknown-recipe'), null);
+});
+
+test('preset links accept only known IDs and preserve the older invoice-lines example', () => {
+  assert.equal(new Set(jsonValidationPresets.map(preset => preset.id)).size, jsonValidationPresets.length);
+  assert.equal(jsonValidationPresets[jsonValidationPresetIndex('classification')].name, 'Classification');
+  assert.equal(jsonValidationPresets[jsonValidationPresetIndex('invoice-lines')].name, 'Invoice extraction');
+  for (const id of [null, undefined, '', 'unknown', 'constructor', 'recipe-invoice&output=anything', { id: 'recipe-invoice' }]) {
+    assert.equal(jsonValidationPresetIndex(id), -1);
+  }
+});
+
+test('the extraction contract distinguishes absent keys, missing facts and malformed values', () => {
+  const empty = structuredClone(extraction.valid);
+  for (const object of [empty.values, empty.evidence]) {
+    for (const field of Object.keys(object)) object[field] = null;
+  }
+  assert.equal(check(extraction.schema, empty).status, 'pass');
+  for (const objectName of ['values', 'evidence']) {
+    for (const field of Object.keys(extraction.valid[objectName])) {
+      const omitted = structuredClone(extraction.valid);
+      delete omitted[objectName][field];
+      assert.equal(check(extraction.schema, omitted).status, 'fail', `${objectName}.${field} must remain present`);
+    }
+  }
+  for (const mutate of [
+    value => { value.values.amount = '129.50'; },
+    value => { value.evidence.amount = 129.5; },
+    value => { value.values.due_date = '2026-02-30'; value.evidence.due_date = '30 February'; },
+    value => { value.evidence.due_date = 'not stated'; },
+    value => { value.evidence.invoice_id = null; },
+    value => { value.values.extra = 'invented'; },
+    value => { value.evidence.extra = 'invented'; },
+    value => { value.extra = 'invented'; },
+  ]) {
+    const output = structuredClone(extraction.valid); mutate(output);
+    assert.equal(check(extraction.schema, output).status, 'fail');
+  }
+});
+
+test('a well-shaped invention still needs the visible source check', () => {
+  const invented = structuredClone(extraction.valid);
+  invented.values.due_date = '2026-10-01';
+  invented.evidence.due_date = 'Due 1 October 2026';
+  assert.equal(check(extraction.schema, invented).status, 'pass');
+  assert.ok(!extraction.source.includes(invented.evidence.due_date));
 });
 
 test('syntax-only, boolean schemas and invalid schema shapes have distinct outcomes', () => {

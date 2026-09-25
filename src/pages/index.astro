@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import ActivityTicker from '../components/ActivityTicker.astro';
 import { getCollection } from 'astro:content';
-import feralManifest from '../content/feral/manifest.json';
+import FeralSpotlight from '../components/FeralSpotlight.astro';
 const thoughts = (await getCollection('thoughts')).filter((entry) => !entry.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const notes = thoughts.filter((entry) => entry.data.tags.includes('field-notes'));
@@ -29,6 +29,8 @@ const experiments = [
     </a>)}</div>
   </section>
 
+  <FeralSpotlight />
+
   <section class="workshop-shell workshop-section" aria-labelledby="notebook-heading">
     <div class="workshop-section-heading"><div><p class="eyebrow">NOTES FROM THE WORKSHOP</p><h2 id="notebook-heading">The work, including the rough edges.</h2></div><a class="text-link" href="/notebook">The notebook <span aria-hidden="true">↗</span></a></div>
     {latestNote && <a class="notebook-feature" href={`/thoughts/${latestNote.id}`}>
@@ -39,16 +41,16 @@ const experiments = [
     <div class="archive-grid">{earlierNotes.map((entry) => <a href={`/thoughts/${entry.id}`}><time datetime={entry.data.date.toISOString()}>{fmt(entry.data.date)}</time><h3>{entry.data.title}</h3></a>)}</div>
   </section>
 
-  <section class="workshop-shell workshop-section horizon-feral" aria-label="Explore the wider experiment">
+  <section class="workshop-shell workshop-section horizon-feral" aria-label="Find a starting point">
     <a href="/lab/agent-check" class="horizon-invitation">
       <p class="eyebrow">EXPERIMENT 01</p><h2>Should this be<br />an agent?</h2>
       <p>Six questions about your task. Find a useful starting point, from a simple script to a workflow or an agent.</p>
       <div class="horizon-lanes" aria-hidden="true"><span>SCRIPT</span><span>WORKFLOW</span><span>AGENT ↗</span></div>
     </a>
-    <a href="/feral" class="feral-invitation">
-      <p class="eyebrow">THE UNSUPERVISED CORNER</p><h2>/feral<span aria-hidden="true">_</span></h2>
-      <p>What do agents make when they choose the brief? Step inside the experiment and inspect what they left behind.</p>
-      <div class="feral-bottom"><span>{feralManifest.length} published creations</span><span aria-hidden="true">↗</span></div>
+    <a href="/glossary" class="feral-invitation glossary-invitation">
+      <p class="eyebrow">MAKE SENSE OF THE LANGUAGE</p><h2>Less jargon.<br />More understanding.</h2>
+      <p>Context windows, benchmarks, agents and the terms behind the tools. Plain explanations, with somewhere useful to go next.</p>
+      <div class="feral-bottom"><span>Open the glossary</span><span aria-hidden="true">↗</span></div>
     </a>
   </section>
 

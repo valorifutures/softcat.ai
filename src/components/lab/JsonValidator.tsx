@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from 'preact/hooks';
+import { useState, useRef, useEffect, useLayoutEffect } from 'preact/hooks';
 import { startJsonValidation } from '../../lib/json-validation-runner.mjs';
 import { JSON_INPUT_LIMIT } from '../../lib/json-validation-limits.mjs';
-import { jsonValidationPresets } from '../../lib/json-validation-presets.mjs';
+import { jsonValidationPresets, jsonValidationPresetIndex } from '../../lib/json-validation-presets.mjs';
 import './JsonValidator.css';
 
 interface ValidationResult {
@@ -37,6 +37,14 @@ export default function JsonValidator() {
     clearResult(); setPreset(index); setSchemaText(pretty(jsonValidationPresets[index].schema));
     setOutputText(pretty(valid ? jsonValidationPresets[index].valid : jsonValidationPresets[index].invalid));
   };
+  useLayoutEffect(() => {
+    // Apply a published example once. URL changes must not replace an edited draft.
+    const id = new URLSearchParams(window.location.search).get('preset');
+    if (id === null) return;
+    const index = jsonValidationPresetIndex(id);
+    if (index >= 0) loadPreset(index);
+    else setNotice('That example is not available. The Classification example is open instead.');
+  }, []);
   const validate = () => {
     clearResult(); setWorking(true);
     stopRef.current = startJsonValidation(schemaText, outputText, (next: ValidationResult) => { setResult(next); setWorking(false); });
@@ -62,6 +70,7 @@ export default function JsonValidator() {
       <div><p class="json-eyebrow">TRY A CONTRACT</p><h2 id="json-examples-title">Start with something that breaks.</h2><p>Each example includes an output with deliberate mistakes. Validate it, inspect the errors, then load the matching version.</p></div>
       <div class="json-preset-list">{jsonValidationPresets.map((item, index) => <button type="button" key={item.name} aria-pressed={preset === index} onClick={() => loadPreset(index)}>{item.name}</button>)}</div>
       <p class="json-preset-description">{jsonValidationPresets[preset].description}</p>
+      {jsonValidationPresets[preset].source && <p><strong>Source for this worked example:</strong> {jsonValidationPresets[preset].source} <a href={`/prompts/${jsonValidationPresets[preset].recipeId}`}>Read the extraction recipe ↗</a></p>}
       <div class="json-example-actions"><button type="button" onClick={() => loadPreset(preset, false)}>Load broken example</button><button type="button" onClick={() => loadPreset(preset, true)}>Load matching example</button></div>
     </section>
 

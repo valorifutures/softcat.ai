@@ -15,7 +15,7 @@ const isCurrent = (href: string) => Astro.url.pathname === href || Astro.url.pat
     <nav class="desktop-navigation" aria-label="Main navigation">{links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>)}</nav>
     <div class="header-controls">
       <button data-search-trigger class="header-search" aria-label="Search the site"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M16 16L21 21"/></svg></button>
-      <details class="mobile-navigation" id="site-menu"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Mobile navigation">{links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}<span aria-hidden="true">↗</span></a>)}<a href="/news-and-updates">News archive</a><a href="/radar">Radar archive</a></nav></details>
+      <details class="mobile-navigation" id="site-menu"><summary>Menu <span aria-hidden="true">+</span></summary><nav aria-label="Mobile navigation">{links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}<span aria-hidden="true">↗</span></a>)}<a href="/glossary">Glossary</a><a href="/valori">About the project</a></nav></details>
     </div>
   </div>
 </header>
