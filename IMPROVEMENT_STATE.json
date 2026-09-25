@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-25T21:03:13.713130+00:00",
-  "phase": "framework-recovery-validated",
-  "active_branch": "research/framework-recovery-20260925",
+  "updated_at": "2026-09-25T21:14:15.251912+00:00",
+  "phase": "framework-recovery-published",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "a0b12ba3fdf6cbe51c44c8bc0d43fccca01de478",
-    "at": "2026-09-25T20:30:25.285999+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/36185665727"
+    "sha": "2ce0df15e88d90365993ce996e72ac4b64c602f7",
+    "at": "2026-09-25T21:14:15.251912+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/36189796296"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -131,7 +131,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Real LangGraph/PydanticAI deterministic recovery executed and reviewed. Local gates passed. Hosted publication and live verification pending.",
+  "session": "Published and verified the deterministic framework recovery study. Evidence receipt and desktop screenshot retained. Authenticated action boundaries precede untrusted model execution.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -230,7 +230,7 @@
     ]
   },
   "framework_recovery_2026_09_25": {
-    "status": "locally validated, hosted checks and publication pending",
+    "status": "published and verified live",
     "base": "e48bc805baf53520e8759ad60e31f13eccc74d5a",
     "branch": "research/framework-recovery-20260925",
     "research_status": "real framework execution with deterministic responses, gate 3 preparation",
@@ -245,12 +245,26 @@
       "provider_calls": 0
     },
     "validation": "203 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures and 46 recovery tests passed. Fresh actual-framework receipt verification passed. All data validators, 641-page production build and offline audit passed with 33,211 links, 3,298 assets/metadata, 406 search entries and zero errors.",
-    "review": "Separate agents built the store, adapters, grader and public page. Read-only critic independently executed the cases, challenged causal checks and verified every final receipt source hash. Exact staged-tree verdict and hosted evidence pending.",
+    "review": "Independent critic PASS on exact tree. Final receipt source hashes, every recorded grade, all 32 corruption checks and the previously escaping mutations independently checked. Required hosted recovery replay/build and Pages deployment passed.",
     "limits": [
       "Trusted host, worker and harness-supplied identity. No authenticated identity or hostile-worker containment claim.",
       "Local JSON transport and authoritative SQLite ordering, not A2A/MCP interoperability or distributed consensus.",
       "Fixed responses and public development cases. No model capability comparison, held-out evaluation or independent external reproduction.",
-      "No provider calls. Total execution charge unknown. Desktop live verification pending, mobile/touch unverified."
+      "No provider calls. Total execution charge unknown. Desktop checked live, mobile/touch unverified. Direct JSON navigation remains unverified after the earlier browser URL-policy block; inline records were verified."
+    ],
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/252",
+    "reviewed_head": "04718270be56fdc5985c244c77349c011c71de4d",
+    "reviewed_tree": "1dafbfefe968ced6123cb71736feaeb40d617912",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36189485342",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36189796296",
+    "route": "https://softcat.ai/research/recovery/",
+    "screenshot": "docs/evidence/2026-09-25-framework-recovery.jpg",
+    "live_checks": [
+      "Live study displays 6/6 valid cases, 3/3 failed controls and 32/32 detected corruptions, recorded 25 September 21:00 UTC.",
+      "Enter on the missing-reply anchor places the section at y96.3. Enter opens all 45 events and the actual exit-74 record at event 15.",
+      "Space opens the final durable queue, matching reports and five worker records. Space on the false-success control shows FALSE_SUCCESS and FALSE_CERTAINTY.",
+      "All five anchors resolve and desktop width1348 remains within viewport1363. Native Control+End reaches scrollY5293 with footer bottom936 in a936px viewport.",
+      "Search for recovery returns exactly one correct result. The original experiment retains its content and its continuation link opens the new study."
     ]
   }
 }
