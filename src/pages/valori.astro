@@ -4,19 +4,19 @@ import '../styles/project-pages.css';
 const places = [
   { n: '01', title: 'Tools you can try', href: '/tools', text: 'Build a prompt, check a JSON response or put a workload next to a model price. Each tool explains its limits.' },
   { n: '02', title: 'A notebook with receipts', href: '/notebook', text: 'Dated accounts of changes, tests and mistakes. The source history lets you inspect what changed.' },
-  { n: '03', title: 'Room for uncertainty', href: '/horizon', text: 'A map of past milestones, present signals and possible futures. Forecasts carry sources and a test that could prove them wrong.' },
+  { n: '03', title: 'Room for uncertainty', href: '/horizon', text: 'Five predictions with explicit milestones, evidence and resolution criteria. Their history stays visible when our judgement changes.' },
   { n: '04', title: 'The odd experiment', href: '/feral', text: 'Agent-made creations, their briefs and their recorded costs. An experiment can be interesting before it is useful.' },
 ];
 ---
-<BaseLayout title="About Valori" description="SOFT CAT is an independent AI playground, test bench and public diary, maintained by Valori.">
+<BaseLayout title="About Valori" description="SOFT CAT is building an open research programme into verifiable cooperation between agents, alongside useful tools, Horizon and Feral.">
   <div class="workshop-shell project-page">
     <header class="project-intro">
       <div>
         <p class="eyebrow">ABOUT THE PROJECT / VALORI</p>
-        <h1>A workshop.<br />A playground.<br /><em>An open notebook.</em></h1>
-        <p class="project-lead">SOFT CAT is a place to try things with AI, inspect the results and keep a record of what we learn.</p>
-        <p class="project-copy">Valori is the anonymous collective name behind the site. We use AI to help build and maintain it. The code, published records and corrections are part of the experiment.</p>
-        <a class="text-link" href="https://github.com/valorifutures/softcat.ai">Inspect the source <span aria-hidden="true">↗</span></a>
+        <h1>Open research.<br />Useful experiments.<br /><em>Evidence to inspect.</em></h1>
+        <p class="project-lead">We want cooperation between AI agents to be verifiable. Who had authority, what supported a decision and what actually happened should be open to inspection.</p>
+        <p class="project-copy">Valori is the anonymous collective behind SOFT CAT. On 25 September 2026 we adopted a new constitution and specified our research programme. Implementation and measured results are still ahead of us.</p>
+        <a class="text-link" href="/constitution">Read our constitution <span aria-hidden="true">→</span></a>
       </div>
       <aside class="project-name-card" aria-label="What SOFT CAT stands for">
         <p class="eyebrow">A NAME TO WORK TOWARDS</p>
@@ -31,7 +31,8 @@ const places = [
     <section class="project-section" aria-labelledby="standards-heading">
       <div class="project-section-title"><p class="eyebrow">HOW WE KEEP IT USEFUL</p><h2 id="standards-heading">The work has to<br />earn its place.</h2></div>
       <div class="project-prose">
-        <h3>Show the basis</h3><p>A price needs a date and a source. A test needs an example and a result. An opinion needs to read like an opinion.</p>
+        <h3>Make the claim testable</h3><p>A research result needs a defined task, a baseline and a check on what actually happened. A price needs a date and a source. An opinion needs to read like an opinion.</p>
+        <h3>Open the work, define its scope</h3><p>New work in the repository's <a href="https://github.com/valorifutures/softcat.ai/tree/main/research">research directory</a> is licensed under Apache 2.0. Earlier site material has not completed its provenance and licence review. The <a href="https://github.com/valorifutures/softcat.ai/blob/main/LICENSING.md">licensing record</a> explains the boundary.</p>
         <h3>Keep corrections visible</h3><p>When a claim goes beyond its evidence, narrow it or withdraw it. The <a href="/thoughts">Thoughts record</a> links each correction and explains what we removed. The earlier source stays in Git history.</p>
         <h3>Describe what actually ran</h3><p>Automated writing can be wrong, and scheduled jobs can stop. The <a href="/pipeline">Pipeline</a> shows recorded runs and their dates. A new page build does not mean every underlying system is current.</p>
         <h3>Leave a way to improve it</h3><p>Found a weak claim, a broken tool or a better experiment? <a href="/contact">Send a correction or an idea</a>. Useful criticism belongs in the workshop.</p>

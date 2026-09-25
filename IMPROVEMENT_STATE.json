@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-25T19:00:31+00:00",
-  "phase": "workshop-redesign-2026-09-25-live",
-  "active_branch": null,
+  "updated_at": "2026-09-25T19:37:06.650301+00:00",
+  "phase": "research-constitution-2026-09-25-validated",
+  "active_branch": "improve/research-constitution-20260925",
   "last_verified_deployment": {
     "sha": "0e6c59484343a888db56a9cfff9c19295619568a",
     "at": "2026-09-25T19:00:31+00:00",
@@ -121,17 +121,17 @@
     "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned."
   ],
   "next": [
-    "Keep the new trial workflow local and explicit about unsaved drafts. Next device pass should verify 320px/touch layouts and actual text-file download in a user browser.",
-    "Consider a bounded clipboard-feedback improvement for older tools if their pending write behaviour is reproduced. Horizon has a timed selectable-text fallback.",
-    "Preserve the evidence priorities recorded in the 21 September review. Do not move targets or renew review dates just because time passes.",
-    "Keep Feral council creation and daily GitHub price snapshots under their separate owners. Retired generators remain off."
+    "Implement the offline synthetic incident fixture, simulated action queue, scripted baseline and deterministic grader in research/, following docs/research-programme.md. Prove the grader rejects seeded wrong outcomes before any agent evaluation.",
+    "Review original site code/assets provenance before extending the new scoped Apache-2.0 licence.",
+    "Preserve the 21 September Horizon evidence priorities, current targets and append-only history.",
+    "Keep Feral creation and daily GitHub price snapshots under their existing separate owners. Mobile/touch and actual file-download verification remain pending from the earlier workshop pass."
   ],
   "constraints": [
     "GitHub access is verified. The maintainer reports the old Linux/OpenClaw host is switched off. Cloud tasks do not require that host.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Maintainer-requested design and usefulness review completed with three independent agents. PR #246 passed hosted validation, merged normally and deployed. Tools, invoice contract handoff, Horizon trial drafts and actual clipboard contents, homepage Feral artwork and search were verified live. This checkpoint records the result and limits. No extra Feral cycle, price refresh or legacy generator ran.",
+  "session": "Maintainer-requested constitutional shift to open research into verifiable agent cooperation. Root charter, operating priorities, licensed research component, first experiment specification and canonical public page prepared. Local validation passed. Independent governance/source review found no blocking issue. Hosted checks, publication and live verification pending. No research execution or result is claimed.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -167,5 +167,13 @@
       "Homepage displayed the exact Off Register opening print, actual publication date, latest Horizon review and glossary entry. Site search found the trial brief as its sole result."
     ],
     "screenshot": "docs/evidence/2026-09-25-workshop.jpg"
+  },
+  "research_constitution_2026_09_25": {
+    "status": "locally validated; hosted publication pending",
+    "base": "80fb819da06f0a7fc289539b4abd0e2bce6a3471",
+    "change": "Root constitution for verifiable agent cooperation, aligned operating rules, canonical public constitution page, scoped Apache-2.0 research licence and first registered experiment specification.",
+    "research_status": "specified, not implemented or run",
+    "validation": "151 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators, 639-page production build and offline audit passed. Audit checked 32,481 internal links, 3,286 assets/metadata and 404 search entries with zero errors.",
+    "review": "Independent critic found no blocking issue. Review tightened trusted-base assumptions and structured outcome reports. Rendered live and mobile behaviour not yet verified."
   }
 }

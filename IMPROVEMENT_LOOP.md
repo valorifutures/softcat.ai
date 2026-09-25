@@ -2,10 +2,16 @@
 
 ## Purpose
 
-Make SOFT CAT .ai a distinctive, useful AI playground and a candid record of
-building with AI. Give visitors something to try, something to understand and
-a reason to return. The Horizon Map should earn trust through dated evidence.
-The diary should show actual work, including failures and changes of mind.
+Make SOFT CAT .ai an independent lab for open, reproducible investigation of
+agent cooperation. Follow `CONSTITUTION.md`. Credibility comes from testable
+claims, working artefacts, failures and independent scrutiny. Keep the useful
+tools, learning and play that let visitors explore the work. Horizon earns
+trust through dated evidence, and the notebook records actual execution.
+
+The first research programme is specified in `docs/research-programme.md`.
+Its implementation and measured results remain ahead. Advance through its
+evidence gates without treating a plan, simulation or site build as agent
+capability evidence. Research lives in explicitly licensed components.
 
 The maintainer has authorised independent execution and publication. See
 `AGENTS.md` for the current mandate. Routine editorial and engineering decisions
@@ -15,7 +21,7 @@ do not need another approval conversation.
 
 Continue improving `valorifutures/softcat.ai` and `https://softcat.ai`.
 
-1. Read the saved checkpoint, current source and recent deployment results.
+1. Read the constitution, saved checkpoint, current source and recent deployment results.
    If `active_branch` is non-null and `updated_at` is under 90 minutes old,
    another pass is active, even if its latest PR just merged. Do not start
    competing edits. Clear `active_branch` when handing over.
@@ -27,7 +33,10 @@ Continue improving `valorifutures/softcat.ai` and `https://softcat.ai`.
    The maintainer explicitly wants material that does not earn its place removed
    and useful additions made. Curate weak or misleading material, retaining a
    correction or audit record where it helps explain a meaningful change.
-   A new experiment should do something interesting that visitors can use.
+   After reliability, prioritise the next incomplete research gate over general
+   content expansion. Record the question, existing work, falsifiable criteria
+   and comparison before running a new experiment. Prefer a useful upstream
+   extension to recreating an existing protocol or demonstration.
    Inspect new sourced thought drafts during the editorial pass. Keep a draft
    unpublished if its claims exceed its sources. Only documented work belongs
    in the field notebook. Reviewing a draft is within the maintenance mandate.
@@ -69,6 +78,8 @@ node scripts/validate-tools-data.mjs
 node --test scripts/tests/*.test.mjs
 node scripts/validate-horizon-refs.mjs
 npm run build
+python -m unittest discover -s scripts/tests -p 'test_*.py'
+python scripts/validate-built-site.py
 python -m pytest bot/tests/ -q
 ```
 
@@ -98,3 +109,6 @@ task completes one coherent batch in about 45 minutes and leaves a handover.
 Daily maintenance covers the whole site. Monday evidence review reassesses our
 five predictions. Tuesday and Friday Feral cycles use independent director,
 builder and critic agents. Successful scheduling is not evidence of execution.
+These owners and schedules are unchanged by the research mission. Research
+advances through bounded maintenance batches or explicit maintainer requests,
+with its own recorded execution limits. No new research schedule is implied.

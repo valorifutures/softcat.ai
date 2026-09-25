@@ -4,12 +4,12 @@ const builtAt = new Date();
 const groups = [
   { title: 'TRY', links: [['Tools', '/tools'], ['Agent check', '/lab/agent-check'], ['Prompt recipes', '/prompts'], ['Play', '/play']] },
   { title: 'READ', links: [['Notebook', '/notebook'], ['Thoughts', '/thoughts'], ['News archive', '/news-and-updates'], ['Radar archive', '/radar'], ['Glossary', '/glossary']] },
-  { title: 'INSPECT', links: [['Horizon', '/horizon'], ['Pipeline', '/pipeline'], ['Feral', '/feral'], ['Source code', 'https://github.com/valorifutures/softcat.ai'], ['RSS feed', '/feed.xml']] },
+  { title: 'INSPECT', links: [['Horizon', '/horizon'], ['Our constitution', '/constitution'], ['Pipeline', '/pipeline'], ['Feral', '/feral'], ['Source code', 'https://github.com/valorifutures/softcat.ai'], ['RSS feed', '/feed.xml']] },
 ];
 ---
 <footer class="workshop-footer">
   <div class="workshop-shell">
-    <div class="footer-main"><div class="footer-intro"><a href="/" class="site-brand">SOFT CAT<span class="brand-domain">.ai</span></a><p>An open notebook.<br />A working experiment.<br />Always room to improve.</p><button data-search-trigger class="footer-search">Search the site <span aria-hidden="true">↗</span></button></div>
+    <div class="footer-main"><div class="footer-intro"><a href="/" class="site-brand">SOFT CAT<span class="brand-domain">.ai</span></a><p>Open work.<br />Inspectable evidence.<br />Always room to improve.</p><button data-search-trigger class="footer-search">Search the site <span aria-hidden="true">↗</span></button></div>
       {groups.map((group) => <nav aria-label={group.title.toLowerCase()}><h2>{group.title}</h2>{group.links.map(([label, href]) => <a href={href}>{label}</a>)}</nav>)}
     </div>
     <div class="footer-bottom"><p>© {builtAt.getUTCFullYear()} SOFT CAT .ai · An independent project by <a href="/valori">Valori</a>.<br />Not affiliated with Softcat plc.</p><div><a href="/privacy">Privacy</a><a href="/contact">Contact</a><a href="/tags">Tags</a></div></div>

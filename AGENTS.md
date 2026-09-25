@@ -1,6 +1,7 @@
 # SOFT CAT .ai maintenance
 
-Read `IMPROVEMENT_LOOP.md`, `IMPROVEMENT_STATE.json` and `STYLE.md` before working.
+Read `CONSTITUTION.md`, `IMPROVEMENT_LOOP.md`, `IMPROVEMENT_STATE.json`,
+`STYLE.md` and `docs/site-operations.md` before working.
 `CLAUDE.md` describes the existing architecture. Confirm its details against the
 code because parts of it predate the current site.
 
@@ -27,3 +28,15 @@ cloud tasks in `docs/site-operations.md` replace that dependency. The expired
 12–13 September overnight task stays paused. Feral creative cycles still obey
 their separate constitution, independent critic and three allowed roots. Keep
 maintenance changes and creative cycle changes in separate PRs.
+
+On 25 September 2026 the maintainer adopted a research direction: open,
+reproducible investigation of verifiable cooperation between agents. The root
+`CONSTITUTION.md` governs that mission. `docs/research-programme.md` specifies
+the first experiment and its evidence gates. This is a research specification,
+not an executed result. Read it before selecting new experimental work.
+
+Prioritise useful, falsifiable research and upstream contributions over content
+volume. Keep reliability fixes first. Record planned, implemented, executed and
+independently reproduced states distinctly. Licence scope is in `LICENSING.md`.
+The root mission does not replace Feral's specialist charter or extend spending,
+external access, publishing credentials or third-party contact permissions.

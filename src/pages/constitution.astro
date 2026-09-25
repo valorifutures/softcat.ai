@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Content, getHeadings } from '../../CONSTITUTION.md';
+
+const headings = getHeadings().filter(({ depth }) => depth === 2);
+const repository = 'https://github.com/valorifutures/softcat.ai/blob/main';
+---
+<BaseLayout title="Our constitution" description="SOFT CAT's constitution for open research into verifiable cooperation between agents. Our commitments, evidence standards and limits.">
+  <div class="workshop-shell constitution-page">
+    <header class="constitution-intro">
+      <p class="eyebrow">OUR DIRECTION / ADOPTED <time datetime="2026-09-25">25 SEPTEMBER 2026</time></p>
+      <p class="constitution-lead">Open research into verifiable cooperation between agents.</p>
+      <p>The programme is specified, not yet implemented. This constitution sets the standard for the work ahead. It is not a claim of new measured research results.</p>
+      <a class="text-link" href={`${repository}/CONSTITUTION.md`}>Read the canonical source <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <div class="constitution-layout">
+      <aside class="constitution-sidebar">
+        <nav aria-label="Constitution contents">
+          <p class="eyebrow">IN THIS DOCUMENT</p>
+          <ol>{headings.map(({ slug, text }) => <li><a href={`#${slug}`}>{text}</a></li>)}</ol>
+        </nav>
+        <div class="constitution-next">
+          <p class="eyebrow">FROM PRINCIPLES TO WORK</p>
+          <a href={`${repository}/docs/research-programme.md`}>The research programme <span aria-hidden="true">↗</span></a>
+          <a href={`${repository}/research/README.md`}>Research status and starting point <span aria-hidden="true">↗</span></a>
+          <a href={`${repository}/LICENSING.md`}>Licence scope and provenance <span aria-hidden="true">↗</span></a>
+        </div>
+      </aside>
+      <article class="constitution-document" aria-label="SOFT CAT constitution">
+        <Content />
+      </article>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .constitution-page { padding-block: 4rem 5rem; }
+  .constitution-intro { max-width: 760px; margin-bottom: 3rem; }
+  .constitution-lead { color: #f1f1e8; font: 500 clamp(1.6rem, 3.4vw, 2.5rem)/1.3 var(--font-sans); letter-spacing: -0.035em; margin-block: 1.1rem; }
+  .constitution-intro > p:not([class]) { color: var(--color-text-muted); font-size: 0.94rem; line-height: 1.85; max-width: 66ch; }
+  .constitution-intro > a { display: inline-block; margin-top: 1.3rem; }
+  .constitution-layout { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 2fr); gap: clamp(2rem, 6vw, 5rem); border-top: 1px solid var(--workshop-rule); padding-top: 2.5rem; }
+  .constitution-sidebar { min-width: 0; }
+  .constitution-sidebar ol { list-style: none; margin: 1rem 0 0; padding: 0; }
+  .constitution-sidebar li + li { margin-top: 0.7rem; }
+  .constitution-sidebar a { color: #c7cfc1; font-size: 0.8rem; line-height: 1.7; overflow-wrap: anywhere; }
+  .constitution-sidebar a:hover { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 3px; }
+  .constitution-next { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--workshop-rule); }
+  .constitution-next > a { display: block; margin-top: 0.8rem; }
+  .constitution-document { min-width: 0; max-width: 72ch; color: #d1d4ce; font-size: 0.98rem; line-height: 1.85; overflow-wrap: anywhere; }
+  .constitution-document :global(h1) { margin: 0 0 1.5rem; color: #f1f1e8; font: 600 clamp(2.1rem, 4vw, 3.2rem)/1.16 var(--font-sans); letter-spacing: -0.045em; }
+  .constitution-document :global(h2) { margin: 2.8rem 0 1rem; color: #e3eddb; font: 500 clamp(1.3rem, 2.3vw, 1.65rem)/1.35 var(--font-sans); letter-spacing: -0.025em; scroll-margin-top: 6rem; }
+  .constitution-document :global(h3) { margin: 1.8rem 0 0.6rem; color: #e3eddb; font-size: 1.08rem; font-weight: 500; scroll-margin-top: 6rem; }
+  .constitution-document :global(p) { margin-block: 1rem; }
+  .constitution-document :global(ul), .constitution-document :global(ol) { padding-left: 1.3rem; margin-block: 1rem; }
+  .constitution-document :global(ul) { list-style: disc; }
+  .constitution-document :global(ol) { list-style: decimal; }
+  .constitution-document :global(li + li) { margin-top: 0.55rem; }
+  .constitution-document :global(a) { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 3px; }
+  .constitution-document :global(strong) { color: #edf1e7; font-weight: 600; }
+  .constitution-document :global(blockquote) { margin-block: 1.5rem; border-left: 3px solid var(--workshop-lime); padding-left: 1.2rem; color: #e3eddb; }
+  .constitution-document :global(code) { font-size: 0.87em; }
+  .constitution-document :global(pre) { max-width: 100%; overflow-x: auto; padding: 1rem; border: 1px solid var(--workshop-rule); border-radius: 0.4rem; }
+  .constitution-document :global(table) { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin-block: 1.5rem; }
+  .constitution-document :global(th), .constitution-document :global(td) { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--workshop-rule); text-align: left; vertical-align: top; }
+  .constitution-page a:focus-visible, .constitution-document :global(a:focus-visible) { outline: 2px solid var(--workshop-lime); outline-offset: 4px; border-radius: 2px; }
+  @media (max-width: 700px) {
+    .constitution-page { padding-block: 2.5rem 3.5rem; }
+    .constitution-layout { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+    .constitution-sidebar { border-bottom: 1px solid var(--workshop-rule); padding-bottom: 2rem; }
+    .constitution-intro .eyebrow { line-height: 1.8; }
+  }
+</style>
