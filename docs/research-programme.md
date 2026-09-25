@@ -1,7 +1,10 @@
 # Research programme: verifiable cooperation
 
-**Status: specified, not implemented or run.** This document registers the first
-experiment design. It reports no result, security guarantee or novel invention.
+**Status: offline development harness implemented and scripted checks recorded.**
+The [harness receipt](../research/delegation/README.md) covers gate 2 only.
+Agent execution, held-out comparison and independent reproduction have not
+happened. This document registers the wider experiment design and makes no
+security guarantee or novelty claim.
 The [site constitution](../CONSTITUTION.md) governs the programme.
 
 We investigate whether independently implemented agents can cooperate while

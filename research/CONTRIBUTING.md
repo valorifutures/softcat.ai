@@ -1,9 +1,10 @@
 # Contributing to SOFT CAT research
 
 Start with the [constitution](../CONSTITUTION.md) and
-[experiment design](../docs/research-programme.md). The programme is specified,
-not implemented or run. The first useful contribution is the offline fixture,
-script baseline and deterministic grader described there.
+[experiment design](../docs/research-programme.md). The [offline harness](delegation/README.md) now implements the development
+fixture, script baseline and deterministic grader. Useful contributions include
+a failing regression, a grader blind spot, or a reviewed adapter proposal.
+Agent execution and evaluated comparisons remain future gates.
 
 Open a focused pull request with:
 
@@ -27,5 +28,6 @@ research boundary. Paid execution needs configured access and a recorded spend
 limit. An ordinary code contribution must not start paid or external workloads.
 
 Site publication uses the repository checks in `../IMPROVEMENT_LOOP.md`.
-An offline runner and its own commands do not exist yet. Add its documented
-clean-environment command and dependency lock when implementing that gate.
+The offline runner needs Node 24 and built-in modules only. Its README documents
+the reproduction and verification commands. Preserve the recorded receipt and
+regenerate it deliberately when changing the fixture, runner, grader or tests.

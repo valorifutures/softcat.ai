@@ -2,7 +2,7 @@
 
 ## What This Site Is
 
-SOFT CAT .ai (softcat.ai) is an independent lab building open research into verifiable cooperation between AI agents. Read the root CONSTITUTION.md, AGENTS.md and docs/research-programme.md first. The initial experiment is specified, not implemented or run. Tools, learning, Horizon and the notebook support the work. Feral keeps its separate creative charter.
+SOFT CAT .ai (softcat.ai) is an independent lab building open research into verifiable cooperation between AI agents. Read the root CONSTITUTION.md, AGENTS.md and docs/research-programme.md first. The initial offline development harness is implemented, with recorded scripted checks. Agent execution and evaluated comparisons remain future gates. Tools, learning, Horizon and the notebook support the work. Feral keeps its separate creative charter.
 The manifest currently defines seven bots. Published records show past activity, not live server health.
 Built with Astro 5 + Preact + Tailwind 4. Dark premium aesthetic.
 Deploys via GitHub Actions to GitHub Pages on every push to `main`.

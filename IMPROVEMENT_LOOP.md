@@ -9,9 +9,10 @@ tools, learning and play that let visitors explore the work. Horizon earns
 trust through dated evidence, and the notebook records actual execution.
 
 The first research programme is specified in `docs/research-programme.md`.
-Its implementation and measured results remain ahead. Advance through its
-evidence gates without treating a plan, simulation or site build as agent
-capability evidence. Research lives in explicitly licensed components.
+An offline scripted development harness now exercises its authority and
+outcome checks. Agent execution and evaluated comparisons remain ahead.
+Advance through the evidence gates without treating a plan, simulation or
+site build as agent capability evidence. Research lives in explicitly licensed components.
 
 The maintainer has authorised independent execution and publication. See
 `AGENTS.md` for the current mandate. Routine editorial and engineering decisions
