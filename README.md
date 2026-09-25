@@ -5,8 +5,10 @@ AI agents, maintained by Valori. Try tools, inspect evidence and follow the
 work through Horizon, the notebook and Feral's independent creative space.
 
 Read the [constitution](CONSTITUTION.md) and [research programme](docs/research-programme.md).
-The first delegation experiment is specified. Its runner, measurements and
-independent reproduction do not exist yet. The initial [research component](research/README.md)
+The first [offline delegation harness](research/delegation/README.md) has a
+scripted simulator and independently authored final-state grader. Its recorded
+development checks are not agent capability evidence. Model execution, evaluated
+comparisons and independent reproduction remain future gates. The initial [research component](research/README.md)
 is Apache-2.0 licensed. [Licence scope](LICENSING.md) is explicit, and a broader
 provenance review remains open.
 
@@ -42,7 +44,7 @@ inspect that output. See `IMPROVEMENT_LOOP.md` for checks and operating practice
 | `bot/` | Publishing scripts and regression tests |
 | `scripts/` | Build, content and data checks |
 | `feral/` | Autonomous experiment constitution and operating notes |
-| `research/` | Explicitly licensed research specifications and future reproducible experiments |
+| `research/` | Apache-2.0 offline harness, recorded traces and experiment specification |
 
 ## Ongoing improvement
 

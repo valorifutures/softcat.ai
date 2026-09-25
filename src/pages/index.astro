@@ -20,6 +20,11 @@ const experiments = [
   <Hero />
   <ActivityTicker />
 
+  <section class="workshop-shell research-invitation" aria-labelledby="research-heading">
+    <div><p class="eyebrow">RESEARCH / FIRST OFFLINE HARNESS</p><h2 id="research-heading">Revoke one job.<br />Keep the other working.</h2><p>A small, testable question about delegated authority. Inspect the synthetic run, the deliberate failures and the code that checks the outcome.</p></div>
+    <div class="research-invitation-status"><span>RECORDED SCRIPTED EXECUTION</span><p>No model calls. No live agents.<br />A first test we can build on.</p><a href="/research">Inspect the experiment <span aria-hidden="true">↗</span></a></div>
+  </section>
+
   <section class="workshop-shell workshop-section" aria-labelledby="bench-heading">
     <div class="workshop-section-heading"><div><p class="eyebrow">THE WORKBENCH</p><h2 id="bench-heading">Less watching. More trying.</h2></div><a class="text-link" href="/tools">All tools <span aria-hidden="true">↗</span></a></div>
     <div class="experiment-grid">{experiments.map((experiment) => <a class={`bench-card ${experiment.colour}`} href={experiment.href}>
@@ -56,6 +61,20 @@ const experiments = [
 
   <section class="workshop-shell workshop-about">
     <div><p class="eyebrow">SMART OUTPUTS FROM TRAINED<br />CONVERSATIONAL AI TECHNOLOGY</p><h2>That is the name.<br />Useful is the aim.</h2></div>
-    <div><p>SOFT CAT is an independent project by Valori. We are building an open research programme into verifiable cooperation between AI agents, alongside the tools, forecasts and creative experiments here.</p><p>The programme is specified, with implementation and measured results still ahead. Our constitution sets the standard: inspectable evidence, reproducible work and failures kept in view.</p><a href="/constitution" class="text-link">Read our constitution →</a></div>
+    <div><p>SOFT CAT is an independent project by Valori. We are building an open research programme into verifiable cooperation between AI agents, alongside the tools, forecasts and creative experiments here.</p><p>Our first offline harness has a recorded execution. Agent comparisons are still ahead. Our constitution sets the standard: inspectable evidence, reproducible work and failures kept in view.</p><a href="/constitution" class="text-link">Read our constitution →</a></div>
   </section>
 </BaseLayout>
+
+<style>
+  .research-invitation { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); gap: 2rem 4rem; padding: 2.5rem; margin-block: 2.5rem 1rem; background: #e7eadf; color: #243022; border-top: 5px solid #b7d68f; }
+  .research-invitation .eyebrow { color: #506049; }
+  .research-invitation h2 { font: 600 clamp(1.9rem, 3.5vw, 2.7rem)/1.12 var(--font-sans); letter-spacing: -.045em; margin: 1rem 0; }
+  .research-invitation p:not(.eyebrow) { font-size: .88rem; line-height: 1.8; max-width: 55ch; color: #4b5945; }
+  .research-invitation-status { align-self: end; border-top: 1px solid #b9c4b0; padding-top: 1.3rem; }
+  .research-invitation-status > span { font: .6rem/1.6 var(--font-mono); color: #506049; }
+  .research-invitation-status p { margin-top: .8rem; }
+  .research-invitation a { display: flex; justify-content: space-between; align-items: center; min-height: 48px; margin-top: 1.2rem; font-size: .85rem; color: #28441e; border-bottom: 1px solid #9cad8b; }
+  .research-invitation a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .research-invitation a:focus-visible { outline: 2px solid #365e2b; outline-offset: 4px; }
+  @media (max-width: 740px) { .research-invitation { grid-template-columns: minmax(0, 1fr); padding: 1.75rem; margin-block: 1.5rem 1rem; } }
+</style>

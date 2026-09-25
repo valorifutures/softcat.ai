@@ -1,11 +1,11 @@
 ---
 const links = [
+  { label: 'Research', href: '/research' },
   { label: 'Horizon', href: '/horizon' },
   { label: 'Tools', href: '/tools' },
   { label: 'Recipes', href: '/prompts' },
   { label: 'Notebook', href: '/notebook' },
   { label: 'Feral', href: '/feral' },
-  { label: 'Pipeline', href: '/pipeline' },
 ];
 const isCurrent = (href: string) => Astro.url.pathname === href || Astro.url.pathname.startsWith(href + '/') || (href === '/tools' && Astro.url.pathname.startsWith('/lab/'));
 ---

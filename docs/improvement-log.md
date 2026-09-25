@@ -847,3 +847,46 @@ Release receipt: [PR #248](https://github.com/valorifutures/softcat.ai/pull/248)
 Live [constitution](https://softcat.ai/constitution/) verification found all ten sections and no broken contents anchors. Enter on section 10 placed its heading at y96. Wheel scrolling reached scrollY4137 with the final footer text at y936 in a 936px viewport. Document width1348 stayed within viewport1363. About and Home show the new mission and explicit specified/not implemented status. Search for constitution returned exactly one correct dated result. A viewport screenshot is saved at `docs/evidence/2026-09-25-constitution.jpg`. These observations cover desktop rendering and navigation, not mobile/touch-device behaviour.
 
 The checkpoint now names the offline synthetic fixture, action queue, script baseline and deterministic grader as the next research gate. No research runner, executed model experiment, independent reproduction, extra Feral cycle, price refresh, paid call or external contribution is claimed. The new constitution is operative through current-main repository instructions. Existing schedules and owners are unchanged.
+
+
+## 25 September 2026, first offline research harness
+
+The maintainer requested continuation from the published research constitution.
+Current main was `6f20e4ed7691709f58a973d1b330ed16457e7188`, with no open PR,
+active marker or queued/in-progress Action. We used a fresh isolated worktree.
+The clean baseline passed 151 script tests, a 639-page build and offline audit.
+
+Separate agents built the simulator, authored the independent grader, reviewed
+both, and prepared the public research page. The original fixture has two jobs
+sharing one specialist role, a delegated Job A chain, independent Job B authority,
+pre-labelled synthetic evidence and an in-memory remediation queue. Revocation
+and queue commits share a central logical order. These are scripted actors,
+not live agents or a test of model diagnostic reasoning.
+
+The final recorded execution accepted four valid conditions and rejected three
+intentionally deficient controls plus 26 seeded wrong outcomes. The raw traces,
+violations, exact Node version and source/fixture/test hashes are retained in
+`research/delegation/results/latest.json`. The runner has no npm dependencies,
+network operation or provider call. Cost remains unknown. It refuses to overwrite
+an existing receipt, and replay verification runs inside the existing hosted gates.
+
+Independent review found real false passes involving missing and misclassified
+probes, unsupported action evidence hidden by a clean report, an expiry denial
+mistaken for revocation, a delegation shortcut, and tampered deterministic
+execution facts ignored by receipt verification. Corrections and regression cases
+are retained. `research/delegation/review.md` records the actual disagreement.
+An initial Astro build failed on a newline expression in the command example.
+That expression was corrected before the passing production build.
+
+The public Research page exposes the recorded receipt, event disclosures,
+deliberate failures, code and reproduction commands. Home, navigation, About,
+constitution links and search distinguish this completed offline gate from the
+future agent experiment. Historical predictions, creative cycles, price ownership
+and retired output remain untouched.
+
+Local validation passed 203 script JavaScript tests, including 52 research tests,
+27 Feral tests, 141 bot tests and 12 publication fixtures, plus every data validator.
+The 640-page build and offline audit passed with 33,159 internal links, 3,292
+assets/metadata references, 405 search entries and zero errors. Hosted release
+and live verification are pending at this preparation checkpoint. No independent
+reproduction or mobile-device verification is claimed.

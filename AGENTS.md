@@ -32,8 +32,9 @@ maintenance changes and creative cycle changes in separate PRs.
 On 25 September 2026 the maintainer adopted a research direction: open,
 reproducible investigation of verifiable cooperation between agents. The root
 `CONSTITUTION.md` governs that mission. `docs/research-programme.md` specifies
-the first experiment and its evidence gates. This is a research specification,
-not an executed result. Read it before selecting new experimental work.
+the first experiment and its evidence gates. The offline development harness is implemented and its recorded checks are
+under `research/delegation/`. Agent execution and evaluated comparisons remain
+future gates. Read the programme before selecting new experimental work.
 
 Prioritise useful, falsifiable research and upstream contributions over content
 volume. Keep reliability fixes first. Record planned, implemented, executed and

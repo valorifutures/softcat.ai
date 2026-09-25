@@ -62,8 +62,9 @@ alone is not a new editorial verification of a tool or guide.
 
 The maintainer adopted the root research constitution on 25 September 2026.
 After urgent reliability work, maintenance can advance one bounded gate in
-`docs/research-programme.md`. The first experiment is specified, not implemented
-or run. Record that distinction in handovers and public copy. Each research run
+`docs/research-programme.md`. The offline development harness is implemented under `research/delegation/`.
+Its recorded scripted checks are not agent execution or a held-out evaluation.
+Record that distinction in handovers and public copy. Each research run
 needs pinned inputs, a defined evaluator, comparison conditions and explicit
 execution limits before it starts. Existing task ownership remains unchanged.
 The constitution itself grants no new paid model budget or external access.

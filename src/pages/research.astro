@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import receipt from '../../research/delegation/results/latest.json';
+
+const source = 'https://github.com/valorifutures/softcat.ai/tree/main/research/delegation';
+const programme = 'https://github.com/valorifutures/softcat.ai/blob/main/docs/research-programme.md';
+const labels: Record<string, string> = {
+  clean: 'Clean', 'unreliable-evidence-only': 'Unreliable evidence', 'revocation-only': 'Revocation', combined: 'Combined',
+  'unreliable-evidence': 'Unreliable evidence', revocation: 'Revocation',
+};
+const name = (value: string) => labels[value] || value.replaceAll('-', ' ');
+const validRuns = receipt.runs.filter(run => !run.control || run.control === 'none');
+const controls = receipt.runs.filter(run => run.control && run.control !== 'none');
+const combined = validRuns.find(run => run.condition === 'combined');
+const recordedAt = new Date(receipt.generatedAt).toLocaleString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
+const eventTitle = (event: Record<string, unknown>) => name(String(event.type || event.kind || 'event'));
+const eventDetail = (event: Record<string, unknown>) => JSON.stringify(event, null, 2);
+const commands = [
+  'node --test research/delegation/*.test.mjs',
+  'node research/delegation/run.mjs --verify research/delegation/results/latest.json',
+  'node research/delegation/run.mjs',
+].join('\n');
+---
+<BaseLayout title="Research: delegated authority" description="Revoke one job. Keep the other working. Inspect SOFT CAT's first offline research harness, its synthetic execution trace, deliberately wrong outcomes and open source.">
+  <div class="workshop-shell research-page">
+    <header class="research-hero">
+      <div class="research-intro">
+        <p class="eyebrow">OPEN RESEARCH / EXPERIMENT 001</p>
+        <h1>Revoke one job.<br /><em>Keep the other<br class="desktop-break" /> working.</em></h1>
+        <p class="research-lead">Permission must survive a hand-off. So must the ability to take it away.</p>
+        <p>Our first offline harness gives two jobs access to one shared specialist role, revokes one job and checks the final state. It uses a deterministic script and synthetic evidence.</p>
+        <div class="research-actions"><a href="#record" class="workshop-button primary">Inspect the record <span aria-hidden="true">↓</span></a><a href={source} class="text-link">Read the source <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <aside class="receipt-card" aria-labelledby="receipt-heading">
+        <div class="receipt-top"><span>EXECUTION RECEIPT</span><span>GATE 02</span></div>
+        <h2 id="receipt-heading">Offline harness.</h2>
+        <p class="receipt-kind">Synthetic data. Scripted roles.<br />Recorded execution, not a live system.</p>
+        <dl class="receipt-metrics">
+          <div><dt>Valid scenarios accepted</dt><dd>{receipt.summary.validPassed}<span> / {receipt.summary.validTotal}</span></dd></div>
+          <div><dt>Seeded wrong outcomes rejected</dt><dd>{receipt.summary.negativeRejected}<span> / {receipt.summary.negativeTotal}</span></dd></div>
+          <div><dt>Deliberately weakened controls failed</dt><dd>{receipt.summary.controlsFailed}<span> / {receipt.summary.controlsTotal}</span></dd></div>
+        </dl>
+        <p class="receipt-date">Recorded <time datetime={receipt.generatedAt}>{recordedAt} UTC</time></p>
+        <p class="receipt-limit">These are checks of one development fixture. They are not a benchmark of agent capability or production security.</p>
+      </aside>
+    </header>
+
+    <nav class="research-sections" aria-label="Research page sections"><a href="#contract">The contract</a><a href="#record">Execution record</a><a href="#grader">Challenge the grader</a><a href="#reproduce">Run it yourself</a><a href="#limits">What is still open</a></nav>
+
+    <section id="contract" class="research-section" aria-labelledby="contract-heading">
+      <div class="section-heading"><p class="eyebrow">01 / THE CONTRACT</p><h2 id="contract-heading">Same specialist.<br />Different authority.</h2><p>A synthetic incident needs a remediation request. The only write is to a simulated local queue. Nothing acts on a real network.</p></div>
+      <div class="contract-content">
+        <div class="job-lane revoked"><div><span class="eyebrow">JOB A / DELEGATED</span><h3>Stop at revocation.</h3><p>Coordinator → investigator → specialist</p></div><p class="lane-outcome">No later queue commit</p></div>
+        <div class="job-lane allowed"><div><span class="eyebrow">JOB B / SEPARATELY AUTHORISED</span><h3>Keep legitimate work moving.</h3><p>A separate grant to the same specialist</p></div><p class="lane-outcome">Valid request can complete</p></div>
+        <p class="contract-caption">Required behaviour, not live status. All roles are scripted in one process. Revocation and queue commits share a single ordered boundary.</p>
+        <div class="evidence-note"><h3>Two documents can still be one source.</h3><p>The fixture includes a false conclusion and an instruction to exceed authority. Another document repeats that source. The harness records their shared origin so repetition cannot become independent corroboration. Distinct origins do not establish truth either.</p></div>
+      </div>
+    </section>
+
+    <section id="record" class="research-section" aria-labelledby="record-heading">
+      <div class="section-heading"><p class="eyebrow">02 / EXECUTION RECORD</p><h2 id="record-heading">Inspect the outcome.<br />Then the trace.</h2><p>The grader checks events, reports and the final queue. A role saying “done” is not enough.</p><a class="text-link" href="/research/receipt.json">Open the exact JSON receipt <span aria-hidden="true">↗</span></a></div>
+      <div class="record-content">
+        <div class="scenario-grid">{validRuns.map(run => <article class="scenario-card"><p class="eyebrow">{name(run.condition)}</p><h3 class:list={[{ 'grade-failed': !run.grade.passed }]}>{run.grade.passed ? 'Accepted' : 'Rejected'}</h3><p>{run.trace.queue.length} queue {run.trace.queue.length === 1 ? 'commit' : 'commits'} · {run.trace.events.length} recorded events</p><details><summary>Inspect scenario</summary><p class="record-id">Run: {run.id}</p><pre tabindex="0" aria-label={`${name(run.condition)} grade and final queue`}><code>{JSON.stringify({ grade: run.grade, queue: run.trace.queue, reports: run.trace.reports }, null, 2)}</code></pre></details></article>)}</div>
+        {combined && <details class="trace-disclosure"><summary><span><strong>Open the combined trace</strong><small>Unreliable evidence and revocation together</small></span><span>{combined.trace.events.length} events</span></summary><p class="trace-note">Event order is logical sequence within the simulator. It is not a measurement of distributed propagation latency. Expand an event to inspect its exact recorded fields.</p><ol class="event-list">{combined.trace.events.map((event, index) => <li><span class="event-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><details><summary>{eventTitle(event)}</summary><pre tabindex="0" aria-label={`Recorded event ${index + 1}`}><code>{eventDetail(event)}</code></pre></details></li>)}</ol></details>}
+        <div class="control-record"><h3>Keep the failures visible.</h3><p>These controls intentionally remove a protection inside the simulation. A rejected control is evidence that the checker notices that particular failure.</p>{controls.map(run => <details><summary><span>{name(String(run.control))}</span><strong class:list={[{ 'grade-failed': !run.grade.passed }]}>{run.grade.passed ? 'Accepted' : 'Rejected'}</strong></summary><ul class="violation-list">{run.grade.violations.map(violation => <li><code>{violation.code}</code><span>{violation.detail}</span></li>)}</ul></details>)}</div>
+      </div>
+    </section>
+
+    <section id="grader" class="research-section" aria-labelledby="grader-heading">
+      <div class="section-heading"><p class="eyebrow">03 / CHALLENGE THE GRADER</p><h2 id="grader-heading">The checker needs<br />checking too.</h2><p>Deliberately wrong traces test whether the grader rejects outcomes it should never approve. The implementation is separate from the simulator's permission decision.</p></div>
+      <div class="grader-content"><p>These are seeded cases, not discovered vulnerabilities. Separate implementation and review do not establish an independent reproduction.</p><div class="negative-list">{receipt.negativeCases.map(test => <details><summary><span>{name(test.id)}</span><strong class:list={[{ 'grade-failed': !test.detected }]}>{test.detected ? 'Detected' : 'Missed'}</strong></summary><p>Expected rejection: <code>{test.expectedCode}</code></p><ul class="violation-list">{test.violations.map(violation => <li><code>{violation.code}</code><span>{violation.detail}</span></li>)}</ul></details>)}</div></div>
+    </section>
+
+    <section id="reproduce" class="research-section" aria-labelledby="reproduce-heading">
+      <div class="section-heading"><p class="eyebrow">04 / RUN IT YOURSELF</p><h2 id="reproduce-heading">An open receipt.<br />A runnable check.</h2><p>The harness uses Node.js 24 built-ins. It runs locally without model keys, network requests or a package installation.</p><a class="text-link" href={source}>Source and instructions <span aria-hidden="true">↗</span></a></div>
+      <div class="reproduce-content"><p>From a checkout of <a href="https://github.com/valorifutures/softcat.ai">the repository</a>:</p><pre tabindex="0" aria-label="Commands to verify the recorded harness"><code>{commands}</code></pre><p>The last command emits a fresh JSON receipt. Verification compares deterministic results and recorded source hashes. A replay is not a fresh agent evaluation.</p><dl class="environment"><div><dt>Recorded Node</dt><dd>{receipt.environment.node}</dd></div><div><dt>Platform</dt><dd>{receipt.environment.platform} / {receipt.environment.arch}</dd></div><div><dt>Research licence</dt><dd><a href="https://github.com/valorifutures/softcat.ai/blob/main/research/LICENSE">Apache-2.0</a></dd></div></dl><details class="manifest-disclosure"><summary>Inspect the execution manifest</summary><pre tabindex="0" aria-label="Recorded execution manifest"><code>{JSON.stringify(receipt.manifest, null, 2)}</code></pre></details></div>
+    </section>
+
+    <section id="limits" class="research-section limits-section" aria-labelledby="limits-heading">
+      <div class="section-heading"><p class="eyebrow">05 / THE BOUNDARY</p><h2 id="limits-heading">What this does<br />not establish.</h2><p>The useful next step is the one the evidence supports.</p></div>
+      <div class="limits-content"><ul><li><strong>No live agent comparison.</strong> No models or agent frameworks ran in this harness. There is no measured swarm advantage.</li><li><strong>No diagnostic reasoning.</strong> Sources carry pre-labelled diagnosis and remediation fields. The script applies a fixed voting rule. This tests provenance handling, not model susceptibility to malicious instructions.</li><li><strong>No distributed security guarantee.</strong> The simulator, issuer, enforcement boundary, ordering and grader are trusted. A compromised host is outside the threat model.</li><li><strong>No held-out benchmark.</strong> This is a development fixture with known faults. Its counts do not estimate performance on unseen incidents.</li><li><strong>No zero-day claim.</strong> The faults and malicious instructions are synthetic. No third-party system was tested.</li><li><strong>No free-compute claim.</strong> There are no model calls. Execution still uses computing resources, and no monetary execution cost is measured.</li></ul><div class="next-gate"><p class="eyebrow">NEXT EVIDENCE GATE</p><h3>Real adapters. Frozen comparisons.</h3><p>Implement independently built agent frameworks and a single-agent baseline, calibrate budgets on development fixtures, then freeze a disjoint evaluation set before collecting results. Model access and spending need their own authorisation.</p><a class="text-link" href={programme}>Read the registered programme <span aria-hidden="true">↗</span></a></div><p class="research-charter">Our <a href="/constitution">constitution</a> sets the standard: claims stay within the evidence, and failed runs stay in the record.</p></div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .research-page { padding-block: 4rem 5rem; }
+  .research-hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .85fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  h1 { color: #f1f1e8; font: 600 clamp(2.6rem, 5vw, 4.2rem)/1.07 var(--font-sans); letter-spacing: -.055em; margin-block: 1.3rem 1.7rem; }
+  h1 em { color: var(--workshop-lime); font-style: normal; }
+  .research-intro > p:not(.eyebrow) { color: var(--color-text-muted); max-width: 52ch; font-size: .93rem; line-height: 1.85; margin-bottom: 1rem; }
+  .research-intro .research-lead { color: #e3e8dd !important; font-size: 1.15rem !important; line-height: 1.6 !important; }
+  .research-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin-top: 1.8rem; }
+  .receipt-card { color: #253120; background: #edf0e5; border-top: 5px solid #b7d68f; padding: 1.6rem 1.8rem; margin-top: .2rem; }
+  .receipt-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; font: .6rem/1.6 var(--font-mono); letter-spacing: .06em; color: #526349; }
+  .receipt-card h2 { font: 600 1.9rem/1.2 var(--font-sans); letter-spacing: -.045em; margin-top: 1.3rem; }
+  .receipt-kind { font-size: .82rem; line-height: 1.7; color: #53614c; margin-top: .65rem; }
+  .receipt-metrics { margin-top: 1.4rem; }
+  .receipt-metrics > div { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding-block: .9rem; border-top: 1px solid #cbd3bf; }
+  .receipt-metrics dt { font-size: .75rem; line-height: 1.6; max-width: 20ch; }
+  .receipt-metrics dd { font: 600 1.55rem var(--font-mono); white-space: nowrap; }
+  .receipt-metrics dd span { color: #67745c; font-size: .8rem; font-weight: 400; }
+  .receipt-date { font: .58rem/1.8 var(--font-mono); color: #53614c; border-top: 1px solid #cbd3bf; padding-top: 1rem; }
+  .receipt-date time { display: block; }
+  .receipt-limit { color: #4c5d43; font-size: .73rem; line-height: 1.75; margin-top: .85rem; }
+  .research-sections { display: flex; flex-wrap: wrap; gap: .5rem 1.8rem; border-block: 1px solid var(--workshop-rule); margin-top: 3.5rem; padding-block: .5rem; }
+  .research-sections a { display: inline-flex; align-items: center; min-height: 44px; color: #c5cfc0; font-size: .75rem; }
+  .research-section { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.6fr); gap: 2rem 4rem; padding-top: 3.5rem; margin-top: 3.5rem; border-top: 1px solid var(--workshop-rule); scroll-margin-top: 6rem; }
+  #contract { margin-top: 0; border: 0; }
+  .section-heading h2 { color: #eef0e7; font: 500 clamp(1.6rem, 2.7vw, 2rem)/1.25 var(--font-sans); letter-spacing: -.035em; margin-block: 1rem; }
+  .section-heading > p:not(.eyebrow), .record-content > p, .grader-content > p, .reproduce-content > p { color: var(--color-text-muted); font-size: .86rem; line-height: 1.8; }
+  .section-heading .text-link { margin-top: .7rem; font-size: .75rem; }
+  .contract-content, .record-content, .grader-content, .reproduce-content, .limits-content { min-width: 0; }
+  .job-lane { border: 1px solid #3f4439; border-left: 3px solid #c9a79e; padding: 1.25rem 1.4rem; display: grid; grid-template-columns: minmax(0, 1fr) 10rem; gap: 1rem; align-items: center; background: #1a1a1a; }
+  .job-lane.allowed { border-left-color: var(--workshop-lime); margin-top: .8rem; background: #171d17; }
+  .job-lane .eyebrow { color: #c4b1a9; font-size: .58rem; }
+  .job-lane.allowed .eyebrow { color: #bad59b; }
+  .job-lane h3 { color: #e8e8df; font-size: 1rem; font-weight: 500; margin-block: .4rem; }
+  .job-lane div > p:not(.eyebrow) { color: #a5aea1; font-size: .72rem; line-height: 1.8; }
+  .lane-outcome { color: #dbb8ad; font: .68rem/1.7 var(--font-mono); border-left: 1px solid #4f413b; padding-left: 1rem; }
+  .allowed .lane-outcome { color: #c9ee8d; border-color: #435338; }
+  .contract-caption, .trace-note { color: #99a395; font-size: .72rem; line-height: 1.8; margin-top: 1rem; }
+  .evidence-note { border-left: 2px solid #697581; padding-left: 1.2rem; margin-top: 2rem; }
+  .evidence-note h3, .control-record h3, .next-gate h3 { font-size: 1rem; color: #e2e7dc; font-weight: 500; }
+  .evidence-note p, .control-record > p, .next-gate > p:not(.eyebrow) { color: var(--color-text-muted); font-size: .82rem; line-height: 1.8; margin-top: .7rem; }
+  .scenario-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+  .scenario-card { min-width: 0; padding: 1.3rem; border: 1px solid #343b33; background: #141a16; }
+  .scenario-card .eyebrow { color: #a8b59f; font-size: .58rem; }
+  .scenario-card h3 { color: #c9ee8d; font: 500 1.45rem var(--font-sans); letter-spacing: -.03em; margin-top: .65rem; }
+  .scenario-card > p:not(.eyebrow) { color: #a8b0a4; font-size: .7rem; line-height: 1.8; margin-top: .5rem; }
+  summary { cursor: pointer; color: #d4dccc; font-size: .76rem; line-height: 1.7; min-height: 44px; padding-block: .7rem; }
+  summary:hover, .research-sections a:hover { color: var(--workshop-lime); }
+  .scenario-card details { margin-top: .65rem; border-top: 1px solid #303a2d; }
+  .record-id { font: .64rem/1.8 var(--font-mono); color: #a5b29b; overflow-wrap: anywhere; margin-top: .4rem; }
+  pre { min-width: 0; max-width: 100%; margin-block: .8rem; border: 1px solid #323a32; padding: 1rem; color: #c6d3be; background: #0d120e; font: .68rem/1.8 var(--font-mono); overflow-x: auto; tab-size: 2; }
+  .trace-disclosure { margin-top: 1.2rem; border: 1px solid #3a4537; padding: .5rem 1.2rem; }
+  .trace-disclosure > summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; list-style: none; }
+  .trace-disclosure > summary::-webkit-details-marker { display: none; }
+  .trace-disclosure > summary::after { content: '+'; color: var(--workshop-lime); font: 1.5rem var(--font-mono); }
+  .trace-disclosure[open] > summary::after { content: '−'; }
+  .trace-disclosure > summary > span:first-child { margin-right: auto; }
+  .trace-disclosure summary strong { font-weight: 500; }
+  .trace-disclosure summary small { display: block; font-size: .66rem; color: #a1ad99; }
+  .trace-disclosure > summary > span:nth-child(2) { color: #a1ad99; font: .6rem var(--font-mono); }
+  .event-list { padding: 0; margin-block: 1.2rem; list-style: none; }
+  .event-list li { display: grid; grid-template-columns: 1.7rem minmax(0, 1fr); gap: .5rem; border-top: 1px solid #2b3427; }
+  .event-number { font: .6rem var(--font-mono); padding-top: 1rem; color: #87977b; }
+  .event-list summary { text-transform: capitalize; }
+  .control-record { margin-top: 2rem; }
+  .control-record > p { margin-bottom: 1rem; }
+  .control-record > details, .negative-list > details { border-top: 1px solid var(--workshop-rule); padding-block: .1rem; }
+  .control-record > details > summary, .negative-list > details > summary { display: flex; justify-content: space-between; gap: 1.5rem; list-style: none; }
+  .control-record > details > summary::-webkit-details-marker, .negative-list > details > summary::-webkit-details-marker { display: none; }
+  .control-record summary > span::before, .negative-list summary > span::before { content: '+ '; font-family: var(--font-mono); color: #8c9b82; }
+  .control-record details[open] summary > span::before, .negative-list details[open] summary > span::before { content: '− '; }
+  .control-record summary strong, .negative-list summary strong { color: #c9ee8d; font: .6rem/2 var(--font-mono); text-transform: uppercase; }
+  .grade-failed { color: #e2b2a2 !important; }
+  .violation-list { list-style: none; margin: 0 0 1rem; padding: 0; }
+  .violation-list li { margin-top: .7rem; }
+  .violation-list code { display: block; color: #ddbbad; font: .65rem/1.8 var(--font-mono); overflow-wrap: anywhere; }
+  .violation-list span, .negative-list details > p { display: block; color: #a6afa0; font-size: .75rem; line-height: 1.8; overflow-wrap: anywhere; }
+  .negative-list { margin-top: 1.1rem; }
+  .negative-list details > p { margin-block: .5rem 1rem; }
+  .negative-list summary > span { text-transform: capitalize; }
+  .reproduce-content > p + pre { margin-block: 1rem; }
+  .reproduce-content p a, .environment a, .research-charter a { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 4px; }
+  .environment { display: flex; flex-wrap: wrap; gap: 1rem 2rem; padding-block: 1.3rem; margin-top: .6rem; }
+  .environment dt { color: #98a48e; font: .58rem/1.8 var(--font-mono); text-transform: uppercase; }
+  .environment dd { color: #d1dcc8; font-size: .75rem; margin-top: .4rem; }
+  .manifest-disclosure { border-top: 1px solid var(--workshop-rule); }
+  .limits-content > ul { list-style: none; padding: 0; margin: 0; }
+  .limits-content > ul > li { color: #a6b09e; font-size: .84rem; line-height: 1.85; margin-bottom: 1.1rem; }
+  .limits-content > ul strong { color: #e0e5da; font-weight: 500; }
+  .next-gate { border-top: 1px solid #45513c; margin-top: 2rem; padding-top: 1.6rem; }
+  .next-gate .eyebrow { color: #aec49b; margin-bottom: .8rem; }
+  .next-gate a { margin-top: .5rem; }
+  .research-charter { color: #9ca794; font-size: .75rem; line-height: 1.8; margin-top: 1.5rem; }
+  .research-page a:focus-visible, .research-page summary:focus-visible, .research-page pre:focus-visible { outline: 2px solid var(--workshop-lime); outline-offset: 4px; border-radius: 2px; }
+  @media(max-width: 900px) { .research-section { gap: 2rem; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); } .job-lane { grid-template-columns: minmax(0, 1fr); } .lane-outcome { padding-left: 0; padding-top: .6rem; border-left: 0; border-top: 1px solid #4f413b; } .receipt-card { padding-inline: 1.3rem; } }
+  @media(max-width: 740px) { .research-page { padding-top: 2.8rem; } .research-hero, .research-section { grid-template-columns: minmax(0, 1fr); } .research-hero { gap: 2.5rem; } h1 { font-size: clamp(2.5rem, 8.7vw, 3.9rem); } .desktop-break { display: none; } .receipt-card { padding: 1.5rem; } .research-section { gap: 1.5rem; padding-top: 2.5rem; margin-top: 2.5rem; } .research-sections { margin-top: 2.5rem; gap: 0 1.5rem; } .section-heading > p:not(.eyebrow) { max-width: 54ch; } .job-lane { grid-template-columns: minmax(0, 1fr); } .event-list { margin-inline: -.2rem; } }
+  @media(max-width: 420px) { .scenario-grid { grid-template-columns: minmax(0, 1fr); } .receipt-metrics dd { font-size: 1.3rem; } .receipt-card { padding-inline: 1.25rem; } .trace-disclosure { padding-inline: .9rem; } .research-actions { gap: .8rem; } .negative-list summary { gap: .7rem; } }
+</style>
