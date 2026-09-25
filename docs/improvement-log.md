@@ -828,3 +828,16 @@ The Horizon planner accepted all five fields. Software started with an empty dra
 The homepage displayed Off Register's existing SVG geometry and its actual 18 September publication date. It showed the latest Horizon review and a clear glossary entry. Search for “trial brief” returned the new planner as its sole result. Tools and home had no observed desktop horizontal overflow. [The captured Tools viewport](evidence/2026-09-25-workshop.jpg) records the deployed design.
 
 A returning Horizon page used its earlier cached interface until a normal reload. The refreshed page showed the planner and current history link. The local preview remains blocked, and mobile/touch-device testing remains unverified. The next device pass should verify narrow layouts and real file download. These limits do not alter the passing code, hosted gates or verified desktop interactions.
+
+
+## 25 September 2026, research constitution and first experiment specification
+
+The maintainer requested a fundamental shift towards credible open-source research. Current main was `80fb819da06f0a7fc289539b4abd0e2bce6a3471`, with no open PR, active marker or queued/in-progress Action. A fresh worktree was used. Three independent agents contributed the experiment design, public presentation and governance critique.
+
+A root constitution now defines verifiable cooperation as the research direction. It separates identity, authority, evidence and outcomes, requires reproducible comparisons and published failures, and preserves Horizon history and Feral creative independence. Operating instructions prioritise the next research evidence gate after reliability work. Existing schedules, retired generators, publishing controls and price ownership remain unchanged.
+
+The initial experiment specifies revocation across three agents in two frameworks, unreliable evidence, independent job continuity and a deterministic final-state grader. It is specified, not implemented or run. No research finding, zero-day discovery, upstream acceptance or new paid execution is claimed. The new research component, constitution and experiment specification carry a scoped Apache-2.0 licence. Earlier material requires a provenance review before any broader release. The official licence text was retrieved from Apache.
+
+The public constitution renders the canonical Markdown directly, with section navigation and links to source, programme and licensing scope. Home, About, footer and search expose the new direction without claiming completed research. Independent review found no blocking issue and prompted clearer trusted-base assumptions and structured reports. Narrow layout and keyboard handling were reviewed in source, not on a mobile device.
+
+Local validation passed: 151 script JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators, 639-page production build and offline publication audit. The audit checked 32,481 internal links, 3,286 assets/metadata references and 404 search entries with zero errors. Hosted checks, deployment and live verification are pending at this checkpoint.

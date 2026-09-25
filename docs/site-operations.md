@@ -44,7 +44,7 @@ commit. Their staging files and single-host locks do not migrate automatically.
 
 ## Each task's contract
 
-Read current main, `AGENTS.md`, `IMPROVEMENT_LOOP.md`, the checkpoint and style
+Read current main, `CONSTITUTION.md`, `AGENTS.md`, `IMPROVEMENT_LOOP.md`, the checkpoint and style
 guide. Check open PRs, recent workflow runs and the active-work marker before
 editing. Defer to another run active within 90 minutes. Use an isolated branch,
 preserve unrelated work and complete one coherent batch in about 45 minutes.
@@ -59,6 +59,16 @@ primary evidence and counterevidence, and preserve append-only history. Change
 targets only for documented reasons. Review dates require actual reassessment.
 Current predictions and alternative scenarios remain separate. Link reachability
 alone is not a new editorial verification of a tool or guide.
+
+The maintainer adopted the root research constitution on 25 September 2026.
+After urgent reliability work, maintenance can advance one bounded gate in
+`docs/research-programme.md`. The first experiment is specified, not implemented
+or run. Record that distinction in handovers and public copy. Each research run
+needs pinned inputs, a defined evaluator, comparison conditions and explicit
+execution limits before it starts. Existing task ownership remains unchanged.
+The constitution itself grants no new paid model budget or external access.
+Research runners must be isolated from Pages publishing credentials and the
+public static site. No new timer, legacy host or Feral commission is implied.
 
 For code or content changes, run required validators and tests, the production
 build and `python scripts/validate-built-site.py`. Open a focused PR, wait for
