@@ -3,6 +3,7 @@ import { estimateTokens } from '../../utils/tokens';
 import { WORKBENCH_KEY, HANDOFF_KEY, FIELD_LIMIT, LIBRARY_LIMIT, variableKeys, renderPrompt, promptMessages, requestBody, curlRequest, exportText, parsePromptLibrary, writePromptLibrary } from '../../lib/prompt-workbench.mjs';
 import { workbenchPresets } from '../../lib/prompt-workbench-presets.mjs';
 import { recipeDraft } from '../../lib/prompt-recipes.mjs';
+import { jsonValidationRecipeHref } from '../../lib/json-validation-presets.mjs';
 import './PromptWorkbench.css';
 
 interface PromptDraft { name: string; system: string; user: string; assistant: string; vars: Record<string, string>; model?: string; }
@@ -23,9 +24,11 @@ export default function PromptWorkbench({ models, recipes = [] }: { models: Mode
   const [format, setFormat] = useState<'text' | 'json' | 'curl'>('text');
   const [pendingLoad, setPendingLoad] = useState<PromptDraft | null>(null);
   const [pendingDelete, setPendingDelete] = useState<number | null>(null);
+  const [sourceRecipe, setSourceRecipe] = useState<string | null>(null);
   const rawLibrary = useRef<string | null>(null);
   const fileInput = useRef<HTMLInputElement | null>(null);
   const selectedModel = models.find((model) => model.id === draft.model);
+  const originalContract = sourceRecipe ? jsonValidationRecipeHref(sourceRecipe) : null;
   const keys = variableKeys(draft.system, draft.user, draft.assistant);
   let rendered = { system: '', user: '', assistant: '', missing: [] as string[] };
   let renderError = '';
@@ -61,7 +64,7 @@ export default function PromptWorkbench({ models, recipes = [] }: { models: Mode
   };
   const applyDraft = (next: PromptDraft) => {
     const value = { name: next.name, system: next.system, user: next.user, assistant: next.assistant, vars: { ...next.vars }, model: next.model ?? draft.model };
-    setDraft(value); setBaseline(fingerprint(value)); setTab('editor'); setPendingLoad(null); setNotice('');
+    setDraft(value); setBaseline(fingerprint(value)); setTab('editor'); setPendingLoad(null); setSourceRecipe(null); setNotice('');
   };
   const loadDraft = (next: PromptDraft) => {
     if (fingerprint(draft) !== baseline) setPendingLoad(next);
@@ -73,6 +76,7 @@ export default function PromptWorkbench({ models, recipes = [] }: { models: Mode
     const recipe = recipes.find(item => item.id === id);
     if (recipe) {
       applyDraft(recipeDraft(recipe));
+      setSourceRecipe(recipe.id);
       setNotice('Opened the recipe with its example inputs. It has not been saved or sent.');
     } else setNotice('That recipe is not in the current collection. Your saved library has not been changed.');
   }, []);
@@ -150,7 +154,7 @@ export default function PromptWorkbench({ models, recipes = [] }: { models: Mode
         <p class="pw-help">The playground receives the filled system prompt, user draft and model choice in this tab. Nothing is sent until you choose Send. {rendered.assistant && 'Remove the assistant prefix to use this transfer.'}</p>
         <label class="pw-preview-label" for="pw-preview">Export preview</label><textarea id="pw-preview" class="pw-preview" readOnly value={preview} spellCheck={false} rows={12} placeholder="Your filled messages will appear here." />
       </section>
-      <p class="pw-help pw-bottom-note">Each message and filled result is limited to 200,000 characters. Libraries hold up to 500 versions within 5 MB of JSON. Prompts and exports stay in your browser. Check model output with the <a href="/lab/json-validator">JSON validator</a> or compare prompt versions in <a href="/lab/prompt-diff">Prompt Diff</a>.</p>
+      <p class="pw-help pw-bottom-note">Each message and filled result is limited to 200,000 characters. Libraries hold up to 500 versions within 5 MB of JSON. Prompts and exports stay in your browser. {originalContract ? <><a href={originalContract}>Open the original invoice example’s contract</a>. This opens the recipe’s original example, not your edited prompt or a model response. Nothing is transferred. Adapt the schema if your fields change.</> : <>Check model output with the <a href="/lab/json-validator">JSON validator</a>.</>} Compare prompt versions in <a href="/lab/prompt-diff">Prompt Diff</a>.</p>
     </>}
   </div>;
 }

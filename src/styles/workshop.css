@@ -80,6 +80,7 @@
 .feral-invitation .eyebrow { color: #bdb0d6; }
 .feral-invitation h2 { font: 2.8rem var(--font-mono); color: #d7c8ef; letter-spacing: -0.06em; margin: 1.5rem 0; }
 .feral-invitation h2 span { color: #8e6db6; }
+.glossary-invitation h2 { font: 500 2.1rem/1.15 var(--font-sans); letter-spacing: -.045em; }
 .feral-invitation > p:not(.eyebrow) { font-size: 0.85rem; line-height: 1.8; color: var(--color-text-muted); max-width: 340px; margin-bottom: 2rem; }
 .feral-bottom { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #36313f; padding-top: 1rem; font: 0.65rem var(--font-mono); color: #bdafd4; margin-top: auto; }
 .horizon-invitation:hover, .feral-invitation:hover { outline: 1px solid #889776; outline-offset: 4px; }
@@ -155,3 +156,10 @@
   .notebook-page { padding-top: 3rem; }
 }
 @media (prefers-reduced-motion: reduce) { .hero-experiment { transform: none; transition: none; } }
+@media (max-width: 380px) {
+  .header-inner { gap: .5rem; }
+  .site-brand { gap: .45rem; font-size: .86rem; }
+  .site-brand svg { width: 24px; height: 24px; }
+  .header-controls { gap: .15rem; }
+  .mobile-navigation summary { gap: .4rem; padding-inline: .5rem; }
+}

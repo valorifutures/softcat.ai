@@ -1,0 +1,43 @@
+---
+import manifest from '../content/feral/manifest.json';
+import { initialPlates, renderPrint } from '../content/feral/off-register.mjs';
+const creation = manifest.find(item => item.slug === 'off-register')!;
+const born = new Date(`${creation.born}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+<section class="workshop-shell feral-spotlight" aria-labelledby="feral-spotlight-title">
+  <a class="spotlight-print" href={creation.route} aria-label="Open Off Register, the three-ink printmaking toy">
+    <div class="spotlight-paper" set:html={renderPrint(initialPlates())} />
+    <span class="spotlight-caption">THE OPENING PRINT <span aria-hidden="true">↗</span></span>
+  </a>
+  <div class="spotlight-copy">
+    <p class="eyebrow">FROM FERAL / THE AGENTS CHOSE THE BRIEF</p>
+    <h2 id="feral-spotlight-title">A little less<br />predictable<span>.</span></h2>
+    <p class="spotlight-title">{creation.title}</p>
+    <p>{creation.blurb} Move the plates, watch the colours meet, then take your own SVG home.</p>
+    <a class="workshop-button primary" href={creation.route}>Make a print <span aria-hidden="true">↗</span></a>
+    <p class="spotlight-local">In your browser. No account. No model call.</p>
+    <div class="spotlight-record"><span>Published <time datetime={creation.born}>{born}</time></span><a href="/feral">Explore all {manifest.length} creations →</a></div>
+  </div>
+</section>
+
+<style>
+  .feral-spotlight { display: grid; grid-template-columns: 1.05fr 1fr; margin-block: 3rem 4rem; border: 1px solid #38343d; background: #17141b; }
+  .spotlight-print { display: grid; place-items: center; gap: 1.5rem; background: #e5dbc4; padding: clamp(1.8rem, 5vw, 4rem); color: #474133; }
+  .spotlight-paper { width: min(100%, 300px); transform: rotate(-5deg); box-shadow: 8px 12px 0 #cbbd9f; transition: transform 180ms ease; }
+  .spotlight-print:hover .spotlight-paper { transform: rotate(-2deg); }
+  .spotlight-paper :global(svg) { display: block; width: 100%; height: auto; }
+  .spotlight-caption { display: flex; justify-content: space-between; width: min(100%, 330px); padding-top: .9rem; font: .6rem var(--font-mono); letter-spacing: .07em; }
+  .spotlight-caption > span { font-size: 1.15rem; }
+  .spotlight-copy { min-width: 0; padding: clamp(1.6rem, 4vw, 3.5rem); align-self: center; }
+  .spotlight-copy .eyebrow { color: #c1b1d2; font-size: .6rem; }
+  .spotlight-copy h2 { font: 600 clamp(2.35rem, 4.5vw, 3.6rem)/1.03 var(--font-sans); letter-spacing: -.06em; margin: 1.6rem 0 2rem; }
+  .spotlight-copy h2 > span { color: #da769e; }
+  .spotlight-copy .spotlight-title { color: #eedfeb; font-size: 1.15rem; margin-bottom: .55rem; }
+  .spotlight-copy > p:not(.eyebrow):not(.spotlight-title):not(.spotlight-local) { color: #b9b2bf; font-size: .9rem; line-height: 1.85; }
+  .spotlight-copy .workshop-button { margin-top: 1.65rem; min-width: 190px; }
+  .spotlight-copy .spotlight-local { font-size: .68rem; color: #b9b2bf; margin-top: .8rem; }
+  .spotlight-record { display: flex; flex-wrap: wrap; gap: .65rem 1.5rem; border-top: 1px solid #3b3442; padding-top: 1.3rem; margin-top: 2rem; font: .6rem/1.7 var(--font-mono); color: #b9b2bf; }
+  .spotlight-record a { color: #d6c3e7; text-decoration: underline; text-underline-offset: 4px; }
+  @media(max-width: 740px) { .feral-spotlight { grid-template-columns: 1fr; margin-block: 2rem; } .spotlight-print { padding: 2.5rem 2rem 1.5rem; } .spotlight-paper { width: min(72%, 260px); } .spotlight-copy { padding: 2rem 1.5rem; } }
+  @media(prefers-reduced-motion: reduce) { .spotlight-paper { transition: none; } .spotlight-print:hover .spotlight-paper { transform: rotate(-5deg); } }
+</style>

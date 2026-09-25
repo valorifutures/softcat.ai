@@ -3,6 +3,7 @@ import predictionHistory from '../data/horizon/prediction-history.json';
 import { latestPredictions } from '../lib/horizon-predictions.mjs';
 import { FUTURES } from '../lib/horizon-explorer.mjs';
 const predictions = latestPredictions(predictionHistory);
+const latestReview = predictionHistory.at(-1)!;
 const futures = FUTURES.map(future => ({ ...future, ...predictions.find(item => item.id === future.id) }));
 const targetDate = (value: string) => new Date(`${value}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 ---
@@ -18,11 +19,11 @@ const targetDate = (value: string) => new Date(`${value}T00:00:00Z`).toLocaleDat
     <p class="hero-footnote">BUILT WITH AI. KEPT OPEN TO INSPECTION.</p>
   </div>
   <div class="hero-horizon">
-    <div class="hero-horizon-top"><span>HORIZON</span><span>OUR PUBLISHED VIEW</span></div>
+    <div class="hero-horizon-top"><span>HORIZON</span><span>LATEST REVIEW <time datetime={latestReview.date}>{targetDate(latestReview.date)}</time></span></div>
     <h2>Our predictions.<br />Five countdowns.</h2>
     <p class="hero-horizon-label">Our target date for each defined milestone</p>
     <ul>{futures.map((future, index) => <li><a href={`/horizon?future=${future.key}`}><span class="hero-future-number" aria-hidden="true">0{index + 1}</span><span>{future.title}</span><time class="hero-future-date" datetime={future.target_date}>{targetDate(future.target_date)}</time><span aria-hidden="true">↗</span></a></li>)}</ul>
-    <div class="hero-horizon-bottom"><span>Evidence can change our prediction.</span><a href="/horizon">See the countdowns →</a></div>
+    <div class="hero-horizon-bottom"><span>Evidence can change our prediction.</span><a href="/horizon#horizon-decision">Build your 90-day trial brief →</a></div>
   </div>
 </section>
 
