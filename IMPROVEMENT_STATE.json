@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-25T18:50:16+00:00",
-  "phase": "workshop-redesign-validated",
-  "active_branch": "improve/workshop-experience-20260925",
+  "updated_at": "2026-09-25T19:00:31+00:00",
+  "phase": "workshop-redesign-2026-09-25-live",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "700d04c27286fc55abd3db6c5e5ed72e3f8a8915",
-    "at": "2026-09-21T14:16:00+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/35610834664"
+    "sha": "0e6c59484343a888db56a9cfff9c19295619568a",
+    "at": "2026-09-25T19:00:31+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/36176391957"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -121,16 +121,17 @@
     "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned."
   ],
   "next": [
-    "The 21 September Horizon review is published and verified. Begin no additional evidence review merely because time has passed.",
-    "Next evidence priorities: independent broad-domain replication of long-horizon results; predeclared consecutive workflow and software-ticket denominators including rescue and monitoring; customer-confirmed multi-site robot interventions and cost per successful task; full-term replicated tutoring trials with eight-week unassisted retention.",
-    "Preserve target movement separately from elapsed days. Keep historical forecasts, retired output and the daily GitHub price owner unchanged. Keep recurring tasks enabled and legacy generators off."
+    "Keep the new trial workflow local and explicit about unsaved drafts. Next device pass should verify 320px/touch layouts and actual text-file download in a user browser.",
+    "Consider a bounded clipboard-feedback improvement for older tools if their pending write behaviour is reproduced. Horizon has a timed selectable-text fallback.",
+    "Preserve the evidence priorities recorded in the 21 September review. Do not move targets or renew review dates just because time passes.",
+    "Keep Feral council creation and daily GitHub price snapshots under their separate owners. Retired generators remain off."
   ],
   "constraints": [
     "GitHub access is verified. The maintainer reports the old Linux/OpenClaw host is switched off. Cloud tasks do not require that host.",
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Maintainer-requested site improvement pass. Three independent agents audited and implemented a task-based Tools directory, matching invoice validation journey and Horizon trial planner. Homepage now displays the actual Off Register opening print and gives the glossary a clear entry. Local validation passed. Required hosted checks, publication and live verification are pending.",
+  "session": "Maintainer-requested design and usefulness review completed with three independent agents. PR #246 passed hosted validation, merged normally and deployed. Tools, invoice contract handoff, Horizon trial drafts and actual clipboard contents, homepage Feral artwork and search were verified live. This checkpoint records the result and limits. No extra Feral cycle, price refresh or legacy generator ran.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -139,17 +140,32 @@
   ],
   "workshop_redesign_2026_09_25": {
     "date": "2026-09-25",
-    "status": "local validation passed, publication pending",
+    "status": "published and verified live",
     "base": "39c89c15000127f116bfd9fc41f8823cd3176b1a",
     "changes": [
       "Tools organised by make, check, plan and decide, with concrete outputs and a consistent invoice exercise.",
       "Horizon trial briefs with separate in-memory drafts, honest unfinished fields, clipboard fallback and plain-text export including current forecast evidence.",
       "Homepage shows the existing Off Register opening print, latest Horizon review and glossary discovery. Compact header controls improve narrow layout fit."
     ],
-    "validation": "151 script JavaScript tests, 27 existing Feral tests, 141 bot tests, 12 publication fixtures, all required data validators and 638-page production build passed.",
+    "validation": "151 script JavaScript tests, 27 existing Feral tests, 141 bot tests, 12 publication fixtures, all data validators, 638-page production build and offline audit passed. The audit checked 31,805 internal links, 3,280 assets/metadata and 403 search entries. Required hosted validation succeeded on the exact reviewed head.",
     "limits": [
-      "Local preview is blocked with ERR_BLOCKED_BY_CLIENT. Live visual and behavioural checks follow gated publication.",
-      "No forecast target, evidence review date, retirement or Feral creation changed."
-    ]
+      "Local browser preview is blocked with ERR_BLOCKED_BY_CLIENT. Live desktop layouts and interactions were checked after successful hosted deployment. Mobile and touch-device behaviour remain unverified.",
+      "A returning Horizon page retained its earlier cached interface until a normal reload. The refreshed page displayed the new planner.",
+      "The download control reported a request, but the browser tool timed out waiting for a download event. A successful file transfer is not claimed. Clipboard contents and export formatting were verified.",
+      "Forecast targets, review dates, retirements and Feral creative records remain unchanged."
+    ],
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/246",
+    "reviewed_head": "1583a238543635fbbc9c3105244fda57c72934c0",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36176220797",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36176391957",
+    "live_checks": [
+      "Tools task navigation works with Enter. All eight tools remain discoverable, with no desktop horizontal overflow.",
+      "Invoice deep link selected the matching recipe contract, reported four deliberate failures, accepted the matching output and cleared results after editing. Unknown preset safely fell back to Classification.",
+      "Workbench recipe draft exposed the original-contract link, then returned to the generic validator link after New prompt. No save or model call was made.",
+      "Horizon accepted all five trial fields. Software began empty, retained its own draft, and browser Back restored the completed Agents draft. A published-review check retained it.",
+      "The actual clipboard contained the entered Agents plan, 2028-12-31 target, 2026-09-21 review and Wayfair source URL.",
+      "Homepage displayed the exact Off Register opening print, actual publication date, latest Horizon review and glossary entry. Site search found the trial brief as its sole result."
+    ],
+    "screenshot": "docs/evidence/2026-09-25-workshop.jpg"
   }
 }
