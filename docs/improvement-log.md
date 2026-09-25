@@ -982,3 +982,33 @@ sandbox. Before untrusted model decisions, authenticated caller identity and
 the action service need a separately reviewed boundary. No distributed
 guarantee, benchmark generalisation or independent external reproduction is
 claimed. Total execution cost and mobile/touch behaviour remain unverified.
+
+
+Release receipt: [PR #252](https://github.com/valorifutures/softcat.ai/pull/252)
+passed [hosted validation 36189485342](https://github.com/valorifutures/softcat.ai/actions/runs/36189485342)
+on exact reviewed head `04718270be56fdc5985c244c77349c011c71de4d`, tree
+`1dafbfefe968ced6123cb71736feaeb40d617912`. The critic gave PASS on that exact
+tree. Both the isolated recovery job and the full build passed. Main was
+unchanged when re-read before normal squash merge
+`2ce0df15e88d90365993ce996e72ac4b64c602f7`.
+[Pages 36189796296](https://github.com/valorifutures/softcat.ai/actions/runs/36189796296)
+succeeded after another actual-framework recovery rerun, build and audit.
+
+The live [recovery study](https://softcat.ai/research/recovery/) shows the
+actual 6/6, 3/3 and 32/32 results recorded at 21:00 UTC. Enter navigated the
+missing-reply anchor to y96.3, opened all 45 trace events and exposed event 15,
+the genuine exit-74 after the tool ran. Space opened the final queue, matching
+reports and five worker records. The false-success disclosure exposed
+FALSE_SUCCESS and FALSE_CERTAINTY. All five section anchors resolve. Desktop
+width1348 stayed within viewport1363, including with disclosures open. Native
+Control+End reached scrollY5293 with the footer at y936 in a936px viewport.
+The Playwright body-key shortcut timed out, so that shortcut is not claimed
+as a success. The native keyboard check completed.
+
+Search for recovery returned exactly one correct result. The first experiment's
+continuation link opened the new study and its original receipt hash remains
+`2098e9db92c6ae54e5722c53717ad1f05f008338886fe539122c55f5d1f8fb33`.
+[The captured live viewport](evidence/2026-09-25-framework-recovery.jpg) records
+the deployed page. Inline records were checked without retrying the previously
+blocked direct JSON navigation. Mobile/touch rendering and successful file
+download remain unverified. The active marker is cleared.
