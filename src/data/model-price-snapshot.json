@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-09-24T10:25:09.656Z",
+  "checkedAt": "2026-09-25T10:28:12.668Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "9c7f7bc28f3e9dc1d6ddd8eb3a4c7352f3b4f0b4989e0d5ac233931051235129",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/35987069672",
+  "sourceSha256": "6ee9621ae7bc09b65538f185331d79fad388485030d9445eff7dd39101cd5f60",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/36124115562",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 458,
+  "catalogueModels": 460,
   "trackedModels": 39,
-  "matched": 35,
-  "verified": 35,
-  "notListed": 4,
+  "matched": 36,
+  "verified": 36,
+  "notListed": 3,
   "reviewNeeded": 0,
   "unverified": 0,
-  "priceChanges": 1,
+  "priceChanges": 2,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -306,8 +306,8 @@
       "id": "minimax/minimax-m2",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.255,
-        "outputPrice": 1.02
+        "inputPrice": 0.3,
+        "outputPrice": 1.2
       },
       "quoted": {
         "inputPrice": 0.3,
@@ -338,18 +338,18 @@
     },
     {
       "id": "mistralai/mistral-large-2512",
-      "status": "not-listed",
+      "status": "verified",
       "previous": {
         "inputPrice": null,
         "outputPrice": null
       },
       "quoted": {
-        "inputPrice": null,
-        "outputPrice": null
+        "inputPrice": 0.5,
+        "outputPrice": 1.5
       },
       "applied": {
-        "inputPrice": null,
-        "outputPrice": null
+        "inputPrice": 0.5,
+        "outputPrice": 1.5
       },
       "issues": []
     },
@@ -633,12 +633,12 @@
         "outputPrice": 3.036
       },
       "quoted": {
-        "inputPrice": 0.966,
-        "outputPrice": 3.036
+        "inputPrice": 0.9646,
+        "outputPrice": 3.0316
       },
       "applied": {
-        "inputPrice": 0.966,
-        "outputPrice": 3.036
+        "inputPrice": 0.9646,
+        "outputPrice": 3.0316
       },
       "issues": []
     },
