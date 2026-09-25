@@ -4,9 +4,12 @@ We build open, reproducible investigations of agent cooperation. The first
 [offline delegation harness](delegation/README.md) tests task-scoped revocation,
 evidence roots and a deterministic final-state grader using synthetic data.
 
-**Stage: offline development harness.** Recorded script executions exist. No
-model agent, protocol adapter, cross-framework comparison, held-out evaluation
-or independent reproduction is claimed.
+**Stage: deterministic development experiments.** The original scripted receipt
+remains intact. A second [framework recovery study](recovery/README.md) now
+executes pinned LangGraph and PydanticAI paths with fixed local responses,
+actual worker-process exits and durable receipt reconciliation. No remote-model
+comparison, A2A/MCP adapter, held-out evaluation or independent external
+reproduction is claimed.
 
 ## Run the first artefact
 

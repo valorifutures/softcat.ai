@@ -926,3 +926,59 @@ No model call, extra Feral cycle, price refresh or outside contact occurred.
 The active marker is cleared. The next research gate is reviewed and pinned
 framework adapters, followed by calibration and a frozen disjoint evaluation
 protocol with explicitly configured access and spend limits.
+
+
+## 25 September 2026: real framework recovery, bounded development evidence
+
+The maintainer asked us to continue with the best next useful batch. Main was
+`e48bc805baf53520e8759ad60e31f13eccc74d5a`, with no active marker, open PR or
+queued/in-progress Action. A fresh isolated worktree preserved the earlier work.
+The clean baseline passed 203 script tests, the 640-page build and offline audit.
+
+Separate agents built the durable store, integrated the frameworks, authored
+the independent grader and prepared the public page. A read-only critic
+challenged the implementations and independently executed the nine cases.
+LangGraph 1.2.12 routes work to genuine PydanticAI 2.50.0 tool dispatch in
+separate processes. FunctionModel decisions are fixed. Workers actually exit
+before or after the durable write and fresh processes reconcile the outcome.
+
+The final receipt, recorded at 21:00:40 UTC, accepts six valid cases, rejects
+three deficient controls for their registered causal faults, and detects 32
+named corrupted outcomes. It retains 46 worker process records, 89 local
+FunctionModel requests, zero provider calls and an unknown total execution
+charge. Its SHA-256 is
+`d1fdc8a2da8ed6bf36a89284f079e731d29bdd256c974a4a916246fb38d463f3`.
+All 17 source hashes were independently checked. All 44 runtime packages are
+pinned with exact wheel hashes, and the installation was repeated with hash
+enforcement. The original gate 2 fixture and receipt are byte-for-byte unchanged.
+
+Real development failures and disagreements are retained in
+`research/recovery/review.md`. These include SQLite thread affinity in the
+first synchronous tool callback, controls rejected for the wrong reason,
+wrong but internally consistent remediation payloads, unrelated restarts,
+stale reconciliation, fabricated intermediate reports, false denial reasons,
+impossible process IDs and mismatched tool operations. Corrections have
+specific regressions. Repeated revocation notifications preserve their first
+authoritative order. The critic rechecked the previously escaping mutations.
+
+The public recovery page exposes actual traces, the deliberately broken
+controls, corruption findings, reproduction commands and limits. A new
+isolated read-only CI job installs the hashed dependencies, executes 46 tests
+and reruns the receipt before either PR or Pages builds may proceed. No new
+schedule is added. Horizon history, Feral ownership, price refresh and retired
+feeds remain unchanged.
+
+Local validation passed all 429 tests: 203 script JavaScript, 27 Feral, 141 bot,
+12 publication fixtures and 46 recovery tests. Fresh actual-framework receipt
+verification, data validators, the 641-page production build and offline audit
+passed. The audit checked 33,211 internal links, 3,298 assets/metadata and 406
+search entries with zero errors. Hosted publication and live verification are
+pending at this checkpoint.
+
+This is gate 3 preparation, not model evaluation. SQLite, the worker and
+harness-supplied caller identity remain trusted. The local JSON hand-off is
+not A2A/MCP conformance. Application network guards are not a hostile-code
+sandbox. Before untrusted model decisions, authenticated caller identity and
+the action service need a separately reviewed boundary. No distributed
+guarantee, benchmark generalisation or independent external reproduction is
+claimed. Total execution cost and mobile/touch behaviour remain unverified.

@@ -8,7 +8,10 @@ Read the [constitution](CONSTITUTION.md) and [research programme](docs/research-
 The first [offline delegation harness](research/delegation/README.md) has a
 scripted simulator and independently authored final-state grader. Its recorded
 development checks are not agent capability evidence. Model execution, evaluated
-comparisons and independent reproduction remain future gates. The initial [research component](research/README.md)
+comparisons and independent reproduction remain future gates. A second
+[framework recovery study](research/recovery/README.md) runs real pinned
+LangGraph/PydanticAI paths with deterministic responses, worker-process exits
+and durable reconciliation. The initial [research component](research/README.md)
 is Apache-2.0 licensed. [Licence scope](LICENSING.md) is explicit, and a broader
 provenance review remains open.
 

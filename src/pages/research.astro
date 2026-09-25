@@ -45,6 +45,8 @@ const commands = [
       </aside>
     </header>
 
+    <aside class="research-followup" aria-label="The next research artefact"><div><p class="eyebrow">THE NEXT ARTEFACT / RECOVERY</p><h2>A lost reply is not a failed action.</h2><p>Two framework runtimes, fixed decisions and a worker restart. Inspect what happens between a durable write and a missing acknowledgement.</p></div><a class="text-link" href="/research/recovery/">Inspect the recovery study <span aria-hidden="true">→</span></a></aside>
+
     <nav class="research-sections" aria-label="Research page sections"><a href="#contract">The contract</a><a href="#record">Execution record</a><a href="#grader">Challenge the grader</a><a href="#reproduce">Run it yourself</a><a href="#limits">What is still open</a></nav>
 
     <section id="contract" class="research-section" aria-labelledby="contract-heading">
@@ -84,6 +86,12 @@ const commands = [
 </BaseLayout>
 
 <style>
+  .research-followup { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.5rem; border: 1px solid #46513c; background: #171e16; padding: 1.4rem 1.6rem; margin-top: 2.5rem; }
+  .research-followup .eyebrow { color: #aec49b; font-size: .58rem; }
+  .research-followup h2 { color: #e6ecdf; font: 500 1.15rem/1.5 var(--font-sans); margin-top: .45rem; letter-spacing: -.025em; }
+  .research-followup p:not(.eyebrow) { color: #a6b19d; font-size: .78rem; line-height: 1.8; max-width: 66ch; margin-top: .4rem; }
+  .research-followup > a { min-height: 44px; font-size: .75rem; }
+  @media (max-width: 740px) { .research-followup { grid-template-columns: minmax(0, 1fr); gap: .8rem; padding: 1.3rem; } }
   .research-page { padding-block: 4rem 5rem; }
   .research-hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .85fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
   h1 { color: #f1f1e8; font: 600 clamp(2.6rem, 5vw, 4.2rem)/1.07 var(--font-sans); letter-spacing: -.055em; margin-block: 1.3rem 1.7rem; }

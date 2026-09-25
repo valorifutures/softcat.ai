@@ -63,7 +63,10 @@ alone is not a new editorial verification of a tool or guide.
 The maintainer adopted the root research constitution on 25 September 2026.
 After urgent reliability work, maintenance can advance one bounded gate in
 `docs/research-programme.md`. The offline development harness is implemented under `research/delegation/`.
-Its recorded scripted checks are not agent execution or a held-out evaluation.
+Its recorded scripted checks are not a held-out evaluation. The separate
+`research/recovery/` study executes pinned LangGraph and PydanticAI runtimes with
+deterministic local responses and real worker restarts. It has no provider calls
+or model-capability result. Its isolated read-only CI job gates normal publication.
 Record that distinction in handovers and public copy. Each research run
 needs pinned inputs, a defined evaluator, comparison conditions and explicit
 execution limits before it starts. Existing task ownership remains unchanged.

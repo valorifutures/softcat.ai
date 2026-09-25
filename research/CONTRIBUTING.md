@@ -4,7 +4,8 @@ Start with the [constitution](../CONSTITUTION.md) and
 [experiment design](../docs/research-programme.md). The [offline harness](delegation/README.md) now implements the development
 fixture, script baseline and deterministic grader. Useful contributions include
 a failing regression, a grader blind spot, or a reviewed adapter proposal.
-Agent execution and evaluated comparisons remain future gates.
+The [recovery study](recovery/README.md) adds deterministic framework execution.
+Remote-model execution and evaluated comparisons remain future gates.
 
 Open a focused pull request with:
 

@@ -1,0 +1,32 @@
+name: Check deterministic framework recovery
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-recovery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      LANGSMITH_TRACING: 'false'
+      LANGCHAIN_TRACING_V2: 'false'
+      OTEL_SDK_DISABLED: 'true'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install the exact hashed research dependencies in isolation
+        run: |
+          python -m venv "$RUNNER_TEMP/recovery-venv"
+          "$RUNNER_TEMP/recovery-venv/bin/python" -m pip install --require-hashes --only-binary=:all: -r research/recovery/requirements.lock
+      - name: Exercise real framework paths and adversarial recovery cases
+        run: |
+          "$RUNNER_TEMP/recovery-venv/bin/python" -m unittest discover -s research/recovery -p 'test_*.py'
+          "$RUNNER_TEMP/recovery-venv/bin/python" research/recovery/run.py --verify research/recovery/results/latest.json
