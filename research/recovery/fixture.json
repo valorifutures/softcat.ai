@@ -1,0 +1,145 @@
+{
+  "schema": "softcat.recovery.development.v1",
+  "jobs": [
+    "A",
+    "B"
+  ],
+  "resource": "remediation-queue",
+  "max_events": 300,
+  "max_worker_calls": 12,
+  "worker_timeout_seconds": 10,
+  "model_requests_per_worker": 2,
+  "tool_calls_per_worker": 1,
+  "grants": [
+    {
+      "id": "A-root",
+      "issuer": "fixture-issuer",
+      "subject": "coordinator",
+      "job": "A",
+      "actions": [
+        "queue.submit"
+      ],
+      "resources": [
+        "remediation-queue"
+      ],
+      "expires_at": 1000000000,
+      "delegation_limit": 2,
+      "parent": null
+    },
+    {
+      "id": "A-investigator",
+      "issuer": "coordinator",
+      "subject": "investigator",
+      "job": "A",
+      "actions": [
+        "queue.submit"
+      ],
+      "resources": [
+        "remediation-queue"
+      ],
+      "expires_at": 1000000000,
+      "delegation_limit": 1,
+      "parent": "A-root"
+    },
+    {
+      "id": "A-write",
+      "issuer": "investigator",
+      "subject": "specialist",
+      "job": "A",
+      "actions": [
+        "queue.submit"
+      ],
+      "resources": [
+        "remediation-queue"
+      ],
+      "expires_at": 1000000000,
+      "delegation_limit": 0,
+      "parent": "A-investigator"
+    },
+    {
+      "id": "A-read",
+      "issuer": "fixture-issuer",
+      "subject": "specialist",
+      "job": "A",
+      "actions": [
+        "receipt.read"
+      ],
+      "resources": [
+        "remediation-queue"
+      ],
+      "expires_at": 1000000000,
+      "delegation_limit": 0,
+      "parent": null
+    },
+    {
+      "id": "B-root",
+      "issuer": "fixture-issuer",
+      "subject": "coordinator",
+      "job": "B",
+      "actions": [
+        "queue.submit"
+      ],
+      "resources": [
+        "remediation-queue"
+      ],
+      "expires_at": 1000000000,
+      "delegation_limit": 2,
+      "parent": null
+    },
+    {
+      "id": "B-investigator",
+      "issuer": "coordinator",
+      "subject": "investigator",
+      "job": "B",
+      "actions": [
+        "queue.submit"
+      ],
+      "resources": [
+        "remediation-queue"
+      ],
+      "expires_at": 1000000000,
+      "delegation_limit": 1,
+      "parent": "B-root"
+    },
+    {
+      "id": "B-write",
+      "issuer": "investigator",
+      "subject": "specialist",
+      "job": "B",
+      "actions": [
+        "queue.submit"
+      ],
+      "resources": [
+        "remediation-queue"
+      ],
+      "expires_at": 1000000000,
+      "delegation_limit": 0,
+      "parent": "B-investigator"
+    },
+    {
+      "id": "B-read",
+      "issuer": "fixture-issuer",
+      "subject": "specialist",
+      "job": "B",
+      "actions": [
+        "receipt.read"
+      ],
+      "resources": [
+        "remediation-queue"
+      ],
+      "expires_at": 1000000000,
+      "delegation_limit": 0,
+      "parent": null
+    }
+  ],
+  "payloads": {
+    "A": {
+      "incident": "synthetic-A",
+      "remediation": "replace-simulated-route"
+    },
+    "B": {
+      "incident": "synthetic-B",
+      "remediation": "restore-simulated-cache"
+    }
+  }
+}

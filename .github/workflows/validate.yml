@@ -17,7 +17,13 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
+  recovery:
+    uses: ./.github/workflows/research-recovery-check.yml
+    permissions:
+      contents: read
+
   build:
+    needs: recovery
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7

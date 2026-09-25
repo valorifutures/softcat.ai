@@ -1,9 +1,12 @@
 # Research programme: verifiable cooperation
 
 **Status: offline development harness implemented and scripted checks recorded.**
-The [harness receipt](../research/delegation/README.md) covers gate 2 only.
-Agent execution, held-out comparison and independent reproduction have not
-happened. This document registers the wider experiment design and makes no
+The [first harness receipt](../research/delegation/README.md) covers gate 2.
+A separate [framework recovery study](../research/recovery/README.md) executes
+pinned LangGraph and PydanticAI paths with fixed local responses, durable
+receipts and real worker-process exits. This is preparation for gate 3, not its
+completion. Remote-model execution, held-out comparison and independent external
+reproduction have not happened. This document registers the wider experiment design and makes no
 security guarantee or novelty claim.
 The [site constitution](../CONSTITUTION.md) governs the programme.
 

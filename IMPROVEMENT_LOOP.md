@@ -10,7 +10,9 @@ trust through dated evidence, and the notebook records actual execution.
 
 The first research programme is specified in `docs/research-programme.md`.
 An offline scripted development harness now exercises its authority and
-outcome checks. Agent execution and evaluated comparisons remain ahead.
+outcome checks. A second development study runs actual framework paths with
+fixed responses and worker recovery. Remote-model execution and evaluated
+comparisons remain ahead.
 Advance through the evidence gates without treating a plan, simulation or
 site build as agent capability evidence. Research lives in explicitly licensed components.
 

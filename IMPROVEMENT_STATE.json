@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-25T20:30:25.285999+00:00",
-  "phase": "offline-delegation-harness-live",
-  "active_branch": null,
+  "updated_at": "2026-09-25T21:03:13.713130+00:00",
+  "phase": "framework-recovery-validated",
+  "active_branch": "research/framework-recovery-20260925",
   "last_verified_deployment": {
     "sha": "a0b12ba3fdf6cbe51c44c8bc0d43fccca01de478",
     "at": "2026-09-25T20:30:25.285999+00:00",
@@ -76,13 +76,13 @@
   },
   "completed": [
     "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
-    "The overnight continuation was used for the recovery. It is now disabled at the maintainer\u2019s stop request. GitHub uses the supported Allow all actions permission.",
+    "The overnight continuation was used for the recovery. It is now disabled at the maintainer’s stop request. GitHub uses the supported Allow all actions permission.",
     "PR #195 merged and deployed. Live pipeline shows July dates and stale records. Pricing stamps, privacy disclosure and opt-in key storage are implemented.",
     "PR #196 merged and live. Workshop homepage, sourced notebook entry and agent decision tool published. All 324 answer combinations covered by passing tests.",
     "PR #197 merged and deployed. Live model search confirms unlisted pricing for Laguna and paid OpenRouter rates for Qwen 2.5. All model data now carries per-entry source/check metadata.",
     "PR #198 merged and deployed. Live conversation estimates include repeated history. Streaming fixtures pass at every byte boundary. No paid chat call made.",
     "PR #199 merged and deployed. The new Feral gallery was visually checked. The generation, validation and publishing jobs are separate, with fresh-verdict regression coverage. A paid council run remains unverified.",
-    "PR #200 merged and deployed. Live review shows seven active, eight withdrawn and 39 archived records. The Memory forecast withdrawal expands correctly with the original claim. PRs #186\u2013193 were each closed with specific review reasons.",
+    "PR #200 merged and deployed. Live review shows seven active, eight withdrawn and 39 archived records. The Memory forecast withdrawal expands correctly with the original claim. PRs #186–193 were each closed with specific review reasons.",
     "PR #201 merged and deployed. Live search finds the agent tool first, ArrowDown selects the next result, and the Close control restores focus to the opener. Draft publication fixtures and all indexed routes passed checks.",
     "PR #202 merged and deployed. The live comparison finds exact model IDs, calculates ten Sonnet calls at $0.105 and keeps unlisted Laguna pricing unknown even with zero calls. CSV export confirms its source/assumption record. Search native Escape restores opener focus.",
     "PR #203 merged and deployed. The live JSON checker reports three deliberate classification failures, clears the result on edits, accepts the matching example and reports invoice date/quantity/price failures. A pathological pattern was stopped after 2.5 seconds and the page remained usable.",
@@ -107,7 +107,7 @@
     "PR #222 passed all hosted gates in run 34782457263 and deployed in Pages run 34782508824. Live checks confirmed five ticking clocks, pause/resume, every future briefing, all three outlooks, pragmatic education scope, expandable evidence history, the timeline, keyboard controls, browser Back, actual copy/paste and countdown search. No desktop overflow was observed. Final wording/control refinements and a per-100-case agent measure pass focused tests, production build and the publication audit.",
     "PR #223 passed hosted run 34783011652 and deployed successfully in Pages run 34783068673. An already-open agent/optimistic page received the new per-100-case briefing through its review check without reloading or losing selection. The new page shows Close for an expanded history entry and the corrected method explanation. The live decision screenshot exposed a flex layout that split 90 across two lines; the final CSS keeps that numeral together and lets the adjacent briefing wrap.",
     "The days-first countdowns and copyable Horizon briefings pass 123 JavaScript tests, 141 bot tests, twelve publication fixtures, all data validators and the 634-page production audit. Independent review found no must-fix issues. The local browser preview is blocked by the environment; hosted release and live interaction checks are next.",
-    "PR #225 passed hosted validation 35014721692 and deployed successfully in Pages run 35014825378. Live desktop review confirms prominent day totals, precise opening/deadline labels, actual review dates, all three outlooks, keyboard future selection and pause/resume. Copy briefing reports success and changing the outlook clears its status. Source/limitation content is covered for all 15 selections by tests; this browser\u2019s virtual clipboard exposed no data for the independent paste check, so successful pasted content is not claimed.",
+    "PR #225 passed hosted validation 35014721692 and deployed successfully in Pages run 35014825378. Live desktop review confirms prominent day totals, precise opening/deadline labels, actual review dates, all three outlooks, keyboard future selection and pause/resume. Copy briefing reports success and changing the outlook clears its status. Source/limitation content is covered for all 15 selections by tests; this browser’s virtual clipboard exposed no data for the independent paste check, so successful pasted content is not claimed.",
     "Five evidence-informed editorial predictions now have explicit milestones, year-end deadlines, resolution criteria, source limits and separate append-only history. The main page counts towards our predictions; prior alternative scenarios and histories remain available. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures and the 635-page production build/audit pass. Independent review tightened robotics adaptability, AGI preregistration and education controls, and added a direct jump to the selected prediction.",
     "PR #227 passed all hosted gates in run 35020999034 and deployed successfully in Pages run 35023866953. Live desktop review confirmed our five forecast deadlines, full criteria, selected detail/evidence, original prediction history, keyboard selection, pause/resume and browser Back. The old URL now opens our own agent prediction. The alternative scenario route and sceptical view remain functional. A pending clipboard write exposed no feedback, so the final refinement adds Copying and a 1.5-second selectable-text fallback.",
     "Reproduced Drift clipping live: document height exceeded the viewport, the ending was below it, and a wheel scroll left scrollY at zero. Drift and Echo now allow vertical document scrolling. A shared measured dock reserves space for wrapped controls and navigation. Drift permits vertical touch panning, exposes direct ending choices and cancels touch drags without fling velocity. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures, validators and the 635-page production build/audit pass.",
@@ -121,7 +121,7 @@
     "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned."
   ],
   "next": [
-    "Review and pin two independently implemented agent-framework adapters and a single-agent baseline. Keep provider access/spending explicit, calibrate on development fixtures and freeze a disjoint evaluation protocol before measured comparisons.",
+    "Separate authenticated caller identity and the action-service boundary from workers before untrusted model execution. Then calibrate a single-agent baseline and freeze a disjoint evaluation protocol with explicit access and spend limits.",
     "Review original site code/assets provenance before extending the new scoped Apache-2.0 licence.",
     "Preserve the 21 September Horizon evidence priorities, current targets and append-only history.",
     "Keep Feral creation and daily GitHub price snapshots under their existing separate owners. Mobile/touch and actual file-download verification remain pending from the earlier workshop pass."
@@ -131,7 +131,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Published and verified the first offline delegation harness through PR #250. Required hosted checks and Pages succeeded. Four valid conditions pass, three deliberately deficient controls fail, and 26 seeded wrong outcomes are rejected. Live desktop trace, keyboard disclosures, bottom-page access, homepage, About, constitution links and search verified. JSON receipt navigation was blocked by browser URL policy. This is gate 2 only, not an agent comparison.",
+  "session": "Real LangGraph/PydanticAI deterministic recovery executed and reviewed. Local gates passed. Hosted publication and live verification pending.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -227,6 +227,30 @@
       "Space opened the global-stop control and displayed lost Job B. Enter opened the action-evidence substitution regression and its UNSUPPORTED_ACTION_EVIDENCE code.",
       "All five section anchors resolve. With disclosures open, desktop width1348 stayed within viewport1363. Wheel scrolling reached scrollY5912 and footer bottom936.4 in a936px viewport.",
       "Home exposes the new experiment. Search for delegation returns exactly one Research result. About and constitution links identify the completed offline gate and future agent comparisons."
+    ]
+  },
+  "framework_recovery_2026_09_25": {
+    "status": "locally validated, hosted checks and publication pending",
+    "base": "e48bc805baf53520e8759ad60e31f13eccc74d5a",
+    "branch": "research/framework-recovery-20260925",
+    "research_status": "real framework execution with deterministic responses, gate 3 preparation",
+    "receipt": "research/recovery/results/latest.json",
+    "receipt_sha256": "d1fdc8a2da8ed6bf36a89284f079e731d29bdd256c974a4a916246fb38d463f3",
+    "summary": {
+      "valid_cases": 6,
+      "deficient_controls_rejected": 3,
+      "named_corruptions_rejected": 32,
+      "worker_processes": 46,
+      "function_model_requests": 89,
+      "provider_calls": 0
+    },
+    "validation": "203 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures and 46 recovery tests passed. Fresh actual-framework receipt verification passed. All data validators, 641-page production build and offline audit passed with 33,211 links, 3,298 assets/metadata, 406 search entries and zero errors.",
+    "review": "Separate agents built the store, adapters, grader and public page. Read-only critic independently executed the cases, challenged causal checks and verified every final receipt source hash. Exact staged-tree verdict and hosted evidence pending.",
+    "limits": [
+      "Trusted host, worker and harness-supplied identity. No authenticated identity or hostile-worker containment claim.",
+      "Local JSON transport and authoritative SQLite ordering, not A2A/MCP interoperability or distributed consensus.",
+      "Fixed responses and public development cases. No model capability comparison, held-out evaluation or independent external reproduction.",
+      "No provider calls. Total execution charge unknown. Desktop live verification pending, mobile/touch unverified."
     ]
   }
 }
