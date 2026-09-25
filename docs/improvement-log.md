@@ -890,3 +890,39 @@ The 640-page build and offline audit passed with 33,159 internal links, 3,292
 assets/metadata references, 405 search entries and zero errors. Hosted release
 and live verification are pending at this preparation checkpoint. No independent
 reproduction or mobile-device verification is claimed.
+
+
+Release receipt: [PR #250](https://github.com/valorifutures/softcat.ai/pull/250)
+passed [hosted validation 36185532836](https://github.com/valorifutures/softcat.ai/actions/runs/36185532836)
+on exact reviewed head `53dc38ba2c9241bf6c850f463244bf4e19ad0008`, tree
+`9b97b5c283b8502bf183d9740524ff750b997424`. The independent critic passed
+bounded gate 2 after rerunning all 52 harness tests, replay verification and
+all 12 source hashes. Main was unchanged when re-read before normal squash
+merge `a0b12ba3fdf6cbe51c44c8bc0d43fccca01de478`.
+[Pages 36185665727](https://github.com/valorifutures/softcat.ai/actions/runs/36185665727)
+succeeded. The recorded receipt's SHA-256 is
+`2098e9db92c6ae54e5722c53717ad1f05f008338886fe539122c55f5d1f8fb33`.
+
+The live [Research page](https://softcat.ai/research/) shows the actual 4/4,
+3/3 and 26/26 counts and 25 September 20:21 UTC execution. Enter opened the
+record anchor at y95.9, the 18-event combined trace and event 10, where A-main
+is denied at commit because it was revoked. Space expanded the global-stop
+failure and exposed Job B's lost completion. Enter on the action-evidence
+substitution case revealed UNSUPPORTED_ACTION_EVIDENCE. All five section
+anchors resolve. Width1348 stayed within viewport1363 with disclosures open.
+Wheel scrolling reached scrollY5912 with the footer at y936.4 in a936px viewport.
+
+Home exposes the new experiment and has no observed desktop overflow. Search
+for delegation returns one Research result. About and the constitution sidebar
+link the completed offline gate while keeping future agent comparisons explicit.
+[The captured Research viewport](evidence/2026-09-25-research-harness.jpg)
+records the deployed design.
+
+Clicking the exact JSON receipt link reached a browser URL-policy block and a
+chrome-error page. We did not bypass it or claim successful live JSON retrieval.
+The generated endpoint, source hashes and deterministic replay passed local and
+hosted gates. Mobile/touch and independent external reproduction remain unverified.
+No model call, extra Feral cycle, price refresh or outside contact occurred.
+The active marker is cleared. The next research gate is reviewed and pinned
+framework adapters, followed by calibration and a frozen disjoint evaluation
+protocol with explicitly configured access and spend limits.
