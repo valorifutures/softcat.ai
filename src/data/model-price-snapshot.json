@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-09-27T10:41:29.855Z",
+  "checkedAt": "2026-09-28T11:55:27.425Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "a34a7c5c9d3433236fa4d16265544b4cbf586980274a99b06fb48e92bd7f0acb",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/36313330410",
+  "sourceSha256": "5be1583e892179a66ddecee541b903f8f1b581d5b8299171be16b19213d3e691",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/36418543340",
   "maxAutoDelta": 0.5,
   "catalogueModels": 458,
   "trackedModels": 39,
@@ -11,7 +11,7 @@
   "notListed": 3,
   "reviewNeeded": 0,
   "unverified": 0,
-  "priceChanges": 2,
+  "priceChanges": 5,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -191,12 +191,12 @@
         "outputPrice": 1
       },
       "quoted": {
-        "inputPrice": 0.25,
-        "outputPrice": 1
+        "inputPrice": 0.29,
+        "outputPrice": 1.14
       },
       "applied": {
-        "inputPrice": 0.25,
-        "outputPrice": 1
+        "inputPrice": 0.29,
+        "outputPrice": 1.14
       },
       "issues": []
     },
@@ -306,16 +306,16 @@
       "id": "minimax/minimax-m2",
       "status": "verified",
       "previous": {
+        "inputPrice": 0.255,
+        "outputPrice": 1.02
+      },
+      "quoted": {
         "inputPrice": 0.3,
         "outputPrice": 1.2
       },
-      "quoted": {
-        "inputPrice": 0.255,
-        "outputPrice": 1.02
-      },
       "applied": {
-        "inputPrice": 0.255,
-        "outputPrice": 1.02
+        "inputPrice": 0.3,
+        "outputPrice": 1.2
       },
       "issues": []
     },
@@ -323,16 +323,16 @@
       "id": "minimax/minimax-m2.7",
       "status": "verified",
       "previous": {
+        "inputPrice": 0.21,
+        "outputPrice": 0.84
+      },
+      "quoted": {
         "inputPrice": 0.3,
         "outputPrice": 1.2
       },
-      "quoted": {
-        "inputPrice": 0.21,
-        "outputPrice": 0.84
-      },
       "applied": {
-        "inputPrice": 0.21,
-        "outputPrice": 0.84
+        "inputPrice": 0.3,
+        "outputPrice": 1.2
       },
       "issues": []
     },
@@ -395,12 +395,12 @@
         "outputPrice": 4
       },
       "quoted": {
-        "inputPrice": 0.95,
-        "outputPrice": 4
+        "inputPrice": 0.65,
+        "outputPrice": 3.41
       },
       "applied": {
-        "inputPrice": 0.95,
-        "outputPrice": 4
+        "inputPrice": 0.65,
+        "outputPrice": 3.41
       },
       "issues": []
     },
@@ -633,12 +633,12 @@
         "outputPrice": 3.0316
       },
       "quoted": {
-        "inputPrice": 0.9646,
-        "outputPrice": 3.0316
+        "inputPrice": 1.4,
+        "outputPrice": 4.4
       },
       "applied": {
-        "inputPrice": 0.9646,
-        "outputPrice": 3.0316
+        "inputPrice": 1.4,
+        "outputPrice": 4.4
       },
       "issues": []
     },
