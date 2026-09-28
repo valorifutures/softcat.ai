@@ -1036,3 +1036,20 @@ validators, the 641-page build and offline audit passed with 33,211 internal
 links, 3,298 assets and metadata, 406 search entries and zero errors. Feral,
 the daily price snapshot and retired generators are unchanged. Hosted
 validation, Pages deployment and live verification are pending.
+
+Release receipt: [PR #254](https://github.com/valorifutures/softcat.ai/pull/254)
+passed [hosted validation 36438648148](https://github.com/valorifutures/softcat.ai/actions/runs/36438648148)
+on exact reviewed head `94cd5c43fa0718cba8919260fcc753e452fc1a73`.
+Main was unchanged when re-read before normal squash merge
+`4d91a4ab0ac2cdd05bc6b84c791caabddc1fcd42`.
+[Pages 36439072020](https://github.com/valorifutures/softcat.ai/actions/runs/36439072020)
+succeeded after the isolated recovery replay, build and publication audit.
+
+The live [prediction endpoint](https://softcat.ai/horizon/prediction-data.json)
+contains five append-only history entries and the 28 September review for
+every prediction. The live [reading export](https://softcat.ai/llms-full.txt)
+shows all five unchanged targets, new rationales, source findings and explicit
+limitations. Earlier review records remain present. Interactive browser
+selection and mobile or touch behaviour were not rerun because this batch
+changes evidence data rather than controls or layout. The active marker is
+cleared.
