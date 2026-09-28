@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-25T21:14:15.251912+00:00",
-  "phase": "framework-recovery-published",
-  "active_branch": null,
+  "updated_at": "2026-09-28T14:41:13Z",
+  "phase": "horizon-review-prepared",
+  "active_branch": "review/horizon-2026-09-28",
   "last_verified_deployment": {
     "sha": "2ce0df15e88d90365993ce996e72ac4b64c602f7",
     "at": "2026-09-25T21:14:15.251912+00:00",
@@ -266,5 +266,25 @@
       "All five anchors resolve and desktop width1348 remains within viewport1363. Native Control+End reaches scrollY5293 with footer bottom936 in a936px viewport.",
       "Search for recovery returns exactly one correct result. The original experiment retains its content and its continuation link opens the new study."
     ]
+  },
+  "horizon_review_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "prepared for gated publication",
+    "branch": "review/horizon-2026-09-28",
+    "outcome": "All five predictions reassessed against current primary material. Targets, milestones and resolution rules remain unchanged, with zero days added or removed. A fifth append-only review records stronger bounded evidence and the reasons it does not yet meet the declared tests.",
+    "evidence_changes": [
+      "Customer reporting adds ten months and 1,250 operating hours for one humanoid production task, but no multi-task intervention rate or comparative economics.",
+      "A two-year cluster-randomised Khanmigo trial adds 18-school evidence, but reports 0.06 to 0.08 standard deviations over a school year and no qualifying eight-week unassisted follow-up.",
+      "Smarsh and Microsoft add bounded production-agent evidence, but not the fixed denominators, rescue accounting, 90-day coverage and ten-organisation breadth required by the milestone."
+    ],
+    "next_review_priorities": [
+      "Independent multi-domain evaluation of one frozen general-purpose system.",
+      "Consecutive-case business-agent results with failures and rescues in the denominator.",
+      "Customer robot intervention rates and cost per successful task across multiple sites and task families.",
+      "Consecutive software tickets followed through approved deployment and seven days of monitoring.",
+      "A second term-long tutoring trial with an eight-week unassisted follow-up and combined effect at least 0.2."
+    ],
+    "validation": "203 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures and 46 recovery tests passed. All data validators, the 641-page production build and offline audit passed with 33,211 internal links, 3,298 assets and metadata, 406 search entries and zero errors.",
+    "publication": "pending required hosted checks"
   }
 }
