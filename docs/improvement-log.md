@@ -1012,3 +1012,27 @@ continuation link opened the new study and its original receipt hash remains
 the deployed page. Inline records were checked without retrying the previously
 blocked direct JSON navigation. Mobile/touch rendering and successful file
 download remain unverified. The active marker is cleared.
+
+
+## 28 September 2026: Horizon evidence review prepared
+
+Main was `f4e1e52f1b7a547fa5283a5fb5ce5b06f6b675c1`, with no active marker,
+open pull request or queued or running site Action. The latest daily price
+snapshot had succeeded. A fresh isolated checkout preserved existing work.
+
+All five Horizon milestones were reassessed against primary material. The
+review adds customer-reported humanoid factory duration, bounded enterprise
+agent results, verified ARC scores and two education field experiments. It
+keeps every target, milestone and resolution rule unchanged, with zero days
+added or removed. The evidence is stronger, but still lacks the declared
+cross-domain evaluation, consecutive-case denominators, multi-site robot
+intervention and economics data, production-ticket monitoring, and durable
+replicated learning threshold.
+
+The new 28 September record is append-only. All four earlier reviews are
+preserved. Local validation passed 203 script JavaScript tests, 27 Feral tests,
+141 bot tests, 12 publication fixtures and 46 recovery tests. All data
+validators, the 641-page build and offline audit passed with 33,211 internal
+links, 3,298 assets and metadata, 406 search entries and zero errors. Feral,
+the daily price snapshot and retired generators are unchanged. Hosted
+validation, Pages deployment and live verification are pending.
