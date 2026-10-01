@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-01T20:41:38.607581+00:00",
-  "phase": "authenticated-boundary-local-validation-complete",
-  "active_branch": "research/authenticated-boundary-20261001",
+  "updated_at": "2026-10-01T20:56:07.009234+00:00",
+  "phase": "authenticated-boundary-published",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "2ce0df15e88d90365993ce996e72ac4b64c602f7",
-    "at": "2026-09-25T21:14:15.251912+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/36189796296"
+    "sha": "f43ae83aa754e8aa95fc46b98d890a1e9d173f4c",
+    "at": "2026-10-01T20:56:07.009234+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/36924275010"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -131,7 +131,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Authenticated local action service implemented and executed. Local tests/build/audit pass. Exact candidate review and hosted publication pending in PR #256.",
+  "session": "Published and verified the authenticated local action-boundary study. Real mutual TLS, fixed requests, recorded failures and bounded claims. AGNTCY adapter and deployment isolation remain future work.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -294,7 +294,7 @@
     "publication": "required hosted checks and Pages deployment succeeded"
   },
   "authenticated_boundary_2026_10_01": {
-    "status": "local validation complete; exact review and hosted publication pending",
+    "status": "published and verified live",
     "base": "7143b7a4b24e4e53d97ae52c95b697c0a4854098",
     "branch": "research/authenticated-boundary-20261001",
     "pull_request": "https://github.com/valorifutures/softcat.ai/pull/256",
@@ -316,7 +316,23 @@
       "Scripted clients, synthetic grants and local logical expiry. No new model or framework execution.",
       "Same-OS-user processes do not contain malicious code or protect against direct database/key access.",
       "AGNTCY architecture alignment only. No SDK, badge, task-bound profile or wire-conformance implementation.",
-      "Local browser installation was unavailable. Narrow layout reviewed in source; live rendered desktop verification pending. Mobile/touch unverified."
+      "Live desktop layout, keyboard disclosures, search and full-page scrolling verified. Narrow layout reviewed in source. Mobile/touch rendering remains unverified."
+    ],
+    "reviewed_head": "e1e20318b4221069143a60d9866400654c3aef3a",
+    "reviewed_tree": "9ac736d7f5d88a4c0c4e67b51c2e6b939a9d59c9",
+    "merge": "f43ae83aa754e8aa95fc46b98d890a1e9d173f4c",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36923818850",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36924275010",
+    "route": "https://softcat.ai/research/boundary/",
+    "critic": "PASS on exact reviewed tree after recorded transport, accounting and grader corrections. Role-separated local review, not independent external reproduction.",
+    "screenshot": "docs/evidence/2026-10-01-authenticated-boundary.jpg",
+    "live_checks": [
+      "Research navigation opens the new study using Enter. The page shows 14/14 cases, 5/5 corrupted recordings and 47 calls, recorded 1 October 20:38 UTC.",
+      "Enter opens the lost-reply record: PENDING, NO_RESPONSE, FOUND; service exits 74 then 0; exactly one durable effect.",
+      "Space opens the false-auth-success control and shows AUTHENTICATION_BYPASS with the actual rejection reason.",
+      "Expanded evidence scrolls to the complete footer at scrollY 11576, footer bottom 935.55 in a 936px viewport. Document width 1348 stays inside viewport 1363.",
+      "Site search for identity returns exactly the new research result, and Enter opens its canonical route.",
+      "The live JSON endpoint returns HTTP 200 and its parsed object exactly equals the reviewed receipt."
     ]
   }
 }

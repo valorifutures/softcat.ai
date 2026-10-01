@@ -1095,3 +1095,28 @@ build and offline publication audit passed with 407 search entries and no errors
 The built JSON receipt matches the source. Local browser installation failed,
 so narrow layout was reviewed in source and live rendered checks remain pending.
 Hosted validation, exact candidate review and publication are pending at this checkpoint.
+
+
+Release receipt: [PR #256](https://github.com/valorifutures/softcat.ai/pull/256)
+passed all [hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/36923818850)
+on exact reviewed head `e1e20318b4221069143a60d9866400654c3aef3a`, tree
+`9ac736d7f5d88a4c0c4e67b51c2e6b939a9d59c9`. Main was re-read and remained
+unchanged before normal squash merge `f43ae83aa754e8aa95fc46b98d890a1e9d173f4c`.
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/36924275010)
+succeeded, including fresh authenticated-boundary and recovery checks.
+
+The [live study](https://softcat.ai/research/boundary/) shows the actual
+14/14, 5/5 and 47-call result. Enter follows the research link and opens the
+lost-reply record, which contains PENDING, NO_RESPONSE, FOUND, real service exit
+74 and one final effect. Space opens the false-auth-success control and exposes
+AUTHENTICATION_BYPASS. With long evidence expanded, Control+End reaches the full
+footer at scrollY 11576, with footer bottom 935.55 in a 936px viewport. Document
+width 1348 does not exceed viewport 1363. Search for identity finds exactly the
+new research result and Enter opens it. A desktop screenshot is retained at
+`docs/evidence/2026-10-01-authenticated-boundary.jpg`. Mobile/touch rendering
+remains unverified. Live review also caught and corrected the singular
+one-call label in this receipt update. No research result or executable source
+changed in that correction.
+
+The live JSON endpoint returned HTTP 200 and its full parsed object exactly
+matched the reviewed receipt, including all recorded cases and source hashes.
