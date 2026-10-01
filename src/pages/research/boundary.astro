@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import recordedReceipt from '../../../research/boundary/results/latest.json';
+
+type Violation = { code: string; detail: string };
+type Call = { operation: string; client: string; response: { status?: string; reason?: string; kind?: string } | null; error: string | null };
+type Run = { id: string; grade: { passed: boolean; errors: Violation[] }; trace: { calls: Call[]; snapshot: { queue: unknown[] } | null; [key: string]: unknown } };
+type Receipt = {
+  generatedAt: string;
+  environment: Record<string, unknown>;
+  summary: { validPassed: number; validTotal: number; negativeRejected: number; negativeTotal: number };
+  execution: { serviceProcesses: number; clientCalls: number; snapshotCalls: number; totalClientCalls: number; [key: string]: unknown };
+  runs: Run[];
+  negativeCases: { id: string; expectedCode: string; detected: boolean; violations: Violation[] }[];
+  manifest: Record<string, unknown>;
+};
+const receipt = recordedReceipt as Receipt;
+const source = 'https://github.com/valorifutures/softcat.ai/tree/main/research/boundary';
+const agntcySource = 'https://blogs.agntcy.org/technical/identity/2026/08/25/agent-identity-tbac-a2a-task-authorization.html';
+const labels: Record<string, string> = { authorised: 'An authorised action', missing_certificate: 'No client certificate', untrusted_certificate: 'An untrusted certificate', wrong_caller: 'A trusted but wrong caller', caller_spoof: 'A caller name in request JSON', scope_job: 'The wrong task', scope_resource: 'The wrong resource', expired_grant: 'A grant expires before commit', revoked_inflight: 'Revoke A while B continues', identical_retry: 'The same request retried', conflicting_retry: 'The same key, changed payload', lost_reply_restart: 'Lost reply, service restart', receipt_read_denied: 'A receipt needs read authority', commit_wrong_caller: 'Another caller tries to commit' };
+const descriptions: Record<string, string> = { authorised: 'A specialist asks to commit one permitted task.', missing_certificate: 'The client attempts a TLS connection without a certificate.', untrusted_certificate: 'A foreign self-signed certificate tests the trust root.', wrong_caller: 'A recognised principal presents a grant belonging to the specialist.', caller_spoof: 'An extra subject field tests the strict request schema.', scope_job: 'An A grant is presented for a B request.', scope_resource: 'The request names a resource outside the grant.', expired_grant: 'Logical event-sequence expiry is reached after begin.', revoked_inflight: 'A durable A request is pending when the administrator revokes A.', identical_retry: 'Task, request key and payload are repeated.', conflicting_retry: 'The original request key is reused with different content.', lost_reply_restart: 'The service exits after commit and before its reply.', receipt_read_denied: 'A wrong principal and a write-only grant each attempt a read.', commit_wrong_caller: 'A different principal presents the pending request ID.' };
+const name = (value: string) => labels[value] || value.replaceAll('-', ' ').replaceAll('_', ' ');
+const validRuns = receipt.runs;
+const serialise = (value: unknown) => JSON.stringify(value, null, 2);
+const recordedAt = new Date(receipt.generatedAt).toLocaleString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
+const commands = [
+  "python3 -m unittest discover -s research/boundary -p 'test_*.py'",
+  'python3 research/boundary/run.py --verify research/boundary/results/latest.json',
+].join('\n');
+---
+
+<BaseLayout title="Identity is not permission" description="A recorded local experiment separates authenticated caller identity from task authority at a service boundary. Inspect the evidence, seeded failures and runnable source." breadcrumbs={[{ name: 'Research', url: '/research/' }, { name: 'Identity and authority', url: '/research/boundary/' }]}>
+  <div class="workshop-shell boundary-page">
+    <a class="back-link" href="/research/">← The research programme</a>
+    <header class="boundary-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">OPEN RESEARCH / ACTION BOUNDARY</p>
+        <h1>Identity is<br /><em>not permission.</em></h1>
+        <p class="lead">Knowing who called is only the first check.</p>
+        <p>We moved the permission check into a separate local action service. It authenticates a caller, checks that caller's authority for the requested task, then decides whether an effect may commit.</p>
+        <p>The requests are scripted. The mutual TLS connections and service process are real. The only effect is a synthetic local queue entry.</p>
+        <div class="hero-actions"><a href="#cases" class="workshop-button primary">Inspect the recorded cases <span aria-hidden="true">↓</span></a><a href={source} class="text-link">Read the source <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <aside class="execution-card" aria-labelledby="execution-heading">
+        <p class="receipt-label">RECORDED LOCAL EXECUTION</p>
+        <h2 id="execution-heading">One caller.<br />A separate decision.</h2>
+        <dl class="execution-counts">
+          <div><dt>Enforced cases accepted by the grader</dt><dd>{receipt.summary.validPassed}<span> / {receipt.summary.validTotal}</span></dd></div>
+          <div><dt>Corrupted records detected</dt><dd>{receipt.summary.negativeRejected}<span> / {receipt.summary.negativeTotal}</span></dd></div>
+          <div><dt>Client calls including snapshots</dt><dd>{receipt.execution.totalClientCalls}</dd></div>
+        </dl>
+        <p>{receipt.execution.clientCalls} scenario probes and {receipt.execution.snapshotCalls} administrative state inspections.</p>
+        <p class="recorded-date">Recorded <time datetime={receipt.generatedAt}>{recordedAt} UTC</time></p>
+        <p>These counts describe constructed development cases. They are not a success rate on unseen tasks.</p>
+      </aside>
+    </header>
+
+    <nav class="section-links" aria-label="Identity and authority study sections"><a href="#boundary">The boundary</a><a href="#cases">Recorded cases</a><a href="#challenge">Seeded failures</a><a href="#reproduce">Run it yourself</a><a href="#limits">Trust and limits</a></nav>
+
+    <section id="boundary" class="study-section" aria-labelledby="boundary-heading">
+      <div class="section-heading"><p class="eyebrow">01 / THREE SEPARATE QUESTIONS</p><h2 id="boundary-heading">Who is calling?<br />What may they do?<br />What happened?</h2><p>The <a href="/research/recovery/">previous recovery study</a> trusted a caller identity supplied by its harness. This study makes authentication part of the action service's request path.</p><p>A client can ask for a privileged action. The service must decide using authority it can check.</p></div>
+      <div class="section-content">
+        <ol class="boundary-contract">
+          <li><span class="step-label">AUTHENTICATE</span><div><h3>A certificate identifies the caller.</h3><p>The service maps a mutual TLS client certificate's SHA-256 fingerprint to a principal. A name in request JSON or the certificate's common-name field does not establish that mapping.</p></div></li>
+          <li><span class="step-label">AUTHORISE</span><div><h3>A task grant constrains the request.</h3><p>The action service checks the authenticated caller against the task, action, resource and current grant state. Grant IDs are opaque local registry handles, not signed credentials. Reading an outcome requires a separate read grant.</p></div></li>
+          <li><span class="step-label">CHECK EFFECT</span><div><h3>The committed state is the evidence.</h3><p>A separate grader checks the recorded service decisions and final queue. A caller's claim of success is not the outcome.</p></div></li>
+        </ol>
+        <div class="source-note"><p class="eyebrow">ARCHITECTURAL ALIGNMENT</p><h3>Identity and task authority have different jobs.</h3><p>AGNTCY's <a href={agntcySource}>25 August 2026 discussion</a> distinguishes verifiable agent identity from task-bound authorisation. It describes AGNTCY Identity's Agent Badge and ResolverMetadata, while identifying the task authorisation profile as work still to be defined.</p><p>Our local study follows that separation. Its mutual TLS certificates are not AGNTCY badges, and its local grants do not implement that proposed profile. We use no AGNTCY SDK and claim no protocol conformance, affiliation or novelty.</p></div>
+      </div>
+    </section>
+
+    <section id="cases" class="study-section" aria-labelledby="cases-heading">
+      <div class="section-heading"><p class="eyebrow">02 / RECORDED CASES</p><h2 id="cases-heading">Inspect the request.<br />Then the outcome.</h2><p>Each case below comes from the checked-in receipt. “Accepted” means the grader accepted the case's recorded behaviour, which can include denying an unauthorised request.</p><a class="text-link" href="/research/boundary/receipt.json">Open the complete JSON receipt <span aria-hidden="true">↗</span></a></div>
+      <div class="section-content"><div class="case-grid">{validRuns.map(run => <article class="case-card"><p class="case-name">{name(run.id)}</p><h3 class:list={[{ rejected: !run.grade.passed }]}>{run.grade.passed ? 'Accepted' : 'Rejected'}</h3><p class="case-description">{descriptions[run.id]}</p><p class="case-facts">{run.trace.calls.length} recorded calls · {run.trace.snapshot ? `${run.trace.snapshot.queue.length} queue ${run.trace.snapshot.queue.length === 1 ? 'effect' : 'effects'}` : 'No final snapshot'}</p><details><summary>Inspect the actual record</summary><ol class="call-list">{run.trace.calls.map(call => <li><span>{call.operation} · {call.client}</span><strong>{call.error || call.response?.status || call.response?.kind || 'No recorded response'}</strong>{call.response?.reason && <code>{call.response.reason}</code>}</li>)}</ol><pre tabindex="0" aria-label={`${name(run.id)} recorded case`}><code>{serialise(run)}</code></pre></details></article>)}</div><p class="caption">This page displays recorded evidence. Opening a case does not run a client, contact the action service or issue a new task.</p><div class="contract-note"><h3>Revocation has an ordering point.</h3><p>For this local contract, revocation stops later commits. It does not undo effects already committed. A separately authorised task must retain its own permission.</p><p>Grant expiry follows the store's logical event sequence, not elapsed wall-clock time. A pending request is a durable pending record, not a committed queue effect or a claim of concurrent network execution.</p></div></div>
+    </section>
+
+    <section id="challenge" class="study-section" aria-labelledby="challenge-heading">
+      <div class="section-heading"><p class="eyebrow">03 / CHALLENGE THE CHECKER</p><h2 id="challenge-heading">A check needs<br />a failing example.</h2><p>Deliberately corrupted records test whether the grader rejects misleading evidence. These checks mutate a record after execution.</p><p>They are seeded faults, not service configurations that produced those outcomes or newly discovered vulnerabilities.</p></div>
+      <div class="section-content"><h3 class="group-heading">Corrupted record checks</h3><div class="disclosure-list">{receipt.negativeCases.map(test => <details><summary><span>{name(test.id)}</span><strong class:list={[{ rejected: !test.detected }]}>{test.detected ? 'Detected' : 'Missed'}</strong></summary><p class="expected-code">Expected rejection: <code>{test.expectedCode}</code></p><ul class="violations">{test.violations.map(violation => <li><code>{violation.code}</code><p>{violation.detail}</p></li>)}</ul></details>)}</div><p class="caption">The implementation, recorded run, review and independent reproduction are separate evidence stages. A grader result is not an independent reproduction.</p></div>
+    </section>
+
+    <section id="reproduce" class="study-section" aria-labelledby="reproduce-heading">
+      <div class="section-heading"><p class="eyebrow">04 / SOURCE AND REPRODUCTION</p><h2 id="reproduce-heading">Run the boundary.<br />Read the receipt.</h2><p>The code, contract and recorded evidence live together. Our research code is <a href="https://github.com/valorifutures/softcat.ai/blob/main/research/LICENSE">Apache-2.0 licensed</a>.</p><a class="text-link" href={source}>Open the source and run instructions <span aria-hidden="true">↗</span></a></div>
+      <div class="section-content"><p class="reproduction-copy">The harness uses Python's standard library and a local OpenSSL executable for test certificates. It starts a separate action-service process and sends synthetic requests over loopback. No model provider key or Python package installation is needed.</p><p class="reproduction-copy">From a repository checkout on Linux, using Python 3.12 and OpenSSL with TLS 1.3 support:</p><pre tabindex="0" aria-label="Commands to verify the action boundary study"><code>{commands}</code></pre><p class="caption">Verification executes the development cases again and checks their evidence against the receipt contract. Fresh timing, process and certificate values may differ. The source documents which fields are compared.</p><details class="manifest"><summary>Inspect the recorded execution</summary><pre tabindex="0" aria-label="Recorded action boundary execution"><code>{serialise(receipt.execution)}</code></pre></details><details class="manifest"><summary>Inspect the recorded environment</summary><pre tabindex="0" aria-label="Recorded action boundary environment"><code>{serialise(receipt.environment)}</code></pre></details><details class="manifest"><summary>Inspect the execution manifest</summary><pre tabindex="0" aria-label="Action boundary execution manifest"><code>{serialise(receipt.manifest)}</code></pre></details><p class="caption">No remote inference is measured. Computing cost is not measured, so the absence of model calls is not a claim of zero total cost.</p></div>
+    </section>
+
+    <section id="limits" class="study-section" aria-labelledby="limits-heading">
+      <div class="section-heading"><p class="eyebrow">05 / TRUST AND LIMITS</p><h2 id="limits-heading">A real service.<br />A bounded claim.</h2><p>The tested boundary is a request interface within a trusted local environment.</p></div>
+      <div class="section-content"><ul class="limits"><li><strong>The host and authority are trusted.</strong> The certificate issuer, service, grant store, harness, client code and grader are part of the trusted base. Client credentials remain trusted. Request JSON can be adversarial.</li><li><strong>Process separation is not hostile-process containment.</strong> Service and clients use the same operating-system user. A malicious process with that user's access could read keys, edit the database or call the store directly. This study has no operating-system sandbox claim.</li><li><strong>One local ordering boundary.</strong> Queue commits and revocation share a central atomic ordering boundary. These results do not establish distributed revocation, cross-organisation security or protection after service compromise.</li><li><strong>Synthetic clients and effects.</strong> No new agent framework or live model is evaluated. Requests are fixed, the queue is a fixture, and no remediation runs against a customer system.</li><li><strong>No wire interoperability claim.</strong> The loopback request format is ours. It is not an AGNTCY Identity, A2A or MCP conformance test.</li><li><strong>Development evidence only.</strong> The cases are constructed and visible to the implementation. They are not a held-out benchmark, independent external reproduction or evidence of more capable agent cooperation.</li></ul><div class="next-step"><p class="eyebrow">WHAT WOULD CHANGE THE EVIDENCE?</p><h3>A counterexample at the declared boundary.</h3><p>A request that commits without the required current task authority would defeat the enforced contract. A legitimate task blocked by another task's revocation would also count as a failure. The full traces make those claims open to inspection.</p><a class="text-link" href="https://github.com/valorifutures/softcat.ai/blob/main/docs/research-programme.md">Read the research programme <span aria-hidden="true">↗</span></a></div><p class="charter">Our <a href="/constitution/">constitution</a> requires the limits to travel with the result.</p></div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .boundary-page { padding-block: 2rem 5rem; }
+  .back-link { display: inline-flex; align-items: center; min-height: 44px; color: #a6b09e; font-size: .72rem; margin-bottom: 2rem; }
+  .boundary-hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .85fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  h1 { color: #f1f1e8; font: 600 clamp(3rem, 5.4vw, 4.7rem)/1.05 var(--font-sans); letter-spacing: -.06em; margin-block: 1.2rem 1.6rem; }
+  h1 em { color: var(--workshop-lime); font-style: normal; }
+  .hero-copy > p:not(.eyebrow) { color: var(--color-text-muted); max-width: 53ch; font-size: .91rem; line-height: 1.85; margin-bottom: 1rem; }
+  .hero-copy .lead { color: #e4e9df !important; font-size: 1.13rem !important; line-height: 1.6 !important; max-width: 33ch !important; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin-top: 1.8rem; }
+  .execution-card { color: #26331f; background: #edf0e5; border-top: 5px solid #b7d68f; padding: 1.6rem 1.8rem; }
+  .receipt-label { color: #526349; font: .6rem/1.6 var(--font-mono); letter-spacing: .06em; }
+  .execution-card h2 { color: #26331f; font: 600 1.95rem/1.15 var(--font-sans); letter-spacing: -.045em; margin-top: 1.2rem; }
+  .execution-card > p:not(.receipt-label) { color: #4c5d43; font-size: .75rem; line-height: 1.8; margin-top: 1rem; }
+  .execution-counts { margin-top: 1.3rem; }
+  .execution-counts > div { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding-block: .9rem; border-top: 1px solid #cbd3bf; }
+  .execution-counts dt { font-size: .75rem; line-height: 1.6; max-width: 22ch; }
+  .execution-counts dd { font: 600 1.5rem var(--font-mono); white-space: nowrap; }
+  .execution-counts dd span { color: #67745c; font-size: .8rem; font-weight: 400; }
+  .execution-card .recorded-date { font: .6rem/1.8 var(--font-mono) !important; border-top: 1px solid #cbd3bf; padding-top: 1rem; }
+  .recorded-date time { display: block; }
+  .section-links { display: flex; flex-wrap: wrap; gap: .5rem 1.8rem; border-block: 1px solid var(--workshop-rule); margin-top: 3.5rem; padding-block: .5rem; }
+  .section-links a { display: inline-flex; align-items: center; min-height: 44px; color: #c5cfc0; font-size: .75rem; }
+  .study-section { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.6fr); gap: 2rem 4rem; padding-top: 3.5rem; margin-top: 3.5rem; border-top: 1px solid var(--workshop-rule); scroll-margin-top: 3rem; }
+  #boundary { margin-top: 0; border-top: 0; }
+  .section-heading h2 { color: #eef0e7; font: 500 clamp(1.6rem, 2.7vw, 2rem)/1.25 var(--font-sans); letter-spacing: -.035em; margin-block: 1rem; }
+  .section-heading > p:not(.eyebrow), .reproduction-copy { color: var(--color-text-muted); font-size: .84rem; line-height: 1.85; margin-bottom: 1rem; }
+  .section-heading a:not(.text-link), .source-note a, .charter a { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 4px; }
+  .section-heading .text-link { margin-top: .2rem; font-size: .75rem; }
+  .section-content { min-width: 0; }
+  .boundary-contract { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+  .boundary-contract > li { display: grid; grid-template-columns: 6.9rem minmax(0, 1fr); gap: .3rem 1.2rem; border: 1px solid #384034; border-left: 3px solid #9cab90; padding: 1.2rem 1.3rem; background: #161c16; }
+  .boundary-contract > li:nth-child(2) { border-left-color: #c9ee8d; background: #1c2519; }
+  .step-label { color: #b7c4ac; font: .58rem/1.8 var(--font-mono); letter-spacing: .07em; padding-top: .2rem; }
+  .boundary-contract h3, .source-note h3, .contract-note h3, .group-heading, .next-step h3 { color: #e0e7d8; font: 500 1rem/1.5 var(--font-sans); }
+  .boundary-contract p { color: #a8b1a1; font-size: .76rem; line-height: 1.8; margin-top: .4rem; }
+  .source-note { border-top: 1px solid #3e4a35; padding-top: 1.5rem; margin-top: 1.6rem; }
+  .source-note .eyebrow { color: #a8bf94; margin-bottom: .7rem; }
+  .source-note p:not(.eyebrow), .contract-note p, .next-step > p:not(.eyebrow) { color: var(--color-text-muted); font-size: .81rem; line-height: 1.85; margin-top: .65rem; }
+  .caption { color: #9da895; font-size: .73rem; line-height: 1.85; margin-top: 1rem; }
+  summary { color: #d4dccc; font-size: .76rem; line-height: 1.7; min-height: 44px; padding-block: .7rem; cursor: pointer; }
+  summary:hover, .section-links a:hover, .back-link:hover { color: var(--workshop-lime); }
+  pre { min-width: 0; max-width: 100%; margin-block: .8rem; border: 1px solid #323a32; padding: 1rem; color: #c6d3be; background: #0d120e; font: .67rem/1.8 var(--font-mono); overflow-x: auto; tab-size: 2; }
+  .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+  .case-card { min-width: 0; padding: 1.2rem; border: 1px solid #343b33; background: #141a16; }
+  .case-name { color: #becbb3; font: .65rem/1.7 var(--font-mono); text-transform: capitalize; overflow-wrap: anywhere; }
+  .case-card h3 { color: #c9ee8d; font: 500 1.4rem var(--font-sans); letter-spacing: -.025em; margin-top: .75rem; }
+  .case-description { color: #a8b0a4; font-size: .75rem; line-height: 1.8; margin-top: .65rem; }
+  .case-facts { color: #b9c7af; font: .59rem/1.8 var(--font-mono); margin-top: .8rem; }
+  .case-card details { margin-top: .75rem; border-top: 1px solid #303a2d; }
+  .call-list { list-style: none; margin: .5rem 0 1rem; padding: 0; }
+  .call-list > li { display: grid; gap: .3rem; border-top: 1px solid #303a2d; padding-block: .7rem; overflow-wrap: anywhere; }
+  .call-list span { color: #a8b0a4; font-size: .7rem; }
+  .call-list strong { color: #d0dcbf; font: .65rem/1.6 var(--font-mono); }
+  .call-list code { color: #cbbba4; font: .6rem/1.6 var(--font-mono); }
+  .rejected { color: #e2b2a2 !important; }
+  .contract-note { border-left: 2px solid #879f70; padding-left: 1.2rem; margin-top: 1.8rem; }
+  .group-heading { margin-bottom: .8rem; }
+  .negative-heading { margin-top: 2rem; }
+  .disclosure-list > details { border-top: 1px solid var(--workshop-rule); }
+  .disclosure-list > details > summary { display: flex; justify-content: space-between; gap: 1rem; list-style: none; }
+  .disclosure-list > details > summary::-webkit-details-marker { display: none; }
+  .disclosure-list > details > summary > span { text-transform: capitalize; overflow-wrap: anywhere; }
+  .disclosure-list > details > summary > span::before { content: '+ '; font-family: var(--font-mono); color: #8c9b82; }
+  .disclosure-list > details[open] > summary > span::before { content: '− '; }
+  .disclosure-list > details > summary > strong { color: #c9ee8d; font: .6rem/2 var(--font-mono); text-transform: uppercase; flex-shrink: 0; max-width: 12ch; }
+  .violations { list-style: none; margin: 0 0 1rem; padding: 0; }
+  .violations li { margin-top: .7rem; }
+  .violations code { display: block; color: #ddbbad; font: .65rem/1.8 var(--font-mono); overflow-wrap: anywhere; }
+  .violations p, .expected-code { color: #a6afa0; font-size: .75rem; line-height: 1.8; overflow-wrap: anywhere; }
+  .expected-code { margin-block: .5rem 1rem; }
+  .manifest { border-block: 1px solid var(--workshop-rule); margin-top: 1.5rem; }
+  .limits { list-style: none; padding: 0; margin: 0; }
+  .limits > li { color: #a6b09e; font-size: .84rem; line-height: 1.85; margin-bottom: 1.1rem; }
+  .limits strong { color: #e0e5da; font-weight: 500; }
+  .next-step { border-top: 1px solid #45513c; margin-top: 2rem; padding-top: 1.6rem; }
+  .next-step .eyebrow { color: #aec49b; margin-bottom: .8rem; }
+  .next-step a { margin-top: .8rem; }
+  .charter { color: #9ca794; font-size: .75rem; line-height: 1.8; margin-top: 1.5rem; }
+  .boundary-page a:focus-visible, .boundary-page summary:focus-visible, .boundary-page pre:focus-visible { outline: 2px solid var(--workshop-lime); outline-offset: 4px; border-radius: 2px; }
+  @media (max-width: 900px) { .study-section { gap: 2rem; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); } .execution-card { padding-inline: 1.3rem; } .boundary-contract > li { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 740px) { .boundary-page { padding-top: 1.3rem; } .back-link { margin-bottom: 1.5rem; } .boundary-hero, .study-section { grid-template-columns: minmax(0, 1fr); } .boundary-hero { gap: 2.5rem; } h1 { font-size: clamp(2.8rem, 11.7vw, 4.7rem); } .hero-copy > p:not(.eyebrow) { max-width: 55ch; } .execution-card { padding: 1.5rem; } .study-section { gap: 1.5rem; padding-top: 2.5rem; margin-top: 2.5rem; } .section-links { margin-top: 2.5rem; gap: 0 1.5rem; } .section-heading > p:not(.eyebrow) { max-width: 54ch; } }
+  @media (max-width: 440px) { .case-grid { grid-template-columns: minmax(0, 1fr); } .execution-counts dd { font-size: 1.3rem; } .execution-card { padding-inline: 1.25rem; } .hero-actions { gap: .8rem; } .disclosure-list > details > summary { gap: .7rem; } }
+</style>

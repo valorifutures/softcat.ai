@@ -23,7 +23,7 @@ jobs:
       contents: read
 
   build:
-    needs: recovery
+    needs: [recovery, boundary]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -50,3 +50,8 @@ jobs:
         run: |
           pip install -q pytest httpx python-dotenv feedparser anthropic
           python -m pytest bot/tests/ -q
+
+  boundary:
+    uses: ./.github/workflows/research-boundary-check.yml
+    permissions:
+      contents: read
