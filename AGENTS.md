@@ -41,3 +41,8 @@ volume. Keep reliability fixes first. Record planned, implemented, executed and
 independently reproduced states distinctly. Licence scope is in `LICENSING.md`.
 The root mission does not replace Feral's specialist charter or extend spending,
 external access, publishing credentials or third-party contact permissions.
+
+The authenticated local service boundary is under `research/boundary/`. It uses
+mutual TLS and scripted clients, with its own required read-only hosted check.
+It is architecturally aligned with AGNTCY identity/authorisation separation,
+not an AGNTCY SDK integration or hostile-worker sandbox.

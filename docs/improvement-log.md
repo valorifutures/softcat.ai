@@ -1053,3 +1053,45 @@ limitations. Earlier review records remain present. Interactive browser
 selection and mobile or touch behaviour were not rerun because this batch
 changes evidence data rather than controls or layout. The active marker is
 cleared.
+
+## 1 October 2026, authenticated action boundary
+
+The maintainer asked whether the proposed research aligns with AGNTCY and
+Outshift, and authorised the next build. We read current primary documentation,
+including AGNTCY's 25 August distinction between implemented tool-level policy
+and proposed task-bound authority, plus Outshift's Identity Service development
+guide. Our contribution is a local failure experiment at that application
+boundary. It is not an AGNTCY SDK integration, badge/profile implementation,
+conformance result, affiliation or novelty claim.
+
+Main was `7143b7a4b24e4e53d97ae52c95b697c0a4854098`, with no active marker,
+open PR or running Action. We used an isolated checkout and reserved the batch
+in [PR #256](https://github.com/valorifutures/softcat.ai/pull/256). Existing data
+validators, 203 JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication
+fixtures, 46 recovery tests and a fresh recovery receipt verification passed.
+The earlier recovery implementation and recorded evidence remain unchanged.
+
+The new experiment uses real loopback mutual TLS and a separate service process.
+It derives the principal outside request JSON, then reuses the existing durable
+grant, revocation and idempotency checks. The registered synthetic cases include
+identity rejection, scope, logical expiry, revocation, replay and a real service
+exit after commit before the reply. Clients and service share an OS user, so
+malicious-process containment is expressly outside the tested boundary.
+
+Independent review found and corrected a trickled-input timeout weakness, then
+challenged the grader with inconsistent records it initially accepted. The
+research review records actual findings, corrections and the eventual verdict.
+No remote model calls, price refresh, Feral cycle, legacy generator or external
+contact was initiated. The public page presents recorded evidence only.
+
+Local result: all 14 enforced cases passed, and all five registered corrupted
+recordings were rejected for their expected reason. The receipt records 15
+service processes, 33 scenario calls and 14 administrative snapshot calls,
+47 client calls in total. Its SHA-256 is
+`6fb162f7fe830ebbc9539e1901213502b0da9c38e37f0a5dd73acd41c954ae54`.
+All 25 new boundary tests and a fresh independent receipt verification passed.
+Together with the existing suites, 454 tests passed. The 642-page production
+build and offline publication audit passed with 407 search entries and no errors.
+The built JSON receipt matches the source. Local browser installation failed,
+so narrow layout was reviewed in source and live rendered checks remain pending.
+Hosted validation, exact candidate review and publication are pending at this checkpoint.

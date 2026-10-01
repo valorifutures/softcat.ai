@@ -1,0 +1,24 @@
+name: Check authenticated action boundary
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-boundary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Exercise local authenticated service and verify recorded evidence
+        run: |
+          openssl version
+          python -m unittest discover -s research/boundary -p 'test_*.py'
+          python research/boundary/run.py --verify research/boundary/results/latest.json

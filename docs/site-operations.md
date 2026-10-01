@@ -67,6 +67,11 @@ Its recorded scripted checks are not a held-out evaluation. The separate
 `research/recovery/` study executes pinned LangGraph and PydanticAI runtimes with
 deterministic local responses and real worker restarts. It has no provider calls
 or model-capability result. Its isolated read-only CI job gates normal publication.
+The separate `research/boundary/` experiment uses Python standard-library TLS,
+OpenSSL and scripted clients. Its own read-only hosted job reruns the service
+cases and verifies the receipt before both PR builds and Pages publication.
+It records local authentication and authority behaviour, not an AGNTCY service
+integration, model evaluation or malicious-process containment result.
 Record that distinction in handovers and public copy. Each research run
 needs pinned inputs, a defined evaluator, comparison conditions and explicit
 execution limits before it starts. Existing task ownership remains unchanged.

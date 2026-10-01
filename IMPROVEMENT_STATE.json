@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-09-28T14:55:36Z",
-  "phase": "horizon-review-published",
-  "active_branch": null,
+  "updated_at": "2026-10-01T20:41:38.607581+00:00",
+  "phase": "authenticated-boundary-local-validation-complete",
+  "active_branch": "research/authenticated-boundary-20261001",
   "last_verified_deployment": {
     "sha": "2ce0df15e88d90365993ce996e72ac4b64c602f7",
     "at": "2026-09-25T21:14:15.251912+00:00",
@@ -121,9 +121,9 @@
     "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned."
   ],
   "next": [
-    "Separate authenticated caller identity and the action-service boundary from workers before untrusted model execution. Then calibrate a single-agent baseline and freeze a disjoint evaluation protocol with explicit access and spend limits.",
+    "Select and pin an AGNTCY Identity adapter, verify credential-to-principal and authorisation semantics, and test deployment isolation before untrusted code execution. Then calibrate a single-agent baseline and freeze disjoint evaluation with explicit access and spend limits.",
     "Review original site code/assets provenance before extending the new scoped Apache-2.0 licence.",
-    "Preserve the 21 September Horizon evidence priorities, current targets and append-only history.",
+    "Preserve the 28 September Horizon evidence priorities, current targets and append-only history.",
     "Keep Feral creation and daily GitHub price snapshots under their existing separate owners. Mobile/touch and actual file-download verification remain pending from the earlier workshop pass."
   ],
   "constraints": [
@@ -131,7 +131,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Published and verified the deterministic framework recovery study. Evidence receipt and desktop screenshot retained. Authenticated action boundaries precede untrusted model execution.",
+  "session": "Authenticated local action service implemented and executed. Local tests/build/audit pass. Exact candidate review and hosted publication pending in PR #256.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -292,5 +292,31 @@
     "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36439072020",
     "live_verification": "The published prediction endpoint contains five history entries and all five 28 September reviews. The reading export shows each unchanged target, new rationale, evidence and limitation. Earlier records remain present.",
     "publication": "required hosted checks and Pages deployment succeeded"
+  },
+  "authenticated_boundary_2026_10_01": {
+    "status": "local validation complete; exact review and hosted publication pending",
+    "base": "7143b7a4b24e4e53d97ae52c95b697c0a4854098",
+    "branch": "research/authenticated-boundary-20261001",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/256",
+    "scope": "Loopback mutual TLS, synthetic grants and separate same-user action-service process. No AGNTCY SDK or hostile-process containment claim.",
+    "receipt": "research/boundary/results/latest.json",
+    "receipt_sha256": "6fb162f7fe830ebbc9539e1901213502b0da9c38e37f0a5dd73acd41c954ae54",
+    "summary": {
+      "enforced_cases": 14,
+      "mutated_record_controls": 5,
+      "service_processes": 15,
+      "probe_calls": 33,
+      "snapshot_calls": 14,
+      "total_client_calls": 47,
+      "provider_calls": 0
+    },
+    "validation": "454 tests passed across JavaScript, Feral, bot, publication, recovery and authenticated-boundary suites. Recovery and boundary receipt reruns verified. All data validators, 642-page production build and offline publication audit passed.",
+    "review": "research/boundary/review.md",
+    "limits": [
+      "Scripted clients, synthetic grants and local logical expiry. No new model or framework execution.",
+      "Same-OS-user processes do not contain malicious code or protect against direct database/key access.",
+      "AGNTCY architecture alignment only. No SDK, badge, task-bound profile or wire-conformance implementation.",
+      "Local browser installation was unavailable. Narrow layout reviewed in source; live rendered desktop verification pending. Mobile/touch unverified."
+    ]
   }
 }

@@ -14,6 +14,29 @@ We investigate whether independently implemented agents can cooperate while
 preserving task authority, evidence provenance and honest reports of outcomes.
 Identity is an input to that investigation, not proof of competence or truth.
 
+## Authenticated service boundary, 1 October 2026
+
+The next bounded development slice is registered in
+[`research/boundary/CONTRACT.md`](../research/boundary/CONTRACT.md). It authenticates
+synthetic clients using mutual TLS before applying the existing local grant and
+commit rules in a separate action-service process. Its receipt and review record
+state the actual execution outcome. It does not complete the remote-model gate.
+
+This is architecturally aligned with AGNTCY and Outshift's separation of identity
+and action authorisation. The [25 August AGNTCY discussion](https://blogs.agntcy.org/technical/identity/2026/08/25/agent-identity-tbac-a2a-task-authorization.html)
+distinguishes implemented tool-level policy from proposed task-bound authority.
+Our local grant registry is an experiment, not that proposed profile or a new
+standard. The [Identity Service development guide](https://identity-docs.outshift.com/docs/dev/)
+documents SDK and external-authorisation integration points. A later adapter
+must verify the pinned implementation's caller identity and decision semantics.
+No AGNTCY SDK, badge, A2A/MCP transport, upstream acceptance or endorsement is
+claimed in this slice.
+
+Same-user process separation does not stop malicious code reading the service's
+files. Before untrusted code execution, a separate deployment must enforce and
+test operating-system isolation. Model calibration and a frozen disjoint
+comparison remain subsequent work with explicit access and spending limits.
+
 ## First experiment: delegated authority under disruption
 
 **Research question:** can a system stop one revoked job throughout its delegation

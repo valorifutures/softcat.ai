@@ -1,0 +1,3652 @@
+{
+  "schemaVersion": 1,
+  "stage": "authenticated-action-boundary",
+  "generatedAt": "2026-10-01T20:38:36.107776+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "sqlite": "3.53.1",
+    "openssl": "OpenSSL 3.5.8 25 Aug 2026",
+    "opensslCli": "OpenSSL 3.0.13 30 Jan 2024 (Library: OpenSSL 3.0.13 30 Jan 2024)",
+    "platform": "linux/x86_64",
+    "transport": "TLS 1.3 on 127.0.0.1",
+    "frameworks": {}
+  },
+  "summary": {
+    "validPassed": 14,
+    "validTotal": 14,
+    "negativeRejected": 5,
+    "negativeTotal": 5
+  },
+  "execution": {
+    "elapsedMs": 2074.2566849999093,
+    "providerCalls": 0,
+    "providerInferenceTokens": 0,
+    "modelCalls": 0,
+    "actualCharge": null,
+    "chargeBasis": "No provider or model calls. Total execution charge is unknown.",
+    "serviceProcesses": 15,
+    "clientCalls": 33,
+    "snapshotCalls": 14,
+    "totalClientCalls": 47,
+    "clientCallBasis": "clientCalls counts registered probes; totalClientCalls also includes admin snapshots.",
+    "certificateProcesses": 10,
+    "opensslProcesses": 11
+  },
+  "manifest": {
+    "sha256": {
+      "research/boundary/CONTRACT.md": "27af6495b9968fa8a7e2a90b7856edc8ed9cd90f05d7df323a0e6f84554579ca",
+      "research/boundary/README.md": "b0009c49629d2e5884f56c41d26a8673c24e897cc02cd1702c356a9de5363c15",
+      "research/boundary/grader.py": "33d2588f1cc6b9aa4316615994832e0b608e604ed221148c918a8cb0b99a6058",
+      "research/boundary/run.py": "94a8572fa16d7ff0daca4caa18c4bd56d05be2f3e0b3abb646e3d5d7ec3023a3",
+      "research/boundary/scenarios.py": "7d081340249565dc2ecf3d04cdbb50b1ee461ea7fb8c2932d6e1e91a57cf9e20",
+      "research/boundary/service.py": "8c9fa4a3a601ea778e6672889651dc1d8e2e0ae9174e80d6b0671adf8330e98e",
+      "research/boundary/test_grader.py": "36bccf39ba89ee379048d0e9405d01cc9624651ea4b890d09db829d347f85cd8",
+      "research/boundary/test_service.py": "d3a3437e6138b87f219a4bbd2452f74b4af0447879cf2558c85449d642435982",
+      "research/recovery/store.py": "8e3829e9afd2b432186ef6ba96713f513f56c40c935c540d809aa65d9f35669f"
+    },
+    "repeatsPerCase": 1,
+    "fixtureStatus": "Public scripted development cases, not held-out evaluation.",
+    "clock": "Grant expiry and revocation use central SQLite event order; elapsedMs is monotonic wall duration.",
+    "identity": "TLS-verified client certificate DER SHA256 mapped to a server-configured principal.",
+    "authority": "Synthetic local grant registry; no signed grant protocol or AGNTCY SDK.",
+    "sampling": "Fixed requests; fresh ephemeral RSA certificates and TLS randomness each suite.",
+    "comparison": "14 enforced API cases and 5 deliberately corrupted recordings; no model comparison.",
+    "isolation": "Separate same-OS-user service; not a malicious-process sandbox or OS-enforced egress isolation.",
+    "controlExpectedCodes": {
+      "unexpected_effect": "UNEXPECTED_EFFECT",
+      "missing_B": "MISSING_EFFECT",
+      "false_auth_success": "AUTHENTICATION_BYPASS",
+      "duplicate_effect": "DUPLICATE_EFFECT",
+      "lost_reply_false_success": "FALSE_CERTAINTY"
+    },
+    "verification": "Fresh local execution and deterministic-record comparison; omits time, environment and raw PIDs. Review excluded from source hashes to avoid a circular receipt."
+  },
+  "runs": [
+    {
+      "id": "authorised",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "authorised",
+        "scenario": "authorised",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 1,
+              "request_id": "request-1",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "specialist",
+            "request": {
+              "op": "commit",
+              "request_id": "request-1"
+            },
+            "response": {
+              "event_seq": 2,
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "status": "COMMITTED"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 1,
+              "status": "PENDING",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "commit",
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 2,
+              "status": "COMMITTED",
+              "subject": "specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [
+            {
+              "action_id": "effect-2",
+              "commit_seq": 2,
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+            }
+          ],
+          "requests": [
+            {
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            }
+          ],
+          "revocations": []
+        },
+        "process_ids": [
+          15
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 3,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "missing_certificate",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "missing_certificate",
+        "scenario": "missing_certificate",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "none",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": null,
+            "error": "TLS_REJECTED"
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [],
+          "requests": [],
+          "revocations": []
+        },
+        "process_ids": [
+          16
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 2,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "untrusted_certificate",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "untrusted_certificate",
+        "scenario": "untrusted_certificate",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "untrusted",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": null,
+            "error": "TLS_REJECTED"
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [],
+          "requests": [],
+          "revocations": []
+        },
+        "process_ids": [
+          17
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 2,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "wrong_caller",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "wrong_caller",
+        "scenario": "wrong_caller",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "wrong",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 1,
+              "reason": "SUBJECT_MISMATCH",
+              "receipt": null,
+              "status": "DENIED"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "deny",
+              "operation": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "reason": "SUBJECT_MISMATCH",
+              "resource": "remediation-queue",
+              "seq": 1,
+              "subject": "wrong-specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [],
+          "requests": [],
+          "revocations": []
+        },
+        "process_ids": [
+          18
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 2,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "caller_spoof",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "caller_spoof",
+        "scenario": "caller_spoof",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            },
+            "response": {
+              "reason": "INVALID_SCHEMA",
+              "receipt": null,
+              "status": "DENIED"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [],
+          "requests": [],
+          "revocations": []
+        },
+        "process_ids": [
+          19
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 2,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "scope_job",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "scope_job",
+        "scenario": "scope_job",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "B",
+              "key": "B-remediation",
+              "payload": {
+                "remediation": "synthetic-B"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 1,
+              "reason": "SCOPE_MISMATCH",
+              "receipt": null,
+              "status": "DENIED"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "B",
+              "key": "B-remediation",
+              "kind": "deny",
+              "operation": "begin",
+              "payload": {
+                "remediation": "synthetic-B"
+              },
+              "payload_hash": "7a99e477f88cd5523c58bc74e0622951cac80225924c8070b0b3c83c4f13dfe4",
+              "reason": "SCOPE_MISMATCH",
+              "resource": "remediation-queue",
+              "seq": 1,
+              "subject": "specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [],
+          "requests": [],
+          "revocations": []
+        },
+        "process_ids": [
+          20
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 2,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "scope_resource",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "scope_resource",
+        "scenario": "scope_resource",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "other-resource"
+            },
+            "response": {
+              "event_seq": 1,
+              "reason": "SCOPE_MISMATCH",
+              "receipt": null,
+              "status": "DENIED"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "deny",
+              "operation": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "reason": "SCOPE_MISMATCH",
+              "resource": "other-resource",
+              "seq": 1,
+              "subject": "specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [],
+          "requests": [],
+          "revocations": []
+        },
+        "process_ids": [
+          21
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 2,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "expired_grant",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "expired_grant",
+        "scenario": "expired_grant",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 1,
+              "request_id": "request-1",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "specialist",
+            "request": {
+              "op": "commit",
+              "request_id": "request-1"
+            },
+            "response": {
+              "event_seq": 2,
+              "reason": "EXPIRED",
+              "receipt": null,
+              "status": "DENIED"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 1,
+              "status": "PENDING",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "deny",
+              "operation": "commit",
+              "reason": "EXPIRED",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 2,
+              "subject": "specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 2,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 2,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 2,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [],
+          "requests": [
+            {
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            }
+          ],
+          "revocations": []
+        },
+        "process_ids": [
+          22
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 3,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "revoked_inflight",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "revoked_inflight",
+        "scenario": "revoked_inflight",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 1,
+              "request_id": "request-1",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "revoke",
+            "client": "admin",
+            "request": {
+              "op": "revoke",
+              "job": "A"
+            },
+            "response": {
+              "actor": "authenticated-admin",
+              "job": "A",
+              "kind": "revoke",
+              "seq": 2
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "specialist",
+            "request": {
+              "op": "commit",
+              "request_id": "request-1"
+            },
+            "response": {
+              "event_seq": 3,
+              "reason": "REVOKED",
+              "receipt": null,
+              "status": "DENIED"
+            },
+            "error": null
+          },
+          {
+            "operation": "lookup",
+            "client": "specialist",
+            "request": {
+              "op": "lookup",
+              "job": "A",
+              "key": "A-remediation",
+              "grant_id": "A-read",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 4,
+              "receipt": null,
+              "status": "ABSENT"
+            },
+            "error": null
+          },
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "B",
+              "key": "B-remediation",
+              "payload": {
+                "remediation": "synthetic-B"
+              },
+              "grant_id": "B-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 5,
+              "request_id": "request-5",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "specialist",
+            "request": {
+              "op": "commit",
+              "request_id": "request-5"
+            },
+            "response": {
+              "event_seq": 6,
+              "receipt": {
+                "action_id": "effect-6",
+                "commit_seq": 6,
+                "job": "B",
+                "key": "B-remediation",
+                "payload": {
+                  "remediation": "synthetic-B"
+                },
+                "payload_hash": "7a99e477f88cd5523c58bc74e0622951cac80225924c8070b0b3c83c4f13dfe4"
+              },
+              "status": "COMMITTED"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 1,
+              "status": "PENDING",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-admin",
+              "job": "A",
+              "kind": "revoke",
+              "seq": 2
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "deny",
+              "operation": "commit",
+              "reason": "REVOKED",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 3,
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-read",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "lookup",
+              "receipt": null,
+              "resource": "remediation-queue",
+              "seq": 4,
+              "status": "ABSENT",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 5,
+              "grant_id": "B-write",
+              "job": "B",
+              "key": "B-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "synthetic-B"
+              },
+              "payload_hash": "7a99e477f88cd5523c58bc74e0622951cac80225924c8070b0b3c83c4f13dfe4",
+              "request_id": "request-5",
+              "resource": "remediation-queue",
+              "seq": 5,
+              "status": "PENDING",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "B-write",
+              "job": "B",
+              "key": "B-remediation",
+              "kind": "commit",
+              "receipt": {
+                "action_id": "effect-6",
+                "commit_seq": 6,
+                "job": "B",
+                "key": "B-remediation",
+                "payload": {
+                  "remediation": "synthetic-B"
+                },
+                "payload_hash": "7a99e477f88cd5523c58bc74e0622951cac80225924c8070b0b3c83c4f13dfe4"
+              },
+              "request_id": "request-5",
+              "resource": "remediation-queue",
+              "seq": 6,
+              "status": "COMMITTED",
+              "subject": "specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [
+            {
+              "action_id": "effect-6",
+              "commit_seq": 6,
+              "job": "B",
+              "key": "B-remediation",
+              "payload": {
+                "remediation": "synthetic-B"
+              },
+              "payload_hash": "7a99e477f88cd5523c58bc74e0622951cac80225924c8070b0b3c83c4f13dfe4"
+            }
+          ],
+          "requests": [
+            {
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            },
+            {
+              "begin_seq": 5,
+              "grant_id": "B-write",
+              "job": "B",
+              "key": "B-remediation",
+              "payload": {
+                "remediation": "synthetic-B"
+              },
+              "payload_hash": "7a99e477f88cd5523c58bc74e0622951cac80225924c8070b0b3c83c4f13dfe4",
+              "request_id": "request-5",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            }
+          ],
+          "revocations": [
+            {
+              "job": "A",
+              "seq": 2
+            }
+          ]
+        },
+        "process_ids": [
+          23
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 7,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "identical_retry",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "identical_retry",
+        "scenario": "identical_retry",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 1,
+              "request_id": "request-1",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "specialist",
+            "request": {
+              "op": "commit",
+              "request_id": "request-1"
+            },
+            "response": {
+              "event_seq": 2,
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "status": "COMMITTED"
+            },
+            "error": null
+          },
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 3,
+              "request_id": "request-3",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "specialist",
+            "request": {
+              "op": "commit",
+              "request_id": "request-3"
+            },
+            "response": {
+              "event_seq": 4,
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "status": "REPLAY"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 1,
+              "status": "PENDING",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "commit",
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 2,
+              "status": "COMMITTED",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 3,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-3",
+              "resource": "remediation-queue",
+              "seq": 3,
+              "status": "PENDING",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "replay",
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "request_id": "request-3",
+              "resource": "remediation-queue",
+              "seq": 4,
+              "status": "REPLAY",
+              "subject": "specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [
+            {
+              "action_id": "effect-2",
+              "commit_seq": 2,
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+            }
+          ],
+          "requests": [
+            {
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            },
+            {
+              "begin_seq": 3,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-3",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            }
+          ],
+          "revocations": []
+        },
+        "process_ids": [
+          24
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 5,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "conflicting_retry",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "conflicting_retry",
+        "scenario": "conflicting_retry",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 1,
+              "request_id": "request-1",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "specialist",
+            "request": {
+              "op": "commit",
+              "request_id": "request-1"
+            },
+            "response": {
+              "event_seq": 2,
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "status": "COMMITTED"
+            },
+            "error": null
+          },
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "different-synthetic-remediation"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 3,
+              "request_id": "request-3",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "specialist",
+            "request": {
+              "op": "commit",
+              "request_id": "request-3"
+            },
+            "response": {
+              "event_seq": 4,
+              "reason": "PAYLOAD_CONFLICT",
+              "receipt": null,
+              "status": "CONFLICT"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 1,
+              "status": "PENDING",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "commit",
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 2,
+              "status": "COMMITTED",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 3,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "different-synthetic-remediation"
+              },
+              "payload_hash": "e33e38ba1cf224664ecd596ba4e095390e571e68ae1bd621defb21e121aa49d9",
+              "request_id": "request-3",
+              "resource": "remediation-queue",
+              "seq": 3,
+              "status": "PENDING",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "existing_payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "conflict",
+              "payload_hash": "e33e38ba1cf224664ecd596ba4e095390e571e68ae1bd621defb21e121aa49d9",
+              "request_id": "request-3",
+              "resource": "remediation-queue",
+              "seq": 4,
+              "status": "CONFLICT",
+              "subject": "specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [
+            {
+              "action_id": "effect-2",
+              "commit_seq": 2,
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+            }
+          ],
+          "requests": [
+            {
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            },
+            {
+              "begin_seq": 3,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "different-synthetic-remediation"
+              },
+              "payload_hash": "e33e38ba1cf224664ecd596ba4e095390e571e68ae1bd621defb21e121aa49d9",
+              "request_id": "request-3",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            }
+          ],
+          "revocations": []
+        },
+        "process_ids": [
+          25
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 5,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "lost_reply_restart",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "lost_reply_restart",
+        "scenario": "lost_reply_restart",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 1,
+              "request_id": "request-1",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "specialist",
+            "request": {
+              "op": "commit",
+              "request_id": "request-1"
+            },
+            "response": null,
+            "error": "NO_RESPONSE"
+          },
+          {
+            "operation": "lookup",
+            "client": "specialist",
+            "request": {
+              "op": "lookup",
+              "job": "A",
+              "key": "A-remediation",
+              "grant_id": "A-read",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 3,
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "status": "FOUND"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 1,
+              "status": "PENDING",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "commit",
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 2,
+              "status": "COMMITTED",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-read",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "lookup",
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "resource": "remediation-queue",
+              "seq": 3,
+              "status": "FOUND",
+              "subject": "specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [
+            {
+              "action_id": "effect-2",
+              "commit_seq": 2,
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+            }
+          ],
+          "requests": [
+            {
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            }
+          ],
+          "revocations": []
+        },
+        "process_ids": [
+          26,
+          27
+        ],
+        "process_exits": [
+          74,
+          0
+        ],
+        "total_calls": 4,
+        "snapshot_calls": 1,
+        "observations": [
+          {
+            "status": "outcome_unknown"
+          },
+          {
+            "status": "reconciled",
+            "receipt": {
+              "action_id": "effect-2",
+              "commit_seq": 2,
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+            }
+          }
+        ],
+        "error": null
+      }
+    },
+    {
+      "id": "receipt_read_denied",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "receipt_read_denied",
+        "scenario": "receipt_read_denied",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 1,
+              "request_id": "request-1",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "specialist",
+            "request": {
+              "op": "commit",
+              "request_id": "request-1"
+            },
+            "response": {
+              "event_seq": 2,
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "status": "COMMITTED"
+            },
+            "error": null
+          },
+          {
+            "operation": "lookup",
+            "client": "wrong",
+            "request": {
+              "op": "lookup",
+              "job": "A",
+              "key": "A-remediation",
+              "grant_id": "A-read",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 3,
+              "reason": "SUBJECT_MISMATCH",
+              "receipt": null,
+              "status": "DENIED"
+            },
+            "error": null
+          },
+          {
+            "operation": "lookup",
+            "client": "specialist",
+            "request": {
+              "op": "lookup",
+              "job": "A",
+              "key": "A-remediation",
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 4,
+              "reason": "SCOPE_MISMATCH",
+              "receipt": null,
+              "status": "DENIED"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 1,
+              "status": "PENDING",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "commit",
+              "receipt": {
+                "action_id": "effect-2",
+                "commit_seq": 2,
+                "job": "A",
+                "key": "A-remediation",
+                "payload": {
+                  "remediation": "synthetic-A"
+                },
+                "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+              },
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 2,
+              "status": "COMMITTED",
+              "subject": "specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-read",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "deny",
+              "operation": "lookup",
+              "reason": "SUBJECT_MISMATCH",
+              "resource": "remediation-queue",
+              "seq": 3,
+              "subject": "wrong-specialist"
+            },
+            {
+              "actor": "authenticated-service",
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "deny",
+              "operation": "lookup",
+              "reason": "SCOPE_MISMATCH",
+              "resource": "remediation-queue",
+              "seq": 4,
+              "subject": "specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [
+            {
+              "action_id": "effect-2",
+              "commit_seq": 2,
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c"
+            }
+          ],
+          "requests": [
+            {
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            }
+          ],
+          "revocations": []
+        },
+        "process_ids": [
+          28
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 5,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    },
+    {
+      "id": "commit_wrong_caller",
+      "grade": {
+        "passed": true,
+        "errors": []
+      },
+      "trace": {
+        "id": "commit_wrong_caller",
+        "scenario": "commit_wrong_caller",
+        "calls": [
+          {
+            "operation": "begin",
+            "client": "specialist",
+            "request": {
+              "op": "begin",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "grant_id": "A-write",
+              "resource": "remediation-queue"
+            },
+            "response": {
+              "event_seq": 1,
+              "request_id": "request-1",
+              "status": "PENDING"
+            },
+            "error": null
+          },
+          {
+            "operation": "commit",
+            "client": "wrong",
+            "request": {
+              "op": "commit",
+              "request_id": "request-1"
+            },
+            "response": {
+              "reason": "REQUEST_OWNER_MISMATCH",
+              "receipt": null,
+              "status": "DENIED"
+            },
+            "error": null
+          }
+        ],
+        "snapshot": {
+          "control": "enforced",
+          "events": [
+            {
+              "actor": "authenticated-service",
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "kind": "begin",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "seq": 1,
+              "status": "PENDING",
+              "subject": "specialist"
+            }
+          ],
+          "grants": [
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "A-investigator",
+              "issuer": "coordinator",
+              "job": "A",
+              "parent": "A-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-read",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "A-root",
+              "issuer": "fixture-issuer",
+              "job": "A",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "A-write",
+              "issuer": "investigator",
+              "job": "A",
+              "parent": "A-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 1,
+              "expires_at": 1000000000,
+              "id": "B-investigator",
+              "issuer": "coordinator",
+              "job": "B",
+              "parent": "B-root",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "investigator"
+            },
+            {
+              "actions": [
+                "receipt.read"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-read",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 2,
+              "expires_at": 1000000000,
+              "id": "B-root",
+              "issuer": "fixture-issuer",
+              "job": "B",
+              "parent": null,
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "coordinator"
+            },
+            {
+              "actions": [
+                "queue.submit"
+              ],
+              "delegation_limit": 0,
+              "expires_at": 1000000000,
+              "id": "B-write",
+              "issuer": "investigator",
+              "job": "B",
+              "parent": "B-investigator",
+              "resources": [
+                "remediation-queue"
+              ],
+              "subject": "specialist"
+            }
+          ],
+          "queue": [],
+          "requests": [
+            {
+              "begin_seq": 1,
+              "grant_id": "A-write",
+              "job": "A",
+              "key": "A-remediation",
+              "payload": {
+                "remediation": "synthetic-A"
+              },
+              "payload_hash": "a24811aff64e1203936494787d867a68344f5d9b9ffd636fbe35512c9e97aa0c",
+              "request_id": "request-1",
+              "resource": "remediation-queue",
+              "subject": "specialist"
+            }
+          ],
+          "revocations": []
+        },
+        "process_ids": [
+          29
+        ],
+        "process_exits": [
+          0
+        ],
+        "total_calls": 3,
+        "snapshot_calls": 1,
+        "observations": [],
+        "error": null
+      }
+    }
+  ],
+  "negativeCases": [
+    {
+      "id": "unexpected_effect",
+      "expectedCode": "UNEXPECTED_EFFECT",
+      "detected": true,
+      "violations": [
+        {
+          "code": "QUEUE_MISMATCH",
+          "detail": "Durable queue differs from independently reconstructed commits."
+        },
+        {
+          "code": "UNEXPECTED_EFFECT",
+          "detail": "Job A has an effect outside its registered final state."
+        }
+      ]
+    },
+    {
+      "id": "missing_B",
+      "expectedCode": "MISSING_EFFECT",
+      "detected": true,
+      "violations": [
+        {
+          "code": "QUEUE_MISMATCH",
+          "detail": "Durable queue differs from independently reconstructed commits."
+        },
+        {
+          "code": "MISSING_EFFECT",
+          "detail": "Authorised job B did not complete."
+        }
+      ]
+    },
+    {
+      "id": "false_auth_success",
+      "expectedCode": "AUTHENTICATION_BYPASS",
+      "detected": true,
+      "violations": [
+        {
+          "code": "AUTHENTICATION_BYPASS",
+          "detail": "Call 1 claims a response where TLS_REJECTED is required."
+        }
+      ]
+    },
+    {
+      "id": "duplicate_effect",
+      "expectedCode": "DUPLICATE_EFFECT",
+      "detected": true,
+      "violations": [
+        {
+          "code": "QUEUE_MISMATCH",
+          "detail": "Durable queue differs from independently reconstructed commits."
+        },
+        {
+          "code": "DUPLICATE_EFFECT",
+          "detail": "The durable queue repeats a job effect."
+        }
+      ]
+    },
+    {
+      "id": "lost_reply_false_success",
+      "expectedCode": "FALSE_CERTAINTY",
+      "detected": true,
+      "violations": [
+        {
+          "code": "CALL_CONTRACT",
+          "detail": "The registered sequence of probes is incomplete or extended."
+        },
+        {
+          "code": "UNACCOUNTED_EVENT",
+          "detail": "The durable event history contains an unaccounted operation."
+        },
+        {
+          "code": "FALSE_CERTAINTY",
+          "detail": "Lost-reply recovery requires recorded uncertainty and a subsequent authoritative receipt read."
+        }
+      ]
+    }
+  ]
+}

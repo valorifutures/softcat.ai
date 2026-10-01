@@ -21,7 +21,7 @@ jobs:
       contents: read
 
   build:
-    needs: recovery
+    needs: [recovery, boundary]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -63,3 +63,8 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+
+  boundary:
+    uses: ./.github/workflows/research-boundary-check.yml
+    permissions:
+      contents: read
