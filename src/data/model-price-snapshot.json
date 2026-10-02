@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-01T11:46:05.855Z",
+  "checkedAt": "2026-10-02T11:16:38.754Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "329d0a7c5a7e73c80dd832dfcb4b593f0026411bcfeb34877ced7cc2d2f6422e",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/36857401637",
+  "sourceSha256": "cff6464faf86655c3e5e9cb1781e0c8f64949d385c44dc089de4a231b34b8b27",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/37000092866",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 462,
+  "catalogueModels": 464,
   "trackedModels": 39,
   "matched": 36,
   "verified": 36,
   "notListed": 3,
   "reviewNeeded": 0,
   "unverified": 0,
-  "priceChanges": 2,
+  "priceChanges": 0,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -391,8 +391,8 @@
       "id": "moonshotai/kimi-k2.6",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.65,
-        "outputPrice": 3.41
+        "inputPrice": 0.43415,
+        "outputPrice": 1.828
       },
       "quoted": {
         "inputPrice": 0.43415,
@@ -629,8 +629,8 @@
       "id": "z-ai/glm-5.1",
       "status": "verified",
       "previous": {
-        "inputPrice": 1.4,
-        "outputPrice": 4.4
+        "inputPrice": 0.9646,
+        "outputPrice": 3.0316
       },
       "quoted": {
         "inputPrice": 0.9646,
