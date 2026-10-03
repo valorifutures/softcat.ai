@@ -1156,3 +1156,29 @@ changed to conceal this intermittent transport issue. Track it in a later
 reliability batch. Local browser preview was blocked by the browser network
 policy. Narrow layout has source review only. Hosted checks and rendered live
 interaction verification remain pending at this checkpoint.
+
+Release receipt: [PR #258](https://github.com/valorifutures/softcat.ai/pull/258)
+passed the [hosted checks](https://github.com/valorifutures/softcat.ai/actions/runs/37137660241)
+including clean npm installation on head `efb54a2f17ad6679ddc12ccf5c2defb7838fe3b8`.
+The independent critic passed exact tree `3cc0b39bf3da6cb72d7a15899f94147f2d78c096`.
+Main was re-read unchanged before normal squash merge
+`0354de193e1f89ad492891a1ac8e1fda1c830745`.
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/37137878963)
+passed, including both research gates and the production build.
+
+We verified the [live replay](https://softcat.ai/research/can-it-act/) using
+Enter, Space and pointer controls. All 15 steps matched their recordings. The
+revoked task finishes A0/B1, permitted work finishes A1, the retry keeps A1,
+and the missing reply displays a question mark until lookup confirms A1.
+Previous removes the final takeaway, restart resets progress, and changing
+scenario begins again. Step evidence, the static transcript and original JSON
+open with the keyboard. With the long lost-reply evidence expanded, the page
+reaches its full footer at scrollY 10129, footer bottom 935.95 in a 936px
+viewport. Document width 1348 remains inside viewport 1363.
+
+Home, Research and the boundary study all open the new route. Search returns
+exactly one matching result and Enter opens it. The retained screenshot is
+`docs/evidence/2026-10-03-visitor-replay.jpg`. This is verified desktop behaviour,
+not mobile/touch coverage. No historical recording, forecast, editorial
+retirement, price ownership or Feral work changed. The next reliability
+priority is the intermittent invalid-certificate connection-reset handling.

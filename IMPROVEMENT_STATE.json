@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-03T16:37:22.342619+00:00",
-  "phase": "visitor-replay-awaiting-hosted-checks",
-  "active_branch": "feat/visitor-evidence-replay-20261003",
+  "updated_at": "2026-10-03T16:50:39.087461+00:00",
+  "phase": "visitor-replay-published-and-verified",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "f43ae83aa754e8aa95fc46b98d890a1e9d173f4c",
-    "at": "2026-10-01T20:56:07.009234+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/36924275010"
+    "sha": "0354de193e1f89ad492891a1ac8e1fda1c830745",
+    "at": "2026-10-03T16:50:39.087461+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/37137878963"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -336,16 +336,30 @@
     ]
   },
   "visitor_replay_2026_10_03": {
-    "status": "local validation and independent source review passed, publication pending",
+    "status": "published and verified live",
     "branch": "feat/visitor-evidence-replay-20261003",
     "pull_request": "https://github.com/valorifutures/softcat.ai/pull/258",
     "route": "https://softcat.ai/research/can-it-act/",
     "scope": "Four recorded boundary cases presented as an accessible visitor replay. No new recorded study or AGNTCY integration.",
     "validation": "461 tests passed, both research receipt reruns verified, all data validators, 643-page build and offline audit passed. Seven additional independent mutation probes rejected.",
     "limits": [
-      "Local dependencies reused after exact lockfile comparison. Hosted clean installation required.",
-      "One existing invalid-certificate test raised ConnectionResetError and passed on retry. Preserve as a later reliability priority.",
-      "Local browser preview blocked. Narrow layout source review only. Live interaction checks pending."
+      "Local dependencies reused after exact lockfile comparison. Hosted clean npm ci and all required gates passed.",
+      "One existing invalid-certificate test raised ConnectionResetError locally and passed on retry. Both hosted boundary jobs passed. Investigate the intermittent transport issue separately.",
+      "Desktop keyboard, pointer, discovery and scrolling verified live. Narrow layout source-reviewed, mobile/touch rendering unverified."
+    ],
+    "reviewed_head": "efb54a2f17ad6679ddc12ccf5c2defb7838fe3b8",
+    "reviewed_tree": "3cc0b39bf3da6cb72d7a15899f94147f2d78c096",
+    "merge": "0354de193e1f89ad492891a1ac8e1fda1c830745",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/37137660241",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/37137878963",
+    "critic": "PASS on exact reviewed tree after retry wording and changed-record rejection fixes. Separate visitor review passed.",
+    "screenshot": "docs/evidence/2026-10-03-visitor-replay.jpg",
+    "live_checks": [
+      "Home, Research, boundary study and search open the new canonical route. Search returns exactly one result.",
+      "All 15 steps across four scenarios verified using Enter and Space. Revocation yields A0/B1, authorised work yields A1, retry remains A1, lost reply shows ? until lookup restores A1.",
+      "Previous removes the final takeaway, Start again resets to zero, selecting a scenario resets its progress. Pointer controls also work.",
+      "Enter and Space open step evidence, complete transcripts and original JSON. The lost-reply record includes NO_RESPONSE and FOUND.",
+      "Expanded evidence reaches the full footer at scrollY10129, footer bottom935.95 in a936px viewport. Document width1348 stays within viewport1363."
     ]
   }
 }
