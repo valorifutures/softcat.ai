@@ -1120,3 +1120,39 @@ changed in that correction.
 
 The live JSON endpoint returned HTTP 200 and its full parsed object exactly
 matched the reviewed receipt, including all recorded cases and source hashes.
+
+## 3 October 2026, a visitor can follow the evidence
+
+The maintainer asked us to build, check and improve the site as an intrigued
+visitor. We reserved [PR #258](https://github.com/valorifutures/softcat.ai/pull/258)
+from main `5867ae5860a5e697dbab6aaa07d259fa60162326`, with no competing active
+work. The new `/research/can-it-act/` reading experience follows four actual
+recordings: withdrawn permission, permitted work, repeated requests and a lost
+reply. Home, Research, the boundary study and search now lead into it.
+
+A separate builder, evidence critic and visitor reviewer worked on the page.
+Review corrected a retry explanation that obscured the already committed
+action, and strengthened the mapping so changed recordings cannot silently
+inherit stale stories. The withdrawn task ends with zero effects while the
+separately authorised task retains one. A lost reply remains unknown to the
+caller until lookup. Native controls, complete static transcripts and raw
+records support inspecting the explanation. No new experiment or SDK integration
+is claimed. The 1 October recording and all nine source hashes remain unchanged.
+
+Local validation passed 210 JavaScript tests, 27 Feral tests, 141 bot tests,
+12 publication fixtures, 46 recovery tests and 25 boundary tests, 461 in total.
+Both research receipt reruns verified. The independent critic also rejected
+seven additional mutated replay records. All data validators, the 643-page
+production build and offline audit passed: 33,315 internal links, 3,310 asset
+and metadata references, 408 search entries, no errors.
+
+Environment details: local dependencies were reused from the previous checkout
+after comparing identical lockfiles, because the offline npm cache lacked a
+tarball. Hosted clean installation remains required. The sandbox initially
+blocked test subprocesses and sockets, so required local suites ran with
+approved execution capability. An existing invalid-certificate test once
+raised ConnectionResetError and passed on retry. The research sources were not
+changed to conceal this intermittent transport issue. Track it in a later
+reliability batch. Local browser preview was blocked by the browser network
+policy. Narrow layout has source review only. Hosted checks and rendered live
+interaction verification remain pending at this checkpoint.
