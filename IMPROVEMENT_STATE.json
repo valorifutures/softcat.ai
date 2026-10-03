@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-01T20:56:07.009234+00:00",
-  "phase": "authenticated-boundary-published",
-  "active_branch": null,
+  "updated_at": "2026-10-03T16:37:22.342619+00:00",
+  "phase": "visitor-replay-awaiting-hosted-checks",
+  "active_branch": "feat/visitor-evidence-replay-20261003",
   "last_verified_deployment": {
     "sha": "f43ae83aa754e8aa95fc46b98d890a1e9d173f4c",
     "at": "2026-10-01T20:56:07.009234+00:00",
@@ -131,7 +131,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Published and verified the authenticated local action-boundary study. Real mutual TLS, fixed requests, recorded failures and bounded claims. AGNTCY adapter and deployment isolation remain future work.",
+  "session": "Build a visitor-facing recorded replay from the existing authenticated-boundary receipt. No new recorded study, model call or AGNTCY integration is claimed.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -333,6 +333,19 @@
       "Expanded evidence scrolls to the complete footer at scrollY 11576, footer bottom 935.55 in a 936px viewport. Document width 1348 stays inside viewport 1363.",
       "Site search for identity returns exactly the new research result, and Enter opens its canonical route.",
       "The live JSON endpoint returns HTTP 200 and its parsed object exactly equals the reviewed receipt."
+    ]
+  },
+  "visitor_replay_2026_10_03": {
+    "status": "local validation and independent source review passed, publication pending",
+    "branch": "feat/visitor-evidence-replay-20261003",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/258",
+    "route": "https://softcat.ai/research/can-it-act/",
+    "scope": "Four recorded boundary cases presented as an accessible visitor replay. No new recorded study or AGNTCY integration.",
+    "validation": "461 tests passed, both research receipt reruns verified, all data validators, 643-page build and offline audit passed. Seven additional independent mutation probes rejected.",
+    "limits": [
+      "Local dependencies reused after exact lockfile comparison. Hosted clean installation required.",
+      "One existing invalid-certificate test raised ConnectionResetError and passed on retry. Preserve as a later reliability priority.",
+      "Local browser preview blocked. Narrow layout source review only. Live interaction checks pending."
     ]
   }
 }
