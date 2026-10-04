@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-03T10:33:11.627Z",
+  "checkedAt": "2026-10-04T11:15:32.038Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "17f5cbde8c7bbac639e17cabd2f90dcb82499e9b6bbff38d234ca0c7129b96c2",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/37116769807",
+  "sourceSha256": "44c692ecf40facfd69f01bee4d6f045522dfc04394d5e4ff588eb9a3d4ccaa60",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/37198104184",
   "maxAutoDelta": 0.5,
   "catalogueModels": 466,
   "trackedModels": 39,
@@ -191,12 +191,12 @@
         "outputPrice": 1.14
       },
       "quoted": {
-        "inputPrice": 0.29,
-        "outputPrice": 1.14
+        "inputPrice": 0.25,
+        "outputPrice": 1
       },
       "applied": {
-        "inputPrice": 0.29,
-        "outputPrice": 1.14
+        "inputPrice": 0.25,
+        "outputPrice": 1
       },
       "issues": []
     },
@@ -642,8 +642,8 @@
       "id": "z-ai/glm-5.1",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.9646,
-        "outputPrice": 3.0316
+        "inputPrice": 1.4,
+        "outputPrice": 4.4
       },
       "quoted": {
         "inputPrice": 1.4,
