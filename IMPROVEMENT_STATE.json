@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-05T15:02:33.000000+00:00",
-  "phase": "horizon-evidence-review-in-progress",
+  "updated_at": "2026-10-05T16:18:00.000000+00:00",
+  "phase": "horizon-evidence-review-awaiting-hosted-checks",
   "active_branch": "review/horizon-2026-10-05",
   "last_verified_deployment": {
     "sha": "0354de193e1f89ad492891a1ac8e1fda1c830745",
@@ -123,7 +123,7 @@
   "next": [
     "Select and pin an AGNTCY Identity adapter, verify credential-to-principal and authorisation semantics, and test deployment isolation before untrusted code execution. Then calibrate a single-agent baseline and freeze disjoint evaluation with explicit access and spend limits.",
     "Review original site code/assets provenance before extending the new scoped Apache-2.0 licence.",
-    "Preserve the 28 September Horizon evidence priorities, current targets and append-only history.",
+    "Preserve the 5 October Horizon evidence priorities, current targets and append-only history.",
     "Keep Feral creation and daily GitHub price snapshots under their existing separate owners. Mobile/touch and actual file-download verification remain pending from the earlier workshop pass."
   ],
   "constraints": [
@@ -136,7 +136,8 @@
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
     "The 21 September Horizon review is limited to retrieved primary material, not an exhaustive literature survey. Provider-hosted customer stories and vendor-run evaluations are labelled as such. Search discovery did not find a new qualifying education replication.",
-    "The three current tool guides, agentic-loop and benchmark glossary entries, and the code-review and model-evaluation recipes were read. Their earlier behavioural verification was not rerun, so their review dates remain unchanged."
+    "The three current tool guides, agentic-loop and benchmark glossary entries, and the code-review and model-evaluation recipes were read. Their earlier behavioural verification was not rerun, so their review dates remain unchanged.",
+    "The 5 October Horizon review is limited to retrieved primary material, not an exhaustive literature survey. The NBER endpoint was unavailable during this pass, so its existing verified Khanmigo record was reassessed rather than presented as a fresh retrieval. Provider results and customer accounts remain labelled as such."
   ],
   "workshop_redesign_2026_09_25": {
     "date": "2026-09-25",
@@ -292,6 +293,28 @@
     "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36439072020",
     "live_verification": "The published prediction endpoint contains five history entries and all five 28 September reviews. The reading export shows each unchanged target, new rationale, evidence and limitation. Earlier records remain present.",
     "publication": "required hosted checks and Pages deployment succeeded"
+  },
+  "horizon_review_2026_10_05": {
+    "date": "2026-10-05",
+    "status": "locally validated, publication pending",
+    "branch": "review/horizon-2026-10-05",
+    "outcome": "All five predictions were reassessed against current primary material. Targets, milestones and resolution rules remain unchanged, with zero days added or removed. A sixth append-only review records the new evidence, counterevidence and limits.",
+    "evidence_changes": [
+      "Sonnet 5.5 adds stronger provider-reported results for bounded coding, tool use and multidisciplinary tasks, but not two independent evaluations of one frozen system across the ten declared domains.",
+      "Barclays adds high-volume production use for knowledge retrieval and message routing, but not autonomous completion, fixed eligibility, failures or rescues across the required organisations.",
+      "Figure adds an unusual foundry transfer demonstration and Anthropic adds estimated robot deployment economics, but neither supplies customer-confirmed multi-task intervention rates or actual cost per successful task.",
+      "A 2,379-student randomised trial reports lower grades and participation with a course-integrated AI tutor. It is substantial counterevidence to easy educational-gain assumptions, but one university and no eight-week unassisted assessment do not resolve the declared milestone."
+    ],
+    "next_review_priorities": [
+      "Two independent evaluations of one frozen system using newly constructed tasks across all ten declared domains.",
+      "Consecutive eligible enterprise-agent cases with fixed acceptance tests, failures, rescues and 90-day denominators.",
+      "Customer robot results across multiple tasks and sites, including intervention rate and full cost per successful task.",
+      "One hundred consecutive software tickets at each named organisation, followed through approved deployment and seven days of monitoring.",
+      "Independent term-long tutoring replications with eight-week unassisted follow-up, alongside investigation of participation harms and subgroup effects."
+    ],
+    "validation": "210 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 461 in total. Fresh recovery and boundary receipt verification passed. All data validators, the 643-page production build and offline audit passed with 33,315 internal links, 3,310 assets and metadata, 408 search entries and zero errors.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/260",
+    "publication": "pending required hosted checks"
   },
   "authenticated_boundary_2026_10_01": {
     "status": "published and verified live",

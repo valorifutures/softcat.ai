@@ -815,5 +815,167 @@
         "uncertainty": "Benefits may depend heavily on tutor design, subject and student group. Immediate performance with assistance can improve without producing durable independent learning."
       }
     ]
+  },
+  {
+    "date": "2026-10-05",
+    "id": "predictions-2026-10-05",
+    "reason": "We reassessed all five milestones against primary material retrieved on 5 October. Fresh evidence shows stronger bounded model, coding and enterprise performance, alongside a large randomised university trial in which access to an AI tutor reduced grades and participation. The robotics evidence adds an adaptable demonstration and an estimated economics model, not the customer operating record our test requires. None of the new material meets a declared resolution rule or justifies changing a target. Every deadline and criterion is retained, with zero days added or removed.",
+    "records": [
+      {
+        "earlier": "Independent teams reproduce skilled-human performance across newly created domains without task-specific tuning or undisclosed human help.",
+        "evidence": [
+          {
+            "title": "Anthropic: Claude Sonnet 5.5",
+            "url": "https://www.anthropic.com/claude-sonnet-5-5",
+            "date_label": "28 September 2026; checked 5 October 2026",
+            "finding": "Anthropic reports large gains across agentic coding, knowledge work, multidisciplinary reasoning, computer use and chart recognition, including 70.6% on Terminal-Bench 4.0 and 64.5% on Humanity's Last Exam with tools.",
+            "limit": "These are provider-published benchmark results from several test configurations. They are not two independent preregistered evaluations of one frozen system across our ten domains against skilled adults, and Anthropic says benchmark scores capture only one facet of capability."
+          },
+          {
+            "title": "Anthropic: Claude-shaped science",
+            "url": "https://www.anthropic.com/research/claude-shaped-science",
+            "date_label": "1 October 2026",
+            "finding": "A guest research account describes Claude finding technically correct connections across quantitative fields when given an open-source calculation harness.",
+            "limit": "The work deliberately selects problems suited to current systems and reports substantial human and domain-expert steering. It is a useful case study, not an independent broad-domain evaluation of unfamiliar tasks."
+          }
+        ],
+        "id": "scenario-agi",
+        "later": "Public benchmark gains fail to transfer to fresh tasks, or broad competence continues to depend on specialist retraining and extensive human correction.",
+        "milestone": "A general-purpose AI will independently demonstrate skilled-human performance across a broad set of unfamiliar cognitive tasks.",
+        "rationale": "We retain end-2031 with very high uncertainty. Sonnet 5.5 strengthens the evidence for broad benchmark and tool-use progress, while the science account shows valuable transfer through a specialist harness. The same sources also expose the gap in our test: provider-led benchmarks, problems selected for current strengths and expert steering do not establish one frozen system at skilled-adult median across ten independently constructed domains. There is no defensible basis for moving the forecast.",
+        "resolution": [
+          "Two evaluation teams independent of the model provider test the same frozen general-purpose system on independently created tasks. Each preregisters task-construction rules, scoring and human recruitment before testing, then publishes its protocol, human comparison, tools, time budgets and results.",
+          "Each evaluation covers language, mathematics, coding, factual synthesis, scientific reasoning, visual-spatial reasoning, planning, social reasoning, learning new rules and switching between tasks. Each domain contains at least 100 tasks created after the system was frozen. No task-specific retraining is allowed.",
+          "The system reaches or exceeds the median of relevant skilled adult participants in every domain under the same stated time allowance. This is our operational AGI threshold, not a claim that every definition of AGI has been satisfied."
+        ],
+        "target_date": "2031-12-31",
+        "title": "General intelligence",
+        "uncertainty": "Very uncertain timing. A generalisation breakthrough could bring this forward sharply, while persistent failures on unfamiliar tasks could put it beyond 2031. Our test is a declared working definition, not an industry standard."
+      },
+      {
+        "earlier": "Customer-confirmed 90-day results show high autonomous completion across multiple systems and sectors, including failures and recovery costs.",
+        "evidence": [
+          {
+            "title": "Barclays and Anthropic: enterprise deployment",
+            "url": "https://www.anthropic.com/news/barclays-scales-claude",
+            "date_label": "1 October 2026",
+            "finding": "The partnership says more than 16,000 Barclays colleagues have used a knowledge assistant for over one million searches, while a Global Markets system classifies and routes about 120,000 incoming emails each day.",
+            "limit": "These are large production volumes at one organisation, but employees still use the output or take the operational action. The announcement does not report two autonomous workflows, 1,000 consecutive eligible cases, fixed acceptance tests, completion shares, failures or rescues."
+          },
+          {
+            "title": "OpenAI: Agents API customer accounts",
+            "url": "https://openai.com/index/introducing-the-agents-api/",
+            "date_label": "10 September 2026; reassessed 5 October 2026",
+            "finding": "OpenAI publishes customer accounts of multi-step case review, active-repository work and long-running logistics agents, including one reported 60% reduction in cost per case and another deployment managing deliveries.",
+            "limit": "The product announcement provides selected testimonials rather than predeclared consecutive-case evidence. It does not supply the autonomous completion, escalation and failure denominator for two workflows at ten organisations."
+          }
+        ],
+        "id": "scenario-agentic-work",
+        "later": "Manual rescue, fragile integrations or operating costs prevent teams expanding beyond isolated queues.",
+        "milestone": "AI agents will run repeatable business workflows across at least ten organisations, with people managing exceptions.",
+        "rationale": "We retain end-2028. Barclays adds strong scale evidence for AI-assisted knowledge retrieval and message routing, while the Agents API announcement shows a broader set of production claims. Neither source distinguishes end-to-end autonomous completion from assistance or publishes the fixed eligibility, 90-day acceptance, failure and rescue accounting required across ten organisations. The operational direction strengthens, but the forecast does not move.",
+        "resolution": [
+          "Customer-confirmed or independently evaluated public reports name ten organisations across at least three sectors. Each runs two distinct production workflows spanning at least two business systems.",
+          "Each workflow reports at least 1,000 consecutive eligible cases over at least 90 days. At least 80% finish without a person executing workflow steps. Eligibility, acceptance tests and escalation rules are fixed before the reporting period.",
+          "People may authorise consequential decisions and handle exceptions. Reports include failures and escalations in the denominator. This predicts repeatable operation at ten organisations, not majority adoption or unattended businesses."
+        ],
+        "target_date": "2028-12-31",
+        "title": "Agents at work",
+        "uncertainty": "Timing remains uncertain. Vendor case studies rarely publish consecutive-case failure and intervention data, so the milestone could occur before enough public evidence exists to verify it."
+      },
+      {
+        "earlier": "Customers publish six-month multi-task fleet results, lower intervention rates and repeat purchases supported by full operating costs.",
+        "evidence": [
+          {
+            "title": "Figure: F.02 decommission",
+            "url": "https://www.figure.ai/news/f-02-decommission",
+            "date_label": "30 September 2026",
+            "finding": "Figure reports training F.02 robots in simulation to perform an autonomous jump at an unfamiliar Finnish foundry, then decommissioning most of the fleet as F.03 grows.",
+            "limit": "The unusual one-off demonstration shows transfer into a new environment, not routine paid work. It reports no multi-task customer cycles, intervention rate, supervision, six-month site record or comparative cost per successful task."
+          },
+          {
+            "title": "Anthropic: predicting robot work",
+            "url": "https://www.anthropic.com/research/what-work-can-robots-do",
+            "date_label": "30 September 2026",
+            "finding": "Anthropic estimates task-level robot exposure and deployment costs across occupations, including hardware, workplace changes, maintenance, supervision and energy.",
+            "limit": "The economics are model-generated estimates assembled from cited robots and web sources. The authors warn that task estimates can miss coordination costs and adoption frictions. This is not customer-published operating cost from one shared platform at ten sites."
+          }
+        ],
+        "id": "scenario-robotics",
+        "later": "Maintenance, low utilisation, teleoperation or poor transfer between tasks keeps the cost of successful work above the existing process.",
+        "milestone": "Adaptable robots will perform several useful jobs routinely across factories and warehouses, with demonstrated operating economics.",
+        "rationale": "We retain end-2031. The foundry demonstration is evidence that a trained policy can transfer into an unusual physical setting, and the Anthropic study makes often-hidden deployment costs explicit. Neither is the commercial evidence our test names. One demonstration and estimated economics cannot replace six months of customer-confirmed multi-task cycles, 95% intervention-free reliability and actual cost per successful task across ten production sites.",
+        "resolution": [
+          "One commercially available robot platform using a shared general-purpose control model runs for six months at ten production sites belonging to at least three unrelated customers. It performs at least three materially different task families overall and at least two at each site. Customers demonstrate a new task learned from instructions or examples without writing task-specific control code.",
+          "Customer-confirmed reporting shows at least 95% of task cycles completed without human intervention. The reporting period, task mix, failures and supervised or teleoperated time are disclosed.",
+          "Customer-published cost per successful task matches or beats the incumbent process, including maintenance and supervision. This is a commercial-site milestone, not a prediction of routine household humanoids."
+        ],
+        "target_date": "2031-12-31",
+        "title": "Robotics",
+        "uncertainty": "The date is uncertain because reliability, safety and manufacturing must improve together. Strong demonstrations or a product launch would not be enough to count this as achieved."
+      },
+      {
+        "earlier": "Organisations publish consecutive-ticket results with little manual rescue and reliable post-deployment checks.",
+        "evidence": [
+          {
+            "title": "Anthropic: Claude Sonnet 5.5 coding evaluations",
+            "url": "https://www.anthropic.com/claude-sonnet-5-5",
+            "date_label": "28 September 2026; checked 5 October 2026",
+            "finding": "Anthropic reports 70.6% on Terminal-Bench 4.0. Its customer accounts include 118 app builds at Base44, a majority passing Unity's runtime check and 90% completion on Unity's private multi-step editor and coding benchmark.",
+            "limit": "These are benchmark and early-tester results rather than 100 consecutive predeclared routine tickets. They do not report approved deployment, manual code correction, rollback or seven-day production monitoring across ten organisations."
+          },
+          {
+            "title": "OpenAI: Agents API active-repository account",
+            "url": "https://openai.com/index/introducing-the-agents-api/",
+            "date_label": "10 September 2026; reassessed 5 October 2026",
+            "finding": "OpenAI includes a customer account in which an agent handled implementation, separate review, remediation and browser validation in an active repository.",
+            "limit": "One selected account does not publish an eligible-ticket denominator or show that a majority reached approved production and seven days of monitoring without human code correction."
+          }
+        ],
+        "id": "scenario-software-automation",
+        "later": "Review effort, rollback rates or legacy-system failures prevent agents reliably completing the whole delivery cycle.",
+        "milestone": "Coding agents will take most routine software tickets from specification to monitored production in at least ten organisations, with human approval.",
+        "rationale": "We retain end-2027 as an assertive forecast. The latest coding evaluations and customer accounts strengthen the evidence for multi-step implementation, runtime checking, review and remediation. They still stop short of the decisive operational record: predeclared consecutive tickets, manual-correction and rollback accounting, approved deployment and seven days of monitoring at ten organisations. The new evidence supports the direction without moving the deadline.",
+        "resolution": [
+          "Ten named organisations each publish customer-confirmed or independently evaluated results for at least 100 consecutive eligible tickets over at least 90 days. Eligibility is fixed before assignment: routine fixes or small features estimated at no more than one engineer-day.",
+          "More than half reach implementation, tests, review responses, approved deployment and seven days of monitoring without people writing or correcting the code. Humans still set requirements, review and authorise release.",
+          "Failed deployments, rollbacks and manually rescued tickets remain in the denominator. Merged pull requests alone do not meet the milestone. This does not predict autonomous ownership of all engineering work."
+        ],
+        "target_date": "2027-12-31",
+        "title": "Software creation",
+        "uncertainty": "This is an assertive forecast. Repository preparation, review effort and access to credible post-deployment results could delay verification. The date is our judgement, not a provider's commitment."
+      },
+      {
+        "earlier": "Multi-site trials show replicated gains on delayed, unassisted tests across learner groups.",
+        "evidence": [
+          {
+            "title": "Liu and colleagues: course-integrated AI tutoring trial",
+            "url": "https://edworkingpapers.com/ai26-1598",
+            "date_label": "October 2026; checked 5 October 2026",
+            "finding": "A randomised trial covering 2,379 undergraduates and 30 instructors at one public university reports that access to a course-integrated generative AI tutor reduced final grades by 0.37 standard deviations and learning-system participation by 0.90 standard deviations among comparable course sections.",
+            "limit": "The result is counterevidence, not a test of our success threshold. It comes from one university, and the public abstract does not report an eight-week unassisted assessment. The working paper is not a second independent positive trial."
+          },
+          {
+            "title": "NBER: Khanmigo two-year school experiment",
+            "url": "https://www.nber.org/papers/w35620",
+            "date_label": "August 2026; reassessed 5 October 2026",
+            "finding": "The 18-school cluster-randomised trial reports gains of 1.3 percentile ranks per term, about 0.06 to 0.08 standard deviations over a school year.",
+            "limit": "The annual effect is below our combined 0.2 threshold, covers fewer than 20 schools and resembles gains from non-AI Khan Academy practice. The abstract does not report the required eight-week unassisted follow-up."
+          }
+        ],
+        "id": "scenario-education-disruption",
+        "later": "Gains disappear without AI, fail to transfer, or depend on levels of human support that do not scale.",
+        "milestone": "Generative AI tutoring will show repeatable learning gains that last after the AI is put away, across schools or colleges.",
+        "rationale": "We retain end-2029 with substantial uncertainty. The new 2,379-student university trial is important counterevidence: access coincided with lower grades and much lower participation, with larger estimated losses among first-generation students. The earlier 18-school Khanmigo trial remains a smaller positive result below our effect threshold and without the declared retention test. The contrast strengthens our requirement for two independent, term-long positive trials with delayed unassisted assessment. It does not by itself justify moving the forecast date.",
+        "resolution": [
+          "Two independently evaluated, preregistered randomised trials of generative AI tutoring collectively cover at least 2,000 learners across at least 20 schools or colleges, with an intervention lasting at least one academic term. Each compares against a non-AI control with comparable teaching and learning time.",
+          "Both trials show statistically positive effects on unassisted assessments at least eight weeks after the intervention. Their combined standardised effect is at least 0.2, using an inverse-variance weighted mean of the reported primary outcomes.",
+          "Human teachers and safeguarding remain in place. The reports disclose attrition and assistance. This predicts demonstrated durable learning gains, not the replacement of teachers, schools or credentials."
+        ],
+        "target_date": "2029-12-31",
+        "title": "Education",
+        "uncertainty": "Benefits may depend heavily on tutor design, subject and student group. Immediate performance with assistance can improve without producing durable independent learning."
+      }
+    ]
   }
 ]
