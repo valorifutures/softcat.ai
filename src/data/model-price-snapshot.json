@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-04T11:15:32.038Z",
+  "checkedAt": "2026-10-05T12:32:37.290Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "44c692ecf40facfd69f01bee4d6f045522dfc04394d5e4ff588eb9a3d4ccaa60",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/37198104184",
+  "sourceSha256": "4e5714aed2af467fb227c81821d4b86731245cc5c30468248f2334f5ac97926d",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/37310228649",
   "maxAutoDelta": 0.5,
   "catalogueModels": 466,
   "trackedModels": 39,
@@ -11,7 +11,7 @@
   "notListed": 3,
   "reviewNeeded": 1,
   "unverified": 0,
-  "priceChanges": 1,
+  "priceChanges": 2,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -39,11 +39,11 @@
       },
       "quoted": {
         "inputPrice": 0.32,
-        "outputPrice": 3.2
+        "outputPrice": 3.25
       },
       "applied": {
         "inputPrice": 0.32,
-        "outputPrice": 3.2
+        "outputPrice": 3.25
       },
       "issues": []
     },
@@ -187,16 +187,16 @@
       "id": "deepseek/deepseek-chat-v3-0324",
       "status": "verified",
       "previous": {
+        "inputPrice": 0.25,
+        "outputPrice": 1
+      },
+      "quoted": {
         "inputPrice": 0.29,
         "outputPrice": 1.14
       },
-      "quoted": {
-        "inputPrice": 0.25,
-        "outputPrice": 1
-      },
       "applied": {
-        "inputPrice": 0.25,
-        "outputPrice": 1
+        "inputPrice": 0.29,
+        "outputPrice": 1.14
       },
       "issues": []
     },
