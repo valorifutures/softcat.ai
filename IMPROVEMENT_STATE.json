@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-03T16:50:39.087461+00:00",
-  "phase": "visitor-replay-published-and-verified",
-  "active_branch": null,
+  "updated_at": "2026-10-05T15:02:33.000000+00:00",
+  "phase": "horizon-evidence-review-in-progress",
+  "active_branch": "review/horizon-2026-10-05",
   "last_verified_deployment": {
     "sha": "0354de193e1f89ad492891a1ac8e1fda1c830745",
     "at": "2026-10-03T16:50:39.087461+00:00",
@@ -131,7 +131,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Build a visitor-facing recorded replay from the existing authenticated-boundary receipt. No new recorded study, model call or AGNTCY integration is claimed.",
+  "session": "Reassess all five Horizon predictions against current primary evidence, preserve append-only history and publish at most one coherent evidence batch.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
