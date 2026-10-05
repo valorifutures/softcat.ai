@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-05T15:35:00.000000+00:00",
+  "updated_at": "2026-10-05T17:43:16.727Z",
   "phase": "published-and-verified-live",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "d9d47507f12739602b6500d61c4a85328faefa61",
-    "at": "2026-10-05T15:32:22+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/37333057206"
+    "sha": "c2374b4e00f71a3e116694e342cabcb2fd15f853",
+    "at": "2026-10-05T17:36:25Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/37349312758"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -118,7 +118,8 @@
     "PR #232 shipped genuine Feral cycle 6, Pocket Weather. Independent Codex director, builder and critic followed the constitution, with PASS on attempt 1. Exactly three files inside the walls changed and old ledger/manifest entries remain intact. Trusted gate, 134 JS tests, 141 bot tests, 12 publication fixtures, validators, 636-page build and offline audit passed. Hosted PR run 35028587178 and Pages run 35028658302 succeeded. Live checks verified assignment, Enter-key stepping, actual timed playback, pause persistence, all 12 hours, completion, reset and bottom-page access at scrollY 803. No horizontal overflow was observed. The returning gallery showed its cached five-room page until a normal reload; the refreshed page shows six creations and the 15 September cycle 6 PASS.",
     "The maintainer clarified that Horizon should count down recalculated days. The identical hours/minutes/seconds were remainders to midnight. Main Horizon now shows only day counters, refreshing at UTC day boundaries, on return and on published review. Each review exposes its numeric target shift separately from elapsed time. Exact ISO target dates are respected rather than forced to year end. Existing forecasts and review history are unchanged. All 138 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and 636-page build/audit pass. Independent review also caught and fixed rounding at midnight + 1 ms.",
     "PR #234 passed all hosted checks in run 35030633590 and deployed in Pages run 35030734134. Live Horizon has five day counters and zero sub-day timers. The observed day counts were AGI 1,933, agents 838, robotics 1,933, software 472 and education 1,203. Keyboard selection showed the matching software 472-day calculation and 2027 target. Manual update checking completed while retaining selection and actual review history. Clipboard writing fell back to selectable text containing the correct 472-day UTC snapshot and full briefing. No desktop horizontal overflow was observed.",
-    "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned."
+    "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned.",
+    "PR #262 published Feral cycle 9, BRUX, following a free director brief, independent builder and critic PASS on attempt 1. Twelve core tests, the exact final-head trusted gate and full hosted checks passed. Live instrument, audio controls, session expiry and 390/1280 px layouts were verified; audio listening and physical touch coverage are not claimed."
   ],
   "next": [
     "Select and pin an AGNTCY Identity adapter, verify credential-to-principal and authorisation semantics, and test deployment isolation before untrusted code execution. Then calibrate a single-agent baseline and freeze disjoint evaluation with explicit access and spend limits.",
@@ -137,7 +138,8 @@
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
     "The 21 September Horizon review is limited to retrieved primary material, not an exhaustive literature survey. Provider-hosted customer stories and vendor-run evaluations are labelled as such. Search discovery did not find a new qualifying education replication.",
     "The three current tool guides, agentic-loop and benchmark glossary entries, and the code-review and model-evaluation recipes were read. Their earlier behavioural verification was not rerun, so their review dates remain unchanged.",
-    "The 5 October Horizon review is limited to retrieved primary material, not an exhaustive literature survey. The NBER endpoint was unavailable during this pass, so its existing verified Khanmigo record was reassessed rather than presented as a fresh retrieval. Provider results and customer accounts remain labelled as such."
+    "The 5 October Horizon review is limited to retrieved primary material, not an exhaustive literature survey. The NBER endpoint was unavailable during this pass, so its existing verified Khanmigo record was reassessed rather than presented as a fresh retrieval. Provider results and customer accounts remain labelled as such.",
+    "Audio enable/mute UI and Web Audio source were checked, but speaker listening, physical touch devices, live reduced-motion rendering and hidden-tab event behaviour were not verified. Local Astro installation was unavailable; complete production builds ran on GitHub."
   ],
   "workshop_redesign_2026_09_25": {
     "date": "2026-09-25",
@@ -390,5 +392,31 @@
       "Enter and Space open step evidence, complete transcripts and original JSON. The lost-reply record includes NO_RESPONSE and FOUND.",
       "Expanded evidence reaches the full footer at scrollY10129, footer bottom935.95 in a936px viewport. Document width1348 stays within viewport1363."
     ]
+  },
+  "feral_cycle9_receipt": {
+    "date": "2026-10-05",
+    "cycle": 9,
+    "trigger": "Maintainer-requested manual run",
+    "route": "https://softcat.ai/feral/brux/",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/262",
+    "reviewed_head": "38921b147239044c051628a8d3309f9640c895e4",
+    "merge_sha": "c2374b4e00f71a3e116694e342cabcb2fd15f853",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/37348852963",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/37349312758",
+    "critic": "Independent Codex critic PASS, attempt 1",
+    "scope": "Exactly five regular files in the three permitted Feral roots; all previous manifest and ledger records preserved.",
+    "validation": "Twelve deterministic BRUX tests passed independently. Trusted base gate passed on exact final head. All hosted validators/tests, 644-page production build, offline publication audit and both research gates passed.",
+    "live_checks": [
+      "Feral gallery shows nine rooms, cycle 9, 5 October and PASS; BRUX opens from its actual gallery link.",
+      "Hatching reaches twelve mouths and disables Hatch. Native selection and End-key tuning set Mouth 12 to 144 BPM.",
+      "Share a clock works. Explicit Enable sound reaches Sound on. Pause unchecks and disables sound, preserving five active seconds.",
+      "Resume retains the remaining budget and stays silent. Expiry reaches zero, disables playback and reveals the ending.",
+      "Wake preserves the prepared twelve mouths and 144-BPM tuning. Enter activates Scatter. Restart original colony restores seven clocks, Mouth 1 at 57 BPM and a fresh silent sixty-active-second budget.",
+      "Full-page rendered checks at 390x844 and 1280x900 show no horizontal overflow and accessible bottom-page controls/footer. Mobile control bounds stay inside the padded page.",
+      "No browser console errors were captured. The instrument was left silent."
+    ],
+    "limits": "Audio enable/mute UI and Web Audio source were checked, but speaker listening, physical touch devices, live reduced-motion rendering and hidden-tab event behaviour were not verified. Local Astro installation was unavailable; complete production builds ran on GitHub.",
+    "screenshot": "docs/evidence/2026-10-05-brux.jpg",
+    "screenshot_blob": "aa7abcaacb716ee835f2c0789c31825ed3628aa2"
   }
 }
