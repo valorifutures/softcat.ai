@@ -1,5 +1,51 @@
 # Improvement log
 
+## 5 October 2026, Horizon evidence review
+
+We reassessed all five published predictions against their exact milestones and
+resolution rules. The sixth review is append-only. Every target, milestone and
+criterion remains unchanged, with zero days added or removed.
+
+The new evidence is mixed. Anthropic reports stronger bounded coding, tool-use
+and multidisciplinary results for Sonnet 5.5, while its science case study also
+describes substantial expert steering. Barclays reports large production
+volumes for knowledge retrieval and message routing, but neither it nor the
+Agents API customer accounts publishes the fixed eligibility, autonomous
+completion, failure and rescue denominators our agent milestone requires.
+Figure's foundry jump and Anthropic's estimated robot economics do not replace
+customer multi-task operating records or actual cost per successful task.
+
+The largest judgement update is education. A randomised trial of 2,379
+undergraduates and 30 instructors at one public university reports lower final
+grades and participation when students received access to a course-integrated
+AI tutor. That is meaningful counterevidence to easy educational-gain claims.
+It is still one university and the public abstract does not report the required
+eight-week unassisted outcome, so it neither resolves the milestone nor justifies
+moving the end-2029 forecast. The existing 18-school Khanmigo record was
+reassessed as the comparison. Its NBER endpoint was unavailable during this
+pass, so we do not describe it as a fresh retrieval.
+
+The glossary's zero-shot entry no longer claims that success proves an ability
+was baked into pre-training. It now distinguishes examples withheld from the
+current prompt from system instructions, tools, retrieval, fine-tuning and
+earlier task development. We read the current tool guides, code-review and
+model-evaluation recipes, and related benchmark and agentic-loop entries. Their
+earlier behavioural checks were not rerun, so their review dates remain intact.
+
+Local validation passed 210 script JavaScript tests, 27 Feral tests, 141 bot
+tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary
+tests, 461 tests in total. Fresh recovery and boundary receipt verification,
+all data validators, the 643-page production build and offline audit passed.
+The audit checked 33,315 internal links, 3,310 local assets and metadata, and
+408 search entries with no errors. A first boundary receipt rerun reported a
+mismatch without identifying its cause. The immediate clean rerun passed without
+changing the research source or recorded receipt.
+
+[PR #260](https://github.com/valorifutures/softcat.ai/pull/260) holds the exact
+candidate. Required hosted checks, normal merge, Pages deployment and live
+Horizon and glossary verification remain pending at this checkpoint. No
+successful publication is claimed.
+
 ## 16 September 2026, requested Feral cycle 7 verified
 
 The independent director chose Parcel Bureau, a finite pipe-routing game for three impossible parcels. A separate builder made it, and a separate critic returned PASS on attempt 1 against every safety/deploy category. No safety fix or invented disagreement was needed. Five files changed, all within Feral's allowed roots. Earlier manifest and ledger entries are intact. Exactly one cycle was appended, and its ledger links to [PR #239](https://github.com/valorifutures/softcat.ai/pull/239) for the actual publication record.
