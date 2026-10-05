@@ -1243,3 +1243,50 @@ exactly one matching result and Enter opens it. The retained screenshot is
 not mobile/touch coverage. No historical recording, forecast, editorial
 retirement, price ownership or Feral work changed. The next reliability
 priority is the intermittent invalid-certificate connection-reset handling.
+
+
+## 5 October 2026, Feral gets teeth
+
+The maintainer requested a fresh, properly Feral run. The independent director
+chose BRUX, an unruly rhythm colony of synthetic mouths, without a research
+commission or house theme. The builder made the instrument, and the separate
+critic judged safety and deployment only. The coordinator caught Wake silently
+discarding preparation before play. Wake now preserves the colony, while
+Restart restores the original seven clocks. Twelve deterministic core tests
+cover that distinction and the timing, limits, SVG and configured audio bounds.
+
+[PR #262](https://github.com/valorifutures/softcat.ai/pull/262) preserves every
+previous manifest and ledger entry and changes exactly five regular files
+inside Feral's three roots. The critic independently retrieved the passing
+draft build and audit, repeated the twelve tests and recorded PASS on attempt
+one. The trusted base gate passed on exact final head
+`38921b147239044c051628a8d3309f9640c895e4`. All [final hosted checks](https://github.com/valorifutures/softcat.ai/actions/runs/37348852963)
+passed before normal squash merge `c2374b4e00f71a3e116694e342cabcb2fd15f853`.
+Main was re-read unchanged before merge. [Pages](https://github.com/valorifutures/softcat.ai/actions/runs/37349312758)
+then passed fresh publication checks and deployed that release. The hosted
+production build contains 644 pages. The independently inspected draft audit
+checked 33,321 internal links and 3,314 asset/metadata references with no errors.
+Local Astro installation was unavailable, so local production-build evidence
+is not claimed.
+
+The [live room](https://softcat.ai/feral/brux/) opens from the nine-room gallery,
+which shows cycle 9, 5 October and PASS. Hatching reaches twelve and disables
+Hatch. Native selection and the End key set Mouth 12 to 144 BPM. Share a clock
+works, explicit sound enable reaches Sound on, and Pause unchecks and disables
+sound while retaining five active seconds. Resume keeps the remaining budget
+and stays silent. Expiry reaches zero, disables playback and reveals the ending.
+Wake preserves the prepared twelve mouths and tuning. Enter activates Scatter.
+Restart restores seven original clocks, Mouth 1 at 57 BPM and a fresh silent
+sixty-active-second budget.
+
+Full-page rendering at 390x844 and 1280x900 shows no horizontal overflow.
+The mobile controls remain within the padded page, and the complete footer is
+reachable. No browser console error was captured. The retained rendered view is
+[2026-10-05-brux.jpg](evidence/2026-10-05-brux.jpg).
+Audio enable/mute state and source were checked, but physical speaker listening,
+physical touch devices, live reduced-motion rendering and hidden-tab event
+behaviour are not claimed. The instrument was left silent. This was one manual
+council, not a change to the existing Tuesday/Friday schedule.
+
+This release receipt is a separate maintenance diff. No Feral source, historical
+record, research result, forecast, price ownership or legacy timer changes in it.
