@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-05T16:18:00.000000+00:00",
-  "phase": "horizon-evidence-review-awaiting-hosted-checks",
-  "active_branch": "review/horizon-2026-10-05",
+  "updated_at": "2026-10-05T15:35:00.000000+00:00",
+  "phase": "published-and-verified-live",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "0354de193e1f89ad492891a1ac8e1fda1c830745",
-    "at": "2026-10-03T16:50:39.087461+00:00",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/37137878963"
+    "sha": "d9d47507f12739602b6500d61c4a85328faefa61",
+    "at": "2026-10-05T15:32:22+00:00",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/37333057206"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -131,7 +131,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Reassess all five Horizon predictions against current primary evidence, preserve append-only history and publish at most one coherent evidence batch.",
+  "session": "The 5 October Horizon evidence review is published and verified live. All five targets remain unchanged, the append-only record is current and the active-work marker is clear.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -296,7 +296,7 @@
   },
   "horizon_review_2026_10_05": {
     "date": "2026-10-05",
-    "status": "locally validated, publication pending",
+    "status": "published and verified live",
     "branch": "review/horizon-2026-10-05",
     "outcome": "All five predictions were reassessed against current primary material. Targets, milestones and resolution rules remain unchanged, with zero days added or removed. A sixth append-only review records the new evidence, counterevidence and limits.",
     "evidence_changes": [
@@ -314,7 +314,13 @@
     ],
     "validation": "210 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 461 in total. Fresh recovery and boundary receipt verification passed. All data validators, the 643-page production build and offline audit passed with 33,315 internal links, 3,310 assets and metadata, 408 search entries and zero errors.",
     "pull_request": "https://github.com/valorifutures/softcat.ai/pull/260",
-    "publication": "pending required hosted checks"
+    "reviewed_head": "0e4de1b7905d8aef1b8068a15f068c0ca1035960",
+    "reviewed_tree": "6c7c887e3b5a38cec245062d67c1fd8e0b78905f",
+    "merge": "d9d47507f12739602b6500d61c4a85328faefa61",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/37332397701",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/37333057206",
+    "live_verification": "All five prediction selections show the 5 October review, unchanged targets, zero-day movement and complete history back to 15 September. The agents evidence panel shows both new sources and limits. The zero-shot page contains the corrected attribution and preserved publication date.",
+    "publication": "required hosted checks and Pages deployment succeeded"
   },
   "authenticated_boundary_2026_10_01": {
     "status": "published and verified live",

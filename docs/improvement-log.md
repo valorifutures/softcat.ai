@@ -46,6 +46,21 @@ candidate. Required hosted checks, normal merge, Pages deployment and live
 Horizon and glossary verification remain pending at this checkpoint. No
 successful publication is claimed.
 
+Release receipt: [PR #260](https://github.com/valorifutures/softcat.ai/pull/260)
+passed all [hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/37332397701)
+on exact reviewed head `0e4de1b7905d8aef1b8068a15f068c0ca1035960`, tree
+`6c7c887e3b5a38cec245062d67c1fd8e0b78905f`. Main was re-read unchanged
+before normal squash merge `d9d47507f12739602b6500d61c4a85328faefa61`.
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/37333057206)
+succeeded, including fresh recovery and authenticated-boundary checks.
+
+On the live Horizon page, all five prediction selections show the 5 October
+review, their unchanged targets, zero days added or removed and history back to
+the 15 September initial call. The agents panel shows both new evidence records
+and their limits. The live zero-shot page contains the corrected attribution,
+5 October editorial note and original 3 April publication date. Publication is
+complete. No mobile or touch-device claim is made.
+
 ## 16 September 2026, requested Feral cycle 7 verified
 
 The independent director chose Parcel Bureau, a finite pipe-routing game for three impossible parcels. A separate builder made it, and a separate critic returned PASS on attempt 1 against every safety/deploy category. No safety fix or invented disagreement was needed. Five files changed, all within Feral's allowed roots. Earlier manifest and ledger entries are intact. Exactly one cycle was appended, and its ledger links to [PR #239](https://github.com/valorifutures/softcat.ai/pull/239) for the actual publication record.
