@@ -78,5 +78,15 @@
     "concept_by": "feral-director",
     "type": "interactive",
     "born": "2026-09-18"
+  },
+  {
+    "slug": "brux",
+    "title": "BRUX",
+    "blurb": "A rhythm colony with no conductor. Make it agree. Listen for how long that lasts.",
+    "route": "/feral/brux",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "instrument",
+    "born": "2026-10-05"
   }
 ]
