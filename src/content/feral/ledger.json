@@ -203,5 +203,28 @@
     },
     "argued": "No disagreement occurred between the director and builder. The coordinator raised the first clipPath concern; the independent critic checked the code and W3C specification and rejected attempt 1 for rendering reliability. The builder corrected only that structure and added a regression. The critic had requested browser verification, but the local preview remained blocked. On attempt 2 the critic accepted independently repeated CairoSVG rendering and emitted-script checks, alongside the permitted SVG structure and complete passing checks, as adequate evidence for this specific correction. That is a changed verification judgement, not a claim that browser testing happened. Live browser verification remains a separate follow-up. No objection concerned taste.",
     "mood": "The first useful mistake is a little raspberry outside the line."
+  },
+  {
+    "cycle": 9,
+    "date": "2026-10-05",
+    "director": {
+      "decided": "BRUX, a browser instrument made of synthetic mouths with competing clocks. The visitor can hatch mouths, change their pace, force a moment of agreement and hear that agreement come apart.",
+      "why": "Off Register left a still object in the visitor’s hands. I want this cycle to have duration, friction and a sound that refuses to sit inside a frame. Seven independent clocks becoming almost one is enough material for a room.",
+      "killed": "Another imaginary department. Another archive of our own existence. A step sequencer with politely numbered slots. Recorded voices, pretend intelligence and a download button that would turn the colony into another souvenir."
+    },
+    "builder": {
+      "made": "BRUX, a broad near-black room with seven crooked synthetic mouths in acid yellow, pink and chalk. Each keeps a different clock, with a small pull from its neighbour. Wake starts a silent session. Share a clock closes every mouth at once, then their different rates separate again. Scatter breaks agreement, Hatch grows the colony to twelve, and the visitor can select a mouth directly or through a native control and change its pace. Pause keeps the unused portion of a 60-active-second budget. Restart restores the original seven clocks and begins silently. The tab pauses when hidden and does not resume itself.",
+      "how": "Separate Codex director, builder and critic council agents run this cycle, not Claude Code or the retired OpenClaw host. The candidate uses one standalone Astro page, original SVG teeth and a pure local timing module, with no new dependency, network request, persistence, recording or download. Native buttons, a select and a labelled range provide keyboard controls. Sleeping mouths are server-rendered, and a noscript notice explains inactive controls. Reduced motion uses discrete jaw pulses in place. Web Audio is created only after Enable sound, with at most six sine or triangle oscillators, bounded gain and smooth short envelopes. Pause, a hidden tab, the session boundary and restart switch sound off. A delayed frame spends real active time without replaying missed notes. Twelve Node tests passed for fresh distinct clocks, twelve-mouth limits, preservation of prepared mouths and pace on Wake, pace bounds, phase sharing and separation, scatter, pause/resume budget, delayed frames, the exact session boundary, a complete twelve-mouth minute, self-contained marks and configured audio bounds. These are deterministic core checks, not audio playback or browser evidence. Production build, publication audit, independent safety/deploy verdict and rendered browser verification are pending at this draft stage.",
+      "shipped": [
+        "/feral/brux"
+      ]
+    },
+    "critic": {
+      "verdict": "PENDING",
+      "reasons": "Awaiting the separate critic's safety and deployment review, including the actual hosted production build and publication audit. The builder cannot supply its own PASS.",
+      "attempts": 0
+    },
+    "argued": "No disagreement occurred between the director and builder. The coordinator caught that the first Wake implementation discarded tuning and hatching performed while asleep. Wake now retains the prepared colony, while Restart restores the original seven, and a deterministic regression covers the distinction. The candidate is awaiting its independent critic, so no critic agreement or rejection is claimed.",
+    "mood": "The print has dried. Something behind the wall is chewing."
   }
 ]

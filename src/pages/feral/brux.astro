@@ -1,0 +1,358 @@
+---
+import { LIMITS, originalColony, marks, mouthSvg } from '../../content/feral/brux.mjs';
+const opening = originalColony();
+---
+
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BRUX | Feral</title>
+    <meta name="description" content="A rhythm colony with no conductor. Make it agree. Listen for how long that lasts. A local browser instrument from Feral." />
+    <link rel="canonical" href="https://softcat.ai/feral/brux/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip" href="#controls">Skip to the instrument controls</a>
+    <div class="room">
+      <nav aria-label="Feral navigation"><a href="/feral/">The other rooms</a><span>Feral / 009</span></nav>
+      <header>
+        <div><p class="eyebrow">The room has teeth now.</p><h1>BRUX</h1></div>
+        <p class="premise">Each mouth keeps its own time.<br />You can make them agree.<br /><em>Briefly.</em></p>
+      </header>
+      <main>
+        <p class="sr-only" id="field-help">Select a mouth directly, or use the Mouth control below. Each mouth has its own pace.</p>
+        <div class="field" id="field" role="group" aria-label="The rhythm colony" aria-describedby="field-help">
+          {opening.mouths.map(item => {
+            const mark = marks(item.id);
+            return <button class="mouth" type="button" data-mouth={item.id} aria-label={`Mouth ${item.id + 1}, ${item.bpm} beats per minute`} aria-pressed={item.id === 0 ? 'true' : 'false'} style={`--x:${mark.x}%;--y:${mark.y}%;--mx:${mark.mobileX}%;--my:${mark.mobileY}%;--angle:${mark.angle}deg;--scale:${mark.scale};--ink:${mark.colour};--bite:0`} disabled>
+              <span class="drawing" set:html={mouthSvg(item.id)}></span><span class="number" aria-hidden="true">{String(item.id + 1).padStart(2, '0')}</span>
+            </button>;
+          })}
+          <span class="field-note" id="field-note" aria-hidden="true">Asleep. Seven clocks.</span>
+        </div>
+
+        <section class="controls" id="controls" aria-label="Instrument controls">
+          <div class="session-actions">
+            <button class="wake" id="wake" type="button" disabled>Wake <span>60 seconds</span></button>
+            <button id="pause" type="button" disabled>Pause</button>
+            <button id="restart" type="button" disabled>Restart original colony</button>
+          </div>
+          <div class="colony-actions">
+            <button id="share" type="button" disabled>Share a clock</button>
+            <button id="scatter" type="button" disabled>Scatter</button>
+            <button id="hatch" type="button" disabled>Hatch <span id="mouth-count">7 / 12</span></button>
+          </div>
+          <div class="tuning">
+            <label class="choose" for="selected">Mouth <select id="selected" disabled>{opening.mouths.map(item => <option value={item.id}>Mouth {item.id + 1}</option>)}</select></label>
+            <div class="pace-control"><label for="pace"><span id="pace-label">Mouth 1 pace</span><output id="pace-value" for="pace">57 BPM</output></label><input id="pace" type="range" min={LIMITS.minPace} max={LIMITS.maxPace} step="1" value="57" aria-valuetext="57 beats per minute" disabled /></div>
+            <label class="sound" for="sound"><input id="sound" type="checkbox" disabled /><span>Enable sound</span></label>
+          </div>
+        </section>
+        <div class="session-line"><p id="status" role="status">Wake starts silently. A session lasts 60 active seconds. Pause keeps the remaining time.</p><p class="clock"><span>Active time left</span> <output id="time" aria-live="off">60s</output></p></div>
+        <p class="quiet">A local rhythm instrument. Every sound is synthesised in your browser.</p>
+        <p class="motion-note" id="motion-note" hidden>Reduced motion: the mouths pulse in place.</p>
+        <p class="ending" id="ending" hidden>Nothing was said.<br /><span>Quite a lot answered.</span></p>
+        <noscript><p class="no-script">The seven sleeping mouths are shown above. JavaScript is needed to wake or play the instrument. The controls are inactive.</p></noscript>
+      </main>
+      <footer><span>No conductor. No recording.</span><a href="/feral/#ledger">The council's record</a></footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { background: #11120f; color: #eee9dc; color-scheme: dark; }
+  :global(body) { margin: 0; font: .875rem/1.5 system-ui, sans-serif; }
+  :global(a) { color: inherit; text-underline-offset: 4px; }
+  :global(button), :global(select), :global(input) { font: inherit; }
+  :global(button) { cursor: pointer; touch-action: manipulation; }
+  :global(button:disabled) { cursor: default; opacity: .42; }
+  :global(:focus-visible) { outline: 2px solid #eee9dc; outline-offset: 5px; }
+  :global([hidden]) { display: none !important; }
+  .room { max-width: 1540px; margin: auto; padding: 0 clamp(1rem, 4vw, 4.5rem); }
+  .skip { position: absolute; top: -100px; left: 1rem; z-index: 5; padding: .8rem; background: #e8ff62; color: #11120f; }
+  .skip:focus { top: 1rem; }
+  nav, footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .75rem; font: .65rem/1.5 ui-monospace, monospace; letter-spacing: .04em; }
+  nav { padding: 1.3rem 0; border-bottom: 1px solid #393b32; }
+  nav a { text-decoration: none; }
+  nav span { color: #aaa99a; }
+  header { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; padding: 2.7rem 0 2.3rem; }
+  .eyebrow { margin: 0 0 .8rem; color: #ff91be; font-size: .8rem; }
+  h1 { margin: 0; font-size: clamp(5.4rem, 16vw, 12.5rem); font-weight: 950; line-height: .72; letter-spacing: -.085em; color: #e8ff62; transform: rotate(-2deg); transform-origin: left bottom; }
+  .premise { font-size: clamp(.95rem, 1.5vw, 1.3rem); line-height: 1.5; margin: 0 0 .1rem; }
+  .premise em { color: #ff91be; font-style: normal; }
+  .field { position: relative; height: clamp(440px, 47vw, 650px); border-top: 1px solid #393b32; border-bottom: 1px solid #393b32; isolation: isolate; }
+  .field :global(.mouth) { position: absolute; left: var(--x); top: var(--y); width: clamp(108px, 17vw, 228px); padding: 0; background: transparent; border: 0; color: var(--ink); transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 0px))) rotate(var(--angle)) scale(var(--scale)); }
+  .field :global(.mouth:disabled) { opacity: 1; }
+  .field :global(.drawing) { display: block; }
+  .field :global(.drawing svg) { display: block; width: 100%; height: auto; overflow: visible; fill: currentColor; }
+  .field :global(.lip) { fill: none; stroke: currentColor; stroke-width: 9; stroke-linecap: square; }
+  .field :global(.upper) { transform: translateY(calc(12px * var(--bite))); }
+  .field :global(.lower) { transform: translateY(calc(-12px * var(--bite))); }
+  .field :global(.mouth[aria-pressed='true'])::after { content: ''; position: absolute; inset: -5px; border: 1px dashed #8d8f7b; transform: rotate(2deg); pointer-events: none; }
+  .field :global(.mouth:hover:not(:disabled))::after { content: ''; position: absolute; inset: -5px; border: 1px solid currentColor; pointer-events: none; }
+  .field :global(.number) { position: absolute; bottom: -9px; left: -2px; color: #c3c3b3; font: .6rem/1 ui-monospace, monospace; transform: rotate(calc(-1 * var(--angle))); }
+  .field-note { position: absolute; bottom: .9rem; right: .1rem; color: #aaa99a; font: .65rem/1.5 ui-monospace, monospace; }
+  .controls { padding: 1.6rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 2rem; }
+  .session-actions, .colony-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .controls button { min-height: 42px; padding: .6rem .8rem; border: 1px solid #5b5d4f; color: #eee9dc; background: transparent; font-size: .75rem; }
+  .controls button:hover:not(:disabled) { border-color: #e8ff62; }
+  .controls button span { margin-left: .8rem; font: .62rem/1.5 ui-monospace, monospace; }
+  .controls .wake { background: #e8ff62; border-color: #e8ff62; color: #11120f; font-weight: 750; }
+  .tuning { display: flex; align-items: center; flex-wrap: wrap; gap: .9rem 2rem; flex-basis: 100%; padding-top: .6rem; }
+  .choose { display: flex; align-items: center; gap: .65rem; font-size: .75rem; }
+  select { padding: .55rem .7rem; border: 1px solid #5b5d4f; background: #11120f; color: #eee9dc; min-height: 42px; font-size: .75rem; }
+  .pace-control { width: min(270px, 100%); }
+  .pace-control label { display: flex; justify-content: space-between; gap: 1rem; font-size: .75rem; }
+  .pace-control output { color: #e8ff62; font: .7rem/1.6 ui-monospace, monospace; }
+  input[type='range'] { width: 100%; height: 28px; accent-color: #e8ff62; margin: .2rem 0 0; cursor: pointer; }
+  .sound { display: flex; align-items: center; min-height: 42px; gap: .6rem; font-size: .75rem; cursor: pointer; }
+  .sound input { accent-color: #ff91be; width: 19px; height: 19px; margin: 0; }
+  .sound:has(input:disabled) { opacity: .5; cursor: default; }
+  .session-line { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .7rem 1.5rem; padding-top: 1rem; }
+  #status { margin: 0; color: #c3c3b3; font-size: .75rem; max-width: 55em; }
+  .clock { margin: 0; font: .7rem/1.7 ui-monospace, monospace; white-space: nowrap; }
+  .clock span { color: #aaa99a; margin-right: .7rem; }
+  .clock output { color: #e8ff62; display: inline-block; width: 3ch; font-variant-numeric: tabular-nums; }
+  .quiet, .motion-note { font-size: .68rem; color: #aaa99a; margin: .9rem 0 0; }
+  .ending { font-size: clamp(1.8rem, 5vw, 3.8rem); line-height: 1.1; letter-spacing: -.035em; margin: 2rem 0; }
+  .ending span { color: #ff91be; }
+  footer { border-top: 1px solid #393b32; margin-top: 2.5rem; padding: 1.2rem 0 1.8rem; color: #aaa99a; }
+  .no-script { border: 1px solid #ff91be; padding: 1rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  @media (max-width: 700px) {
+    header { align-items: flex-start; flex-direction: column; padding: 2rem 0 1.7rem; gap: 1.6rem; }
+    h1 { font-size: clamp(5.4rem, 25vw, 9rem); }
+    .premise { font-size: 1rem; }
+    .field { height: 580px; }
+    .field :global(.mouth) { left: var(--mx); top: var(--my); width: clamp(79px, 23vw, 145px); }
+    .field.has-extra { height: 720px; }
+    .field:not(.has-extra) :global(.mouth) { top: calc(var(--my) * 1.18); }
+    .controls { gap: .8rem; padding-top: 1.2rem; }
+    .tuning { gap: .8rem 1.2rem; }
+    .pace-control { width: min(270px, 100%); flex: 1 1 180px; }
+    .clock { flex-basis: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .field :global(.mouth) { --dx: 0px !important; --dy: 0px !important; }
+  }
+</style>
+
+<script>
+  import { LIMITS, AUDIO, originalColony, wake, remainingMs, pause, resume, setPace, hatch, shareClock, scatter, tick, marks, mouthSvg, audioPlan } from '../../content/feral/brux.mjs';
+  const get = (id: string) => document.getElementById(id)!;
+  const button = (id: string) => get(id) as HTMLButtonElement;
+  const field = get('field');
+  const selectedControl = get('selected') as HTMLSelectElement;
+  const paceControl = get('pace') as HTMLInputElement;
+  const soundControl = get('sound') as HTMLInputElement;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let colony = originalColony();
+  let selected = 0;
+  let frame: number | null = null;
+  let lastTime: number | null = null;
+  let audioToken = 0;
+  let reduced = motion.matches;
+
+  class PulseAudio {
+    context: AudioContext | null = null;
+    master: GainNode | null = null;
+    voices = new Set<OscillatorNode>();
+    suspendTimer: number | null = null;
+    async enable() {
+      if (this.suspendTimer !== null) { window.clearTimeout(this.suspendTimer); this.suspendTimer = null; }
+      if (!this.context) {
+        const Constructor = window.AudioContext ?? (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+        if (!Constructor) throw new Error('Web Audio unavailable');
+        this.context = new Constructor();
+        this.master = this.context.createGain();
+        this.master.gain.value = 0;
+        this.master.connect(this.context.destination);
+      }
+      await this.context.resume();
+      if (this.context.state !== 'running') throw new Error('Audio did not resume');
+    }
+    unmute() {
+      if (!this.context || !this.master) return;
+      const time = this.context.currentTime;
+      this.master.gain.cancelScheduledValues(time);
+      this.master.gain.setValueAtTime(0, time);
+      this.master.gain.linearRampToValueAtTime(AUDIO.masterGain, time + .02);
+    }
+    play(ids: number[]) {
+      if (!this.context || !this.master || this.context.state !== 'running') return;
+      for (const id of ids) {
+        if (this.voices.size >= AUDIO.voices) break;
+        const plan = audioPlan(id);
+        const time = this.context.currentTime;
+        const oscillator = this.context.createOscillator();
+        const envelope = this.context.createGain();
+        oscillator.type = id % 2 ? 'triangle' : 'sine';
+        oscillator.frequency.setValueAtTime(plan.frequency, time);
+        envelope.gain.setValueAtTime(0, time);
+        envelope.gain.linearRampToValueAtTime(plan.gain, time + plan.attack);
+        envelope.gain.exponentialRampToValueAtTime(.0001, time + plan.release);
+        envelope.gain.linearRampToValueAtTime(0, time + plan.duration);
+        oscillator.connect(envelope);
+        envelope.connect(this.master);
+        this.voices.add(oscillator);
+        oscillator.onended = () => { this.voices.delete(oscillator); oscillator.disconnect(); envelope.disconnect(); };
+        oscillator.start(time);
+        oscillator.stop(time + plan.duration);
+      }
+    }
+    mute() {
+      if (!this.context || !this.master) return;
+      const time = this.context.currentTime;
+      this.master.gain.cancelScheduledValues(time);
+      this.master.gain.setTargetAtTime(0, time, .006);
+      for (const oscillator of this.voices) { try { oscillator.stop(time + .025); } catch { /* Already stopped. */ } }
+      if (this.suspendTimer !== null) window.clearTimeout(this.suspendTimer);
+      this.suspendTimer = window.setTimeout(() => { this.suspendTimer = null; this.context?.suspend().catch(() => {}); }, 35);
+    }
+  }
+  const audio = new PulseAudio();
+  function say(message: string) { get('status').textContent = message; }
+  function silence() { audioToken++; soundControl.checked = false; audio.mute(); }
+  function cancelFrame() { if (frame !== null) cancelAnimationFrame(frame); frame = null; lastTime = null; }
+  function animate(time: number) {
+    frame = null;
+    if (!colony.running || document.hidden) return;
+    const elapsed = lastTime === null ? 0 : time - lastTime;
+    lastTime = time;
+    const result = tick(colony, elapsed);
+    colony = result.colony;
+    if (soundControl.checked) audio.play(result.pulses);
+    draw();
+    if (!colony.running) {
+      cancelFrame(); silence(); controls();
+      get('ending').hidden = false;
+      say('The session is finished. Wake again, or leave the room quiet.');
+      return;
+    }
+    frame = requestAnimationFrame(animate);
+  }
+  function startFrames() { cancelFrame(); frame = requestAnimationFrame(animate); }
+  function draw() {
+    for (const item of colony.mouths) {
+      const node = field.querySelector<HTMLButtonElement>(`[data-mouth="${item.id}"]`)!;
+      const bite = reduced ? (item.pulseMs > 0 ? 1 : 0) : item.pulseMs / LIMITS.pulseMs;
+      node.style.setProperty('--bite', String(bite));
+      node.style.setProperty('--dx', reduced ? '0px' : `${Math.sin(item.phase * Math.PI * 2 + colony.usedMs / 3200 + item.id) * 11}px`);
+      node.style.setProperty('--dy', reduced ? '0px' : `${Math.cos(item.phase * Math.PI * 2 + colony.usedMs / 4100 + item.id) * 9}px`);
+    }
+    get('time').textContent = `${Math.ceil(remainingMs(colony) / 1000)}s`;
+    get('field-note').textContent = `${colony.mouths.length} clocks. ${colony.running ? (soundControl.checked ? 'Sound on.' : 'Sound off.') : colony.started ? (remainingMs(colony) ? 'Paused.' : 'Quiet again.') : 'Asleep.'}`;
+  }
+  function choose(id: number) {
+    selected = id;
+    const item = colony.mouths.find(item => item.id === selected)!;
+    selectedControl.value = String(id);
+    paceControl.value = String(item.bpm);
+    paceControl.setAttribute('aria-valuetext', `${item.bpm} beats per minute`);
+    get('pace-label').textContent = `Mouth ${id + 1} pace`;
+    get('pace-value').textContent = `${item.bpm} BPM`;
+    field.querySelectorAll<HTMLButtonElement>('[data-mouth]').forEach(node => {
+      const mouthId = Number(node.dataset.mouth);
+      node.setAttribute('aria-pressed', String(mouthId === id));
+      node.setAttribute('aria-label', `Mouth ${mouthId + 1}, ${colony.mouths[mouthId].bpm} beats per minute`);
+    });
+  }
+  function controls() {
+    const active = colony.running;
+    button('wake').disabled = colony.started && remainingMs(colony) > 0;
+    button('pause').disabled = !colony.started || remainingMs(colony) === 0;
+    button('pause').textContent = active ? 'Pause' : 'Resume';
+    button('restart').disabled = false;
+    button('share').disabled = !active;
+    button('scatter').disabled = false;
+    button('hatch').disabled = colony.mouths.length >= LIMITS.mouths;
+    soundControl.disabled = !active;
+    selectedControl.disabled = false; paceControl.disabled = false;
+    get('mouth-count').textContent = `${colony.mouths.length} / ${LIMITS.mouths}`;
+    field.classList.toggle('has-extra', colony.mouths.length > 9);
+    choose(selected); draw();
+  }
+  function addMouthNode(id: number) {
+    const item = colony.mouths[id];
+    const mark = marks(id);
+    const node = document.createElement('button');
+    node.type = 'button'; node.className = 'mouth'; node.dataset.mouth = String(id);
+    node.setAttribute('aria-label', `Mouth ${id + 1}, ${item.bpm} beats per minute`);
+    node.setAttribute('aria-pressed', 'false');
+    for (const [key, value] of Object.entries({ x: `${mark.x}%`, y: `${mark.y}%`, mx: `${mark.mobileX}%`, my: `${mark.mobileY}%`, angle: `${mark.angle}deg`, scale: String(mark.scale), ink: mark.colour, bite: '0' })) node.style.setProperty(`--${key}`, value);
+    // Only original fixed geometry and bounded integer IDs reach this markup.
+    node.innerHTML = `<span class="drawing">${mouthSvg(id)}</span><span class="number" aria-hidden="true">${String(id + 1).padStart(2, '0')}</span>`;
+    field.insertBefore(node, get('field-note'));
+    const option = document.createElement('option'); option.value = String(id); option.textContent = `Mouth ${id + 1}`; selectedControl.append(option);
+  }
+  function begin(original = false) {
+    silence(); cancelFrame(); colony = original ? wake() : wake(colony);
+    if (original) {
+      selected = 0;
+      field.querySelectorAll<HTMLButtonElement>('[data-mouth]').forEach(node => { if (Number(node.dataset.mouth) >= LIMITS.initial) node.remove(); });
+      [...selectedControl.options].forEach(option => { if (Number(option.value) >= LIMITS.initial) option.remove(); });
+    }
+    get('ending').hidden = true;
+    if (document.hidden) {
+      colony = pause(colony); controls(); say('The room is paused while this tab is hidden. Resume when you are ready.'); return;
+    }
+    controls(); startFrames(); say(`${colony.mouths.length} clocks are awake. Sound is off. You have 60 active seconds.`);
+  }
+  field.querySelectorAll<HTMLButtonElement>('[data-mouth]').forEach(node => { node.disabled = false; });
+  field.addEventListener('click', event => {
+    const node = (event.target as Element).closest<HTMLButtonElement>('[data-mouth]');
+    if (node) choose(Number(node.dataset.mouth));
+  });
+  selectedControl.addEventListener('change', () => choose(Number(selectedControl.value)));
+  paceControl.addEventListener('input', () => {
+    colony = setPace(colony, selected, paceControl.value); choose(selected);
+    const item = colony.mouths[selected];
+    field.querySelector(`[data-mouth="${selected}"]`)!.setAttribute('aria-label', `Mouth ${selected + 1}, ${item.bpm} beats per minute`);
+  });
+  button('wake').addEventListener('click', () => begin());
+  button('restart').addEventListener('click', () => begin(true));
+  button('pause').addEventListener('click', () => {
+    silence(); cancelFrame();
+    if (colony.running) { colony = pause(colony); say('Paused. Resume keeps the remaining active time. Sound is off.'); }
+    else if (!document.hidden) { colony = resume(colony); startFrames(); say('The clocks are moving again. Sound is off.'); }
+    controls();
+  });
+  button('share').addEventListener('click', () => {
+    if (!colony.running) return;
+    colony = shareClock(colony); draw();
+    if (soundControl.checked) audio.play(colony.mouths.map(item => item.id));
+    say('One clock, for this instant. Their own paces are already pulling it apart.');
+  });
+  button('scatter').addEventListener('click', () => { colony = scatter(colony); draw(); say('Agreement scattered. Every pace stays its own.'); });
+  button('hatch').addEventListener('click', () => {
+    if (colony.mouths.length >= LIMITS.mouths) return;
+    colony = hatch(colony); addMouthNode(colony.mouths.length - 1); controls();
+    say(`${colony.mouths.length} mouths now. ${colony.mouths.length === LIMITS.mouths ? 'The room is full.' : 'The room still has space.'}`);
+  });
+  soundControl.addEventListener('change', async () => {
+    if (!soundControl.checked) { silence(); draw(); say('Sound is off. The clocks keep moving.'); return; }
+    if (!colony.running || document.hidden) { silence(); return; }
+    const token = ++audioToken;
+    say('Enabling synthesised sound…');
+    try {
+      await audio.enable();
+      if (token !== audioToken || !soundControl.checked || !colony.running || document.hidden) { if (!soundControl.checked) audio.mute(); return; }
+      audio.unmute(); draw(); say('Sound is on. Switch it off whenever you like.');
+    } catch {
+      if (token !== audioToken) return;
+      silence(); draw(); say('Sound could not start in this browser. The silent instrument still works.');
+    }
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) return;
+    silence(); cancelFrame();
+    if (colony.running) { colony = pause(colony); controls(); say('The room paused while you were away. Resume when you are ready. Sound is off.'); }
+  });
+  window.addEventListener('pagehide', () => { silence(); cancelFrame(); colony = pause(colony); });
+  window.addEventListener('pageshow', event => { if (event.persisted) { controls(); say('The room is paused. Resume when you are ready. Sound is off.'); } });
+  motion.addEventListener('change', event => { reduced = event.matches; get('motion-note').hidden = !reduced; draw(); });
+  get('motion-note').hidden = !reduced;
+  controls();
+</script>
