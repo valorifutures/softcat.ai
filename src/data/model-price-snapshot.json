@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-06T12:11:12.923Z",
+  "checkedAt": "2026-10-07T11:57:10.570Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "c688f867cd3597aa1ba45dc6bd5f19b0241fd863c31b55008a505b607101c615",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/37461415325",
+  "sourceSha256": "986c359f3cf6049825c2e5a56c7c26ef60389e12627f41e03fa267ec3454e2cc",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/37617548261",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 464,
+  "catalogueModels": 465,
   "trackedModels": 39,
   "matched": 36,
-  "verified": 35,
+  "verified": 36,
   "notListed": 3,
-  "reviewNeeded": 1,
+  "reviewNeeded": 0,
   "unverified": 0,
-  "priceChanges": 0,
+  "priceChanges": 3,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -38,12 +38,12 @@
         "outputPrice": 3.25
       },
       "quoted": {
-        "inputPrice": 0.32,
-        "outputPrice": 3.25
+        "inputPrice": 0.3,
+        "outputPrice": 2
       },
       "applied": {
-        "inputPrice": 0.32,
-        "outputPrice": 3.25
+        "inputPrice": 0.3,
+        "outputPrice": 2
       },
       "issues": []
     },
@@ -389,33 +389,20 @@
     },
     {
       "id": "moonshotai/kimi-k2.6",
-      "status": "review-needed",
+      "status": "verified",
       "previous": {
         "inputPrice": 0.43415,
         "outputPrice": 1.828
       },
       "quoted": {
-        "inputPrice": 0.95,
-        "outputPrice": 4
+        "inputPrice": 0.465,
+        "outputPrice": 2.45
       },
       "applied": {
-        "inputPrice": 0.43415,
-        "outputPrice": 1.828
+        "inputPrice": 0.465,
+        "outputPrice": 2.45
       },
-      "issues": [
-        {
-          "field": "inputPrice",
-          "reason": "delta-over-50-percent",
-          "previous": 0.43415,
-          "quoted": 0.95
-        },
-        {
-          "field": "outputPrice",
-          "reason": "delta-over-50-percent",
-          "previous": 1.828,
-          "quoted": 4
-        }
-      ]
+      "issues": []
     },
     {
       "id": "moonshotai/kimi-k2",
@@ -646,12 +633,12 @@
         "outputPrice": 4.4
       },
       "quoted": {
-        "inputPrice": 1.4,
-        "outputPrice": 4.4
+        "inputPrice": 0.966,
+        "outputPrice": 3.036
       },
       "applied": {
-        "inputPrice": 1.4,
-        "outputPrice": 4.4
+        "inputPrice": 0.966,
+        "outputPrice": 3.036
       },
       "issues": []
     },
