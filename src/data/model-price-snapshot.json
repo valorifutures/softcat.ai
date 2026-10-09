@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-08T12:12:03.928Z",
+  "checkedAt": "2026-10-09T12:03:25.915Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "575d65c0cdfba3a49779ce78bae73b90a905ea3a9b09c03930a8eb0581f95f6a",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/37775163264",
+  "sourceSha256": "82b80a6160a9e8f59b58ee8dc73d2e8a3a014b369bb65e4c3021d6518113c1aa",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/37927547552",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 467,
+  "catalogueModels": 469,
   "trackedModels": 39,
   "matched": 36,
   "verified": 35,
   "notListed": 3,
   "reviewNeeded": 1,
   "unverified": 0,
-  "priceChanges": 2,
+  "priceChanges": 1,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -35,7 +35,7 @@
       "status": "review-needed",
       "previous": {
         "inputPrice": 0.3,
-        "outputPrice": 2
+        "outputPrice": 2.7
       },
       "quoted": {
         "inputPrice": 0.45,
@@ -432,16 +432,16 @@
       "id": "nvidia/nemotron-3-super-120b-a12b",
       "status": "verified",
       "previous": {
+        "inputPrice": 0.085,
+        "outputPrice": 0.4
+      },
+      "quoted": {
         "inputPrice": 0.08,
         "outputPrice": 0.45
       },
-      "quoted": {
-        "inputPrice": 0.085,
-        "outputPrice": 0.4
-      },
       "applied": {
-        "inputPrice": 0.085,
-        "outputPrice": 0.4
+        "inputPrice": 0.08,
+        "outputPrice": 0.45
       },
       "issues": []
     },
