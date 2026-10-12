@@ -47,6 +47,29 @@ The 644-page build and offline audit passed with 33,321 internal links, 3,314
 assets and metadata, 409 search entries and no errors. Hosted checks and live
 publication verification remain pending. No successful publication is claimed.
 
+Release receipt: [PR #264](https://github.com/valorifutures/softcat.ai/pull/264)
+passed all [hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/38262540553)
+on exact reviewed head `ca0cecba1801f8a7f426fc1ba854570e7b119582`, tree
+`5beda89c1b985462aa9a79bc2048bc68455a20d9`. Main was re-read unchanged
+before normal squash merge `e1dd02c88ff5c66f43231f6baa5efdf7e0411eeb`.
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/38262968521)
+succeeded, including fresh recovery and boundary checks.
+
+The already-open Education page received the new review without reloading and
+preserved its selection and synthetic trial draft. The draft was cleared after
+verification. Enter selected all five predictions, each showing the 12 October
+review, unchanged deadline, zero-day movement, current source titles and seven
+history entries back to 15 September. Enter expanded the latest Education
+history and its full resolution rules. Control+End reached the complete footer
+at scrollY5398, with footer bottom935.64 in a936px viewport. Document width1348
+stayed within viewport1363.
+
+The live benchmark page contains the harness explanation, original 3 April
+publication date, preserved 18 September review and new 12 October note.
+Desktop keyboard, refresh and scrolling verification is complete. Mobile and
+physical touch-device coverage remain unverified. The checkpoint clears the
+active-work marker and preserves the concrete next evidence priorities.
+
 ## 5 October 2026, Horizon evidence review
 
 We reassessed all five published predictions against their exact milestones and

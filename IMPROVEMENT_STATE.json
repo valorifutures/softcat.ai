@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-12T14:21:11Z",
-  "phase": "horizon-evidence-review-awaiting-hosted-checks",
-  "active_branch": "review/horizon-2026-10-12",
+  "updated_at": "2026-10-12T14:32:29Z",
+  "phase": "published-and-verified-live",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "c2374b4e00f71a3e116694e342cabcb2fd15f853",
-    "at": "2026-10-05T17:36:25Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/37349312758"
+    "sha": "e1dd02c88ff5c66f43231f6baa5efdf7e0411eeb",
+    "at": "2026-10-12T14:30:08Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/38262968521"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -132,7 +132,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Reassessed all five Horizon predictions on 12 October. Preparing one append-only evidence batch and a benchmark harness clarification, with publication pending.",
+  "session": "The 12 October Horizon review is published and verified live. All five targets remain unchanged, the append-only record is current and the active-work marker is clear.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -421,7 +421,7 @@
   },
   "horizon_review_2026_10_12": {
     "date": "2026-10-12",
-    "status": "locally validated, publication pending",
+    "status": "published and verified live",
     "branch": "review/horizon-2026-10-12",
     "base": "38d40f6982cc7ae490ccee74da694191155d1211",
     "pull_request": "https://github.com/valorifutures/softcat.ai/pull/264",
@@ -440,6 +440,21 @@
       "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
     ],
     "validation": "210 script JavaScript tests, 39 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 473 in total. Both research receipt reruns passed. Clean npm ci, all data validators, 644-page production build and offline audit passed with 33,321 internal links, 3,314 assets and metadata, 409 search entries and zero errors.",
-    "publication": "pending required hosted checks"
+    "publication": "required hosted checks, normal squash merge, Pages deployment and live verification succeeded",
+    "reviewed_head": "ca0cecba1801f8a7f426fc1ba854570e7b119582",
+    "reviewed_tree": "5beda89c1b985462aa9a79bc2048bc68455a20d9",
+    "merge": "e1dd02c88ff5c66f43231f6baa5efdf7e0411eeb",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/38262540553",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/38262968521",
+    "live_checks": [
+      "An already-open Education page received the new review through Check for a new review and retained its selection and synthetic draft. The draft was cleared after verification.",
+      "Enter selected all five futures, each showing the 12 October review, unchanged deadline, zero-day movement, current source titles and all seven history entries including 15 September.",
+      "Enter expanded the latest Education history with source limits and resolution rules. Control+End reached the full footer at scrollY5398 with footer bottom935.64 in a936px viewport. Document width1348 remained within viewport1363.",
+      "The live benchmark glossary displays the harness explanation, original 3 April publication date, preserved 18 September review and new 12 October editorial note."
+    ],
+    "limits": [
+      "Bounded primary-source survey, not exhaustive literature review. No Lean proof execution, manuscript validation, new model inference or tool-wide behavioural assessment.",
+      "Desktop keyboard, refresh preservation and full-page scrolling verified. Mobile and physical touch-device rendering remain unverified."
+    ]
   }
 }
