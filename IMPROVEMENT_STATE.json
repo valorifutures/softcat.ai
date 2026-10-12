@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-05T17:43:16.727Z",
-  "phase": "published-and-verified-live",
-  "active_branch": null,
+  "updated_at": "2026-10-12T14:21:11Z",
+  "phase": "horizon-evidence-review-awaiting-hosted-checks",
+  "active_branch": "review/horizon-2026-10-12",
   "last_verified_deployment": {
     "sha": "c2374b4e00f71a3e116694e342cabcb2fd15f853",
     "at": "2026-10-05T17:36:25Z",
@@ -124,7 +124,7 @@
   "next": [
     "Select and pin an AGNTCY Identity adapter, verify credential-to-principal and authorisation semantics, and test deployment isolation before untrusted code execution. Then calibrate a single-agent baseline and freeze disjoint evaluation with explicit access and spend limits.",
     "Review original site code/assets provenance before extending the new scoped Apache-2.0 licence.",
-    "Preserve the 5 October Horizon evidence priorities, current targets and append-only history.",
+    "Preserve the 12 October Horizon evidence priorities, current targets and append-only history.",
     "Keep Feral creation and daily GitHub price snapshots under their existing separate owners. Mobile/touch and actual file-download verification remain pending from the earlier workshop pass."
   ],
   "constraints": [
@@ -132,7 +132,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "The 5 October Horizon evidence review is published and verified live. All five targets remain unchanged, the append-only record is current and the active-work marker is clear.",
+  "session": "Reassessed all five Horizon predictions on 12 October. Preparing one append-only evidence batch and a benchmark harness clarification, with publication pending.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -418,5 +418,28 @@
     "limits": "Audio enable/mute UI and Web Audio source were checked, but speaker listening, physical touch devices, live reduced-motion rendering and hidden-tab event behaviour were not verified. Local Astro installation was unavailable; complete production builds ran on GitHub.",
     "screenshot": "docs/evidence/2026-10-05-brux.jpg",
     "screenshot_blob": "aa7abcaacb716ee835f2c0789c31825ed3628aa2"
+  },
+  "horizon_review_2026_10_12": {
+    "date": "2026-10-12",
+    "status": "locally validated, publication pending",
+    "branch": "review/horizon-2026-10-12",
+    "base": "38d40f6982cc7ae490ccee74da694191155d1211",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/264",
+    "outcome": "All five predictions reassessed. All targets, milestones and resolution rules retained. Six prior events preserved. A seventh review records current evidence, counterevidence and limits.",
+    "evidence_changes": [
+      "The mathematics collection distinguishes selected output, formalisation and corrected or withdrawn arguments. ARC Prize shows a large harness effect for one model.",
+      "CRM previews and connected software-delivery products add capabilities but no qualifying consecutive-case production results.",
+      "Reassessed commercial robot operating claims distinguish on-task accuracy from intervention-free cycles and demonstrations from sustained multi-task economics.",
+      "A positive semester-long nursing study has one-month follow-up and completer analysis. It complements the negative university trial without providing qualifying durable-learning replication."
+    ],
+    "next_review_priorities": [
+      "Two independent teams testing one frozen system across newly constructed tasks in all ten domains.",
+      "Customer-confirmed agent workflows with 90-day eligible-case denominators, failures and rescues.",
+      "Multi-task robot customer records at ten sites with intervention and full cost accounting.",
+      "Consecutive software tickets through approved deployment and seven-day monitoring, including manual corrections and rollback.",
+      "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
+    ],
+    "validation": "210 script JavaScript tests, 39 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 473 in total. Both research receipt reruns passed. Clean npm ci, all data validators, 644-page production build and offline audit passed with 33,321 internal links, 3,314 assets and metadata, 409 search entries and zero errors.",
+    "publication": "pending required hosted checks"
   }
 }

@@ -1,5 +1,52 @@
 # Improvement log
 
+## 12 October 2026, Horizon evidence review
+
+Current main was `38d40f6982cc7ae490ccee74da694191155d1211`, with no open
+PR, running Action or active marker. We used an isolated checkout and reserved
+[PR #264](https://github.com/valorifutures/softcat.ai/pull/264).
+
+All five predictions were assessed against their exact published milestones.
+The seventh review is append-only. All six earlier events, targets, milestones
+and resolution rules remain unchanged. No date adjustment is warranted by the
+material reviewed.
+
+The [maths repository](https://github.com/openai/math) contains selected results
+at mixed verification stages. Its [7 October history](https://github.com/openai/math/blob/main/history.md)
+records withdrawn and repaired arguments. We did not run its Lean proofs or
+validate the manuscripts. The [ARC Prize comparison](https://arcprize.org/blog/astra)
+also makes configuration dependence concrete. These are substantial bounded
+signals, not the two-team, ten-domain evaluation our AGI test requires.
+
+[Microsoft's 8 October CRM announcement](https://www.microsoft.com/en-us/copilot/blog/2026/10/08/bringing-crm-into-the-flow-of-work-and-agents-into-business-process-for-sales-and-service-teams/)
+and [GitLab's 6 October delivery announcement](https://about.gitlab.com/press/releases/2026-10-06-gitlab-announces-the-foundation-for-the-governed-software-factory/)
+describe more connected workflows. Preview availability, adoption and customer
+accounts still lack our fixed consecutive-case or monitored-ticket outcomes.
+Reassessed Agility and Figure reports remain useful bounded robot evidence,
+without qualifying multi-site economics and intervention-free task records.
+
+The [nursing trial](https://link.springer.com/article/10.1186/s12909-026-09469-0),
+published in May, is newly included in this review. It adds positive semester-long
+evidence but only one-month follow-up, one college and analysis of completers.
+The [negative university trial](https://edworkingpapers.com/ai26-1598) was read
+again. Different designs and populations reinforce uncertainty. We found no
+qualifying replicated eight-week unassisted result in this bounded review.
+
+The benchmark glossary now explains the harness and retained-state scope, with
+a separate dated editorial note. Its original date and earlier review remain.
+The related glossary entries, three current tool guides and the code-review and
+model-evaluation recipes were read. No broader behavioural or model evaluation
+is claimed, and their earlier review dates are preserved. No Feral cycle, price
+refresh, legacy generator, model call or external contact was initiated.
+
+Local validation passed clean npm installation, all data validators, 210 script
+JavaScript tests, 39 Feral tests, 141 bot tests, 12 publication fixtures, 46
+recovery tests and 25 authenticated-boundary tests, 473 tests in total. Both
+research receipt reruns passed without changing their source or evidence.
+The 644-page build and offline audit passed with 33,321 internal links, 3,314
+assets and metadata, 409 search entries and no errors. Hosted checks and live
+publication verification remain pending. No successful publication is claimed.
+
 ## 5 October 2026, Horizon evidence review
 
 We reassessed all five published predictions against their exact milestones and

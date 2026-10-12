@@ -15,8 +15,12 @@ A benchmark is a standardised test suite that measures how well a model performs
 
 **Different tests answer different questions:** [ARC-AGI-3](https://arcprize.org/arc-agi/3) tests adaptation in unfamiliar interactive environments. That is useful evidence about learning and planning, but it does not test every cognitive domain or prove that a business workflow operates reliably.
 
+**The configuration is part of the result:** A harness manages how the model receives observations, carries state and uses tools. The same named model can produce substantially different results under different harnesses. [ARC Prize's Astra evaluation](https://arcprize.org/blog/astra) reports this directly. Compare the complete configurations, including retained reasoning state and budgets, before attributing a score difference to the model alone.
+
 **Before applying a score to real work:** Define what counts as success and which cases enter the denominator. Keep failures and manual rescues among the eligible cases, and report excluded work separately. Time spent acting, confidence in an answer, merged changes and successful production outcomes are different measures. [Anthropic's autonomy study](https://www.anthropic.com/research/measuring-agent-autonomy) explains why individual tool calls do not reveal complete workflow outcomes.
 
 Our [Horizon predictions](/horizon/) use explicit resolution criteria, separate from benchmark scores. A stronger score can inform a forecast without satisfying its milestone.
 
 *Editorial review, 18 September 2026: clarified reproducibility and the limits of transferring benchmark results to production. The original publication date is preserved.*
+
+*Editorial review, 12 October 2026: added evaluation harness and retained-state scope after reassessing ARC Prize's published comparison. The original publication date and earlier review remain preserved.*
