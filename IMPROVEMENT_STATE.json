@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-05T17:43:16.727Z",
-  "phase": "published-and-verified-live",
-  "active_branch": null,
+  "updated_at": "2026-10-12T14:17:02Z",
+  "phase": "horizon-evidence-review-in-progress",
+  "active_branch": "review/horizon-2026-10-12",
   "last_verified_deployment": {
     "sha": "c2374b4e00f71a3e116694e342cabcb2fd15f853",
     "at": "2026-10-05T17:36:25Z",
