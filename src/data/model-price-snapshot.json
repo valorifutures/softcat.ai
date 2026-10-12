@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-11T11:33:14.742Z",
+  "checkedAt": "2026-10-12T13:26:12.995Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "2709af43a9fa7770a66c427f7b1a71adaad9e21a579a36fe00fc116a89244a7a",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/38135966594",
+  "sourceSha256": "f973c1c48ef3fd48d513870e56ed5b835dc4e9b51bbaf2958849ca50d045060f",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/38255647103",
   "maxAutoDelta": 0.5,
   "catalogueModels": 458,
   "trackedModels": 39,
   "matched": 36,
-  "verified": 36,
+  "verified": 35,
   "notListed": 3,
-  "reviewNeeded": 0,
+  "reviewNeeded": 1,
   "unverified": 0,
-  "priceChanges": 2,
+  "priceChanges": 0,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -51,8 +51,8 @@
       "id": "qwen/qwen3.6-35b-a3b",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.15,
-        "outputPrice": 1
+        "inputPrice": 0.1,
+        "outputPrice": 0.95
       },
       "quoted": {
         "inputPrice": 0.1,
@@ -287,20 +287,33 @@
     },
     {
       "id": "meta-llama/llama-4-scout",
-      "status": "verified",
+      "status": "review-needed",
       "previous": {
         "inputPrice": 0.1,
         "outputPrice": 0.3
       },
       "quoted": {
-        "inputPrice": 0.1,
-        "outputPrice": 0.3
+        "inputPrice": 0.18,
+        "outputPrice": 0.59
       },
       "applied": {
         "inputPrice": 0.1,
         "outputPrice": 0.3
       },
-      "issues": []
+      "issues": [
+        {
+          "field": "inputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.1,
+          "quoted": 0.18
+        },
+        {
+          "field": "outputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.3,
+          "quoted": 0.59
+        }
+      ]
     },
     {
       "id": "minimax/minimax-m2",
@@ -391,8 +404,8 @@
       "id": "moonshotai/kimi-k2.6",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.465,
-        "outputPrice": 2.45
+        "inputPrice": 0.65,
+        "outputPrice": 3.41
       },
       "quoted": {
         "inputPrice": 0.65,
