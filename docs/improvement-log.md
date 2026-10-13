@@ -1360,3 +1360,55 @@ council, not a change to the existing Tuesday/Friday schedule.
 
 This release receipt is a separate maintenance diff. No Feral source, historical
 record, research result, forecast, price ownership or legacy timer changes in it.
+
+
+## 13 October 2026, Feral turns the ground
+
+The maintainer requested another council after BRUX. The independent director
+chose SILT, a finite grain chamber with four directions of gravity. The builder
+made the room, and the separate Codex critic judged every safety/deploy rubric
+item and passed attempt one. No taste correction or new research theme was
+imposed. The old rooms, nine manifest entries and ten ledger records remain
+unchanged, with one creation and one cycle appended.
+
+[PR #266](https://github.com/valorifutures/softcat.ai/pull/266) changes five regular
+files inside Feral's three roots. Ten deterministic SILT tests cover directional
+movement, actual excavation, colour conservation, bounds, stable detection and
+reset. The critic independently repeated those tests, rebuilt 645 pages and
+checked the emitted page's links and assets. Local validation also passed 259
+JavaScript tests, 141 bot tests, twelve publication fixtures and the required
+content/tools/Horizon validators. The publication audit checked 33,327 internal
+links and 3,318 local assets/metadata with no errors. Fetching full Git history
+resolved initial history-aware failures caused by the shallow checkout.
+
+The shell had no push credential, so the connected GitHub app published the
+source. Its tree `5117074a500b99d8f9b5931a30b05423715fcd02` exactly matches the
+reviewed local tree. The trusted base gate passed exact remote head
+`c468517d8aa9031e6c77268b876922d9819d526f`. All [hosted checks](https://github.com/valorifutures/softcat.ai/actions/runs/38384435964)
+passed. Main and head were re-read unchanged before normal squash merge
+`49d40acc90afd53f6e3d042805bffee0a409ac30`. [Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/38384863974)
+then passed both research checks, the production build, publication audit and
+deploy job.
+
+The [live room](https://softcat.ai/feral/silt/) opens from the ten-room gallery,
+which shows cycle 10, 13 October and PASS. Hold and Enter remove 81 grains;
+Step visibly moves the ground while preserving the count. Left, Up and Right
+all rearrange that material and stop at rest. Native coordinate entry, Tab,
+boundary clamping and the 2/12-cell scoop limits work. A pointer stroke removes
+218 grains. Shift plus ArrowLeft moves eight columns; Space removes 13 more.
+Down reaches rest with 10,004 remaining and 876 removed, accounting for the
+original 10,880. Start again restores the original deposit and zero removals.
+Reload restores the default scoop, leaving the room ready to explore.
+
+The desktop document and viewport both measure 1,348 pixels. Scrolling reaches
+the complete footer, whose bottom is 935.89 in a 936-pixel viewport. The saved
+[2026-10-13-silt.jpg](evidence/2026-10-13-silt.jpg) shows the live settled deposit.
+Physical touch, narrow viewport, live reduced-motion and hidden-tab behaviour
+are not claimed. The cloud browser's fill, text-wait, pixel-readback and
+full-page capture limitations were handled using native typing, later visible
+snapshots and a successful viewport screenshot. Extension metadata errors were
+observed, but no error originating from SILT was captured.
+
+This receipt is a separate maintenance change. It preserves the Feral source
+and historical records. This was one manual cycle; the scheduled council can
+see the dated entry and avoid a duplicate today.

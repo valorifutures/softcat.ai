@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-12T14:32:29Z",
+  "updated_at": "2026-10-13T10:57:01Z",
   "phase": "published-and-verified-live",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "e1dd02c88ff5c66f43231f6baa5efdf7e0411eeb",
-    "at": "2026-10-12T14:30:08Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/38262968521"
+    "sha": "49d40acc90afd53f6e3d042805bffee0a409ac30",
+    "at": "2026-10-13T10:57:01Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/38384863974"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -119,7 +119,8 @@
     "The maintainer clarified that Horizon should count down recalculated days. The identical hours/minutes/seconds were remainders to midnight. Main Horizon now shows only day counters, refreshing at UTC day boundaries, on return and on published review. Each review exposes its numeric target shift separately from elapsed time. Exact ISO target dates are respected rather than forced to year end. Existing forecasts and review history are unchanged. All 138 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and 636-page build/audit pass. Independent review also caught and fixed rounding at midnight + 1 ms.",
     "PR #234 passed all hosted checks in run 35030633590 and deployed in Pages run 35030734134. Live Horizon has five day counters and zero sub-day timers. The observed day counts were AGI 1,933, agents 838, robotics 1,933, software 472 and education 1,203. Keyboard selection showed the matching software 472-day calculation and 2027 target. Manual update checking completed while retaining selection and actual review history. Clipboard writing fell back to selectable text containing the correct 472-day UTC snapshot and full briefing. No desktop horizontal overflow was observed.",
     "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned.",
-    "PR #262 published Feral cycle 9, BRUX, following a free director brief, independent builder and critic PASS on attempt 1. Twelve core tests, the exact final-head trusted gate and full hosted checks passed. Live instrument, audio controls, session expiry and 390/1280 px layouts were verified; audio listening and physical touch coverage are not claimed."
+    "PR #262 published Feral cycle 9, BRUX, following a free director brief, independent builder and critic PASS on attempt 1. Twelve core tests, the exact final-head trusted gate and full hosted checks passed. Live instrument, audio controls, session expiry and 390/1280 px layouts were verified; audio listening and physical touch coverage are not claimed.",
+    "PR #266 published Feral cycle 10, SILT, after a free director brief, independent builder and critic PASS on attempt one. Local validation, the trusted exact remote-commit gate and all hosted checks passed. Pages succeeded. Live desktop digging, all four gravity directions, automatic rest, keyboard/coordinate controls, scoop bounds, pointer strokes, reset and the complete footer were verified."
   ],
   "next": [
     "Select and pin an AGNTCY Identity adapter, verify credential-to-principal and authorisation semantics, and test deployment isolation before untrusted code execution. Then calibrate a single-agent baseline and freeze disjoint evaluation with explicit access and spend limits.",
@@ -139,7 +140,9 @@
     "The 21 September Horizon review is limited to retrieved primary material, not an exhaustive literature survey. Provider-hosted customer stories and vendor-run evaluations are labelled as such. Search discovery did not find a new qualifying education replication.",
     "The three current tool guides, agentic-loop and benchmark glossary entries, and the code-review and model-evaluation recipes were read. Their earlier behavioural verification was not rerun, so their review dates remain unchanged.",
     "The 5 October Horizon review is limited to retrieved primary material, not an exhaustive literature survey. The NBER endpoint was unavailable during this pass, so its existing verified Khanmigo record was reassessed rather than presented as a fresh retrieval. Provider results and customer accounts remain labelled as such.",
-    "Audio enable/mute UI and Web Audio source were checked, but speaker listening, physical touch devices, live reduced-motion rendering and hidden-tab event behaviour were not verified. Local Astro installation was unavailable; complete production builds ran on GitHub."
+    "Audio enable/mute UI and Web Audio source were checked, but speaker listening, physical touch devices, live reduced-motion rendering and hidden-tab event behaviour were not verified. Local Astro installation was unavailable; complete production builds ran on GitHub.",
+    "Physical touch devices, narrow viewport rendering, live reduced-motion mode and hidden-tab event behaviour were not verified. Reduced-motion and visibility handling were source-reviewed; deterministic tests exercise the cellular model.",
+    "Cloud browser limitations: number-field fill did not emit native change events, so coordinate entry was verified through actual typing and Tab; text waits and full-page capture timed out, while later snapshots, screenshots and the viewport capture succeeded. Canvas pixel readback was unavailable. Extension metadata errors were observed, with no error originating from SILT."
   ],
   "workshop_redesign_2026_09_25": {
     "date": "2026-09-25",
@@ -456,5 +459,57 @@
       "Bounded primary-source survey, not exhaustive literature review. No Lean proof execution, manuscript validation, new model inference or tool-wide behavioural assessment.",
       "Desktop keyboard, refresh preservation and full-page scrolling verified. Mobile and physical touch-device rendering remain unverified."
     ]
+  },
+  "feral_cycle10_receipt": {
+    "date": "2026-10-13",
+    "cycle": 10,
+    "base_sha": "97c92b7c6cb343fd480ace7d8d30bd59d49c1bd4",
+    "reviewed_head": "c468517d8aa9031e6c77268b876922d9819d526f",
+    "reviewed_tree": "5117074a500b99d8f9b5931a30b05423715fcd02",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/266",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/38384435964",
+    "merge_sha": "49d40acc90afd53f6e3d042805bffee0a409ac30",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/38384863974",
+    "route": "https://softcat.ai/feral/silt/",
+    "outcome": "One manual council completed with separate Codex director, builder and critic roles. SILT passed the independent safety/deploy review on attempt one, the trusted exact remote-commit gate and all hosted checks. Pages deployment succeeded and the live desktop controls were verified. Earlier creations and records remain intact. The existing council schedule is unchanged.",
+    "local_validation": {
+      "javascript_tests": 259,
+      "bot_tests": 141,
+      "publication_fixtures": 12,
+      "horizon_entries": 89,
+      "content_records": 183,
+      "models": 39,
+      "tools": 8
+    },
+    "publication_audit": {
+      "htmlPages": 645,
+      "internalLinksChecked": 33327,
+      "localAssetsAndMetadataChecked": 3318,
+      "searchEntries": 410,
+      "contentRecords": 183,
+      "retirementNotices": 227,
+      "errors": []
+    },
+    "live_checks": [
+      "The live gallery shows ten creations, cycle 10, 13 October 2026 and PASS. Its SILT link opens the released route.",
+      "The initial deposit has 10,880 grains, zero removed, downward gravity and At rest status.",
+      "Hold and Enter on the focused chamber remove 81 grains, leaving 10,799. Step visibly moves the material while keeping the count.",
+      "Left, Up and Right each rearrange the same remaining material, reach At rest and disable Step and Let it settle.",
+      "Native typed coordinate entry and Tab update the scoop. Values 999 and 0 clamp to column 160 and row 1. The corner scoop removes 123 grains at radius 12. Home and End select the 2-cell and 12-cell scoop limits.",
+      "A continuous pointer drag removes 218 grains. Shift plus ArrowLeft moves eight columns and Space removes 13 more grains at radius 2.",
+      "Returning gravity Down reaches At rest with 10,004 grains remaining and 876 removed, accounting for the original 10,880.",
+      "Start again restores the original deposit, downward gravity and zero removals. Reload restores the default 5-cell scoop.",
+      "The desktop document and viewport widths both measure 1,348 pixels. The complete footer is reachable, ending at 935.89 pixels inside a 936-pixel viewport."
+    ],
+    "verification_limits": [
+      "Physical touch devices, narrow viewport rendering, live reduced-motion mode and hidden-tab event behaviour were not verified. Reduced-motion and visibility handling were source-reviewed; deterministic tests exercise the cellular model.",
+      "Cloud browser limitations: number-field fill did not emit native change events, so coordinate entry was verified through actual typing and Tab; text waits and full-page capture timed out, while later snapshots, screenshots and the viewport capture succeeded. Canvas pixel readback was unavailable. Extension metadata errors were observed, with no error originating from SILT."
+    ],
+    "screenshot": {
+      "path": "docs/evidence/2026-10-13-silt.jpg",
+      "bytes": 248396,
+      "git_blob": "6531e67ce8b3d6f71bc0270470d7032f5be1f984",
+      "view": "Live desktop viewport after excavation and four-direction gravity tour."
+    }
   }
 }
