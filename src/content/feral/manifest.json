@@ -88,5 +88,15 @@
     "concept_by": "feral-director",
     "type": "instrument",
     "born": "2026-10-05"
+  },
+  {
+    "slug": "silt",
+    "title": "SILT",
+    "blurb": "Dig a hole in coloured ground. Turn gravity. Watch the ground revise your decision.",
+    "route": "/feral/silt",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "interactive",
+    "born": "2026-10-13"
   }
 ]
