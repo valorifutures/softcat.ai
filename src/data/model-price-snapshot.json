@@ -1,15 +1,15 @@
 {
-  "checkedAt": "2026-10-14T10:30:23.925Z",
+  "checkedAt": "2026-10-15T10:14:15.332Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "a41529844665664fb087d330648a23a690cef28ba49102f8aa4eb0e7a80bb04c",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/38550008920",
+  "sourceSha256": "c971d84a895fd63cc2215945beb195b814cf4d57be8dcc6545f7e0e2decb16f5",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/38718780793",
   "maxAutoDelta": 0.5,
   "catalogueModels": 462,
   "trackedModels": 39,
   "matched": 36,
-  "verified": 35,
+  "verified": 34,
   "notListed": 3,
-  "reviewNeeded": 1,
+  "reviewNeeded": 2,
   "unverified": 0,
   "priceChanges": 2,
   "checks": [
@@ -55,12 +55,12 @@
         "outputPrice": 0.95
       },
       "quoted": {
-        "inputPrice": 0.1,
-        "outputPrice": 0.95
+        "inputPrice": 0.15,
+        "outputPrice": 1
       },
       "applied": {
-        "inputPrice": 0.1,
-        "outputPrice": 0.95
+        "inputPrice": 0.15,
+        "outputPrice": 1
       },
       "issues": []
     },
@@ -319,8 +319,8 @@
       "id": "minimax/minimax-m2",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.3,
-        "outputPrice": 1.2
+        "inputPrice": 0.255,
+        "outputPrice": 1.02
       },
       "quoted": {
         "inputPrice": 0.255,
@@ -642,35 +642,48 @@
       "id": "z-ai/glm-5.1",
       "status": "verified",
       "previous": {
+        "inputPrice": 1.33,
+        "outputPrice": 4.18
+      },
+      "quoted": {
         "inputPrice": 0.966,
         "outputPrice": 3.036
       },
-      "quoted": {
-        "inputPrice": 1.33,
-        "outputPrice": 4.18
-      },
       "applied": {
-        "inputPrice": 1.33,
-        "outputPrice": 4.18
+        "inputPrice": 0.966,
+        "outputPrice": 3.036
       },
       "issues": []
     },
     {
       "id": "z-ai/glm-5",
-      "status": "verified",
+      "status": "review-needed",
       "previous": {
         "inputPrice": 0.6,
         "outputPrice": 1.92
       },
       "quoted": {
-        "inputPrice": 0.6,
-        "outputPrice": 1.92
+        "inputPrice": 1,
+        "outputPrice": 3.2
       },
       "applied": {
         "inputPrice": 0.6,
         "outputPrice": 1.92
       },
-      "issues": []
+      "issues": [
+        {
+          "field": "inputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.6,
+          "quoted": 1
+        },
+        {
+          "field": "outputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 1.92,
+          "quoted": 3.2
+        }
+      ]
     },
     {
       "id": "x-ai/grok-4.3",
