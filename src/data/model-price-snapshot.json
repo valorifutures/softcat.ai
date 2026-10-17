@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-16T10:03:32.309Z",
+  "checkedAt": "2026-10-17T09:37:03.584Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "fa06789f5f5cfbce1a6765259c32e25cc145cd4b4928a44b25e672abe51901ce",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/38884642158",
+  "sourceSha256": "f264c2bc531b5f2c76c704ca17213511a4e43dbb95537d347594c0c56a2cceb3",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/39021790647",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 465,
+  "catalogueModels": 470,
   "trackedModels": 39,
   "matched": 35,
-  "verified": 33,
+  "verified": 34,
   "notListed": 4,
-  "reviewNeeded": 2,
+  "reviewNeeded": 1,
   "unverified": 0,
-  "priceChanges": 2,
+  "priceChanges": 0,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -34,8 +34,8 @@
       "id": "qwen/qwen3.6-27b",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.32,
-        "outputPrice": 3.2
+        "inputPrice": 0.25,
+        "outputPrice": 2
       },
       "quoted": {
         "inputPrice": 0.25,
@@ -136,8 +136,8 @@
       "id": "anthropic/claude-sonnet-4",
       "status": "not-listed",
       "previous": {
-        "inputPrice": 3,
-        "outputPrice": 15
+        "inputPrice": null,
+        "outputPrice": null
       },
       "quoted": {
         "inputPrice": null,
@@ -287,33 +287,20 @@
     },
     {
       "id": "meta-llama/llama-4-scout",
-      "status": "review-needed",
+      "status": "verified",
       "previous": {
         "inputPrice": 0.1,
         "outputPrice": 0.3
       },
       "quoted": {
-        "inputPrice": 0.18,
-        "outputPrice": 0.59
+        "inputPrice": 0.1,
+        "outputPrice": 0.3
       },
       "applied": {
         "inputPrice": 0.1,
         "outputPrice": 0.3
       },
-      "issues": [
-        {
-          "field": "inputPrice",
-          "reason": "delta-over-50-percent",
-          "previous": 0.1,
-          "quoted": 0.18
-        },
-        {
-          "field": "outputPrice",
-          "reason": "delta-over-50-percent",
-          "previous": 0.3,
-          "quoted": 0.59
-        }
-      ]
+      "issues": []
     },
     {
       "id": "minimax/minimax-m2",
