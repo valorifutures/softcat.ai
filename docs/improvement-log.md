@@ -1514,5 +1514,7 @@ shows the new verification guidance, reported-source attribution, agent-check
 link, original 3 April date and separate 19 October review. The
 [desktop screenshot](evidence/2026-10-19-agentic-loop.jpg) preserves the
 published clarification. Mobile and physical touch rendering remain
-unverified. This receipt changes only the handover records and screenshot,
-not the published forecasts, glossary or experimental results.
+unverified. This receipt also tightens the glossary review note from "added
+retry limits" to "clarified retry risks", so it cannot imply we implemented
+runtime controls. The guidance itself, published forecasts and experimental
+results are unchanged. The screenshot records the first verified release.

@@ -19,4 +19,4 @@ An agentic loop is the repeated cycle of act, observe, decide that lets an AI mo
 
 For example, [Third Moment's reported research setup](https://openai.com/index/third-moment-research/) uses an outer harness to inspect unfinished work and choose retry, termination or human review. That is a useful control pattern, not evidence that every long-running session succeeds. Our [agent check](/lab/agent-check/) helps make the task boundary and outcome check explicit.
 
-*Editorial review, 19 October 2026: distinguished a loop's stop signal from a verified outcome and added retry limits. The original publication date is preserved.*
+*Editorial review, 19 October 2026: distinguished a loop's stop signal from a verified outcome and clarified retry risks. The original publication date is preserved.*
