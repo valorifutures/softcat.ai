@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-13T10:57:01Z",
-  "phase": "published-and-verified-live",
-  "active_branch": null,
+  "updated_at": "2026-10-19T14:49:00Z",
+  "phase": "evidence-review-in-progress",
+  "active_branch": "review/horizon-2026-10-19",
   "last_verified_deployment": {
     "sha": "49d40acc90afd53f6e3d042805bffee0a409ac30",
     "at": "2026-10-13T10:57:01Z",
@@ -133,7 +133,10 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "The 12 October Horizon review is published and verified live. All five targets remain unchanged, the append-only record is current and the active-work marker is clear.",
+  "session": {
+    "date": "2026-10-19",
+    "task": "Reassess all five Horizon forecasts against primary evidence. Publication and validation pending."
+  },
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
