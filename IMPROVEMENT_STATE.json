@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-13T10:57:01Z",
-  "phase": "published-and-verified-live",
-  "active_branch": null,
+  "updated_at": "2026-10-19T14:53:47Z",
+  "phase": "evidence-review-hosted-checks",
+  "active_branch": "review/horizon-2026-10-19",
   "last_verified_deployment": {
     "sha": "49d40acc90afd53f6e3d042805bffee0a409ac30",
     "at": "2026-10-13T10:57:01Z",
@@ -133,7 +133,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "The 12 October Horizon review is published and verified live. All five targets remain unchanged, the append-only record is current and the active-work marker is clear.",
+  "session": "19 October evidence review: all five predictions reassessed, targets and criteria retained. One append-only event and an agentic-loop clarification are under local validation. Hosted release and live checks pending.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -511,5 +511,31 @@
       "git_blob": "6531e67ce8b3d6f71bc0270470d7032f5be1f984",
       "view": "Live desktop viewport after excavation and four-direction gravity tour."
     }
+  },
+  "horizon_review_2026_10_19": {
+    "date": "2026-10-19",
+    "status": "local checks passed, hosted publication pending",
+    "branch": "review/horizon-2026-10-19",
+    "base": "a46989c20befd026768e05a7ce177d03469a1773",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/268",
+    "outcome": "All five predictions reassessed. Targets, milestones and resolution rules unchanged. Seven earlier events preserved. An eighth review adds evidence, counterevidence and limits. Agentic-loop glossary distinguishes stop signals and outcome verification.",
+    "evidence_changes": [
+      "Embedded evaluator access has explicit publication and redaction terms, not a broad capability result.",
+      "Long-running agent and product-work accounts lack consecutive workflow or ticket outcomes.",
+      "Robot fleet replacement and future product availability do not establish sustained multi-task economics.",
+      "Two school tutoring studies separate access, engagement, practice gains and the AI increment. Neither establishes our replicated eight-week durable-learning milestone."
+    ],
+    "next_review_priorities": [
+      "Two independent teams testing one frozen system across newly constructed tasks in all ten domains.",
+      "Customer-confirmed agent workflows with 90-day eligible-case denominators, failures and rescues.",
+      "Multi-task robot customer records at ten sites with intervention and full cost accounting.",
+      "Consecutive software tickets through approved deployment and seven-day monitoring, including manual corrections and rollback.",
+      "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
+    ],
+    "limits": [
+      "Bounded primary-source review, not exhaustive research or new capability measurement.",
+      "No remote model execution, tool-wide behavioural reassessment or paid inference. Feral and price refresh remain separate owners."
+    ],
+    "validation": "Clean npm ci, content/tools/Horizon validators, 210 script JavaScript tests, 49 Feral tests, 141 bot tests, twelve publication fixtures, 46 recovery tests and 25 boundary tests passed, 483 in total. Both research receipt reruns passed. The 645-page build and offline audit passed with 33,328 internal links, 3,318 assets/metadata, 410 search entries and zero errors."
   }
 }

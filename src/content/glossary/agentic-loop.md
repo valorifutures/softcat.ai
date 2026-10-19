@@ -14,3 +14,9 @@ An agentic loop is the repeated cycle of act, observe, decide that lets an AI mo
 **How it works:** The loop typically runs inside a framework that manages the conversation history, tool calls, and stopping conditions. Each iteration adds the action and its result to the context, so the model has a running record of everything it has tried. The loop exits when the model signals completion, hits a token limit, or reaches a maximum number of steps.
 
 **Watch out for:** Loops can burn through tokens quickly, especially if the model gets stuck retrying the same failed action. Good implementations include guardrails like step limits, cost caps, and fallback behaviour when progress stalls.
+
+**Stopping is not success:** A completion message, step limit or timeout tells the harness to stop. It does not establish that the requested outcome happened. Check the resulting state against the task's acceptance criteria, and distinguish completed, failed, escalated and unverified work. A retry can repeat a side effect, so inspect what already happened before trying again.
+
+For example, [Third Moment's reported research setup](https://openai.com/index/third-moment-research/) uses an outer harness to inspect unfinished work and choose retry, termination or human review. That is a useful control pattern, not evidence that every long-running session succeeds. Our [agent check](/lab/agent-check/) helps make the task boundary and outcome check explicit.
+
+*Editorial review, 19 October 2026: distinguished a loop's stop signal from a verified outcome and added retry limits. The original publication date is preserved.*

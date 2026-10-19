@@ -1412,3 +1412,74 @@ observed, but no error originating from SILT was captured.
 This receipt is a separate maintenance change. It preserves the Feral source
 and historical records. This was one manual cycle; the scheduled council can
 see the dated entry and avoid a duplicate today.
+
+## 19 October 2026: Horizon evidence review
+
+The isolated checkout began at main `a46989c20befd026768e05a7ce177d03469a1773`.
+No open PR, active marker or running Action occupied the site. The focused
+[review PR #268](https://github.com/valorifutures/softcat.ai/pull/268) reserves
+this batch. The latest observed scheduled price job
+[39242397141](https://github.com/valorifutures/softcat.ai/actions/runs/39242397141)
+succeeded. No duplicate refresh, legacy generator or Feral cycle was launched.
+
+All five predictions were genuinely reassessed against retrieved primary
+material. The eighth event appends the review, preserving all seven earlier
+events exactly. Targets, milestones, resolution criteria and uncertainty
+statements remain unchanged. No days were added or removed by the review.
+
+- AGI: [Anthropic's 15 October access announcement](https://www.anthropic.com/news/an-update-on-independent-evaluators),
+  clarified on 16 October, describes embedded METR access and redaction terms.
+  [METR's own September assessment](https://metr.org/blog/2026-09-22-claude-opus-5-5/)
+  describes incremental progress and long-horizon weaknesses. Access is not a
+  result, and five AI R&D tasks are not the two preregistered ten-domain tests.
+- Agents and software: OpenAI's 14 October accounts of
+  [Third Moment](https://openai.com/index/third-moment-research/) and
+  [Amp](https://openai.com/index/amp-beyond-coding/) report long-running research,
+  useful product work and a selected production optimisation. Runtime,
+  concurrency and testimony do not supply consecutive workflow or ticket
+  denominators. Retry, termination and human escalation remain visible.
+- Robotics: the [Digit 5 announcement](https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale)
+  still separates Digit 4's operating record from future Digit 5 availability.
+  [Figure's F.02 retirement](https://www.figure.ai/news/f-02-decommission)
+  makes fleet generation and maintenance explicit. Retirement is not evidence
+  of failure, but the accounts do not establish the declared multi-task
+  reliability and customer economics.
+- Education: two August papers were newly assessed in this pass, not newly
+  published. The [18-school Khanmigo study](https://edworkingpapers.com/ai26-1551)
+  reports modest bundled practice gains and thin tutor engagement. Its PDF
+  describes preregistration and exclusions. The
+  [NUMI experiment](https://edworkingpapers.com/ai26-1552) separates AI and
+  mastery support, with only one-week follow-up. The
+  [negative university trial](https://edworkingpapers.com/ai26-1598) remains
+  relevant counterevidence, not proof of universal harm. Two studies in one
+  district with overlapping authors are not independent durable-learning
+  replications. No qualifying eight-week outcome or pooled 0.2 effect is claimed.
+
+The agentic-loop glossary now distinguishes stopping from success, names
+completed, failed, escalated and unverified outcomes, and warns that retries
+can repeat side effects. The provider account is labelled as reported, not as
+our own execution. The original 3 April publication date remains intact.
+
+We also read the current benchmark and agentic-loop glossary, the three
+published tool guides and the code-review recipe. The latter's zero-quantity
+defect and correction were reproduced locally without a model call. Those
+existing guide and recipe review dates were not advanced. This was a bounded
+editorial review, not tool-wide behavioural certification or a new capability
+experiment.
+
+Clean installation, baseline and candidate content/tools/Horizon validators,
+210 script tests, 49 Feral tests, the 645-page production build, twelve
+publication fixtures and offline publication audit passed. The candidate
+audit checked 33,328 internal links, 3,318 local assets/metadata and 410 search
+entries with zero errors. The bot suite passed all 141 tests. All 46 recovery
+and 25 authenticated-boundary tests passed, alongside both receipt reruns.
+That is 483 passing tests in total. Hosted validation, publication and live
+verification are pending at this checkpoint.
+
+Next priorities are evaluator results rather than access announcements,
+customer-confirmed 90-day completion and rescue cohorts, robot fleet
+continuity with full cost, consecutive tickets through seven-day monitoring,
+and tutoring designs that isolate AI's contribution with delayed unassisted
+outcomes. Public source retrieval was bounded, not an exhaustive literature
+review. No original study data, trading result or model capability was
+independently reproduced.
