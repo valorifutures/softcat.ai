@@ -1483,3 +1483,36 @@ and tutoring designs that isolate AI's contribution with delayed unassisted
 outcomes. Public source retrieval was bounded, not an exhaustive literature
 review. No original study data, trading result or model capability was
 independently reproduced.
+
+### Publication and live receipt
+
+The connected GitHub app uploaded the four-file candidate. Tree
+`aaddb9b0569edb2e07fe2d051b8987107651256b` exactly matched the reviewed local tree.
+All [required hosted checks](https://github.com/valorifutures/softcat.ai/actions/runs/39273119838)
+passed on exact head `2322807c73e6df674cb4eb66db13d69ca80bcd0e`. Main was
+re-read unchanged before normal squash merge
+`4fe1cb975beb412e65a60d06d80f138f8e951d85`. The
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/39273675473)
+succeeded on that merge.
+
+The already-open Education page received the new review through its refresh
+control, preserving its selection and synthetic draft. We cleared the draft
+after checking it. Enter selected each of the five predictions, showing the
+19 October review, unchanged target, zero review-day adjustment, current
+evidence and all eight history entries back to 15 September.
+
+The latest Education history and its resolution disclosure opened with Enter.
+The full footer was reachable at scrollY 5,981, with footer bottom 935.80 in a
+936px viewport. Document width 1,348 stayed inside viewport width 1,363.
+The initial native end-key attempt left the page at the top. A normal scroll
+then reached the bottom. A semantic disclosure locator did not match, while
+the actual summary element opened correctly. Neither transport limitation is
+reported as a successful key action or a site regression.
+
+The live [agentic-loop glossary](https://softcat.ai/glossary/agentic-loop/)
+shows the new verification guidance, reported-source attribution, agent-check
+link, original 3 April date and separate 19 October review. The
+[desktop screenshot](evidence/2026-10-19-agentic-loop.jpg) preserves the
+published clarification. Mobile and physical touch rendering remain
+unverified. This receipt changes only the handover records and screenshot,
+not the published forecasts, glossary or experimental results.

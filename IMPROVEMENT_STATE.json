@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-19T14:53:47Z",
-  "phase": "evidence-review-hosted-checks",
-  "active_branch": "review/horizon-2026-10-19",
+  "updated_at": "2026-10-19T15:02:58Z",
+  "phase": "published-and-verified-live",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "49d40acc90afd53f6e3d042805bffee0a409ac30",
-    "at": "2026-10-13T10:57:01Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/38384863974"
+    "sha": "4fe1cb975beb412e65a60d06d80f138f8e951d85",
+    "at": "2026-10-19T15:02:58Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/39273675473"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -125,7 +125,7 @@
   "next": [
     "Select and pin an AGNTCY Identity adapter, verify credential-to-principal and authorisation semantics, and test deployment isolation before untrusted code execution. Then calibrate a single-agent baseline and freeze disjoint evaluation with explicit access and spend limits.",
     "Review original site code/assets provenance before extending the new scoped Apache-2.0 licence.",
-    "Preserve the 12 October Horizon evidence priorities, current targets and append-only history.",
+    "Follow the 19 October Horizon evidence priorities, retaining current targets and append-only history until evidence warrants revision.",
     "Keep Feral creation and daily GitHub price snapshots under their existing separate owners. Mobile/touch and actual file-download verification remain pending from the earlier workshop pass."
   ],
   "constraints": [
@@ -133,7 +133,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "19 October evidence review: all five predictions reassessed, targets and criteria retained. One append-only event and an agentic-loop clarification are under local validation. Hosted release and live checks pending.",
+  "session": "The 19 October Horizon review is published and verified live. All five targets, milestones and resolution rules remain unchanged. Eight events preserve the original forecasts and every earlier review. The glossary clarification is live and the active-work marker is clear.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -514,7 +514,7 @@
   },
   "horizon_review_2026_10_19": {
     "date": "2026-10-19",
-    "status": "local checks passed, hosted publication pending",
+    "status": "published and verified live",
     "branch": "review/horizon-2026-10-19",
     "base": "a46989c20befd026768e05a7ce177d03469a1773",
     "pull_request": "https://github.com/valorifutures/softcat.ai/pull/268",
@@ -534,8 +534,23 @@
     ],
     "limits": [
       "Bounded primary-source review, not exhaustive research or new capability measurement.",
-      "No remote model execution, tool-wide behavioural reassessment or paid inference. Feral and price refresh remain separate owners."
+      "No remote model execution, tool-wide behavioural reassessment or paid inference. Feral and price refresh remain separate owners.",
+      "Desktop keyboard and full-page scrolling verified. Mobile viewport and physical touch behaviour remain unverified. One semantic disclosure locator failed, then the actual summary element opened by Enter. The initial native end-key attempt did not scroll the page, while a normal scroll reached the full footer."
     ],
-    "validation": "Clean npm ci, content/tools/Horizon validators, 210 script JavaScript tests, 49 Feral tests, 141 bot tests, twelve publication fixtures, 46 recovery tests and 25 boundary tests passed, 483 in total. Both research receipt reruns passed. The 645-page build and offline audit passed with 33,328 internal links, 3,318 assets/metadata, 410 search entries and zero errors."
+    "validation": "Clean npm ci, content/tools/Horizon validators, 210 script JavaScript tests, 49 Feral tests, 141 bot tests, twelve publication fixtures, 46 recovery tests and 25 boundary tests passed, 483 in total. Both research receipt reruns passed. The 645-page build and offline audit passed with 33,328 internal links, 3,318 assets/metadata, 410 search entries and zero errors.",
+    "reviewed_head": "2322807c73e6df674cb4eb66db13d69ca80bcd0e",
+    "reviewed_tree": "aaddb9b0569edb2e07fe2d051b8987107651256b",
+    "merge": "4fe1cb975beb412e65a60d06d80f138f8e951d85",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/39273119838",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/39273675473",
+    "receipt": "https://github.com/valorifutures/softcat.ai/tree/review/horizon-2026-10-19-receipt",
+    "live_checks": [
+      "An already-open Education page refreshed to the new review and retained its selection and synthetic draft. The draft was cleared after verification.",
+      "Enter selected all five predictions. Each showed the 19 October review, its unchanged deadline, zero review-day movement, current evidence titles and all eight history entries back to 15 September.",
+      "Enter expanded the latest Education history and resolution disclosure, showing the source limitations and unchanged eight-week learning test.",
+      "Horizon scrolled to its complete footer at scrollY 5981, with footer bottom 935.80 in a 936px viewport. Document width 1348 stayed within viewport 1363.",
+      "The glossary displays the outcome-verification paragraph, reported-source link, agent-check link, preserved 3 April publication date and separate 19 October editorial review."
+    ],
+    "screenshot": "docs/evidence/2026-10-19-agentic-loop.jpg"
   }
 }
