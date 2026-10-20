@@ -1,15 +1,15 @@
 {
-  "checkedAt": "2026-10-19T11:08:10.407Z",
+  "checkedAt": "2026-10-20T10:21:01.528Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "a3726f3e00ef732efd7a1341c25bbb4638a2c5f8e0358ce20e6b8ca6deb9808e",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/39242397141",
+  "sourceSha256": "18abdc2054e22d204165fe91bd9a18610fdefe4cd2d93ca65d4b5b2ccef09920",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/39407270550",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 468,
+  "catalogueModels": 470,
   "trackedModels": 39,
   "matched": 34,
-  "verified": 33,
+  "verified": 34,
   "notListed": 5,
-  "reviewNeeded": 1,
+  "reviewNeeded": 0,
   "unverified": 0,
   "priceChanges": 1,
   "checks": [
@@ -55,12 +55,12 @@
         "outputPrice": 1
       },
       "quoted": {
-        "inputPrice": 0.15,
-        "outputPrice": 1
+        "inputPrice": 0.1,
+        "outputPrice": 0.95
       },
       "applied": {
-        "inputPrice": 0.15,
-        "outputPrice": 1
+        "inputPrice": 0.1,
+        "outputPrice": 0.95
       },
       "issues": []
     },
@@ -170,8 +170,8 @@
       "id": "deepseek/deepseek-r1",
       "status": "not-listed",
       "previous": {
-        "inputPrice": 0.7,
-        "outputPrice": 2.5
+        "inputPrice": null,
+        "outputPrice": null
       },
       "quoted": {
         "inputPrice": null,
@@ -644,33 +644,20 @@
     },
     {
       "id": "z-ai/glm-5",
-      "status": "review-needed",
+      "status": "verified",
       "previous": {
         "inputPrice": 0.6,
         "outputPrice": 1.92
       },
       "quoted": {
-        "inputPrice": 1,
-        "outputPrice": 3.2
+        "inputPrice": 0.6,
+        "outputPrice": 1.92
       },
       "applied": {
         "inputPrice": 0.6,
         "outputPrice": 1.92
       },
-      "issues": [
-        {
-          "field": "inputPrice",
-          "reason": "delta-over-50-percent",
-          "previous": 0.6,
-          "quoted": 1
-        },
-        {
-          "field": "outputPrice",
-          "reason": "delta-over-50-percent",
-          "previous": 1.92,
-          "quoted": 3.2
-        }
-      ]
+      "issues": []
     },
     {
       "id": "x-ai/grok-4.3",
