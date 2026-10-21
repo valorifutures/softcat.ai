@@ -1,15 +1,15 @@
 {
-  "checkedAt": "2026-10-20T10:21:01.528Z",
+  "checkedAt": "2026-10-21T10:30:00.918Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "18abdc2054e22d204165fe91bd9a18610fdefe4cd2d93ca65d4b5b2ccef09920",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/39407270550",
+  "sourceSha256": "78e7b7399c96c7477c4933a55f7d3fadd1b4320bf5f54cdeafd7944c1da8448e",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/39584993290",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 470,
+  "catalogueModels": 468,
   "trackedModels": 39,
   "matched": 34,
-  "verified": 34,
+  "verified": 32,
   "notListed": 5,
-  "reviewNeeded": 0,
+  "reviewNeeded": 2,
   "unverified": 0,
   "priceChanges": 1,
   "checks": [
@@ -51,8 +51,8 @@
       "id": "qwen/qwen3.6-35b-a3b",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.15,
-        "outputPrice": 1
+        "inputPrice": 0.1,
+        "outputPrice": 0.95
       },
       "quoted": {
         "inputPrice": 0.1,
@@ -423,20 +423,33 @@
     },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b",
-      "status": "verified",
+      "status": "review-needed",
       "previous": {
         "inputPrice": 0.08,
         "outputPrice": 0.45
       },
       "quoted": {
-        "inputPrice": 0.08,
-        "outputPrice": 0.45
+        "inputPrice": 0.3,
+        "outputPrice": 2.4
       },
       "applied": {
         "inputPrice": 0.08,
         "outputPrice": 0.45
       },
-      "issues": []
+      "issues": [
+        {
+          "field": "inputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.08,
+          "quoted": 0.3
+        },
+        {
+          "field": "outputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.45,
+          "quoted": 2.4
+        }
+      ]
     },
     {
       "id": "openai/gpt-4.1",
@@ -633,31 +646,44 @@
         "outputPrice": 3.036
       },
       "quoted": {
-        "inputPrice": 0.966,
-        "outputPrice": 3.036
+        "inputPrice": 1.4,
+        "outputPrice": 4.4
       },
       "applied": {
-        "inputPrice": 0.966,
-        "outputPrice": 3.036
+        "inputPrice": 1.4,
+        "outputPrice": 4.4
       },
       "issues": []
     },
     {
       "id": "z-ai/glm-5",
-      "status": "verified",
+      "status": "review-needed",
       "previous": {
         "inputPrice": 0.6,
         "outputPrice": 1.92
       },
       "quoted": {
-        "inputPrice": 0.6,
-        "outputPrice": 1.92
+        "inputPrice": 1,
+        "outputPrice": 3.2
       },
       "applied": {
         "inputPrice": 0.6,
         "outputPrice": 1.92
       },
-      "issues": []
+      "issues": [
+        {
+          "field": "inputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.6,
+          "quoted": 1
+        },
+        {
+          "field": "outputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 1.92,
+          "quoted": 3.2
+        }
+      ]
     },
     {
       "id": "x-ai/grok-4.3",
