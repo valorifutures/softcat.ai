@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-25T10:04:02.677Z",
+  "checkedAt": "2026-10-26T11:27:07.470Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "3685e49d3920e6e7737c8efd1a869d7517ff8d8a53a3c703afadde8ac419c8f7",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/40183213948",
+  "sourceSha256": "c0073e2cf816e7e81a3607a39c5963c0d0fa2b9e22286103ca9737d2ccd559b7",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/40315127563",
   "maxAutoDelta": 0.5,
   "catalogueModels": 467,
   "trackedModels": 39,
   "matched": 34,
-  "verified": 32,
+  "verified": 31,
   "notListed": 5,
-  "reviewNeeded": 2,
+  "reviewNeeded": 3,
   "unverified": 0,
-  "priceChanges": 0,
+  "priceChanges": 1,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -32,20 +32,27 @@
     },
     {
       "id": "qwen/qwen3.6-27b",
-      "status": "verified",
+      "status": "review-needed",
       "previous": {
         "inputPrice": 0.25,
         "outputPrice": 2
       },
       "quoted": {
-        "inputPrice": 0.25,
-        "outputPrice": 2
+        "inputPrice": 0.32,
+        "outputPrice": 3.2
       },
       "applied": {
-        "inputPrice": 0.25,
+        "inputPrice": 0.32,
         "outputPrice": 2
       },
-      "issues": []
+      "issues": [
+        {
+          "field": "outputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 2,
+          "quoted": 3.2
+        }
+      ]
     },
     {
       "id": "qwen/qwen3.6-35b-a3b",
