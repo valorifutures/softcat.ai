@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-19T15:02:58Z",
-  "phase": "published-and-verified-live",
-  "active_branch": null,
+  "updated_at": "2026-10-26T15:57:48Z",
+  "phase": "candidate-validated-locally",
+  "active_branch": "review/horizon-2026-10-26",
   "last_verified_deployment": {
     "sha": "4fe1cb975beb412e65a60d06d80f138f8e951d85",
     "at": "2026-10-19T15:02:58Z",
@@ -552,5 +552,12 @@
       "The glossary displays the outcome-verification paragraph, reported-source link, agent-check link, preserved 3 April publication date and separate 19 October editorial review."
     ],
     "screenshot": "docs/evidence/2026-10-19-agentic-loop.jpg"
+  },
+  "current_session": {
+    "date": "2026-10-26",
+    "branch": "review/horizon-2026-10-26",
+    "base": "befaea7b8176ddbdf32c6b3cbe37185e0f7946ad",
+    "scope": "Reassess all five Horizon predictions against current primary evidence. Price snapshot and Feral remain separate owners.",
+    "status": "All five forecasts reassessed. Targets unchanged. Append-only candidate passed 483 tests, both research receipt reruns, all validators, the 645-page build and offline audit. Hosted review pending."
   }
 }
