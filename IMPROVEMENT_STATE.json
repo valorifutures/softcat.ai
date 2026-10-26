@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-26T15:57:48Z",
-  "phase": "candidate-validated-locally",
-  "active_branch": "review/horizon-2026-10-26",
+  "updated_at": "2026-10-26T16:07:37Z",
+  "phase": "published-and-verified-live",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "4fe1cb975beb412e65a60d06d80f138f8e951d85",
-    "at": "2026-10-19T15:02:58Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/39273675473"
+    "sha": "855d7dd72502403b66d18e6049c60ca673e434fd",
+    "at": "2026-10-26T16:07:37Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/40355251751"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -553,11 +553,44 @@
     ],
     "screenshot": "docs/evidence/2026-10-19-agentic-loop.jpg"
   },
-  "current_session": {
+  "horizon_review_2026_10_26": {
     "date": "2026-10-26",
+    "status": "published and verified live",
     "branch": "review/horizon-2026-10-26",
     "base": "befaea7b8176ddbdf32c6b3cbe37185e0f7946ad",
-    "scope": "Reassess all five Horizon predictions against current primary evidence. Price snapshot and Feral remain separate owners.",
-    "status": "All five forecasts reassessed. Targets unchanged. Append-only candidate passed 483 tests, both research receipt reruns, all validators, the 645-page build and offline audit. Hosted review pending."
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/270",
+    "outcome": "All five predictions reassessed. Targets, milestones and resolution rules unchanged. Eight earlier events preserved. A ninth review adds evidence, counterevidence and limitations. The related glossary, guides, tools and prompts needed no new editorial change.",
+    "evidence_changes": [
+      "An independent high-access red team found concrete agent-monitoring and isolation weaknesses. It tests controls, not broad general intelligence.",
+      "Uber is rolling ChatGPT Work out to more than 30,000 employees. Availability does not supply accepted-workflow denominators.",
+      "GXO and Agility plan expansion to two additional sites in 2027. This is stronger commercial evidence, while reliability, task breadth, intervention and full-cost results remain absent.",
+      "An AI-assisted PHP vulnerability response is a valuable selected software case inside an expert-led process, not a consecutive specification-to-production ticket record.",
+      "No later qualifying durable-learning outcome study changed the mixed tutoring evidence."
+    ],
+    "next_review_priorities": [
+      "Two independent teams testing one frozen system across newly constructed tasks in all ten domains.",
+      "Customer-confirmed agent workflows with 90-day eligible-case denominators, failures and rescues.",
+      "Multi-task robot records at ten sites with intervention and full cost accounting after the announced 2027 deployments begin.",
+      "Consecutive software tickets through approved deployment and seven-day monitoring, including manual corrections and rollback.",
+      "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
+    ],
+    "limits": [
+      "Bounded primary-source review, not an exhaustive literature review or new capability measurement.",
+      "Provider and customer announcements are treated as reported evidence. Planned deployments, access and selected successes are not counted as completed milestone results.",
+      "No paid inference, remote model execution or retired generator ran. Feral and the price snapshot remained with their separate owners.",
+      "Desktop keyboard selection, refresh preservation and full-page scrolling were verified. Mobile and physical touch rendering remain unverified. Browser-extension metadata errors were observed, with no error originating from the site."
+    ],
+    "validation": "Clean npm install, all data validators, 210 script JavaScript tests, 49 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 483 in total. Both research receipt reruns passed. The 645-page build and offline audit passed with 33,328 internal links, 3,318 assets and metadata, 410 search entries and zero errors.",
+    "reviewed_head": "f2721731a4e22874c8f34f26aac9ed2508d289fd",
+    "reviewed_tree": "396d6632cb186cee9f71c1dabb9d1444f827208e",
+    "merge": "855d7dd72502403b66d18e6049c60ca673e434fd",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/40354657565",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/40355251751",
+    "live_checks": [
+      "Enter selected all five predictions. Each showed its unchanged deadline, no days added or removed, the 26 October review and current evidence.",
+      "Education retained a synthetic draft across Check for a new review. The draft was then cleared and remained empty.",
+      "The latest Education history expanded with its reassessment reason and source limits. All nine events back to 15 September remained present.",
+      "The complete footer was reachable at scrollY 6046. Document width 1348 stayed within the 1363-pixel viewport and the footer ended inside the 936-pixel viewport."
+    ]
   }
 }
