@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-26T11:27:07.470Z",
+  "checkedAt": "2026-10-27T10:50:28.646Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "c0073e2cf816e7e81a3607a39c5963c0d0fa2b9e22286103ca9737d2ccd559b7",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/40315127563",
+  "sourceSha256": "b4cb2b1bbcac22e7a7fa1c3c3cc9056e0252be908a4a0c01c05da7426d8409cb",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/40491536284",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 467,
+  "catalogueModels": 463,
   "trackedModels": 39,
-  "matched": 34,
-  "verified": 31,
-  "notListed": 5,
+  "matched": 33,
+  "verified": 30,
+  "notListed": 6,
   "reviewNeeded": 3,
   "unverified": 0,
-  "priceChanges": 1,
+  "priceChanges": 2,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -34,7 +34,7 @@
       "id": "qwen/qwen3.6-27b",
       "status": "review-needed",
       "previous": {
-        "inputPrice": 0.25,
+        "inputPrice": 0.32,
         "outputPrice": 2
       },
       "quoted": {
@@ -158,18 +158,18 @@
     },
     {
       "id": "arcee-ai/trinity-large-thinking",
-      "status": "verified",
+      "status": "not-listed",
       "previous": {
         "inputPrice": 0.25,
         "outputPrice": 0.8
       },
       "quoted": {
-        "inputPrice": 0.25,
-        "outputPrice": 0.8
+        "inputPrice": null,
+        "outputPrice": null
       },
       "applied": {
-        "inputPrice": 0.25,
-        "outputPrice": 0.8
+        "inputPrice": null,
+        "outputPrice": null
       },
       "issues": []
     },
@@ -653,12 +653,12 @@
         "outputPrice": 4.4
       },
       "quoted": {
-        "inputPrice": 1.4,
-        "outputPrice": 4.4
+        "inputPrice": 0.966,
+        "outputPrice": 3.036
       },
       "applied": {
-        "inputPrice": 1.4,
-        "outputPrice": 4.4
+        "inputPrice": 0.966,
+        "outputPrice": 3.036
       },
       "issues": []
     },
