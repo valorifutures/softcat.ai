@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-27T10:50:28.646Z",
+  "checkedAt": "2026-10-28T11:31:56.706Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "b4cb2b1bbcac22e7a7fa1c3c3cc9056e0252be908a4a0c01c05da7426d8409cb",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/40491536284",
+  "sourceSha256": "7862c32a5af2f7548b0df3978f1226de29713f7b26c507b632136348ce129801",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/40680642645",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 463,
+  "catalogueModels": 464,
   "trackedModels": 39,
   "matched": 33,
-  "verified": 30,
+  "verified": 31,
   "notListed": 6,
-  "reviewNeeded": 3,
+  "reviewNeeded": 2,
   "unverified": 0,
-  "priceChanges": 2,
+  "priceChanges": 3,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -32,27 +32,20 @@
     },
     {
       "id": "qwen/qwen3.6-27b",
-      "status": "review-needed",
+      "status": "verified",
       "previous": {
         "inputPrice": 0.32,
         "outputPrice": 2
       },
       "quoted": {
-        "inputPrice": 0.32,
-        "outputPrice": 3.2
+        "inputPrice": 0.45,
+        "outputPrice": 2.7
       },
       "applied": {
-        "inputPrice": 0.32,
-        "outputPrice": 2
+        "inputPrice": 0.45,
+        "outputPrice": 2.7
       },
-      "issues": [
-        {
-          "field": "outputPrice",
-          "reason": "delta-over-50-percent",
-          "previous": 2,
-          "quoted": 3.2
-        }
-      ]
+      "issues": []
     },
     {
       "id": "qwen/qwen3.6-35b-a3b",
@@ -63,11 +56,11 @@
       },
       "quoted": {
         "inputPrice": 0.1,
-        "outputPrice": 0.95
+        "outputPrice": 0.9
       },
       "applied": {
         "inputPrice": 0.1,
-        "outputPrice": 0.95
+        "outputPrice": 0.9
       },
       "issues": []
     },
@@ -160,8 +153,8 @@
       "id": "arcee-ai/trinity-large-thinking",
       "status": "not-listed",
       "previous": {
-        "inputPrice": 0.25,
-        "outputPrice": 0.8
+        "inputPrice": null,
+        "outputPrice": null
       },
       "quoted": {
         "inputPrice": null,
@@ -649,16 +642,16 @@
       "id": "z-ai/glm-5.1",
       "status": "verified",
       "previous": {
+        "inputPrice": 0.966,
+        "outputPrice": 3.036
+      },
+      "quoted": {
         "inputPrice": 1.4,
         "outputPrice": 4.4
       },
-      "quoted": {
-        "inputPrice": 0.966,
-        "outputPrice": 3.036
-      },
       "applied": {
-        "inputPrice": 0.966,
-        "outputPrice": 3.036
+        "inputPrice": 1.4,
+        "outputPrice": 4.4
       },
       "issues": []
     },
