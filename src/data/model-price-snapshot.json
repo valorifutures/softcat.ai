@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-28T11:31:56.706Z",
+  "checkedAt": "2026-10-29T11:41:23.921Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "7862c32a5af2f7548b0df3978f1226de29713f7b26c507b632136348ce129801",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/40680642645",
+  "sourceSha256": "17587518b7288681fe7b04444b6db15ce98836b88c8a3336353bdda6b81af401",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/40867263833",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 464,
+  "catalogueModels": 457,
   "trackedModels": 39,
-  "matched": 33,
-  "verified": 31,
-  "notListed": 6,
+  "matched": 32,
+  "verified": 30,
+  "notListed": 7,
   "reviewNeeded": 2,
   "unverified": 0,
-  "priceChanges": 3,
+  "priceChanges": 1,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -34,8 +34,8 @@
       "id": "qwen/qwen3.6-27b",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.32,
-        "outputPrice": 2
+        "inputPrice": 0.45,
+        "outputPrice": 2.7
       },
       "quoted": {
         "inputPrice": 0.45,
@@ -52,7 +52,7 @@
       "status": "verified",
       "previous": {
         "inputPrice": 0.1,
-        "outputPrice": 0.95
+        "outputPrice": 0.9
       },
       "quoted": {
         "inputPrice": 0.1,
@@ -606,18 +606,18 @@
     },
     {
       "id": "openai/o3-mini",
-      "status": "verified",
+      "status": "not-listed",
       "previous": {
         "inputPrice": 1.1,
         "outputPrice": 4.4
       },
       "quoted": {
-        "inputPrice": 1.1,
-        "outputPrice": 4.4
+        "inputPrice": null,
+        "outputPrice": null
       },
       "applied": {
-        "inputPrice": 1.1,
-        "outputPrice": 4.4
+        "inputPrice": null,
+        "outputPrice": null
       },
       "issues": []
     },
@@ -642,8 +642,8 @@
       "id": "z-ai/glm-5.1",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.966,
-        "outputPrice": 3.036
+        "inputPrice": 1.4,
+        "outputPrice": 4.4
       },
       "quoted": {
         "inputPrice": 1.4,
