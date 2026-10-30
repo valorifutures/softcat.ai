@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-29T11:41:23.921Z",
+  "checkedAt": "2026-10-30T11:33:28.877Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "17587518b7288681fe7b04444b6db15ce98836b88c8a3336353bdda6b81af401",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/40867263833",
+  "sourceSha256": "85dcc3a9968582fa090bdba27a35a009de6570fda79713aaf6fe02e875474f57",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/41048886437",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 457,
+  "catalogueModels": 456,
   "trackedModels": 39,
   "matched": 32,
   "verified": 30,
@@ -38,12 +38,12 @@
         "outputPrice": 2.7
       },
       "quoted": {
-        "inputPrice": 0.45,
-        "outputPrice": 2.7
+        "inputPrice": 0.32,
+        "outputPrice": 3.2
       },
       "applied": {
-        "inputPrice": 0.45,
-        "outputPrice": 2.7
+        "inputPrice": 0.32,
+        "outputPrice": 3.2
       },
       "issues": []
     },
@@ -608,8 +608,8 @@
       "id": "openai/o3-mini",
       "status": "not-listed",
       "previous": {
-        "inputPrice": 1.1,
-        "outputPrice": 4.4
+        "inputPrice": null,
+        "outputPrice": null
       },
       "quoted": {
         "inputPrice": null,
