@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-10-30T11:33:28.877Z",
+  "checkedAt": "2026-10-31T11:07:40.358Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "85dcc3a9968582fa090bdba27a35a009de6570fda79713aaf6fe02e875474f57",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/41048886437",
+  "sourceSha256": "9ebec09cfd65e64fb1c57b67cc96ea19558008134a6c12b018681c5d21e18710",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/41195535291",
   "maxAutoDelta": 0.5,
   "catalogueModels": 456,
   "trackedModels": 39,
@@ -34,16 +34,16 @@
       "id": "qwen/qwen3.6-27b",
       "status": "verified",
       "previous": {
+        "inputPrice": 0.32,
+        "outputPrice": 3.2
+      },
+      "quoted": {
         "inputPrice": 0.45,
         "outputPrice": 2.7
       },
-      "quoted": {
-        "inputPrice": 0.32,
-        "outputPrice": 3.2
-      },
       "applied": {
-        "inputPrice": 0.32,
-        "outputPrice": 3.2
+        "inputPrice": 0.45,
+        "outputPrice": 2.7
       },
       "issues": []
     },
