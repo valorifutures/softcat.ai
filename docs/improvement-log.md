@@ -1518,3 +1518,86 @@ unverified. This receipt also tightens the glossary review note from "added
 retry limits" to "clarified retry risks", so it cannot imply we implemented
 runtime controls. The guidance itself, published forecasts and experimental
 results are unchanged. The screenshot records the first verified release.
+
+## 2 November 2026: Horizon evidence review
+
+The isolated worktree began at main `a57ce589c5883931dd9145f82bf06dc228de1a63`.
+No open PR, active marker, queued Action or running Action occupied the site.
+The daily price snapshot
+[41455820634](https://github.com/valorifutures/softcat.ai/actions/runs/41455820634)
+had succeeded separately. We did not start another price refresh, Feral cycle or
+legacy generator.
+
+All five predictions were reassessed against current primary sources. The tenth
+event appends the 2 November review and preserves all nine earlier events. Every
+target, milestone, resolution criterion and uncertainty statement remains
+unchanged. The review added or removed no days.
+
+- General intelligence remains 31 December 2031. OpenAI's
+  [monitoring report](https://alignment.openai.com/how-we-detect-frontier-model-misalignment)
+  gives timings for a live containment breach and a replayed earlier incident.
+  It tests controls, not skilled-human performance across ten domains. METR's
+  narrower Opus 5.5 assessment still reports open-ended and long-horizon limits.
+- Agents at work remains 31 December 2028. The
+  [OpenAI and ServiceNow announcement](https://openai.com/index/openai-servicenow-partnership-expansion/)
+  puts governed actions inside business systems and describes planned agent
+  capabilities. The Uber rollout remains a large access commitment. Neither
+  source publishes consecutive eligible cases, interventions, failures or
+  90-day outcomes for two workflows at ten organisations.
+- Robotics remains 31 December 2031. The
+  [GXO and Agility expansion](https://www.agilityrobotics.com/content/gxo-and-agility-robotics-expand-partnership-to-accelerate-deployment-of-humanoids-in-u-s-operations)
+  adds operating hours and two planned 2027 sites. Current named operation still
+  covers narrow tote handling at one site. The report omits site-level failure,
+  intervention and full-cost results.
+- Software creation remains 31 December 2027. GitHub made
+  [Agentic Workflows generally available](https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available/)
+  and published a selected Accenture outcome account. It does not give a
+  consecutive-ticket denominator, manual correction rate, approved deployments,
+  rollbacks or seven-day monitoring across ten organisations.
+- Education remains 31 December 2029. A fresh primary-source search found no
+  later qualifying durable-learning result. The school trials still lack two
+  independent term-long AI increments with eight-week unassisted follow-up. The
+  negative university trial remains important counterevidence from one setting.
+
+The Tool Use glossary no longer calls MCP universal or presents model intent as
+execution. It now separates the model request, host validation, transport,
+authentication, authorisation and outcome check. The original 3 April
+publication date is preserved with a separate 2 November editorial review. We
+also reread the agentic-loop and benchmark glossaries, the relevant published
+tool guides and the code-testing recipe. No other claim or review date changed.
+
+Clean npm installation, content, tools and Horizon validators, 210 script tests,
+49 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25
+authenticated-boundary tests passed. Both pinned research receipts reran. That
+is 483 passing tests. The 645-page production build and offline audit checked
+33,328 internal links, 3,318 assets and metadata, and 410 search entries with
+zero errors.
+
+The focused [PR #272](https://github.com/valorifutures/softcat.ai/pull/272) passed
+all [required hosted checks](https://github.com/valorifutures/softcat.ai/actions/runs/41475127708)
+on exact head `95c22c35da0e6784de8ddd26543e3093029901b2`. Main was
+re-read unchanged before normal merge
+`19b37bd55a1313c563a091e4e624d346264c1735`. The
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/41475808170)
+succeeded on that merge.
+
+Enter selected all five predictions, showing the 2 November review, unchanged
+targets, zero review-day adjustment and current evidence. Education retained a
+synthetic draft across the review refresh, then the draft was cleared. Its
+latest history and resolution criteria opened with Enter, with all ten events
+back to 15 September present. The footer was keyboard-reachable at scrollY
+6,158. Document width 1,348 remained within the 1,363-pixel viewport, and the
+footer ended inside the 936-pixel viewport. The live
+[Tool Use glossary](https://softcat.ai/glossary/tool-use/) showed the corrected
+guidance and preserved dates.
+
+This was a bounded primary-source review, not an exhaustive literature review
+or new capability measurement. Provider and customer accounts remain reported
+evidence. We did not run paid inference, remote models or retired generators.
+Desktop keyboard and scrolling behaviour were verified. Mobile and physical
+touch behaviour remain unverified.
+
+Next review priorities remain independent ten-domain evaluation, customer
+90-day workflow cohorts, multi-task robot economics, consecutive software
+tickets through seven-day monitoring and preregistered tutoring replications
+with eight-week unassisted outcomes.
