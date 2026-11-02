@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T16:07:37Z",
-  "phase": "published-and-verified-live",
-  "active_branch": null,
+  "updated_at": "2026-11-02T15:42:41Z",
+  "phase": "evidence-review-in-progress",
+  "active_branch": "review/horizon-2026-11-02",
   "last_verified_deployment": {
     "sha": "855d7dd72502403b66d18e6049c60ca673e434fd",
     "at": "2026-10-26T16:07:37Z",
