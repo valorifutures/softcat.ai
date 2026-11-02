@@ -7,10 +7,14 @@ related: [agentic-loop, model-context-protocol, grounding]
 draft: false
 ---
 
-Tool use is when a language model calls external functions, APIs, or services as part of generating a response. Instead of guessing at a calculation, the model calls a calculator. Instead of making up the weather, it calls a weather API. The model decides when to use a tool, formats the call, and incorporates the result into its response.
+Tool use is when an application lets a language model request an external function, API or service as part of its work. Instead of guessing at a calculation, the model can request a calculator. Instead of making up the weather, it can request a weather service. The host decides which tools are available, validates the request, executes it and returns the result.
 
-**How it works:** The developer defines a set of available tools with descriptions and parameter schemas. The model receives these definitions as part of its context. When it determines a tool would help, it outputs a structured tool call instead of regular text. The application executes the call, returns the result, and the model continues generating with that information.
+**How it works:** The developer defines tools with descriptions and parameter schemas. The model receives those definitions in context. When it determines that a tool would help, it emits a structured request. The surrounding application still owns validation, authorisation, execution and the outcome check.
 
-**Why it matters:** Tool use is what turns a text generator into a capable agent. It bridges the gap between what the model knows (training data) and what is happening right now (live data, real systems). Code execution, web search, database queries, file operations, and API calls all become possible.
+**Why it matters:** Tool use lets a model work with live data and act through real systems. Code execution, web search, database queries, file operations and API calls become possible. It also creates real side effects, so a plausible tool request is never enough by itself.
 
-**Standards and protocols:** MCP (Model Context Protocol) is emerging as a universal standard for tool integration. Before MCP, every framework had its own way of defining and calling tools. A shared protocol means tools built once work across multiple models and frameworks.
+**Protocol is not permission:** MCP standardises messages between hosts, clients and servers. It can make a tool easier to expose across compatible systems, but it does not make every tool portable or safe. The [MCP authorisation specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization) says authorisation is optional and transport-specific. HTTP deployments can use OAuth, while local standard-input deployments obtain credentials from their environment.
+
+**Check the action boundary:** Authentication establishes which caller presented a credential. Authorisation decides whether that caller may perform this action on this resource. The service that owns the effect should enforce the decision, restrict tokens to their intended audience and reject token passthrough. A successful call still needs an outcome check because a valid request can produce the wrong state.
+
+*Editorial review, 2 November 2026: separated model requests, protocol transport, authorisation and verified outcomes. The original publication date is preserved.*
