@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-02T15:42:41Z",
-  "phase": "evidence-review-in-progress",
-  "active_branch": "review/horizon-2026-11-02",
+  "updated_at": "2026-11-02T15:56:50Z",
+  "phase": "published-and-verified-live",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "855d7dd72502403b66d18e6049c60ca673e434fd",
-    "at": "2026-10-26T16:07:37Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/40355251751"
+    "sha": "19b37bd55a1313c563a091e4e624d346264c1735",
+    "at": "2026-11-02T15:55:24Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/41475808170"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -591,6 +591,45 @@
       "Education retained a synthetic draft across Check for a new review. The draft was then cleared and remained empty.",
       "The latest Education history expanded with its reassessment reason and source limits. All nine events back to 15 September remained present.",
       "The complete footer was reachable at scrollY 6046. Document width 1348 stayed within the 1363-pixel viewport and the footer ended inside the 936-pixel viewport."
+    ]
+  },
+  "horizon_review_2026_11_02": {
+    "date": "2026-11-02",
+    "status": "published and verified live",
+    "branch": "review/horizon-2026-11-02",
+    "base": "a57ce589c5883931dd9145f82bf06dc228de1a63",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/272",
+    "outcome": "All five predictions reassessed. Targets, milestones and resolution rules unchanged. Nine earlier events preserved. A tenth review adds evidence, counterevidence and limitations. The Tool Use glossary now separates a model request from execution, authorisation and outcome verification.",
+    "evidence_changes": [
+      "OpenAI reports wider frontier-agent monitoring, one live containment breach detected within 15 minutes and an earlier incident replay. These are control results, not ten-domain general-intelligence tests.",
+      "OpenAI and ServiceNow announced governed workflow actions, wider employee access and planned agent capabilities. They publish no consecutive 90-day completion and rescue cohort.",
+      "GitHub made Agentic Workflows generally available and published a selected Accenture outcome account. The report lacks the consecutive ticket, manual correction, rollback and seven-day monitoring denominator in our milestone.",
+      "No later qualifying robot economics or durable-learning result changed the robotics and education judgements."
+    ],
+    "next_review_priorities": [
+      "Two independent teams testing one frozen system across newly constructed tasks in all ten domains.",
+      "Customer-confirmed agent workflows with 90-day eligible-case denominators, failures and rescues.",
+      "Multi-task robot records at ten sites with intervention and full cost accounting after the announced 2027 deployments begin.",
+      "Consecutive software tickets through approved deployment and seven-day monitoring, including manual corrections and rollback.",
+      "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
+    ],
+    "limits": [
+      "Bounded primary-source review, not an exhaustive literature review or new capability measurement.",
+      "Provider and customer reports are treated as reported evidence. Access, product availability, planned deployments and selected successes are not counted as completed milestone results.",
+      "No paid inference, remote model execution or retired generator ran. Feral and the price snapshot remained with their separate owners.",
+      "Desktop keyboard selection, review refresh, draft retention and full-page scrolling were verified. Mobile and physical touch rendering remain unverified."
+    ],
+    "validation": "Clean npm ci, all data validators, 210 script JavaScript tests, 49 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 483 in total. Both research receipt reruns passed. The 645-page build and offline audit passed with 33,328 internal links, 3,318 assets and metadata, 410 search entries and zero errors.",
+    "reviewed_head": "95c22c35da0e6784de8ddd26543e3093029901b2",
+    "merge": "19b37bd55a1313c563a091e4e624d346264c1735",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/41475127708",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/41475808170",
+    "live_checks": [
+      "Enter selected all five predictions. Each showed its unchanged deadline, no days added or removed, the 2 November review and current evidence.",
+      "Education retained a synthetic draft across Check for a new review. The draft was cleared after verification.",
+      "The latest Education history and resolution criteria opened with Enter. All ten events back to 15 September remained present.",
+      "The complete footer was keyboard-reachable at scrollY 6,158. Document width 1,348 stayed within the 1,363-pixel viewport, and the footer ended inside the 936-pixel viewport.",
+      "The Tool Use glossary displayed the corrected protocol, authorisation and outcome guidance, the original 3 April publication date and the separate 2 November editorial review."
     ]
   }
 }
