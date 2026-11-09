@@ -8,6 +8,7 @@
 - [Browser tools and data behaviour](https://softcat.ai/tools)
 - [Worked prompt recipes, examples and checks](https://softcat.ai/prompts)
 - [Notebook](https://softcat.ai/notebook)
+- [Domain & Outage Checker: live public DNS replies, safe triage and incident exports](https://softcat.ai/lab/outage-check)
 - [Should this be an agent?](https://softcat.ai/lab/agent-check)
 - [Prompt Workbench](https://softcat.ai/lab/prompt-workbench)
 - [Model comparison and dated workload costs](https://softcat.ai/lab/model-comparison)
