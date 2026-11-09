@@ -54,8 +54,9 @@ export default function DomainCheck({ onReport }: Props) {
       return;
     }
     controller.current?.abort();
-    controller.current = new AbortController();
-    const signal = controller.current.signal;
+    const activeController = new AbortController();
+    controller.current = activeController;
+    const signal = activeController.signal;
     const token = ++requestNumber.current;
     setBusy(true);
     setSnapshot(null);
@@ -63,7 +64,7 @@ export default function DomainCheck({ onReport }: Props) {
     setMessage('');
     onReport('');
 
-    const timeout = window.setTimeout(() => controller.current?.abort(), 8500);
+    const timeout = window.setTimeout(() => activeController.abort(), 8500);
     const tasks = resolvers.flatMap(resolver => recordTypes.map(async type => {
       try {
         const url = dnsQueryUrl(resolver, domain, type);
