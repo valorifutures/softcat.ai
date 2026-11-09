@@ -12,12 +12,14 @@
 .directory-inventory > div > span { font-size: .82rem; line-height: 1.6; color: #d3dfc9; }
 .directory-inventory > p { display: grid; gap: .5rem; margin-block: 1.3rem .7rem; font: .62rem/1.7 var(--font-mono); color: #aebba1; }
 .directory-inventory > a { display: inline-flex; align-items: center; min-height: 44px; gap: .7rem; font-size: .72rem; color: #c4dbab; text-decoration: underline; text-underline-offset: 4px; }
-.directory-task-map { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 3rem; border: 1px solid #414a3c; border-radius: .5rem; overflow: hidden; }
+.directory-task-map { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 3rem; border: 1px solid #414a3c; border-radius: .5rem; overflow: hidden; }
 .directory-task { --task-ink: #baded7; display: flex; flex-direction: column; min-width: 0; background: #18211f; padding: 1.4rem; border-right: 1px solid #414a3c; }
 .directory-task:last-child { border-right: 0; }
 .directory-task-check { --task-ink: #d7c6e9; background: #201d27; }
 .directory-task-plan { --task-ink: #e4c3a0; background: #27221c; }
 .directory-task-decide { --task-ink: #c9e4a7; background: #21271c; }
+.directory-task-diagnose { --task-ink: #d9f2ba; background: #223323; }
+.directory-job-diagnose .directory-job-number { color: #c9ee8d; }
 .directory-task-top { display: flex; align-items: center; justify-content: space-between; gap: .7rem; font: .62rem/1.7 var(--font-mono); color: var(--task-ink); }
 .directory-task-icon { font: 2.7rem/1.2 var(--font-mono); color: var(--task-ink); padding-block: 1.35rem 1.1rem; }
 .directory-task strong { font: 500 1.2rem/1.4 var(--font-sans); color: #edf0e6; letter-spacing: -.025em; }

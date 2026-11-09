@@ -7,7 +7,7 @@ import { ANALYTICS_ENABLED } from '../consts';
     <header class="mb-10">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan mb-4 inline-block">← home</a>
       <h1 class="font-mono text-3xl font-bold text-text-bright">Privacy</h1>
-      <p class="text-text-muted mt-3">Updated 13 September 2026</p>
+      <p class="text-text-muted mt-3">Updated 9 November 2026</p>
     </header>
     <div class="space-y-8 text-text-primary leading-relaxed">
       <p>SOFT CAT is a static site with browser tools and a few external services. Here is where data goes.</p>
@@ -15,6 +15,12 @@ import { ANALYTICS_ENABLED } from '../consts';
         <h2 class="font-mono text-lg text-neon-green mb-3">Calculators and editors</h2>
         <p>Token estimates, prompt comparisons and JSON validation run in your browser. These tools do not send the text you enter to a model. Prompt Workbench saves versions in this browser's local storage when you choose Save. Clearing site data removes those saved prompts. You can download and import a library backup.</p>
         <p class="mt-3">Opening a Workbench draft in Chat Playground puts the filled system prompt, user message and model choice in this tab's session storage. The playground accepts a transfer for up to 30 minutes and removes it when read. Importing a draft does not send a model request.</p>
+      </section>
+      <section>
+        <h2 class="font-mono text-lg text-neon-green mb-3">Domain &amp; Outage Checker</h2>
+        <p>When you press Check domain, your browser sends the public hostname you entered to Cloudflare 1.1.1.1 and Google Public DNS using DNS over HTTPS. Both providers see the request and have their own privacy and logging policies. A URL path or query is not sent. The diagnostic results and optional incident notes stay on this page. Nothing is saved to local storage or sent to SOFT CAT by the tool.</p>
+        <p class="mt-3">If you copy the generated AI prompt into another service, that service may process and retain the contents. Do not paste secrets or personal information.</p>
+        <p class="mt-3"><a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/" class="text-neon-cyan underline underline-offset-4">Cloudflare 1.1.1.1 privacy</a> · <a href="https://developers.google.com/speed/public-dns/privacy" class="text-neon-cyan underline underline-offset-4">Google Public DNS privacy</a></p>
       </section>
       <section>
         <h2 class="font-mono text-lg text-neon-cyan mb-3">Chat Playground</h2>
