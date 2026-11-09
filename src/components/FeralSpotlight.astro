@@ -2,7 +2,9 @@
 import manifest from '../content/feral/manifest.json';
 import { initialPlates, renderPrint } from '../content/feral/off-register.mjs';
 const creation = manifest.find(item => item.slug === 'off-register')!;
-const born = new Date(`${creation.born}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const latestCreation = [...manifest].sort((a, b) => b.born.localeCompare(a.born))[0];
+const dateLabel = (value: string) => new Date(`${value}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const born = dateLabel(creation.born);
 ---
 <section class="workshop-shell feral-spotlight" aria-labelledby="feral-spotlight-title">
   <a class="spotlight-print" href={creation.route} aria-label="Open Off Register, the three-ink printmaking toy">
@@ -16,6 +18,10 @@ const born = new Date(`${creation.born}T00:00:00Z`).toLocaleDateString('en-GB', 
     <p>{creation.blurb} Move the plates, watch the colours meet, then take your own SVG home.</p>
     <a class="workshop-button primary" href={creation.route}>Make a print <span aria-hidden="true">↗</span></a>
     <p class="spotlight-local">In your browser. No account. No model call.</p>
+    {latestCreation.slug !== creation.slug && <div class="spotlight-newest">
+      <span>ALSO FROM FERAL / MOST RECENT CREATION</span>
+      <a href={latestCreation.route}>{latestCreation.title} <time datetime={latestCreation.born}>{dateLabel(latestCreation.born)}</time> <span aria-hidden="true">↗</span></a>
+    </div>}
     <div class="spotlight-record"><span>Published <time datetime={creation.born}>{born}</time></span><a href="/feral">Explore all {manifest.length} creations →</a></div>
   </div>
 </section>
@@ -36,6 +42,10 @@ const born = new Date(`${creation.born}T00:00:00Z`).toLocaleDateString('en-GB', 
   .spotlight-copy > p:not(.eyebrow):not(.spotlight-title):not(.spotlight-local) { color: #b9b2bf; font-size: .9rem; line-height: 1.85; }
   .spotlight-copy .workshop-button { margin-top: 1.65rem; min-width: 190px; }
   .spotlight-copy .spotlight-local { font-size: .68rem; color: #b9b2bf; margin-top: .8rem; }
+  .spotlight-newest { display: grid; gap: .55rem; margin-top: 1.75rem; border-top: 1px solid #4d4254; padding-top: 1rem; }
+  .spotlight-newest > span { font: .61rem var(--font-mono); color: #b9b2bf; letter-spacing: .02em; }
+  .spotlight-newest a { color: #efdbfa; display: flex; flex-wrap: wrap; gap: .4rem .9rem; align-items: center; text-decoration: underline; text-underline-offset: 4px; font-size: .85rem; }
+  .spotlight-newest time { font: .62rem var(--font-mono); color: #b9b2bf; }
   .spotlight-record { display: flex; flex-wrap: wrap; gap: .65rem 1.5rem; border-top: 1px solid #3b3442; padding-top: 1.3rem; margin-top: 2rem; font: .6rem/1.7 var(--font-mono); color: #b9b2bf; }
   .spotlight-record a { color: #d6c3e7; text-decoration: underline; text-underline-offset: 4px; }
   @media(max-width: 740px) { .feral-spotlight { grid-template-columns: 1fr; margin-block: 2rem; } .spotlight-print { padding: 2.5rem 2rem 1.5rem; } .spotlight-paper { width: min(72%, 260px); } .spotlight-copy { padding: 2rem 1.5rem; } }
