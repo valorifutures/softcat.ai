@@ -65,3 +65,52 @@ The validator checks emitted HTML, duplicate IDs, nested links, shared-layout he
 - **P3:** Review dormant `Dispatch.astro` / Buttondown integration and retired scripts against the privacy description before removing or reactivating them.
 
 **Status of this file:** An audit of repository source and the last successful hosted build, with explicitly bounded follow-up work. The final PR checks and Pages publishing receipts belong in [the improvement log](improvement-log.md). Record those only after the runs complete.
+
+
+## 9 November release receipt
+
+The first audit release was merged in [PR #282](https://github.com/valorifutures/softcat.ai/pull/282) as
+`d4173a36cf10495710363a6ce6c6a2e82b95a57c`. [The exact-head PR validation](https://github.com/valorifutures/softcat.ai/actions/runs/42714607857)
+passed the production build, all required source/data checks, independent
+boundary and framework-recovery CI, 225 JavaScript tests, 21 offline publication
+tests and 141 bot tests. Its emitted-site audit recorded:
+
+| Measure after first release | Verified build |
+| --- | ---: |
+| Built HTML pages | 650 |
+| Internal links checked | 34,197 |
+| Local asset/metadata refs checked | 3,343 |
+| Search entries | 413 |
+| Content records | 184 |
+| Retirement notices | 227 |
+| Offline publication errors | 0 |
+
+The first hosted build attempt failed due to an unescaped apostrophe in an
+Astro string on the Valori page. We corrected the error and ran the entire
+required suite again before merge. No failed build was published.
+
+[GitHub Pages run 42715048084](https://github.com/valorifutures/softcat.ai/actions/runs/42715048084)
+completed all its validation and deployment jobs successfully at 22:50 UTC.
+This is publication evidence, **not** proof that a real browser completed every
+interaction. The independent visitor and RSS reader tests remain open.
+
+### Additional discovery: legacy routes
+
+The audit found another source-level SEO issue after the first release:
+`/now`, `/status`, `/lab`, `/lab/model-explorer` and `/receipt` were
+not on the explicit sitemap-exclusion list. The receipt endpoint redirects
+to a retired trace demo, but it lacked a noindex marker. A follow-up focused
+change excludes these redirect aliases from the sitemap while keeping them
+reachable and marks the retired receipt redirect noindex. A new offline test
+asserts that canonical destinations stay indexed. This is an SEO hygiene
+correction, not a claim that all these routes were indexed by search engines.
+
+### External reference sample, not a whole-site link audit
+
+We sampled public references from the latest archived Radar edition. Manufact,
+Mirrors (which redirects to mirrors.dev), Declaw Arena, ThousandEyes' outages map,
+and the Cloudflare/Google DNS JSON API documentation were accessible through the
+external reader on 9 November. A GitHub Enola page could not be assessed because
+the reader rejected that URL as restricted. We do **not** classify that
+restriction as a dead website. The historical Radar disclosure remains
+appropriate: the page's original product claims have not been re-verified.
