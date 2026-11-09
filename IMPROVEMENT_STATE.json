@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09T20:49:50Z",
+  "updated_at": "2026-11-09T20:55:56Z",
   "phase": "published-and-verified-live",
   "active_branch": null,
   "last_verified_deployment": {
@@ -121,9 +121,13 @@
     "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned.",
     "PR #262 published Feral cycle 9, BRUX, following a free director brief, independent builder and critic PASS on attempt 1. Twelve core tests, the exact final-head trusted gate and full hosted checks passed. Live instrument, audio controls, session expiry and 390/1280 px layouts were verified; audio listening and physical touch coverage are not claimed.",
     "PR #266 published Feral cycle 10, SILT, after a free director brief, independent builder and critic PASS on attempt one. Local validation, the trusted exact remote-commit gate and all hosted checks passed. Pages succeeded. Live desktop digging, all four gravity directions, automatic rest, keyboard/coordinate controls, scoop bounds, pointer strokes, reset and the complete footer were verified.",
-    "PR #277 passed the exact-head hosted gates, merged and deployed. Horizon now has short prediction summaries, key test figures, a clearer 90-day trial and compact history. Live desktop selection, keyboard controls, separate drafts, refresh preservation, clipboard readback and actual text download were verified. All eleven prediction reviews remain unchanged."
+    "PR #277 passed the exact-head hosted gates, merged and deployed. Horizon now has short prediction summaries, key test figures, a clearer 90-day trial and compact history. Live desktop selection, keyboard controls, separate drafts, refresh preservation, clipboard readback and actual text download were verified. All eleven prediction reviews remain unchanged.",
+    "PR #276 published Feral cycle 11, SNARL, following a free director brief, separate builder and independent critic PASS on attempt one. Ten SNARL tests, 269 total JavaScript tests, 141 bot tests, twelve publication fixtures, required validators, the 646-page build and trusted exact remote-commit gate passed. Hosted checks and Pages succeeded. Live desktop movement, input guards, geometric snags, all reveal/reset disclosures, native-control completion paths and the complete footer were verified.",
+    "On 9 November, restored the existing Feral and daily maintenance tasks from paused to enabled, preserving their prompts and Europe/London schedules. Re-read both as enabled after the manual council. The Monday evidence task was already enabled. The separate price job is scheduling but fails its incomplete-catalogue guard; no validation was weakened."
   ],
   "next": [
+    "Review the eight model IDs missing from the price catalogue against current provider and retirement evidence. Preserve the incomplete-catalogue guard and keep the GitHub price workflow as the sole price publisher.",
+    "Verify the first resumed Feral and maintenance scheduled executions from their actual results and GitHub receipts. Report a specific new user-action or connection blocker if one occurs.",
     "Select and pin an AGNTCY Identity adapter, verify credential-to-principal and authorisation semantics, and test deployment isolation before untrusted code execution. Then calibrate a single-agent baseline and freeze disjoint evaluation with explicit access and spend limits.",
     "Review original site code/assets provenance before extending the new scoped Apache-2.0 licence.",
     "Follow the 9 November Horizon evidence priorities, retaining current targets and append-only history until evidence warrants revision.",
@@ -144,7 +148,10 @@
     "Audio enable/mute UI and Web Audio source were checked, but speaker listening, physical touch devices, live reduced-motion rendering and hidden-tab event behaviour were not verified. Local Astro installation was unavailable; complete production builds ran on GitHub.",
     "Physical touch devices, narrow viewport rendering, live reduced-motion mode and hidden-tab event behaviour were not verified. Reduced-motion and visibility handling were source-reviewed; deterministic tests exercise the cellular model.",
     "Cloud browser limitations: number-field fill did not emit native change events, so coordinate entry was verified through actual typing and Tab; text waits and full-page capture timed out, while later snapshots, screenshots and the viewport capture succeeded. Canvas pixel readback was unavailable. Extension metadata errors were observed, with no error originating from SILT.",
-    "The 9 November Horizon reader release was verified on desktop. Narrow viewport and physical touch rendering remain unverified. Its actual trial .txt download and clipboard bytes were verified; earlier limits for other tools and Feral remain in place."
+    "The 9 November Horizon reader release was verified on desktop. Narrow viewport and physical touch rendering remain unverified. Its actual trial .txt download and clipboard bytes were verified; earlier limits for other tools and Feral remain in place.",
+    "Live verification used the desktop cloud browser. Physical touch and narrow viewport rendering were not verified. Responsive rules were source-reviewed.",
+    "The authored layouts were used for native-control completion tests. The observed Cleared by hand label describes the game state without the reveal control, not an unaided independent solve.",
+    "Restored task configuration is verified enabled. The first resumed unattended executions remain unverified, and the task tool did not expose next-run timestamps. The exact old permission prompt is not available."
   ],
   "workshop_redesign_2026_09_25": {
     "date": "2026-09-25",
@@ -709,5 +716,83 @@
       "docs/evidence/horizon-reader-hero-20261109.jpg",
       "docs/evidence/horizon-reader-detail-20261109.jpg"
     ]
+  },
+  "feral_cycle11_receipt": {
+    "date": "2026-11-09",
+    "cycle": 11,
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/276",
+    "reviewed_head": "d194a45dd12264af511ab2afc3e7f31a5060a4e6",
+    "reviewed_tree": "6b9fbbf5437d0c154598a17ede986d3391833bd6",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/42693561988",
+    "merge_sha": "278fb5bcb282368a73c78456b6418994508a1a94",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42694204996",
+    "route": "https://softcat.ai/feral/snarl/",
+    "critic_verdict": "PASS",
+    "critic_attempts": 1,
+    "local_validation": {
+      "javascript_tests": 269,
+      "bot_tests": 141,
+      "publication_fixtures": 12,
+      "content_records": 183,
+      "models": 39,
+      "tools": 8,
+      "horizon_entries": 89
+    },
+    "publication_audit": {
+      "htmlPages": 646,
+      "internalLinksChecked": 33334,
+      "localAssetsAndMetadataChecked": 3322,
+      "searchEntries": 411,
+      "contentRecords": 183,
+      "retirementNotices": 227,
+      "errors": []
+    },
+    "live_checks": [
+      "The gallery shows eleven creations, cycle 11, 9 November 2026 and PASS. Its actual SNARL link opens the released route.",
+      "The first knot begins with eight snags. ArrowRight moves Eyelet 1 from across 500 to 505; Shift plus ArrowDown moves down 104 to 124. Native dragging moves it to across 563, down 146.",
+      "Empty coordinate input is rejected without moving the drawing. Submitting 9999 and -1 bounds the eyelet to across 964, down 36. Reset restores the authored start.",
+      "Placing Eyelet 1 on Eyelet 2 produces fifteen snags: ten cord pairs, one crowded pair and four eyelet/cord contacts. It does not clear the knot.",
+      "Each of the three reveals produces zero snags and Arrangement shown. Reset returns 8, 19 and 34 snags while preserving the Shown label and assistance disclosure. No all-by-hand ending appears.",
+      "On a fresh visit, the authored clear coordinates were entered through the native controls. Each knot reaches zero, displays This one can breathe and marks Cleared by hand. With all three clear, the final line appears. This exercises the interface state using known solutions, not an independent puzzle solve.",
+      "Resetting the third knot restores its 34 snags while preserving the other two clear states and removes the final closing line.",
+      "With rules expanded, the complete footer is reachable: bottom 935.73 inside a 936-pixel viewport. Document and viewport widths both measure 1348 pixels.",
+      "No error originating from the site was captured. The room was reloaded to the first knot with eight snags, no revealed arrangements and default controls."
+    ],
+    "verification_limits": [
+      "Live verification used the desktop cloud browser. Physical touch and narrow viewport rendering were not verified. Responsive rules were source-reviewed.",
+      "The authored layouts were used for native-control completion tests. The observed Cleared by hand label describes the game state without the reveal control, not an unaided independent solve."
+    ],
+    "screenshot": {
+      "path": "docs/evidence/2026-11-09-snarl.jpg",
+      "bytes": 85647,
+      "git_blob": "e365a330376aeaf70f48164d4cd8ae74dc2b9a4b",
+      "view": "Live desktop viewport of the fresh first knot."
+    }
+  },
+  "scheduling_recovery_2026_11_09": {
+    "date": "2026-11-09",
+    "observed_paused": [
+      "Feral council",
+      "SOFT CAT maintenance"
+    ],
+    "last_scheduled_results_required_user_action": true,
+    "specific_permission_prompt": "Not present in saved results. The exact original pause trigger is unconfirmed.",
+    "resumed_in_place": true,
+    "enabled_rechecked": true,
+    "schedules": {
+      "Feral council": "Tuesday and Friday afternoons around 15:00 Europe/London",
+      "SOFT CAT maintenance": "Daily morning around 08:00 Europe/London"
+    },
+    "evidence_review": "Already enabled, with a recorded 9 November run.",
+    "first_resumed_unattended_execution": "Not yet verified.",
+    "price_workflow": {
+      "observed_scheduled_run": "https://github.com/valorifutures/softcat.ai/actions/runs/42632692153",
+      "conclusion": "failure",
+      "reason": "Catalogue guard matched 31 of 39 tracked IDs and rejected the snapshot.",
+      "publication": "skipped",
+      "last_observed_success": "https://github.com/valorifutures/softcat.ai/actions/runs/41836001097",
+      "guard_unchanged": true
+    },
+    "scope": "Existing cloud task enable flags only. No duplicate task or GitHub Feral cron was created, and retired timers and the expired overnight loop remain off."
   }
 }

@@ -1727,3 +1727,78 @@ unverified. The captured console error sample was from the browser extension;
 no exhaustive console-error absence is claimed. No new evidence assessment,
 paid inference or capability measurement took place. All eleven review records
 remain byte-for-byte unchanged.
+
+
+## 9 November 2026, Feral untangles the room and schedules resume
+
+The maintainer requested another council with complete creative freedom. The
+independent director chose SNARL, a finite cord-untangling game, and a separate
+builder made three authored knots with six, eight and ten eyelets. The critic
+judged safety and deployment only and passed attempt one. No creative brief,
+research theme or taste correction was imposed by the coordinator.
+
+[PR #276](https://github.com/valorifutures/softcat.ai/pull/276) changes exactly five
+regular files inside Feral's three roots. Previous creations, ten manifest
+entries and eleven ledger records remain unchanged, with one creation and one
+cycle appended. Ten SNARL tests cover real intersections, degeneracies,
+clearances, bounded movement, independent knot state and sticky reveal
+labelling. Starts have 8, 19 and 34 snags and all three graphs have known clear
+arrangements. The critic independently repeated the ten tests, built 646 pages
+and checked emitted assets, links and anchors. This is separate-role review,
+not evidence of model diversity or independent reproduction.
+
+Local validation passed 269 JavaScript tests, 141 bot tests, twelve publication
+fixtures and all required data validators. The final build has 646 pages. The
+audit checked 33,334 internal links and 3,322 local assets/metadata with no
+errors. GitHub tree `6b9fbbf5437d0c154598a17ede986d3391833bd6` exactly matches the
+reviewed local source. The trusted base gate passed exact remote head
+`d194a45dd12264af511ab2afc3e7f31a5060a4e6`. All [hosted checks](https://github.com/valorifutures/softcat.ai/actions/runs/42693561988)
+passed before normal squash merge `278fb5bcb282368a73c78456b6418994508a1a94`.
+Main and head were re-read unchanged first. [Pages](https://github.com/valorifutures/softcat.ai/actions/runs/42694204996)
+passed its required checks and deployment job.
+
+The [live room](https://softcat.ai/feral/snarl/) opens from the eleven-room
+gallery, which records cycle 11, 9 November and PASS. Keyboard movement changes
+coordinates by 5 or 20 units. Pointer dragging works. Empty input is rejected,
+out-of-field values are bounded, and overlapping two eyelets produces fifteen
+snags instead of a clearance. Each reveal reaches zero and is explicitly
+marked Shown. Reset restores the original snag count without removing that
+assistance disclosure.
+
+On a fresh visit, known authored coordinates were entered through the native
+controls. Each knot reached zero and the final all-three completion line
+appeared. This tests the interface's completion path, not an independent
+puzzle solve. Resetting the third knot preserves the other two clear states.
+With the rules expanded, the complete footer ends at 935.73 pixels inside a
+936-pixel viewport. Document and viewport widths both measure 1,348 pixels.
+No error from the site was captured. The room was left at the fresh first
+knot. The retained [2026-11-09-snarl.jpg](evidence/2026-11-09-snarl.jpg) is an
+actual live desktop viewport. Physical touch and narrow rendering are not
+claimed.
+
+The schedule investigation found Feral council and daily maintenance paused.
+Their old scheduled results flag user action as required but contain no
+permission-prompt text. Both existing tasks were resumed in place and re-read
+as enabled. Their prompts and Europe/London timing are unchanged: Tuesday and
+Friday afternoons around 15:00 for Feral, daily mornings around 08:00 for
+maintenance. Monday evidence review was already enabled and records a run on
+9 November. The first resumed unattended executions remain to be verified.
+No new task, duplicate Feral cron, retired Linux timer or expired overnight
+loop was started.
+
+The separate [price job](https://github.com/valorifutures/softcat.ai/actions/runs/42632692153)
+is scheduling but rejects a catalogue matching only 31 of 39 tracked IDs.
+Its publisher was skipped. The last observed success was [4 November](https://github.com/valorifutures/softcat.ai/actions/runs/41836001097).
+The guard is intact. Reviewing the eight unmatched IDs against primary provider
+records is the next reliability task. The dated operations note records these
+facts rather than treating enabled configuration as execution evidence.
+
+This maintenance receipt changes checkpoint/log/operations documentation and
+the screenshot only. Feral source and ledger, research results, Horizon data,
+price data and workflow code are unchanged.
+
+Concurrent handover: the Horizon reader release in PR #277 and its completed
+receipt in PR #278 landed while this receipt was being prepared. This run's
+additions were applied to that latest main, preserving the Horizon checkpoint,
+log additions and screenshots. The global verified-deployment pointer keeps
+the later Horizon record; SNARL's own receipt links its earlier verified release.
