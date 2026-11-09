@@ -17,7 +17,7 @@ const exports: { id: ExportKind; label: string; hint: string }[] = [
   { id: 'update', label: 'Status update', hint: 'For affected people' },
 ];
 
-export default function OutageGuide() {
+export default function OutageGuide({ domainReport = '' }: { domainReport?: string }) {
   const [answers, setAnswers] = useState<FormAnswers>({});
   const [activeExport, setActiveExport] = useState<ExportKind>('brief');
   const [message, setMessage] = useState('');
@@ -47,7 +47,7 @@ export default function OutageGuide() {
   const exportedText = assessment
     ? (activeExport === 'brief' ? formatBrief(answers, assessment)
       : activeExport === 'prompt' ? formatAiPrompt(answers, assessment)
-      : formatUpdate(answers, assessment))
+      : formatUpdate(answers, assessment)) + (domainReport ? '\n\n' + domainReport : '')
     : '';
 
   async function copy() {
@@ -170,7 +170,7 @@ export default function OutageGuide() {
               <strong>{item.label}</strong><small>{item.hint}</small>
             </button>)}
           </div>
-          <label class="outage-preview-label" for="outage-preview">Your editable copy preview</label>
+          <label class="outage-preview-label" for="outage-preview">Your copyable text preview</label>
           <textarea id="outage-preview" class="outage-preview" rows={12} readOnly value={exportedText} />
           <p class="outage-private-warning">Review before sharing. Remove names, private data, logs and account details. An AI service may store what you paste.</p>
           <div class="outage-export-actions">
