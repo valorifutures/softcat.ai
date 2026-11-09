@@ -1601,3 +1601,64 @@ Next review priorities remain independent ten-domain evaluation, customer
 90-day workflow cohorts, multi-task robot economics, consecutive software
 tickets through seven-day monitoring and preregistered tutoring replications
 with eight-week unassisted outcomes.
+
+## 9 November 2026: Horizon evidence review
+
+All five forecasts were reassessed against current primary evidence. The review
+appends an eleventh event and preserves the ten earlier events, every target,
+milestone and resolution rule. General intelligence remains end-2031, agents
+end-2028, robotics end-2031, software creation end-2027 and education end-2029.
+
+METR's high-access Anthropic assessment estimates capability-score progress on
+well-specified tasks at about 1.9 times the earlier rate and attributes most of
+the acceleration to AI use, with high uncertainty. The work describes mainly
+assistance, leaves important evidence redacted and does not test one frozen
+system across our ten domains. OpenAI's six-model safety study finds an
+evaluation-production behaviour gap and shows that objective framing can move
+results. Its production matching is approximate and it is not a broad
+capability test. These findings strengthen the case for faster progress while
+making direct benchmark-to-deployment inference less secure.
+
+ServiceNow reports more than thirteenfold growth in production agent
+consumption and selected customer outcomes. The public material omits the
+eligible-case, autonomous-step, failure and rescue denominators required across
+ten organisations. Agility reports more than 65,000 operating and programme
+hours and conditional Digit 5 orders, without site-level task breadth,
+intervention or full-cost evidence. GitHub describes agent support from planning
+through production investigation while retaining human requirements, approval
+and consequential decisions. It publishes no qualifying consecutive-ticket
+cohort. No later primary study supplied an independent tutoring replication
+with an eight-week unassisted outcome.
+
+The Benchmark glossary now explains that evaluation framing can change agent
+behaviour and that production transfer must be tested. It retains the original
+3 April date and both earlier editorial reviews.
+
+Clean npm installation, all content, tools and Horizon validators, 210 script
+tests, 49 Feral tests, 141 bot tests, twelve publication fixtures, 46 recovery
+tests and 25 authenticated-boundary tests passed. Both research receipts
+replayed. The 645-page production build and offline audit checked 33,328
+internal links, 3,318 assets and metadata, 410 search entries and 183 content
+records with zero errors.
+
+[PR #274](https://github.com/valorifutures/softcat.ai/pull/274) passed the
+[exact-head hosted checks](https://github.com/valorifutures/softcat.ai/actions/runs/42646057556)
+and merged as `9d1736e16622e12562373e343fe025b0a133c56b`. The
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/42646664046)
+succeeded. Live desktop verification selected all five forecasts, retained and
+then cleared an Education draft across review refresh, opened the latest history
+and resolution criteria by keyboard, counted all eleven events and confirmed
+the Benchmark clarification. The footer was keyboard-reachable at scrollY 4,887.
+The 1,348-pixel document stayed inside the 1,363-pixel viewport.
+
+The separate daily price job remains safely blocked. The
+[9 November run](https://github.com/valorifutures/softcat.ai/actions/runs/42632692153)
+matched only 31 of 39 tracked IDs in the public catalogue and stopped before
+validation or publication. This was its fifth consecutive failure after the
+4 November success. No duplicate refresh was launched. The price owner should
+reconcile the eight missing IDs without converting missing quotes to zero.
+
+Next review priorities remain independent ten-domain testing of one frozen
+system, customer-confirmed 90-day agent cohorts, multi-site robot intervention
+and cost records, consecutive software tickets through monitored production,
+and tutoring replications with eight-week unassisted outcomes.
