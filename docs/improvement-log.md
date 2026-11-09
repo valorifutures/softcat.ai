@@ -1827,12 +1827,10 @@ hostname goes to the two external resolvers when the visitor presses Check.
 
 The new deterministic Node tests cover input validation, query parameters,
 bounded record interpretation, different/missing resolver replies, security
-priority, triage paths and honest export wording. [All PR checks]
-(https://github.com/valorifutures/softcat.ai/actions/runs/42704731015)
+priority, triage paths and honest export wording. [All PR checks](https://github.com/valorifutures/softcat.ai/actions/runs/42704731015)
 passed, including the production build, tests and built-site validation.
 The reviewed head was `b6590169814f48f6b2a9655da4e8c664aafceea1`. The PR was squash
-merged as `ce76c85675c5fa46d13179462f94ce22e1d449e2`. [GitHub Pages]
-(https://github.com/valorifutures/softcat.ai/actions/runs/42705272353)
+merged as `ce76c85675c5fa46d13179462f94ce22e1d449e2`. [GitHub Pages](https://github.com/valorifutures/softcat.ai/actions/runs/42705272353)
 completed all build and deployment jobs successfully at 21:46 UTC.
 
 The live route could not be independently fetched through the available
