@@ -98,5 +98,15 @@
     "concept_by": "feral-director",
     "type": "interactive",
     "born": "2026-10-13"
+  },
+  {
+    "slug": "snarl",
+    "title": "SNARL",
+    "blurb": "Three small knots. Move the eyelets until the cords stop getting in each other’s way.",
+    "route": "/feral/snarl",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "game",
+    "born": "2026-11-09"
   }
 ]
