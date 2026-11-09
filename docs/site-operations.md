@@ -126,3 +126,31 @@ Manage the three named tasks in ChatGPT's scheduled tasks. Pause them there to
 stop recurring work. The price job is managed by its GitHub workflow. The old
 overnight task and the old Linux timers should stay off. If a task loses GitHub
 access, it must report the connection problem instead of claiming publication.
+
+
+## 9 November 2026 schedule check
+
+The maintainer requested another free Feral council and asked why the jobs were
+not scheduling. The live task records showed both Feral council and SOFT CAT
+maintenance paused. Their last scheduled results, on 18 and 16 September
+respectively, flag user action as required. Those saved results contain no
+permission-prompt text, so the precise cause of the pause is unconfirmed.
+
+Both existing tasks were resumed on 9 November and re-read as enabled. Their
+instructions and Europe/London schedules are unchanged: Feral on Tuesday and
+Friday afternoons around 15:00, maintenance daily around 08:00. The Monday
+evidence review was already enabled and has a recorded 9 November run. No new
+task, duplicate Feral cron, retired Linux timer or expired overnight loop was
+started. The current GitHub connection was available without an account
+permission change.
+
+Enabled configuration does not prove a future unattended run. Check the first
+resumed executions and their actual results. A blank next-run field in the tool
+response was not treated as evidence that an enabled recurrence had failed.
+
+The separate GitHub price job is scheduling. Its [9 November run](https://github.com/valorifutures/softcat.ai/actions/runs/42632692153)
+failed at catalogue validation: only 31 of the 39 tracked IDs matched, and the
+existing incomplete-catalogue guard refused publication. The publishing job
+was skipped. The last observed successful price run was [4 November](https://github.com/valorifutures/softcat.ai/actions/runs/41836001097).
+Keep that guard intact. Review the eight unmatched IDs against current provider
+records and retirement evidence before changing the roster or validation.
