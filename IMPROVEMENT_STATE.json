@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-09T20:55:56Z",
+  "updated_at": "2026-11-09T21:48:44.040Z",
   "phase": "published-and-verified-live",
   "active_branch": null,
   "last_verified_deployment": {
@@ -123,10 +123,12 @@
     "PR #266 published Feral cycle 10, SILT, after a free director brief, independent builder and critic PASS on attempt one. Local validation, the trusted exact remote-commit gate and all hosted checks passed. Pages succeeded. Live desktop digging, all four gravity directions, automatic rest, keyboard/coordinate controls, scoop bounds, pointer strokes, reset and the complete footer were verified.",
     "PR #277 passed the exact-head hosted gates, merged and deployed. Horizon now has short prediction summaries, key test figures, a clearer 90-day trial and compact history. Live desktop selection, keyboard controls, separate drafts, refresh preservation, clipboard readback and actual text download were verified. All eleven prediction reviews remain unchanged.",
     "PR #276 published Feral cycle 11, SNARL, following a free director brief, separate builder and independent critic PASS on attempt one. Ten SNARL tests, 269 total JavaScript tests, 141 bot tests, twelve publication fixtures, required validators, the 646-page build and trusted exact remote-commit gate passed. Hosted checks and Pages succeeded. Live desktop movement, input guards, geometric snags, all reveal/reset disclosures, native-control completion paths and the complete footer were verified.",
-    "On 9 November, restored the existing Feral and daily maintenance tasks from paused to enabled, preserving their prompts and Europe/London schedules. Re-read both as enabled after the manual council. The Monday evidence task was already enabled. The separate price job is scheduling but fails its incomplete-catalogue guard; no validation was weakened."
+    "On 9 November, restored the existing Feral and daily maintenance tasks from paused to enabled, preserving their prompts and Europe/London schedules. Re-read both as enabled after the manual council. The Monday evidence task was already enabled. The separate price job is scheduling but fails its incomplete-catalogue guard; no validation was weakened.",
+    "PR #280 shipped Domain & Outage Checker, with real public DNS queries to Cloudflare and Google, a deterministic incident decision aid, five response phases and copyable incident/AI briefs. All PR gates passed and Pages deployed. Live browser DNS and visual interactions still need independent verification."
   ],
   "next": [
     "Review the eight model IDs missing from the price catalogue against current provider and retirement evidence. Preserve the incomplete-catalogue guard and keep the GitHub price workflow as the sole price publisher.",
+    "Open /lab/outage-check/ in an actual visitor browser. Test Cloudflare and Google DNS CORS, example.com and a nonexistent name, network blocking, keyboard, narrow screens and real copy/download behaviour. Report missing verification rather than calling a DNS result site uptime.",
     "Verify the first resumed Feral and maintenance scheduled executions from their actual results and GitHub receipts. Report a specific new user-action or connection blocker if one occurs.",
     "Select and pin an AGNTCY Identity adapter, verify credential-to-principal and authorisation semantics, and test deployment isolation before untrusted code execution. Then calibrate a single-agent baseline and freeze disjoint evaluation with explicit access and spend limits.",
     "Review original site code/assets provenance before extending the new scoped Apache-2.0 licence.",
@@ -138,7 +140,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "The clearer Horizon reader is published and verified live on 9 November. The five deadlines and all eleven reviews remain unchanged. The release incorporated Feral PR #276 without changing its creative files. No new evidence review was performed in this reader update.",
+  "session": "A new live Domain & Outage Checker was built, reviewed, tested and deployed on 9 November. The Pages workflow succeeded. A separate visitor-browser DNS and responsive check remains unverified. Existing Feral, Horizon and price owners are unchanged.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -794,5 +796,21 @@
       "guard_unchanged": true
     },
     "scope": "Existing cloud task enable flags only. No duplicate task or GitHub Feral cron was created, and retired timers and the expired overnight loop remain off."
+  },
+  "outage_checker_2026_11_09": {
+    "release_pr": "https://github.com/valorifutures/softcat.ai/pull/280",
+    "release_sha": "ce76c85675c5fa46d13179462f94ce22e1d449e2",
+    "pr_validation": "https://github.com/valorifutures/softcat.ai/actions/runs/42704731015",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42705272353",
+    "outcome": "implemented-reviewed-tested-merged-and-pages-deployed",
+    "measured": "Node regression tests, existing CI validators and Astro build passed",
+    "not_measured": "Live visitor DNS responses, independent HTTP availability, mobile/touch rendering, clipboard and file-download behaviour",
+    "safeguards": [
+      "Queries run only after a visitor action",
+      "Public domains only",
+      "No AI provider call or claims of website availability",
+      "Incident output remains in browser unless copied or downloaded"
+    ],
+    "next": "Verify the actual browser journey, including partial DNS failure, then record the results."
   }
 }
