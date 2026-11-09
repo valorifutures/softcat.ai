@@ -20,12 +20,16 @@ const archiveDates = manifest.dates.filter((d) => d !== manifest.latest).slice(0
 const olderDate = manifest.dates.length > 1 ? manifest.dates[1] : null;
 ---
 
-<BaseLayout title="The Radar" description="AI tools, launches, and products worth knowing about. Curated daily by the SOFT CAT pipeline.">
+<BaseLayout title="The Radar archive" description="Historical AI product and launch picks, retained with their original dates. No daily feed is running.">
   <div class="max-w-4xl mx-auto px-6 py-16">
     <header class="mb-8">
       <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
-      <h1 class="font-mono text-3xl font-bold text-text-bright glow-red">The Radar</h1>
-      <p class="text-text-muted mt-2">AI tools, launches, and products worth knowing about. Curated daily by the SOFT CAT pipeline.</p>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-red">The Radar archive</h1>
+      <p class="text-text-muted mt-2">Earlier product discoveries. These records are dated and the daily series has stopped.</p>
+      <aside class="mt-5 border-l-2 border-neon-amber bg-neon-amber/5 p-4 text-sm leading-relaxed text-text-muted" aria-label="Historical Radar notice">
+        <p>The most recent recorded edition is <time datetime={manifest.latest}>{formatDate(manifest.latest)}</time>. Picks, prices and links have not been rechecked as current recommendations. Products may have changed or disappeared.</p>
+        <p class="mt-2">For things you can use now, try the <a href="/tools" class="text-neon-cyan underline underline-offset-4">tested browser tools</a>.</p>
+      </aside>
     </header>
     <div class="section-banner mb-6" style="height: 180px; --banner-accent: rgba(218, 94, 116, 0.12); --banner-accent-mid: rgba(218, 94, 116, 0.04)" aria-hidden="true"></div>
     <div class="glow-divider mb-6" style="--divider-color: rgba(218, 94, 116, 0.15)"></div>
@@ -35,7 +39,7 @@ const olderDate = manifest.dates.length > 1 ? manifest.dates[1] : null;
         <a href={`/radar/${olderDate}`} class="font-mono text-sm text-text-muted hover:text-neon-red transition-colors flex items-center gap-2 bg-surface border border-surface-light rounded-lg px-4 py-2 hover:border-neon-red/30">
           &larr; {olderDate}
         </a>
-        <span class="font-mono text-xs text-neon-red/50">latest</span>
+        <span class="font-mono text-xs text-neon-red/70">last recorded edition</span>
       </nav>
     )}
 
@@ -58,12 +62,12 @@ const olderDate = manifest.dates.length > 1 ? manifest.dates[1] : null;
         </div>
 
         {dayData.featured.length + dayData.picks.length === 0 && (
-          <p class="font-mono text-sm text-text-muted py-8 text-center">Nothing on the radar today. Check back tomorrow.</p>
+          <p class="font-mono text-sm text-text-muted py-8 text-center">No picks were recorded for this edition.</p>
         )}
 
         {dayData.featured.length > 0 && (
           <section class="mb-12">
-            <h2 class="font-mono text-xs text-neon-red uppercase tracking-widest mb-6">Today's picks</h2>
+            <h2 class="font-mono text-xs text-neon-red uppercase tracking-widest mb-6">Featured in this edition</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 ambient-glow" style="--glow-color: rgba(218, 94, 116, 0.035); --glow-color-alt: rgba(90, 184, 212, 0.025)">
               {dayData.featured.map((item: any, index: number) => (
                 <RadarFeaturedCard item={item} index={index} />
@@ -137,7 +141,7 @@ const olderDate = manifest.dates.length > 1 ? manifest.dates[1] : null;
 
         <div class="mt-12 text-center">
           <p class="font-mono text-xs text-text-muted/60">
-            Sourced from Product Hunt, Hacker News, and the wider AI ecosystem. Curated by Pulse.
+            Historical picks sourced from product reporting and Hacker News. The series is not being updated.
           </p>
         </div>
       </div>

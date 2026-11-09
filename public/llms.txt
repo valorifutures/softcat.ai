@@ -8,6 +8,7 @@
 - [Browser tools and data behaviour](https://softcat.ai/tools)
 - [Worked prompt recipes, examples and checks](https://softcat.ai/prompts)
 - [Notebook](https://softcat.ai/notebook)
+- [Published work RSS (new field notes, Feral creations and dated archives)](https://softcat.ai/feed.xml)
 - [Domain & Outage Checker: live public DNS replies, safe triage and incident exports](https://softcat.ai/lab/outage-check)
 - [Should this be an agent?](https://softcat.ai/lab/agent-check)
 - [Prompt Workbench](https://softcat.ai/lab/prompt-workbench)
@@ -18,7 +19,7 @@
 
 ## Records and evidence
 
-Publication, correction and source-check dates have different meanings. A new site build does not make an old report current. Pipeline records do not establish live server health.
+Publication, correction and source-check dates have different meanings. A new site build does not make an old report current. Pipeline records do not establish live server health. News and Radar stopped their daily series in July 2026. Their entries are historical, not current recommendations.
 
 - [Horizon: our predictions, five countdowns](https://softcat.ai/horizon)
 - [Alternative AI scenarios](https://softcat.ai/horizon/scenarios)

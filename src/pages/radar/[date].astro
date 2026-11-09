@@ -31,12 +31,15 @@ const newerDate = dateIndex > 0 ? visibleDates[dateIndex - 1] : null;
 const olderDate = dateIndex >= 0 && dateIndex < visibleDates.length - 1 ? visibleDates[dateIndex + 1] : null;
 ---
 
-<BaseLayout title={`The Radar — ${date}`} description={`AI product launches from Product Hunt on ${date}.`}>
+<BaseLayout title={`The Radar — ${date}`} description={`Archived AI product and launch picks recorded on ${date}. Original links and claims may have changed.`}>
   <div class="max-w-4xl mx-auto px-6 py-16">
     <header class="mb-8">
-      <a href="/radar" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; latest radar</a>
+      <a href="/radar" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; Radar archive</a>
       <h1 class="font-mono text-3xl font-bold text-text-bright glow-red">The Radar</h1>
       <p class="text-text-muted mt-2">{formatDate(date!)}</p>
+      <aside class="mt-5 border-l-2 border-neon-amber bg-neon-amber/5 p-4 text-sm leading-relaxed text-text-muted" aria-label="Historical edition notice">
+        <p>This is a dated Radar edition, not a live product recommendation. External links, prices and product details may have changed. The daily series is not currently running.</p>
+      </aside>
     </header>
 
     <div class="glow-divider mb-6" style="--divider-color: rgba(218, 94, 116, 0.15)"></div>
@@ -53,7 +56,7 @@ const olderDate = dateIndex >= 0 && dateIndex < visibleDates.length - 1 ? visibl
         </a>
       ) : (
         <a href="/radar" class="font-mono text-sm text-text-muted hover:text-neon-red transition-colors flex items-center gap-2 bg-surface border border-surface-light rounded-lg px-4 py-2 hover:border-neon-red/30">
-          latest &rarr;
+          most recent archive &rarr;
         </a>
       )}
     </nav>
@@ -78,7 +81,7 @@ const olderDate = dateIndex >= 0 && dateIndex < visibleDates.length - 1 ? visibl
 
         {dayData.featured.length > 0 && (
           <section class="mb-12">
-            <h2 class="font-mono text-xs text-neon-red uppercase tracking-widest mb-6">Today's picks</h2>
+            <h2 class="font-mono text-xs text-neon-red uppercase tracking-widest mb-6">Featured in this edition</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 ambient-glow" style="--glow-color: rgba(218, 94, 116, 0.035); --glow-color-alt: rgba(90, 184, 212, 0.025)">
               {dayData.featured.map((item: any, index: number) => (
                 <RadarFeaturedCard item={item} index={index} />
