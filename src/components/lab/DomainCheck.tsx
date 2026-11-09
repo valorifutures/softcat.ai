@@ -118,7 +118,7 @@ export default function DomainCheck({ onReport }: Props) {
         </div>
         <div class="domain-mini-diagram" aria-hidden="true"><span>YOU</span><b>→</b><div><strong>1.1.1.1</strong><strong>Google DNS</strong></div></div>
       </div>
-      <form onSubmit={run} class="domain-form" novalidate>
+      <form onSubmit={run} class="domain-form" noValidate>
         <label for="domain-name">Website or domain</label>
         <div class="domain-form-row">
           <input id="domain-name" type="text" inputMode="url" autoComplete="url" spellCheck={false}
