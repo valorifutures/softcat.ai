@@ -1690,11 +1690,40 @@ new tests cover scope changes, date-only updates and accurate movement labels.
 The new summary sentences contain no more than fourteen words.
 
 A separate Feral candidate appeared after this branch began. Its creative
-files are outside this batch. Recheck main before release and preserve its work.
-The cloud browser blocked the local preview URL. Hosted validation, release
-and live browser checks are still pending. No publication success is claimed.
+files remained outside this batch. The cloud browser blocked the local preview
+URL, so visual and interaction checks took place on the deployed public page.
 
 Integration check: Feral PR #276 merged while this batch was in preparation.
 The branch fast-forwarded to `278fb5bcb282368a73c78456b6418994508a1a94` without
 conflict. A fresh 646-page build and audit passed with 33,335 internal links,
 3,322 assets/metadata, 411 search entries and zero errors.
+
+[PR #277](https://github.com/valorifutures/softcat.ai/pull/277) passed all three
+[hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/42694801561)
+on exact head `b5b5312d0227cb0a6c2333283e6f6c1dfe239da3`. Main and the candidate
+head were re-read before normal squash merge
+`91fff7ef3e72d176c3e746197918b62a49f4a82e`. The
+[Pages build and deployment](https://github.com/valorifutures/softcat.ai/actions/runs/42695483384)
+succeeded.
+
+Live desktop verification selected all five predictions and checked their
+short summaries, full deadlines, key test figures and uncertainty. Enter and
+Space activate the cards. Full criteria and reasoning open on demand. The
+older-records disclosure exposes the eight earlier records, including the
+complete initial prediction from 15 September; all eleven remain present.
+
+The trial builder accepted five synthetic values. Software had a separate
+draft, and browser Back restored the Agents draft. Checking for a new review
+retained the selected prediction and its draft. Clipboard readback confirmed
+the full prediction, trial brief and share link. The actual 4,024-byte text
+download contained all five trial fields, the deadline, review date and source
+URLs. Navigation restored the clean default page and cleared the QA drafts.
+
+The document measured 1,348 pixels within a 1,363-pixel viewport. The saved
+[hero screenshot](evidence/horizon-reader-hero-20261109.jpg) and
+[detail screenshot](evidence/horizon-reader-detail-20261109.jpg) record the
+published layout. Narrow viewport and physical touch rendering remain
+unverified. The captured console error sample was from the browser extension;
+no exhaustive console-error absence is claimed. No new evidence assessment,
+paid inference or capability measurement took place. All eleven review records
+remain byte-for-byte unchanged.
