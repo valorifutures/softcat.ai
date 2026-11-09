@@ -1,0 +1,142 @@
+[
+  {
+    "id": "scenario-agi",
+    "scope": {
+      "milestone": "A general-purpose AI will independently demonstrate skilled-human performance across a broad set of unfamiliar cognitive tasks.",
+      "resolution": [
+        "Two evaluation teams independent of the model provider test the same frozen general-purpose system on independently created tasks. Each preregisters task-construction rules, scoring and human recruitment before testing, then publishes its protocol, human comparison, tools, time budgets and results.",
+        "Each evaluation covers language, mathematics, coding, factual synthesis, scientific reasoning, visual-spatial reasoning, planning, social reasoning, learning new rules and switching between tasks. Each domain contains at least 100 tasks created after the system was frozen. No task-specific retraining is allowed.",
+        "The system reaches or exceeds the median of relevant skilled adult participants in every domain under the same stated time allowance. This is our operational AGI threshold, not a claim that every definition of AGI has been satisfied."
+      ]
+    },
+    "headline": "AI matches skilled people on unfamiliar tasks.",
+    "meaning": "One system works across many fields. Independent teams test it on tasks it has not seen.",
+    "checks": [
+      {
+        "value": "2",
+        "label": "independent test teams"
+      },
+      {
+        "value": "10",
+        "label": "fields of work"
+      },
+      {
+        "value": "100+",
+        "label": "new tasks in each field"
+      }
+    ],
+    "boundary": "One strong benchmark result would not meet this test."
+  },
+  {
+    "id": "scenario-agentic-work",
+    "scope": {
+      "milestone": "AI agents will run repeatable business workflows across at least ten organisations, with people managing exceptions.",
+      "resolution": [
+        "Customer-confirmed or independently evaluated public reports name ten organisations across at least three sectors. Each runs two distinct production workflows spanning at least two business systems.",
+        "Each workflow reports at least 1,000 consecutive eligible cases over at least 90 days. At least 80% finish without a person executing workflow steps. Eligibility, acceptance tests and escalation rules are fixed before the reporting period.",
+        "People may authorise consequential decisions and handle exceptions. Reports include failures and escalations in the denominator. This predicts repeatable operation at ten organisations, not majority adoption or unattended businesses."
+      ]
+    },
+    "headline": "Agents complete routine business workflows.",
+    "meaning": "Agents run repeatable workflows across business systems. People approve important decisions and handle exceptions.",
+    "checks": [
+      {
+        "value": "10",
+        "label": "organisations in at least 3 sectors"
+      },
+      {
+        "value": "80%",
+        "label": "of cases finish without manual steps"
+      },
+      {
+        "value": "90",
+        "label": "days of results per workflow"
+      }
+    ],
+    "boundary": "Our test requires two workflows per organisation and at least 1,000 cases per workflow. It does not predict unattended businesses."
+  },
+  {
+    "id": "scenario-robotics",
+    "scope": {
+      "milestone": "Adaptable robots will perform several useful jobs routinely across factories and warehouses, with demonstrated operating economics.",
+      "resolution": [
+        "One commercially available robot platform using a shared general-purpose control model runs for six months at ten production sites belonging to at least three unrelated customers. It performs at least three materially different task families overall and at least two at each site. Customers demonstrate a new task learned from instructions or examples without writing task-specific control code.",
+        "Customer-confirmed reporting shows at least 95% of task cycles completed without human intervention. The reporting period, task mix, failures and supervised or teleoperated time are disclosed.",
+        "Customer-published cost per successful task matches or beats the incumbent process, including maintenance and supervision. This is a commercial-site milestone, not a prediction of routine household humanoids."
+      ]
+    },
+    "headline": "Robots switch between useful jobs.",
+    "meaning": "Robots do several factory or warehouse tasks. The cost per successful task matches or beats the current process.",
+    "checks": [
+      {
+        "value": "10",
+        "label": "production sites"
+      },
+      {
+        "value": "6",
+        "label": "months of operation"
+      },
+      {
+        "value": "95%",
+        "label": "of task cycles finish without human help"
+      }
+    ],
+    "boundary": "Customers must show that robots can learn a new task. Household robots are outside this prediction."
+  },
+  {
+    "id": "scenario-software-automation",
+    "scope": {
+      "milestone": "Coding agents will take most routine software tickets from specification to monitored production in at least ten organisations, with human approval.",
+      "resolution": [
+        "Ten named organisations each publish customer-confirmed or independently evaluated results for at least 100 consecutive eligible tickets over at least 90 days. Eligibility is fixed before assignment: routine fixes or small features estimated at no more than one engineer-day.",
+        "More than half reach implementation, tests, review responses, approved deployment and seven days of monitoring without people writing or correcting the code. Humans still set requirements, review and authorise release.",
+        "Failed deployments, rollbacks and manually rescued tickets remain in the denominator. Merged pull requests alone do not meet the milestone. This does not predict autonomous ownership of all engineering work."
+      ]
+    },
+    "headline": "Agents take routine code changes into production.",
+    "meaning": "Agents complete most routine tickets through release and monitoring. People set requirements, review the work and approve release.",
+    "checks": [
+      {
+        "value": "10",
+        "label": "organisations"
+      },
+      {
+        "value": ">50%",
+        "label": "of tickets need no human code changes"
+      },
+      {
+        "value": "7",
+        "label": "days of monitoring after release"
+      }
+    ],
+    "boundary": "Our test requires at least 100 consecutive eligible tickets per organisation over 90 days. Failed and rescued tickets still count."
+  },
+  {
+    "id": "scenario-education-disruption",
+    "scope": {
+      "milestone": "Generative AI tutoring will show repeatable learning gains that last after the AI is put away, across schools or colleges.",
+      "resolution": [
+        "Two independently evaluated, preregistered randomised trials of generative AI tutoring collectively cover at least 2,000 learners across at least 20 schools or colleges, with an intervention lasting at least one academic term. Each compares against a non-AI control with comparable teaching and learning time.",
+        "Both trials show statistically positive effects on unassisted assessments at least eight weeks after the intervention. Their combined standardised effect is at least 0.2, using an inverse-variance weighted mean of the reported primary outcomes.",
+        "Human teachers and safeguarding remain in place. The reports disclose attrition and assistance. This predicts demonstrated durable learning gains, not the replacement of teachers, schools or credentials."
+      ]
+    },
+    "headline": "Learning lasts after AI help ends.",
+    "meaning": "Learners retain useful gains after AI tutoring stops. They take the later tests without AI assistance.",
+    "checks": [
+      {
+        "value": "2,000+",
+        "label": "learners across two trials"
+      },
+      {
+        "value": "20+",
+        "label": "schools or colleges"
+      },
+      {
+        "value": "8+",
+        "label": "weeks before the later test"
+      }
+    ],
+    "boundary": "Both trials must show gains against a fair comparison group. Teachers and safeguarding stay in place."
+  }
+]

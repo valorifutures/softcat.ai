@@ -676,5 +676,18 @@
       "latest_failed_run": "https://github.com/valorifutures/softcat.ai/actions/runs/42632692153",
       "status": "The daily price workflow has failed safely on five consecutive days since the 4 November success. On 9 November only 31 of 39 tracked IDs matched the public catalogue, so the job stopped before validation and publication. No duplicate refresh was launched."
     }
+  },
+  "horizon_reader_2026_11_09": {
+    "date": "2026-11-09",
+    "status": "release candidate, local checks passed",
+    "branch": "improve/horizon-clear-language-20261109",
+    "scope": "Plain-English prediction summaries, test figures, compact review history and a clearer 90-day trial. Applies ASD-STE100 principles with UK spelling, without a claim of full conformance.",
+    "preserved": "The eleven published reviews, all five targets, milestones, resolution rules and evidence are unchanged.",
+    "validation": "214 JavaScript tests, 141 bot tests and 12 publication fixtures passed. All data validators passed. After the Feral merge, the 646-page integrated build and audit passed with 33,335 internal links, 3,322 assets/metadata and zero errors.",
+    "limits": [
+      "The browser blocked the local preview. Hosted checks and live browser verification are pending.",
+      "No new evidence assessment or model capability test was performed."
+    ],
+    "base": "278fb5bcb282368a73c78456b6418994508a1a94"
   }
 }
