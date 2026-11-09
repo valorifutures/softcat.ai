@@ -5,7 +5,7 @@ import './SearchOverlay.css';
 interface SearchEntry { title: string; summary: string; url: string; type: string; tags?: string[]; date?: string; }
 const labels: Record<string, string> = { news: 'News archive', thought: 'Notebook & thoughts', tool: 'Interactive tool', guide: 'Tool guide', prompt: 'Prompt', radar: 'Radar archive', glossary: 'Glossary', forecast: 'Forecast', page: 'Page', experiment: 'Experiment' };
 const shortcuts = [
-  ['Should this be an agent?', '/lab/agent-check'], ['Model comparison', '/lab/model-comparison'],
+  ['Check a domain', '/lab/outage-check'], ['Should this be an agent?', '/lab/agent-check'],
   ['The build notebook', '/notebook'], ['Explore Horizon', '/horizon'],
 ];
 
@@ -90,7 +90,7 @@ export default function SearchOverlay() {
     <div class="site-search-heading"><span>FIND SOMETHING USEFUL</span><button type="button" onClick={() => setOpen(false)} aria-label="Close search">Close <span aria-hidden="true">×</span></button></div>
     <label class="site-search-label" for="site-search-query">Search tools, notes and the archive</label>
     <input ref={inputRef} id="site-search-query" type="search" role="combobox" aria-autocomplete="list" aria-controls="site-search-results" aria-expanded={results.length > 0} aria-activedescendant={results[selected] ? `site-search-result-${selected}` : undefined}
-      value={query} onInput={event => setQuery(event.currentTarget.value)} onKeyDown={onKeyDown} placeholder="Try agent check, tokens, or Horizon…" autoComplete="off" />
+      value={query} onInput={event => setQuery(event.currentTarget.value)} onKeyDown={onKeyDown} placeholder="Try domain, prompts, or Horizon…" autoComplete="off" />
     {status === 'loading' && <p class="site-search-message" role="status">Loading the search index…</p>}
     {status === 'error' && <div class="site-search-message" role="alert"><p>Search could not load. You can try again or use the links below.</p><button type="button" onClick={() => setRetry(value => value + 1)}>Try again</button></div>}
     {(query.trim().length < 2 || status === 'error') && <div class="site-search-shortcuts"><p>Start here</p>{shortcuts.map(([name, href]) => <a href={href}>{name}<span aria-hidden="true">↗</span></a>)}</div>}
