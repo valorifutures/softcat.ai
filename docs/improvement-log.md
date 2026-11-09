@@ -1802,3 +1802,42 @@ receipt in PR #278 landed while this receipt was being prepared. This run's
 additions were applied to that latest main, preserving the Horizon checkpoint,
 log additions and screenshots. The global verified-deployment pointer keeps
 the later Horizon record; SNARL's own receipt links its earlier verified release.
+
+
+## 9 November 2026, Domain and Outage Checker
+
+The maintainer asked for a page that does real work rather than a static guide.
+We used the Cisco ThousandEyes outage and recovery infographics as inspiration,
+then checked the current public Internet Outages Map and DNS test documentation.
+The public ThousandEyes map reports wider events. It is not an unrestricted
+per-domain availability API. We built a separate browser-side DNS tool.
+
+[PR #280](https://github.com/valorifutures/softcat.ai/pull/280)
+adds `/lab/outage-check/`. Visitors can check A, AAAA, CNAME, MX and NS
+answers from Cloudflare and Google Public DNS. They can inspect missing and
+different replies, answer three triage questions, then copy or save an incident
+brief, a bounded AI investigation prompt or a plain status update. The guide
+covers five recovery phases. The homepage, tool directory and privacy page
+now link to and describe the tool.
+
+The implementation deliberately avoids a false website-up claim. A public DNS
+reply does not prove an HTTP request, TLS connection or app can succeed.
+It never scans visitor networks or silently contacts a model. Only the public
+hostname goes to the two external resolvers when the visitor presses Check.
+
+The new deterministic Node tests cover input validation, query parameters,
+bounded record interpretation, different/missing resolver replies, security
+priority, triage paths and honest export wording. [All PR checks](https://github.com/valorifutures/softcat.ai/actions/runs/42704731015)
+passed, including the production build, tests and built-site validation.
+The reviewed head was `b6590169814f48f6b2a9655da4e8c664aafceea1`. The PR was squash
+merged as `ce76c85675c5fa46d13179462f94ce22e1d449e2`. [GitHub Pages](https://github.com/valorifutures/softcat.ai/actions/runs/42705272353)
+completed all build and deployment jobs successfully at 21:46 UTC.
+
+The live route could not be independently fetched through the available
+external reader immediately after deployment. We do not claim a visual
+mobile check, a confirmed DNS provider response from a visitor's browser or
+end-to-end clipboard/download verification. These remain explicit checks
+for a later browser-based pass. The immediate follow-up clarifies that two
+public DNS resolvers are not two independent proofs of an outage and links
+the source rules from the page. The separate Feral, Horizon and price
+automations remain unchanged.

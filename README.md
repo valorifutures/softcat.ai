@@ -15,6 +15,11 @@ and durable reconciliation. The initial [research component](research/README.md)
 is Apache-2.0 licensed. [Licence scope](LICENSING.md) is explicit, and a broader
 provenance review remains open.
 
+The [Domain & Outage Checker](https://softcat.ai/lab/outage-check/) performs
+public DNS lookups through Cloudflare and Google when a visitor starts a check.
+Its plain-English triage and export work in the browser. DNS resolution is not
+website availability. No AI call or privileged network action runs on the page.
+
 **Live site:** https://softcat.ai
 **Repository:** https://github.com/valorifutures/softcat.ai
 
