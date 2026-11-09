@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-09T22:35:00Z",
-  "phase": "published-and-verified-live",
+  "updated_at": "2026-11-09T22:54:00Z",
+  "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "91fff7ef3e72d176c3e746197918b62a49f4a82e",
-    "at": "2026-11-09T20:49:50Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/42695483384"
+    "sha": "d4173a36cf10495710363a6ce6c6a2e82b95a57c",
+    "at": "2026-11-09T22:50:38Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/42715048084"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -125,10 +125,11 @@
     "PR #276 published Feral cycle 11, SNARL, following a free director brief, separate builder and independent critic PASS on attempt one. Ten SNARL tests, 269 total JavaScript tests, 141 bot tests, twelve publication fixtures, required validators, the 646-page build and trusted exact remote-commit gate passed. Hosted checks and Pages succeeded. Live desktop movement, input guards, geometric snags, all reveal/reset disclosures, native-control completion paths and the complete footer were verified.",
     "On 9 November, restored the existing Feral and daily maintenance tasks from paused to enabled, preserving their prompts and Europe/London schedules. Re-read both as enabled after the manual council. The Monday evidence task was already enabled. The separate price job is scheduling but fails its incomplete-catalogue guard; no validation was weakened.",
     "PR #280 shipped Domain & Outage Checker, with real public DNS queries to Cloudflare and Google, a deterministic incident decision aid, five response phases and copyable incident/AI briefs. All PR gates passed and Pages deployed. Live browser DNS and visual interactions still need independent verification.",
-    "Prepared 9 November site-wide freshness audit: surfaced dated archives, rebuilt a real publication feed, promoted current tools/Feral, added anti-regression tests and documented gaps. Hosted PR and Pages receipts still pending."
+    "Prepared 9 November site-wide freshness audit: surfaced dated archives, rebuilt a real publication feed, promoted current tools/Feral, added anti-regression tests and documented gaps. Hosted PR and Pages receipts still pending.",
+    "Site-wide freshness PR #282 was published. CI passed: 225 Node tests, 21 offline publication tests, 141 bot tests, independent research checks. Final build 650 pages, 34,197 internal links, 3,343 local references, zero errors. Pages succeeded at 22:50 UTC. Browser-level interaction was not established."
   ],
   "next": [
-    "Verify site-wide audit release after required PR tests and Pages publication, then use a real browser and RSS reader for mobile/navigation, search, public DNS, clipboard/download and feed subscription behaviour. Historical outbound sources still require independent sampling.",
+    "Finish and verify the focused legacy sitemap/noindex follow-up. Then perform a real-browser and RSS reader pass, including mobile navigation, overlay search, page layouts, DNS provider CORS, clipboard and downloads.",
     "Review the eight model IDs missing from the price catalogue against current provider and retirement evidence. Preserve the incomplete-catalogue guard and keep the GitHub price workflow as the sole price publisher.",
     "Open /lab/outage-check/ in an actual visitor browser. Test Cloudflare and Google DNS CORS, example.com and a nonexistent name, network blocking, keyboard, narrow screens and real copy/download behaviour. Report missing verification rather than calling a DNS result site uptime.",
     "Verify the first resumed Feral and maintenance scheduled executions from their actual results and GitHub receipts. Report a specific new user-action or connection blocker if one occurs.",
@@ -142,7 +143,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "Repository-wide audit and improvements: RSS now includes real dated Feral releases, July news/Radar are clearly archives, global discovery, Feral spotlight, model-data, and Pipeline copy are corrected. Actual CI and deployment checks are still pending; no unverified browser claims.",
+  "session": "9 November site freshness audit was merged as PR #282 after all hosted tests, then verified through successful GitHub Pages run 42715048084. A focused redirect/sitemap follow-up is prepared separately. Real browser, RSS reader, third-party historical link and paused task execution verification remains open.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -818,7 +819,7 @@
   "site_audit_2026_11_09": {
     "basis": "Main deploy 2117355d87d7ebb4d4eb47c415d5d608ca7a7dd3, GitHub run 42707125740; offline audit: 647 pages, 33384 internal links, 3328 local refs, zero errors",
     "scope": "Shared navigation, footer, feed, news/Radar, tool entry points, Feral discovery, model pricing notices, pipeline claims, selected page families, SEO/discovery and retirement paths.",
-    "stage": "code-changes-prepared, hosted-validation-pending",
+    "stage": "first-maintenance-batch-merged-hosted-tests-passed-pages-deployed; legacy-sitemap-follow-up-in-review",
     "changes": [
       "Date-marked historic news and Radar",
       "RSS publishes actual dated Feral rooms, thoughts and archived news",
@@ -835,6 +836,21 @@
       "Actual browser DNS tests",
       "Unattended scheduled task results"
     ],
-    "backlog": "docs/site-audit-2026-11-09.md"
+    "backlog": "docs/site-audit-2026-11-09.md",
+    "release_pr": "https://github.com/valorifutures/softcat.ai/pull/282",
+    "release_sha": "d4173a36cf10495710363a6ce6c6a2e82b95a57c",
+    "pr_validation": "https://github.com/valorifutures/softcat.ai/actions/runs/42714607857",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42715048084",
+    "validation": {
+      "pages": 650,
+      "internal_links": 34197,
+      "assets": 3343,
+      "search_entries": 413,
+      "publication_errors": 0,
+      "node_tests": 225,
+      "offline_python_tests": 21,
+      "bot_tests": 141
+    },
+    "followup": "Exclude old redirect aliases from sitemap while retaining them, and mark /receipt noindex. New generated-site regression test gates the change."
   }
 }

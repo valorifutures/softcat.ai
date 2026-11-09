@@ -1883,3 +1883,35 @@ tool works on a visitor's browser. No Feral creative files, dated Horizon
 prediction history, retired source material or model price publishing guard
 were rewritten. PR/CI/Pages outcome and the actual post-change build counts
 are to be recorded when those checks finish, not before.
+
+
+## 9 November 2026, audit release and redirect-discovery follow-up
+
+[Audit PR #282](https://github.com/valorifutures/softcat.ai/pull/282)
+passed all required hosted checks on exact head
+`329eaec5710ad007e56803d55d18619a270c83b9`.
+The first attempt failed on an unescaped apostrophe in a Valori description.
+It was fixed, and the full suite passed on the replacement head before merge.
+This included 225 Node tests, 21 offline Python publication tests, 141 bot
+tests and the framework recovery and identity-boundary jobs.
+
+The audit build produced 650 pages and checked 34,197 internal links,
+3,343 asset/metadata references and 413 search entries. It found zero
+offline publication errors. [Pages run 42715048084](https://github.com/valorifutures/softcat.ai/actions/runs/42715048084)
+completed successfully for merged sha
+`d4173a36cf10495710363a6ce6c6a2e82b95a57c`.
+The site-wide audit with per-family findings, trade-offs and unverified
+browser work is [docs/site-audit-2026-11-09.md](site-audit-2026-11-09.md).
+
+A follow-up source review identified legacy `/receipt` and other redirect
+aliases missing from sitemap exclusions. The next focused change excludes
+them from discovery while preserving the routes and adds a noindex marker
+and regression test. This avoids old demo and shortcut URLs competing
+with the canonical pages.
+
+No claim is made of physical mobile inspection, successful real browser
+DNS calls, file-download verification, refreshed historical reporting or
+full third-party link coverage. The incomplete price-catalogue guard and
+scheduled task execution checks remain unresolved. No Feral creative
+source, historic Horizon milestones or earlier editorial-retirement
+documents were changed in either batch.
