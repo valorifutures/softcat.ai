@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-09T15:28:21Z",
-  "phase": "evidence-review-in-progress",
-  "active_branch": "review/horizon-2026-11-09",
+  "updated_at": "2026-11-09T15:45:15Z",
+  "phase": "published-and-verified-live",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "19b37bd55a1313c563a091e4e624d346264c1735",
-    "at": "2026-11-02T15:55:24Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/41475808170"
+    "sha": "9d1736e16622e12562373e343fe025b0a133c56b",
+    "at": "2026-11-09T15:45:15Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/42646664046"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -631,5 +631,50 @@
       "The complete footer was keyboard-reachable at scrollY 6,158. Document width 1,348 stayed within the 1,363-pixel viewport, and the footer ended inside the 936-pixel viewport.",
       "The Tool Use glossary displayed the corrected protocol, authorisation and outcome guidance, the original 3 April publication date and the separate 2 November editorial review."
     ]
+  },
+  "horizon_review_2026_11_09": {
+    "date": "2026-11-09",
+    "status": "published and verified live",
+    "branch": "review/horizon-2026-11-09",
+    "base": "2dffab7d430da9ec62e3875a4912a7c71793af64",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/274",
+    "outcome": "All five predictions reassessed. Targets, milestones and resolution rules unchanged. Ten earlier events preserved. An eleventh review records faster AI-assisted research, production-agent use, conditional robot orders and broader software-agent workflows with their limits. The Benchmark glossary now explains that evaluation framing can change behaviour and that production transfer must be tested.",
+    "evidence_changes": [
+      "METR's independent high-access assessment estimates about 1.9 times the earlier rate of capability-score improvement at Anthropic, likely driven mainly by AI assistance. Important evidence is redacted and the report is not a ten-domain frozen-system evaluation.",
+      "OpenAI found an evaluation-production behaviour gap across six models and showed that stated evaluation objectives can move results. Approximate matching and a safety-decision scope prevent broader inference.",
+      "ServiceNow reports more than thirteenfold growth in production agent consumption and selected customer outcomes, without the autonomous-step, failure and 90-day cohort denominators in our milestone.",
+      "Agility reports more than 65,000 operating and programme hours plus conditional Digit 5 orders. Site-level task breadth, intervention and full-cost evidence remain absent.",
+      "GitHub describes agent support from planning through production investigation while keeping requirements, approval and consequential operational decisions with people. No qualifying consecutive-ticket outcome cohort is published.",
+      "No later qualifying eight-week unassisted tutoring replication changed the mixed education evidence."
+    ],
+    "next_review_priorities": [
+      "Two independent teams testing one frozen system across newly constructed tasks in all ten domains.",
+      "Customer-confirmed agent workflows with 90-day eligible-case denominators, failures and rescues.",
+      "Multi-task robot records at ten sites with intervention and full cost accounting after announced deployments begin.",
+      "Consecutive software tickets through approved deployment and seven-day monitoring, including manual corrections and rollback.",
+      "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
+    ],
+    "limits": [
+      "Bounded primary-source review, not an exhaustive literature review or new capability measurement.",
+      "Provider and customer reports are treated as reported evidence. Access, orders, product availability, planned deployments and selected successes are not counted as completed milestone results.",
+      "No paid inference, remote model execution or retired generator ran. Feral and the price snapshot remained with their separate owners.",
+      "Desktop keyboard selection, refresh preservation and full-page scrolling were verified. Mobile and physical touch rendering remain unverified."
+    ],
+    "validation": "Clean npm ci, all data validators, 210 script JavaScript tests, 49 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 483 in total. Both research receipt reruns passed. The 645-page build and offline audit passed with 33,328 internal links, 3,318 assets and metadata, 410 search entries and zero errors.",
+    "reviewed_head": "2d81aaf2bc23e4fa84b669830c661de94c8e2325",
+    "merge": "9d1736e16622e12562373e343fe025b0a133c56b",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/42646057556",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42646664046",
+    "live_checks": [
+      "Enter or click selected all five forecasts. Each showed its unchanged deadline, no days added or removed, the 9 November review and current evidence.",
+      "Education retained a synthetic task across Check for a new review. The task was cleared after verification.",
+      "The latest Education history and resolution criteria opened by keyboard. All eleven events back to 15 September remained present.",
+      "The Benchmark glossary displayed the evaluation-framing warning, approximate-matching limit, original 3 April date and separate 9 November editorial review.",
+      "The complete footer was keyboard-reachable at scrollY 4,887. Document width 1,348 stayed within the 1,363-pixel viewport, and the footer ended inside the 936-pixel viewport."
+    ],
+    "price_handover": {
+      "latest_failed_run": "https://github.com/valorifutures/softcat.ai/actions/runs/42632692153",
+      "status": "The daily price workflow has failed safely on five consecutive days since the 4 November success. On 9 November only 31 of 39 tracked IDs matched the public catalogue, so the job stopped before validation and publication. No duplicate refresh was launched."
+    }
   }
 }
