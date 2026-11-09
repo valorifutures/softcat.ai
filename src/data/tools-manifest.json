@@ -1,5 +1,16 @@
 [
   {
+    "id": "outage-check",
+    "name": "Domain & Outage Checker",
+    "description": "Check live public DNS through Cloudflare and Google, compare their answers and create a plain-English incident brief. No account or API key.",
+    "stat": "Two public DNS services · check and share",
+    "href": "/lab/outage-check",
+    "icon": "↯",
+    "category": "network",
+    "addedDate": "2026-11-09",
+    "featured": true
+  },
+  {
     "id": "agent-check",
     "name": "Should this be an agent?",
     "description": "Six questions to choose a script, a workflow, an assistant or a bounded agent trial. Clear reasons, no hidden score.",
