@@ -135,7 +135,7 @@ export default function DomainCheck({ onReport }: Props) {
 
     {busy && <div class="domain-loading" role="status" aria-live="polite">
       <span class="domain-spinner" aria-hidden="true" />
-      <div><strong>Asking two independent DNS services.</strong><p>Some workplace networks block external DNS. Missing results stay missing.</p></div>
+      <div><strong>Asking two public DNS services.</strong><p>Some workplace networks block external DNS. Missing results stay missing.</p></div>
     </div>}
 
     {snapshot && summary && <section class="domain-findings" aria-labelledby="domain-findings-heading">
