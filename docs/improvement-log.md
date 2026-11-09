@@ -1841,3 +1841,45 @@ for a later browser-based pass. The immediate follow-up clarifies that two
 public DNS resolvers are not two independent proofs of an outage and links
 the source rules from the page. The separate Feral, Horizon and price
 automations remain unchanged.
+
+
+## 9 November 2026, visitor-facing freshness and discoverability audit
+
+The maintainer asked for a thorough sweep of old, broken and misleading pages,
+starting with the footer RSS feed. We inspected the repository's public page
+families, shared navigation, structured content, dated sources and latest
+successful Pages validation. The baseline build contained 647 HTML pages,
+33,384 internally checked links and 3,328 checked local asset/metadata references
+with no offline errors. Those counts establish generated-site integrity, not
+external source accuracy or live browser interactivity.
+
+The key editorial problem was **apparent freshness**. The AI news digest and
+Radar stopped in July, but their index and article text still suggested daily
+updates and today's picks. We preserved the historical records and dated links,
+relabelled the archives and added visible warnings rather than silently
+refreshing old claims. The RSS route existed and was valid, but excluded newer
+Feral creations. It now includes dated Feral entries, field notes and historic
+digests. Feral's date-only records use a UTC midnight RSS timestamp with an
+explicit warning that the actual time was not captured.
+
+The global footer now exposes the Domain & Outage Checker and labels the feed
+"Published work (RSS)". Search shortcuts also reach the new tool. The
+homepage keeps the intentional Off Register print while dynamically linking
+the latest Feral room. The Valori and Play pages no longer claim Feral costs or
+AI authorship without direct evidence. Model tool summaries display the newest
+saved price check date instead of leading with the oldest. Pipeline shows
+the 9 November paused-task recovery and incomplete model-price guard without
+inventing a subsequent successful unattended run. A genuine field note
+records the reasoning.
+
+The source audit and its open limits are in
+[docs/site-audit-2026-11-09.md](site-audit-2026-11-09.md). New
+`test_feed_publication.py` and `test_archive_clarity.py` exercise built
+RSS content and archive presentation alongside the existing site validators.
+
+This review does **not** establish that every third-party historical link still
+works, that all claims in old digests remain correct, or that every interactive
+tool works on a visitor's browser. No Feral creative files, dated Horizon
+prediction history, retired source material or model price publishing guard
+were rewritten. PR/CI/Pages outcome and the actual post-change build counts
+are to be recorded when those checks finish, not before.
