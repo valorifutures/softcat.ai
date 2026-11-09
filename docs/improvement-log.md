@@ -1663,6 +1663,71 @@ system, customer-confirmed 90-day agent cohorts, multi-site robot intervention
 and cost records, consecutive software tickets through monitored production,
 and tutoring replications with eight-week unassisted outcomes.
 
+## 9 November 2026, clearer Horizon reader
+
+The maintainer requested ASD-STE100 and a better Horizon experience. This batch
+applies short sentences, active verbs and consistent terms to the visitor
+guidance. It keeps UK English and makes no claim of full STE conformance.
+The official reference is https://www.asd-ste100.org/STE_faq.html.
+
+The five cards now lead with a short description. Each selected prediction
+shows a plain-English explanation, key figures from its test and its actual
+uncertainty. Full published criteria, rationale and sources remain available.
+Summaries are bound to their exact milestone and criteria. A later scope
+change falls back to the published wording until a new summary is reviewed.
+Dates always come from the current record.
+
+The trial panel gives a useful first step before the visitor opens the form.
+Its five questions and suggested 30/60/90-day sequence are clearer. Separate
+drafts, source-bearing copy/download and update preservation remain in place.
+The latest three history entries appear first, with earlier entries available
+in an accessible disclosure. All eleven reviews remain unchanged.
+
+Local validation: 214 JavaScript tests, 141 bot tests and twelve publication
+fixtures passed. All data validators passed. The 645-page build and audit
+passed with 33,329 internal links, 3,318 assets/metadata and zero errors. Four
+new tests cover scope changes, date-only updates and accurate movement labels.
+The new summary sentences contain no more than fourteen words.
+
+A separate Feral candidate appeared after this branch began. Its creative
+files remained outside this batch. The cloud browser blocked the local preview
+URL, so visual and interaction checks took place on the deployed public page.
+
+Integration check: Feral PR #276 merged while this batch was in preparation.
+The branch fast-forwarded to `278fb5bcb282368a73c78456b6418994508a1a94` without
+conflict. A fresh 646-page build and audit passed with 33,335 internal links,
+3,322 assets/metadata, 411 search entries and zero errors.
+
+[PR #277](https://github.com/valorifutures/softcat.ai/pull/277) passed all three
+[hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/42694801561)
+on exact head `b5b5312d0227cb0a6c2333283e6f6c1dfe239da3`. Main and the candidate
+head were re-read before normal squash merge
+`91fff7ef3e72d176c3e746197918b62a49f4a82e`. The
+[Pages build and deployment](https://github.com/valorifutures/softcat.ai/actions/runs/42695483384)
+succeeded.
+
+Live desktop verification selected all five predictions and checked their
+short summaries, full deadlines, key test figures and uncertainty. Enter and
+Space activate the cards. Full criteria and reasoning open on demand. The
+older-records disclosure exposes the eight earlier records, including the
+complete initial prediction from 15 September; all eleven remain present.
+
+The trial builder accepted five synthetic values. Software had a separate
+draft, and browser Back restored the Agents draft. Checking for a new review
+retained the selected prediction and its draft. Clipboard readback confirmed
+the full prediction, trial brief and share link. The actual 4,024-byte text
+download contained all five trial fields, the deadline, review date and source
+URLs. Navigation restored the clean default page and cleared the QA drafts.
+
+The document measured 1,348 pixels within a 1,363-pixel viewport. The saved
+[hero screenshot](evidence/horizon-reader-hero-20261109.jpg) and
+[detail screenshot](evidence/horizon-reader-detail-20261109.jpg) record the
+published layout. Narrow viewport and physical touch rendering remain
+unverified. The captured console error sample was from the browser extension;
+no exhaustive console-error absence is claimed. No new evidence assessment,
+paid inference or capability measurement took place. All eleven review records
+remain byte-for-byte unchanged.
+
 
 ## 9 November 2026, Feral untangles the room and schedules resume
 
@@ -1731,3 +1796,9 @@ facts rather than treating enabled configuration as execution evidence.
 This maintenance receipt changes checkpoint/log/operations documentation and
 the screenshot only. Feral source and ledger, research results, Horizon data,
 price data and workflow code are unchanged.
+
+Concurrent handover: the Horizon reader release in PR #277 and its completed
+receipt in PR #278 landed while this receipt was being prepared. This run's
+additions were applied to that latest main, preserving the Horizon checkpoint,
+log additions and screenshots. The global verified-deployment pointer keeps
+the later Horizon record; SNARL's own receipt links its earlier verified release.

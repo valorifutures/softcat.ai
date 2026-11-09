@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-09T20:48:33Z",
+  "updated_at": "2026-11-09T20:55:56Z",
   "phase": "published-and-verified-live",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "278fb5bcb282368a73c78456b6418994508a1a94",
-    "at": "2026-11-09T20:48:33Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/42694204996"
+    "sha": "91fff7ef3e72d176c3e746197918b62a49f4a82e",
+    "at": "2026-11-09T20:49:50Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/42695483384"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -121,6 +121,7 @@
     "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned.",
     "PR #262 published Feral cycle 9, BRUX, following a free director brief, independent builder and critic PASS on attempt 1. Twelve core tests, the exact final-head trusted gate and full hosted checks passed. Live instrument, audio controls, session expiry and 390/1280 px layouts were verified; audio listening and physical touch coverage are not claimed.",
     "PR #266 published Feral cycle 10, SILT, after a free director brief, independent builder and critic PASS on attempt one. Local validation, the trusted exact remote-commit gate and all hosted checks passed. Pages succeeded. Live desktop digging, all four gravity directions, automatic rest, keyboard/coordinate controls, scoop bounds, pointer strokes, reset and the complete footer were verified.",
+    "PR #277 passed the exact-head hosted gates, merged and deployed. Horizon now has short prediction summaries, key test figures, a clearer 90-day trial and compact history. Live desktop selection, keyboard controls, separate drafts, refresh preservation, clipboard readback and actual text download were verified. All eleven prediction reviews remain unchanged.",
     "PR #276 published Feral cycle 11, SNARL, following a free director brief, separate builder and independent critic PASS on attempt one. Ten SNARL tests, 269 total JavaScript tests, 141 bot tests, twelve publication fixtures, required validators, the 646-page build and trusted exact remote-commit gate passed. Hosted checks and Pages succeeded. Live desktop movement, input guards, geometric snags, all reveal/reset disclosures, native-control completion paths and the complete footer were verified.",
     "On 9 November, restored the existing Feral and daily maintenance tasks from paused to enabled, preserving their prompts and Europe/London schedules. Re-read both as enabled after the manual council. The Monday evidence task was already enabled. The separate price job is scheduling but fails its incomplete-catalogue guard; no validation was weakened."
   ],
@@ -129,7 +130,7 @@
     "Verify the first resumed Feral and maintenance scheduled executions from their actual results and GitHub receipts. Report a specific new user-action or connection blocker if one occurs.",
     "Select and pin an AGNTCY Identity adapter, verify credential-to-principal and authorisation semantics, and test deployment isolation before untrusted code execution. Then calibrate a single-agent baseline and freeze disjoint evaluation with explicit access and spend limits.",
     "Review original site code/assets provenance before extending the new scoped Apache-2.0 licence.",
-    "Follow the 19 October Horizon evidence priorities, retaining current targets and append-only history until evidence warrants revision.",
+    "Follow the 9 November Horizon evidence priorities, retaining current targets and append-only history until evidence warrants revision.",
     "Keep Feral creation and daily GitHub price snapshots under their existing separate owners. Mobile/touch and actual file-download verification remain pending from the earlier workshop pass."
   ],
   "constraints": [
@@ -137,7 +138,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "The 19 October Horizon review is published and verified live. All five targets, milestones and resolution rules remain unchanged. Eight events preserve the original forecasts and every earlier review. The glossary clarification is live and the active-work marker is clear.",
+  "session": "The clearer Horizon reader is published and verified live on 9 November. The five deadlines and all eleven reviews remain unchanged. The release incorporated Feral PR #276 without changing its creative files. No new evidence review was performed in this reader update.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -147,6 +148,7 @@
     "Audio enable/mute UI and Web Audio source were checked, but speaker listening, physical touch devices, live reduced-motion rendering and hidden-tab event behaviour were not verified. Local Astro installation was unavailable; complete production builds ran on GitHub.",
     "Physical touch devices, narrow viewport rendering, live reduced-motion mode and hidden-tab event behaviour were not verified. Reduced-motion and visibility handling were source-reviewed; deterministic tests exercise the cellular model.",
     "Cloud browser limitations: number-field fill did not emit native change events, so coordinate entry was verified through actual typing and Tab; text waits and full-page capture timed out, while later snapshots, screenshots and the viewport capture succeeded. Canvas pixel readback was unavailable. Extension metadata errors were observed, with no error originating from SILT.",
+    "The 9 November Horizon reader release was verified on desktop. Narrow viewport and physical touch rendering remain unverified. Its actual trial .txt download and clipboard bytes were verified; earlier limits for other tools and Feral remain in place.",
     "Live verification used the desktop cloud browser. Physical touch and narrow viewport rendering were not verified. Responsive rules were source-reviewed.",
     "The authored layouts were used for native-control completion tests. The observed Cleared by hand label describes the game state without the reveal control, not an unaided independent solve.",
     "Restored task configuration is verified enabled. The first resumed unattended executions remain unverified, and the task tool did not expose next-run timestamps. The exact old permission prompt is not available."
@@ -683,6 +685,37 @@
       "latest_failed_run": "https://github.com/valorifutures/softcat.ai/actions/runs/42632692153",
       "status": "The daily price workflow has failed safely on five consecutive days since the 4 November success. On 9 November only 31 of 39 tracked IDs matched the public catalogue, so the job stopped before validation and publication. No duplicate refresh was launched."
     }
+  },
+  "horizon_reader_2026_11_09": {
+    "date": "2026-11-09",
+    "status": "published and verified live",
+    "branch": "improve/horizon-clear-language-20261109",
+    "scope": "Plain-English prediction summaries, test figures, compact review history and a clearer 90-day trial. Applies ASD-STE100 principles with UK spelling, without a claim of full conformance.",
+    "preserved": "The eleven published reviews, all five targets, milestones, resolution rules and evidence are unchanged.",
+    "validation": "214 JavaScript tests, 141 bot tests and 12 publication fixtures passed. All data validators passed. After the Feral merge, the 646-page integrated build and audit passed with 33,335 internal links, 3,322 assets/metadata and zero errors.",
+    "limits": [
+      "ASD-STE100 principles were applied to visitor guidance. This is not a claim of full controlled-vocabulary conformance.",
+      "The browser blocked the local preview. Visual and interaction checks ran on the successful live deployment. Narrow viewport and physical touch rendering remain unverified.",
+      "No new evidence assessment or model capability test was performed. All eleven prediction records remain unchanged.",
+      "The captured console error sample contained browser-extension metadata errors; it does not establish an exhaustive absence of site errors."
+    ],
+    "base": "278fb5bcb282368a73c78456b6418994508a1a94",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/277",
+    "reviewed_head": "b5b5312d0227cb0a6c2333283e6f6c1dfe239da3",
+    "merge": "91fff7ef3e72d176c3e746197918b62a49f4a82e",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/42694801561",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42695483384",
+    "live_checks": [
+      "The live page shows the new hero, all five short prediction cards and the matching original deadlines. Enter and Space activate cards; all five detail panels show the correct test figures and uncertainty.",
+      "The full prediction, test and reasoning disclosures open. All eleven published records remain available, including the complete 15 September initial prediction behind the earlier-records disclosure.",
+      "Agents and Software retain separate synthetic trial drafts. Browser Back restores the Agents draft. Check for a new review retains selection and all five filled fields, then reports the latest published review checked.",
+      "Clipboard readback confirms the full prediction, trial brief and selected-prediction link. A real .txt download contains all five trial values, the forecast deadline, review date and source URLs.",
+      "Desktop screenshots show the hero, countdowns, selected forecast and trial panel. The 1,348-pixel document fits the 1,363-pixel viewport. The page was restored to its clean default view and synthetic drafts were cleared by navigation."
+    ],
+    "screenshots": [
+      "docs/evidence/horizon-reader-hero-20261109.jpg",
+      "docs/evidence/horizon-reader-detail-20261109.jpg"
+    ]
   },
   "feral_cycle11_receipt": {
     "date": "2026-11-09",

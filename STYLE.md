@@ -43,3 +43,17 @@ This is the mantra. Every piece of content on this site must reflect it. All con
 - Lead with the point. Don't build up to it.
 - Summaries should be one sentence, not a paragraph.
 - Tags should be lowercase, hyphenated, specific.
+
+## Horizon reader guidance
+- Apply ASD-STE100 Issue 9 principles to new reader guidance: short sentences,
+  one topic per sentence, active verbs and consistent terms. Keep UK spelling.
+- Aim for no more than 20 words in an instruction and 25 in a description.
+  These checks support editing. They do not establish full STE conformance.
+- Keep the formal prediction and its complete test available beside any summary.
+  Published review records are historical evidence. Do not rewrite them for style.
+- `reader-guides.json` binds each summary to its exact milestone and test.
+  If a review changes that scope, the interface falls back to published wording
+  until a corresponding summary is reviewed. Dates always come from the record.
+- Use “prediction” for our claim, “deadline” for its date and “review” for an
+  assessment of evidence. Explain the practical action separately.
+- Reference: https://www.asd-ste100.org/STE_faq.html
