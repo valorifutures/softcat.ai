@@ -11,6 +11,6 @@ const entries = (await getCollection('thoughts')).filter((entry) => !entry.data.
       <div class="notebook-date"><span>FIELD NOTE {String(entries.length - index).padStart(2, '0')}</span><time datetime={entry.data.date.toISOString()}>{entry.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time></div>
       <div><h2>{entry.data.title}</h2><p>{entry.data.summary}</p><span class="text-link">Read the entry →</span></div>
     </a>)}</div>
-    <aside class="notebook-context"><h2>The longer record</h2><p>The <a href="/thoughts">thoughts archive</a> holds earlier essays. The <a href="/pipeline">pipeline</a> has dated bot runs, and the <a href="https://github.com/valorifutures/softcat.ai/commits/main/">commit history</a> records code changes.</p><a href="/feed.xml" class="text-link">Follow the site feed ↗</a></aside>
+    <aside class="notebook-context"><h2>The longer record</h2><p>The <a href="/thoughts">thoughts archive</a> holds earlier essays. The <a href="/pipeline">pipeline</a> has dated bot runs, and the <a href="https://github.com/valorifutures/softcat.ai/commits/main/">commit history</a> records code changes.</p><a href="/feed.xml" class="text-link">Follow published work (RSS) ↗</a></aside>
   </div>
 </BaseLayout>
