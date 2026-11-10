@@ -1,4 +1,5 @@
 """Guard visitor-facing archive labels against an accidental return to 'live daily' wording."""
+import json
 import unittest
 from pathlib import Path
 from html.parser import HTMLParser
@@ -52,11 +53,13 @@ class ArchiveClarityTests(unittest.TestCase):
         self.assertIn("not a live product recommendation", content)
         self.assertNotIn("today's picks", content)
 
-    def test_footer_names_actual_feed_and_current_tool(self):
+    def test_footer_names_actual_feed_and_current_feral_creation(self):
         home = self.text("/")
+        manifest = json.loads((ROOT / "src/content/feral/manifest.json").read_text(encoding="utf-8"))
+        current_creation = max(manifest, key=lambda creation: creation["born"])
         self.assertIn("published work (rss)", home)
         self.assertIn("domain checker", home)
-        self.assertIn("snarl", home)
+        self.assertIn(current_creation["title"].lower(), home)
 
 
 if __name__ == "__main__":
