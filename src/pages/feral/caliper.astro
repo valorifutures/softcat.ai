@@ -1,5 +1,5 @@
 ---
-import { SPECIMENS, measureSpecimen, jawBoundary } from '../../content/feral/caliper.mjs';
+import { RULER_TICKS, SPECIMENS, measureSpecimen, jawBoundary } from '../../content/feral/caliper.mjs';
 const first = measureSpecimen(SPECIMENS[0]);
 const jaw = jawBoundary(first, 50);
 const pct = (value: number | null) => value == null ? 0 : Math.max(0, Math.min(100, value));
@@ -41,7 +41,7 @@ const charPosition = (index: number) => first.totalWidth ? first.characters[inde
           <div class="label-line"><h2 id="bed-title">02 / MEASURING BED</h2><span id="instrument-state">Specimen fixed</span></div>
           <div class="bed-scroll" id="bed-scroll">
             <div class="bed" id="bed" style={`--units:${first.totalWidth}`}>
-              <div class="register top" aria-hidden="true">{Array.from({ length: 21 }, (_, i) => <i><b>{i * 5}</b></i>)}</div>
+              <div class="register top" aria-hidden="true">{RULER_TICKS.map(tick => <i style={`--tick:${tick}`}><b>{tick}</b></i>)}</div>
               <div class="echo-field" aria-hidden="true">
                 <svg id="echo-arcs" viewBox="0 0 1000 150" preserveAspectRatio="none">
                   {first.echoes.map((echo, index) => {
@@ -65,8 +65,8 @@ const charPosition = (index: number) => first.totalWidth ? first.characters[inde
                 <div id="vowel-dots">{first.vowels.map(item => <i class="dot vowel-dot" style={`left:${item.position}%`}></i>)}</div>
                 <div id="punctuation-dots">{first.punctuation.map(item => <i class="dot punctuation-dot" style={`left:${item.position}%`}></i>)}</div>
               </div>
-              <div class="jaw" id="jaw" style={`left:${jaw.position}%`} aria-hidden="true"><i></i><b></b></div>
-              <div class="register bottom" aria-hidden="true">{Array.from({ length: 21 }, (_, i) => <i><b>{i * 5}</b></i>)}</div>
+              <div class="jaw-plane" aria-hidden="true"><div class="jaw" id="jaw" style={`left:${jaw.position}%`}><i></i><b></b></div></div>
+              <div class="register bottom" aria-hidden="true">{RULER_TICKS.map(tick => <i style={`--tick:${tick}`}><b>{tick}</b></i>)}</div>
             </div>
           </div>
 
@@ -137,11 +137,10 @@ const charPosition = (index: number) => first.totalWidth ? first.characters[inde
   .authored button span { color: #c81720; }
   .bed-scroll { overflow-x: auto; border: 1px solid #11100d; background: #f7f3e9; scrollbar-color: #11100d #d9d2c2; }
   .bed { --units: 32; position: relative; min-width: max(760px, calc(var(--units) * 15px)); padding: 0 26px; }
-  .register { height: 38px; display: grid; grid-template-columns: repeat(21, 1fr); border-color: #777064; font: 8px/1 'Courier New', monospace; }
+  .register { position: relative; height: 38px; border-color: #777064; font: 8px/1 'Courier New', monospace; }
   .register.top { border-bottom: 1px solid #777064; }
   .register.bottom { border-top: 1px solid #777064; }
-  .register i { position: relative; border-left: 1px solid #777064; }
-  .register i:last-child { border-right: 1px solid #777064; }
+  .register i { position: absolute; inset-block: 0; left: calc(var(--tick) * 1%); border-left: 1px solid #777064; }
   .register b { position: absolute; left: 2px; font-weight: normal; }
   .register.top b { bottom: 4px; }
   .register.bottom b { top: 4px; }
@@ -170,7 +169,8 @@ const charPosition = (index: number) => first.totalWidth ? first.characters[inde
   .pressure .punctuation { height: 34px; top: 30px; border-style: dashed; }
   #vowel-dots :global(.dot), #punctuation-dots :global(.dot) { position: absolute; top: 15px; width: 4px; height: 4px; border-radius: 50%; background: #11100d; transform: translateX(-2px); }
   #punctuation-dots :global(.punctuation-dot) { top: 31px; background: #c81720; }
-  .jaw { position: absolute; top: 30px; bottom: 30px; width: 1px; background: #c81720; z-index: 4; pointer-events: none; }
+  .jaw-plane { position: absolute; inset: 30px 26px; z-index: 4; pointer-events: none; }
+  .jaw { position: absolute; top: 0; bottom: 0; width: 1px; background: #c81720; }
   .jaw > i, .jaw > b { position: absolute; left: -9px; width: 19px; height: 10px; border: 2px solid #c81720; background: #f7f3e9; }
   .jaw > i { top: 0; border-bottom: 0; }
   .jaw > b { bottom: 0; border-top: 0; }

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { MAX_SPECIMEN, SPECIMENS, clampSpecimen, classify, characterWidth, measureSpecimen, jawBoundary } from './caliper.mjs';
+import { MAX_SPECIMEN, RULER_TICKS, SPECIMENS, clampSpecimen, classify, characterWidth, measureSpecimen, jawBoundary } from './caliper.mjs';
 
 const pageSource = readFileSync(new URL('../../pages/feral/caliper.astro', import.meta.url), 'utf8');
 
@@ -88,4 +88,14 @@ test('client-created measurement marks retain styles after an interactive render
   for (const selector of dynamicDescendants) {
     assert.match(pageSource, selector, `${selector} must not require Astro's generated scope attribute on its dynamic child`);
   }
+});
+
+test('ruler ticks and jaw use the specimen content coordinate space', () => {
+  assert.deepEqual(RULER_TICKS, Array.from({ length: 21 }, (_, index) => index * 5));
+  assert.equal(RULER_TICKS[0], 0);
+  assert.equal(RULER_TICKS.at(-1), 100);
+  assert.equal(pageSource.match(/RULER_TICKS\.map/g)?.length, 2, 'both rulers use the same 0–100 tick positions');
+  assert.match(pageSource, /\.register i\s*\{[^}]*left:\s*calc\(var\(--tick\)\s*\*\s*1%\)/s);
+  assert.match(pageSource, /\.jaw-plane\s*\{[^}]*inset:\s*30px 26px/s);
+  assert.match(pageSource, /<div class="jaw-plane"[^>]*><div class="jaw" id="jaw"/);
 });

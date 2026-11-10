@@ -1,4 +1,5 @@
 export const MAX_SPECIMEN = 240;
+export const RULER_TICKS = Object.freeze(Array.from({ length: 21 }, (_, index) => index * 5));
 
 export const SPECIMENS = Object.freeze([
   'The apparatus is certain. The sentence is not.',
