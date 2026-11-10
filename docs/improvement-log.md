@@ -1915,3 +1915,38 @@ full third-party link coverage. The incomplete price-catalogue guard and
 scheduled task execution checks remain unresolved. No Feral creative
 source, historic Horizon milestones or earlier editorial-retirement
 documents were changed in either batch.
+
+
+## 10 November 2026, price catalogue completeness guard
+
+The daily price job had failed safely for five runs because exact tracked-ID
+matches fell from 32 to 31 of 39. We checked OpenRouter's public catalogue once
+at 08:36 UTC without running the publisher. It returned 465 models, above the
+453 in the last successful snapshot. The response SHA-256 was
+`a349da119e8a622a8d7c2c101f0d485e0c65eab6287c36745f43653b44f88d49`.
+
+All eight unmatched IDs still had official OpenRouter model records, but their
+endpoint API records each returned an empty endpoint list. Seven were already
+recorded as `not-listed`. `minimax/minimax-m2` was the only newly unavailable
+ID. We preserved all eight historical roster entries and did not infer a
+replacement from a similarly named model.
+
+The candidate guard now checks two independent conditions. The returned
+catalogue must retain at least 80% of the last successful catalogue's model
+count. Separately, only a bounded 10% of previously listed tracked IDs may
+disappear, with one disappearance allowed for small rosters. Known unavailable
+IDs no longer consume that allowance. A missing ID still becomes unknown and
+`not-listed`; no old price is carried forward as current.
+
+The saved 10 November catalogue replay passed with 465 catalogue models, a
+floor of 363, 31 of 32 previously listed IDs matched, and one new disappearance
+inside the limit of three. It planned eight unavailable records, two held price
+reviews and four allowed price changes. This was a no-write planner check, not
+a price publication or a substitute scheduled run.
+
+Local validation passed 227 Node tests, 24 offline publication tests, 141 bot
+tests, 46 recovery tests and 25 authenticated-boundary tests. The production
+build emitted 650 pages. The offline audit checked 34,193 internal links,
+3,343 local assets or metadata references, 413 search entries and 184 content
+records with no errors. Hosted checks, merge, the next scheduled price run and
+its resulting Pages deployment remain unclaimed until they happen.

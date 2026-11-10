@@ -58,6 +58,25 @@ test('unlisted and invalid quotes remain unknown without erasing valid identity 
   assert.equal(plan.summary.notListed, 1); assert.equal(plan.summary.unverified, 1);
 });
 
+test('known unlisted IDs do not consume the allowance for a newly unavailable model', () => {
+  const models = roster(), data = catalogue();
+  models[4].pricingStatus = 'not-listed';
+  data.data.pop(); data.data.pop();
+  const plan = planPriceSnapshot(models, data, checkedAt);
+  assert.equal(plan.summary.expectedListedModels, 4);
+  assert.equal(plan.summary.expectedListedMatched, 3);
+  assert.equal(plan.summary.newlyNotListed, 1);
+  assert.equal(plan.summary.allowedNewlyNotListed, 1);
+  assert.equal(plan.summary.notListed, 2);
+});
+
+test('catalogue volume is checked against the last successful snapshot', () => {
+  const data = catalogue();
+  assert.throws(() => planPriceSnapshot(roster(), data, checkedAt, { previousCatalogueModels: 100 }), /previous snapshot had 100/);
+  const plan = planPriceSnapshot(roster(), data, checkedAt, { previousCatalogueModels: 6 });
+  assert.equal(plan.summary.catalogueFloor, 5);
+});
+
 test('a genuine zero quote stays verified when it matches the recorded price', () => {
   const models = roster(), data = catalogue();
   models[0].inputPrice = 0; models[0].outputPrice = 0;

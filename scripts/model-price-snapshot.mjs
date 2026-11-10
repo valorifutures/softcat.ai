@@ -6,6 +6,8 @@ import { resolve, dirname } from 'node:path';
 
 export const PRICE_SOURCE = 'https://openrouter.ai/api/v1/models';
 export const MAX_PRICE_DELTA = 0.5;
+export const MIN_CATALOGUE_RETENTION = 0.8;
+export const MAX_NEWLY_MISSING_RATIO = 0.1;
 const priceKeys = ['inputPrice', 'outputPrice'];
 
 export function pricePerMillion(value) {
@@ -16,7 +18,7 @@ export function pricePerMillion(value) {
   return Number(price.toPrecision(12));
 }
 
-export function planPriceSnapshot(models, catalogue, checkedAt) {
+export function planPriceSnapshot(models, catalogue, checkedAt, { previousCatalogueModels = null } = {}) {
   if (!Array.isArray(models) || !models.length || new Set(models.map(model => model.id)).size !== models.length) throw new Error('The tracked roster is empty or has duplicate IDs');
   if (!Number.isFinite(Date.parse(checkedAt))) throw new Error('Invalid check timestamp');
   if (!Array.isArray(catalogue?.data) || !catalogue.data.length) throw new Error('The catalogue is empty or malformed');
@@ -25,8 +27,15 @@ export function planPriceSnapshot(models, catalogue, checkedAt) {
     if (typeof entry.id !== 'string' || !entry.id || entries.has(entry.id)) throw new Error('The catalogue has missing or duplicate model IDs');
     entries.set(entry.id, entry);
   }
+  if (previousCatalogueModels !== null && (!Number.isInteger(previousCatalogueModels) || previousCatalogueModels < 1)) throw new Error('The previous catalogue size is invalid');
+  const catalogueFloor = previousCatalogueModels === null ? null : Math.ceil(previousCatalogueModels * MIN_CATALOGUE_RETENTION);
+  if (catalogueFloor !== null && entries.size < catalogueFloor) throw new Error(`Only ${entries.size} catalogue models returned; the previous snapshot had ${previousCatalogueModels}. Refusing a potentially incomplete catalogue.`);
+  const expectedListed = models.filter(model => model.pricingStatus !== 'not-listed');
+  const expectedListedMatched = expectedListed.filter(model => entries.has(model.id)).length;
+  const newlyNotListed = expectedListed.length - expectedListedMatched;
+  const allowedNewlyNotListed = expectedListed.length > 1 ? Math.max(1, Math.floor(expectedListed.length * MAX_NEWLY_MISSING_RATIO)) : 0;
+  if (newlyNotListed > allowedNewlyNotListed) throw new Error(`${newlyNotListed} previously listed tracked IDs disappeared; the review limit is ${allowedNewlyNotListed}. Refusing a potentially incomplete catalogue.`);
   const matched = models.filter(model => entries.has(model.id)).length;
-  if (matched < Math.ceil(models.length * 0.8)) throw new Error(`Only ${matched} of ${models.length} tracked IDs matched. Refusing a potentially incomplete catalogue.`);
   const checks = [];
   const updated = models.map(model => {
     const copy = structuredClone(model), entry = entries.get(model.id);
@@ -55,7 +64,9 @@ export function planPriceSnapshot(models, catalogue, checkedAt) {
     return copy;
   });
   const count = status => checks.filter(check => check.status === status).length;
-  return { models: updated, checks, summary: { catalogueModels: entries.size, trackedModels: models.length, matched,
+  return { models: updated, checks, summary: { catalogueModels: entries.size, previousCatalogueModels, catalogueFloor,
+    trackedModels: models.length, matched, expectedListedModels: expectedListed.length, expectedListedMatched,
+    newlyNotListed, allowedNewlyNotListed,
     verified: count('verified'), notListed: count('not-listed'), reviewNeeded: count('review-needed'), unverified: count('unverified'),
     priceChanges: checks.filter(check => priceKeys.some(key => check.previous[key] !== check.applied[key])).length } };
 }
@@ -70,7 +81,9 @@ export async function runPriceSnapshot({ write = false } = {}) {
   const checkedAt = new Date().toISOString();
   const modelsPath = resolve(root, 'src/data/models.json');
   const models = JSON.parse(await readFile(modelsPath, 'utf8'));
-  const plan = planPriceSnapshot(models, JSON.parse(raw), checkedAt);
+  const snapshotPath = resolve(root, 'src/data/model-price-snapshot.json');
+  const previousSnapshot = JSON.parse(await readFile(snapshotPath, 'utf8'));
+  const plan = planPriceSnapshot(models, JSON.parse(raw), checkedAt, { previousCatalogueModels: previousSnapshot.catalogueModels });
   const runId = process.env.GITHUB_RUN_ID;
   const workflowUrl = process.env.GITHUB_REPOSITORY === 'valorifutures/softcat.ai' && /^\d+$/.test(runId ?? '')
     ? `https://github.com/valorifutures/softcat.ai/actions/runs/${runId}` : null;
@@ -93,7 +106,7 @@ export async function runPriceSnapshot({ write = false } = {}) {
     const json = value => JSON.stringify(value, null, 2) + '\n';
     // All parsing and catalogue checks finish before any file is changed.
     await writeFile(modelsPath, json(plan.models));
-    await writeFile(resolve(root, 'src/data/model-price-snapshot.json'), json(snapshot));
+    await writeFile(snapshotPath, json(snapshot));
     await writeFile(runsPath, json([...history, run]));
   }
   console.log(JSON.stringify({ write, checkedAt, ...plan.summary, workflowUrl }));
