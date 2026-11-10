@@ -1,0 +1,354 @@
+---
+import { SIZE, deposit } from '../../content/feral/silt.mjs';
+const initial = deposit();
+---
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SILT | Feral</title>
+    <meta name="description" content="Dig a hole in coloured ground. Turn gravity. Watch the ground revise your decision. An invented, local grain simulation." />
+    <link rel="canonical" href="https://softcat.ai/feral/silt/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip" href="#controls">Skip to the chamber controls</a>
+    <div class="sheet">
+      <nav aria-label="Feral navigation"><a href="/feral/">The other rooms</a><span>Feral / 010</span></nav>
+      <header><h1>SILT</h1><div class="opening"><p>The ground has<br />other plans.</p><span>Dig into the layers.<br />Turn the pull.</span></div></header>
+      <main>
+        <div class="machine">
+          <section class="working" aria-label="Grain chamber">
+            <div class="chamber-line"><span>An invented deposit</span><span id="pull-label">↓ Down</span></div>
+            <div class="surface" id="surface">
+              <svg id="still" viewBox="0 0 960 600" role="img" aria-label="Three horizontal strata of peach, ochre and pale blue grains, resting at the bottom of a dark blue chamber.">
+                <defs>
+                  <pattern id="peach-grains" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#f6af96" /></pattern>
+                  <pattern id="ochre-grains" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#d7a245" /></pattern>
+                  <pattern id="blue-grains" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#c8def0" /></pattern>
+                </defs>
+                <rect width="960" height="600" fill="#202d79" />
+                <rect y="192" width="960" height="138" fill="url(#peach-grains)" />
+                <rect y="330" width="960" height="126" fill="url(#ochre-grains)" />
+                <rect y="456" width="960" height="144" fill="url(#blue-grains)" />
+              </svg>
+              <canvas id="chamber" width="960" height="600" tabindex="0" role="group" aria-label="Interactive grain chamber" aria-describedby="chamber-help cursor-position" hidden></canvas>
+            </div>
+            <div class="readout"><p><output id="grain-count" aria-live="off">{initial.remaining.toLocaleString('en-GB')}</output><span>grains remaining</span></p><p class="material"><span><output id="removed-count">0</output> removed</span><span id="state">At rest</span></p></div>
+            <p id="chamber-help" class="chamber-help">Drag to scoop. The ground settles after you dig or turn gravity. Hold keeps a hole open. Step moves the ground once.</p>
+            <p id="cursor-position" class="sr-only">Scoop at column 81, row 63. When the chamber is focused, arrow keys move the scoop; Shift moves eight cells. Space or Enter digs.</p>
+          </section>
+          <section class="controls" id="controls" aria-label="Chamber controls">
+            <fieldset class="pull"><legend>Gravity</legend>
+              <label><input type="radio" name="gravity" value="down" checked disabled /><span>↓ Down</span></label>
+              <label><input type="radio" name="gravity" value="left" disabled /><span>← Left</span></label>
+              <label><input type="radio" name="gravity" value="up" disabled /><span>↑ Up</span></label>
+              <label><input type="radio" name="gravity" value="right" disabled /><span>→ Right</span></label>
+            </fieldset>
+            <div class="movement"><button id="settle" type="button" disabled>Let it settle <span aria-hidden="true">↘</span></button><div><button id="hold" type="button" disabled>Hold</button><button id="step" type="button" disabled>Step</button></div></div>
+            <label class="brush" for="brush"><span>Scoop radius <output id="brush-value" for="brush">5 cells</output></span><input id="brush" type="range" min="2" max="12" value="5" step="1" disabled /></label>
+            <details class="keyboard"><summary>Dig with the keyboard</summary><p>Focus the chamber. Arrow keys move the scoop; Shift moves eight cells. Space or Enter digs. Or choose a position here.</p><div class="coordinates"><label for="column">Column<input id="column" type="number" min="1" max={SIZE.width} value="81" disabled /></label><label for="row">Row<input id="row" type="number" min="1" max={SIZE.height} value="63" disabled /></label></div><button id="dig" type="button" disabled>Dig at this position</button></details>
+            <button class="reset" id="reset" type="button" disabled>Start again <span aria-hidden="true">↺</span></button>
+            <p class="motion" id="motion-note" hidden>Reduced motion is on. The ground moves only when you press Step.</p>
+            <p id="status" class="status" role="status">The layers are at rest. Nothing has been removed.</p>
+          </section>
+        </div>
+        <p class="thought">Holes are suggestions.<br /><span>Gravity gets the last word.</span></p>
+        <noscript><p class="no-script">The original deposit is shown above. JavaScript is needed to dig or change gravity; the controls are inactive.</p></noscript>
+      </main>
+      <footer><span>An invented deposit. A local grain simulation.</span><a href="/feral/#ledger">The council's record</a></footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { background: #edf1ea; color: #202d79; color-scheme: light; }
+  :global(body) { margin: 0; font: .875rem/1.5 system-ui, sans-serif; }
+  :global(a) { color: inherit; text-underline-offset: 4px; }
+  :global(button), :global(input) { font: inherit; }
+  :global(button) { cursor: pointer; touch-action: manipulation; }
+  :global(button:disabled) { cursor: default; opacity: .42; }
+  :global(:focus-visible) { outline: 3px solid #b74929; outline-offset: 4px; }
+  :global([hidden]) { display: none !important; }
+  .sheet { max-width: 1680px; margin: auto; padding: 0 clamp(1rem, 4vw, 4.5rem); }
+  .skip { position: absolute; left: 1rem; top: -100px; padding: .8rem; background: #202d79; color: #edf1ea; z-index: 5; }
+  .skip:focus { top: 1rem; }
+  nav, footer { display: flex; justify-content: space-between; gap: .75rem; flex-wrap: wrap; font: .67rem/1.5 ui-monospace, monospace; }
+  nav { padding: 1.25rem 0; border-bottom: 1px solid #adb7be; }
+  nav a { text-decoration: none; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; padding: 2.3rem 0 2.4rem; }
+  h1 { font-size: clamp(6rem, 15vw, 15rem); font-weight: 950; line-height: .77; letter-spacing: -.085em; margin: 0; }
+  .opening { display: flex; gap: clamp(2rem, 5vw, 6rem); align-items: flex-end; }
+  .opening p { margin: 0; font-size: clamp(1.25rem, 2.5vw, 2.7rem); line-height: 1.06; letter-spacing: -.03em; }
+  .opening span { font: .75rem/1.7 ui-monospace, monospace; }
+  .machine { display: grid; grid-template-columns: minmax(0, 1fr) 228px; gap: clamp(1.25rem, 3vw, 3rem); align-items: start; }
+  .working { min-width: 0; }
+  .chamber-line { display: flex; justify-content: space-between; gap: .5rem; padding: .6rem 0; border-top: 1px solid #adb7be; font: .65rem/1.5 ui-monospace, monospace; }
+  .surface { background: #202d79; aspect-ratio: 8 / 5; border: 1px solid #202d79; }
+  .surface svg, .surface canvas { display: block; width: 100%; height: 100%; }
+  .surface canvas { cursor: crosshair; touch-action: none; image-rendering: pixelated; }
+  .surface canvas:focus-visible { outline-color: #b74929; }
+  .readout { display: flex; justify-content: space-between; align-items: flex-end; gap: .75rem; margin-top: .9rem; }
+  .readout p { margin: 0; }
+  #grain-count { display: block; font-size: clamp(2.5rem, 4.7vw, 4.8rem); font-weight: 750; letter-spacing: -.065em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .readout p > span { font: .65rem/1.8 ui-monospace, monospace; }
+  .material { text-align: right; display: flex; flex-direction: column; }
+  .material #state { font: 650 .8rem/1.8 system-ui, sans-serif; }
+  .chamber-help { font-size: .75rem; max-width: 60em; margin: 1rem 0 0; }
+  .controls { padding-top: .55rem; }
+  fieldset { border: 0; padding: 0; margin: 0; }
+  legend { font: .65rem/1.5 ui-monospace, monospace; margin-bottom: .8rem; }
+  .pull { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; }
+  .pull label { position: relative; cursor: pointer; }
+  .pull input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .pull span { display: block; border: 1px solid #a4b0bb; min-height: 44px; padding: .65rem .8rem; font-size: .8rem; }
+  .pull input:checked + span { background: #202d79; color: #edf1ea; border-color: #202d79; }
+  .pull input:focus-visible + span { outline: 3px solid #b74929; outline-offset: 3px; }
+  .pull input:disabled + span { opacity: .42; }
+  .controls button { width: 100%; min-height: 44px; border: 1px solid #a4b0bb; color: #202d79; background: transparent; padding: .65rem .8rem; text-align: left; font-size: .8rem; }
+  .controls button:hover:not(:disabled) { border-color: #202d79; background: #e0e6df; }
+  .movement { margin-top: 1.4rem; }
+  .movement #settle { display: flex; justify-content: space-between; background: #f6af96; border-color: #f6af96; font-weight: 650; }
+  .movement #settle:hover:not(:disabled) { background: #f2a38c; }
+  .movement > div { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; margin-top: .4rem; }
+  .brush { display: block; margin-top: 1.5rem; }
+  .brush > span { display: flex; justify-content: space-between; gap: .5rem; font: .65rem/1.5 ui-monospace, monospace; }
+  .brush input { width: 100%; height: 36px; margin: .25rem 0 0; accent-color: #202d79; cursor: pointer; }
+  .keyboard { border-top: 1px solid #adb7be; padding-top: .9rem; margin-top: 1rem; }
+  .keyboard summary { font-size: .75rem; cursor: pointer; padding: .2rem 0; }
+  .keyboard p { font-size: .7rem; margin: .8rem 0; }
+  .coordinates { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: .65rem; }
+  .coordinates label { font: .65rem/1.5 ui-monospace, monospace; }
+  .coordinates input { width: 100%; min-height: 40px; display: block; border: 1px solid #a4b0bb; color: #202d79; background: #f8faf5; padding: .5rem; margin-top: .2rem; font: .8rem/1.5 ui-monospace, monospace; }
+  .controls .reset { display: flex; justify-content: space-between; margin-top: 1.5rem; }
+  .status, .motion { margin: 1rem 0 0; font-size: .7rem; }
+  .motion { border-left: 2px solid #b74929; padding-left: .65rem; }
+  .thought { font-size: clamp(1.5rem, 3.6vw, 3.6rem); line-height: 1.12; letter-spacing: -.04em; margin: 2.5rem 0; }
+  .thought span { color: #aa482d; }
+  footer { border-top: 1px solid #adb7be; padding: 1.2rem 0 1.8rem; }
+  .no-script { border: 1px solid #aa482d; padding: 1rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  @media (max-width: 900px) {
+    header { padding-top: 2rem; }
+    .opening { flex-direction: column; align-items: flex-start; gap: .75rem; }
+    .opening p { font-size: 1.7rem; }
+    .opening span { font-size: .65rem; }
+    .machine { grid-template-columns: minmax(0, 1fr) 196px; gap: 1.2rem; }
+  }
+  @media (max-width: 650px) {
+    header { align-items: flex-start; padding: 1.8rem 0; gap: 1.2rem; }
+    h1 { font-size: clamp(5rem, 24vw, 8rem); }
+    .opening p { font-size: clamp(1.05rem, 4.6vw, 1.5rem); }
+    .opening span { font-size: .6rem; }
+    .machine { grid-template-columns: 1fr; gap: 1.6rem; }
+    .surface { aspect-ratio: 1 / 1; }
+    .readout { margin-top: .8rem; }
+    #grain-count { font-size: 3.2rem; }
+    .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem .9rem; padding: 0; }
+    .pull { grid-column: 1 / -1; grid-template-columns: repeat(4, 1fr); }
+    .pull span { font-size: .73rem; padding: .65rem .45rem; text-align: center; }
+    .movement, .brush, .keyboard, .controls .reset { margin-top: 0; }
+    .keyboard, .controls .reset, .status, .motion { grid-column: 1 / -1; }
+    .brush { padding-top: .4rem; align-self: center; }
+    .status, .motion { margin: 0; }
+    .thought { margin: 2rem 0; }
+  }
+</style>
+
+<script>
+  import { SIZE, COLOURS, deposit, setGravity, step, dig, digLine } from '../../content/feral/silt.mjs';
+  const get = (id: string) => document.getElementById(id)!;
+  const button = (id: string) => get(id) as HTMLButtonElement;
+  const input = (id: string) => get(id) as HTMLInputElement;
+  const canvas = get('chamber') as HTMLCanvasElement;
+  const context = canvas.getContext('2d');
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const gravity = [...document.querySelectorAll<HTMLInputElement>('input[name="gravity"]')];
+  const labels = { down: '↓ Down', left: '← Left', up: '↑ Up', right: '→ Right' };
+  let room = deposit();
+  let cursor = { x: 80, y: 62 };
+  let radius = 5;
+  let showCursor = false;
+  let held = motion.matches;
+  let running = false;
+  let frame: number | null = null;
+  let previous = 0;
+  let pointer: number | null = null;
+  let lastPoint: { x: number; y: number } | null = null;
+  let lastState = '';
+
+  function say(message: string) { get('status').textContent = message; }
+  function cancel() { if (frame !== null) cancelAnimationFrame(frame); frame = null; previous = 0; running = false; }
+  function controls() {
+    button('settle').disabled = motion.matches || (!held && room.stable) || room.remaining === 0;
+    button('hold').disabled = motion.matches || held || room.remaining === 0;
+    button('step').disabled = room.stable || room.remaining === 0;
+    button('dig').disabled = room.remaining === 0;
+    get('motion-note').hidden = !motion.matches;
+    get('chamber-help').textContent = motion.matches
+      ? 'Drag to scoop, or use the keyboard. Choose a direction, then press Step to move the ground once. Reduced motion keeps the chamber still between steps.'
+      : 'Drag to scoop. The ground settles after you dig or turn gravity. Hold keeps a hole open. Step moves the ground once.';
+    get('pull-label').textContent = labels[room.direction as keyof typeof labels];
+    const state = room.remaining === 0 ? 'Empty' : room.stable ? 'At rest' : running ? 'Settling' : 'Held';
+    get('state').textContent = state;
+    get('grain-count').textContent = room.remaining.toLocaleString('en-GB');
+    get('removed-count').textContent = room.removed.toLocaleString('en-GB');
+    if (state !== lastState) {
+      lastState = state;
+      say(state === 'Empty' ? 'Every grain has been removed. Start again restores the original deposit.'
+        : state === 'At rest' ? `The ground is at rest. ${room.remaining.toLocaleString('en-GB')} grains remain.`
+        : state === 'Settling' ? 'The ground is settling. Hold stops it here.'
+        : 'The ground is held. A step moves each falling grain at most one cell.');
+    }
+  }
+  function draw() {
+    if (!context) return;
+    context.fillStyle = COLOURS[0];
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    for (let y = 0; y < room.height; y++) {
+      for (let x = 0; x < room.width; x++) {
+        const colour = room.cells[y * room.width + x];
+        if (!colour) continue;
+        context.fillStyle = COLOURS[colour];
+        context.fillRect(x * 6, y * 6, 5, 5);
+      }
+    }
+    if (showCursor) {
+      context.strokeStyle = '#ffffff';
+      context.lineWidth = 1.5;
+      context.setLineDash([4, 4]);
+      context.beginPath();
+      context.arc(cursor.x * 6 + 2.5, cursor.y * 6 + 2.5, radius * 6 + 2, 0, Math.PI * 2);
+      context.stroke();
+      context.setLineDash([]);
+      context.fillStyle = '#ffffff';
+      context.fillRect(cursor.x * 6 + 1.5, cursor.y * 6 + 1.5, 2, 2);
+    }
+  }
+  function position() {
+    input('column').value = String(cursor.x + 1);
+    input('row').value = String(cursor.y + 1);
+    get('cursor-position').textContent = `Scoop at column ${cursor.x + 1}, row ${cursor.y + 1}, radius ${radius} cells. Arrow keys move the scoop; Shift moves eight cells. Space or Enter digs.`;
+  }
+  function animate(time: number) {
+    frame = null;
+    if (!running || document.hidden || motion.matches) { cancel(); controls(); return; }
+    if (time - previous >= 1000 / 30) {
+      previous = time;
+      for (let sweep = 0; sweep < 2 && !room.stable; sweep++) step(room);
+      draw();
+      if (room.stable) { cancel(); controls(); return; }
+    }
+    frame = requestAnimationFrame(animate);
+  }
+  function start() {
+    const shouldRun = !held && !motion.matches && !document.hidden && !room.stable && room.remaining > 0;
+    if (shouldRun && running) { controls(); return; }
+    cancel();
+    if (shouldRun) {
+      running = true;
+      frame = requestAnimationFrame(animate);
+    }
+    controls();
+  }
+  function edited() { draw(); start(); }
+  function scoop() { const removed = dig(room, cursor.x, cursor.y, radius); edited(); if (removed === 0) say('The scoop found no grains at this position.'); }
+  function point(event: PointerEvent) {
+    const box = canvas.getBoundingClientRect();
+    if (box.width <= 0 || box.height <= 0) return null;
+    const x = (event.clientX - box.left) / box.width * SIZE.width;
+    const y = (event.clientY - box.top) / box.height * SIZE.height;
+    if (x < 0 || y < 0 || x >= SIZE.width || y >= SIZE.height) return null;
+    return { x: Math.floor(x), y: Math.floor(y) };
+  }
+  function release(event: PointerEvent) {
+    if (pointer !== event.pointerId) return;
+    pointer = null;
+    lastPoint = null;
+    if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+  }
+
+  if (context) {
+    canvas.hidden = false;
+    get('still').setAttribute('hidden', '');
+    gravity.forEach(control => {
+      control.disabled = false;
+      control.addEventListener('change', () => { if (control.checked) { setGravity(room, control.value); edited(); } });
+    });
+    ['brush', 'column', 'row'].forEach(id => { input(id).disabled = false; });
+    button('reset').disabled = false;
+    canvas.addEventListener('pointerdown', event => {
+      if (pointer !== null || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      const at = point(event);
+      if (!at) return;
+      pointer = event.pointerId;
+      cursor = at;
+      lastPoint = at;
+      showCursor = true;
+      canvas.focus({ preventScroll: true });
+      canvas.setPointerCapture(pointer);
+      position();
+      scoop();
+    });
+    canvas.addEventListener('pointermove', event => {
+      const at = point(event);
+      if (!at) { if (pointer === event.pointerId) lastPoint = null; return; }
+      if (pointer !== null && pointer !== event.pointerId) return;
+      cursor = at;
+      showCursor = true;
+      position();
+      if (pointer === event.pointerId) {
+        if (lastPoint) digLine(room, lastPoint, at, radius);
+        else dig(room, at.x, at.y, radius);
+        lastPoint = at;
+        edited();
+      } else draw();
+    });
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(type => canvas.addEventListener(type, event => release(event as PointerEvent)));
+    canvas.addEventListener('pointerleave', () => { if (pointer === null && document.activeElement !== canvas) { showCursor = false; draw(); } });
+    canvas.addEventListener('focus', () => { showCursor = true; draw(); });
+    canvas.addEventListener('blur', () => { if (pointer === null) { showCursor = false; draw(); } });
+    canvas.addEventListener('keydown', event => {
+      const arrows = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
+      if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); scoop(); return; }
+      const move = arrows[event.key as keyof typeof arrows];
+      if (!move) return;
+      event.preventDefault();
+      const amount = event.shiftKey ? 8 : 1;
+      cursor.x = Math.max(0, Math.min(SIZE.width - 1, cursor.x + move[0] * amount));
+      cursor.y = Math.max(0, Math.min(SIZE.height - 1, cursor.y + move[1] * amount));
+      showCursor = true;
+      position(); draw();
+    });
+    input('brush').addEventListener('input', () => { radius = Number(input('brush').value); get('brush-value').textContent = `${radius} cells`; position(); draw(); });
+    ['column', 'row'].forEach(id => input(id).addEventListener('change', () => {
+      const axis = id === 'column' ? 'x' : 'y';
+      const limit = axis === 'x' ? SIZE.width : SIZE.height;
+      const value = Number(input(id).value);
+      if (Number.isFinite(value)) cursor[axis] = Math.max(0, Math.min(limit - 1, Math.round(value) - 1));
+      showCursor = true; position(); draw();
+    }));
+    button('dig').addEventListener('click', scoop);
+    button('settle').addEventListener('click', () => { held = false; start(); });
+    button('hold').addEventListener('click', () => { held = true; cancel(); controls(); });
+    button('step').addEventListener('click', () => { held = true; cancel(); step(room); draw(); controls(); });
+    button('reset').addEventListener('click', () => {
+      cancel(); room = deposit(); held = motion.matches; cursor = { x: 80, y: 62 }; showCursor = false;
+      gravity.forEach(control => { control.checked = control.value === 'down'; });
+      position(); draw(); controls(); say('The original layers are back. Nothing has been removed.');
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) return;
+      const wasRunning = running;
+      held = true; cancel(); pointer = null; lastPoint = null;
+      controls();
+      if (wasRunning) say('The chamber was hidden, so the ground is held. Let it settle resumes it.');
+    });
+    motion.addEventListener('change', () => { held = true; cancel(); controls(); });
+    window.addEventListener('pagehide', () => { held = true; cancel(); pointer = null; lastPoint = null; controls(); });
+    draw(); position(); controls();
+  } else {
+    say('Canvas is unavailable in this browser. The original deposit is shown; the controls are inactive.');
+  }
+</script>

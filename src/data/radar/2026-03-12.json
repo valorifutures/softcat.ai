@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-12",
+  "featured": [],
+  "picks": [],
+  "hn_top5": [
+    {
+      "title": "Show HN: Axe \u2013\u00a0A 12MB binary that replaces your AI framework",
+      "points": 221,
+      "comments": 122,
+      "summary": "Someone built Axe, a tiny 12MB binary that supposedly replaces entire AI frameworks. It's getting attention for its minimalist approach, though whether it actually delivers on such bold claims remains to be seen.",
+      "hn_url": "https://news.ycombinator.com/item?id=47350516"
+    },
+    {
+      "title": "Show HN: OneCLI \u2013 Vault for AI Agents in Rust",
+      "points": 160,
+      "comments": 50,
+      "summary": "OneCLI is a Rust-based vault system for managing AI agents' credentials and secrets. It's gaining traction as developers realise they need proper security infrastructure for their AI deployments.",
+      "hn_url": "https://news.ycombinator.com/item?id=47353558"
+    },
+    {
+      "title": "Show HN: LogClaw \u2013 Open-source AI SRE that auto-creates tickets from logs",
+      "points": 19,
+      "comments": 34,
+      "summary": "LogClaw automatically parses system logs and creates support tickets using AI, positioning itself as an automated SRE tool. The low engagement suggests the market might not be ready for this level of automation in incident management.",
+      "hn_url": "https://news.ycombinator.com/item?id=47353981"
+    },
+    {
+      "title": "Show HN: OpenClaw-class agents on ESP32 (and the IDE that makes it possible)",
+      "points": 29,
+      "comments": 4,
+      "summary": "PyCoClAW brings AI agent capabilities to ESP32 microcontrollers with a custom IDE. It's an interesting concept for edge AI, though the minimal discussion suggests it's still quite niche.",
+      "hn_url": "https://news.ycombinator.com/item?id=47357515"
+    },
+    {
+      "title": "Show HN: We open sourced Vapi \u2013 UI included",
+      "points": 8,
+      "comments": 7,
+      "summary": "Dograh open-sourced Vapi, their voice API platform complete with UI components. The lukewarm response indicates the voice AI space is becoming increasingly crowded with similar offerings.",
+      "hn_url": "https://news.ycombinator.com/item?id=47351652"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "date": "2026-04-15",
+  "featured": [
+    {
+      "id": "ph-gemini-robotics-er-16",
+      "name": "Gemini Robotics-ER 1.6",
+      "tagline": "Enhanced embodied reasoning model for physical AI systems.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Google's latest shot at making robots actually think about the physical world. The focus on instrument reading and spatial understanding suggests they're tackling the hard problems that keep robots from working reliably in messy real environments. This could be the cognitive layer that finally makes general-purpose robots practical.",
+      "ph_url": "https://www.marktechpost.com/2026/04/15/google-deepmind-releases-gemini-robotics-er-1-6-bringing-enhanced-embodied-reasoning-and-instrument-reading-to-physical-ai/",
+      "maker": "Google DeepMind",
+      "featured": true,
+      "added_at": "2026-04-15T06:00:00Z"
+    },
+    {
+      "id": "ph-chrome-skills",
+      "name": "Chrome Skills",
+      "tagline": "Save AI prompts as reusable one-click browser workflows.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google is turning prompts into actual software. Instead of retyping the same instructions, you save them once and apply to any website with a click. This feels like the first step towards making AI assistance feel less like chatting and more like having custom tools.",
+      "ph_url": "https://www.marktechpost.com/2026/04/14/google-launches-skills-in-chrome-turning-reusable-ai-prompts-into-one-click-browser-workflows/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-04-15T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-tinyfish-ai",
+      "name": "TinyFish AI",
+      "tagline": "Web infrastructure platform for AI agents with unified API.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Finally, someone's solving the agent plumbing problem. Instead of stitching together separate services for search, browser automation, and data extraction, TinyFish gives you everything under one API key. The kind of boring infrastructure work that makes exciting AI applications possible.",
+      "ph_url": "https://www.marktechpost.com/2026/04/14/tinyfish-ai-releases-full-web-infrastructure-platform-for-ai-agents/",
+      "maker": "TinyFish AI",
+      "featured": false,
+      "added_at": "2026-04-15T06:30:00Z"
+    },
+    {
+      "id": "ph-langalpha",
+      "name": "LangAlpha",
+      "tagline": "Claude Code-style environment built for financial analysis.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Taking the Claude Code concept and specialising it for finance feels obvious in hindsight. If you're going to let AI write code that moves money around, you want proper guardrails and domain-specific tooling. The Wall Street angle suggests they understand compliance matters as much as capability.",
+      "ph_url": "https://github.com/ginlix-ai/langalpha",
+      "maker": "Ginlix AI",
+      "featured": false,
+      "added_at": "2026-04-15T06:45:00Z"
+    },
+    {
+      "id": "ph-plain-framework",
+      "name": "Plain",
+      "tagline": "Full-stack Python framework designed for humans and agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Building frameworks specifically for both humans and AI agents is the kind of forward thinking we need more of. Plain recognises that code will increasingly be written collaboratively between people and machines. The dual-audience approach could set the standard for next-generation development tools.",
+      "ph_url": "https://github.com/dropseed/plain",
+      "maker": "Dropseed",
+      "featured": false,
+      "added_at": "2026-04-15T07:00:00Z"
+    },
+    {
+      "id": "ph-kelet",
+      "name": "Kelet",
+      "tagline": "Root cause analysis agent for LLM applications.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "As LLM apps get more complex, debugging becomes a nightmare of prompt chains and model interactions. Kelet promises to be the detective that figures out where things went wrong. This kind of observability tooling will be essential as AI systems move from prototypes to production.",
+      "ph_url": "https://kelet.ai/",
+      "maker": "Kelet",
+      "featured": false,
+      "added_at": "2026-04-15T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: LangAlpha \u2013 what if Claude Code was built for Wall Street?",
+      "points": 133,
+      "comments": 45,
+      "summary": "A specialised coding environment that takes the Claude Code concept and tailors it specifically for financial analysis and trading. Includes compliance controls and domain-specific tooling for handling financial data and algorithms.",
+      "hn_url": "https://news.ycombinator.com/item?id=47766370"
+    },
+    {
+      "title": "Show HN: Plain \u2013 The full-stack Python framework designed for humans and agents",
+      "points": 86,
+      "comments": 44,
+      "summary": "A Python web framework explicitly built for both human developers and AI agents to work with. Designed around the premise that future development will be collaborative between people and machines.",
+      "hn_url": "https://news.ycombinator.com/item?id=47768750"
+    },
+    {
+      "title": "Show HN: Kelet \u2013 Root Cause Analysis agent for your LLM apps",
+      "points": 43,
+      "comments": 21,
+      "summary": "An AI agent designed to debug and analyse issues in LLM applications. Helps developers trace problems through complex prompt chains and model interactions in production systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=47767606"
+    },
+    {
+      "title": "ClawRun \u2013 Deploy and manage AI agents in seconds",
+      "points": 29,
+      "comments": 9,
+      "summary": "A deployment platform specifically for AI agents that promises rapid setup and management. Appears to be targeting the operational complexity of running agent-based applications at scale.",
+      "hn_url": "https://news.ycombinator.com/item?id=47770020"
+    }
+  ]
+}

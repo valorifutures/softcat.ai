@@ -1,0 +1,152 @@
+{
+  "date": "2026-06-21",
+  "featured": [
+    {
+      "id": "ph-perplexity-brain",
+      "name": "Perplexity Brain",
+      "tagline": "A self-improving memory system that builds a context graph from an agent's work and learns overnight.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Most agent memory systems remember the user. Brain remembers the agent's own work, what succeeded, what failed, and what corrections were applied. It reviews that graph overnight and feeds the improvements forward. That feedback loop is a genuinely different approach to agent reliability.",
+      "ph_url": "https://www.marktechpost.com/2026/06/18/perplexity-launches-brain/",
+      "maker": "Perplexity",
+      "featured": true,
+      "added_at": "2026-06-21T06:00:00Z"
+    },
+    {
+      "id": "ph-aws-continuum-context",
+      "name": "AWS Continuum and Context",
+      "tagline": "Two new AWS services that patch the security and business-context gaps in AI agents.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Continuum finds and fixes code vulnerabilities automatically. Context builds a knowledge graph from corporate data so agents actually understand the business they are operating in. Both ship as managed services, which means adoption friction is low.",
+      "ph_url": "https://the-decoder.com/aws-says-ai-agents-lack-business-context-and-security-launches-two-services-to-patch-the-gaps/",
+      "maker": "AWS",
+      "featured": true,
+      "added_at": "2026-06-21T06:00:00Z"
+    },
+    {
+      "id": "ph-cloudflare-temp-accounts",
+      "name": "Cloudflare Temporary Accounts for AI Agents",
+      "tagline": "Ephemeral Cloudflare accounts that AI agents can spin up and use without shared credentials.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Giving agents persistent credentials is a known risk. Cloudflare's approach is to hand out short-lived accounts scoped to a task, then discard them. It is a clean infrastructure primitive for anyone building agents that touch the web.",
+      "ph_url": "https://blog.cloudflare.com/temporary-accounts/",
+      "maker": "Cloudflare",
+      "featured": true,
+      "added_at": "2026-06-21T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-vibethinker-3b",
+      "name": "VibeThinker-3B",
+      "tagline": "A 3B MIT-licensed reasoning model that claims to match DeepSeek V3.2 on verifiable benchmarks.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "A 3B model trading punches with much larger ones is always worth a look. MIT licence keeps it genuinely open. The Spectrum-to-Signal post-training pipeline is the interesting methodological detail here.",
+      "ph_url": "https://www.marktechpost.com/2026/06/19/vibethinker-3b-a-3b-dense-reasoning-model-built-on-qwen2-5-coder-3b-with-the-spectrum-to-signal-post-training-pipeline/",
+      "maker": "Independent",
+      "featured": false,
+      "added_at": "2026-06-21T06:30:00Z"
+    },
+    {
+      "id": "ph-liquid-lfm25-retrievers",
+      "name": "LFM2.5 Retrievers",
+      "tagline": "Dense bi-encoder and ColBERT late-interaction models for multilingual search across 11 languages, built for edge devices.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Liquid AI is shipping search models that run on edge hardware and cover 11 languages. The ColBERT late-interaction variant is the interesting one for retrieval quality. Worth testing if you are building multilingual RAG pipelines outside of cloud-only setups.",
+      "ph_url": "https://www.marktechpost.com/2026/06/19/liquid-ai-introduces-lfm2-5-embedding-350m-and-lfm2-5-colbert-350m-dense-bi-encoder-and-late-interaction-models-for-fast-multilingual-search-across-11-languages/",
+      "maker": "Liquid AI",
+      "featured": false,
+      "added_at": "2026-06-21T06:30:00Z"
+    },
+    {
+      "id": "ph-hermes-agent-blank-slate",
+      "name": "Hermes Agent Blank Slate Mode",
+      "tagline": "A minimal startup mode for Nous Research's open-source Hermes Agent with opt-in toolsets.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Starting an agent with everything disabled except the bare essentials is a sensible default. Opt-in toolsets mean less surface area for things to go wrong. Small update, but the right instinct for production agent design.",
+      "ph_url": "https://www.marktechpost.com/2026/06/20/nous-research-updates-hermes-agent-with-a-blank-slate-mode-that-pins-toolsets-via-platform_toolsets-cli-and-disabled_toolsets/",
+      "maker": "Nous Research",
+      "featured": false,
+      "added_at": "2026-06-21T06:30:00Z"
+    },
+    {
+      "id": "ph-persona-js",
+      "name": "Persona.js",
+      "tagline": "A vanilla-JS agent UI library with native WebMCP support, MIT licensed.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "No framework dependencies, MIT licence, and native WebMCP support out of the box. If you want agent UI without pulling in a large dependency tree, this is worth a look. Early days but the approach is clean.",
+      "ph_url": "https://www.persona-chat.dev/",
+      "maker": "Community",
+      "featured": false,
+      "added_at": "2026-06-21T06:30:00Z"
+    },
+    {
+      "id": "ph-lelu-auth",
+      "name": "Lelu",
+      "tagline": "An authorisation engine that detects and blocks manipulated AI agents.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Prompt injection and agent manipulation are real production problems. Lelu sits as an authorisation layer that catches agents acting outside their intended scope. Open source and early, but the category is increasingly important.",
+      "ph_url": "https://github.com/lelu-auth/lelu",
+      "maker": "lelu-auth",
+      "featured": false,
+      "added_at": "2026-06-21T06:30:00Z"
+    },
+    {
+      "id": "ph-callimachus",
+      "name": "Callimachus",
+      "tagline": "Local search across your AI coding-agent history.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Agent sessions accumulate a lot of useful context that disappears the moment the chat closes. Callimachus indexes that history locally so you can search across it. Practical and immediately useful for anyone running coding agents daily.",
+      "ph_url": "https://github.com/BetaBots-LLC/callimachus",
+      "maker": "BetaBots LLC",
+      "featured": false,
+      "added_at": "2026-06-21T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Temporary Cloudflare accounts for AI agents",
+      "points": 209,
+      "comments": 110,
+      "summary": "Cloudflare has shipped ephemeral accounts scoped to individual agent tasks. Agents get short-lived credentials rather than shared persistent ones, which cuts the blast radius when something goes wrong. A clean primitive for anyone building web-facing agents.",
+      "hn_url": "https://news.ycombinator.com/item?id=48608394"
+    },
+    {
+      "title": "Building reliable agentic AI systems",
+      "points": 104,
+      "comments": 20,
+      "summary": "Martin Fowler's site hosts a detailed write-up on what actually makes agentic systems reliable in production. Covers failure modes, retry logic, and human-in-the-loop design. Practical rather than theoretical.",
+      "hn_url": "https://news.ycombinator.com/item?id=48615680"
+    },
+    {
+      "title": "Show HN: Persona.js \u2013 a vanilla-JS agent UI library with native WebMCP (MIT)",
+      "points": 10,
+      "comments": 13,
+      "summary": "A lightweight, dependency-free JavaScript library for building agent chat interfaces with native WebMCP support. MIT licensed and runs without a framework. Early but worth watching for anyone building lean agent UIs.",
+      "hn_url": "https://news.ycombinator.com/item?id=48612231"
+    },
+    {
+      "title": "AutoJack: A single page can RCE the host running your AI agent",
+      "points": 6,
+      "comments": 0,
+      "summary": "Microsoft's security blog details how a single malicious web page can trigger remote code execution on the machine running an AI agent. Demonstrates the real-world risk of agents browsing untrusted content. Sobering reading for anyone shipping web-enabled agents.",
+      "hn_url": "https://news.ycombinator.com/item?id=48612716"
+    },
+    {
+      "title": "Show HN: Callimachus \u2013 Local search across your AI coding-agent history",
+      "points": 4,
+      "comments": 2,
+      "summary": "Callimachus indexes your local coding agent session history and makes it searchable. Solves the real problem of losing context between agent sessions. Simple idea, genuinely useful for heavy agent users.",
+      "hn_url": "https://news.ycombinator.com/item?id=48613813"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+---
+import PromptRecipe from '../../components/PromptRecipe.astro';
+import RetiredPrompt from '../../components/RetiredPrompt.astro';
+import { getCollection } from 'astro:content';
+import retirements from '../../data/prompt-retirements.json';
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('prompts')).filter(entry => !entry.data.draft);
+  return [
+    ...entries.map(entry => ({ params: { slug: entry.id }, props: { entry, retirement: null } })),
+    ...retirements.entries.map(retirement => ({ params: { slug: retirement.id }, props: { entry: null, retirement } })),
+  ];
+}
+const { entry, retirement } = Astro.props;
+---
+{retirement ? <RetiredPrompt retirement={retirement} /> : entry && <PromptRecipe entry={entry} />}

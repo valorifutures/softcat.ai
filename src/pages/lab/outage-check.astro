@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import OutageWorkbench from '../../components/lab/OutageWorkbench';
+import { phases } from '../../lib/outage-guide.mjs';
+import '../../styles/outage-check.css';
+---
+<BaseLayout title="Domain and outage checker" description="Check public DNS with Cloudflare and Google, compare the replies, and make a plain-English incident brief. Free browser tool with no account or API key." breadcrumbs={[{ name: 'Tools', url: '/tools' }, { name: 'Domain and outage checker', url: '/lab/outage-check' }]}>
+  <div class="workshop-shell outage-page">
+    <header class="outage-hero">
+      <a class="outage-back" href="/tools">← All tools</a>
+      <div class="outage-hero-grid">
+        <div>
+          <p class="eyebrow accent-green">THE WORKBENCH / REAL DNS, NO GUESSES</p>
+          <h1>What's <em>broken?</em><br />Find out what<br />you can prove.</h1>
+          <p class="outage-hero-lead">Enter a domain. Check real DNS answers. Then work out who to ask and what to do next.</p>
+          <div class="outage-hero-actions"><a class="workshop-button primary" href="#domain-check">Check a domain <span aria-hidden="true">↘</span></a><a href="#outage-next-step">Skip to the outage triage ↘</a></div>
+        </div>
+        <aside class="outage-hero-note">
+          <div class="outage-note-stamp">SOFT CAT / FIELD KIT <span>01</span></div>
+          <div class="outage-hero-flow" aria-label="Workflow: look up, compare, act, communicate">
+            <span>LOOK UP</span><i></i><span>COMPARE</span><i></i><span>ACT</span><i></i><span>SHARE</span>
+          </div>
+          <p>One clear answer beats ten guesses.</p>
+          <span>Use public evidence. Keep unknowns visible.</span>
+        </aside>
+      </div>
+      <p class="outage-hero-meta"><span>Free to use</span><span>No sign-in</span><span>Public DNS queries only</span><span>ASD-STE100-inspired language</span></p>
+    </header>
+
+    <OutageWorkbench client:load />
+
+    <section class="outage-phases" aria-labelledby="outage-phases-heading">
+      <div class="outage-phases-intro">
+        <div><p class="outage-small-label">AFTER THE FIRST CHECK</p><h2 id="outage-phases-heading">Five steps.<br /><em>One calmer response.</em></h2></div>
+        <p>Use this sequence if a problem affects other people or a critical service. Each phase needs evidence, an owner and a clear decision.</p>
+      </div>
+      <ol class="outage-phase-grid">
+        {phases.map(phase => <li>
+          <span class="outage-phase-number">{phase.number}</span><h3>{phase.name}</h3><p>{phase.prompt}</p>
+          <details><summary>What to do <span aria-hidden="true">+</span></summary><ul>{phase.steps.map(step => <li>{step}</li>)}</ul></details>
+        </li>)}
+      </ol>
+    </section>
+
+    <section class="outage-context" aria-label="Independent evidence and limitations">
+      <div><p class="outage-small-label">MORE EVIDENCE</p><h2>Sometimes the problem<br />is bigger than a domain.</h2><p>Cisco ThousandEyes tracks wider internet and application outages. Its public map can show major events, but it cannot confirm that your particular service is down.</p><a href="https://www.thousandeyes.com/outages/" target="_blank" rel="noopener noreferrer">Open the public ThousandEyes outage map ↗</a></div>
+      <div class="outage-context-notes">
+        <h3>Questions that change the investigation</h3>
+        <p><strong>DNS resolves, but the website fails?</strong> Check the app or service owner. DNS alone cannot test the server.</p>
+        <p><strong>Different people get different results?</strong> Compare networks, times and locations. Cached DNS replies may differ.</p>
+        <p><strong>A security warning appears?</strong> Stop entering credentials. Use an official contact route.</p>
+      </div>
+    </section>
+
+    <footer class="outage-references">
+      <h2>Method and sources</h2>
+      <p>Our decision aid is deterministic. It does not make live network measurements, identify a root cause or contact an AI model. Public DNS checks use <a href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-json/" target="_blank" rel="noopener noreferrer">Cloudflare's DNS JSON API</a> and <a href="https://developers.google.com/speed/public-dns/docs/doh/json" target="_blank" rel="noopener noreferrer">Google Public DNS</a>. The outage process is informed by Cisco ThousandEyes' <i>Internet Outages Survival Cheat Sheet</i> and <i>The Five Phases of Internet Outage Recovery</i>. We have written our own steps and advice.</p>
+      <p>This is an independent SOFT CAT tool. We are not affiliated with Cisco or ThousandEyes. No diagnosis here replaces professional support or an authorised incident process.</p>
+      <p><a href="https://github.com/valorifutures/softcat.ai/blob/main/src/lib/domain-check.mjs" target="_blank" rel="noopener noreferrer">Inspect the DNS checks ↗</a> · <a href="https://github.com/valorifutures/softcat.ai/blob/main/src/lib/outage-guide.mjs" target="_blank" rel="noopener noreferrer">Inspect the triage rules ↗</a></p>
+      <p><a href="/privacy">Privacy and browser storage ↗</a> · <a href="/lab/agent-check">Should this be an agent? ↗</a></p>
+    </footer>
+  </div>
+  <noscript><div class="workshop-shell outage-nojs"><p>Enable JavaScript for the live DNS checks and incident brief. You can still open the <a href="https://www.thousandeyes.com/outages/">ThousandEyes outage map</a> to review wider incidents.</p></div></noscript>
+</BaseLayout>

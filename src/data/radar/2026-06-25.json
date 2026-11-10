@@ -1,0 +1,128 @@
+{
+  "date": "2026-06-25",
+  "featured": [
+    {
+      "id": "ph-unlimited-ocr",
+      "name": "Unlimited OCR",
+      "tagline": "A 3B MoE model that keeps KV cache flat for long-document parsing.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Baidu open-sourced this under MIT and it scores 93.23 on OmniDocBench v1.5, beating the DeepSeek OCR baseline by over six points. The clever bit is R-SWA, which holds the KV cache constant no matter how long the output gets. Memory and latency stay flat across dozens of pages in a single forward pass.",
+      "ph_url": "https://www.marktechpost.com/2026/06/24/baidu-releases-unlimited-ocr-a-3b-model-that-keeps-the-kv-cache-flat-for-long-document-parsing/",
+      "maker": "Baidu",
+      "featured": true,
+      "added_at": "2026-06-25T06:00:00Z"
+    },
+    {
+      "id": "ph-lift-datalab",
+      "name": "lift",
+      "tagline": "A 9B open-weights vision model that extracts structured JSON from PDFs using schemas.",
+      "logo_url": "",
+      "category": "Data Tools",
+      "why_radar": "Datalab built in trained abstention, so the model returns null rather than hallucinating fields that are not there. That alone makes it more trustworthy than most extraction tools in production. It hits 90.2% field accuracy on their benchmark and the weights are open.",
+      "ph_url": "https://www.marktechpost.com/2026/06/23/datalab-releases-lift-a-9b-open-weights-vision-model-that-extracts-structured-json-from-pdfs-using-schemas/",
+      "maker": "Datalab",
+      "featured": true,
+      "added_at": "2026-06-25T06:00:00Z"
+    },
+    {
+      "id": "ph-mistral-ocr-4",
+      "name": "Mistral OCR 4",
+      "tagline": "Structured document output with bounding boxes, typed classifications, and confidence scores.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "This is a step beyond plain text extraction. Every block comes back with a bounding box, a type, and per-word confidence scores, which makes it actually useful for citation-heavy RAG pipelines. It runs in a single self-hosted container and covers 170 languages.",
+      "ph_url": "https://www.marktechpost.com/2026/06/23/mistral-ocr-4/",
+      "maker": "Mistral AI",
+      "featured": true,
+      "added_at": "2026-06-25T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-gradium-translate",
+      "name": "stt-translate and s2s-translate",
+      "tagline": "Real-time speech translation models covering 20 language pairs over a single duplex WebSocket.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Gradium collapses the usual three-model transcription-translation-TTS chain into two steps. They claim better accuracy and lower latency than gpt-realtime-translate, and the API supports voice cloning on output. Worth watching if you are building anything multilingual and voice-first.",
+      "ph_url": "https://www.marktechpost.com/2026/06/24/gradium-launches-stt-translate-and-s2s-translate-real-time-speech-translation-models-beating-gpt-realtime-translate-on-accuracy-and-latency/",
+      "maker": "Gradium",
+      "featured": false,
+      "added_at": "2026-06-25T06:30:00Z"
+    },
+    {
+      "id": "ph-hermes-learn",
+      "name": "Hermes Agent /learn",
+      "tagline": "A slash command that writes standards-compliant SKILL.md files from docs, conversations, or pasted notes.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Nous Research added /learn to the Hermes Agent Skills System and it removes the most tedious part of building reusable agent workflows. Point it at a URL, a past conversation, or some notes and it authors the SKILL.md itself. No separate ingestion engine, no hand-writing.",
+      "ph_url": "https://www.marktechpost.com/2026/06/24/nous-research-adds-learn-to-hermes-agents-skills-system-capturing-workflows-as-slash-commands-without-hand-writing-skill-md/",
+      "maker": "Nous Research",
+      "featured": false,
+      "added_at": "2026-06-25T06:30:00Z"
+    },
+    {
+      "id": "ph-stupify",
+      "name": "Stupify",
+      "tagline": "Anti-slop code review for AI agents.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "The name says it all. Stupify is a code review tool designed specifically to catch the kind of low-quality, pattern-matched output that AI agents tend to produce. It is open-source and sits on GitHub, ready to drop into a pipeline.",
+      "ph_url": "https://github.com/Octember/stupify",
+      "maker": "Octember",
+      "featured": false,
+      "added_at": "2026-06-25T06:30:00Z"
+    },
+    {
+      "id": "ph-smolfs",
+      "name": "smolfs",
+      "tagline": "A durable filesystem layer for AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Agents that write and read files have a persistent state problem and smolfs is a small open-source attempt to solve it cleanly. It gives agents a durable, structured filesystem layer rather than hacking around tmp directories. Early days but the problem it is solving is real.",
+      "ph_url": "https://github.com/CelestoAI/smolfs",
+      "maker": "CelestoAI",
+      "featured": false,
+      "added_at": "2026-06-25T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Haystack: Open-Source AI Framework for Production Ready Agents, RAG",
+      "points": 86,
+      "comments": 21,
+      "summary": "Haystack from deepset is an open-source Python framework for building production-grade RAG pipelines and AI agents. It has been around a while but is getting renewed attention as teams hit the limits of simpler tools. Worth a look if you are moving beyond prototypes.",
+      "hn_url": "https://news.ycombinator.com/item?id=48658095"
+    },
+    {
+      "title": "Show HN: Agnes AI \u2013 Free multimodal API (text, image, video), OpenAI-compatible",
+      "points": 8,
+      "comments": 3,
+      "summary": "Agnes AI is a free OpenAI-compatible API that handles text, image, and video inputs. The OpenAI-compatible interface means it is a drop-in for anything already pointing at the OpenAI SDK. Free tier makes it easy to test without commitment.",
+      "hn_url": "https://news.ycombinator.com/item?id=48657403"
+    },
+    {
+      "title": "Show HN: eBook to audiobook narration with realistic AI voices",
+      "points": 7,
+      "comments": 5,
+      "summary": "eBookAloud converts ebooks into narrated audiobooks using AI voices. The pitch is realistic narration rather than robotic TTS. Practical tool for anyone who prefers audio but cannot find their book in audiobook form.",
+      "hn_url": "https://news.ycombinator.com/item?id=48661083"
+    },
+    {
+      "title": "Show HN: Stupify \u2013 anti-slop code review for AI agents",
+      "points": 4,
+      "comments": 1,
+      "summary": "Stupify is an open-source code review tool aimed at catching the low-effort, pattern-matched output that AI coding agents often produce. It runs as a lightweight check you can add to any CI or agent pipeline. The problem it targets is genuinely underserved.",
+      "hn_url": "https://news.ycombinator.com/item?id=48658610"
+    },
+    {
+      "title": "Show HN: A durable filesystem layer for AI agents",
+      "points": 4,
+      "comments": 2,
+      "summary": "smolfs from CelestoAI gives AI agents a persistent, structured filesystem layer to work with. Most agent frameworks treat file state as an afterthought and smolfs tries to fix that at the infrastructure level. Small project but addresses a real gap.",
+      "hn_url": "https://news.ycombinator.com/item?id=48667101"
+    }
+  ]
+}

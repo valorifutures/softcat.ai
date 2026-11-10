@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-21",
+  "featured": [
+    {
+      "id": "ph-kimi-k26",
+      "name": "Kimi K2.6",
+      "tagline": "Open-weight multimodal model with agent swarm scaling to 300 sub-agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Moonshot AI just dropped the nuclear option for agent workflows. This isn't just another model release, it's a swarm orchestration platform that can coordinate 300 agents across 4000 steps. The fact they've open-sourced it while claiming GPT-5.4 level performance is either brilliant or completely mad.",
+      "ph_url": "https://www.marktechpost.com/2026/04/20/moonshot-ai-releases-kimi-k2-6-with-long-horizon-coding-agent-swarm-scaling-to-300-sub-agents-and-4000-coordinated-steps/",
+      "maker": "Moonshot AI",
+      "featured": true,
+      "added_at": "2026-04-21T06:00:00Z"
+    },
+    {
+      "id": "ph-codex-chronicle",
+      "name": "OpenAI Codex Chronicle",
+      "tagline": "Screen monitoring feature that remembers what you're working on for future coding tasks.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "OpenAI is pushing Codex into surveillance territory with screen watching capabilities. It's either the future of contextual coding assistance or a privacy nightmare waiting to happen. The fact they're shipping this suggests they're confident the productivity gains outweigh the obvious security concerns.",
+      "ph_url": "https://the-decoder.com/openais-codex-now-watches-your-screen-to-remember-what-youre-working-on/",
+      "maker": "OpenAI",
+      "featured": true,
+      "added_at": "2026-04-21T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-openmythos",
+      "name": "OpenMythos",
+      "tagline": "Open-source PyTorch reconstruction of Claude Mythos architecture with 770M parameters.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Someone reverse-engineered Claude Mythos from pure speculation and first principles. It's either brilliant research or elaborate fan fiction, but either way it's pushing 770M parameters to match 1.3B transformer performance. The audacity alone makes it worth watching.",
+      "ph_url": "https://www.marktechpost.com/2026/04/19/meet-openmythos-an-open-source-pytorch-reconstruction-of-claude-mythos-where-770m-parameters-match-a-1-3b-transformer/",
+      "maker": "Kye Gomez",
+      "featured": false,
+      "added_at": "2026-04-21T06:30:00Z"
+    },
+    {
+      "id": "ph-mediator-ai",
+      "name": "Mediator.ai",
+      "tagline": "Nash bargaining and LLMs for systematic fairness in negotiations.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Game theory meets LLMs in what might be the most academic product launch we've seen. Using Nash bargaining to systematise fairness is either genius or completely overthought. If it works, every HR department will want this yesterday.",
+      "ph_url": "https://mediator.ai/",
+      "maker": "Unknown",
+      "featured": false,
+      "added_at": "2026-04-21T06:45:00Z"
+    },
+    {
+      "id": "ph-kachilu-browser",
+      "name": "Kachilu Browser",
+      "tagline": "Local browser automation CLI designed specifically for AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, browser automation built from the ground up for agents rather than humans. The CLI approach suggests they understand that agents don't need pretty UIs, they need reliable automation primitives. Smart positioning in the growing agent tooling space.",
+      "ph_url": "https://github.com/kachilu-inc/kachilu-browser",
+      "maker": "Kachilu Inc",
+      "featured": false,
+      "added_at": "2026-04-21T07:00:00Z"
+    },
+    {
+      "id": "ph-mcpfinder",
+      "name": "MCPfinder",
+      "tagline": "MCP server that automatically finds and installs other MCP servers.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Meta-tooling for the MCP ecosystem. It's package management for AI capabilities, which sounds mundane until you realise this could become the npm of agent skills. The recursive nature of an MCP server that manages MCP servers is delightfully absurd.",
+      "ph_url": "https://mcpfinder.dev/",
+      "maker": "Unknown",
+      "featured": false,
+      "added_at": "2026-04-21T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Less human AI agents, please",
+      "points": 42,
+      "comments": 59,
+      "summary": "A critique arguing that AI agents should embrace their artificial nature rather than mimicking human behaviour. The piece challenges the anthropomorphic design patterns that dominate current agent development.",
+      "hn_url": "https://news.ycombinator.com/item?id=47845429"
+    },
+    {
+      "title": "Show HN: Mediator.ai \u2013 Using Nash bargaining and LLMs to systematize fairness",
+      "points": 60,
+      "comments": 26,
+      "summary": "Academic meets practical with a system that uses game theory and large language models to create fair negotiations. It's an interesting attempt to bring mathematical rigour to conflict resolution.",
+      "hn_url": "https://news.ycombinator.com/item?id=47835411"
+    },
+    {
+      "title": "Show HN: Git Push No-Mistakes",
+      "points": 10,
+      "comments": 2,
+      "summary": "A Git wrapper designed to prevent common push mistakes through automated checks. Simple utility that addresses a real developer pain point with straightforward tooling.",
+      "hn_url": "https://news.ycombinator.com/item?id=47838708"
+    },
+    {
+      "title": "Show HN: I built Comrade \u2013 the security-focused AI agent",
+      "points": 5,
+      "comments": 2,
+      "summary": "An AI agent specifically designed with security as a core feature rather than an afterthought. Limited details but the focus on security-first agent design is timely given growing concerns.",
+      "hn_url": "https://news.ycombinator.com/item?id=47839520"
+    },
+    {
+      "title": "Show HN: Kachilu Browser \u2013 a local browser automation CLI for AI agents",
+      "points": 3,
+      "comments": 4,
+      "summary": "Browser automation tooling built specifically for AI agents rather than human users. The CLI-first approach suggests a focus on programmatic control over user experience.",
+      "hn_url": "https://news.ycombinator.com/item?id=47844458"
+    }
+  ]
+}

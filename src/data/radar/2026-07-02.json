@@ -1,0 +1,92 @@
+{
+  "date": "2026-07-02",
+  "featured": [
+    {
+      "id": "ph-gemini-spark-mac",
+      "name": "Gemini Spark for Mac",
+      "tagline": "Google's 24/7 agentic assistant is now available on Mac.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Gemini Spark is a proper always-on agent, not just a chatbot you ping occasionally. The Mac launch adds real-time tracking and broader app support, which is the kind of thing that turns a demo into a daily driver. Google is moving fast here and this is worth watching.",
+      "ph_url": "https://techcrunch.com/2026/07/01/gemini-spark-googles-agentic-assistant-is-now-available-on-mac/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-07-02T06:00:00Z"
+    },
+    {
+      "id": "ph-ox-tech-debt-agent",
+      "name": "Ox",
+      "tagline": "An AI agent that catches tech debt before it gets committed.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Most code quality tools run after the damage is done. Ox sits at the commit stage and flags tech debt before it lands in the repo. That is exactly where you want this kind of intervention, and it being open-source makes it worth a proper look.",
+      "ph_url": "https://news.ycombinator.com/item?id=48746066",
+      "maker": "Ox",
+      "featured": true,
+      "added_at": "2026-07-02T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-kage-core-agent-memory",
+      "name": "Kage Core",
+      "tagline": "A framework for maintaining and verifying agent memory.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Agent memory is one of the messier unsolved problems in production AI. Kage Core gives agents a structured way to maintain and verify what they know, which matters a lot once you move past toy demos. Built on top of Google's OKF, so there is serious backing behind it.",
+      "ph_url": "https://kage-core.com/",
+      "maker": "Kage Core",
+      "featured": false,
+      "added_at": "2026-07-02T06:30:00Z"
+    },
+    {
+      "id": "ph-job-application-agent",
+      "name": "Job Application Agent",
+      "tagline": "An open-source AI agent that applies to jobs automatically using Playwright and GPT.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "It is scrappy and very early, but an agent that fills out job applications end-to-end is a reasonable stress test for form-filling and browser automation. The open-source angle means you can pull it apart and see exactly how it handles the messy bits. Not polished, but genuinely interesting as a reference build.",
+      "ph_url": "https://github.com/torontodeveloper/job-application-agent",
+      "maker": "torontodeveloper",
+      "featured": false,
+      "added_at": "2026-07-02T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Open-source sandbox for your product team",
+      "points": 15,
+      "comments": 13,
+      "summary": "An open-source sandbox environment aimed at product teams. Lets teams experiment and test without touching production. Early days but the HN thread has a decent amount of back and forth.",
+      "hn_url": "https://news.ycombinator.com/item?id=48750459"
+    },
+    {
+      "title": "Show HN: Ox \u2013 an AI agent that catches tech debt before it's committed",
+      "points": 4,
+      "comments": 6,
+      "summary": "Ox is an open-source AI agent that reviews code at commit time and flags tech debt before it lands in the repo. Targets the exact moment where fixing something is still cheap. Worth watching if you care about code quality tooling.",
+      "hn_url": "https://news.ycombinator.com/item?id=48746066"
+    },
+    {
+      "title": "Stealing 50 Years of Database Ideas for AI Agents",
+      "points": 9,
+      "comments": 0,
+      "summary": "A blog post from onewill.ai arguing that AI agent architectures can borrow heavily from decades of database research. Covers ideas around consistency, querying, and state management. No code to ship but a useful framing for anyone building agent infrastructure.",
+      "hn_url": "https://news.ycombinator.com/item?id=48748977"
+    },
+    {
+      "title": "Show HN: Google's OKF now has a framework to maintain and verify agent memory",
+      "points": 3,
+      "comments": 3,
+      "summary": "Kage Core is a new framework built on Google's OKF that gives agents a structured way to store and verify memory across runs. Addresses one of the more practical pain points in building reliable agents. Small traction so far but the problem it solves is real.",
+      "hn_url": "https://news.ycombinator.com/item?id=48745534"
+    },
+    {
+      "title": "Show HN: An AI agent that applies to jobs for me (Playwright, GPT5.4 form filling)",
+      "points": 2,
+      "comments": 3,
+      "summary": "An open-source agent that automates job applications using Playwright for browser control and GPT for form filling. Built by a solo developer and shared as a GitHub repo. Rough around the edges but a good example of end-to-end browser agent work.",
+      "hn_url": "https://news.ycombinator.com/item?id=48752969"
+    }
+  ]
+}

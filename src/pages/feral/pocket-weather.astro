@@ -1,0 +1,324 @@
+---
+const weather = [
+  { id: 'sun', name: 'Sun', mark: '☀' },
+  { id: 'rain', name: 'Rain', mark: '☂' },
+  { id: 'wind', name: 'Wind', mark: '↝' },
+  { id: 'fog', name: 'Fog', mark: '≋' },
+];
+const initialDay = ['fog', 'fog', 'sun', 'sun', 'wind', 'rain', 'rain', 'sun', 'wind', 'sun', 'fog', 'rain'];
+---
+
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pocket Weather | Feral</title>
+    <meta name="description" content="Arrange twelve hours of sun, rain, wind and fog for an invented square metre. A small weather machine from Feral." />
+    <link rel="canonical" href="https://softcat.ai/feral/pocket-weather/" />
+  </head>
+  <body>
+    <a class="skip" href="#machine">Skip to the weather machine</a>
+    <div class="sheet">
+      <header>
+        <nav aria-label="Feral navigation"><a href="/feral/">← The other rooms</a><span>Feral · No. 006</span></nav>
+        <div class="title-row">
+          <div><p class="kicker">Department of very small affairs</p><h1>Pocket<br /><em>Weather.</em></h1></div>
+          <div class="stamp" aria-label="One square metre, twelve hours"><strong>1 m²</strong><span>12 hours<br />no jurisdiction</span></div>
+        </div>
+        <p class="intro">A whole day. A tiny patch. You have unreasonable powers.</p>
+        <p class="disclosure">An invented forecast. No location, no live weather.</p>
+      </header>
+
+      <main id="machine">
+        <section class="view" aria-labelledby="patch-title">
+          <div class="view-label"><h2 id="patch-title">The square metre</h2><span id="hour-label">Awaiting instructions</span></div>
+          <div id="scene" data-weather="fog">
+            <svg class="patch" viewBox="0 0 900 460" role="img" aria-labelledby="picture-title picture-description">
+              <title id="picture-title">Fog over a tiny grassy square</title>
+              <desc id="picture-description">An oversized cloud hangs above one flower, a puddle and a small numbered marker. Pale bands of fog cross the patch.</desc>
+              <defs>
+                <pattern id="soil-dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="4" cy="5" r="1.2" fill="#4d5137" /></pattern>
+              </defs>
+              <path class="sun-rays" d="M655 41v-15m0 138v-15m-54-54h-15m138 0h-15m-92-38-11-11m98 98-11-11m-76 0-11 11m98-98-11 11" />
+              <circle class="sun-disc" cx="655" cy="95" r="43" />
+              <g class="cloud"><path d="M251 168c-48 0-55-63-13-75-3-56 77-80 111-34 36-66 139-49 151 16 60-24 102 8 104 43 53-2 62 51 19 57H251Z" /><path class="cloud-line" d="M272 97c9-10 19-13 29-12m199-10c-5 13-8 24-5 35" /></g>
+              <g class="rain-drops"><path d="m295 201-12 23m71-24-12 23m71-23-12 23m71-23-12 23m71-23-12 23m71-23-12 23m-265 23-12 23m71-23-12 23m71-23-12 23m71-23-12 23m71-23-12 23" /></g>
+              <g class="wind-lines"><path d="M133 214h208c43 0 46-42 19-42-15 0-19 15-10 22M540 236h192c41 0 43-42 14-42-14 0-18 15-9 22M96 248h130m305-48h117" /></g>
+              <path class="earth-side" d="m228 314 284-68 189 88-282 85-191-81Z" />
+              <path class="earth-face" d="m228 314 191 81 282-85v24l-282 85-191-81Z" />
+              <path class="earth-top" d="m228 314 284-68 189 64-282 85Z" />
+              <path fill="url(#soil-dots)" opacity=".45" d="m228 314 284-68 189 64-282 85Z" />
+              <ellipse class="puddle" cx="508" cy="331" rx="64" ry="20" transform="rotate(-8 508 331)" />
+              <path class="puddle-glint" d="m478 329 45-8m-19 18 27-5" />
+              <g class="grass"><path d="m312 314-5-21m5 21 10-16m299 24 2-18m-2 18-11-12m-151-5-2-15m2 15 9-12m-74 70-2-14m2 14 8-10" /></g>
+              <g class="flower"><path class="stem" d="M410 316v-58m0 32c-24-15-26-3-1 9m1-21c23-12 24-1 0 6" /><g class="petals"><ellipse cx="409" cy="242" rx="8" ry="15" /><ellipse cx="409" cy="270" rx="8" ry="15" /><ellipse cx="395" cy="256" rx="15" ry="8" /><ellipse cx="423" cy="256" rx="15" ry="8" /><circle cx="409" cy="256" r="9" /></g></g>
+              <g class="marker"><path d="M604 296v-47" /><path d="m587 225 37 3v29l-37-3Z" /><text x="595" y="246">01</text></g>
+              <g class="fog-bands"><path d="M177 207h399m-309 40h469m-559 44h429m-313 45h396" /></g>
+              <path class="measure" d="m258 369 151 65m-158-61 10-11m141 77 11-11" /><text class="measure-text" x="308" y="418" transform="rotate(23 308 418)">one invented metre</text>
+            </svg>
+            <p class="weather-ticket"><span id="scene-weather">Fog</span><span>issued locally</span></p>
+          </div>
+          <div class="observation" role="status" aria-live="polite" aria-atomic="true">
+            <span id="observation-label">Before the day</span>
+            <p id="observation">The patch is here. The weather is your department.</p>
+          </div>
+        </section>
+
+        <section class="desk" aria-labelledby="schedule-title">
+          <div class="section-label"><h2 id="schedule-title"><span>01</span> Arrange the hours</h2><p>Select an hour. Give it some weather.</p></div>
+          <div class="hours" role="group" aria-label="Twelve-hour weather plan">
+            {initialDay.map((id, index) => {
+              const item = weather.find((entry) => entry.id === id)!;
+              return <button class="hour" type="button" data-hour={index} aria-pressed={index === 0 ? 'true' : 'false'} aria-label={`Hour ${index + 1}: ${item.name}`}>
+                <span class="hour-number">{String(index + 1).padStart(2, '0')}</span><span class="hour-mark" aria-hidden="true">{item.mark}</span><span class="hour-weather">{item.name}</span><span class="hour-state" aria-hidden="true">{index === 0 ? 'editing' : '·'}</span>
+              </button>;
+            })}
+          </div>
+          <div class="assignment"><p id="selected-label">Weather for hour <strong>01</strong></p><div class="weather-buttons" role="group" aria-labelledby="selected-label">
+            {weather.map((item) => <button class="weather-button" type="button" data-assign={item.id} aria-pressed={item.id === 'fog' ? 'true' : 'false'}><span aria-hidden="true">{item.mark}</span>{item.name}</button>)}
+          </div></div>
+          <div class="run-desk">
+            <div class="section-label"><h2><span>02</span> Deliver the weather</h2><p>One hour every 2.4 seconds, or at your own pace.</p></div>
+            <div class="controls" role="group" aria-label="Day playback"><button id="run" type="button">Run the day <span aria-hidden="true">↗</span></button><button id="pause" type="button">Pause</button><button id="step" type="button">One hour forward</button><button id="reset" type="button">Reset day</button></div>
+            <p id="playback-status" class="playback-status">Ready. Nothing moves until you ask.</p>
+            <p class="small-note">Selecting or changing an hour pauses and rewinds the day. Reset restores the original plan. Nothing is saved or sent.</p>
+          </div>
+        </section>
+        <noscript><p class="no-script">This little machine needs JavaScript for its controls. The plan above is its initial twelve-hour day.</p></noscript>
+      </main>
+      <footer><span>Weather delivered by nobody in particular.</span><a href="/feral/#ledger">Read the council's record ↗</a></footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { color-scheme: light; background: #ddd8ca; }
+  :global(body) { margin: 0; color: #232e30; font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  :global(button), :global(a) { -webkit-tap-highlight-color: transparent; }
+  :global(button) { color: inherit; font: inherit; cursor: pointer; }
+  :global(a) { color: inherit; text-underline-offset: .25em; }
+  :global(button:focus-visible), :global(a:focus-visible) { outline: 3px solid #075dcc; outline-offset: 4px; }
+  .skip { position: absolute; left: 1rem; top: -8rem; background: #fffaf0; padding: 1rem; z-index: 5; }
+  .skip:focus { top: 1rem; }
+  .sheet { width: min(1180px, 100%); margin: 0 auto; background: #faf5e8; padding: 0 clamp(1rem, 5vw, 4rem); min-height: 100vh; }
+  nav, footer { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; font-size: .76rem; }
+  nav { padding: 1.35rem 0; border-bottom: 1px solid #b8b5a8; }
+  nav a { text-decoration: none; }
+  nav span, .kicker, .view-label, .hour-number, .stamp, .weather-ticket, .observation > span, .section-label h2, .playback-status { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; }
+  .title-row { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; margin-top: 2.8rem; }
+  .kicker { text-transform: uppercase; font-size: .7rem; letter-spacing: .1em; margin: 0 0 1.3rem; }
+  h1 { font-size: clamp(3.9rem, 10vw, 7.2rem); font-weight: 850; line-height: .9; letter-spacing: -.07em; margin: 0; }
+  h1 em { color: #bd3b0a; font-style: normal; }
+  .stamp { width: 155px; aspect-ratio: 1; flex-shrink: 0; border: 2px solid #15589a; border-radius: 50%; display: grid; place-content: center; text-align: center; transform: rotate(9deg); color: #15589a; }
+  .stamp strong { font-size: 2.5rem; line-height: 1.2; }
+  .stamp span { font-size: .65rem; text-transform: uppercase; line-height: 1.5; }
+  .intro { font-size: clamp(1rem, 2.3vw, 1.25rem); margin: 1.8rem 0 .4rem; }
+  .disclosure { font-size: .8rem; margin: 0 0 2rem; color: #54594f; }
+  .view { border: 1.5px solid #232e30; }
+  .view-label { padding: .8rem 1.15rem; border-bottom: 1px solid #232e30; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; text-transform: uppercase; font-size: .65rem; letter-spacing: .05em; }
+  .view-label h2 { font: inherit; margin: 0; }
+  #scene { position: relative; overflow: hidden; background: #dde4da; transition: background .4s; }
+  .patch { display: block; width: 100%; height: auto; }
+  .weather-ticket { position: absolute; top: 1rem; left: 1.15rem; display: flex; flex-direction: column; font-size: .64rem; margin: 0; color: #343d36; }
+  .weather-ticket span:first-child { font-size: 1.2rem; font-weight: bold; text-transform: uppercase; }
+  .sun-disc { fill: #ee782f; }
+  .sun-rays { stroke: #cc5f1d; stroke-width: 4; stroke-linecap: round; fill: none; }
+  .cloud { fill: #faf8ed; stroke: #354a50; stroke-width: 2; transition: transform .4s; }
+  .cloud-line { fill: none; }
+  .earth-side { fill: #677342; }
+  .earth-face { fill: #928064; stroke: #414b37; stroke-width: 2; }
+  .earth-top { fill: #b7c679; stroke: #414b37; stroke-width: 2; }
+  .puddle { fill: #76b5d3; stroke: #275d73; stroke-width: 2; }
+  .puddle-glint { fill: none; stroke: #eafaff; stroke-width: 3; }
+  .grass { stroke: #52653b; stroke-width: 3; stroke-linecap: round; fill: none; }
+  .stem { stroke: #344f37; stroke-width: 3; fill: none; }
+  .flower { transform-origin: 410px 316px; transition: transform .4s; }
+  .petals { fill: #e75c22; stroke: #813611; stroke-width: 1.5; }
+  .petals circle { fill: #ffdc71; }
+  .marker { fill: #faf5e8; stroke: #344441; stroke-width: 2; }
+  .marker text { fill: #344441; stroke: none; font: bold 15px ui-monospace, monospace; }
+  .rain-drops { stroke: #206daf; stroke-width: 4; stroke-linecap: round; fill: none; }
+  .wind-lines { stroke: #386969; stroke-width: 3; stroke-linecap: round; fill: none; }
+  .fog-bands { stroke: #f6f7ee; stroke-width: 17; stroke-linecap: round; fill: none; opacity: .77; }
+  .measure { stroke: #596151; stroke-width: 1; fill: none; }
+  .measure-text { fill: #404d42; font: 11px ui-monospace, monospace; }
+  .sun-disc, .sun-rays, .rain-drops, .wind-lines, .fog-bands { display: none; }
+  #scene[data-weather='sun'] { background: #f5df99; }
+  #scene[data-weather='sun'] .sun-disc, #scene[data-weather='sun'] .sun-rays { display: block; }
+  #scene[data-weather='sun'] .cloud { transform: translate(-70px, 0); }
+  #scene[data-weather='rain'] { background: #c9dbe7; }
+  #scene[data-weather='rain'] .cloud { fill: #829da9; }
+  #scene[data-weather='rain'] .rain-drops { display: block; }
+  #scene[data-weather='wind'] { background: #d9e4bd; }
+  #scene[data-weather='wind'] .wind-lines { display: block; }
+  #scene[data-weather='wind'] .flower { transform: rotate(18deg); }
+  #scene[data-weather='wind'] .cloud { transform: translate(80px, -9px); }
+  #scene[data-weather='fog'] .fog-bands { display: block; }
+  #scene[data-weather='fog'] .cloud { fill: #e4e7df; }
+  .observation { padding: 1.1rem 1.2rem 1.25rem; background: #fffaf0; border-top: 1px solid #232e30; min-height: 115px; }
+  .observation > span { color: #686452; text-transform: uppercase; font-size: .65rem; letter-spacing: .07em; }
+  .observation p { margin: .5rem 0 0; font-size: clamp(1.05rem, 2.3vw, 1.4rem); line-height: 1.4; }
+  .desk { margin-top: 2.3rem; }
+  .section-label { display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; gap: .4rem 1rem; margin: 0 0 1rem; }
+  .section-label h2 { font-size: .78rem; text-transform: uppercase; margin: 0; letter-spacing: .025em; }
+  .section-label h2 span { display: inline-block; color: #a83911; margin-right: .5rem; }
+  .section-label p { margin: 0; color: #54594f; font-size: .78rem; }
+  .hours { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: .35rem; }
+  .hour { display: flex; flex-direction: column; align-items: center; padding: .55rem .15rem .35rem; border: 1px solid #a1a28d; border-radius: 2px; background: #f0ecd9; position: relative; min-width: 0; }
+  .hour:hover { background: #e7e5ce; }
+  .hour[aria-pressed='true'] { border: 2px solid #15589a; padding: calc(.55rem - 1px) calc(.15rem - 1px) calc(.35rem - 1px); background: #e3eaf0; }
+  .hour[data-current='true'] { border-color: #ad390b; background: #ffd6ac; }
+  .hour[data-delivered='true'] .hour-number::after { content: ' ✓'; color: #3c5b35; font-size: .58rem; }
+  .hour-number { font-size: .75rem; font-weight: 700; }
+  .hour-mark { font-family: Georgia, 'Times New Roman', serif; font-size: 1.9rem; line-height: 1.45; }
+  .hour-weather { font-size: .64rem; }
+  .hour-state { font-size: .52rem; margin-top: .3rem; min-height: .8rem; text-transform: uppercase; letter-spacing: .02em; }
+  .assignment { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; margin: 1.1rem 0 2rem; }
+  #selected-label { margin: 0; font-size: .82rem; }
+  #selected-label strong { color: #15589a; }
+  .weather-buttons { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .weather-button { border: 1px solid #a1a28d; background: #fffaf0; padding: .45rem .9rem; min-height: 44px; border-radius: 2px; font-size: .8rem; }
+  .weather-button span { font-size: 1.2rem; margin-right: .45rem; vertical-align: middle; }
+  .weather-button[aria-pressed='true'] { background: #15589a; color: #fff; border-color: #15589a; }
+  .weather-button:hover { border-color: #15589a; }
+  .run-desk { border-top: 1px solid #b8b5a8; padding-top: 1.5rem; }
+  .controls { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .controls button { min-height: 47px; border: 1px solid #232e30; background: transparent; padding: .65rem 1rem; border-radius: 2px; font-size: .85rem; }
+  .controls button:hover { background: #e9e4d5; }
+  .controls #run { background: #bd3b0a; border-color: #bd3b0a; color: #fffaf0; font-weight: 650; }
+  .controls #run:hover { background: #963109; }
+  #run span { margin-left: 1.5rem; }
+  .playback-status { color: #15589a; font-size: .76rem; margin: 1.1rem 0 .4rem; }
+  .small-note { color: #54594f; font-size: .72rem; max-width: 690px; margin: 0; }
+  .no-script { border: 1px solid #bd3b0a; padding: 1rem; }
+  footer { margin-top: 3rem; padding: 1.5rem 0 2.5rem; border-top: 1px solid #b8b5a8; font-size: .72rem; color: #54594f; }
+  @media (max-width: 780px) { .hours { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .45rem; } .stamp { width: 118px; } .stamp strong { font-size: 2rem; } .title-row { margin-top: 2rem; } }
+  @media (max-width: 480px) { .stamp { width: 83px; border-width: 1px; } .stamp strong { font-size: 1.55rem; } .stamp span { font-size: .43rem; } .kicker { font-size: .6rem; letter-spacing: 0; } h1 { font-size: 3.75rem; } .title-row { gap: .75rem; flex-wrap: wrap; } .stamp { margin-left: auto; } .hours { grid-template-columns: repeat(4, minmax(0, 1fr)); } .weather-buttons { width: 100%; } .weather-button { flex: 1; padding: .45rem .4rem; } .weather-button span { margin-right: .2rem; } .controls button { flex: 1 1 auto; } .weather-ticket { top: .55rem; left: .7rem; font-size: .47rem; } .weather-ticket span:first-child { font-size: .9rem; } }
+  @media (prefers-reduced-motion: reduce) { #scene, .cloud, .flower { transition: none; } }
+</style>
+
+<script is:inline>
+  (() => {
+    const names = { sun: 'Sun', rain: 'Rain', wind: 'Wind', fog: 'Fog' };
+    const marks = { sun: '☀', rain: '☂', wind: '↝', fog: '≋' };
+    const initial = ['fog', 'fog', 'sun', 'sun', 'wind', 'rain', 'rain', 'sun', 'wind', 'sun', 'fog', 'rain'];
+    const observations = {
+      sun: ['The flower is taking the credit.', 'A shadow has been assigned to every blade.', 'The puddle has acquired a second sky.'],
+      rain: ['The soil has stopped pretending it was not thirsty.', 'Every drop arrives without an appointment.', 'The puddle has applied for a larger office.'],
+      wind: ['The flower has changed its opinion of vertical.', 'Nothing here is loose enough to leave.', 'The grass agrees, briefly, on a direction.'],
+      fog: ['The horizon has called in absent.', 'The square metre is keeping its own counsel.', 'Visibility: one flower, approximately.'],
+    };
+    const descriptions = {
+      sun: 'An orange sun lights the grassy square. One upright flower and a blue puddle sit beneath a large pale cloud.',
+      rain: 'Blue rain falls from a dark cloud towards the grassy square, its flower and its puddle.',
+      wind: 'Long wind lines cross the grassy square. The cloud shifts sideways and the flower leans in the wind.',
+      fog: 'Pale bands of fog cross the grassy square, partly concealing its flower, puddle and numbered marker.',
+    };
+    const $ = (id) => document.getElementById(id);
+    const hourButtons = [...document.querySelectorAll('[data-hour]')];
+    const assignButtons = [...document.querySelectorAll('[data-assign]')];
+    let plan = [...initial];
+    let selected = 0;
+    let cursor = -1;
+    let timer = null;
+    let running = false;
+    const number = (value) => String(value + 1).padStart(2, '0');
+
+    function stop() {
+      window.clearTimeout(timer);
+      timer = null;
+      running = false;
+    }
+    function showWeather(kind) {
+      $('scene').dataset.weather = kind;
+      $('scene-weather').textContent = names[kind];
+      $('picture-title').textContent = `${names[kind]} over a tiny grassy square`;
+      $('picture-description').textContent = descriptions[kind];
+    }
+    function renderPlan() {
+      hourButtons.forEach((button, index) => {
+        const current = index === cursor;
+        const delivered = index <= cursor;
+        button.setAttribute('aria-pressed', String(index === selected));
+        button.dataset.current = String(current);
+        button.dataset.delivered = String(delivered);
+        if (current) button.setAttribute('aria-current', 'step');
+        else button.removeAttribute('aria-current');
+        button.setAttribute('aria-label', `Hour ${index + 1}: ${names[plan[index]]}${delivered ? ', delivered' : ''}`);
+        button.querySelector('.hour-mark').textContent = marks[plan[index]];
+        button.querySelector('.hour-weather').textContent = names[plan[index]];
+        button.querySelector('.hour-state').textContent = current ? 'now' : delivered ? 'done' : index === selected ? 'editing' : '·';
+      });
+      $('selected-label').querySelector('strong').textContent = number(selected);
+      assignButtons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.assign === plan[selected])));
+      $('run').firstChild.textContent = running ? 'Running ' : cursor === 11 ? 'Run again ' : cursor >= 0 ? 'Continue day ' : 'Run the day ';
+    }
+    function rewind(message) {
+      stop();
+      cursor = -1;
+      showWeather(plan[selected]);
+      $('hour-label').textContent = `Planning hour ${number(selected)}`;
+      $('observation-label').textContent = 'Before the day';
+      $('observation').textContent = 'The patch is here. The weather is your department.';
+      $('playback-status').textContent = message;
+      renderPlan();
+    }
+    function advance() {
+      if (cursor === 11) cursor = -1;
+      cursor += 1;
+      const kind = plan[cursor];
+      showWeather(kind);
+      $('hour-label').textContent = `Hour ${number(cursor)} / 12`;
+      $('observation-label').textContent = `Hour ${number(cursor)} · ${names[kind]}`;
+      const observation = observations[kind][cursor % observations[kind].length];
+      $('observation').textContent = cursor === 11 ? `${observation} Weather delivered. Nobody consulted.` : observation;
+      if (cursor === 11) {
+        stop();
+        $('playback-status').textContent = 'Twelve hours delivered. Rearrange the plan or run it again.';
+      } else {
+        $('playback-status').textContent = `${cursor + 1} of 12 hours delivered. ${running ? 'The day is running.' : 'Paused. Continue or step when ready.'}`;
+      }
+      renderPlan();
+    }
+    function queueNext() {
+      if (!running) return;
+      timer = window.setTimeout(() => { advance(); queueNext(); }, 2400);
+    }
+    hourButtons.forEach((button, index) => button.addEventListener('click', () => {
+      selected = index;
+      rewind(`Hour ${number(selected)} selected. Set its weather, then run the day.`);
+    }));
+    assignButtons.forEach((button) => button.addEventListener('click', () => {
+      const kind = button.dataset.assign;
+      if (!(kind in names)) return;
+      plan[selected] = kind;
+      rewind(`Hour ${number(selected)} set to ${names[kind].toLowerCase()}. The day is ready to run.`);
+    }));
+    $('run').addEventListener('click', () => {
+      if (running) return;
+      running = true;
+      advance();
+      queueNext();
+    });
+    $('pause').addEventListener('click', () => {
+      stop();
+      $('playback-status').textContent = cursor === 11 ? 'The day is complete. Run it again whenever you like.' : cursor >= 0 ? `Paused after hour ${number(cursor)}. Continue or step when ready.` : 'Paused before hour 01. Nothing has been delivered.';
+      renderPlan();
+    });
+    $('step').addEventListener('click', () => { stop(); advance(); });
+    $('reset').addEventListener('click', () => {
+      plan = [...initial];
+      selected = 0;
+      rewind('Original plan restored. Nothing moves until you ask.');
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && running) {
+        stop();
+        $('playback-status').textContent = `Paused after hour ${number(cursor)} while you were away. Continue when ready.`;
+        renderPlan();
+      }
+    });
+    window.addEventListener('pagehide', stop);
+  })();
+</script>

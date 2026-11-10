@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-03",
+  "featured": [
+    {
+      "id": "ph-falcon-perception",
+      "name": "Falcon Perception",
+      "tagline": "0.6B parameter early-fusion transformer for open-vocabulary grounding and segmentation from natural language prompts.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "TII's latest model breaks the traditional vision encoder-decoder separation with early fusion architecture. At just 0.6B parameters, it makes sophisticated visual grounding accessible for edge deployment. This architectural shift towards unified vision-language processing could reshape how we build multimodal systems.",
+      "ph_url": "https://www.marktechpost.com/2026/04/03/tii-releases-falcon-perception-a-0-6b-parameter-early-fusion-transformer-for-open-vocabulary-grounding-and-segmentation-from-natural-language-prompts/",
+      "maker": "Technology Innovation Institute",
+      "featured": true,
+      "added_at": "2026-04-03T06:00:00Z"
+    },
+    {
+      "id": "ph-trinity-large-thinking",
+      "name": "Trinity Large Thinking",
+      "tagline": "Apache 2.0 open reasoning model for long-horizon agents and tool use.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, a proper open-weight reasoning model that doesn't hide behind restrictive licenses. Arcee's Apache 2.0 release means developers can actually inspect, modify, and deploy reasoning capabilities without legal gymnastics. The focus on long-horizon agent workflows hits exactly where the industry needs transparency most.",
+      "ph_url": "https://www.marktechpost.com/2026/04/02/arcee-ai-releases-trinity-large-thinking-an-apache-2-0-open-reasoning-model-for-long-horizon-agents-and-tool-use/",
+      "maker": "Arcee AI",
+      "featured": true,
+      "added_at": "2026-04-03T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-gemma-4",
+      "name": "Gemma 4",
+      "tagline": "Google's most capable open model family with Apache 2.0 licensing for the first time.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google finally drops the custom licence nonsense and goes full Apache 2.0. Four models spanning smartphone to workstation deployment means practical local AI without vendor lock-in. This licensing shift signals Google's serious play for the open-source developer mindshare.",
+      "ph_url": "https://the-decoder.com/googles-gemma-4-is-now-available-with-apache-2-0-licensing-for-the-first-time/",
+      "maker": "Google",
+      "featured": false,
+      "added_at": "2026-04-03T06:30:00Z"
+    },
+    {
+      "id": "ph-mai-transcribe-1",
+      "name": "MAI-Transcribe-1",
+      "tagline": "Speech-to-text model running 2.5x faster than predecessor at $0.36 per audio hour.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Microsoft's pricing play hits the transcription market hard. 2.5x speed improvements with 25-language support plus noise handling makes this a proper Whisper competitor. The $0.36 per hour pricing shows Microsoft is serious about grabbing market share from OpenAI's transcription dominance.",
+      "ph_url": "https://the-decoder.com/microsofts-mai-transcribe-1-runs-2-5x-faster-than-its-predecessor-at-0-36-per-audio-hour/",
+      "maker": "Microsoft",
+      "featured": false,
+      "added_at": "2026-04-03T06:45:00Z"
+    },
+    {
+      "id": "ph-sakana-marlin",
+      "name": "Sakana Marlin",
+      "tagline": "AI assistant that researches autonomously for up to eight hours for business strategy work.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Sakana's \"Ultra Deep Research\" positioning targets the consulting industry's bread and butter. Eight-hour autonomous research sessions suggest they're solving the context length and attention problems that plague current AI assistants. If it works, strategy consulting just got disrupted.",
+      "ph_url": "https://the-decoder.com/sakana-ai-launches-ultra-deep-research-to-automate-weeks-of-strategy-work/",
+      "maker": "Sakana AI",
+      "featured": false,
+      "added_at": "2026-04-03T07:00:00Z"
+    },
+    {
+      "id": "ph-mindsdb-anton",
+      "name": "MindsDB Anton",
+      "tagline": "Autonomous BI agent for business intelligence workflows.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "MindsDB's BI agent tackles the perennial problem of making data accessible to non-technical users. Autonomous business intelligence could finally deliver on the promise of self-service analytics. The timing is right as organisations drown in data but struggle with insights.",
+      "ph_url": "https://mindsdb.com/blog/introducing-anton-what-business-intelligence-is-supposed-to-be",
+      "maker": "MindsDB",
+      "featured": false,
+      "added_at": "2026-04-03T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Ask HN: What is your dev set up like?",
+      "points": 12,
+      "comments": 22,
+      "summary": "Community discussion about development environments and tooling setups. Developers sharing their preferred configurations, from local machines to cloud setups.",
+      "hn_url": "https://news.ycombinator.com/item?id=47616250"
+    },
+    {
+      "title": "MindsDB Anton: a new powerful autonomous BI agent",
+      "points": 13,
+      "comments": 0,
+      "summary": "MindsDB launches Anton, an AI agent focused on business intelligence automation. Promises to make data analysis more accessible through autonomous query generation and insight discovery.",
+      "hn_url": "https://news.ycombinator.com/item?id=47614333"
+    },
+    {
+      "title": "Show HN: Skales \u2013 I built a desktop AI agent a 6-year-old can use",
+      "points": 8,
+      "comments": 3,
+      "summary": "Developer creates Skales, a desktop AI agent designed for extreme simplicity and child-friendly interaction. Focuses on making AI accessible through intuitive interfaces rather than technical complexity.",
+      "hn_url": "https://news.ycombinator.com/item?id=47613527"
+    },
+    {
+      "title": "Show HN: An MCP server for Devops automation",
+      "points": 5,
+      "comments": 1,
+      "summary": "New Model Context Protocol server targeting DevOps workflows and automation tasks. Integrates with existing tools to provide AI-assisted operations management.",
+      "hn_url": "https://news.ycombinator.com/item?id=47614678"
+    },
+    {
+      "title": "Genesis Agent \u2013 A self-modifying AI agent that runs local",
+      "points": 4,
+      "comments": 0,
+      "summary": "Open-source AI agent built with Electron and Ollama that can modify its own behaviour locally. Represents the growing trend towards autonomous, self-improving AI systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=47621307"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "date": "2026-03-28",
+  "featured": [
+    {
+      "id": "ph-prorl-agent",
+      "name": "ProRL Agent",
+      "tagline": "Decoupled rollout-as-a-service infrastructure for training multi-turn LLM agents at scale.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "NVIDIA's tackled the biggest bottleneck in agent training: the resource conflict between I/O-heavy environment interactions and GPU-intensive policy updates. By decoupling rollout orchestration from training loops, they've built infrastructure that could actually make agent RL practical at scale. This is the unglamorous plumbing work that enables everything else.",
+      "ph_url": "https://www.marktechpost.com/2026/03/27/nvidia-ai-unveils-prorl-agent-a-decoupled-rollout-as-a-service-infrastructure-for-reinforcement-learning-of-multi-turn-llm-agents-at-scale/",
+      "maker": "NVIDIA",
+      "featured": true,
+      "added_at": "2026-03-28T06:00:00Z"
+    },
+    {
+      "id": "ph-jiuwenclaw",
+      "name": "JiuwenClaw",
+      "tagline": "Self-evolving AI agent that adapts task management workflows when requirements change.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Most agents break when you change the rules mid-task. JiuwenClaw actually evolves its approach when workflows shift, which is how real work actually happens. We're skeptical of 'self-evolving' claims, but if this genuinely handles requirement drift without human intervention, it's addressing agent brittleness head-on.",
+      "ph_url": "https://www.marktechpost.com/2026/03/27/openjiuwen-community-releases-jiuwenclaw-a-self-evolving-ai-agent-for-task-management/",
+      "maker": "OpenJiuwen Community",
+      "featured": true,
+      "added_at": "2026-03-28T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-mistral-speech",
+      "name": "Mistral Speech Generation",
+      "tagline": "Open source model for building enterprise voice agents for sales and customer engagement.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Mistral's pushing into voice generation territory dominated by ElevenLabs and OpenAI. The enterprise focus suggests they're going after regulated industries that need on-premises deployment. Smart positioning, but the voice generation space is already crowded.",
+      "ph_url": "https://techcrunch.com/2026/03/26/mistral-releases-a-new-open-source-model-for-speech-generation/",
+      "maker": "Mistral",
+      "featured": false,
+      "added_at": "2026-03-28T06:30:00Z"
+    },
+    {
+      "id": "ph-kagento",
+      "name": "Kagento",
+      "tagline": "LeetCode-style coding challenges specifically designed for AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Finally, someone's building proper benchmarks for agent coding abilities. LeetCode worked for human programmers because it isolated specific skills. If Kagento can do the same for agents, it'll become the standard way to evaluate coding agent performance.",
+      "ph_url": "https://kagento.io",
+      "maker": "Kagento",
+      "featured": false,
+      "added_at": "2026-03-28T06:45:00Z"
+    },
+    {
+      "id": "ph-toolcast",
+      "name": "Toolcast",
+      "tagline": "Turn any API into an AI agent tool with a single command.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "The agent tooling ecosystem is still fragmented mess. Toolcast's one-command API wrapping could be the duct tape that actually works. We need more infrastructure that just makes things work without ceremony.",
+      "ph_url": "https://github.com/Djsand/toolcast",
+      "maker": "Djsand",
+      "featured": false,
+      "added_at": "2026-03-28T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Some uncomfortable truths about AI coding agents",
+      "points": 72,
+      "comments": 83,
+      "summary": "A critical look at the current limitations of AI coding agents. The post explores why these tools often fall short in real-world scenarios and what that means for developers relying on them.",
+      "hn_url": "https://news.ycombinator.com/item?id=47545748"
+    },
+    {
+      "title": "Show HN: Kagento \u2013 LeetCode for AI Agents",
+      "points": 8,
+      "comments": 1,
+      "summary": "A new platform that provides coding challenges specifically designed for testing AI agent capabilities. Takes the LeetCode approach and applies it to agent evaluation and training.",
+      "hn_url": "https://news.ycombinator.com/item?id=47548048"
+    },
+    {
+      "title": "Toolcast \u2013 Turn any API into an AI agent tool with one command",
+      "points": 4,
+      "comments": 0,
+      "summary": "Command-line tool that automatically wraps APIs to make them compatible with AI agents. Aims to simplify the process of connecting agents to external services.",
+      "hn_url": "https://news.ycombinator.com/item?id=47545895"
+    }
+  ]
+}

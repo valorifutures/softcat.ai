@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HorizonPredictions from './HorizonPredictions';
+import HorizonDefinition from './HorizonDefinition';
+import scenarios from '../data/horizon/scenarios.json';
+import review from '../data/horizon/outlook-review.json';
+import { horizonPredictionData } from '../lib/horizon-prediction-data';
+import briefs from '../data/horizon/decision-briefs.json';
+import past from '../data/horizon/past.json';
+import now from '../data/horizon/now.json';
+import next from '../data/horizon/next.json';
+import debates from '../data/horizon/debates.json';
+import '../styles/horizon.css';
+import '../styles/horizon-clear.css';
+const legacyIds = [...new Set([...past, ...now, ...next, ...debates, ...scenarios].map(entry => entry.id).concat(['past', 'now', 'next', 'compare', 'debates', 'shifts']))];
+---
+<BaseLayout title="Horizon: five AI predictions, your next move" description="Explore five AI predictions. See the dates, check the evidence and build a 90-day trial for your team.">
+  <div class="horizon-page hz-reader-page"><div class="hz-shell">
+    <header class="hz-hero">
+      <div><p class="hz-label">Horizon / The SOFT CAT .ai forecast</p><h1>Five AI predictions.<br /><span>Your next move.</span></h1></div>
+      <div class="hz-hero-intro"><p><strong>What could change? When? What can you do now?</strong></p><p>Explore our five predictions. Check the evidence. Choose one task to test with your team.</p><nav class="hz-hero-links" aria-label="Explore Horizon"><a class="hz-hero-primary" href="#horizon-decision">Build a 90-day trial <span aria-hidden="true">↗</span></a><a href="#agi-question">Is AGI already here? ↓</a></nav></div>
+    </header>
+    <HorizonPredictions client:load initialData={horizonPredictionData} initialNow={Date.now()} briefs={briefs} />
+    <HorizonDefinition client:load reviewedAt={review.reviewed_at} />
+    <section class="hz-reading" aria-label="Go deeper into Horizon">
+      <a href="/horizon/record#now"><p class="hz-label">The wider record</p><h2>Explore the signals</h2><p>Read earlier observations and their sources. Each entry has its own date.</p><span>Open the record ↗</span></a>
+      <a href="/horizon/scenarios/"><p class="hz-label">Other possible futures</p><h2>Compare scenarios</h2><p>Explore optimistic, pragmatic and sceptical views. See how different assumptions change the outcome.</p><span>Compare the possibilities ↗</span></a>
+      <a href="#horizon-prediction-history"><p class="hz-label">Our earlier predictions</p><h2>Check our record</h2><p>See what we predicted and why. Read every later review, including decisions to keep the date.</p><span>See what changed ↑</span></a>
+    </section>
+    <details class="hz-method" id="method">
+      <summary>How the clocks work</summary>
+      <h2>We choose the dates</h2>
+      <p>We assess current abilities, the remaining problems and the time needed to prove reliable results. Sources inform our judgement. They do not calculate a date.</p>
+      <p>Our first predictions used a year, with 31 December as the deadline. A later evidence review can change that date. The day count does not make our forecast accurate to a day.</p>
+      <h2>Each prediction has a test</h2>
+      <p>We publish the full conditions for each milestone. These are our tests, not industry standards. We will record whether the evidence meets them.</p>
+      <p>A clock that reaches zero means the deadline has passed. It does not mean the prediction came true.</p>
+      <h2>Time and evidence change different things</h2>
+      <p>Each clock counts full days to the end of its target date in UTC. During the final 24 hours, it shows &lt;1 day. Predictions with the same target date have the same count.</p>
+      <p>Time reduces the count. An evidence review can move the target date. The history shows how many days that review added or removed. It excludes time that passed between reviews.</p>
+      <p>Earlier dates, claims and evidence stay in the record. We label changes to a milestone separately.</p>
+      <h2>Reviews have their own dates</h2>
+      <p>The evidence review is scheduled for each Monday. This page checks for published updates every five minutes and when you return. If that check fails, it keeps the last verified data.</p>
+      <p>An update check does not assess research. A site build does not renew an evidence-review date. <a href="/pipeline">See the review schedule →</a></p>
+      <h2>The earlier record stays available</h2>
+      <p>We first published these five predictions on 15 September 2026. The earlier clocks showed <a href="/horizon/scenarios/">alternative scenarios</a>. They keep their original history and do not count as these predictions.</p>
+      <p><a href="/horizon/record#next">Earlier supporting forecasts</a> keep their own tests. The <a href="/horizon/review">12 September review</a> records corrections and withdrawals.</p>
+      <p><a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/horizon/prediction-history.json">Inspect the prediction history ↗</a> · <a href="/horizon/prediction-data.json">Read the published prediction data ↗</a> · <a href="/horizon/record#past">Explore the earlier turning points ↗</a></p>
+    </details>
+    {legacyIds.map(id => <div class="hz-legacy-anchor" id={id} data-horizon-record><a href={`/horizon/record#${id}`}>This entry is in the supporting Horizon record. Continue to the entry →</a></div>)}
+  </div></div>
+  <script>
+    function followRecordLink() {
+      let id: string;
+      try { id = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
+      const target = document.getElementById(id);
+      if (target?.hasAttribute('data-horizon-record')) window.location.replace(`/horizon/record${window.location.search}#${encodeURIComponent(id)}`);
+    }
+    followRecordLink();
+    window.addEventListener('hashchange', followRecordLink);
+  </script>
+</BaseLayout>

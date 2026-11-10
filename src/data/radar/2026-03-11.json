@@ -1,0 +1,116 @@
+{
+  "date": "2026-03-11",
+  "featured": [
+    {
+      "id": "ph-gemini-embedding-2",
+      "name": "Gemini Embedding 2",
+      "tagline": "Multimodal embedding model for text, images, video, audio, and documents.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Google's finally cracked the multimodal embedding problem that's been holding back production RAG systems. This isn't just another text embedder, it's proper cross-modal retrieval that can find connections between your meeting transcript and the diagram from last week's slide deck. The high-dimensional storage optimisation suggests they've actually thought about real-world deployment costs.",
+      "ph_url": "https://www.marktechpost.com/2026/03/11/google-ai-introduces-gemini-embedding-2-a-multimodal-embedding-model-that-lets-your-bring-text-images-video-audio-and-docs-into-the-embedding-space/",
+      "maker": "Google AI",
+      "featured": true,
+      "added_at": "2026-03-11T06:00:00Z"
+    },
+    {
+      "id": "ph-fish-audio-s2",
+      "name": "Fish Audio S2",
+      "tagline": "Expressive text-to-speech with controllable emotion and sub-150ms latency.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Sub-150ms latency for zero-shot voice cloning is the kind of performance that makes real-time agent conversations actually usable. The granular emotion control moves beyond the robotic assistant voice into properly expressive AI that could pass for human in most contexts. Fish Audio's open architecture approach suggests this won't be locked behind corporate APIs forever.",
+      "ph_url": "https://www.marktechpost.com/2026/03/10/fish-audio-releases-fish-audio-s2-a-new-generation-of-expressive-text-to-speech-tts-with-absurdly-controllable-emotion/",
+      "maker": "Fish Audio",
+      "featured": true,
+      "added_at": "2026-03-11T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-nemotron-terminal",
+      "name": "Nemotron-Terminal",
+      "tagline": "Data engineering pipeline for scaling LLM terminal agents.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "NVIDIA's addressing the terminal agent training data bottleneck that's been forcing everyone to reinvent the wheel. The systematic data engineering approach suggests they've cracked the secret sauce that makes agents like Claude Code actually competent at command-line tasks. This could democratise terminal agent development beyond the frontier labs.",
+      "ph_url": "https://www.marktechpost.com/2026/03/10/nvidia-ai-releases-nemotron-terminal-a-systematic-data-engineering-pipeline-for-scaling-llm-terminal-agents/",
+      "maker": "NVIDIA AI",
+      "featured": false,
+      "added_at": "2026-03-11T06:30:00Z"
+    },
+    {
+      "id": "ph-ash-agent-sandbox",
+      "name": "Ash",
+      "tagline": "Agent sandbox for Mac providing secure environment for AI automation.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "A proper sandbox for AI agents on Mac addresses the obvious security nightmare of giving LLMs system access. The fact someone's building this as a dedicated product suggests agent automation is moving from proof-of-concept to production-ready deployment. We need more infrastructure thinking like this.",
+      "ph_url": "https://ashell.dev",
+      "maker": "Independent Developer",
+      "featured": false,
+      "added_at": "2026-03-11T06:45:00Z"
+    },
+    {
+      "id": "ph-aegis-lang",
+      "name": "Aegis",
+      "tagline": "Security-first programming language designed for AI agents.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Building a programming language specifically for AI agents suggests we're past the point of treating them like glorified chatbots. The security-first approach acknowledges that agent code needs different constraints than human-written code. This could be the foundation for trustworthy autonomous systems.",
+      "ph_url": "https://github.com/RRFDunn/aegis-lang",
+      "maker": "RRFDunn",
+      "featured": false,
+      "added_at": "2026-03-11T07:00:00Z"
+    },
+    {
+      "id": "ph-railyard",
+      "name": "Railyard",
+      "tagline": "Open and secure runtime environment for Claude Code.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "An open alternative to Anthropic's closed runtime for Claude Code fills an obvious gap in the agent ecosystem. The security focus suggests someone's taking the sandbox problem seriously rather than just hoping for the best. This kind of infrastructure tooling is what makes agent deployment actually viable.",
+      "ph_url": "https://news.ycombinator.com/item?id=47327033",
+      "maker": "Independent Developer",
+      "featured": false,
+      "added_at": "2026-03-11T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Klaus \u2013 OpenClaw on a VM, batteries included",
+      "points": 159,
+      "comments": 93,
+      "summary": "Klaus offers OpenClaw running on a virtual machine with everything pre-configured for automation tasks. It's essentially a plug-and-play solution for those who want computer automation without the hassle of setting up their own environment. The high engagement suggests there's real demand for simplified automation tools.",
+      "hn_url": "https://news.ycombinator.com/item?id=47337249"
+    },
+    {
+      "title": "Show HN: Open-source browser for AI agents",
+      "points": 155,
+      "comments": 53,
+      "summary": "Someone built an open-source browser specifically designed for AI agents to interact with web content. This addresses a real need since standard browsers aren't optimised for programmatic control by AI systems. The decent comment engagement shows developers are interested in better tooling for AI automation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47336171"
+    },
+    {
+      "title": "Google to provide Pentagon with AI agents",
+      "points": 74,
+      "comments": 81,
+      "summary": "Google has secured a contract to supply the Pentagon with AI agents for unclassified military work. This marks another significant step in AI's integration into government operations and military applications. The high comment-to-upvote ratio suggests this news is generating considerable debate about AI in defence.",
+      "hn_url": "https://news.ycombinator.com/item?id=47333433"
+    },
+    {
+      "title": "Launch HN: Sentrial (YC W26) \u2013 Catch AI agent failures before your users do",
+      "points": 31,
+      "comments": 14,
+      "summary": "Sentrial is a YC-backed startup that monitors AI agents for failures and issues before they affect end users. It's essentially quality assurance tooling for AI systems, which makes sense as more companies deploy agents in production. The modest engagement suggests this is a niche but important problem space.",
+      "hn_url": "https://news.ycombinator.com/item?id=47337659"
+    },
+    {
+      "title": "Show HN: Ink \u2013 Deploy full-stack apps from AI agents via MCP or Skills",
+      "points": 29,
+      "comments": 5,
+      "summary": "Ink allows AI agents to deploy full-stack applications through standardised protocols like MCP or Skills. It's trying to bridge the gap between AI capabilities and actual software deployment. The low engagement might indicate the concept is either too early or too technical for broader interest.",
+      "hn_url": "https://news.ycombinator.com/item?id=47337028"
+    }
+  ]
+}

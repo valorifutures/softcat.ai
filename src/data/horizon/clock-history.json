@@ -1,0 +1,185 @@
+[
+  {
+    "id": "baseline-2026-04-22",
+    "date": "2026-04-22",
+    "kind": "baseline",
+    "source": "https://github.com/valorifutures/softcat.ai/blob/3066df13e0493ef1446c9a3e48f307aa8bf30e5f/src/data/horizon/scenarios.json",
+    "records": [
+      {
+        "id": "scenario-agi",
+        "definition": "Systems matching or exceeding human performance across most cognitive tasks, including ones outside their training distribution, without task-specific retraining.",
+        "timeframes": {
+          "optimistic": "by end of 2028",
+          "pragmatic": "2032-2035",
+          "sceptical": "not before the 2040s"
+        }
+      },
+      {
+        "id": "scenario-agentic-work",
+        "definition": "AI systems that autonomously execute multi-step knowledge work across tools, queues and approval boundaries, owning outcomes end-to-end rather than assisting a human operator.",
+        "timeframes": {
+          "optimistic": "by end of 2027",
+          "pragmatic": "2029-2031",
+          "sceptical": "mid-2030s or later"
+        }
+      },
+      {
+        "id": "scenario-robotics",
+        "definition": "General-purpose physical robots (humanoid or otherwise) that are commercially routine, not demo-quality, with fleet-deployable reliability and workable unit economics.",
+        "timeframes": {
+          "optimistic": "by 2030",
+          "pragmatic": "2033-2036",
+          "sceptical": "not before the late 2030s"
+        }
+      },
+      {
+        "id": "scenario-software-automation",
+        "definition": "Coding agents reliably owning the loop from ticket to monitored production deploy across large codebases, leaving humans mostly specifying, reviewing and steering.",
+        "timeframes": {
+          "optimistic": "by end of 2028",
+          "pragmatic": "2030-2032",
+          "sceptical": "not before the mid-2030s"
+        }
+      },
+      {
+        "id": "scenario-education-disruption",
+        "definition": "AI tutoring and assessment displacing institutional course and credential delivery as the primary structure through which people learn and signal mastery.",
+        "timeframes": {
+          "optimistic": "by 2030",
+          "pragmatic": "2032-2035",
+          "sceptical": "not this generation"
+        }
+      }
+    ]
+  },
+  {
+    "id": "review-2026-09-13",
+    "date": "2026-09-13",
+    "kind": "review",
+    "records": [
+      {
+        "id": "scenario-agi",
+        "definition": "Systems matching or exceeding human performance across most cognitive tasks, including ones outside their training distribution, without task-specific retraining.",
+        "timeframes": {
+          "optimistic": "by end of 2028",
+          "pragmatic": "2032-2035",
+          "sceptical": "not before the 2040s"
+        },
+        "reason": "The threshold depends on the definition. We retain these windows as prompts for discussion. Neither a definition nor a benchmark result establishes a universal arrival year.",
+        "evidence": [
+          {
+            "title": "Google DeepMind: Levels of AGI",
+            "url": "https://deepmind.google/research/publications/66938/",
+            "date_label": "ICML 2024",
+            "finding": "This framework distinguishes breadth and depth of capability, with autonomy considered separately.",
+            "limit": "A framework for describing progress is not a certification that a current model has passed every threshold."
+          },
+          {
+            "title": "ARC Prize: ARC-AGI-3",
+            "url": "https://arcprize.org/arc-agi/3",
+            "date_label": "2026 benchmark",
+            "finding": "Interactive environments test how agents explore, discover goals and adapt to unfamiliar tasks.",
+            "limit": "This measures a particular form of adaptation. A score alone cannot establish competence across all cognitive or economic work."
+          }
+        ]
+      },
+      {
+        "id": "scenario-agentic-work",
+        "definition": "AI systems that autonomously execute multi-step knowledge work across tools, queues and approval boundaries, owning outcomes end-to-end rather than assisting a human operator.",
+        "timeframes": {
+          "optimistic": "by end of 2027",
+          "pragmatic": "2029-2031",
+          "sceptical": "mid-2030s or later"
+        },
+        "reason": "Task completion is measurable, but reliable ownership of a workplace process is a broader claim. The dates remain illustrative, with no new adoption probability assigned.",
+        "evidence": [
+          {
+            "title": "METR: task-completion time horizons",
+            "url": "https://metr.org/time-horizons/",
+            "date_label": "Page updated 8 May 2026",
+            "finding": "METR estimates task difficulty at specified success rates, using human completion time as the reference.",
+            "limit": "These are mainly well-specified software tasks. A time horizon is not continuous autonomous runtime or proof that a whole job can be automated."
+          },
+          {
+            "title": "METR: metrics of agent ability",
+            "url": "https://metr.org/notes/2026-07-24-metrics-of-model-ability/",
+            "date_label": "24 July 2026",
+            "finding": "The research note compares performance measures that account for time, cost and the human baseline.",
+            "limit": "It analyses measurement choices. It does not establish widespread enterprise adoption."
+          }
+        ]
+      },
+      {
+        "id": "scenario-robotics",
+        "definition": "General-purpose physical robots (humanoid or otherwise) that are commercially routine, not demo-quality, with fleet-deployable reliability and workable unit economics.",
+        "timeframes": {
+          "optimistic": "by 2030",
+          "pragmatic": "2033-2036",
+          "sceptical": "not before the late 2030s"
+        },
+        "reason": "The July model cards provide concrete evidence of robotics work and its limits. They do not establish fleet economics or commercial general-purpose reliability. The date windows remain illustrative.",
+        "evidence": [
+          {
+            "title": "Google DeepMind: Gemini Robotics ER 2",
+            "url": "https://deepmind.google/models/model-cards/gemini-robotics-er-2/",
+            "date_label": "30 July 2026",
+            "finding": "The model card describes spatial and temporal reasoning, tool orchestration and success detection for physical agents.",
+            "limit": "The publisher restricts safety-critical uses. Reasoning capability alone does not demonstrate reliable physical deployment."
+          },
+          {
+            "title": "Google DeepMind: Robotics On-Device 2",
+            "url": "https://deepmind.google/models/model-cards/gemini-robotics-on-device-2/",
+            "date_label": "30 July 2026",
+            "finding": "The card describes local robot action generation and evaluations of manipulation across several robot platforms.",
+            "limit": "Access is limited to trusted testers. The card identifies limits on unfamiliar tasks and complex robot control."
+          }
+        ]
+      },
+      {
+        "id": "scenario-software-automation",
+        "definition": "Coding agents reliably owning the loop from ticket to monitored production deploy across large codebases, leaving humans mostly specifying, reviewing and steering.",
+        "timeframes": {
+          "optimistic": "by end of 2028",
+          "pragmatic": "2030-2032",
+          "sceptical": "not before the mid-2030s"
+        },
+        "reason": "The evidence supports testing useful delegation, with careful measurement of the whole task. It does not establish an arrival year for autonomous production delivery. The original windows remain illustrative.",
+        "evidence": [
+          {
+            "title": "METR: revising its productivity experiment",
+            "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+            "date_label": "24 February 2026",
+            "finding": "METR reports that selection effects make its later developer experiment an unreliable estimate of the current productivity effect.",
+            "limit": "This is a reason to improve measurement. It establishes neither universal slowdown nor a reliable universal speedup."
+          },
+          {
+            "title": "METR: task-completion methodology",
+            "url": "https://metr.org/time-horizons/",
+            "date_label": "Page updated 8 May 2026",
+            "finding": "The published methodology makes the task set, human reference and success thresholds inspectable.",
+            "limit": "Successful benchmark tasks do not include every responsibility involved in maintaining a live software service."
+          }
+        ]
+      },
+      {
+        "id": "scenario-education-disruption",
+        "definition": "AI tutoring and assessment displacing institutional course and credential delivery as the primary structure through which people learn and signal mastery.",
+        "timeframes": {
+          "optimistic": "by 2030",
+          "pragmatic": "2032-2035",
+          "sceptical": "not this generation"
+        },
+        "reason": "Better tutoring and replacement of institutional education are different claims. The pragmatic case describes improvement within institutions, so it is a partial transformation rather than fulfilment of the full replacement definition. The dates remain illustrative.",
+        "evidence": [
+          {
+            "title": "Kestin and colleagues: AI tutoring trial",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12179260/",
+            "date_label": "Scientific Reports, 2025",
+            "finding": "A randomised trial in undergraduate physics reported higher immediate learning gains with a specifically designed AI tutor than with the comparison lessons.",
+            "limit": "A study of selected lessons does not establish long-term learning across subjects, replacement of teachers or a change in credentials."
+          }
+        ]
+      }
+    ]
+  }
+]

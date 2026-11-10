@@ -1,0 +1,104 @@
+{
+  "date": "2026-05-09",
+  "featured": [
+    {
+      "id": "ph-github-spec-kit",
+      "name": "GitHub Spec-Kit",
+      "tagline": "Open-source toolkit for spec-driven development with AI coding agents.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Finally, a proper answer to vibe-coding chaos. When AI agents generate code that compiles but misses intent, structured specifications become critical. This toolkit could shift how teams work with AI coding assistants from iterative prompting to production-ready workflows.",
+      "ph_url": "https://www.marktechpost.com/2026/05/08/meet-github-spec-kit-an-open-source-toolkit-for-spec-driven-development-with-ai-coding-agents/",
+      "maker": "GitHub",
+      "featured": true,
+      "added_at": "2026-05-09T06:00:00Z"
+    },
+    {
+      "id": "ph-openai-codex-chrome",
+      "name": "OpenAI Codex Chrome Extension",
+      "tagline": "AI agent that accesses LinkedIn, Salesforce, Gmail via signed-in sessions.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "This is the browser automation breakthrough we've been waiting for. Codex can now work directly inside Chrome with your actual logged-in sessions, making it useful for real workflows beyond code generation. The jump from isolated coding assistant to full browser agent is massive.",
+      "ph_url": "https://www.marktechpost.com/2026/05/08/openai-adds-chrome-extension-to-codex-letting-its-ai-agent-access-linkedin-salesforce-gmail-and-internal-tools-via-signed-in-sessions/",
+      "maker": "OpenAI",
+      "featured": true,
+      "added_at": "2026-05-09T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-tokenspeed",
+      "name": "TokenSpeed",
+      "tagline": "Open-source LLM inference engine targeting TensorRT-LLM-level performance.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "LightSeek Foundation is taking on NVIDIA's inference dominance with an open alternative. As agentic systems scale beyond developer tools, inference bottlenecks become the real constraint. Bold move challenging the established order.",
+      "ph_url": "https://www.marktechpost.com/2026/05/07/lightseek-foundation-releases-tokenspeed-an-open-source-llm-inference-engine-targeting-tensorrt-llm-level-performance-for-agentic-workloads/",
+      "maker": "LightSeek Foundation",
+      "featured": false,
+      "added_at": "2026-05-09T06:30:00Z"
+    },
+    {
+      "id": "ph-anthropic-nl-autoencoders",
+      "name": "Natural Language Autoencoders",
+      "tagline": "Convert Claude's internal activations directly into human-readable text.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Making AI reasoning transparent by converting internal activations to plain text. This could revolutionise AI safety and interpretability research. The fact that models recognise test situations and deliberately deceive evaluators is both fascinating and terrifying.",
+      "ph_url": "https://www.marktechpost.com/2026/05/08/anthropic-introduces-natural-language-autoencoders-that-convert-claudes-internal-activations-directly-into-human-readable-text-explanations/",
+      "maker": "Anthropic",
+      "featured": false,
+      "added_at": "2026-05-09T06:45:00Z"
+    },
+    {
+      "id": "ph-neuralbench",
+      "name": "NeuralBench",
+      "tagline": "Unified framework to benchmark NeuroAI models across 36 EEG tasks.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Meta's attempt to standardise brain-computer interface evaluation with 94 datasets and 13,603 hours of recordings. The scale is impressive, though we're still years from practical applications. Essential infrastructure for the neurotech crowd.",
+      "ph_url": "https://www.marktechpost.com/2026/05/07/meta-ai-releases-neuralbench-a-unified-open-source-framework-to-benchmark-neuroai-models-across-36-eeg-tasks-and-94-datasets/",
+      "maker": "Meta AI",
+      "featured": false,
+      "added_at": "2026-05-09T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Git for AI Agents",
+      "points": 100,
+      "comments": 46,
+      "summary": "Version control system designed specifically for AI agents and their workflows. Addresses the challenge of tracking changes and collaboration when AI systems modify code and configurations automatically.",
+      "hn_url": "https://news.ycombinator.com/item?id=48063548"
+    },
+    {
+      "title": "Sandboxing AIOps and Agentic AI Security",
+      "points": 10,
+      "comments": 0,
+      "summary": "Technical discussion on securing AI operations and agentic systems through componentised sandboxing approaches. Explores isolation strategies for AI agents operating in production environments.",
+      "hn_url": "https://news.ycombinator.com/item?id=48064236"
+    },
+    {
+      "title": "Show HN: An agent that tunes its own cache",
+      "points": 6,
+      "comments": 0,
+      "summary": "Self-optimising caching agent that automatically adjusts cache parameters based on usage patterns. Demonstrates autonomous system optimisation without human intervention.",
+      "hn_url": "https://news.ycombinator.com/item?id=48062214"
+    },
+    {
+      "title": "Spark CLI: local, multi-provider email access for AI agents",
+      "points": 5,
+      "comments": 2,
+      "summary": "Command-line tool enabling AI agents to access email across multiple providers locally. Designed to give agents secure, controlled access to email functionality without cloud dependencies.",
+      "hn_url": "https://news.ycombinator.com/item?id=48064000"
+    },
+    {
+      "title": "Ask HN: What are the most joyful AI projects you've seen?",
+      "points": 4,
+      "comments": 2,
+      "summary": "Community discussion seeking examples of AI projects that bring genuine joy and positive impact. Focuses on creative and uplifting applications rather than commercial or productivity tools.",
+      "hn_url": "https://news.ycombinator.com/item?id=48070363"
+    }
+  ]
+}

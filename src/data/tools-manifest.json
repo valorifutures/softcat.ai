@@ -1,0 +1,98 @@
+[
+  {
+    "id": "outage-check",
+    "name": "Domain & Outage Checker",
+    "description": "Check live public DNS through Cloudflare and Google, compare their answers and create a plain-English incident brief. No account or API key.",
+    "stat": "Two public DNS services · check and share",
+    "href": "/lab/outage-check",
+    "icon": "↯",
+    "category": "network",
+    "addedDate": "2026-11-09",
+    "featured": true
+  },
+  {
+    "id": "agent-check",
+    "name": "Should this be an agent?",
+    "description": "Six questions to choose a script, a workflow, an assistant or a bounded agent trial. Clear reasons, no hidden score.",
+    "stat": "Six questions · no API key needed",
+    "href": "/lab/agent-check",
+    "icon": "↳",
+    "category": "agents",
+    "addedDate": "2026-09-12",
+    "featured": true
+  },
+  {
+    "id": "chat-playground",
+    "name": "Chat Playground",
+    "description": "Chat with models via OpenRouter using your own key. Compare responses and estimated costs.",
+    "stat": "Bring your own key · provider charges apply",
+    "href": "/lab/chat-playground",
+    "icon": "◈",
+    "category": "models",
+    "addedDate": "2026-02-01",
+    "dataSource": "models.json"
+  },
+  {
+    "id": "prompt-workbench",
+    "name": "Prompt Workbench",
+    "description": "Build reusable prompts, inspect filled messages and export an OpenRouter request. Save versions locally and keep a backup.",
+    "stat": "4 worked examples, saved versions and export previews",
+    "href": "/lab/prompt-workbench",
+    "icon": "⚙",
+    "category": "prompts",
+    "addedDate": "2026-02-01"
+  },
+  {
+    "id": "model-comparison",
+    "name": "Model Comparison",
+    "description": "Compare recorded model prices against an editable workload. Filter by model ID or provider, then export the costs and sources.",
+    "stat": "Token rates, workload estimates and CSV export",
+    "href": "/lab/model-comparison",
+    "icon": "⊞",
+    "category": "models",
+    "addedDate": "2026-02-01",
+    "dataSource": "models.json"
+  },
+  {
+    "id": "context-window",
+    "name": "Context Budget Planner",
+    "description": "Budget instructions, history, documents, tools and the reply. Compare the same request against dated context and output limits.",
+    "stat": "39 model records · exact limits · copyable plan",
+    "href": "/lab/context-window",
+    "icon": "▤",
+    "category": "models",
+    "addedDate": "2026-09-13",
+    "dataSource": "models.json"
+  },
+  {
+    "id": "token-cost",
+    "name": "Token Cost Calculator",
+    "description": "Estimate supplied text and repeated conversation history. Inspect parsed messages, distinguish missing replies and export the assumptions.",
+    "stat": "Single request · conversation · inspectable estimate",
+    "href": "/lab/token-cost",
+    "icon": "$",
+    "category": "cost",
+    "addedDate": "2026-02-01",
+    "dataSource": "models.json"
+  },
+  {
+    "id": "prompt-diff",
+    "name": "Prompt Diff",
+    "description": "Compare prompt words and whitespace, estimated token counts and signed input costs. Load saved Workbench versions and export the result.",
+    "stat": "Saved versions, bounded comparisons and a report",
+    "href": "/lab/prompt-diff",
+    "icon": "~Δ",
+    "category": "prompts",
+    "addedDate": "2026-02-01"
+  },
+  {
+    "id": "json-validator",
+    "name": "JSON Output Validator",
+    "description": "Check JSON output against draft-07 or 2020-12 schemas. Try broken examples and inspect exact constraint failures.",
+    "stat": "Four worked examples · runs in your browser",
+    "href": "/lab/json-validator",
+    "icon": "{}",
+    "category": "validation",
+    "addedDate": "2026-02-01"
+  }
+]

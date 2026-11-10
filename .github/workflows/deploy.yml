@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  recovery:
+    uses: ./.github/workflows/research-recovery-check.yml
+    permissions:
+      contents: read
+
+  build:
+    needs: [recovery, boundary]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Full history so the horizon page's Weekly Shift Log module can
+          # use `git log` as a fallback when shifts.json is missing.
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/validate-content.mjs
+      - run: node scripts/validate-tools-data.mjs
+      - run: node scripts/validate-horizon-refs.mjs
+      - run: node --test scripts/tests/*.test.mjs
+      - run: npm run build
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Offline publication gate
+        run: |
+          python -m unittest discover -s scripts/tests -p 'test_*.py'
+          python scripts/validate-built-site.py
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
+
+  boundary:
+    uses: ./.github/workflows/research-boundary-check.yml
+    permissions:
+      contents: read

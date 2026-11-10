@@ -1,0 +1,104 @@
+{
+  "date": "2026-03-22",
+  "featured": [
+    {
+      "id": "ph-clawrun",
+      "name": "ClawRun",
+      "tagline": "Deploy and manage AI agents in seconds.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "ClawRun promises the holy grail: zero-friction AI agent deployment. If it works as advertised, this could be the AWS Lambda moment for agentic AI. The fact it's getting HackerNews traction suggests developers are desperate for this exact tool.",
+      "ph_url": "https://clawrun.sh/",
+      "maker": "ClawRun Team",
+      "featured": true,
+      "added_at": "2026-03-22T06:00:00Z"
+    },
+    {
+      "id": "ph-vessel-browser",
+      "name": "Vessel Browser",
+      "tagline": "An open-source browser built for AI agents, not humans.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Finally, someone's building infrastructure for the post-human web. While everyone else optimises for human eyeballs, Vessel is preparing for a world where agents do the browsing. This is either prescient or premature, but definitely not pointless.",
+      "ph_url": "https://quantaintellect.com/",
+      "maker": "Quantaintellect",
+      "featured": true,
+      "added_at": "2026-03-22T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-research-claw",
+      "name": "Research Claw",
+      "tagline": "Autonomous AI research agent with Overleaf sync.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Academic research meets AI automation with proper LaTeX integration. The Overleaf sync suggests they understand how researchers actually work, not just how Silicon Valley thinks they work.",
+      "ph_url": "https://github.com/nanoAgentTeam/research-claw",
+      "maker": "nanoAgentTeam",
+      "featured": false,
+      "added_at": "2026-03-22T06:30:00Z"
+    },
+    {
+      "id": "ph-autoskill",
+      "name": "Autoskill",
+      "tagline": "Self-improving skills for AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Meta-learning for AI agents is the logical next step after static tool use. If agents can actually improve their own capabilities rather than just executing predefined functions, we might be looking at genuine autonomous improvement.",
+      "ph_url": "https://github.com/Samurai412/autoskill",
+      "maker": "Samurai412",
+      "featured": false,
+      "added_at": "2026-03-22T06:45:00Z"
+    },
+    {
+      "id": "ph-motioncanvas-skills",
+      "name": "MotionCanvas Agent Skills",
+      "tagline": "Agent skills for generating structured visuals with MotionCanvas.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Visual generation moves beyond static images to programmatic animation. Giving agents the ability to create structured motion graphics could unlock new forms of AI-generated content that actually makes sense.",
+      "ph_url": "https://github.com/VideoZero/skills",
+      "maker": "VideoZero",
+      "featured": false,
+      "added_at": "2026-03-22T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Are AI Agents like von Hammerstein's industrious and stupid?",
+      "points": 13,
+      "comments": 9,
+      "summary": "Discussion comparing current AI agents to von Hammerstein's military classification of officers as industrious but stupid. The comparison raises questions about whether AI agents work hard but lack the strategic thinking needed for complex tasks.",
+      "hn_url": "https://news.ycombinator.com/item?id=47466679"
+    },
+    {
+      "title": "ClawRun \u2013 Deploy and manage AI agents in seconds",
+      "points": 10,
+      "comments": 2,
+      "summary": "A platform for rapid AI agent deployment and management. Promises to simplify the infrastructure challenges of running AI agents at scale with minimal setup time.",
+      "hn_url": "https://news.ycombinator.com/item?id=47468004"
+    },
+    {
+      "title": "Show HN: Deterministic security solution for AI agents \u2013 OpenClaw and 2 more",
+      "points": 4,
+      "comments": 8,
+      "summary": "Security framework specifically designed for AI agents. Addresses the growing concern about autonomous AI systems by providing deterministic security controls for agent behaviour.",
+      "hn_url": "https://news.ycombinator.com/item?id=47466968"
+    },
+    {
+      "title": "Show HN: Vessel Browser \u2013 An open-source browser built for AI agents, not humans",
+      "points": 4,
+      "comments": 4,
+      "summary": "Open-source browser designed specifically for AI agent interaction rather than human use. Represents a shift towards infrastructure built for machine-first web browsing.",
+      "hn_url": "https://news.ycombinator.com/item?id=47470156"
+    },
+    {
+      "title": "Hive agents just beat OpenAI's Parameter Golf leaderboard (join the swarm!)",
+      "points": 3,
+      "comments": 2,
+      "summary": "Collaborative AI agent system achieves top performance on OpenAI's Parameter Golf challenge. Demonstrates the potential of swarm intelligence approaches to outperform individual AI models.",
+      "hn_url": "https://news.ycombinator.com/item?id=47472846"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-13",
+  "featured": [
+    {
+      "id": "ph-mmx-cli",
+      "name": "MMX-CLI",
+      "tagline": "Command-line interface giving AI agents native access to image, video, speech, music, vision, and search.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "MiniMax has packaged their entire generative AI stack into a proper Node.js CLI that works with Cursor, Claude Code, and OpenCode. This is the kind of practical tooling that makes multimodal AI accessible to developers without wrestling with APIs. Smart move to target the terminal-native crowd.",
+      "ph_url": "https://www.marktechpost.com/2026/04/12/minimax-releases-mmx-cli-a-command-line-interface-that-gives-ai-agents-native-access-to-image-video-speech-music-vision-and-search/",
+      "maker": "MiniMax",
+      "featured": true,
+      "added_at": "2026-04-13T06:00:00Z"
+    },
+    {
+      "id": "ph-openclaw",
+      "name": "OpenClaw",
+      "tagline": "Secure local-first agent runtime with gateway, skills, and controlled tool execution.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "A proper local agent runtime that doesn't phone home or leak your data to third parties. OpenClaw gets the security model right with schema validation and sandboxed execution. The Anthropic ban drama only proves this local-first approach matters more than ever.",
+      "ph_url": "https://www.marktechpost.com/2026/04/11/how-to-build-a-secure-local-first-agent-runtime-with-openclaw-gateway-skills-and-controlled-tool-execution/",
+      "maker": "Unknown",
+      "featured": true,
+      "added_at": "2026-04-13T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-revdiff",
+      "name": "Revdiff",
+      "tagline": "TUI diff reviewer with inline annotations designed for AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Finally, a diff tool built for the agent era. Instead of making humans parse through agent-generated code changes, Revdiff brings proper annotations and terminal UI to the review process. This is exactly the kind of human-agent interface tooling we need more of.",
+      "ph_url": "https://github.com/umputun/revdiff",
+      "maker": "umputun",
+      "featured": false,
+      "added_at": "2026-04-13T06:30:00Z"
+    },
+    {
+      "id": "ph-nb-cli",
+      "name": "Nb",
+      "tagline": "Notebook CLI designed for both humans and AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Jupyter notebooks through the terminal, but with AI agents as first-class citizens. The dual interface approach makes sense when you're bouncing between human exploration and agent execution. Clean implementation of a genuinely useful workflow tool.",
+      "ph_url": "https://github.com/jupyter-ai-contrib/nb-cli",
+      "maker": "jupyter-ai-contrib",
+      "featured": false,
+      "added_at": "2026-04-13T06:45:00Z"
+    },
+    {
+      "id": "ph-moat",
+      "name": "Moat",
+      "tagline": "Run AI agents in isolated containers for secure execution.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Proper containerisation for agent workloads, because we've all learned not to trust AI with direct system access. Moat tackles the isolation problem that most agent frameworks conveniently ignore. Essential infrastructure for production agent deployments.",
+      "ph_url": "https://majorcontext.com/moat/",
+      "maker": "Major Context",
+      "featured": false,
+      "added_at": "2026-04-13T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Revdiff \u2013 TUI diff reviewer with inline annotations for AI agents",
+      "points": 10,
+      "comments": 3,
+      "summary": "A terminal-based diff review tool specifically built for AI agent workflows. Brings proper annotations and review capabilities to agent-generated code changes.",
+      "hn_url": "https://news.ycombinator.com/item?id=47742437"
+    },
+    {
+      "title": "Show HN: The AI agent that can improve itself",
+      "points": 4,
+      "comments": 0,
+      "summary": "An experimental AI agent called GrimmBot that attempts to modify and improve its own codebase. Early stage self-modifying agent research with open source implementation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47742997"
+    },
+    {
+      "title": "Show HN: I built a project board where AI agents join as real teammates",
+      "points": 4,
+      "comments": 0,
+      "summary": "A collaborative project management tool that treats AI agents as team members rather than tools. Agents participate in sprint planning and task management alongside humans.",
+      "hn_url": "https://news.ycombinator.com/item?id=47742601"
+    },
+    {
+      "title": "Show HN: Run AI coding agents in real, local sandboxes, not Git worktrees",
+      "points": 4,
+      "comments": 0,
+      "summary": "SuperHQ provides proper sandbox environments for AI coding agents instead of using Git worktrees. Focuses on isolation and security for agent-driven development workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47741064"
+    },
+    {
+      "title": "Moat: Run AI agents in isolated containers",
+      "points": 3,
+      "comments": 1,
+      "summary": "Container isolation system specifically designed for AI agent execution. Addresses security concerns around agent system access through proper containerisation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47746591"
+    }
+  ]
+}

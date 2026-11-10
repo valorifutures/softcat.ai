@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import review from '../../data/prompt-retirements.json';
+import { getCollection } from 'astro:content';
+const kept = (await getCollection('prompts')).filter(entry => !entry.data.draft).length;
+const automated = review.entries.filter(entry => entry.origin === 'bot').length;
+const groups = [...new Set(review.entries.map(entry => entry.gitRecordedDate.slice(0, 7)))].sort().reverse();
+const fmt = (value: string) => new Date(value).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+<BaseLayout title="The prompt collection review" description="Why SOFT CAT replaced a broad prompt library with a smaller set of worked recipes, and where to inspect the retired templates.">
+  <div class="prompt-review workshop-shell"><header><a href="/prompts" class="text-link">← Prompt recipes</a><p class="eyebrow">THE COLLECTION REVIEW / 13 SEPTEMBER 2026</p><h1>A prompt is a request.<br /><em>It still needs a check.</em></h1><p>The collection is now {kept} revised recipes. We retired {review.entries.length} earlier templates and kept their original source history.</p></header>
+    <section class="prompt-review-decision"><h2>What changed</h2><p>The earlier collection included two versions of <a href="/prompts/agent-skill-evolution-validator">Agent Skill Evolution Validator</a> and two KV-cache optimisers. Other templates requested reliability scores, confidence numbers or diagnoses without a defined measurement. The <a href="https://github.com/valorifutures/softcat.ai/blob/e59fc7636547de6973c200c9f844f4ddfd94c549/src/content/prompts/data-extraction.md">earlier extraction template</a> promised “clean JSON every time”.</p><p>Those were requests to a model, not evidence that the requested validation had happened. The current recipes define the inputs, show a worked target and say how to judge the answer. The <a href="/lab/json-validator">JSON tool</a> performs actual schema checking separately.</p><p>We retired {automated} generated templates and {review.entries.length - automated} earlier templates. This is curation, not a claim that every old template failed. The retained tasks were rewritten, not certified. Specific code, arithmetic and query-plan checks are labelled where they were performed.</p></section>
+    <section class="prompt-review-decision"><h2>What an example means here</h2><p>A worked example is an illustrative input and target result. It is not presented as a saved response from a particular model. Different wording can meet the checks, and a single successful result cannot establish reliable model behaviour.</p><p>Templates open as editable drafts in Workbench. They are not saved or sent automatically. The prompt bot now proposes unpublished drafts for review. Updating that source does not verify or restart the separate server.</p><p>The old routes carry retirement notices and immutable Git links. Retired templates leave search, tag listings and the sitemap. Their first recorded Git dates are shown below because the original templates did not carry publication dates.</p></section>
+    <section class="prompt-retirement-list" aria-labelledby="prompt-retirement-heading"><h2 id="prompt-retirement-heading">The retired templates</h2><p>{review.entries.length} source records · Git history dates, not invented publication dates</p>{groups.map(group => { const entries = review.entries.filter(entry => entry.gitRecordedDate.startsWith(group)); return <details><summary>{new Date(group + '-01').toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })}<span>{entries.length} {entries.length === 1 ? 'template' : 'templates'}</span></summary><div>{entries.map(entry => <article><time datetime={entry.gitRecordedDate}>{fmt(entry.gitRecordedDate)}</time><div><h3><a href={`/prompts/${entry.id}`}>{entry.title}</a></h3><a class="prompt-original" href={`https://github.com/valorifutures/softcat.ai/blob/${entry.sourceRevision}/${entry.sourcePath}`}>Preserved source ↗</a></div></article>)}</div></details>; })}</section>
+    <p class="prompt-review-data"><a href="https://github.com/valorifutures/softcat.ai/blob/main/src/data/prompt-retirements.json">Inspect the source revisions, originating commits and blob hashes ↗</a></p>
+  </div>
+</BaseLayout>
+<style>
+  .prompt-review { max-width: 980px; padding-block: 3.5rem 5rem; color: #b9c3ad; }
+  header { max-width: 800px; }
+  header > .eyebrow { margin-top: 2rem; }
+  h1 { color: #eeeee5; font: 600 clamp(2.5rem, 5vw, 3.8rem)/1.15 var(--font-sans); letter-spacing: -.05em; margin-block: 1rem 1.5rem; }
+  h1 em { color: var(--workshop-lime); font-style: normal; }
+  header > p:not(.eyebrow) { font-size: 1rem; line-height: 1.9; }
+  h2 { color: #e0e8d7; font-size: 1.4rem; line-height: 1.5; font-weight: 500; letter-spacing: -.03em; margin-bottom: 1.1rem; }
+  .prompt-review-decision { border-top: 1px solid #3a4830; margin-top: 2.5rem; padding-top: 2rem; max-width: 800px; }
+  .prompt-review-decision p { font-size: .85rem; line-height: 1.95; margin-bottom: 1rem; }
+  .prompt-review-decision a { color: #cce1b2; text-decoration: underline; text-underline-offset: 3px; }
+  .prompt-retirement-list { margin-top: 3rem; }
+  .prompt-retirement-list > p { font: .65rem/1.9 var(--font-mono); margin-bottom: 1.3rem; }
+  details { border-top: 1px solid #39492f; }
+  details:last-child { border-bottom: 1px solid #39492f; }
+  summary { padding-block: 1.2rem; cursor: pointer; color: #deead4; font-size: .9rem; }
+  summary > span { float: right; color: #b6c9a4; font: .65rem/2 var(--font-mono); }
+  details article { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 1rem; padding-block: 1rem; border-top: 1px solid #2c3923; }
+  time { font: .65rem/1.9 var(--font-mono); color: #adbd9e; }
+  h3 { font-size: .86rem; color: #e0e7d8; line-height: 1.8; }
+  h3 a:hover { color: #cde7ac; }
+  .prompt-original { display: inline-flex; align-items: center; min-height: 44px; color: #c6dfac; font-size: .72rem; }
+  .prompt-review-data { margin-top: 1.5rem; font-size: .75rem; line-height: 1.9; }
+  .prompt-review-data a { color: #c8dfb1; text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 550px) { details article { grid-template-columns: 1fr; gap: .3rem; } }
+</style>

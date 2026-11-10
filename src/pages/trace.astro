@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Agent Trace Tape retired" description="Why we removed the old trace demo, and where to inspect the recorded pipeline activity.">
+  <meta slot="head" name="robots" content="noindex" />
+  <section class="workshop-shell trace-retirement">
+    <a href="/pipeline" class="text-link">← Pipeline records</a>
+    <p class="eyebrow">RETIRED / <time datetime="2026-09-13">13 SEPTEMBER 2026</time></p>
+    <h1>The trace was a drawing.</h1>
+    <p>The Agent Trace Tape was a visual demo with fixed run names, timings, counts and a “LIVE” label. Those figures were written into the page. They were not connected to the recorded pipeline activity.</p>
+    <p>We removed the demo because it looked like evidence of a real run. The <a href="/pipeline">Pipeline page</a> shows dated records and their limits. Those records do not establish that the separate bot server is running now.</p>
+    <div class="trace-actions"><a href="/pipeline" class="workshop-button primary">Read the actual records <span aria-hidden="true">↗</span></a><a href="https://github.com/valorifutures/softcat.ai/blob/45fb81662503f8f9e59ef64b046135d1279b615f/src/pages/trace.astro" class="text-link">Preserved demo source ↗</a></div>
+    <p class="trace-note">The earlier source remains in Git history. The homepage now links to the <a href="/lab/context-window">Context Budget Planner</a>, a working tool for planning a request.</p>
+  </section>
+</BaseLayout>
+<style>
+  .trace-retirement { max-width: 850px; padding-block: 3rem 5rem; }
+  .eyebrow { margin-top: 2rem; }
+  h1 { font: 500 clamp(2.4rem, 6vw, 4rem)/1.15 var(--font-sans); color: var(--color-text-bright); letter-spacing: -0.045em; margin-block: 1rem 1.5rem; }
+  p:not(.eyebrow) { max-width: 680px; color: var(--color-text-muted); line-height: 1.85; margin-block: 1rem; }
+  p a { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 4px; }
+  .trace-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-block: 2rem; }
+  .trace-note { border-top: 1px solid var(--workshop-rule); padding-top: 1.5rem; font-size: 0.85rem; }
+</style>

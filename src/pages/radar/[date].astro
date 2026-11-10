@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RadarFeaturedCard from '../../components/RadarFeaturedCard.astro';
+import RadarPickCard from '../../components/RadarPickCard.astro';
+
+import manifest from '../../data/radar/index.json';
+import { RADAR_VISIBLE_DAYS } from '../../utils/radar';
+
+export function getStaticPaths() {
+  return manifest.dates.slice(0, RADAR_VISIBLE_DAYS).map((date) => ({
+    params: { date },
+  }));
+}
+
+const visibleDates = manifest.dates.slice(0, RADAR_VISIBLE_DAYS);
+
+const { date } = Astro.params;
+
+// Lazy glob: only this date's file is read at build, not the entire archive.
+const dayFiles = import.meta.glob('../../data/radar/????-??-??.json');
+const dayKey = Object.keys(dayFiles).find((k) => k.includes(date));
+const dayData = dayKey ? ((await dayFiles[dayKey]()) as any).default : null;
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr + 'T00:00:00Z');
+  return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+const dateIndex = visibleDates.indexOf(date!);
+const newerDate = dateIndex > 0 ? visibleDates[dateIndex - 1] : null;
+const olderDate = dateIndex >= 0 && dateIndex < visibleDates.length - 1 ? visibleDates[dateIndex + 1] : null;
+---
+
+<BaseLayout title={`The Radar — ${date}`} description={`Archived AI product and launch picks recorded on ${date}. Original links and claims may have changed.`}>
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <header class="mb-8">
+      <a href="/radar" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; Radar archive</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-red">The Radar</h1>
+      <p class="text-text-muted mt-2">{formatDate(date!)}</p>
+      <aside class="mt-5 border-l-2 border-neon-amber bg-neon-amber/5 p-4 text-sm leading-relaxed text-text-muted" aria-label="Historical edition notice">
+        <p>This is a dated Radar edition, not a live product recommendation. External links, prices and product details may have changed. The daily series is not currently running.</p>
+      </aside>
+    </header>
+
+    <div class="glow-divider mb-6" style="--divider-color: rgba(218, 94, 116, 0.15)"></div>
+
+    <nav class="flex items-center justify-between mb-10">
+      {olderDate ? (
+        <a href={`/radar/${olderDate}`} class="font-mono text-sm text-text-muted hover:text-neon-red transition-colors flex items-center gap-2 bg-surface border border-surface-light rounded-lg px-4 py-2 hover:border-neon-red/30">
+          &larr; {olderDate}
+        </a>
+      ) : <span />}
+      {newerDate ? (
+        <a href={`/radar/${newerDate}`} class="font-mono text-sm text-text-muted hover:text-neon-red transition-colors flex items-center gap-2 bg-surface border border-surface-light rounded-lg px-4 py-2 hover:border-neon-red/30">
+          {newerDate} &rarr;
+        </a>
+      ) : (
+        <a href="/radar" class="font-mono text-sm text-text-muted hover:text-neon-red transition-colors flex items-center gap-2 bg-surface border border-surface-light rounded-lg px-4 py-2 hover:border-neon-red/30">
+          most recent archive &rarr;
+        </a>
+      )}
+    </nav>
+
+    {!dayData ? (
+      <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
+        <p class="font-mono text-sm text-text-muted">
+          <span class="text-neon-red">&#9679;</span> no data for this date.
+        </p>
+      </div>
+    ) : (
+      <div>
+        <div class="flex items-center justify-between mb-8">
+          <div class="font-mono text-sm text-text-muted">
+            <span class="text-neon-red">&#9632;</span>
+            <span class="ml-2">{formatDate(dayData.date)}</span>
+          </div>
+          <span class="font-mono text-xs text-text-muted">
+            {dayData.featured.length + dayData.picks.length} products
+          </span>
+        </div>
+
+        {dayData.featured.length > 0 && (
+          <section class="mb-12">
+            <h2 class="font-mono text-xs text-neon-red uppercase tracking-widest mb-6">Featured in this edition</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 ambient-glow" style="--glow-color: rgba(218, 94, 116, 0.035); --glow-color-alt: rgba(90, 184, 212, 0.025)">
+              {dayData.featured.map((item: any, index: number) => (
+                <RadarFeaturedCard item={item} index={index} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {dayData.picks.length > 0 && (
+          <section class="mb-12">
+            <h2 class="font-mono text-xs text-neon-red/70 uppercase tracking-widest mb-6">Also on the radar</h2>
+            <div class="grid gap-4">
+              {dayData.picks.map((item: any, index: number) => (
+                <RadarPickCard item={item} index={dayData.featured.length + index} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {dayData.hn_top5 && dayData.hn_top5.length > 0 && (
+          <section class="mb-12">
+            <h2 class="font-mono text-xs text-neon-amber uppercase tracking-widest mb-6">Hacker News</h2>
+            <div class="grid gap-4">
+              {dayData.hn_top5.map((story: any, index: number) => (
+                <a
+                  href={story.hn_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block relative glass-card rounded-xl card-glow card-lift group animate-stagger border-l-2 border-l-neon-amber/40 overflow-hidden"
+                  style={`--stagger-index: ${index}`}
+                >
+                  <div class="p-5 md:p-6">
+                    <div class="flex items-start justify-between gap-4">
+                      <div class="min-w-0">
+                        <div class="flex items-center gap-3 mb-1">
+                          <h3 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-amber transition-colors">
+                            {story.title}
+                          </h3>
+                          <span class="shrink-0 px-1.5 py-0.5 rounded text-xs font-mono bg-surface-light text-neon-amber/70">
+                            {story.points} pts
+                          </span>
+                          <span class="shrink-0 px-1.5 py-0.5 rounded text-xs font-mono bg-surface-light text-text-muted">
+                            {story.comments} comments
+                          </span>
+                        </div>
+                        <p class="text-sm text-text-muted leading-relaxed">{story.summary}</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+    )}
+
+  </div>
+</BaseLayout>

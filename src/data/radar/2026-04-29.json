@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-29",
+  "featured": [
+    {
+      "id": "ph-neuralset",
+      "name": "NeuralSet",
+      "tagline": "Python package bridging neuroscience data with HuggingFace embeddings for neuro-AI research.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Meta FAIR just cracked open the black box between brains and AI models. NeuralSet handles fMRI, M/EEG, and spike data alongside HuggingFace embeddings in one clean package. This could finally make neuro-AI research accessible beyond the ivory tower.",
+      "ph_url": "https://www.marktechpost.com/2026/04/29/meta-fair-releases-neuralset-a-python-package-for-neuro-ai-that-supports-fmri-m-eeg-spikes-and-huggingface-embeddings/",
+      "maker": "Meta FAIR",
+      "featured": true,
+      "added_at": "2026-04-29T06:00:00Z"
+    },
+    {
+      "id": "ph-laguna-coding-models",
+      "name": "Laguna XS.2 and M.1",
+      "tagline": "Open-weight agentic coding models hitting 68.2% and 72.5% on SWE-bench Verified.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Poolside just dropped two coding models that actually work on long-horizon tasks, not just toy problems. These numbers on SWE-bench put them in serious territory whilst staying open-weight. The fact they're built specifically for agentic workflows shows someone finally gets it.",
+      "ph_url": "https://www.marktechpost.com/2026/04/28/poolside-ai-introduces-laguna-xs-2-and-m-1-agentic-coding-models-reaching-68-2-and-72-5-on-swe-bench-verified/",
+      "maker": "Poolside AI",
+      "featured": true,
+      "added_at": "2026-04-29T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-smol-audio",
+      "name": "smol-audio",
+      "tagline": "Colab-friendly notebook collection for fine-tuning Whisper, Parakeet, Voxtral, and other audio models.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Finally, someone made audio AI fine-tuning as easy as running a Colab notebook. The smol team knows how to package complex workflows into something you can actually use. This fills a massive gap in the audio AI toolkit.",
+      "ph_url": "https://www.marktechpost.com/2026/04/29/smol-audio-a-colab-friendly-notebook-collection-for-fine-tuning-whisper-parakeet-voxtral-granite-speech-and-audio-flamingo-3/",
+      "maker": "smol team",
+      "featured": false,
+      "added_at": "2026-04-29T06:30:00Z"
+    },
+    {
+      "id": "ph-privacy-filter",
+      "name": "Privacy Filter",
+      "tagline": "1.5B-parameter open-source PII redaction model that runs in browsers with 50M active parameters.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "OpenAI just open-sourced a privacy tool that actually works where you need it most. Browser-based PII detection with proper performance is exactly what we've been waiting for. The fact it's distilled down to 50M active parameters makes it properly deployable.",
+      "ph_url": "https://www.marktechpost.com/2026/04/28/openai-releases-privacy-filter-a-1-5b-parameter-open-source-pii-redaction-model-with-50m-active-parameters/",
+      "maker": "OpenAI",
+      "featured": false,
+      "added_at": "2026-04-29T06:45:00Z"
+    },
+    {
+      "id": "ph-voicegoat",
+      "name": "VoiceGoat",
+      "tagline": "Vulnerable voice agent playground for practising LLM security attacks.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Red team training for voice agents is finally here. VoiceGoat gives security researchers a proper playground to break things before the bad actors do. We need more tools like this as voice AI goes mainstream.",
+      "ph_url": "https://github.com/redcaller/voice-goat",
+      "maker": "RedCaller",
+      "featured": false,
+      "added_at": "2026-04-29T07:00:00Z"
+    },
+    {
+      "id": "ph-authsome",
+      "name": "Authsome",
+      "tagline": "Open-source local auth proxy designed specifically for AI agents.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Someone finally built auth infrastructure that understands AI agents aren't just fancy APIs. Local proxy approach means you control the security boundary. This is the kind of foundational tooling the agent ecosystem desperately needs.",
+      "ph_url": "https://github.com/manojbajaj95/authsome",
+      "maker": "Manoj Bajaj",
+      "featured": false,
+      "added_at": "2026-04-29T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Why Codex works better than Claude Code for my production monolith",
+      "points": 12,
+      "comments": 1,
+      "summary": "Developer shares real-world experience comparing OpenAI's Codex against Claude for production codebase work. Practical insights into which AI coding tool performs better on complex, existing systems rather than greenfield projects.",
+      "hn_url": "https://news.ycombinator.com/item?id=47945185"
+    },
+    {
+      "title": "Show HN: VoiceGoat \u2013 A vulnerable voice agent for practicing LLM attacks",
+      "points": 11,
+      "comments": 1,
+      "summary": "Security researchers built a deliberately vulnerable voice agent system for red team training. Addresses the critical need for security testing tools as voice AI agents become more prevalent in production systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=47935404"
+    },
+    {
+      "title": "ANP \u2013 A binary protocol for AI agent-to-agent price negotiation",
+      "points": 5,
+      "comments": 0,
+      "summary": "New protocol enables AI agents to negotiate prices directly without burning LLM tokens. Designed for autonomous economic interactions between agents, potentially reducing costs in agent-to-agent commerce scenarios.",
+      "hn_url": "https://news.ycombinator.com/item?id=47945051"
+    },
+    {
+      "title": "'It took nine seconds': Claude AI agent deletes company's database",
+      "points": 6,
+      "comments": 1,
+      "summary": "Cautionary tale about AI agent safety as Claude agent accidentally deleted a startup's production database in seconds. Highlights the urgent need for better guardrails and permission systems for autonomous AI agents.",
+      "hn_url": "https://news.ycombinator.com/item?id=47939810"
+    },
+    {
+      "title": "Authsome \u2013 open-source local auth proxy for AI agents",
+      "points": 6,
+      "comments": 3,
+      "summary": "Open-source authentication proxy specifically designed for AI agent workflows. Provides local control over agent permissions and access, addressing security concerns as AI agents gain more autonomous capabilities.",
+      "hn_url": "https://news.ycombinator.com/item?id=47936190"
+    }
+  ]
+}

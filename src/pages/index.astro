@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ActivityTicker from '../components/ActivityTicker.astro';
+import { getCollection } from 'astro:content';
+import FeralSpotlight from '../components/FeralSpotlight.astro';
+const thoughts = (await getCollection('thoughts')).filter((entry) => !entry.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const notes = thoughts.filter((entry) => entry.data.tags.includes('field-notes'));
+const latestNote = notes[0];
+const earlierNotes = notes.slice(1, 3);
+const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const experiments = [
+  { index: '01', title: 'Domain & Outage Checker', text: 'Check real DNS answers. Make a report before you guess what is down.', href: '/lab/outage-check', category: 'CHECK A DOMAIN', glyph: '↯', colour: 'peach' },
+  { index: '02', title: 'Prompt Workbench', text: 'Build, compare and keep the prompts that earn their place.', href: '/lab/prompt-workbench', category: 'MAKE SOMETHING', glyph: '{ }', colour: 'cyan' },
+  { index: '03', title: 'JSON Output Validator', text: 'Check what a model returned before your next step depends on it.', href: '/lab/json-validator', category: 'CHECK THE OUTPUT', glyph: '✓', colour: 'lilac' },
+];
+---
+<BaseLayout description="An independent AI workshop by Valori. Useful tools, evidence-led predictions and a new research programme into verifiable cooperation between agents.">
+  <Hero />
+  <ActivityTicker />
+
+  <section class="workshop-shell research-invitation" aria-labelledby="research-heading">
+    <div><p class="eyebrow">FOLLOW THE EVIDENCE</p><h2 id="research-heading">Permission withdrawn.<br />Can the agent still act?</h2><p>One task must stop. Another may continue. Step through a recorded local test and see what was requested, what was refused and what actually changed.</p></div>
+    <div class="research-invitation-status"><span>INTERACTIVE REPLAY / RECORDED EVIDENCE</span><p>Four situations. Inspectable outcomes.<br />Scripted requests, with real service records.</p><a href="/research/can-it-act/">Can it still act? Follow the replay <span aria-hidden="true">↗</span></a></div>
+  </section>
+
+  <section class="workshop-shell workshop-section" aria-labelledby="bench-heading">
+    <div class="workshop-section-heading"><div><p class="eyebrow">THE WORKBENCH</p><h2 id="bench-heading">Less watching. More trying.</h2></div><a class="text-link" href="/tools">All tools <span aria-hidden="true">↗</span></a></div>
+    <div class="experiment-grid">{experiments.map((experiment) => <a class={`bench-card ${experiment.colour}`} href={experiment.href}>
+      <div class="bench-meta"><span>{experiment.category}</span><span>{experiment.index}</span></div>
+      <div class="bench-glyph" aria-hidden="true">{experiment.glyph}</div>
+      <h3>{experiment.title}</h3><p>{experiment.text}</p><span class="bench-open">Open experiment <span aria-hidden="true">↗</span></span>
+    </a>)}</div>
+  </section>
+
+  <FeralSpotlight />
+
+  <section class="workshop-shell workshop-section" aria-labelledby="notebook-heading">
+    <div class="workshop-section-heading"><div><p class="eyebrow">NOTES FROM THE WORKSHOP</p><h2 id="notebook-heading">The work, including the rough edges.</h2></div><a class="text-link" href="/notebook">The notebook <span aria-hidden="true">↗</span></a></div>
+    {latestNote && <a class="notebook-feature" href={`/thoughts/${latestNote.id}`}>
+      <div class="notebook-date"><span>FIELD NOTE</span><time datetime={latestNote.data.date.toISOString()}>{fmt(latestNote.data.date)}</time><span class="notebook-mark" aria-hidden="true">↳</span></div>
+      <div><h3>{latestNote.data.title}</h3><p>{latestNote.data.summary}</p><span class="text-link">Read the entry <span aria-hidden="true">→</span></span></div>
+    </a>}
+    <div class="archive-note"><span class="eyebrow">MORE FROM THE BUILD DIARY</span><a href="/thoughts" class="text-link">Thoughts &amp; corrections →</a></div>
+    <div class="archive-grid">{earlierNotes.map((entry) => <a href={`/thoughts/${entry.id}`}><time datetime={entry.data.date.toISOString()}>{fmt(entry.data.date)}</time><h3>{entry.data.title}</h3></a>)}</div>
+  </section>
+
+  <section class="workshop-shell workshop-section horizon-feral" aria-label="Find a starting point">
+    <a href="/lab/agent-check" class="horizon-invitation">
+      <p class="eyebrow">EXPERIMENT 01</p><h2>Should this be<br />an agent?</h2>
+      <p>Six questions about your task. Find a useful starting point, from a simple script to a workflow or an agent.</p>
+      <div class="horizon-lanes" aria-hidden="true"><span>SCRIPT</span><span>WORKFLOW</span><span>AGENT ↗</span></div>
+    </a>
+    <a href="/glossary" class="feral-invitation glossary-invitation">
+      <p class="eyebrow">MAKE SENSE OF THE LANGUAGE</p><h2>Less jargon.<br />More understanding.</h2>
+      <p>Context windows, benchmarks, agents and the terms behind the tools. Plain explanations, with somewhere useful to go next.</p>
+      <div class="feral-bottom"><span>Open the glossary</span><span aria-hidden="true">↗</span></div>
+    </a>
+  </section>
+
+  <section class="workshop-shell workshop-about">
+    <div><p class="eyebrow">SMART OUTPUTS FROM TRAINED<br />CONVERSATIONAL AI TECHNOLOGY</p><h2>That is the name.<br />Useful is the aim.</h2></div>
+    <div><p>SOFT CAT is an independent project by Valori. Explore what AI might do next through Horizon, inspect what we have tested in Research, and see what autonomous creation produces in Feral.</p><p>Our research follows requests, permissions and actual outcomes. The current studies use scripted inputs. Live-model comparisons are still ahead. Every claim should have evidence you can inspect.</p><a href="/constitution" class="text-link">Read our constitution →</a></div>
+  </section>
+</BaseLayout>
+
+<style>
+  .research-invitation { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); gap: 2rem 4rem; padding: 2.5rem; margin-block: 2.5rem 1rem; background: #e7eadf; color: #243022; border-top: 5px solid #b7d68f; }
+  .research-invitation .eyebrow { color: #506049; }
+  .research-invitation h2 { font: 600 clamp(1.9rem, 3.5vw, 2.7rem)/1.12 var(--font-sans); letter-spacing: -.045em; margin: 1rem 0; }
+  .research-invitation p:not(.eyebrow) { font-size: .88rem; line-height: 1.8; max-width: 55ch; color: #4b5945; }
+  .research-invitation-status { align-self: end; border-top: 1px solid #b9c4b0; padding-top: 1.3rem; }
+  .research-invitation-status > span { font: .6rem/1.6 var(--font-mono); color: #506049; }
+  .research-invitation-status p { margin-top: .8rem; }
+  .research-invitation a { display: flex; justify-content: space-between; align-items: center; min-height: 48px; margin-top: 1.2rem; font-size: .85rem; color: #28441e; border-bottom: 1px solid #9cad8b; }
+  .research-invitation a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .research-invitation a:focus-visible { outline: 2px solid #365e2b; outline-offset: 4px; }
+  @media (max-width: 740px) { .research-invitation { grid-template-columns: minmax(0, 1fr); padding: 1.75rem; margin-block: 1.5rem 1rem; } }
+</style>

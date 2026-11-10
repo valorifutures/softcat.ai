@@ -1,0 +1,11 @@
+[Unit]
+Description=SOFT CAT AI News Digest bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=coxy412
+WorkingDirectory=/home/coxy412/websites/softcat
+ExecStart=/home/coxy412/websites/softcat/bot/venv/bin/python3 /home/coxy412/websites/softcat/bot/ai_news_digest.py
+Environment=HOME=/home/coxy412

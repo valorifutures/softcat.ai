@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-16",
+  "featured": [
+    {
+      "id": "ph-gemini-31-flash-tts",
+      "name": "Gemini 3.1 Flash TTS",
+      "tagline": "Google's most expressive text-to-speech model with 70+ language support.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google's throwing down the gauntlet in voice synthesis with natural-language audio tags and multi-speaker dialogue support. The 70+ language coverage positions this as the first truly global TTS solution. This isn't just another voice model, it's infrastructure for the next wave of conversational AI.",
+      "ph_url": "https://www.marktechpost.com/2026/04/15/google-ai-launches-gemini-3-1-flash-tts-a-new-benchmark-in-expressive-and-controllable-ai-voice/",
+      "maker": "Google AI",
+      "featured": true,
+      "added_at": "2026-04-16T06:00:00Z"
+    },
+    {
+      "id": "ph-adobe-firefly-assistant",
+      "name": "Adobe Firefly AI Assistant",
+      "tagline": "AI agent that manages creative workflows across Adobe's entire suite from a single chat interface.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Adobe's betting that creatives want one AI to rule them all rather than scattered features across apps. The cross-app orchestration could be a game changer for complex workflows. If they nail the UX, this turns Creative Cloud into the first truly agentic design platform.",
+      "ph_url": "https://techcrunch.com/2026/04/15/adobes-new-firefly-ai-assistant-can-use-creative-cloud-apps-to-complete-tasks/",
+      "maker": "Adobe",
+      "featured": true,
+      "added_at": "2026-04-16T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-deepl-voice",
+      "name": "DeepL Voice Translation",
+      "tagline": "Real-time voice translation for meeting tools like Zoom and Teams.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "DeepL's moving beyond text with voice translation that could actually work in real meetings. Their translation quality advantage might translate to voice. The Zoom/Teams integration suggests they're targeting enterprise from day one.",
+      "ph_url": "https://techcrunch.com/2026/04/16/deepl-known-for-text-translation-now-wants-to-translate-your-voice/",
+      "maker": "DeepL",
+      "featured": false,
+      "added_at": "2026-04-16T06:30:00Z"
+    },
+    {
+      "id": "ph-gemini-mac-app",
+      "name": "Gemini for Mac",
+      "tagline": "Native Mac app that can share anything on screen with Gemini for contextual help.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google's finally building proper desktop AI with screen sharing and local file access. The contextual awareness of what you're looking at could make this genuinely useful. Native apps are where the real AI productivity gains happen.",
+      "ph_url": "https://techcrunch.com/2026/04/15/google-rolls-out-a-native-gemini-app-for-mac/",
+      "maker": "Google",
+      "featured": false,
+      "added_at": "2026-04-16T06:45:00Z"
+    },
+    {
+      "id": "ph-libretto",
+      "name": "Libretto",
+      "tagline": "Making AI browser automations deterministic.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Browser automation is still brittle as hell, and AI hasn't fixed the core determinism problem. Libretto's tackling the unsexy but critical infrastructure needed for reliable web agents. This is the kind of unglamorous tooling that enables the next wave of agentic apps.",
+      "ph_url": "https://github.com/saffron-health/libretto",
+      "maker": "Saffron Health",
+      "featured": false,
+      "added_at": "2026-04-16T07:00:00Z"
+    },
+    {
+      "id": "ph-openai-agents-sdk-update",
+      "name": "OpenAI Agents SDK Update",
+      "tagline": "Enhanced SDK with sandbox support for safer enterprise AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Sandboxing is what's been missing from agent development. OpenAI's adding the safety rails enterprises need to deploy agents in production. The timing suggests they're preparing for a wave of enterprise agent deployments.",
+      "ph_url": "https://techcrunch.com/2026/04/15/openai-updates-its-agents-sdk-to-help-enterprises-build-safer-more-capable-agents/",
+      "maker": "OpenAI",
+      "featured": false,
+      "added_at": "2026-04-16T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Libretto \u2013 Making AI browser automations deterministic",
+      "points": 101,
+      "comments": 36,
+      "summary": "Open source tool addressing the reliability problem in AI browser automation. Focuses on making web scraping and automation workflows more predictable and less brittle.",
+      "hn_url": "https://news.ycombinator.com/item?id=47780971"
+    },
+    {
+      "title": "MCP as Observability Interface: Connecting AI Agents to Kernel Tracepoints",
+      "points": 34,
+      "comments": 13,
+      "summary": "Using Model Context Protocol to give AI agents deep system observability through kernel tracing. Shows how agents could debug and monitor systems at the OS level.",
+      "hn_url": "https://news.ycombinator.com/item?id=47778617"
+    },
+    {
+      "title": "Show HN: Jeeves \u2013 TUI for browsing and resuming AI agent sessions",
+      "points": 10,
+      "comments": 3,
+      "summary": "Terminal interface for managing multiple AI agent sessions. Helps developers keep track of and resume conversations across different AI workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47784060"
+    },
+    {
+      "title": "Show HN: Lazyagent \u2013 TUI for to watch all your AI coding agents",
+      "points": 8,
+      "comments": 0,
+      "summary": "Terminal dashboard for monitoring AI coding agents in real-time. Provides oversight when multiple AI agents are working on code simultaneously.",
+      "hn_url": "https://news.ycombinator.com/item?id=47778479"
+    },
+    {
+      "title": "Why Vibe Coding Fails",
+      "points": 7,
+      "comments": 4,
+      "summary": "Analysis of why intuitive, flow-based coding approaches often don't work in practice. Discusses the gap between how we think we code and how effective coding actually happens.",
+      "hn_url": "https://news.ycombinator.com/item?id=47778946"
+    }
+  ]
+}

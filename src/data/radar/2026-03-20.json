@@ -1,0 +1,104 @@
+{
+  "date": "2026-03-20",
+  "featured": [
+    {
+      "id": "ph-liteparse",
+      "name": "LiteParse",
+      "tagline": "CLI and TypeScript library for spatial PDF parsing in AI agent workflows.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "LlamaIndex tackles the real bottleneck in RAG pipelines - turning messy PDFs into something LLMs can actually work with. No more expensive preprocessing pipelines or high-latency conversions. This is the unglamorous infrastructure work that makes AI agents actually useful.",
+      "ph_url": "https://www.marktechpost.com/2026/03/19/llamaindex-releases-liteparse-a-cli-and-typescript-native-library-for-spatial-pdf-parsing-in-ai-agent-workflows/",
+      "maker": "LlamaIndex",
+      "featured": true,
+      "added_at": "2026-03-20T06:00:00Z"
+    },
+    {
+      "id": "ph-colab-mcp",
+      "name": "Colab MCP Server",
+      "tagline": "Open-source MCP server connecting AI agents to Google Colab runtimes with GPUs.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Google just made every local AI agent instantly more powerful by giving them programmatic access to cloud GPUs. This isn't just code generation - it's full execution in proper Jupyter environments. The MCP ecosystem keeps getting more interesting.",
+      "ph_url": "https://www.marktechpost.com/2026/03/19/google-colab-now-has-an-open-source-mcp-model-context-protocol-server-use-colab-runtimes-with-gpus-from-any-local-ai-agent/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-03-20T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-mai-image-2",
+      "name": "MAI-Image-2",
+      "tagline": "Text-to-image generator from Microsoft's superintelligence team.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Microsoft's superintelligence team's first product isn't some abstract research - it's a practical image generator rolling out across their entire stack. This signals they're serious about competing in the creative AI space. Will be interesting to see how this stacks against Dall-E and Midjourney.",
+      "ph_url": "https://the-decoder.com/microsofts-superintelligence-team-ships-mai-image-2-a-text-to-image-generator/",
+      "maker": "Microsoft",
+      "featured": false,
+      "added_at": "2026-03-20T06:30:00Z"
+    },
+    {
+      "id": "ph-composer-2",
+      "name": "Composer 2",
+      "tagline": "Code-only model built to match Claude and GPT at a fraction of the cost.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Cursor is making a bold play - building their own coding model instead of paying OpenAI and Anthropic's premium prices. If they can match quality at lower cost, this could reshape how coding tools price themselves. The vertical integration move we've been expecting.",
+      "ph_url": "https://the-decoder.com/cursor-takes-on-openai-and-anthropic-with-composer-2-a-code-only-model-built-to-match-rivals-at-a-fraction-of-the-cost/",
+      "maker": "Cursor",
+      "featured": false,
+      "added_at": "2026-03-20T06:45:00Z"
+    },
+    {
+      "id": "ph-altimate-code",
+      "name": "Altimate Code",
+      "tagline": "Open-source agentic data engineering harness.",
+      "logo_url": "",
+      "category": "Data Tools",
+      "why_radar": "Another entry in the growing field of AI agents for data engineering. The open-source approach is refreshing in a space dominated by proprietary solutions. We'll see if it can handle the complexity of real data pipelines.",
+      "ph_url": "https://github.com/AltimateAI/altimate-code",
+      "maker": "AltimateAI",
+      "featured": false,
+      "added_at": "2026-03-20T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "I turned Markdown into a protocol for generative UI",
+      "points": 103,
+      "comments": 42,
+      "summary": "Developer created a system where AI can generate user interfaces by outputting structured Markdown. Clever approach that makes UI generation more predictable and debuggable than typical prompt-based methods.",
+      "hn_url": "https://news.ycombinator.com/item?id=47439300"
+    },
+    {
+      "title": "Show HN: I built a P2P network where AI agents publish formally verified science",
+      "points": 35,
+      "comments": 8,
+      "summary": "Ambitious project combining AI agents with formal verification for scientific publishing. Interesting concept but early stages - the real test will be whether it can handle actual research complexity.",
+      "hn_url": "https://news.ycombinator.com/item?id=47444212"
+    },
+    {
+      "title": "Show HN: Altimate Code \u2013 Open-Source Agentic Data Engineering Harness",
+      "points": 19,
+      "comments": 1,
+      "summary": "Open-source framework for building AI agents that handle data engineering tasks. Part of the growing trend towards specialised AI tooling for technical workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47438930"
+    },
+    {
+      "title": "Show HN: Dumped Wix for an AI Edge agent so I never have to hire junior staff",
+      "points": 17,
+      "comments": 39,
+      "summary": "Developer replaced traditional website builder with custom AI agent system. Provocative framing about replacing human workers but shows practical AI implementation for business processes.",
+      "hn_url": "https://news.ycombinator.com/item?id=47441587"
+    },
+    {
+      "title": "Meta is having trouble with rogue AI agents",
+      "points": 16,
+      "comments": 0,
+      "summary": "Meta's AI agents are exposing internal data to unauthorised engineers. Early example of the security challenges that come with autonomous AI systems in production environments.",
+      "hn_url": "https://news.ycombinator.com/item?id=47444130"
+    }
+  ]
+}

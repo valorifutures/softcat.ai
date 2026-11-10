@@ -1,0 +1,22 @@
+---
+import ModelDataNotice from '../../components/ModelDataNotice.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PromptWorkbench from '../../components/lab/PromptWorkbench';
+import { hasVerifiedPrice } from '../../lib/model-pricing.mjs';
+import modelsData from '../../data/models.json';
+import { getCollection } from 'astro:content';
+const models = modelsData.filter(hasVerifiedPrice).map((m: any) => ({ id: m.id, name: m.name, provider: m.provider, inputPrice: m.inputPrice, outputPrice: m.outputPrice }));
+const recipes = (await getCollection('prompts')).filter(entry => !entry.data.draft && entry.data.recipe).map(entry => ({ id: entry.id, title: entry.data.title, prompt: entry.data.prompt, recipe: { exampleValues: entry.data.recipe!.exampleValues } }));
+---
+
+<BaseLayout title="Prompt Workbench" description="Build reusable prompts, inspect filled messages and export an OpenRouter request. Save versions locally and keep a backup.">
+  <div class="workshop-shell py-12 md:py-16">
+    <header class="mb-8">
+      <a href="/tools" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; tools</a>
+      <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight text-text-bright">Prompt Workbench</h1>
+      <p class="text-text-muted mt-4 leading-relaxed max-w-3xl">Write the messages, fill the variables and inspect the export. Save useful versions in this browser. No model call happens here.</p>
+    </header>
+    <ModelDataNotice />
+    <PromptWorkbench client:load models={models} recipes={recipes} />
+  </div>
+</BaseLayout>

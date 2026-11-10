@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-25",
+  "featured": [
+    {
+      "id": "ph-vision-banana",
+      "name": "Vision Banana",
+      "tagline": "Instruction-tuned image generator that beats SAM 3 on segmentation and Depth Anything V3 on metric depth estimation.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google DeepMind's latest proves that image generation pretraining might be to computer vision what GPT was to language. The benchmark numbers against established models like SAM 3 suggest we're watching the emergence of unified vision models that can handle multiple tasks without specialised training.",
+      "ph_url": "https://www.marktechpost.com/2026/04/25/google-deepmind-introduces-vision-banana-an-instruction-tuned-image-generator-that-beats-sam-3-on-segmentation-and-depth-anything-v3-on-metric-depth-estimation/",
+      "maker": "Google DeepMind",
+      "featured": true,
+      "added_at": "2026-04-25T06:00:00Z"
+    },
+    {
+      "id": "ph-gitnexus",
+      "name": "GitNexus",
+      "tagline": "Open-source MCP-native knowledge graph engine that gives Claude Code and Cursor full codebase structural awareness.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Finally, someone tackled the fundamental problem of AI coding assistants editing code they don't actually understand. GitNexus builds knowledge graphs of your entire codebase structure, giving agents proper context instead of blind pattern matching. With 19,000 GitHub stars already, developers clearly needed this.",
+      "ph_url": "https://www.marktechpost.com/2026/04/24/meet-gitnexus-an-open-source-mcp-native-knowledge-graph-engine-that-gives-claude-code-and-cursor-full-codebase-structural-awareness/",
+      "maker": "Abhigyan Patwari",
+      "featured": true,
+      "added_at": "2026-04-25T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-deepseek-v4",
+      "name": "DeepSeek-V4",
+      "tagline": "Compressed sparse attention architecture enabling one-million-token contexts with 1.6T total parameters.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "DeepSeek's new compression techniques make million-token contexts actually practical rather than just technically possible. The dual model approach with V4-Pro and V4-Flash shows they understand inference economics matter as much as raw capability.",
+      "ph_url": "https://www.marktechpost.com/2026/04/24/deepseek-ai-releases-deepseek-v4-compressed-sparse-attention-and-heavily-compressed-attention-enable-one-million-token-contexts/",
+      "maker": "DeepSeek AI",
+      "featured": false,
+      "added_at": "2026-04-25T06:30:00Z"
+    },
+    {
+      "id": "ph-browser-harness",
+      "name": "Browser Harness",
+      "tagline": "Gives LLMs freedom to complete any browser task through automated interaction.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Browser automation for LLMs that actually works across different sites without custom scripting. The freedom to interact with any web interface could unlock proper web agents instead of the limited API-only tools we have now.",
+      "ph_url": "https://github.com/browser-use/browser-harness",
+      "maker": "browser-use",
+      "featured": false,
+      "added_at": "2026-04-25T06:45:00Z"
+    },
+    {
+      "id": "ph-mend-ai-governance",
+      "name": "AI Security Governance Framework",
+      "tagline": "Comprehensive framework covering AI asset inventory, risk tiering, and supply chain security.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Finally, a practical playbook for AI governance that goes beyond compliance theatre. Mend's framework tackles the real operational challenges of securing AI systems before the next security incident forces the conversation.",
+      "ph_url": "https://www.marktechpost.com/2026/04/23/mend-releases-ai-security-governance-framework/",
+      "maker": "Mend.io",
+      "featured": false,
+      "added_at": "2026-04-25T07:00:00Z"
+    },
+    {
+      "id": "ph-stash-memory",
+      "name": "Stash",
+      "tagline": "Open source memory layer so any AI agent can do what Claude.ai and ChatGPT do.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "The missing infrastructure piece for building stateful AI agents. Instead of reinventing memory systems for every project, Stash provides the persistent context layer that makes agents actually remember things between conversations.",
+      "ph_url": "https://alash3al.github.io/stash?_v01",
+      "maker": "alash3al",
+      "featured": false,
+      "added_at": "2026-04-25T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Browser Harness \u2013 Gives LLM freedom to complete any browser task",
+      "points": 97,
+      "comments": 52,
+      "summary": "An open-source tool that lets LLMs interact with web browsers to complete tasks automatically. The project aims to give AI agents the ability to navigate and use any website without requiring custom scripting or API access.",
+      "hn_url": "https://news.ycombinator.com/item?id=47890841"
+    },
+    {
+      "title": "Open source memory layer so any AI agent can do what Claude.ai and ChatGPT do",
+      "points": 25,
+      "comments": 6,
+      "summary": "Stash provides persistent memory capabilities for AI agents, allowing them to maintain context across conversations. This addresses the fundamental limitation of stateless AI interactions by providing a shared memory infrastructure.",
+      "hn_url": "https://news.ycombinator.com/item?id=47897790"
+    },
+    {
+      "title": "MenteDB \u2013 open-source memory database for AI agents (Rust)",
+      "points": 16,
+      "comments": 1,
+      "summary": "A Rust-based memory database designed specifically for AI agents to store and retrieve contextual information. The project focuses on providing efficient memory management for agent-based AI systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=47894985"
+    },
+    {
+      "title": "AI Agent Designs a RISC-V CPU Core from Scratch",
+      "points": 9,
+      "comments": 0,
+      "summary": "An AI system successfully designed a complete RISC-V processor core without human intervention. The achievement demonstrates AI's capability to handle complex hardware design tasks that traditionally required significant human expertise.",
+      "hn_url": "https://news.ycombinator.com/item?id=47894337"
+    },
+    {
+      "title": "Show HN: VT Code \u2013 Rust TUI coding agent with multi-provider support",
+      "points": 6,
+      "comments": 2,
+      "summary": "A terminal-based coding assistant built in Rust that supports multiple AI providers. The tool provides a text user interface for developers to interact with various AI coding models directly from their terminal.",
+      "hn_url": "https://news.ycombinator.com/item?id=47898308"
+    }
+  ]
+}

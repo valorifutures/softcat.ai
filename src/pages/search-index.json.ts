@@ -1,0 +1,143 @@
+import type { APIRoute } from 'astro';
+import { getCollection } from 'astro:content';
+import toolsManifest from '../data/tools-manifest.json';
+import feralManifest from '../content/feral/manifest.json';
+import radarManifest from '../data/radar/index.json';
+import { RADAR_VISIBLE_DAYS } from '../utils/radar';
+import predictionHistory from '../data/horizon/prediction-history.json';
+import { latestPredictions } from '../lib/horizon-predictions.mjs';
+import { FUTURES } from '../lib/horizon-explorer.mjs';
+
+export const GET: APIRoute = async () => {
+  const [news, thoughts, tools, prompts, glossary, forecasts, scenarios] = await Promise.all([
+    getCollection('news-and-updates'),
+    getCollection('thoughts'),
+    getCollection('tools'),
+    getCollection('prompts'),
+    getCollection('glossary'),
+    getCollection('horizonNext'),
+    getCollection('horizonScenarios'),
+  ]);
+
+  const entries: Array<{
+    title: string;
+    summary: string;
+    url: string;
+    type: string;
+    tags?: string[];
+    date?: string;
+  }> = [];
+
+  for (const e of news.filter((n) => !n.data.draft)) {
+    entries.push({
+      title: e.data.title,
+      summary: e.data.summary,
+      url: `/news-and-updates/${e.id}`,
+      type: 'news',
+      tags: e.data.tags,
+      date: e.data.date.toISOString().slice(0, 10),
+    });
+  }
+
+  for (const e of thoughts.filter((t) => !t.data.draft)) {
+    entries.push({
+      title: e.data.title,
+      summary: e.data.summary,
+      url: `/thoughts/${e.id}`,
+      type: 'thought',
+      tags: e.data.tags,
+      date: e.data.date.toISOString().slice(0, 10),
+    });
+  }
+
+  for (const e of tools.filter((t) => !t.data.draft)) {
+    entries.push({
+      title: e.data.title,
+      summary: e.data.description,
+      url: `/tools/${e.id}`,
+      type: 'guide',
+      date: e.data.date.toISOString().slice(0, 10),
+      tags: e.data.tags,
+    });
+  }
+
+  entries.push({ title: 'The tool collection review', summary: 'Retired external recommendations, corrected local tool guides and preserved source history.', url: '/tools/review', type: 'page', tags: ['tools', 'review', 'retired', 'corrections', 'removed'] });
+
+  for (const e of prompts.filter((p) => !p.data.draft)) {
+    entries.push({
+      title: e.data.title,
+      summary: e.data.description,
+      url: `/prompts/${e.id}`,
+      type: 'prompt',
+      tags: e.data.tags,
+    });
+  }
+
+  for (const entry of glossary.filter(item => !item.data.draft)) entries.push({ title: entry.data.title, summary: entry.data.description, url: `/glossary/${entry.id}`, type: 'glossary', tags: entry.data.tags });
+  for (const entry of forecasts) entries.push({ title: entry.data.title, summary: entry.data.why_it_matters, url: `/horizon/record#${entry.data.id}`, type: 'forecast', tags: entry.data.themes, date: entry.data.confidence_last_reviewed });
+  for (const entry of scenarios) {
+    const future = FUTURES.find(item => item.id === entry.data.id || item.id === entry.id);
+    entries.push({ title: `${entry.data.topic}: three alternative scenarios`, summary: entry.data.definition, url: future ? `/horizon/scenarios?future=${future.key}` : `/horizon/record#${entry.id}`, type: 'page', tags: entry.data.themes });
+  }
+  for (const prediction of latestPredictions(predictionHistory)) {
+    const future = FUTURES.find(item => item.id === prediction.id);
+    entries.push({ title: `Our prediction: ${prediction.title}`, summary: `${prediction.milestone} Our target date: ${prediction.target_date}.`, url: `/horizon?future=${future.key}`, type: 'forecast', tags: ['horizon', 'prediction', 'countdown', future.key] });
+  }
+  for (const room of feralManifest) entries.push({ title: room.title, summary: room.blurb, url: room.route, type: 'experiment', tags: ['feral', room.type], date: room.born });
+
+  // Load radar data, bounded to the visible window. Older day-files stay on
+  // disk for the horizon bot but have no public /radar/<date> route, so indexing
+  // them would point search results at pages that 404. Lazy glob keeps the build
+  // from reading the entire archive into memory.
+  const radarFiles = import.meta.glob('../data/radar/????-??-??.json');
+  const visibleDates = radarManifest.dates.slice(0, RADAR_VISIBLE_DAYS);
+  for (const date of visibleDates) {
+    const key = Object.keys(radarFiles).find((k) => k.includes(date));
+    if (!key) continue;
+    const data = (await radarFiles[key]()) as any;
+    const items = [...(data.default.featured || []), ...(data.default.picks || [])];
+    for (const item of items) {
+      entries.push({
+        title: item.name,
+        summary: item.tagline || item.why_radar || '',
+        url: `/radar/${data.default.date}`,
+        type: 'radar',
+        tags: item.category ? [item.category] : [],
+        date: data.default.date,
+      });
+    }
+  }
+
+  for (const tool of toolsManifest) entries.push({ title: tool.name, summary: tool.description, url: tool.href, type: 'tool', tags: [tool.category, tool.id, ...(tool.id === 'token-cost' ? ['tokens', 'tokenizer', 'API cost'] : [])] });
+
+  // Static pages
+  const pages = [
+    { title: 'Prompt recipes', summary: 'A small collection of reusable templates with sample inputs, target results and explicit checks.', url: '/prompts', type: 'page', tags: ['recipes', 'prompts', 'templates', 'library'] },
+    { title: 'Prompt collection review', summary: 'The retired prompt templates, preserved source history and the move to worked recipes with explicit checks.', url: '/prompts/review', type: 'page', tags: ['retired', 'removed', 'templates', 'recipes'] },
+    { title: 'Essay removal record', summary: 'The retired automated essay series, original dates, removal reasons and preserved source history.', url: '/thoughts/review', type: 'page', tags: ['retired', 'removed', 'articles', 'archive', 'corrections'] },
+    { title: 'Thoughts and corrections', summary: 'Revised essays and the record of what changed.', url: '/thoughts', type: 'page' },
+    { title: 'About Valori', summary: 'The independent collective behind SOFT CAT, its useful tools and its new programme for open research into verifiable cooperation.', url: '/valori', type: 'page' },
+    { title: 'Our constitution', summary: 'Our direction for open research into verifiable cooperation between agents. Evidence standards, bounded authority, reproducibility and honest limits.', url: '/constitution', type: 'page', tags: ['constitution', 'research', 'trust', 'agents', 'evidence', 'open-source'], date: '2026-09-25' },
+    { title: 'Research: revoke one job, keep the other working', summary: 'An offline development harness for delegated permissions and revocation. Recorded synthetic traces, deliberately wrong outcomes, an independent grader and runnable Apache-2.0 source. No agent benchmark claim.', url: '/research', type: 'page', tags: ['research', 'delegation', 'revocation', 'permissions', 'evidence', 'open-source', 'harness'], date: '2026-09-25' },
+    { title: 'Research: a lost reply is not a failed action', summary: 'Deterministic LangGraph and PydanticAI recovery cases. Local revocation, worker restarts, duplicate requests, changed payload conflicts and honest uncertainty. Recorded evidence and runnable open source, without remote model calls.', url: '/research/recovery', type: 'page', tags: ['research', 'recovery', 'langgraph', 'pydanticai', 'revocation', 'idempotency', 'open-source'], date: '2026-09-25' },
+    { title: 'Research: identity is not permission', summary: 'A local mutual-TLS action service tests caller impersonation, task authority, revocation and recovery. Recorded synthetic cases, independent grading and AGNTCY architectural alignment with explicit limits.', url: '/research/boundary', type: 'page', tags: ['research', 'identity', 'authorisation', 'agntcy', 'mtls', 'revocation', 'open-source'], date: '2026-10-01' },
+    { title: 'Can the agent still act? Follow the recorded replay', summary: 'Permission withdrawn, a duplicate request and a lost reply. Step through four recorded local tests, inspect what actually changed and take away questions for your own agent workflow.', url: '/research/can-it-act', type: 'page', tags: ['research', 'replay', 'agent', 'permission', 'trust', 'revocation', 'evidence'], date: '2026-10-03' },
+    { title: 'Contact and feedback', summary: 'Report a bug, suggest a correction or propose an experiment.', url: '/contact', type: 'page' },
+    { title: 'Notebook', summary: 'The public build diary: experiments, decisions and failures with evidence.', url: '/notebook', type: 'page' },
+    { title: 'Horizon: our predictions, five countdowns', summary: 'Our published predictions for AGI, agents, robotics, software and education. Each countdown leads to our target date for a defined milestone, with evidence, resolution tests and an open revision history.', url: '/horizon', type: 'page', tags: ['horizon', 'agi', 'future', 'predictions', 'timeline', 'clocks', 'countdown', 'ceo'] },
+    { title: 'Alternative AI scenarios', summary: 'Compare optimistic, pragmatic and sceptical assumptions for five AI futures. The original scenario windows and their review history remain open to inspection.', url: '/horizon/scenarios', type: 'page', tags: ['horizon', 'scenarios', 'optimistic', 'pragmatic', 'sceptical'] },
+    { title: 'Build a 90-day AI trial brief', summary: 'Turn a Horizon prediction into a bounded trial. Define the task, owner, baseline, success threshold and stop rule, then copy or download your plan with the forecast evidence.', url: '/horizon#horizon-decision', type: 'page', tags: ['horizon', 'trial', 'plan', '90-day', 'baseline', 'evaluation'] },
+    { title: 'Earlier Horizon map: 12 September review', summary: 'The earlier map’s original claims, withdrawn forecasts, archived signals and evidence behind its revisions. The five current predictions have their own history.', url: '/horizon/review', type: 'page' },
+    { title: 'Horizon evidence and history', summary: 'Dated AI observations, unresolved forecasts, debates and past turning points.', url: '/horizon/record', type: 'page' },
+    { title: 'Is AGI already here?', summary: 'Explore definitions of general intelligence through breadth, economic work and adaptation.', url: '/horizon#agi-question', type: 'page', tags: ['agi', 'definitions', 'intelligence'] },
+    { title: 'Glossary', summary: 'Plain explanations of AI terms, models, evaluation and infrastructure.', url: '/glossary', type: 'page' },
+    { title: 'Pipeline', summary: 'Dated bot runs, outcomes and recorded costs.', url: '/pipeline', type: 'page' },
+    { title: 'Feral', summary: 'Agent-created experiments and their execution records.', url: '/feral', type: 'page' },
+    { title: 'The Radar', summary: 'Dated records of AI product launches', url: '/radar', type: 'page' },
+  ];
+  entries.push(...pages);
+
+  return new Response(JSON.stringify(entries), {
+    headers: { 'Content-Type': 'application/json' },
+  });
+};

@@ -1,0 +1,191 @@
+{
+  "source": "https://openrouter.ai/api/v1/models",
+  "retrievedAt": "2026-09-12T21:57:43.027197+00:00",
+  "catalogueEntries": 445,
+  "trackedEntries": 39,
+  "matched": 37,
+  "notListed": [
+    "google/gemini-2.0-flash-001",
+    "poolside/laguna-xs.2"
+  ],
+  "responseSha256": "0c255e5b72c86f628870120307e779c79e9a503e8c39925970ddc357a9daa567",
+  "method": "Public catalogue fetched without credentials. Exact tracked IDs matched. Token rates converted from per-token strings to USD per million tokens. Missing IDs have unknown prices. This was a maintainer-session review, not a run of the separate bot server.",
+  "changes": [
+    {
+      "id": "qwen/qwen-2.5-72b-instruct",
+      "before": [
+        0,
+        0
+      ],
+      "after": [
+        0.36,
+        0.4
+      ]
+    },
+    {
+      "id": "qwen/qwen3.6-27b",
+      "before": [
+        0.29,
+        3.17
+      ],
+      "after": [
+        0.3,
+        2.0
+      ]
+    },
+    {
+      "id": "qwen/qwen3.6-35b-a3b",
+      "before": [
+        0.14,
+        1.0
+      ],
+      "after": [
+        0.1,
+        0.9
+      ]
+    },
+    {
+      "id": "deepseek/deepseek-r1",
+      "before": [
+        0.56,
+        1.68
+      ],
+      "after": [
+        0.7,
+        2.5
+      ]
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3-0324",
+      "before": [
+        0.56,
+        1.68
+      ],
+      "after": [
+        0.25,
+        1.0
+      ]
+    },
+    {
+      "id": "google/gemini-2.0-flash-001",
+      "before": [
+        0.1,
+        0.4
+      ],
+      "after": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "meta-llama/llama-4-maverick",
+      "before": [
+        0,
+        0
+      ],
+      "after": [
+        0.2,
+        0.696
+      ]
+    },
+    {
+      "id": "meta-llama/llama-4-scout",
+      "before": [
+        0,
+        0
+      ],
+      "after": [
+        0.1,
+        0.3
+      ]
+    },
+    {
+      "id": "minimax/minimax-m2",
+      "before": [
+        0.26,
+        1.0
+      ],
+      "after": [
+        0.255,
+        1.02
+      ]
+    },
+    {
+      "id": "minimax/minimax-m2.7",
+      "before": [
+        0.25,
+        1.0
+      ],
+      "after": [
+        0.3,
+        1.2
+      ]
+    },
+    {
+      "id": "mistralai/mistral-small-3.1-24b-instruct",
+      "before": [
+        0.35,
+        0.55
+      ],
+      "after": [
+        0.351,
+        0.555
+      ]
+    },
+    {
+      "id": "moonshotai/kimi-k2.6",
+      "before": [
+        0.66,
+        3.41
+      ],
+      "after": [
+        0.95,
+        4.0
+      ]
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b",
+      "before": [
+        0.09,
+        0.45
+      ],
+      "after": [
+        0.085,
+        0.4
+      ]
+    },
+    {
+      "id": "poolside/laguna-xs.2",
+      "before": [
+        0.1,
+        0.2
+      ],
+      "after": [
+        null,
+        null
+      ]
+    },
+    {
+      "id": "z-ai/glm-5.1",
+      "before": [
+        0.98,
+        3.08
+      ],
+      "after": [
+        0.966,
+        3.036
+      ]
+    },
+    {
+      "id": "z-ai/glm-5",
+      "before": [
+        0,
+        0
+      ],
+      "after": [
+        0.6,
+        1.92
+      ]
+    }
+  ]
+}

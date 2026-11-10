@@ -1,0 +1,901 @@
+{
+  "updated_at": "2026-11-10T08:44:33Z",
+  "phase": "candidate-validated-awaiting-hosted-checks",
+  "active_branch": "maintenance/price-catalogue-guard-2026-11-10",
+  "last_verified_deployment": {
+    "sha": "d4173a36cf10495710363a6ce6c6a2e82b95a57c",
+    "at": "2026-11-09T22:50:38Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/42715048084"
+  },
+  "maintenance_receipt": {
+    "date": "2026-09-16",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/236",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35077174861",
+    "outcome": "Published and verified the corrected cloud publishing guide. Three new operating-contract tests passed. The old host and generators remain retired, and the Feral cron migration matches the operating guide.",
+    "live_checks": [
+      "Guide dates, correction, cloud ownership, source-history links and desktop layout",
+      "Horizon Enter-key selection and published-review refresh",
+      "JSON validator broken/matching examples and cleared stale result",
+      "Recipe search and zero-result filtering",
+      "Glossary keyboard letter anchor",
+      "Drift explicit ending choice and complete ending above the dock at scrollY 514"
+    ],
+    "price_status": "Latest observed scheduled run 34957491798 succeeded on 15 September. No 16 September price run observed during the pass. No duplicate refresh launched."
+  },
+  "horizon_review_receipt": {
+    "date": "2026-09-16",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/238",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35079376021",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/35079494551",
+    "outcome": "All five predictions genuinely reassessed. Dates, milestones and criteria unchanged, with zero days added or removed. Original history preserved. The already-open Education page received the review and retained selection. Every forecast and both history entries were checked live by keyboard."
+  },
+  "feral_receipt": {
+    "date": "2026-09-16",
+    "cycle": 7,
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/239",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35080580192",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/35080793238",
+    "route": "https://softcat.ai/feral/parcel-bureau/",
+    "outcome": "Independent director, builder and critic completed one cycle, PASS on attempt 1. Five files remain inside Feral roots. All 312 tests, data validators, trusted exact-commit gate, 637-page build and offline audit passed. Live checks verified all three initial failures, a twelve-rotation unassisted Thursday solution, thirteen-pipe solutions for Rain and Room, assistance disclosure, Enter/Space/arrow controls, trace clearing and reset. Full receipt and footer reachable at scrollY 747. Gallery shows seven creations and the dated cycle 7 PASS."
+  },
+  "feral_cycle8_receipt": {
+    "date": "2026-09-18",
+    "cycle": 8,
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/241",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35374181942",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/35374303253",
+    "route": "https://softcat.ai/feral/off-register/",
+    "outcome": "Published after independent critic FAIL on attempt 1 and PASS on attempt 2. Invalid SVG clipping corrected, regression added, 321 tests passed, trusted gate passed on exact remote head, 638-page build and offline audit passed. Live ink artwork, all keyboard axes, frozen proof, explicit replacement, scrolling and cycle 8 index verified. Download event timed out in the browser tool; exact export bytes passed the independent client harness and SVG renderer."
+  },
+  "horizon_review_2026_09_18": {
+    "date": "2026-09-18",
+    "publication_record": "https://github.com/valorifutures/softcat.ai/pull/242",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35375769021",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/35375867261",
+    "live_verification": "All five predictions show the 18 September review, zero target movement and all three preserved history entries. An already-open Education view received the new review and retained its selection. The benchmark page shows its original 3 April date and separate 18 September editorial review.",
+    "outcome": "All five forecasts reassessed against nine retrieved primary source pages. Targets, milestones and resolution rules unchanged. One review appended, all earlier records preserved. Benchmark glossary clarifies reproducibility and production denominators. Local 321 tests, validators, 638-page build and offline audit passed. The linked PR records the actual hosted publication and live verification outcome."
+  },
+  "horizon_review_2026_09_21": {
+    "date": "2026-09-21",
+    "branch": "review/horizon-2026-09-21",
+    "publication_record": "https://github.com/valorifutures/softcat.ai/pull/244",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/35610709208",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/35610834664",
+    "live_verification": "All five selections show the 21 September review, zero target movement and all four preserved history entries. The zero-shot glossary shows its clarified scope, Figure source, original 3 April publication date and separate 21 September editorial review.",
+    "outcome": "All five forecasts reassessed against retrieved primary material. Targets, milestones and resolution rules remain unchanged, with zero days added or removed. New evidence strengthens bounded long-horizon mathematics, enterprise workflow and cross-environment robot capability, but does not meet the forecasts' breadth, denominator, economics, production-monitoring or delayed-learning tests. The zero-shot glossary now distinguishes a withheld prompt from a withheld task, object or environment. Earlier prediction records are byte-for-byte unchanged.",
+    "validation": "168 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators, a 638-page build and an offline audit of 31,795 internal links and 3,278 assets/metadata passed locally. Required hosted validation and Pages deployment succeeded on the linked exact head and merge."
+  },
+  "prior_verification_limits": {
+    "date": "2026-09-16",
+    "limits": [
+      "The 16 September review is real and unchanged, not a demonstration of moving a forecast. Fixture tests separately cover a 37-day partial revision and UTC midnight boundaries.",
+      "The 16 September briefing control reported copied. Successful pasted content was not independently verified. The earlier selectable-text fallback check remains in the historical log.",
+      "The first scheduled Feral and evidence-review executions remain pending. The 16 September council and review were explicitly requested by the maintainer. Mobile viewport and touch-device coverage remain unverified.",
+      "The local browser preview was blocked by ERR_BLOCKED_BY_CLIENT, so visible changes were verified on the live desktop site after gated release. One scroll command timed out at the browser transport, but subsequent DOM measurements and a screenshot confirmed scrollY 747 with the complete receipt and footer visible. Source-access limits are recorded in the improvement log."
+    ]
+  },
+  "completed": [
+    "PR #194 merged. Publishing restored and repaired prompt verified live. Production build: 877 pages. Bot tests: 82 passed.",
+    "The overnight continuation was used for the recovery. It is now disabled at the maintainer’s stop request. GitHub uses the supported Allow all actions permission.",
+    "PR #195 merged and deployed. Live pipeline shows July dates and stale records. Pricing stamps, privacy disclosure and opt-in key storage are implemented.",
+    "PR #196 merged and live. Workshop homepage, sourced notebook entry and agent decision tool published. All 324 answer combinations covered by passing tests.",
+    "PR #197 merged and deployed. Live model search confirms unlisted pricing for Laguna and paid OpenRouter rates for Qwen 2.5. All model data now carries per-entry source/check metadata.",
+    "PR #198 merged and deployed. Live conversation estimates include repeated history. Streaming fixtures pass at every byte boundary. No paid chat call made.",
+    "PR #199 merged and deployed. The new Feral gallery was visually checked. The generation, validation and publishing jobs are separate, with fresh-verdict regression coverage. A paid council run remains unverified.",
+    "PR #200 merged and deployed. Live review shows seven active, eight withdrawn and 39 archived records. The Memory forecast withdrawal expands correctly with the original claim. PRs #186–193 were each closed with specific review reasons.",
+    "PR #201 merged and deployed. Live search finds the agent tool first, ArrowDown selects the next result, and the Close control restores focus to the opener. Draft publication fixtures and all indexed routes passed checks.",
+    "PR #202 merged and deployed. The live comparison finds exact model IDs, calculates ten Sonnet calls at $0.105 and keeps unlisted Laguna pricing unknown even with zero calls. CSV export confirms its source/assumption record. Search native Escape restores opener focus.",
+    "PR #203 merged and deployed. The live JSON checker reports three deliberate classification failures, clears the result on edits, accepts the matching example and reports invoice date/quantity/price failures. A pathological pattern was stopped after 2.5 seconds and the page remained usable.",
+    "PR #204 merged and deployed. Live Thoughts shows six corrections and 124 historical essays in a compact monthly index. The prompt essay retains 3 July as its publication date and shows its 13 September correction separately. The new notebook entry records real validator tests.",
+    "PR #205 merged and deployed. The live weight-source filter shows 19 models and two gated links. Source links and licence labels replace the old open/closed guesses, while workload price values remain unchanged. The homepage now recommends three actual build notes.",
+    "PR #206 merged. Its first real GitHub price snapshot checked 445 provider entries, verified 37 tracked prices and kept two unlisted prices unknown. The data commit and Pages deployment succeeded. Live Pipeline shows the actual 00:54 UTC run and zero recorded inference cost, and the model comparison shows its new snapshot date.",
+    "PR #207 merged and deployed. The About and Contact pages were visually checked live. The three feedback links point to their matching bug, correction and experiment templates. Unsupported credentials, etymology and response promises are removed.",
+    "PR #208 merged and deployed. Live Workbench exported a filled OpenRouter request for the selected Sonnet ID, copied successfully and kept two named QA versions through a reload. The original question was restored. Both filled messages and the selected model transferred to Chat Playground, which stayed unsent and editable with no key. The two QA versions are retained temporarily for the next Diff integration check.",
+    "PR #209 merged and deployed. Live Prompt Diff shows a negative cost change for the shorter example, clears an old result on edits, preserves large inputs in explicitly labelled blocks and fills the two saved QA versions correctly. Copy report succeeded. Both QA versions were then deleted through their individual controls, leaving the previously empty library empty again.",
+    "PR #210 merged and deployed. Live primary-button hover retains dark rgb(38, 53, 28) text on the light rgb(220, 247, 181) background. The comparison remains usable.",
+    "PR #211 merged and deployed. The public removal record shows 114 automated essays and three early opinions. Its May group expands and links the 14 May retirement notice to the exact original Git source. The launch article retains 13 March and shows its separate 13 September correction. The restored concept tag lists 18 glossary terms. Site search finds the removal record for removed articles.",
+    "PR #212 merged and deployed. The live planner shows a 274,000-token code budget exceeding Sonnet context by 74,000, and an 85,000-token request whose 70,000-token reply exceeds the separate 64,000 cap. Copy succeeded, zero-count Laguna stays unknown, GPT-4.1 shows exactly 1,047,576 context tokens, and negative input produces an error. Model Comparison rejects a 64,001-token Sonnet reply. Desktop layout and hover text were inspected.",
+    "PR #213 merged and deployed. The live text calculator rejects an unlabelled prelude and unsupported JSON fields. The growing example has 127 repeated-history input tokens, 40 output tokens and an estimated USD 0.000981 total, with the last call labelled input-only. Copy succeeded. JSON preserves literal role labels and an unclosed fence inside a message. An empty single-request output is also labelled input-only. No model request was made.",
+    "PR #214 merged and deployed. Live recipe search for regression shows one result, Source work narrows it to zero and Clear filters restores twelve. Keyboard activation loads the filled extraction example and copying succeeds. Workbench receives its template and variables as an unsaved draft with Saved (0). An unknown recipe leaves the saved library unchanged. The old validator URL preserves its 25 March Git date and exact source. Search finds the current recipes and review, not the retired validator.",
+    "PR #215 and PR #216 are merged and deployed. The new Tools directory was inspected live, showing eight tools, explicit OpenRouter data behaviour, three corrected guides and the 38-item retirement record. PR #216 passed fresh CI run 34746422029. Pages run 34746575258 succeeded. The earlier queued runs also completed successfully.",
+    "PR #217 passed all hosted checks, merged and deployed. The live trace URL explains the removal with exact earlier source. The homepage links Context Budget. The live text export retains seven corrections, three tool reviews and twelve recipe targets/check sets. A genuinely missing URL returns HTTP 404 with the custom noindex recovery page. Keyboard Skip to content reaches the main region. Search opens with Enter, shows a clear zero-result state and finds the Context Budget tool and guide.",
+    "PR #219 passed hosted checks, merged and deployed. The live homepage leads with Horizon. The map, sceptical wording, changing briefings and sources, all three AGI definitions, Enter/Space controls, shared bookmarks, browser Back, actual copy/paste and legacy route redirects were inspected. The live review found two wording/scope improvements and a search-entry priority adjustment, prepared in the final review branch.",
+    "The final review changes the assumption and counterevidence headings, makes the partial scope of pragmatic education visible beside its definition, and makes the main Horizon experience lead its own search results. The final production build, eleven focused regression cases and complete publication audit pass. This checkpoint travels with that final review PR.",
+    "PR #220 passed all hosted checks and deployed. The live pragmatic education panel shows its partial scope and corrected counterevidence heading, and search offers Explore Horizon. A returning browser retained the earlier search index under its ten-minute cache policy even though an HTTP revalidation returned the new Horizon tag. The final cache fix requests revalidation when the page first loads its search index, retaining in-page reuse and abort/retry behaviour. Production build, search tests and publication audit pass.",
+    "PR #221 passed hosted validation and Pages run 34780043251. The returning browser now sees the refreshed Horizon search entry. The maintainer then authorised five evidence-responsive countdowns, CEO planning prompts, repeated checks and release.",
+    "The five live clocks, pause/resume, per-future revision history and next-90-days briefs are built. A published data endpoint refreshes open pages after schema and append-only history validation. All 119 JavaScript tests, 141 bot tests, twelve publication fixtures, data validators and the 634-page build/audit pass. Hosted release and live visual checks are next.",
+    "PR #222 passed all hosted gates in run 34782457263 and deployed in Pages run 34782508824. Live checks confirmed five ticking clocks, pause/resume, every future briefing, all three outlooks, pragmatic education scope, expandable evidence history, the timeline, keyboard controls, browser Back, actual copy/paste and countdown search. No desktop overflow was observed. Final wording/control refinements and a per-100-case agent measure pass focused tests, production build and the publication audit.",
+    "PR #223 passed hosted run 34783011652 and deployed successfully in Pages run 34783068673. An already-open agent/optimistic page received the new per-100-case briefing through its review check without reloading or losing selection. The new page shows Close for an expanded history entry and the corrected method explanation. The live decision screenshot exposed a flex layout that split 90 across two lines; the final CSS keeps that numeral together and lets the adjacent briefing wrap.",
+    "The days-first countdowns and copyable Horizon briefings pass 123 JavaScript tests, 141 bot tests, twelve publication fixtures, all data validators and the 634-page production audit. Independent review found no must-fix issues. The local browser preview is blocked by the environment; hosted release and live interaction checks are next.",
+    "PR #225 passed hosted validation 35014721692 and deployed successfully in Pages run 35014825378. Live desktop review confirms prominent day totals, precise opening/deadline labels, actual review dates, all three outlooks, keyboard future selection and pause/resume. Copy briefing reports success and changing the outlook clears its status. Source/limitation content is covered for all 15 selections by tests; this browser’s virtual clipboard exposed no data for the independent paste check, so successful pasted content is not claimed.",
+    "Five evidence-informed editorial predictions now have explicit milestones, year-end deadlines, resolution criteria, source limits and separate append-only history. The main page counts towards our predictions; prior alternative scenarios and histories remain available. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures and the 635-page production build/audit pass. Independent review tightened robotics adaptability, AGI preregistration and education controls, and added a direct jump to the selected prediction.",
+    "PR #227 passed all hosted gates in run 35020999034 and deployed successfully in Pages run 35023866953. Live desktop review confirmed our five forecast deadlines, full criteria, selected detail/evidence, original prediction history, keyboard selection, pause/resume and browser Back. The old URL now opens our own agent prediction. The alternative scenario route and sceptical view remain functional. A pending clipboard write exposed no feedback, so the final refinement adds Copying and a 1.5-second selectable-text fallback.",
+    "Reproduced Drift clipping live: document height exceeded the viewport, the ending was below it, and a wheel scroll left scrollY at zero. Drift and Echo now allow vertical document scrolling. A shared measured dock reserves space for wrapped controls and navigation. Drift permits vertical touch panning, exposes direct ending choices and cancels touch drags without fling velocity. All 134 JavaScript tests, 141 bot tests, twelve publication fixtures, validators and the 635-page production build/audit pass.",
+    "PR #229 passed hosted validation run 35025780297 and deployed in Pages run 35025879272. Live scrolling reached the full Drift ending at scrollY484 and Echo ending at scrollY48. Both endings sat about47px above the dock, with96px reserved content padding and no clipped final text. Drift exposes pan-y/pinch-zoom. A cached Drift page required normal reload to receive the fix. Live review also caught pre-existing automatic refusal before any interaction; the final one-line guard waits for a star grab or a direct button choice.",
+    "PR #230 passed hosted checks and deployed in Pages run 35026538109. Live Drift stayed undecided while idle, accepted a direct warm choice, and its full ending was readable at scrollY514 above the dock.",
+    "The maintainer requested a Feral run and recurring operation of the whole site after turning off Linux/OpenClaw. Three cloud tasks were created and confirmed enabled: daily maintenance, Tuesday/Friday Feral and Monday evidence review. The existing daily GitHub price schedule remains active. Pipeline, operating instructions and manual-only Feral workflow configuration are prepared for publication. The expired overnight task remains paused.",
+    "PR #231 passed all hosted gates in run 35028279865, merged and deployed in Pages run 35028420982. Live Pipeline shows the four actual schedules, first future run dates, six inactive legacy timers and preserved records. Feral points to the new cloud schedule. The three new tasks were independently rechecked as enabled; the expired overnight task remains paused.",
+    "PR #232 shipped genuine Feral cycle 6, Pocket Weather. Independent Codex director, builder and critic followed the constitution, with PASS on attempt 1. Exactly three files inside the walls changed and old ledger/manifest entries remain intact. Trusted gate, 134 JS tests, 141 bot tests, 12 publication fixtures, validators, 636-page build and offline audit passed. Hosted PR run 35028587178 and Pages run 35028658302 succeeded. Live checks verified assignment, Enter-key stepping, actual timed playback, pause persistence, all 12 hours, completion, reset and bottom-page access at scrollY 803. No horizontal overflow was observed. The returning gallery showed its cached five-room page until a normal reload; the refreshed page shows six creations and the 15 September cycle 6 PASS.",
+    "The maintainer clarified that Horizon should count down recalculated days. The identical hours/minutes/seconds were remainders to midnight. Main Horizon now shows only day counters, refreshing at UTC day boundaries, on return and on published review. Each review exposes its numeric target shift separately from elapsed time. Exact ISO target dates are respected rather than forced to year end. Existing forecasts and review history are unchanged. All 138 JavaScript tests, 141 bot tests, 12 publication fixtures, validators and 636-page build/audit pass. Independent review also caught and fixed rounding at midnight + 1 ms.",
+    "PR #234 passed all hosted checks in run 35030633590 and deployed in Pages run 35030734134. Live Horizon has five day counters and zero sub-day timers. The observed day counts were AGI 1,933, agents 838, robotics 1,933, software 472 and education 1,203. Keyboard selection showed the matching software 472-day calculation and 2027 target. Manual update checking completed while retaining selection and actual review history. Clipboard writing fell back to selectable text containing the correct 472-day UTC snapshot and full briefing. No desktop horizontal overflow was observed.",
+    "PR #241 published Feral cycle 8, Off Register, after the first critic failure was corrected. Both hosted checks and Pages succeeded. The public ledger retains the failed attempt and links to the actual release receipt. No extra creation was commissioned.",
+    "PR #262 published Feral cycle 9, BRUX, following a free director brief, independent builder and critic PASS on attempt 1. Twelve core tests, the exact final-head trusted gate and full hosted checks passed. Live instrument, audio controls, session expiry and 390/1280 px layouts were verified; audio listening and physical touch coverage are not claimed.",
+    "PR #266 published Feral cycle 10, SILT, after a free director brief, independent builder and critic PASS on attempt one. Local validation, the trusted exact remote-commit gate and all hosted checks passed. Pages succeeded. Live desktop digging, all four gravity directions, automatic rest, keyboard/coordinate controls, scoop bounds, pointer strokes, reset and the complete footer were verified.",
+    "PR #277 passed the exact-head hosted gates, merged and deployed. Horizon now has short prediction summaries, key test figures, a clearer 90-day trial and compact history. Live desktop selection, keyboard controls, separate drafts, refresh preservation, clipboard readback and actual text download were verified. All eleven prediction reviews remain unchanged.",
+    "PR #276 published Feral cycle 11, SNARL, following a free director brief, separate builder and independent critic PASS on attempt one. Ten SNARL tests, 269 total JavaScript tests, 141 bot tests, twelve publication fixtures, required validators, the 646-page build and trusted exact remote-commit gate passed. Hosted checks and Pages succeeded. Live desktop movement, input guards, geometric snags, all reveal/reset disclosures, native-control completion paths and the complete footer were verified.",
+    "On 9 November, restored the existing Feral and daily maintenance tasks from paused to enabled, preserving their prompts and Europe/London schedules. Re-read both as enabled after the manual council. The Monday evidence task was already enabled. The separate price job is scheduling but fails its incomplete-catalogue guard; no validation was weakened.",
+    "PR #280 shipped Domain & Outage Checker, with real public DNS queries to Cloudflare and Google, a deterministic incident decision aid, five response phases and copyable incident/AI briefs. All PR gates passed and Pages deployed. Live browser DNS and visual interactions still need independent verification.",
+    "Prepared 9 November site-wide freshness audit: surfaced dated archives, rebuilt a real publication feed, promoted current tools/Feral, added anti-regression tests and documented gaps. Hosted PR and Pages receipts still pending.",
+    "Site-wide freshness PR #282 was published. CI passed: 225 Node tests, 21 offline publication tests, 141 bot tests, independent research checks. Final build 650 pages, 34,197 internal links, 3,343 local references, zero errors. Pages succeeded at 22:50 UTC. Browser-level interaction was not established."
+  ],
+  "next": [
+    "Finish and verify the focused legacy sitemap/noindex follow-up. Then perform a real-browser and RSS reader pass, including mobile navigation, overlay search, page layouts, DNS provider CORS, clipboard and downloads.",
+    "Review the eight model IDs missing from the price catalogue against current provider and retirement evidence. Preserve the incomplete-catalogue guard and keep the GitHub price workflow as the sole price publisher.",
+    "Open /lab/outage-check/ in an actual visitor browser. Test Cloudflare and Google DNS CORS, example.com and a nonexistent name, network blocking, keyboard, narrow screens and real copy/download behaviour. Report missing verification rather than calling a DNS result site uptime.",
+    "Verify the first resumed Feral and maintenance scheduled executions from their actual results and GitHub receipts. Report a specific new user-action or connection blocker if one occurs.",
+    "Select and pin an AGNTCY Identity adapter, verify credential-to-principal and authorisation semantics, and test deployment isolation before untrusted code execution. Then calibrate a single-agent baseline and freeze disjoint evaluation with explicit access and spend limits.",
+    "Review original site code/assets provenance before extending the new scoped Apache-2.0 licence.",
+    "Follow the 9 November Horizon evidence priorities, retaining current targets and append-only history until evidence warrants revision.",
+    "Keep Feral creation and daily GitHub price snapshots under their existing separate owners. Mobile/touch and actual file-download verification remain pending from the earlier workshop pass."
+  ],
+  "constraints": [
+    "GitHub access is verified. The maintainer reports the old Linux/OpenClaw host is switched off. Cloud tasks do not require that host.",
+    "Do not fabricate current research or change review dates without reassessing evidence.",
+    "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
+  ],
+  "session": "The price-catalogue guard candidate distinguishes a healthy provider catalogue from tracked model retirements. Local checks pass. No price data was written and no scheduled refresh or publication is claimed; hosted review is next.",
+  "verification_limits": [
+    "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
+    "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
+    "The 21 September Horizon review is limited to retrieved primary material, not an exhaustive literature survey. Provider-hosted customer stories and vendor-run evaluations are labelled as such. Search discovery did not find a new qualifying education replication.",
+    "The three current tool guides, agentic-loop and benchmark glossary entries, and the code-review and model-evaluation recipes were read. Their earlier behavioural verification was not rerun, so their review dates remain unchanged.",
+    "The 5 October Horizon review is limited to retrieved primary material, not an exhaustive literature survey. The NBER endpoint was unavailable during this pass, so its existing verified Khanmigo record was reassessed rather than presented as a fresh retrieval. Provider results and customer accounts remain labelled as such.",
+    "Audio enable/mute UI and Web Audio source were checked, but speaker listening, physical touch devices, live reduced-motion rendering and hidden-tab event behaviour were not verified. Local Astro installation was unavailable; complete production builds ran on GitHub.",
+    "Physical touch devices, narrow viewport rendering, live reduced-motion mode and hidden-tab event behaviour were not verified. Reduced-motion and visibility handling were source-reviewed; deterministic tests exercise the cellular model.",
+    "Cloud browser limitations: number-field fill did not emit native change events, so coordinate entry was verified through actual typing and Tab; text waits and full-page capture timed out, while later snapshots, screenshots and the viewport capture succeeded. Canvas pixel readback was unavailable. Extension metadata errors were observed, with no error originating from SILT.",
+    "The 9 November Horizon reader release was verified on desktop. Narrow viewport and physical touch rendering remain unverified. Its actual trial .txt download and clipboard bytes were verified; earlier limits for other tools and Feral remain in place.",
+    "Live verification used the desktop cloud browser. Physical touch and narrow viewport rendering were not verified. Responsive rules were source-reviewed.",
+    "The authored layouts were used for native-control completion tests. The observed Cleared by hand label describes the game state without the reveal control, not an unaided independent solve.",
+    "Restored task configuration is verified enabled. The first resumed unattended executions remain unverified, and the task tool did not expose next-run timestamps. The exact old permission prompt is not available."
+  ],
+  "workshop_redesign_2026_09_25": {
+    "date": "2026-09-25",
+    "status": "published and verified live",
+    "base": "39c89c15000127f116bfd9fc41f8823cd3176b1a",
+    "changes": [
+      "Tools organised by make, check, plan and decide, with concrete outputs and a consistent invoice exercise.",
+      "Horizon trial briefs with separate in-memory drafts, honest unfinished fields, clipboard fallback and plain-text export including current forecast evidence.",
+      "Homepage shows the existing Off Register opening print, latest Horizon review and glossary discovery. Compact header controls improve narrow layout fit."
+    ],
+    "validation": "151 script JavaScript tests, 27 existing Feral tests, 141 bot tests, 12 publication fixtures, all data validators, 638-page production build and offline audit passed. The audit checked 31,805 internal links, 3,280 assets/metadata and 403 search entries. Required hosted validation succeeded on the exact reviewed head.",
+    "limits": [
+      "Local browser preview is blocked with ERR_BLOCKED_BY_CLIENT. Live desktop layouts and interactions were checked after successful hosted deployment. Mobile and touch-device behaviour remain unverified.",
+      "A returning Horizon page retained its earlier cached interface until a normal reload. The refreshed page displayed the new planner.",
+      "The download control reported a request, but the browser tool timed out waiting for a download event. A successful file transfer is not claimed. Clipboard contents and export formatting were verified.",
+      "Forecast targets, review dates, retirements and Feral creative records remain unchanged."
+    ],
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/246",
+    "reviewed_head": "1583a238543635fbbc9c3105244fda57c72934c0",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36176220797",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36176391957",
+    "live_checks": [
+      "Tools task navigation works with Enter. All eight tools remain discoverable, with no desktop horizontal overflow.",
+      "Invoice deep link selected the matching recipe contract, reported four deliberate failures, accepted the matching output and cleared results after editing. Unknown preset safely fell back to Classification.",
+      "Workbench recipe draft exposed the original-contract link, then returned to the generic validator link after New prompt. No save or model call was made.",
+      "Horizon accepted all five trial fields. Software began empty, retained its own draft, and browser Back restored the completed Agents draft. A published-review check retained it.",
+      "The actual clipboard contained the entered Agents plan, 2028-12-31 target, 2026-09-21 review and Wayfair source URL.",
+      "Homepage displayed the exact Off Register opening print, actual publication date, latest Horizon review and glossary entry. Site search found the trial brief as its sole result."
+    ],
+    "screenshot": "docs/evidence/2026-09-25-workshop.jpg"
+  },
+  "research_constitution_2026_09_25": {
+    "status": "published and verified live",
+    "base": "80fb819da06f0a7fc289539b4abd0e2bce6a3471",
+    "change": "Root constitution for verifiable agent cooperation, aligned operating rules, canonical public constitution page, scoped Apache-2.0 research licence and first registered experiment specification.",
+    "research_status": "specified, not implemented or run",
+    "validation": "151 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures, all validators, 639-page build and offline audit passed locally. Required hosted validation and Pages deployment passed.",
+    "review": "Independent critic PASS on exact candidate tree. Scoped licensing, Feral autonomy, research assumptions, source descriptions and public claims reviewed.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/248",
+    "reviewed_head": "b4aaca01f5605a62db60d2891d01345a67ceeced",
+    "reviewed_tree": "7088fbf297fdfa248487ee0feb1ec988f466e337",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36180940341",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36181040799",
+    "route": "https://softcat.ai/constitution/",
+    "live_checks": [
+      "All ten canonical sections render and every contents anchor resolves.",
+      "Enter on the final section link navigated to its matching heading at y96.",
+      "Wheel scrolling reached scrollY4137 and the footer at y936 in a 936px viewport. Document width1348 did not exceed viewport1363.",
+      "About and Home show the research mission and specified/not implemented status.",
+      "Search for constitution returned the single correct dated result."
+    ],
+    "limits": [
+      "Mobile and touch-device rendering was not verified. Narrow layouts and keyboard focus styles were reviewed in source.",
+      "This is a governance and specification publication. The research runner, model evaluation, measured findings and independent reproduction remain future gates."
+    ],
+    "screenshot": "docs/evidence/2026-09-25-constitution.jpg"
+  },
+  "research_harness_2026_09_25": {
+    "status": "published and verified live with recorded browser limitation",
+    "base": "6f20e4ed7691709f58a973d1b330ed16457e7188",
+    "branch": "research/delegation-harness-20260925",
+    "research_status": "offline deterministic development harness, no model or framework execution",
+    "recorded_receipt": "research/delegation/results/latest.json",
+    "summary": {
+      "valid_conditions": 4,
+      "deficient_controls_rejected": 3,
+      "seeded_wrong_outcomes_rejected": 26
+    },
+    "validation": "203 script JavaScript tests (including 52 harness tests), 27 Feral tests, 141 bot tests, 12 publication fixtures, all data validators, 640-page build and offline audit passed. Audit checked 33,159 internal links, 3,292 assets/metadata and 405 search entries with zero errors. Required hosted validation and Pages succeeded on the linked exact head and merge.",
+    "review_record": "research/delegation/review.md",
+    "limits": [
+      "Public development fixture uses pre-labelled evidence and fixed voting. No agent intelligence, distributed guarantee, unknown attack or independent reproduction tested.",
+      "Desktop was verified live after successful gated deployment. No mobile/touch-device coverage is claimed. Direct JSON receipt navigation was blocked by the cloud browser URL policy and entered chrome-error://chromewebdata/. It was not bypassed or independently verified live. The generated endpoint, receipt hashes and replay passed local and hosted gates.",
+      "No provider calls or duplicate price refresh. Horizon history, Feral ledger and task ownership unchanged."
+    ],
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/250",
+    "reviewed_head": "53dc38ba2c9241bf6c850f463244bf4e19ad0008",
+    "reviewed_tree": "9b97b5c283b8502bf183d9740524ff750b997424",
+    "critic": "PASS for bounded gate 2 on exact tree. Critic independently reran all 52 harness tests and receipt verification, checked all 12 source hashes, and verified targeted fixes.",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36185532836",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36185665727",
+    "route": "https://softcat.ai/research/",
+    "receipt_sha256": "2098e9db92c6ae54e5722c53717ad1f05f008338886fe539122c55f5d1f8fb33",
+    "screenshot": "docs/evidence/2026-09-25-research-harness.jpg",
+    "live_checks": [
+      "The live page shows actual 4/4 valid conditions, 3/3 failed controls and 26/26 detected corruptions, recorded 25 September 20:21 UTC.",
+      "Enter on Inspect the record placed the section at y95.9. Enter opened all 18 combined trace events and the actual revoked A-main commit denial.",
+      "Space opened the global-stop control and displayed lost Job B. Enter opened the action-evidence substitution regression and its UNSUPPORTED_ACTION_EVIDENCE code.",
+      "All five section anchors resolve. With disclosures open, desktop width1348 stayed within viewport1363. Wheel scrolling reached scrollY5912 and footer bottom936.4 in a936px viewport.",
+      "Home exposes the new experiment. Search for delegation returns exactly one Research result. About and constitution links identify the completed offline gate and future agent comparisons."
+    ]
+  },
+  "framework_recovery_2026_09_25": {
+    "status": "published and verified live",
+    "base": "e48bc805baf53520e8759ad60e31f13eccc74d5a",
+    "branch": "research/framework-recovery-20260925",
+    "research_status": "real framework execution with deterministic responses, gate 3 preparation",
+    "receipt": "research/recovery/results/latest.json",
+    "receipt_sha256": "d1fdc8a2da8ed6bf36a89284f079e731d29bdd256c974a4a916246fb38d463f3",
+    "summary": {
+      "valid_cases": 6,
+      "deficient_controls_rejected": 3,
+      "named_corruptions_rejected": 32,
+      "worker_processes": 46,
+      "function_model_requests": 89,
+      "provider_calls": 0
+    },
+    "validation": "203 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures and 46 recovery tests passed. Fresh actual-framework receipt verification passed. All data validators, 641-page production build and offline audit passed with 33,211 links, 3,298 assets/metadata, 406 search entries and zero errors.",
+    "review": "Independent critic PASS on exact tree. Final receipt source hashes, every recorded grade, all 32 corruption checks and the previously escaping mutations independently checked. Required hosted recovery replay/build and Pages deployment passed.",
+    "limits": [
+      "Trusted host, worker and harness-supplied identity. No authenticated identity or hostile-worker containment claim.",
+      "Local JSON transport and authoritative SQLite ordering, not A2A/MCP interoperability or distributed consensus.",
+      "Fixed responses and public development cases. No model capability comparison, held-out evaluation or independent external reproduction.",
+      "No provider calls. Total execution charge unknown. Desktop checked live, mobile/touch unverified. Direct JSON navigation remains unverified after the earlier browser URL-policy block; inline records were verified."
+    ],
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/252",
+    "reviewed_head": "04718270be56fdc5985c244c77349c011c71de4d",
+    "reviewed_tree": "1dafbfefe968ced6123cb71736feaeb40d617912",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36189485342",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36189796296",
+    "route": "https://softcat.ai/research/recovery/",
+    "screenshot": "docs/evidence/2026-09-25-framework-recovery.jpg",
+    "live_checks": [
+      "Live study displays 6/6 valid cases, 3/3 failed controls and 32/32 detected corruptions, recorded 25 September 21:00 UTC.",
+      "Enter on the missing-reply anchor places the section at y96.3. Enter opens all 45 events and the actual exit-74 record at event 15.",
+      "Space opens the final durable queue, matching reports and five worker records. Space on the false-success control shows FALSE_SUCCESS and FALSE_CERTAINTY.",
+      "All five anchors resolve and desktop width1348 remains within viewport1363. Native Control+End reaches scrollY5293 with footer bottom936 in a936px viewport.",
+      "Search for recovery returns exactly one correct result. The original experiment retains its content and its continuation link opens the new study."
+    ]
+  },
+  "horizon_review_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "published and verified live",
+    "branch": "review/horizon-2026-09-28",
+    "outcome": "All five predictions reassessed against current primary material. Targets, milestones and resolution rules remain unchanged, with zero days added or removed. A fifth append-only review records stronger bounded evidence and the reasons it does not yet meet the declared tests.",
+    "evidence_changes": [
+      "Customer reporting adds ten months and 1,250 operating hours for one humanoid production task, but no multi-task intervention rate or comparative economics.",
+      "A two-year cluster-randomised Khanmigo trial adds 18-school evidence, but reports 0.06 to 0.08 standard deviations over a school year and no qualifying eight-week unassisted follow-up.",
+      "Smarsh and Microsoft add bounded production-agent evidence, but not the fixed denominators, rescue accounting, 90-day coverage and ten-organisation breadth required by the milestone."
+    ],
+    "next_review_priorities": [
+      "Independent multi-domain evaluation of one frozen general-purpose system.",
+      "Consecutive-case business-agent results with failures and rescues in the denominator.",
+      "Customer robot intervention rates and cost per successful task across multiple sites and task families.",
+      "Consecutive software tickets followed through approved deployment and seven days of monitoring.",
+      "A second term-long tutoring trial with an eight-week unassisted follow-up and combined effect at least 0.2."
+    ],
+    "validation": "203 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures and 46 recovery tests passed. All data validators, the 641-page production build and offline audit passed with 33,211 internal links, 3,298 assets and metadata, 406 search entries and zero errors.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/254",
+    "reviewed_head": "94cd5c43fa0718cba8919260fcc753e452fc1a73",
+    "merge": "4d91a4ab0ac2cdd05bc6b84c791caabddc1fcd42",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36438648148",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36439072020",
+    "live_verification": "The published prediction endpoint contains five history entries and all five 28 September reviews. The reading export shows each unchanged target, new rationale, evidence and limitation. Earlier records remain present.",
+    "publication": "required hosted checks and Pages deployment succeeded"
+  },
+  "horizon_review_2026_10_05": {
+    "date": "2026-10-05",
+    "status": "published and verified live",
+    "branch": "review/horizon-2026-10-05",
+    "outcome": "All five predictions were reassessed against current primary material. Targets, milestones and resolution rules remain unchanged, with zero days added or removed. A sixth append-only review records the new evidence, counterevidence and limits.",
+    "evidence_changes": [
+      "Sonnet 5.5 adds stronger provider-reported results for bounded coding, tool use and multidisciplinary tasks, but not two independent evaluations of one frozen system across the ten declared domains.",
+      "Barclays adds high-volume production use for knowledge retrieval and message routing, but not autonomous completion, fixed eligibility, failures or rescues across the required organisations.",
+      "Figure adds an unusual foundry transfer demonstration and Anthropic adds estimated robot deployment economics, but neither supplies customer-confirmed multi-task intervention rates or actual cost per successful task.",
+      "A 2,379-student randomised trial reports lower grades and participation with a course-integrated AI tutor. It is substantial counterevidence to easy educational-gain assumptions, but one university and no eight-week unassisted assessment do not resolve the declared milestone."
+    ],
+    "next_review_priorities": [
+      "Two independent evaluations of one frozen system using newly constructed tasks across all ten declared domains.",
+      "Consecutive eligible enterprise-agent cases with fixed acceptance tests, failures, rescues and 90-day denominators.",
+      "Customer robot results across multiple tasks and sites, including intervention rate and full cost per successful task.",
+      "One hundred consecutive software tickets at each named organisation, followed through approved deployment and seven days of monitoring.",
+      "Independent term-long tutoring replications with eight-week unassisted follow-up, alongside investigation of participation harms and subgroup effects."
+    ],
+    "validation": "210 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 461 in total. Fresh recovery and boundary receipt verification passed. All data validators, the 643-page production build and offline audit passed with 33,315 internal links, 3,310 assets and metadata, 408 search entries and zero errors.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/260",
+    "reviewed_head": "0e4de1b7905d8aef1b8068a15f068c0ca1035960",
+    "reviewed_tree": "6c7c887e3b5a38cec245062d67c1fd8e0b78905f",
+    "merge": "d9d47507f12739602b6500d61c4a85328faefa61",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/37332397701",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/37333057206",
+    "live_verification": "All five prediction selections show the 5 October review, unchanged targets, zero-day movement and complete history back to 15 September. The agents evidence panel shows both new sources and limits. The zero-shot page contains the corrected attribution and preserved publication date.",
+    "publication": "required hosted checks and Pages deployment succeeded"
+  },
+  "authenticated_boundary_2026_10_01": {
+    "status": "published and verified live",
+    "base": "7143b7a4b24e4e53d97ae52c95b697c0a4854098",
+    "branch": "research/authenticated-boundary-20261001",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/256",
+    "scope": "Loopback mutual TLS, synthetic grants and separate same-user action-service process. No AGNTCY SDK or hostile-process containment claim.",
+    "receipt": "research/boundary/results/latest.json",
+    "receipt_sha256": "6fb162f7fe830ebbc9539e1901213502b0da9c38e37f0a5dd73acd41c954ae54",
+    "summary": {
+      "enforced_cases": 14,
+      "mutated_record_controls": 5,
+      "service_processes": 15,
+      "probe_calls": 33,
+      "snapshot_calls": 14,
+      "total_client_calls": 47,
+      "provider_calls": 0
+    },
+    "validation": "454 tests passed across JavaScript, Feral, bot, publication, recovery and authenticated-boundary suites. Recovery and boundary receipt reruns verified. All data validators, 642-page production build and offline publication audit passed.",
+    "review": "research/boundary/review.md",
+    "limits": [
+      "Scripted clients, synthetic grants and local logical expiry. No new model or framework execution.",
+      "Same-OS-user processes do not contain malicious code or protect against direct database/key access.",
+      "AGNTCY architecture alignment only. No SDK, badge, task-bound profile or wire-conformance implementation.",
+      "Live desktop layout, keyboard disclosures, search and full-page scrolling verified. Narrow layout reviewed in source. Mobile/touch rendering remains unverified."
+    ],
+    "reviewed_head": "e1e20318b4221069143a60d9866400654c3aef3a",
+    "reviewed_tree": "9ac736d7f5d88a4c0c4e67b51c2e6b939a9d59c9",
+    "merge": "f43ae83aa754e8aa95fc46b98d890a1e9d173f4c",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/36923818850",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/36924275010",
+    "route": "https://softcat.ai/research/boundary/",
+    "critic": "PASS on exact reviewed tree after recorded transport, accounting and grader corrections. Role-separated local review, not independent external reproduction.",
+    "screenshot": "docs/evidence/2026-10-01-authenticated-boundary.jpg",
+    "live_checks": [
+      "Research navigation opens the new study using Enter. The page shows 14/14 cases, 5/5 corrupted recordings and 47 calls, recorded 1 October 20:38 UTC.",
+      "Enter opens the lost-reply record: PENDING, NO_RESPONSE, FOUND; service exits 74 then 0; exactly one durable effect.",
+      "Space opens the false-auth-success control and shows AUTHENTICATION_BYPASS with the actual rejection reason.",
+      "Expanded evidence scrolls to the complete footer at scrollY 11576, footer bottom 935.55 in a 936px viewport. Document width 1348 stays inside viewport 1363.",
+      "Site search for identity returns exactly the new research result, and Enter opens its canonical route.",
+      "The live JSON endpoint returns HTTP 200 and its parsed object exactly equals the reviewed receipt."
+    ]
+  },
+  "visitor_replay_2026_10_03": {
+    "status": "published and verified live",
+    "branch": "feat/visitor-evidence-replay-20261003",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/258",
+    "route": "https://softcat.ai/research/can-it-act/",
+    "scope": "Four recorded boundary cases presented as an accessible visitor replay. No new recorded study or AGNTCY integration.",
+    "validation": "461 tests passed, both research receipt reruns verified, all data validators, 643-page build and offline audit passed. Seven additional independent mutation probes rejected.",
+    "limits": [
+      "Local dependencies reused after exact lockfile comparison. Hosted clean npm ci and all required gates passed.",
+      "One existing invalid-certificate test raised ConnectionResetError locally and passed on retry. Both hosted boundary jobs passed. Investigate the intermittent transport issue separately.",
+      "Desktop keyboard, pointer, discovery and scrolling verified live. Narrow layout source-reviewed, mobile/touch rendering unverified."
+    ],
+    "reviewed_head": "efb54a2f17ad6679ddc12ccf5c2defb7838fe3b8",
+    "reviewed_tree": "3cc0b39bf3da6cb72d7a15899f94147f2d78c096",
+    "merge": "0354de193e1f89ad492891a1ac8e1fda1c830745",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/37137660241",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/37137878963",
+    "critic": "PASS on exact reviewed tree after retry wording and changed-record rejection fixes. Separate visitor review passed.",
+    "screenshot": "docs/evidence/2026-10-03-visitor-replay.jpg",
+    "live_checks": [
+      "Home, Research, boundary study and search open the new canonical route. Search returns exactly one result.",
+      "All 15 steps across four scenarios verified using Enter and Space. Revocation yields A0/B1, authorised work yields A1, retry remains A1, lost reply shows ? until lookup restores A1.",
+      "Previous removes the final takeaway, Start again resets to zero, selecting a scenario resets its progress. Pointer controls also work.",
+      "Enter and Space open step evidence, complete transcripts and original JSON. The lost-reply record includes NO_RESPONSE and FOUND.",
+      "Expanded evidence reaches the full footer at scrollY10129, footer bottom935.95 in a936px viewport. Document width1348 stays within viewport1363."
+    ]
+  },
+  "feral_cycle9_receipt": {
+    "date": "2026-10-05",
+    "cycle": 9,
+    "trigger": "Maintainer-requested manual run",
+    "route": "https://softcat.ai/feral/brux/",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/262",
+    "reviewed_head": "38921b147239044c051628a8d3309f9640c895e4",
+    "merge_sha": "c2374b4e00f71a3e116694e342cabcb2fd15f853",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/37348852963",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/37349312758",
+    "critic": "Independent Codex critic PASS, attempt 1",
+    "scope": "Exactly five regular files in the three permitted Feral roots; all previous manifest and ledger records preserved.",
+    "validation": "Twelve deterministic BRUX tests passed independently. Trusted base gate passed on exact final head. All hosted validators/tests, 644-page production build, offline publication audit and both research gates passed.",
+    "live_checks": [
+      "Feral gallery shows nine rooms, cycle 9, 5 October and PASS; BRUX opens from its actual gallery link.",
+      "Hatching reaches twelve mouths and disables Hatch. Native selection and End-key tuning set Mouth 12 to 144 BPM.",
+      "Share a clock works. Explicit Enable sound reaches Sound on. Pause unchecks and disables sound, preserving five active seconds.",
+      "Resume retains the remaining budget and stays silent. Expiry reaches zero, disables playback and reveals the ending.",
+      "Wake preserves the prepared twelve mouths and 144-BPM tuning. Enter activates Scatter. Restart original colony restores seven clocks, Mouth 1 at 57 BPM and a fresh silent sixty-active-second budget.",
+      "Full-page rendered checks at 390x844 and 1280x900 show no horizontal overflow and accessible bottom-page controls/footer. Mobile control bounds stay inside the padded page.",
+      "No browser console errors were captured. The instrument was left silent."
+    ],
+    "limits": "Audio enable/mute UI and Web Audio source were checked, but speaker listening, physical touch devices, live reduced-motion rendering and hidden-tab event behaviour were not verified. Local Astro installation was unavailable; complete production builds ran on GitHub.",
+    "screenshot": "docs/evidence/2026-10-05-brux.jpg",
+    "screenshot_blob": "aa7abcaacb716ee835f2c0789c31825ed3628aa2"
+  },
+  "horizon_review_2026_10_12": {
+    "date": "2026-10-12",
+    "status": "published and verified live",
+    "branch": "review/horizon-2026-10-12",
+    "base": "38d40f6982cc7ae490ccee74da694191155d1211",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/264",
+    "outcome": "All five predictions reassessed. All targets, milestones and resolution rules retained. Six prior events preserved. A seventh review records current evidence, counterevidence and limits.",
+    "evidence_changes": [
+      "The mathematics collection distinguishes selected output, formalisation and corrected or withdrawn arguments. ARC Prize shows a large harness effect for one model.",
+      "CRM previews and connected software-delivery products add capabilities but no qualifying consecutive-case production results.",
+      "Reassessed commercial robot operating claims distinguish on-task accuracy from intervention-free cycles and demonstrations from sustained multi-task economics.",
+      "A positive semester-long nursing study has one-month follow-up and completer analysis. It complements the negative university trial without providing qualifying durable-learning replication."
+    ],
+    "next_review_priorities": [
+      "Two independent teams testing one frozen system across newly constructed tasks in all ten domains.",
+      "Customer-confirmed agent workflows with 90-day eligible-case denominators, failures and rescues.",
+      "Multi-task robot customer records at ten sites with intervention and full cost accounting.",
+      "Consecutive software tickets through approved deployment and seven-day monitoring, including manual corrections and rollback.",
+      "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
+    ],
+    "validation": "210 script JavaScript tests, 39 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 473 in total. Both research receipt reruns passed. Clean npm ci, all data validators, 644-page production build and offline audit passed with 33,321 internal links, 3,314 assets and metadata, 409 search entries and zero errors.",
+    "publication": "required hosted checks, normal squash merge, Pages deployment and live verification succeeded",
+    "reviewed_head": "ca0cecba1801f8a7f426fc1ba854570e7b119582",
+    "reviewed_tree": "5beda89c1b985462aa9a79bc2048bc68455a20d9",
+    "merge": "e1dd02c88ff5c66f43231f6baa5efdf7e0411eeb",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/38262540553",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/38262968521",
+    "live_checks": [
+      "An already-open Education page received the new review through Check for a new review and retained its selection and synthetic draft. The draft was cleared after verification.",
+      "Enter selected all five futures, each showing the 12 October review, unchanged deadline, zero-day movement, current source titles and all seven history entries including 15 September.",
+      "Enter expanded the latest Education history with source limits and resolution rules. Control+End reached the full footer at scrollY5398 with footer bottom935.64 in a936px viewport. Document width1348 remained within viewport1363.",
+      "The live benchmark glossary displays the harness explanation, original 3 April publication date, preserved 18 September review and new 12 October editorial note."
+    ],
+    "limits": [
+      "Bounded primary-source survey, not exhaustive literature review. No Lean proof execution, manuscript validation, new model inference or tool-wide behavioural assessment.",
+      "Desktop keyboard, refresh preservation and full-page scrolling verified. Mobile and physical touch-device rendering remain unverified."
+    ]
+  },
+  "feral_cycle10_receipt": {
+    "date": "2026-10-13",
+    "cycle": 10,
+    "base_sha": "97c92b7c6cb343fd480ace7d8d30bd59d49c1bd4",
+    "reviewed_head": "c468517d8aa9031e6c77268b876922d9819d526f",
+    "reviewed_tree": "5117074a500b99d8f9b5931a30b05423715fcd02",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/266",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/38384435964",
+    "merge_sha": "49d40acc90afd53f6e3d042805bffee0a409ac30",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/38384863974",
+    "route": "https://softcat.ai/feral/silt/",
+    "outcome": "One manual council completed with separate Codex director, builder and critic roles. SILT passed the independent safety/deploy review on attempt one, the trusted exact remote-commit gate and all hosted checks. Pages deployment succeeded and the live desktop controls were verified. Earlier creations and records remain intact. The existing council schedule is unchanged.",
+    "local_validation": {
+      "javascript_tests": 259,
+      "bot_tests": 141,
+      "publication_fixtures": 12,
+      "horizon_entries": 89,
+      "content_records": 183,
+      "models": 39,
+      "tools": 8
+    },
+    "publication_audit": {
+      "htmlPages": 645,
+      "internalLinksChecked": 33327,
+      "localAssetsAndMetadataChecked": 3318,
+      "searchEntries": 410,
+      "contentRecords": 183,
+      "retirementNotices": 227,
+      "errors": []
+    },
+    "live_checks": [
+      "The live gallery shows ten creations, cycle 10, 13 October 2026 and PASS. Its SILT link opens the released route.",
+      "The initial deposit has 10,880 grains, zero removed, downward gravity and At rest status.",
+      "Hold and Enter on the focused chamber remove 81 grains, leaving 10,799. Step visibly moves the material while keeping the count.",
+      "Left, Up and Right each rearrange the same remaining material, reach At rest and disable Step and Let it settle.",
+      "Native typed coordinate entry and Tab update the scoop. Values 999 and 0 clamp to column 160 and row 1. The corner scoop removes 123 grains at radius 12. Home and End select the 2-cell and 12-cell scoop limits.",
+      "A continuous pointer drag removes 218 grains. Shift plus ArrowLeft moves eight columns and Space removes 13 more grains at radius 2.",
+      "Returning gravity Down reaches At rest with 10,004 grains remaining and 876 removed, accounting for the original 10,880.",
+      "Start again restores the original deposit, downward gravity and zero removals. Reload restores the default 5-cell scoop.",
+      "The desktop document and viewport widths both measure 1,348 pixels. The complete footer is reachable, ending at 935.89 pixels inside a 936-pixel viewport."
+    ],
+    "verification_limits": [
+      "Physical touch devices, narrow viewport rendering, live reduced-motion mode and hidden-tab event behaviour were not verified. Reduced-motion and visibility handling were source-reviewed; deterministic tests exercise the cellular model.",
+      "Cloud browser limitations: number-field fill did not emit native change events, so coordinate entry was verified through actual typing and Tab; text waits and full-page capture timed out, while later snapshots, screenshots and the viewport capture succeeded. Canvas pixel readback was unavailable. Extension metadata errors were observed, with no error originating from SILT."
+    ],
+    "screenshot": {
+      "path": "docs/evidence/2026-10-13-silt.jpg",
+      "bytes": 248396,
+      "git_blob": "6531e67ce8b3d6f71bc0270470d7032f5be1f984",
+      "view": "Live desktop viewport after excavation and four-direction gravity tour."
+    }
+  },
+  "horizon_review_2026_10_19": {
+    "date": "2026-10-19",
+    "status": "published and verified live",
+    "branch": "review/horizon-2026-10-19",
+    "base": "a46989c20befd026768e05a7ce177d03469a1773",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/268",
+    "outcome": "All five predictions reassessed. Targets, milestones and resolution rules unchanged. Seven earlier events preserved. An eighth review adds evidence, counterevidence and limits. Agentic-loop glossary distinguishes stop signals and outcome verification.",
+    "evidence_changes": [
+      "Embedded evaluator access has explicit publication and redaction terms, not a broad capability result.",
+      "Long-running agent and product-work accounts lack consecutive workflow or ticket outcomes.",
+      "Robot fleet replacement and future product availability do not establish sustained multi-task economics.",
+      "Two school tutoring studies separate access, engagement, practice gains and the AI increment. Neither establishes our replicated eight-week durable-learning milestone."
+    ],
+    "next_review_priorities": [
+      "Two independent teams testing one frozen system across newly constructed tasks in all ten domains.",
+      "Customer-confirmed agent workflows with 90-day eligible-case denominators, failures and rescues.",
+      "Multi-task robot customer records at ten sites with intervention and full cost accounting.",
+      "Consecutive software tickets through approved deployment and seven-day monitoring, including manual corrections and rollback.",
+      "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
+    ],
+    "limits": [
+      "Bounded primary-source review, not exhaustive research or new capability measurement.",
+      "No remote model execution, tool-wide behavioural reassessment or paid inference. Feral and price refresh remain separate owners.",
+      "Desktop keyboard and full-page scrolling verified. Mobile viewport and physical touch behaviour remain unverified. One semantic disclosure locator failed, then the actual summary element opened by Enter. The initial native end-key attempt did not scroll the page, while a normal scroll reached the full footer."
+    ],
+    "validation": "Clean npm ci, content/tools/Horizon validators, 210 script JavaScript tests, 49 Feral tests, 141 bot tests, twelve publication fixtures, 46 recovery tests and 25 boundary tests passed, 483 in total. Both research receipt reruns passed. The 645-page build and offline audit passed with 33,328 internal links, 3,318 assets/metadata, 410 search entries and zero errors.",
+    "reviewed_head": "2322807c73e6df674cb4eb66db13d69ca80bcd0e",
+    "reviewed_tree": "aaddb9b0569edb2e07fe2d051b8987107651256b",
+    "merge": "4fe1cb975beb412e65a60d06d80f138f8e951d85",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/39273119838",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/39273675473",
+    "receipt": "https://github.com/valorifutures/softcat.ai/tree/review/horizon-2026-10-19-receipt",
+    "live_checks": [
+      "An already-open Education page refreshed to the new review and retained its selection and synthetic draft. The draft was cleared after verification.",
+      "Enter selected all five predictions. Each showed the 19 October review, its unchanged deadline, zero review-day movement, current evidence titles and all eight history entries back to 15 September.",
+      "Enter expanded the latest Education history and resolution disclosure, showing the source limitations and unchanged eight-week learning test.",
+      "Horizon scrolled to its complete footer at scrollY 5981, with footer bottom 935.80 in a 936px viewport. Document width 1348 stayed within viewport 1363.",
+      "The glossary displays the outcome-verification paragraph, reported-source link, agent-check link, preserved 3 April publication date and separate 19 October editorial review."
+    ],
+    "screenshot": "docs/evidence/2026-10-19-agentic-loop.jpg"
+  },
+  "horizon_review_2026_10_26": {
+    "date": "2026-10-26",
+    "status": "published and verified live",
+    "branch": "review/horizon-2026-10-26",
+    "base": "befaea7b8176ddbdf32c6b3cbe37185e0f7946ad",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/270",
+    "outcome": "All five predictions reassessed. Targets, milestones and resolution rules unchanged. Eight earlier events preserved. A ninth review adds evidence, counterevidence and limitations. The related glossary, guides, tools and prompts needed no new editorial change.",
+    "evidence_changes": [
+      "An independent high-access red team found concrete agent-monitoring and isolation weaknesses. It tests controls, not broad general intelligence.",
+      "Uber is rolling ChatGPT Work out to more than 30,000 employees. Availability does not supply accepted-workflow denominators.",
+      "GXO and Agility plan expansion to two additional sites in 2027. This is stronger commercial evidence, while reliability, task breadth, intervention and full-cost results remain absent.",
+      "An AI-assisted PHP vulnerability response is a valuable selected software case inside an expert-led process, not a consecutive specification-to-production ticket record.",
+      "No later qualifying durable-learning outcome study changed the mixed tutoring evidence."
+    ],
+    "next_review_priorities": [
+      "Two independent teams testing one frozen system across newly constructed tasks in all ten domains.",
+      "Customer-confirmed agent workflows with 90-day eligible-case denominators, failures and rescues.",
+      "Multi-task robot records at ten sites with intervention and full cost accounting after the announced 2027 deployments begin.",
+      "Consecutive software tickets through approved deployment and seven-day monitoring, including manual corrections and rollback.",
+      "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
+    ],
+    "limits": [
+      "Bounded primary-source review, not an exhaustive literature review or new capability measurement.",
+      "Provider and customer announcements are treated as reported evidence. Planned deployments, access and selected successes are not counted as completed milestone results.",
+      "No paid inference, remote model execution or retired generator ran. Feral and the price snapshot remained with their separate owners.",
+      "Desktop keyboard selection, refresh preservation and full-page scrolling were verified. Mobile and physical touch rendering remain unverified. Browser-extension metadata errors were observed, with no error originating from the site."
+    ],
+    "validation": "Clean npm install, all data validators, 210 script JavaScript tests, 49 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 483 in total. Both research receipt reruns passed. The 645-page build and offline audit passed with 33,328 internal links, 3,318 assets and metadata, 410 search entries and zero errors.",
+    "reviewed_head": "f2721731a4e22874c8f34f26aac9ed2508d289fd",
+    "reviewed_tree": "396d6632cb186cee9f71c1dabb9d1444f827208e",
+    "merge": "855d7dd72502403b66d18e6049c60ca673e434fd",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/40354657565",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/40355251751",
+    "live_checks": [
+      "Enter selected all five predictions. Each showed its unchanged deadline, no days added or removed, the 26 October review and current evidence.",
+      "Education retained a synthetic draft across Check for a new review. The draft was then cleared and remained empty.",
+      "The latest Education history expanded with its reassessment reason and source limits. All nine events back to 15 September remained present.",
+      "The complete footer was reachable at scrollY 6046. Document width 1348 stayed within the 1363-pixel viewport and the footer ended inside the 936-pixel viewport."
+    ]
+  },
+  "horizon_review_2026_11_02": {
+    "date": "2026-11-02",
+    "status": "published and verified live",
+    "branch": "review/horizon-2026-11-02",
+    "base": "a57ce589c5883931dd9145f82bf06dc228de1a63",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/272",
+    "outcome": "All five predictions reassessed. Targets, milestones and resolution rules unchanged. Nine earlier events preserved. A tenth review adds evidence, counterevidence and limitations. The Tool Use glossary now separates a model request from execution, authorisation and outcome verification.",
+    "evidence_changes": [
+      "OpenAI reports wider frontier-agent monitoring, one live containment breach detected within 15 minutes and an earlier incident replay. These are control results, not ten-domain general-intelligence tests.",
+      "OpenAI and ServiceNow announced governed workflow actions, wider employee access and planned agent capabilities. They publish no consecutive 90-day completion and rescue cohort.",
+      "GitHub made Agentic Workflows generally available and published a selected Accenture outcome account. The report lacks the consecutive ticket, manual correction, rollback and seven-day monitoring denominator in our milestone.",
+      "No later qualifying robot economics or durable-learning result changed the robotics and education judgements."
+    ],
+    "next_review_priorities": [
+      "Two independent teams testing one frozen system across newly constructed tasks in all ten domains.",
+      "Customer-confirmed agent workflows with 90-day eligible-case denominators, failures and rescues.",
+      "Multi-task robot records at ten sites with intervention and full cost accounting after the announced 2027 deployments begin.",
+      "Consecutive software tickets through approved deployment and seven-day monitoring, including manual corrections and rollback.",
+      "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
+    ],
+    "limits": [
+      "Bounded primary-source review, not an exhaustive literature review or new capability measurement.",
+      "Provider and customer reports are treated as reported evidence. Access, product availability, planned deployments and selected successes are not counted as completed milestone results.",
+      "No paid inference, remote model execution or retired generator ran. Feral and the price snapshot remained with their separate owners.",
+      "Desktop keyboard selection, review refresh, draft retention and full-page scrolling were verified. Mobile and physical touch rendering remain unverified."
+    ],
+    "validation": "Clean npm ci, all data validators, 210 script JavaScript tests, 49 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 483 in total. Both research receipt reruns passed. The 645-page build and offline audit passed with 33,328 internal links, 3,318 assets and metadata, 410 search entries and zero errors.",
+    "reviewed_head": "95c22c35da0e6784de8ddd26543e3093029901b2",
+    "merge": "19b37bd55a1313c563a091e4e624d346264c1735",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/41475127708",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/41475808170",
+    "live_checks": [
+      "Enter selected all five predictions. Each showed its unchanged deadline, no days added or removed, the 2 November review and current evidence.",
+      "Education retained a synthetic draft across Check for a new review. The draft was cleared after verification.",
+      "The latest Education history and resolution criteria opened with Enter. All ten events back to 15 September remained present.",
+      "The complete footer was keyboard-reachable at scrollY 6,158. Document width 1,348 stayed within the 1,363-pixel viewport, and the footer ended inside the 936-pixel viewport.",
+      "The Tool Use glossary displayed the corrected protocol, authorisation and outcome guidance, the original 3 April publication date and the separate 2 November editorial review."
+    ]
+  },
+  "horizon_review_2026_11_09": {
+    "date": "2026-11-09",
+    "status": "published and verified live",
+    "branch": "review/horizon-2026-11-09",
+    "base": "2dffab7d430da9ec62e3875a4912a7c71793af64",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/274",
+    "outcome": "All five predictions reassessed. Targets, milestones and resolution rules unchanged. Ten earlier events preserved. An eleventh review records faster AI-assisted research, production-agent use, conditional robot orders and broader software-agent workflows with their limits. The Benchmark glossary now explains that evaluation framing can change behaviour and that production transfer must be tested.",
+    "evidence_changes": [
+      "METR's independent high-access assessment estimates about 1.9 times the earlier rate of capability-score improvement at Anthropic, likely driven mainly by AI assistance. Important evidence is redacted and the report is not a ten-domain frozen-system evaluation.",
+      "OpenAI found an evaluation-production behaviour gap across six models and showed that stated evaluation objectives can move results. Approximate matching and a safety-decision scope prevent broader inference.",
+      "ServiceNow reports more than thirteenfold growth in production agent consumption and selected customer outcomes, without the autonomous-step, failure and 90-day cohort denominators in our milestone.",
+      "Agility reports more than 65,000 operating and programme hours plus conditional Digit 5 orders. Site-level task breadth, intervention and full-cost evidence remain absent.",
+      "GitHub describes agent support from planning through production investigation while keeping requirements, approval and consequential operational decisions with people. No qualifying consecutive-ticket outcome cohort is published.",
+      "No later qualifying eight-week unassisted tutoring replication changed the mixed education evidence."
+    ],
+    "next_review_priorities": [
+      "Two independent teams testing one frozen system across newly constructed tasks in all ten domains.",
+      "Customer-confirmed agent workflows with 90-day eligible-case denominators, failures and rescues.",
+      "Multi-task robot records at ten sites with intervention and full cost accounting after announced deployments begin.",
+      "Consecutive software tickets through approved deployment and seven-day monitoring, including manual corrections and rollback.",
+      "Preregistered tutoring replications with eight-week unassisted outcomes, attrition and subgroup reporting."
+    ],
+    "limits": [
+      "Bounded primary-source review, not an exhaustive literature review or new capability measurement.",
+      "Provider and customer reports are treated as reported evidence. Access, orders, product availability, planned deployments and selected successes are not counted as completed milestone results.",
+      "No paid inference, remote model execution or retired generator ran. Feral and the price snapshot remained with their separate owners.",
+      "Desktop keyboard selection, refresh preservation and full-page scrolling were verified. Mobile and physical touch rendering remain unverified."
+    ],
+    "validation": "Clean npm ci, all data validators, 210 script JavaScript tests, 49 Feral tests, 141 bot tests, 12 publication fixtures, 46 recovery tests and 25 authenticated-boundary tests passed, 483 in total. Both research receipt reruns passed. The 645-page build and offline audit passed with 33,328 internal links, 3,318 assets and metadata, 410 search entries and zero errors.",
+    "reviewed_head": "2d81aaf2bc23e4fa84b669830c661de94c8e2325",
+    "merge": "9d1736e16622e12562373e343fe025b0a133c56b",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/42646057556",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42646664046",
+    "live_checks": [
+      "Enter or click selected all five forecasts. Each showed its unchanged deadline, no days added or removed, the 9 November review and current evidence.",
+      "Education retained a synthetic task across Check for a new review. The task was cleared after verification.",
+      "The latest Education history and resolution criteria opened by keyboard. All eleven events back to 15 September remained present.",
+      "The Benchmark glossary displayed the evaluation-framing warning, approximate-matching limit, original 3 April date and separate 9 November editorial review.",
+      "The complete footer was keyboard-reachable at scrollY 4,887. Document width 1,348 stayed within the 1,363-pixel viewport, and the footer ended inside the 936-pixel viewport."
+    ],
+    "price_handover": {
+      "latest_failed_run": "https://github.com/valorifutures/softcat.ai/actions/runs/42632692153",
+      "status": "The daily price workflow has failed safely on five consecutive days since the 4 November success. On 9 November only 31 of 39 tracked IDs matched the public catalogue, so the job stopped before validation and publication. No duplicate refresh was launched."
+    }
+  },
+  "horizon_reader_2026_11_09": {
+    "date": "2026-11-09",
+    "status": "published and verified live",
+    "branch": "improve/horizon-clear-language-20261109",
+    "scope": "Plain-English prediction summaries, test figures, compact review history and a clearer 90-day trial. Applies ASD-STE100 principles with UK spelling, without a claim of full conformance.",
+    "preserved": "The eleven published reviews, all five targets, milestones, resolution rules and evidence are unchanged.",
+    "validation": "214 JavaScript tests, 141 bot tests and 12 publication fixtures passed. All data validators passed. After the Feral merge, the 646-page integrated build and audit passed with 33,335 internal links, 3,322 assets/metadata and zero errors.",
+    "limits": [
+      "ASD-STE100 principles were applied to visitor guidance. This is not a claim of full controlled-vocabulary conformance.",
+      "The browser blocked the local preview. Visual and interaction checks ran on the successful live deployment. Narrow viewport and physical touch rendering remain unverified.",
+      "No new evidence assessment or model capability test was performed. All eleven prediction records remain unchanged.",
+      "The captured console error sample contained browser-extension metadata errors; it does not establish an exhaustive absence of site errors."
+    ],
+    "base": "278fb5bcb282368a73c78456b6418994508a1a94",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/277",
+    "reviewed_head": "b5b5312d0227cb0a6c2333283e6f6c1dfe239da3",
+    "merge": "91fff7ef3e72d176c3e746197918b62a49f4a82e",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/42694801561",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42695483384",
+    "live_checks": [
+      "The live page shows the new hero, all five short prediction cards and the matching original deadlines. Enter and Space activate cards; all five detail panels show the correct test figures and uncertainty.",
+      "The full prediction, test and reasoning disclosures open. All eleven published records remain available, including the complete 15 September initial prediction behind the earlier-records disclosure.",
+      "Agents and Software retain separate synthetic trial drafts. Browser Back restores the Agents draft. Check for a new review retains selection and all five filled fields, then reports the latest published review checked.",
+      "Clipboard readback confirms the full prediction, trial brief and selected-prediction link. A real .txt download contains all five trial values, the forecast deadline, review date and source URLs.",
+      "Desktop screenshots show the hero, countdowns, selected forecast and trial panel. The 1,348-pixel document fits the 1,363-pixel viewport. The page was restored to its clean default view and synthetic drafts were cleared by navigation."
+    ],
+    "screenshots": [
+      "docs/evidence/horizon-reader-hero-20261109.jpg",
+      "docs/evidence/horizon-reader-detail-20261109.jpg"
+    ]
+  },
+  "feral_cycle11_receipt": {
+    "date": "2026-11-09",
+    "cycle": 11,
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/276",
+    "reviewed_head": "d194a45dd12264af511ab2afc3e7f31a5060a4e6",
+    "reviewed_tree": "6b9fbbf5437d0c154598a17ede986d3391833bd6",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/42693561988",
+    "merge_sha": "278fb5bcb282368a73c78456b6418994508a1a94",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42694204996",
+    "route": "https://softcat.ai/feral/snarl/",
+    "critic_verdict": "PASS",
+    "critic_attempts": 1,
+    "local_validation": {
+      "javascript_tests": 269,
+      "bot_tests": 141,
+      "publication_fixtures": 12,
+      "content_records": 183,
+      "models": 39,
+      "tools": 8,
+      "horizon_entries": 89
+    },
+    "publication_audit": {
+      "htmlPages": 646,
+      "internalLinksChecked": 33334,
+      "localAssetsAndMetadataChecked": 3322,
+      "searchEntries": 411,
+      "contentRecords": 183,
+      "retirementNotices": 227,
+      "errors": []
+    },
+    "live_checks": [
+      "The gallery shows eleven creations, cycle 11, 9 November 2026 and PASS. Its actual SNARL link opens the released route.",
+      "The first knot begins with eight snags. ArrowRight moves Eyelet 1 from across 500 to 505; Shift plus ArrowDown moves down 104 to 124. Native dragging moves it to across 563, down 146.",
+      "Empty coordinate input is rejected without moving the drawing. Submitting 9999 and -1 bounds the eyelet to across 964, down 36. Reset restores the authored start.",
+      "Placing Eyelet 1 on Eyelet 2 produces fifteen snags: ten cord pairs, one crowded pair and four eyelet/cord contacts. It does not clear the knot.",
+      "Each of the three reveals produces zero snags and Arrangement shown. Reset returns 8, 19 and 34 snags while preserving the Shown label and assistance disclosure. No all-by-hand ending appears.",
+      "On a fresh visit, the authored clear coordinates were entered through the native controls. Each knot reaches zero, displays This one can breathe and marks Cleared by hand. With all three clear, the final line appears. This exercises the interface state using known solutions, not an independent puzzle solve.",
+      "Resetting the third knot restores its 34 snags while preserving the other two clear states and removes the final closing line.",
+      "With rules expanded, the complete footer is reachable: bottom 935.73 inside a 936-pixel viewport. Document and viewport widths both measure 1348 pixels.",
+      "No error originating from the site was captured. The room was reloaded to the first knot with eight snags, no revealed arrangements and default controls."
+    ],
+    "verification_limits": [
+      "Live verification used the desktop cloud browser. Physical touch and narrow viewport rendering were not verified. Responsive rules were source-reviewed.",
+      "The authored layouts were used for native-control completion tests. The observed Cleared by hand label describes the game state without the reveal control, not an unaided independent solve."
+    ],
+    "screenshot": {
+      "path": "docs/evidence/2026-11-09-snarl.jpg",
+      "bytes": 85647,
+      "git_blob": "e365a330376aeaf70f48164d4cd8ae74dc2b9a4b",
+      "view": "Live desktop viewport of the fresh first knot."
+    }
+  },
+  "scheduling_recovery_2026_11_09": {
+    "date": "2026-11-09",
+    "observed_paused": [
+      "Feral council",
+      "SOFT CAT maintenance"
+    ],
+    "last_scheduled_results_required_user_action": true,
+    "specific_permission_prompt": "Not present in saved results. The exact original pause trigger is unconfirmed.",
+    "resumed_in_place": true,
+    "enabled_rechecked": true,
+    "schedules": {
+      "Feral council": "Tuesday and Friday afternoons around 15:00 Europe/London",
+      "SOFT CAT maintenance": "Daily morning around 08:00 Europe/London"
+    },
+    "evidence_review": "Already enabled, with a recorded 9 November run.",
+    "first_resumed_unattended_execution": "Not yet verified.",
+    "price_workflow": {
+      "observed_scheduled_run": "https://github.com/valorifutures/softcat.ai/actions/runs/42632692153",
+      "conclusion": "failure",
+      "reason": "Catalogue guard matched 31 of 39 tracked IDs and rejected the snapshot.",
+      "publication": "skipped",
+      "last_observed_success": "https://github.com/valorifutures/softcat.ai/actions/runs/41836001097",
+      "guard_unchanged": true
+    },
+    "scope": "Existing cloud task enable flags only. No duplicate task or GitHub Feral cron was created, and retired timers and the expired overnight loop remain off."
+  },
+  "outage_checker_2026_11_09": {
+    "release_pr": "https://github.com/valorifutures/softcat.ai/pull/280",
+    "release_sha": "ce76c85675c5fa46d13179462f94ce22e1d449e2",
+    "pr_validation": "https://github.com/valorifutures/softcat.ai/actions/runs/42704731015",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42705272353",
+    "outcome": "implemented-reviewed-tested-merged-and-pages-deployed",
+    "measured": "Node regression tests, existing CI validators and Astro build passed",
+    "not_measured": "Live visitor DNS responses, independent HTTP availability, mobile/touch rendering, clipboard and file-download behaviour",
+    "safeguards": [
+      "Queries run only after a visitor action",
+      "Public domains only",
+      "No AI provider call or claims of website availability",
+      "Incident output remains in browser unless copied or downloaded"
+    ],
+    "next": "Verify the actual browser journey, including partial DNS failure, then record the results."
+  },
+  "site_audit_2026_11_09": {
+    "basis": "Main deploy 2117355d87d7ebb4d4eb47c415d5d608ca7a7dd3, GitHub run 42707125740; offline audit: 647 pages, 33384 internal links, 3328 local refs, zero errors",
+    "scope": "Shared navigation, footer, feed, news/Radar, tool entry points, Feral discovery, model pricing notices, pipeline claims, selected page families, SEO/discovery and retirement paths.",
+    "stage": "first-maintenance-batch-merged-hosted-tests-passed-pages-deployed; legacy-sitemap-follow-up-in-review",
+    "changes": [
+      "Date-marked historic news and Radar",
+      "RSS publishes actual dated Feral rooms, thoughts and archived news",
+      "Footer and search shortcuts feature domain checker",
+      "Homepage Feral latest creation link",
+      "Model price dates and Pipeline guard transparency",
+      "Dated notebook entry",
+      "Offline publication regression checks"
+    ],
+    "not_verified": [
+      "Third-party links at scale",
+      "Historical claims' present-day truth",
+      "Live browser mobile/keyboard/copy/download",
+      "Actual browser DNS tests",
+      "Unattended scheduled task results"
+    ],
+    "backlog": "docs/site-audit-2026-11-09.md",
+    "release_pr": "https://github.com/valorifutures/softcat.ai/pull/282",
+    "release_sha": "d4173a36cf10495710363a6ce6c6a2e82b95a57c",
+    "pr_validation": "https://github.com/valorifutures/softcat.ai/actions/runs/42714607857",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42715048084",
+    "validation": {
+      "pages": 650,
+      "internal_links": 34197,
+      "assets": 3343,
+      "search_entries": 413,
+      "publication_errors": 0,
+      "node_tests": 225,
+      "offline_python_tests": 21,
+      "bot_tests": 141
+    },
+    "followup": "Exclude old redirect aliases from sitemap while retaining them, and mark /receipt noindex. New generated-site regression test gates the change."
+  },
+  "price_guard_2026_11_10": {
+    "date": "2026-11-10",
+    "status": "validated candidate, not yet published",
+    "branch": "maintenance/price-catalogue-guard-2026-11-10",
+    "base": "7ccfa207dc1805316dcb69f91c89b39cadb61ec8",
+    "problem": "Five scheduled runs failed safely after exact tracked-ID matches fell from 32 to 31 of 39. The previous ratio counted seven already unavailable historical entries against the incomplete-catalogue allowance.",
+    "source_check": {
+      "checked_at": "2026-11-10T08:36:04Z",
+      "source": "https://openrouter.ai/api/v1/models",
+      "catalogue_models": 465,
+      "previous_catalogue_models": 453,
+      "sha256": "a349da119e8a622a8d7c2c101f0d485e0c65eab6287c36745f43653b44f88d49",
+      "unmatched_ids": [
+        "anthropic/claude-opus-4",
+        "anthropic/claude-sonnet-4",
+        "arcee-ai/trinity-large-thinking",
+        "deepseek/deepseek-r1",
+        "google/gemini-2.0-flash-001",
+        "minimax/minimax-m2",
+        "openai/o3-mini",
+        "poolside/laguna-xs.2"
+      ],
+      "endpoint_result": "All eight official per-model endpoint API records returned zero endpoints. MiniMax M2 was the only newly unavailable ID."
+    },
+    "change": "Require at least 80% of the previous catalogue volume and independently bound newly missing previously listed IDs. Preserve historical not-listed roster entries and unknown prices.",
+    "current_catalogue_replay": {
+      "catalogue_models": 465,
+      "catalogue_floor": 363,
+      "tracked_models": 39,
+      "matched": 31,
+      "expected_listed": 32,
+      "expected_listed_matched": 31,
+      "newly_not_listed": 1,
+      "allowed_newly_not_listed": 3,
+      "not_listed": 8,
+      "review_needed": 2,
+      "price_changes": 4
+    },
+    "validation": "227 Node tests, 24 offline publication tests, 141 bot tests, 46 recovery tests and 25 authenticated-boundary tests passed. The 650-page build and offline audit passed with 34,193 internal links, 3,343 assets or metadata references, 413 search entries, 184 content records and zero errors.",
+    "limits": [
+      "The catalogue was fetched once for diagnosis and replayed without writing price data.",
+      "No duplicate refresh, price publication or retired content generator ran.",
+      "Hosted checks, merge, the next scheduled price job and any resulting data or Pages deployment are not yet claimed."
+    ]
+  }
+}

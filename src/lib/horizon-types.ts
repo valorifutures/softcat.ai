@@ -1,0 +1,10 @@
+export type Stance = 'optimistic' | 'pragmatic' | 'sceptical';
+export type Branch = { timeframe: string; assumptions: string; blockers: string; implication: string };
+export type Scenario = { id: string; definition: string } & Record<Stance, Branch>;
+export type Evidence = { title: string; url: string; date_label: string; finding: string; limit: string };
+export type Outlook = { id: string; title: string; subtitle: string; question: string; timeframes: Record<Stance, string>; assessment: string; watch: string; evidence: Evidence[] };
+export type Review = { reviewed_at: string; dates_origin: string; decision: string; futures: Outlook[] };
+export type ClockRecord = { id: string; definition: string; timeframes: Record<Stance, string>; reason?: string; evidence?: Evidence[] };
+export type ClockEvent = { id: string; date: string; kind: string; source?: string; records: ClockRecord[] };
+export type DecisionBrief = { id: string; question: string; measure: string; moves: Record<Stance, string> };
+export type ClockData = { schema: number; revision: string; scenarios: Scenario[]; review: Review; history: ClockEvent[]; briefs: DecisionBrief[] };

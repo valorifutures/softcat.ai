@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-20",
+  "featured": [
+    {
+      "id": "ph-gpt-5-4-cyber",
+      "name": "GPT-5.4-Cyber",
+      "tagline": "OpenAI's cyber-permissive model for verified security defenders.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "OpenAI finally admits their models can be useful for offensive security work, but only if you're one of the chosen ones. The Trusted Access program moving from pilot to broad deployment suggests there's real demand from defenders who need AI that can think like attackers.",
+      "ph_url": "https://www.marktechpost.com/2026/04/20/openai-scales-trusted-access-for-cyber-defense-with-gpt-5-4-cyber-a-fine-tuned-model-built-for-verified-security-defenders/",
+      "maker": "OpenAI",
+      "featured": true,
+      "added_at": "2026-04-20T06:00:00Z"
+    },
+    {
+      "id": "ph-claude-opus-4-7",
+      "name": "Claude Opus 4.7",
+      "tagline": "Major upgrade for agentic coding and autonomous tasks.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Anthropic is doubling down on the agent wars with focused improvements to coding and autonomous task handling. This isn't a generational leap but targeted gains where it matters most for developers building real AI-powered applications.",
+      "ph_url": "https://www.marktechpost.com/2026/04/18/anthropic-releases-claude-opus-4-7-a-major-upgrade-for-agentic-coding-high-resolution-vision-and-long-horizon-autonomous-tasks/",
+      "maker": "Anthropic",
+      "featured": true,
+      "added_at": "2026-04-20T06:15:00Z"
+    },
+    {
+      "id": "ph-openmythos",
+      "name": "OpenMythos",
+      "tagline": "Open-source PyTorch reconstruction of Claude Mythos architecture.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Someone reverse-engineered Claude Mythos from first principles and open-sourced it. The fact that 770M parameters can match 1.3B transformers suggests there's still plenty of architectural innovation left to discover in the open source community.",
+      "ph_url": "https://www.marktechpost.com/2026/04/19/meet-openmythos-an-open-source-pytorch-reconstruction-of-claude-mythos-where-770m-parameters-match-a-1-3b-transformer/",
+      "maker": "Kye Gomez",
+      "featured": true,
+      "added_at": "2026-04-20T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-prfaas",
+      "name": "PrfaaS",
+      "tagline": "Cross-datacenter KVCache architecture for LLM serving at scale.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Finally someone is thinking beyond the single-datacenter box for LLM inference. Separating prefill and decode across datacenters could be the unlock for truly global AI deployment.",
+      "ph_url": "https://www.marktechpost.com/2026/04/19/moonshot-ai-and-tsinghua-researchers-propose-prfaas-a-cross-datacenter-kvcache-architecture-that-rethinks-how-llms-are-served-at-scale/",
+      "maker": "Moonshot AI & Tsinghua",
+      "featured": false,
+      "added_at": "2026-04-20T07:00:00Z"
+    },
+    {
+      "id": "ph-nyx",
+      "name": "Nyx",
+      "tagline": "Multi-turn adaptive offensive testing harness for AI agents.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "As AI agents get more capable, we need better ways to break them before the bad guys do. Nyx's adaptive approach to red-teaming could become essential as agents gain more autonomy and access.",
+      "ph_url": "https://fabraix.com",
+      "maker": "Fabraix",
+      "featured": false,
+      "added_at": "2026-04-20T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "OpenClaw isn't fooling me. I remember MS-DOS",
+      "points": 52,
+      "comments": 21,
+      "summary": "A skeptical take on OpenClaw's promises of being a 'free, secure, always-on local AI agent'. The author draws parallels to past software promises that didn't deliver on their bold claims.",
+      "hn_url": "https://news.ycombinator.com/item?id=47831437"
+    },
+    {
+      "title": "Show HN: Nyx \u2013 multi-turn, adaptive, offensive testing harness for AI agents",
+      "points": 20,
+      "comments": 8,
+      "summary": "A new tool for red-teaming AI agents through adaptive multi-turn conversations. Aims to find security vulnerabilities in AI systems before they're deployed.",
+      "hn_url": "https://news.ycombinator.com/item?id=47827802"
+    },
+    {
+      "title": "AI Researchers' Views on Automating AI R&D and Intelligence Explosions",
+      "points": 7,
+      "comments": 0,
+      "summary": "Academic paper exploring how AI researchers view the potential for AI to automate its own research and development. Discusses the implications of recursive self-improvement.",
+      "hn_url": "https://news.ycombinator.com/item?id=47830960"
+    },
+    {
+      "title": "Ask HN: Is giving AI agents DB access the new BI-tool problem?",
+      "points": 6,
+      "comments": 1,
+      "summary": "Discussion about whether giving AI agents direct database access creates similar problems to traditional BI tools. Explores security and performance implications.",
+      "hn_url": "https://news.ycombinator.com/item?id=47827486"
+    },
+    {
+      "title": "Sandboxed AI agent orchestration platform",
+      "points": 5,
+      "comments": 0,
+      "summary": "SuperHQ presents a platform for orchestrating AI agents in sandboxed environments. Focuses on secure execution of autonomous AI workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47825182"
+    }
+  ]
+}

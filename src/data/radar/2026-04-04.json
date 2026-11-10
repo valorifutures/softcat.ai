@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-04",
+  "featured": [
+    {
+      "id": "ph-void-netflix",
+      "name": "VOID",
+      "tagline": "Open-source AI model that erases objects from videos while maintaining physics consistency.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Netflix just cracked the hardest problem in video editing. Remove a person holding a guitar and VOID ensures the guitar disappears too, not just the person. This is the kind of physics-aware video manipulation that separates proper AI from party tricks.",
+      "ph_url": "https://www.marktechpost.com/2026/04/04/netflix-ai-team-just-open-sourced-void-an-ai-model-that-erases-objects-from-videos-physics-and-all/",
+      "maker": "Netflix AI Team",
+      "featured": true,
+      "added_at": "2026-04-04T06:00:00Z"
+    },
+    {
+      "id": "ph-alphaevolve-deepmind",
+      "name": "AlphaEvolve",
+      "tagline": "LLM-powered evolutionary coding agent that rewrites game theory algorithms autonomously.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "DeepMind let an LLM rewrite fundamental game theory algorithms and it beat human experts. This isn't just code generation, it's AI improving the mathematical foundations we use to build AI systems. Meta-level improvement loops are starting to close.",
+      "ph_url": "https://www.marktechpost.com/2026/04/03/google-deepminds-research-lets-an-llm-rewrite-its-own-game-theory-algorithms-and-it-outperformed-the-experts/",
+      "maker": "Google DeepMind",
+      "featured": true,
+      "added_at": "2026-04-04T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-travel-hacking-toolkit",
+      "name": "Travel Hacking Toolkit",
+      "tagline": "Points search and trip planning toolkit powered by AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, someone built AI agents for the tedious work of optimising travel rewards. This is exactly the kind of niche automation that shows where AI excels: complex rule systems with clear objectives.",
+      "ph_url": "https://github.com/borski/travel-hacking-toolkit",
+      "maker": "borski",
+      "featured": false,
+      "added_at": "2026-04-04T07:00:00Z"
+    },
+    {
+      "id": "ph-dangerously-claude",
+      "name": "Dangerously",
+      "tagline": "Run Claude code autonomously inside your Docker Compose stack.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "The name says it all. This tool lets Claude execute code directly in your Docker environment without human oversight. It's either brilliant automation or a security nightmare waiting to happen.",
+      "ph_url": "https://github.com/sayil/dangerously",
+      "maker": "sayil",
+      "featured": false,
+      "added_at": "2026-04-04T07:30:00Z"
+    },
+    {
+      "id": "ph-agenteval",
+      "name": "agenteval",
+      "tagline": "Static analysis tool for AI coding instruction files.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "As AI coding instructions become the new configuration files, we need proper tooling to validate them. This fills a gap that will only get more important as agent workflows mature.",
+      "ph_url": "https://github.com/lukasmetzler/agenteval",
+      "maker": "lukasmetzler",
+      "featured": false,
+      "added_at": "2026-04-04T08:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Travel Hacking Toolkit \u2013 Points search and trip planning with AI",
+      "points": 70,
+      "comments": 30,
+      "summary": "Open-source toolkit that uses AI agents to optimise travel rewards and plan trips. Automates the complex work of finding the best point redemptions and routing options.",
+      "hn_url": "https://news.ycombinator.com/item?id=47635033"
+    },
+    {
+      "title": "Y Combinator's CEO says he ships 37,000 lines of AI code per day",
+      "points": 13,
+      "comments": 18,
+      "summary": "Garry Tan claims to output massive amounts of code daily using AI tools. Highlights the productivity gains possible with current AI coding assistants.",
+      "hn_url": "https://news.ycombinator.com/item?id=47633506"
+    },
+    {
+      "title": "Show HN: Run Claude Code autonomously inside your Docker Compose stack (OSS)",
+      "points": 6,
+      "comments": 0,
+      "summary": "Tool that lets Claude execute code directly in Docker environments without human oversight. Automates development workflows but raises obvious security concerns.",
+      "hn_url": "https://news.ycombinator.com/item?id=47631444"
+    },
+    {
+      "title": "Show HN: agenteval \u2013 static analysis for AI coding instruction file",
+      "points": 5,
+      "comments": 0,
+      "summary": "Static analysis tool for validating AI coding instruction files. Addresses the growing need for proper tooling around agent configuration and prompt engineering.",
+      "hn_url": "https://news.ycombinator.com/item?id=47632919"
+    },
+    {
+      "title": "Microsoft execs warn Agentic AI is hollowing out the junior developer pipeline",
+      "points": 3,
+      "comments": 3,
+      "summary": "Microsoft executives express concern about AI tools reducing opportunities for junior developers to learn. Highlights the broader implications of AI automation on career development paths.",
+      "hn_url": "https://news.ycombinator.com/item?id=47629148"
+    }
+  ]
+}

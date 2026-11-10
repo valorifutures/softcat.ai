@@ -1,0 +1,116 @@
+{
+  "date": "2026-04-17",
+  "featured": [
+    {
+      "id": "ph-qwen36-35b-a3b",
+      "name": "Qwen3.6-35B-A3B",
+      "tagline": "Sparse MoE vision-language model with 3B active parameters and agentic coding capabilities.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Qwen's latest drops a 35B parameter model that only activates 3B at runtime, making it surprisingly efficient for vision and coding tasks. The agentic coding capabilities suggest this isn't just another multimodal model but something that can actually write and execute code autonomously. Open source release means we'll see this powering countless agent experiments within weeks.",
+      "ph_url": "https://www.marktechpost.com/2026/04/16/qwen-team-open-sources-qwen3-6-35b-a3b-a-sparse-moe-vision-language-model-with-3b-active-parameters-and-agentic-coding-capabilities/",
+      "maker": "Qwen Team",
+      "featured": true,
+      "added_at": "2026-04-17T06:00:00Z"
+    },
+    {
+      "id": "ph-gpt-rosalind",
+      "name": "GPT-Rosalind",
+      "tagline": "OpenAI's first life sciences AI model built to accelerate drug discovery and genomics research.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "OpenAI finally enters the specialised science arena with a model specifically trained for biochemistry and genomics. Targeting the notoriously slow drug discovery pipeline shows they're serious about tackling real-world problems beyond chat. If this can genuinely compress 10-15 year timelines, it's a massive deal for healthcare.",
+      "ph_url": "https://www.marktechpost.com/2026/04/16/openai-launches-gpt-rosalind-life-sciences-ai/",
+      "maker": "OpenAI",
+      "featured": true,
+      "added_at": "2026-04-17T06:15:00Z"
+    },
+    {
+      "id": "ph-kampala-api-reverse",
+      "name": "Kampala",
+      "tagline": "Reverse-engineer apps into APIs using AI agent automation.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, someone's tackling the messy reality that most useful software doesn't have proper APIs. Using AI agents to automate the tedious process of reverse engineering app interfaces into usable APIs is exactly the kind of practical automation we need. This could unlock thousands of integrations that would otherwise require painful manual scraping.",
+      "ph_url": "https://www.zatanna.ai/kampala",
+      "maker": "Zatanna AI",
+      "featured": true,
+      "added_at": "2026-04-17T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-parcae-looped-llm",
+      "name": "Parcae",
+      "tagline": "Stable architecture for looped language models that achieves transformer quality at half the size.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "UCSD and Together AI are challenging the bigger-is-better paradigm with looped architectures that recycle parameters efficiently. Getting transformer-level quality with half the parameters could be game-changing for edge deployments. The focus on stability suggests they've solved the training issues that have plagued recurrent approaches.",
+      "ph_url": "https://www.marktechpost.com/2026/04/16/ucsd-and-together-ai-research-introduces-parcae-a-stable-architecture-for-looped-language-models-that-achieves-the-quality-of-a-transformer-twice-the-size/",
+      "maker": "UCSD & Together AI",
+      "featured": false,
+      "added_at": "2026-04-17T06:45:00Z"
+    },
+    {
+      "id": "ph-agent-cache",
+      "name": "Agent-cache",
+      "tagline": "Multi-tier LLM and tool caching system for Valkey and Redis.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Smart caching for AI agents is becoming critical as these systems get more complex and expensive to run. Multi-tier approach suggests they understand that different types of AI calls need different caching strategies. Redis/Valkey support means this can slot into existing infrastructure without major rewrites.",
+      "ph_url": "https://news.ycombinator.com/item?id=47792122",
+      "maker": "Unknown",
+      "featured": false,
+      "added_at": "2026-04-17T07:00:00Z"
+    },
+    {
+      "id": "ph-agent-armor",
+      "name": "Agent Armor",
+      "tagline": "Rust runtime for enforcing policies on AI agent actions.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "As AI agents get more autonomous, we desperately need guardrails that actually work. Building this in Rust suggests they're serious about performance and safety. Policy enforcement at the runtime level is the right approach, giving developers fine-grained control over what their agents can actually do.",
+      "ph_url": "https://github.com/EdoardoBambini/Agent-Armor-Iaga",
+      "maker": "Edoardo Bambini",
+      "featured": false,
+      "added_at": "2026-04-17T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Launch HN: Kampala (YC W26) \u2013 Reverse-Engineer Apps into APIs",
+      "points": 88,
+      "comments": 74,
+      "summary": "YC-backed startup that uses AI agents to automatically reverse-engineer mobile and web apps into usable APIs. Solves the common problem of needing to integrate with services that don't provide proper API access.",
+      "hn_url": "https://news.ycombinator.com/item?id=47794514"
+    },
+    {
+      "title": "Show HN: Agent-cache \u2013 Multi-tier LLM/tool/session caching for Valkey and Redis",
+      "points": 16,
+      "comments": 4,
+      "summary": "Open source caching system specifically designed for AI agents and LLM applications. Provides intelligent caching strategies for different types of AI operations to reduce costs and improve performance.",
+      "hn_url": "https://news.ycombinator.com/item?id=47792122"
+    },
+    {
+      "title": "Show HN: Agent Armor, a Rust runtime for enforcing policies on AI agent actions",
+      "points": 7,
+      "comments": 5,
+      "summary": "Security-focused runtime built in Rust that allows developers to set and enforce policies on autonomous AI agent behaviour. Addresses growing concerns about AI agent safety and control.",
+      "hn_url": "https://news.ycombinator.com/item?id=47802851"
+    },
+    {
+      "title": "Show HN: Open-source Perplexity clone one file back end, streaming answers",
+      "points": 6,
+      "comments": 1,
+      "summary": "Minimal implementation of a Perplexity-style AI search engine in a single file. Demonstrates how to build streaming AI-powered search with minimal infrastructure.",
+      "hn_url": "https://news.ycombinator.com/item?id=47797393"
+    },
+    {
+      "title": "Ask HN: How are you using LLMs in production?",
+      "points": 5,
+      "comments": 6,
+      "summary": "Community discussion about real-world LLM deployments and use cases. Developers sharing experiences with production AI implementations, challenges, and solutions.",
+      "hn_url": "https://news.ycombinator.com/item?id=47791832"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+---
+import ThoughtArticle from '../../components/ThoughtArticle.astro';
+import RetiredThought from '../../components/RetiredThought.astro';
+import { getCollection } from 'astro:content';
+import retirements from '../../data/editorial-retirements.json';
+export async function getStaticPaths() {
+  const entries = (await getCollection('thoughts')).filter(entry => !entry.data.draft);
+  return [
+    ...entries.map(entry => ({ params: { slug: entry.id }, props: { entry, retirement: null } })),
+    ...retirements.entries.map(retirement => ({ params: { slug: retirement.id }, props: { entry: null, retirement } })),
+  ];
+}
+const { entry, retirement } = Astro.props;
+---
+{retirement ? <RetiredThought retirement={retirement} /> : entry && <ThoughtArticle entry={entry} />}

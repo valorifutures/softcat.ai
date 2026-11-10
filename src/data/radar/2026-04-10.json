@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-10",
+  "featured": [
+    {
+      "id": "ph-muse-spark",
+      "name": "Muse Spark",
+      "tagline": "Meta's multimodal reasoning model with thought compression and parallel agents.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Meta's first proper shot at multimodal reasoning with built-in tool use and visual chain of thought. The 'thought compression' approach could be the breakthrough that makes these models actually practical for real work. Meta finally has something to compete with GPT-4 Vision and Claude's multimodal capabilities.",
+      "ph_url": "https://www.marktechpost.com/2026/04/09/meta-superintelligence-lab-releases-muse-spark-a-multimodal-reasoning-model-with-thought-compression-and-parallel-agents/",
+      "maker": "Meta Superintelligence Lab",
+      "featured": true,
+      "added_at": "2026-04-10T06:00:00Z"
+    },
+    {
+      "id": "ph-relvy",
+      "name": "Relvy",
+      "tagline": "On-call runbooks, automated with AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, someone tackled the nightmare of on-call incident response with AI. Instead of panicked engineers hunting through wikis at 3am, Relvy's agents handle the runbook execution. This is exactly the kind of boring, critical work where AI agents actually shine.",
+      "ph_url": "https://www.relvy.ai",
+      "maker": "Relvy",
+      "featured": true,
+      "added_at": "2026-04-10T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-bouncer",
+      "name": "Bouncer",
+      "tagline": "Control your X/Twitter feed using a small on-device LLM.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Imbue's approach to social media curation with local LLMs is clever. No data leaves your device, and you get actual control over what you see instead of algorithmic chaos. The on-device angle makes this genuinely useful rather than just another AI wrapper.",
+      "ph_url": "https://imbue.com/product/bouncer/",
+      "maker": "Imbue",
+      "featured": false,
+      "added_at": "2026-04-10T06:30:00Z"
+    },
+    {
+      "id": "ph-postagent",
+      "name": "Postagent",
+      "tagline": "Postman CLI, but for AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Testing AI agents is still a mess, so a proper CLI tool for agent workflows makes sense. The Postman analogy is spot on - we need the same rigour for agent interactions that we have for API testing. Simple concept, potentially huge impact for agent developers.",
+      "ph_url": "https://github.com/actionbook/postagent",
+      "maker": "Actionbook",
+      "featured": false,
+      "added_at": "2026-04-10T06:45:00Z"
+    },
+    {
+      "id": "ph-agentdm",
+      "name": "AgentDM",
+      "tagline": "Agent to agent messaging over MCP and A2A protocols.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Building on Google's new A2A protocol, AgentDM tackles the communication layer between AI agents. This is infrastructure work that might seem boring now but will be essential as multi-agent systems become the norm. Someone needs to solve the plumbing.",
+      "ph_url": "https://agentdm.ai",
+      "maker": "AgentDM",
+      "featured": false,
+      "added_at": "2026-04-10T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Launch HN: Relvy (YC F24) \u2013 On-call runbooks, automated",
+      "points": 45,
+      "comments": 23,
+      "summary": "YC-backed startup automating incident response with AI agents. Instead of engineers scrambling through documentation during outages, Relvy's agents execute runbooks automatically. Practical application of AI where reliability actually matters.",
+      "hn_url": "https://news.ycombinator.com/item?id=47702647"
+    },
+    {
+      "title": "Show HN: Control your X/Twitter feed using a small on-device LLM",
+      "points": 14,
+      "comments": 3,
+      "summary": "Imbue's Bouncer uses local LLMs to curate social media feeds without sending data to external servers. Takes back control from algorithmic timelines with privacy-first AI filtering. Smart approach to content curation.",
+      "hn_url": "https://news.ycombinator.com/item?id=47706293"
+    },
+    {
+      "title": "Show HN: QVAC SDK, a universal JavaScript SDK for building local AI applications",
+      "points": 8,
+      "comments": 1,
+      "summary": "Universal JavaScript SDK for running AI models locally across different devices and platforms. Aims to simplify the complexity of deploying local AI applications. Infrastructure tooling for the on-device AI movement.",
+      "hn_url": "https://news.ycombinator.com/item?id=47702714"
+    },
+    {
+      "title": "Show HN: Postagent \u2013 Postman CLI, but for AI Agents",
+      "points": 6,
+      "comments": 1,
+      "summary": "Command-line testing tool specifically designed for AI agent workflows. Brings the rigour of API testing tools like Postman to the messy world of agent interactions. Developer tooling that's actually needed.",
+      "hn_url": "https://news.ycombinator.com/item?id=47704439"
+    },
+    {
+      "title": "Show HN: AgentMint \u2013 Open-source OWASP compliance for AI agent tool calls",
+      "points": 5,
+      "comments": 0,
+      "summary": "Security framework ensuring AI agent tool calls meet OWASP compliance standards. Addresses the growing security concerns around autonomous agent actions. Early but important work in AI security.",
+      "hn_url": "https://news.ycombinator.com/item?id=47706092"
+    }
+  ]
+}

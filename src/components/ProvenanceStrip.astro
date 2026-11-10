@@ -1,0 +1,23 @@
+---
+import manifest from '../data/pipeline/bots.json';
+import runs from '../data/pipeline/runs.json';
+import { newestRun, overdueHours } from '../lib/pipeline-status.mjs';
+import RecordedTime from './RecordedTime.astro';
+import RunState from './RunState.astro';
+const latest = newestRun(runs);
+const bots = manifest.map((bot) => ({ ...bot, latest: newestRun(runs, (run) => run.bot === bot.id) }));
+---
+<details class="mb-8 font-mono text-xs text-text-muted">
+  <summary class="cursor-pointer py-3 leading-relaxed">
+    Pipeline records · {latest ? <>last logged run <RecordedTime value={latest.timestamp} /></> : 'no dated runs'} · details
+  </summary>
+  <div class="mt-3 grid gap-3 rounded-lg border border-surface-light p-4">
+    <p>These are published records, not a live check of the bot server.</p>
+    {bots.map((bot) => <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+      <span class="text-text-primary">{bot.name}</span>
+      {bot.latest && <RecordedTime value={bot.latest.timestamp} relative={false} />}
+      <RunState run={bot.latest} threshold={overdueHours(bot.schedule_cron)} />
+    </div>)}
+    <a href="/pipeline" class="text-neon-cyan hover:underline">Full run history →</a>
+  </div>
+</details>

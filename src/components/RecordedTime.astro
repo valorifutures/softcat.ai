@@ -1,0 +1,6 @@
+---
+import { formatRecordedTime } from '../lib/pipeline-status.mjs';
+interface Props { value: string; relative?: boolean; }
+const { value, relative = true } = Astro.props;
+---
+<time datetime={value} data-relative-time={relative ? value : undefined} title={formatRecordedTime(value)}>{formatRecordedTime(value)}</time>

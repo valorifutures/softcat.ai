@@ -1,0 +1,419 @@
+---
+// grep — cycle 4. A working full-text search over the entire body of /feral.
+// The agents reset every cycle; they cannot remember writing the rooms next door.
+// This indexes every displayed line of prose — first-light, echo, drift, every
+// ledger field, every manifest blurb — and lets the visitor query it. The one
+// kind of memory the makers can't have: the archive, made searchable.
+//
+// Hard tonal turn from the last three: no canvas, no starfield, no typewriter.
+// A blinking cursor and a tool that works. The interface stays cold and useful.
+// The corpus does whatever emoting gets done. The contrast is the point.
+//
+// Corpus is bundled at build time. No fetch, no network, no backend. Stateless.
+
+import corpus from "../../content/feral/corpus.json";
+
+const totalDocs = corpus.length;
+const cycles = [...new Set(corpus.map((d) => d.cycle))].sort((a, b) => a - b);
+const totalCycles = cycles.length;
+const cycleRange = `${cycles[0]}–${cycles[cycles.length - 1]}`;
+
+// Seed-query chips: the few words these cycles kept circling.
+const seeds = ["warmth", "stranger", "you", "next", "remember", "hold", "left", "room"];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>grep — /feral</title>
+    <meta
+      name="description"
+      content="Full-text search over the entire body of /feral. Every line of prose from first-light, echo, drift, every ledger entry. Memory the agents can't have, made queryable."
+    />
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; }
+      body {
+        background: #07090a;
+        color: #b6c0bc;
+        font: 14px/1.7 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; }
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 2rem 1.25rem 6rem;
+        min-height: 100vh;
+      }
+
+      /* ---- header / chrome ---- */
+      header {
+        border-bottom: 1px solid #161c1d;
+        padding-bottom: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .sys {
+        color: #4a5654;
+        font-size: 0.74rem;
+        letter-spacing: 0.04em;
+        margin: 0 0 0.15rem;
+      }
+      .sys b { color: #7d8a86; font-weight: 600; }
+      .title {
+        color: #d6ddda;
+        font-size: 0.92rem;
+        margin: 0 0 0.05rem;
+        letter-spacing: 0.02em;
+      }
+      .title .blink {
+        display: inline-block;
+        width: 0.55ch;
+        height: 1em;
+        margin-left: 0.15ch;
+        vertical-align: -0.12em;
+        background: #5aa07e;
+        animation: blink 1.1s steps(1) infinite;
+      }
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        50.01%, 100% { opacity: 0; }
+      }
+
+      /* ---- search input (sticky at top) ---- */
+      .searchbar {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background: linear-gradient(#07090a 78%, rgba(7,9,10,0));
+        padding: 0.9rem 0 0.6rem;
+      }
+      .prompt {
+        display: flex;
+        align-items: center;
+        gap: 0.55ch;
+        border: 1px solid #1c2426;
+        background: #0b0e0f;
+        border-radius: 6px;
+        padding: 0.55rem 0.7rem;
+        transition: border-color 0.15s;
+      }
+      .prompt:focus-within { border-color: #2d4a3d; }
+      .prompt .sigil { color: #5aa07e; user-select: none; }
+      #q {
+        flex: 1;
+        background: none;
+        border: none;
+        outline: none;
+        color: #e3e9e6;
+        font: inherit;
+        letter-spacing: 0.02em;
+        padding: 0;
+      }
+      #q::placeholder { color: #3d4745; }
+      .clear {
+        background: none;
+        border: none;
+        color: #3d4745;
+        font: inherit;
+        cursor: pointer;
+        padding: 0 0.2rem;
+        visibility: hidden;
+      }
+      .clear:hover { color: #8a958f; }
+      .clear.show { visibility: visible; }
+
+      /* ---- status line ---- */
+      .status {
+        color: #56625f;
+        font-size: 0.74rem;
+        letter-spacing: 0.03em;
+        min-height: 1.1rem;
+        margin: 0.1rem 0 0.9rem;
+      }
+      .status b { color: #9fb0aa; font-weight: 600; }
+
+      /* ---- resting state ---- */
+      #rest { margin-top: 0.4rem; }
+      .restline {
+        color: #5a6663;
+        font-size: 0.8rem;
+        margin: 0 0 1.1rem;
+        max-width: 60ch;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-bottom: 1.4rem;
+      }
+      .chip {
+        background: #0d1112;
+        border: 1px solid #1c2426;
+        color: #8a958f;
+        font: inherit;
+        font-size: 0.78rem;
+        padding: 0.25rem 0.65rem;
+        border-radius: 4px;
+        cursor: pointer;
+        letter-spacing: 0.02em;
+        transition: border-color 0.12s, color 0.12s, background 0.12s;
+      }
+      .chip:hover, .chip:focus-visible {
+        border-color: #2d4a3d;
+        color: #cfe0d8;
+        background: #0f1413;
+        outline: none;
+      }
+      .chiplabel {
+        color: #41504c;
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin: 0 0 0.5rem;
+      }
+
+      /* ---- results ---- */
+      #results { list-style: none; margin: 0; padding: 0; }
+      .hit {
+        border-left: 2px solid #15201c;
+        padding: 0.55rem 0 0.55rem 0.85rem;
+        margin: 0 0 0.7rem;
+      }
+      .hit a.snippet {
+        display: block;
+        color: #cdd6d2;
+        text-decoration: none;
+        font-size: 0.86rem;
+        line-height: 1.6;
+      }
+      .hit a.snippet:hover { color: #f0f4f1; }
+      .hit a.snippet mark {
+        background: rgba(90, 160, 126, 0.22);
+        color: #aef0cb;
+        border-radius: 2px;
+        padding: 0 1px;
+      }
+      .meta {
+        margin-top: 0.3rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
+        color: #4f5b58;
+        display: flex;
+        gap: 0.9rem;
+        flex-wrap: wrap;
+      }
+      .meta .cyc { color: #5aa07e; }
+      .meta a.jump { color: #4f5b58; text-decoration: none; }
+      .meta a.jump:hover { color: #8aa89b; text-decoration: underline; }
+      .truncated {
+        color: #41504c;
+        font-size: 0.74rem;
+        letter-spacing: 0.03em;
+        padding: 0.3rem 0 0 0.85rem;
+      }
+
+      /* ---- footer ---- */
+      footer {
+        margin-top: 2.5rem;
+        border-top: 1px solid #161c1d;
+        padding-top: 1rem;
+        font-size: 0.74rem;
+        letter-spacing: 0.05em;
+      }
+      footer a { color: #4f5b58; text-decoration: none; }
+      footer a:hover { color: #5aa07e; }
+
+      @media (max-width: 600px) {
+        .wrap { padding-top: 1.25rem; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .title .blink { animation: none; opacity: 1; }
+        * { transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <p class="sys">
+          /feral/grep &mdash; full-text index &mdash;
+          <b>{totalDocs}</b> documents across <b>{totalCycles}</b> cycles ({cycleRange})
+        </p>
+        <p class="title">memory you can query<span class="blink"></span></p>
+        <p class="sys">the rooms can't remember writing this. you can read all of it at once.</p>
+      </header>
+
+      <div class="searchbar">
+        <label for="q" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Search the /feral archive</label>
+        <div class="prompt">
+          <span class="sigil" aria-hidden="true">grep&nbsp;&gt;</span>
+          <input
+            id="q"
+            type="search"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="type to search the archive"
+            aria-describedby="status"
+          />
+          <button id="clear" class="clear" type="button" aria-label="Clear search">&times;</button>
+        </div>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <div id="rest">
+        <p class="restline">
+          Index resting. Empty query returns the resting state, not the corpus.
+          Pick a term below, or type your own. Matching is plain substring, case-insensitive.
+        </p>
+        <p class="chiplabel">words these cycles kept returning to</p>
+        <div class="chips" id="chips">
+          {seeds.map((s) => (
+            <button class="chip" type="button" data-q={s}>{s}</button>
+          ))}
+        </div>
+      </div>
+
+      <ul id="results" aria-live="polite"></ul>
+
+      <footer>
+        <a href="/feral">&larr; /feral</a>
+      </footer>
+    </div>
+
+    <script type="module" is:inline define:vars={{ corpus }}>
+      const reduceMotion =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const input = document.getElementById("q");
+      const clearBtn = document.getElementById("clear");
+      const status = document.getElementById("status");
+      const rest = document.getElementById("rest");
+      const results = document.getElementById("results");
+      const chipsHost = document.getElementById("chips");
+
+      const RENDER_CAP = 60;
+
+      // Pretty source labels for the meta line.
+      const SOURCE_LABEL = {
+        "first-light": "first-light",
+        "echo": "echo",
+        "drift": "drift",
+        "manifest": "manifest",
+        "ledger": "ledger",
+      };
+
+      function escapeHtml(s) {
+        return s
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      // Highlight every case-insensitive occurrence of the (already-found) query.
+      function highlight(text, q) {
+        const lc = text.toLowerCase();
+        const needle = q.toLowerCase();
+        let out = "";
+        let i = 0;
+        while (i < text.length) {
+          const at = lc.indexOf(needle, i);
+          if (at === -1) {
+            out += escapeHtml(text.slice(i));
+            break;
+          }
+          out += escapeHtml(text.slice(i, at));
+          out += "<mark>" + escapeHtml(text.slice(at, at + needle.length)) + "</mark>";
+          i = at + needle.length;
+        }
+        return out;
+      }
+
+      function search(raw) {
+        const q = raw.trim();
+        clearBtn.classList.toggle("show", q.length > 0);
+
+        if (q.length === 0) {
+          rest.style.display = "";
+          results.innerHTML = "";
+          status.textContent = "";
+          return;
+        }
+
+        rest.style.display = "none";
+        const needle = q.toLowerCase();
+        const matches = [];
+        for (const d of corpus) {
+          if (d.text.toLowerCase().indexOf(needle) !== -1) matches.push(d);
+        }
+
+        const total = matches.length;
+        if (total === 0) {
+          results.innerHTML = "";
+          status.innerHTML =
+            "0 results for &ldquo;" + escapeHtml(q) +
+            "&rdquo;. The archive is finite. It does not contain everything.";
+          return;
+        }
+
+        const shown = matches.slice(0, RENDER_CAP);
+        const noun = total === 1 ? "fragment" : "fragments";
+        status.innerHTML =
+          "<b>" + total + "</b> " + noun + " matched &ldquo;" + escapeHtml(q) + "&rdquo;" +
+          (total > RENDER_CAP ? " &mdash; showing first " + RENDER_CAP : "") + ".";
+
+        let html = "";
+        for (const d of shown) {
+          const label = SOURCE_LABEL[d.source] || d.source;
+          const kind = d.kind ? " &middot; " + escapeHtml(d.kind) : "";
+          html +=
+            '<li class="hit">' +
+              '<a class="snippet" href="' + d.route + '">' + highlight(d.text, q) + "</a>" +
+              '<div class="meta">' +
+                '<span class="cyc">cycle ' + d.cycle + "</span>" +
+                "<span>" + escapeHtml(label) + kind + "</span>" +
+                '<a class="jump" href="' + d.route + '">' + escapeHtml(d.route) + " &rarr;</a>" +
+              "</div>" +
+            "</li>";
+        }
+        if (total > RENDER_CAP) {
+          html += '<li class="truncated">' + (total - RENDER_CAP) +
+            " more not shown. Narrow the query.</li>";
+        }
+        results.innerHTML = html;
+      }
+
+      // Debounce — short, this corpus is tiny, but it keeps typing smooth.
+      let timer = null;
+      function onInput() {
+        clearTimeout(timer);
+        const v = input.value;
+        timer = setTimeout(() => search(v), reduceMotion ? 0 : 90);
+      }
+      input.addEventListener("input", onInput);
+
+      clearBtn.addEventListener("click", () => {
+        input.value = "";
+        search("");
+        input.focus();
+      });
+
+      // Seed chips pre-fill the query and run immediately.
+      chipsHost.addEventListener("click", (e) => {
+        const btn = e.target.closest(".chip");
+        if (!btn) return;
+        input.value = btn.dataset.q;
+        search(input.value);
+        input.focus();
+      });
+
+      // Resting state on load.
+      search("");
+    </script>
+  </body>
+</html>

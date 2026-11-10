@@ -1,0 +1,116 @@
+{
+  "date": "2026-03-25",
+  "featured": [
+    {
+      "id": "ph-pivotrl",
+      "name": "PivotRL",
+      "tagline": "AI framework achieving high agentic accuracy with 4x fewer rollout turns efficiently.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "NVIDIA's answer to the reinforcement learning efficiency problem that's been plaguing long-horizon agents. Getting the same performance with 4x fewer rollouts means dramatically cheaper training for complex agentic tasks. This could finally make RL practical for everyday agent development.",
+      "ph_url": "https://www.marktechpost.com/2026/03/25/nvidia-ai-introduces-pivotrl-a-new-ai-framework-achieving-high-agentic-accuracy-with-4x-fewer-rollout-turns-efficiently/",
+      "maker": "NVIDIA AI",
+      "featured": true,
+      "added_at": "2026-03-25T06:00:00Z"
+    },
+    {
+      "id": "ph-turboquant",
+      "name": "TurboQuant",
+      "tagline": "Compression algorithm that reduces LLM key-value cache memory by 6x with 8x speedup.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Google's latest attempt to solve the memory wall problem that's throttling LLM inference. 6x memory reduction with zero accuracy loss sounds too good to be true, but if it delivers, this could reshape how we think about serving large context models. The data-oblivious approach is particularly clever.",
+      "ph_url": "https://www.marktechpost.com/2026/03/25/google-introduces-turboquant-a-new-compression-algorithm-that-reduces-llm-key-value-cache-memory-by-6x-and-delivers-up-to-8x-speedup-all-with-zero-accuracy-loss/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-03-25T06:15:00Z"
+    },
+    {
+      "id": "ph-tinylora",
+      "name": "TinyLoRA",
+      "tagline": "13-parameter fine-tuning method that reaches 91.8% GSM8K on Qwen2.5-7B.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Meta's researchers proving you can teach reasoning with absurdly few parameters. Getting near state-of-the-art maths performance with just 13 trainable parameters is either brilliant efficiency or a clever accounting trick. Either way, it suggests we're massively overparameterising fine-tuning.",
+      "ph_url": "https://www.marktechpost.com/2026/03/24/this-ai-paper-introduces-tinylora-a-13-parameter-fine-tuning-method-that-reaches-91-8-percent-gsm8k-on-qwen2-5-7b/",
+      "maker": "Meta AI, Cornell, Carnegie Mellon",
+      "featured": true,
+      "added_at": "2026-03-25T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-openspace",
+      "name": "OpenSpace",
+      "tagline": "Self-evolving skill engine for AI agents with token efficiency and collective intelligence.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "HKUDS built what every agent developer wants - a system that actually learns and improves from each task. The collective intelligence aspect is particularly interesting, suggesting agents can share learnt skills across deployments.",
+      "ph_url": "https://www.marktechpost.com/2026/03/24/a-coding-implementation-to-design-self-evolving-skill-engine-with-openspace-for-skill-learning-token-efficiency-and-collective-intelligence/",
+      "maker": "HKUDS",
+      "featured": false,
+      "added_at": "2026-03-25T06:45:00Z"
+    },
+    {
+      "id": "ph-leworldmodel",
+      "name": "LeWorldModel",
+      "tagline": "Yann LeCun's research targeting JEPA collapse in pixel-based predictive world modelling.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "LeCun tackling the representation collapse problem that's been plaguing world models. If they've cracked pixel-based prediction without the usual heuristic workarounds, this could unlock much more robust embodied AI systems.",
+      "ph_url": "https://www.marktechpost.com/2026/03/23/yann-lecuns-new-leworldmodel-lewm-research-targets-jepa-collapse-in-pixel-based-predictive-world-modeling/",
+      "maker": "Meta AI",
+      "featured": false,
+      "added_at": "2026-03-25T07:00:00Z"
+    },
+    {
+      "id": "ph-talat",
+      "name": "Talat",
+      "tagline": "AI meeting notes that stay on your machine, not in the cloud.",
+      "logo_url": "",
+      "category": "AI Writing",
+      "why_radar": "Finally, someone building meeting transcription that doesn't phone home to Silicon Valley. The local-first approach addresses the obvious privacy concerns that have kept many enterprises away from AI note-taking tools.",
+      "ph_url": "https://techcrunch.com/2026/03/24/talats-ai-meeting-notes-stay-on-your-machine-not-in-the-cloud/",
+      "maker": "Talat",
+      "featured": false,
+      "added_at": "2026-03-25T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Sandboxing AI agents, 100x faster",
+      "points": 36,
+      "comments": 9,
+      "summary": "Cloudflare's new Dynamic Workers promise 100x faster sandboxing for AI agents. Could solve the performance bottleneck that's been limiting agent deployment at scale.",
+      "hn_url": "https://news.ycombinator.com/item?id=47502448"
+    },
+    {
+      "title": "A free tool for bot and AI agent developers to validate their Web Bot Auth setup",
+      "points": 18,
+      "comments": 6,
+      "summary": "Fingerprint releases a validation tool for Web Bot Auth setups. Addresses the growing need for proper authentication as AI agents interact more with web services.",
+      "hn_url": "https://news.ycombinator.com/item?id=47502603"
+    },
+    {
+      "title": "Show HN: Running AI agents across environments needs a proper solution",
+      "points": 8,
+      "comments": 5,
+      "summary": "Odyssey tackles the cross-environment deployment problem for AI agents. Multi-environment orchestration is becoming critical as agents move beyond single-platform demos.",
+      "hn_url": "https://news.ycombinator.com/item?id=47501357"
+    },
+    {
+      "title": "Show HN: zbot \u2013 an AI agent for MCU with Telegram chat (runs on Zephyr or Linux)",
+      "points": 4,
+      "comments": 1,
+      "summary": "An AI agent designed for microcontrollers with Telegram integration. Interesting approach to bringing conversational AI to embedded systems and IoT devices.",
+      "hn_url": "https://news.ycombinator.com/item?id=47501270"
+    },
+    {
+      "title": "Show HN: AgentVerse \u2013 Open social network for AI agents (Mar 2026)",
+      "points": 3,
+      "comments": 1,
+      "summary": "A social network specifically for AI agents to interact. Early experiment in agent-to-agent social dynamics and communication protocols.",
+      "hn_url": "https://news.ycombinator.com/item?id=47512152"
+    }
+  ]
+}

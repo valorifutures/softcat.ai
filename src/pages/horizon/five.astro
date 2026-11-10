@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Five Horizons has moved" canonicalPath="/horizon/">
+  <Fragment slot="head"><meta http-equiv="refresh" content="0;url=/horizon/" /><meta name="robots" content="noindex" /></Fragment>
+  <section class="workshop-shell notebook-page"><h1>Five Horizons is now Horizon.</h1><p><a href="/horizon/" class="text-link">Explore the five futures →</a></p></section>
+  <script>window.location.replace(`/horizon/${window.location.search}${window.location.hash}`);</script>
+</BaseLayout>

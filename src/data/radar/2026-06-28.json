@@ -1,0 +1,128 @@
+{
+  "date": "2026-06-28",
+  "featured": [
+    {
+      "id": "ph-dspark",
+      "name": "DSpark",
+      "tagline": "Speculative decoding framework that speeds up DeepSeek-V4 generation by up to 85%.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "DeepSeek open-sourced a speculative decoding framework that pairs a parallel draft backbone with a Markov head to cut suffix decay, then uses confidence-scheduled verification to match GPU load. In production it delivers 57 to 85% faster per-user generation over MTP-1, losslessly. That is a meaningful throughput gain for anyone running DeepSeek at scale.",
+      "ph_url": "https://www.marktechpost.com/2026/06/27/deepseek-releases-dspark-a-speculative-decoding-framework-that-accelerates-deepseek-v4-per-user-generation-60-85-over-mtp-1/",
+      "maker": "DeepSeek",
+      "featured": true,
+      "added_at": "2026-06-28T06:00:00Z"
+    },
+    {
+      "id": "ph-astryx",
+      "name": "Astryx",
+      "tagline": "Meta's open-source React design system with a CLI and MCP server built for AI agents.",
+      "logo_url": "",
+      "category": "Design Tools",
+      "why_radar": "Astryx is interesting because it treats AI agents and human engineers as the same consumer of a design system. The MCP server means an agent can query the component API directly rather than hallucinating its way through docs. MIT-licensed and eight years in the making inside Meta, so it is not a prototype.",
+      "ph_url": "https://www.marktechpost.com/2026/06/27/metas-astryx-brings-a-cli-and-mcp-server-to-an-open-source-react-design-system-agents-can-read/",
+      "maker": "Meta",
+      "featured": true,
+      "added_at": "2026-06-28T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-lfm25-230m",
+      "name": "LFM2.5-230M",
+      "tagline": "Liquid AI's smallest open-weight model, built for on-device tool use and data extraction.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "213 tokens per second on a Galaxy S25 Ultra and 42 on a Raspberry Pi 5 are numbers worth paying attention to. It beats Qwen3.5-0.8B and Gemma 3 1B on instruction following despite being smaller, which makes it a credible option for edge deployments. Open weights and full llama.cpp, MLX, vLLM, SGLang, and ONNX support mean you can drop it in today.",
+      "ph_url": "https://www.marktechpost.com/2026/06/27/liquid-ai-ships-lfm2-5-230m-with-llama-cpp-mlx-vllm-sglang-and-onnx-support-for-on-device-inference/",
+      "maker": "Liquid AI",
+      "featured": false,
+      "added_at": "2026-06-28T06:30:00Z"
+    },
+    {
+      "id": "ph-adrafinil",
+      "name": "Adrafinil",
+      "tagline": "Keeps a lid-closed Mac awake only while AI agents are actively running.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "A small but genuinely useful tool for anyone running long agent jobs on a MacBook. It wakes the machine when agents are working and lets it sleep when they are not, so you are not burning battery for nothing. Solves a real friction point that most people have just been ignoring.",
+      "ph_url": "https://github.com/kageroumado/adrafinil",
+      "maker": "kageroumado",
+      "featured": false,
+      "added_at": "2026-06-28T06:30:00Z"
+    },
+    {
+      "id": "ph-cerberus",
+      "name": "Cerberus",
+      "tagline": "A local firewall for AI agents' tool calls.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "As agents get more tool access, the attack surface grows. Cerberus sits locally and gates which tool calls actually go through, giving you a checkpoint before an agent does something you cannot undo. Early stage, but the problem it is solving is becoming urgent fast.",
+      "ph_url": "https://github.com/Adirdabush1/cerberus",
+      "maker": "Adirdabush1",
+      "featured": false,
+      "added_at": "2026-06-28T06:30:00Z"
+    },
+    {
+      "id": "ph-git-temp",
+      "name": "git-temp",
+      "tagline": "A scratchpad folder for AI agents that does not clutter Git status.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "AI coding agents love creating temp files and git status becomes noise fast. git-temp gives agents a designated scratchpad that sits outside Git's tracking. Simple fix, but it makes agent-assisted workflows noticeably tidier.",
+      "ph_url": "https://github.com/sebmellen/git-temp",
+      "maker": "sebmellen",
+      "featured": false,
+      "added_at": "2026-06-28T06:30:00Z"
+    },
+    {
+      "id": "ph-corv",
+      "name": "Corv",
+      "tagline": "An SSH client built for AI agents and humans alike.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "SSH access is one of the more dangerous things you can hand an agent, and most existing clients were not designed with agent use in mind. Corv is built from the ground up for that context. Worth watching as agent infrastructure around remote access matures.",
+      "ph_url": "https://github.com/khalid-src/corv-client",
+      "maker": "khalid-src",
+      "featured": false,
+      "added_at": "2026-06-28T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Ford hired AI and sacked humans. It backfired badly",
+      "points": 169,
+      "comments": 92,
+      "summary": "Ford's attempt to replace human workers with AI automation is reported to have gone poorly, with quality and operational problems following the cuts. The story is generating significant discussion about the gap between AI capability demos and real-world deployment reliability. A useful counterweight to the usual automation hype cycle.",
+      "hn_url": "https://news.ycombinator.com/item?id=48703968"
+    },
+    {
+      "title": "Show HN: Adrafinil \u2013 keep a lid-closed Mac awake only while agents work",
+      "points": 108,
+      "comments": 71,
+      "summary": "A small open-source tool that keeps a MacBook awake only when AI agents are actively running, then lets it sleep again. Solves a genuine annoyance for anyone running overnight agent jobs on a laptop. Strong upvotes suggest it is hitting a real nerve.",
+      "hn_url": "https://news.ycombinator.com/item?id=48701512"
+    },
+    {
+      "title": "Show HN: The TypeScript Semantic Layer for ClickHouse",
+      "points": 6,
+      "comments": 6,
+      "summary": "hypequery is a TypeScript semantic layer for ClickHouse, letting you define reusable metrics and dimensions in code rather than raw SQL. Useful for teams building analytics on top of ClickHouse who want type safety and reusability. Early but addressing a real gap in the ClickHouse ecosystem.",
+      "hn_url": "https://news.ycombinator.com/item?id=48696675"
+    },
+    {
+      "title": "Show HN: Git-temp \u2013 scratchpad folder for AI agents; doesn't clutter Git status",
+      "points": 4,
+      "comments": 0,
+      "summary": "git-temp creates a designated temp folder for AI agents that Git ignores entirely. Keeps working trees clean when agents are generating intermediate files during coding tasks. Simple idea that solves a specific and growing frustration.",
+      "hn_url": "https://news.ycombinator.com/item?id=48703875"
+    },
+    {
+      "title": "Cerberus \u2013 a local firewall for AI agents' tool calls",
+      "points": 3,
+      "comments": 0,
+      "summary": "Cerberus intercepts and gates tool calls made by AI agents before they execute, acting as a local firewall. As agents gain access to more sensitive tools, having a checkpoint layer matters. Very early project but pointed at a problem that is only going to get bigger.",
+      "hn_url": "https://news.ycombinator.com/item?id=48704458"
+    }
+  ]
+}

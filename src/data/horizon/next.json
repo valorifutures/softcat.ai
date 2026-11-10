@@ -1,0 +1,211 @@
+[
+  {
+    "id": "next-open-weight-reasoning-reaches-practical-frontier-parity",
+    "lane": "next",
+    "title": "Open-weight reasoning reaches practical frontier parity",
+    "themes": [
+      "models"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "By 11 October 2027, an open weight reasoning model could offer a practical alternative to the strongest closed APIs on both reasoning and coding at a lower total cost. The useful comparison includes retries, latency and hosting, not just a model score.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-09-12",
+    "target_date": "2027-10-11",
+    "review_note": "Downgraded from emerging. The R1 model card reports comparisons with older closed models. It supports a capability claim at that release, not parity with the September 2026 frontier. Hosted API rates also do not establish the total cost of running open weights.",
+    "resolution_criteria": "Compare open and closed models on the same published reasoning and coding test sets with the same task budget. Predeclare an acceptable quality gap and count all inference, retry and hosting costs. Without an independent like-for-like result, leave the forecast unresolved.",
+    "evidence": [
+      {
+        "type": "external",
+        "ref": "https://github.com/deepseek-ai/DeepSeek-R1",
+        "label": "DeepSeek-R1: model card and author-reported evaluations"
+      },
+      {
+        "type": "external",
+        "ref": "https://github.com/SWE-bench/SWE-bench",
+        "label": "SWE-bench: reproducible software issue evaluation"
+      },
+      {
+        "type": "external",
+        "ref": "https://openrouter.ai/api/v1/models",
+        "label": "OpenRouter public model catalogue"
+      }
+    ],
+    "updated": "2026-09-12"
+  },
+  {
+    "id": "next-protocols-beat-bespoke-agent-plumbing",
+    "lane": "next",
+    "title": "Protocols beat bespoke agent plumbing",
+    "themes": [
+      "agents",
+      "infrastructure"
+    ],
+    "signal_type": "forecast",
+    "confidence": "emerging",
+    "why_it_matters": "By April 2027, shared protocols could become the usual route for exposing tools, data and agent capabilities in enterprise agent systems. MCP and A2A solve different parts of that problem. Neither removes the need to design permissions or recover from failures.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-09-12",
+    "target_date": "2027-04-30",
+    "review_note": "Retained as emerging. The maintained specifications and SDKs are concrete infrastructure. Their existence does not show that most enterprises use them. We removed the unsupported implication that adoption had already been measured.",
+    "resolution_criteria": "Publish the sampling frame before judging adoption. Count named production integrations using a shared protocol, excluding demos and announcements. A majority of that sample must use a protocol for a substantial part of the integration. Report the sample limits.",
+    "evidence": [
+      {
+        "type": "external",
+        "ref": "https://github.com/modelcontextprotocol/modelcontextprotocol",
+        "label": "MCP specification and versioned schema"
+      },
+      {
+        "type": "external",
+        "ref": "https://github.com/a2aproject/A2A",
+        "label": "A2A: agent communication specification and SDKs"
+      }
+    ],
+    "updated": "2026-09-12"
+  },
+  {
+    "id": "next-agent-security-becomes-a-platform-layer",
+    "lane": "next",
+    "title": "Agent security becomes a platform layer",
+    "themes": [
+      "agents",
+      "security"
+    ],
+    "signal_type": "forecast",
+    "confidence": "emerging",
+    "why_it_matters": "By 11 October 2027, sandbox controls, action approvals and inspectable run records could be standard product features in agent platforms. These controls matter when a model can change files or call external tools.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-09-12",
+    "target_date": "2027-10-11",
+    "review_note": "Retained as emerging. Codex documents sandboxing, approval policies and optional telemetry today. That is an existence proof in one product, not proof of market-wide adoption or immunity to prompt injection.",
+    "resolution_criteria": "Use a named, published sample of agent platforms. Verify that each control can be configured and observed in a real run, including a denied action. Documentation alone does not prove the controls work. A majority must provide all three features.",
+    "evidence": [
+      {
+        "type": "external",
+        "ref": "https://learn.chatgpt.com/docs/agent-approvals-security",
+        "label": "Codex: sandboxing, approvals and optional audit telemetry"
+      },
+      {
+        "type": "external",
+        "ref": "https://github.com/modelcontextprotocol/modelcontextprotocol",
+        "label": "MCP specification and versioned schema"
+      }
+    ],
+    "updated": "2026-09-12"
+  },
+  {
+    "id": "next-coding-agents-own-the-easy-middle",
+    "lane": "next",
+    "title": "Coding agents own the easy middle",
+    "themes": [
+      "code",
+      "agents"
+    ],
+    "signal_type": "forecast",
+    "confidence": "speculative",
+    "why_it_matters": "By 11 April 2027, agents could produce most routine scaffolding and straightforward refactors in teams that adopt them. Review effort and defects determine whether this is a gain. The volume of generated code does not.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-09-12",
+    "target_date": "2027-04-11",
+    "review_note": "Downgraded from emerging. SWE-bench measures issue resolution in a defined evaluation. It cannot establish what share of production work agents perform. The original claim about most fast-moving teams lacked an adoption baseline.",
+    "resolution_criteria": "Follow named teams across repeated production tasks. Record accepted changes, review time, escaped defects and the human baseline. Define routine work before counting it. Do not infer a majority of teams from one lab or from benchmark scores.",
+    "evidence": [
+      {
+        "type": "external",
+        "ref": "https://github.com/SWE-bench/SWE-bench",
+        "label": "SWE-bench: reproducible software issue evaluation"
+      },
+      {
+        "type": "external",
+        "ref": "https://learn.chatgpt.com/docs/agent-approvals-security",
+        "label": "Codex: sandboxing, approvals and optional audit telemetry"
+      }
+    ],
+    "updated": "2026-09-12"
+  },
+  {
+    "id": "next-computer-use-agents-find-narrow-fit",
+    "lane": "next",
+    "title": "Computer-use agents find narrow fit",
+    "themes": [
+      "agents",
+      "interfaces"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "By 11 April 2027, browser and desktop agents could be useful in a limited set of repetitive back-office jobs while broad consumer autopilot remains unreliable. The hard test includes changed screens, interruptions and unexpected outcomes.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-09-12",
+    "target_date": "2027-04-11",
+    "review_note": "Retained as contested. OSWorld provides an executable desktop task benchmark and documents revisions to its evaluations. It does not measure consumer adoption or prove that a particular production workflow is reliable.",
+    "resolution_criteria": "Compare repeat runs of named narrow workflows with varied desktop tasks. Include changed UI, lost sessions and recovery. Report failures and human interventions as well as completed tasks. A polished demonstration is insufficient.",
+    "evidence": [
+      {
+        "type": "external",
+        "ref": "https://github.com/xlang-ai/OSWorld",
+        "label": "OSWorld: desktop task evaluation and verification changes"
+      },
+      {
+        "type": "external",
+        "ref": "https://learn.chatgpt.com/docs/agent-approvals-security",
+        "label": "Codex: sandboxing, approvals and optional audit telemetry"
+      }
+    ],
+    "updated": "2026-09-12"
+  },
+  {
+    "id": "next-enterprise-ai-stays-multi-model",
+    "lane": "next",
+    "title": "Enterprise AI stays multi-model",
+    "themes": [
+      "enterprise",
+      "models"
+    ],
+    "signal_type": "forecast",
+    "confidence": "speculative",
+    "why_it_matters": "By 11 April 2028, large organisations may commonly keep several model families in production for different tasks, costs and deployment needs. A catalogue with many choices makes this possible. It does not tell us what customers actually run.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-09-12",
+    "target_date": "2028-04-11",
+    "review_note": "Downgraded from contested. The checked OpenRouter catalogue demonstrates available choice, not enterprise adoption. We found no representative production-use evidence for the original claim that most large firms will run at least three families.",
+    "resolution_criteria": "Use a published, representative sample of large organisations. Count named production model families, excluding evaluations, unused contracts and reseller duplicates. The original majority-and-three-families claim remains unproven unless that threshold is met.",
+    "evidence": [
+      {
+        "type": "external",
+        "ref": "https://openrouter.ai/api/v1/models",
+        "label": "OpenRouter public model catalogue"
+      }
+    ],
+    "updated": "2026-09-12"
+  },
+  {
+    "id": "next-local-inference-becomes-the-private-default",
+    "lane": "next",
+    "title": "Local inference becomes the private default",
+    "themes": [
+      "infrastructure",
+      "models"
+    ],
+    "signal_type": "forecast",
+    "confidence": "contested",
+    "why_it_matters": "By 11 April 2028, local inference could become the default for some offline and privacy-sensitive app features, with server models handling other work. Whether a feature is private depends on the full data path, including tools and fallback calls.",
+    "added": "2026-04-11",
+    "confidence_last_reviewed": "2026-09-12",
+    "target_date": "2028-04-11",
+    "review_note": "Changed from speculative to contested after checking concrete local deployment options. Apple documents both on-device and server models, and llama.cpp supports local hardware. Neither shows that most mainstream apps default to local execution.",
+    "resolution_criteria": "Test named shipping app features with network access disabled and inspect their declared data paths. Record hardware support, fallback behaviour and task quality. A local model inside a feature that uploads its inputs does not meet the privacy claim.",
+    "evidence": [
+      {
+        "type": "external",
+        "ref": "https://developer.apple.com/documentation/foundationmodels",
+        "label": "Apple Foundation Models: on-device and server model options"
+      },
+      {
+        "type": "external",
+        "ref": "https://github.com/ggml-org/llama.cpp",
+        "label": "llama.cpp: local inference and supported hardware backends"
+      }
+    ],
+    "updated": "2026-09-12"
+  }
+]

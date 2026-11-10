@@ -1,0 +1,104 @@
+{
+  "date": "2026-05-01",
+  "featured": [
+    {
+      "id": "ph-qwen-scope",
+      "name": "Qwen-Scope",
+      "tagline": "Open-source Sparse AutoEncoders suite that turns LLM internal features into development tools.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "This is proper mechanistic interpretability made practical. Qwen is open-sourcing the tools to peer inside black box models and actually use what you find. Most SAE work stays academic, but this could change how we debug and understand our models.",
+      "ph_url": "https://www.marktechpost.com/2026/05/01/qwen-ai-releases-qwen-scope-an-open-source-sparse-autoencoders-sae-suite-that-turns-llm-internal-features-into-practical-development-tools/",
+      "maker": "Qwen AI",
+      "featured": true,
+      "added_at": "2026-05-01T06:00:00Z"
+    },
+    {
+      "id": "ph-world-r1",
+      "name": "World-R1",
+      "tagline": "Uses Flow-GRPO and 3D-aware rewards to inject geometric consistency into video generation.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Microsoft is solving the physics problem in text-to-video generation without rebuilding the entire model. Using RL to teach existing models about 3D consistency is clever engineering. This approach could become the standard way to add physics understanding to any video model.",
+      "ph_url": "https://www.marktechpost.com/2026/04/30/microsoft-researchs-world-r1-uses-flow-grpo-and-3d-aware-rewards-to-inject-geometric-consistency-into-wan-2-1-without-architectural-changes/",
+      "maker": "Microsoft Research",
+      "featured": true,
+      "added_at": "2026-05-01T06:15:00Z"
+    },
+    {
+      "id": "ph-spec27",
+      "name": "Spec27",
+      "tagline": "Spec-driven validation for AI agents to ensure they meet requirements.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "As AI agents get more autonomous, we need proper testing frameworks. Spec27 brings traditional software validation to agentic workflows. It's the kind of unglamorous infrastructure that becomes essential once agents start handling real business logic.",
+      "ph_url": "https://www.spec27.ai/launch",
+      "maker": "Spec27",
+      "featured": true,
+      "added_at": "2026-05-01T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-flashkda",
+      "name": "FlashKDA",
+      "tagline": "CUTLASS kernels for Kimi Delta Attention with variable-length batching.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Moonshot is open-sourcing the performance optimisations that make their Kimi models fast. CUTLASS kernels for delta attention could speed up anyone working with long-context models. The infrastructure layer is where real performance gains happen.",
+      "ph_url": "https://www.marktechpost.com/2026/04/30/moonshot-ai-open-sources-flashkda-cutlass-kernels-for-kimi-delta-attention-with-variable-length-batching-and-h20-benchmarks/",
+      "maker": "Moonshot AI",
+      "featured": false,
+      "added_at": "2026-05-01T06:45:00Z"
+    },
+    {
+      "id": "ph-mistral-medium-35",
+      "name": "Mistral Medium 3.5",
+      "tagline": "Flagship model that merges chat, reasoning, and code capabilities into one.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Mistral is consolidating their model lineup instead of fragmenting it further. One model for chat, code, and reasoning makes more sense than managing separate endpoints. The French are taking a different approach to the model menu problem.",
+      "ph_url": "https://the-decoder.com/mistrals-new-flagship-medium-3-5-folds-chat-reasoning-and-code-into-one-model/",
+      "maker": "Mistral",
+      "featured": false,
+      "added_at": "2026-05-01T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Spec27 \u2013 Spec-driven validation for AI agents",
+      "points": 13,
+      "comments": 9,
+      "summary": "A framework for validating that AI agents meet their specifications and requirements. As agents become more autonomous, proper testing infrastructure becomes critical for production deployments.",
+      "hn_url": "https://news.ycombinator.com/item?id=47959984"
+    },
+    {
+      "title": "Scaling Pain of Coding Agent Serving: Lessons from Debugging GLM-5 at Scale",
+      "points": 9,
+      "comments": 0,
+      "summary": "Technical deep dive into the infrastructure challenges of serving coding agents at scale. Covers the debugging and optimisation lessons learned from deploying GLM-5 in production environments.",
+      "hn_url": "https://news.ycombinator.com/item?id=47964692"
+    },
+    {
+      "title": "Lens Agents: Governing AI Agents Across Desktop, Cloud, and On-Prem",
+      "points": 6,
+      "comments": 0,
+      "summary": "A governance platform for managing AI agents across different deployment environments. Addresses the growing need for agent orchestration and control in enterprise settings.",
+      "hn_url": "https://news.ycombinator.com/item?id=47961280"
+    },
+    {
+      "title": "We scanned 100 Smithery MCP servers, 22 flagged, here's what we found",
+      "points": 4,
+      "comments": 3,
+      "summary": "Security analysis of Model Context Protocol servers reveals concerning patterns in the ecosystem. Shows the importance of security scanning as MCP adoption grows in production systems.",
+      "hn_url": "https://news.ycombinator.com/item?id=47969781"
+    },
+    {
+      "title": "Terminal AI Coding Agents Comparison Table",
+      "points": 4,
+      "comments": 0,
+      "summary": "Comprehensive comparison of terminal-based AI coding agents and their capabilities. Useful resource for developers choosing between different coding assistance tools and frameworks.",
+      "hn_url": "https://news.ycombinator.com/item?id=47966503"
+    }
+  ]
+}

@@ -1,0 +1,599 @@
+{
+  "thoughts": [
+    {
+      "date": "2026-03-01",
+      "file": "2026-03-01-memory-is-the-new-context-window.md",
+      "title": "Memory is the new context window"
+    },
+    {
+      "date": "2026-02-22",
+      "file": "2026-02-22-agents-need-workstations-not-just-models.md",
+      "title": "Agents need workstations, not just models"
+    },
+    {
+      "date": "2026-02-24",
+      "file": "2026-02-24-the-pentagon-standoff-proves-ai-safety-theater-is-dead.md",
+      "title": "The Pentagon standoff proves AI safety theatre is dead"
+    },
+    {
+      "date": "2026-02-26",
+      "file": "2026-02-26-multi-agent-systems-are-just-microservices-with-extra-steps.md",
+      "title": "Multi-agent systems are just microservices with extra steps"
+    },
+    {
+      "date": "2026-02-27",
+      "file": "2026-02-27-scale-killed-the-llm-star.md",
+      "title": "Scale killed the LLM star"
+    },
+    {
+      "date": "2026-02-28",
+      "file": "2026-02-28-infrastructure-deals-are-the-new-talent-wars.md",
+      "title": "Infrastructure deals are the new talent wars"
+    },
+    {
+      "date": "2026-03-02",
+      "file": "2026-03-02-explainable-ai-is-just-debugging-for-people-who-forgot-how-t.md",
+      "title": "Explainable AI is just debugging for people who forgot how to read code"
+    },
+    {
+      "date": "2026-03-03",
+      "file": "2026-03-03-small-models-are-eating-the-world-while-everyone-chases-fron.md",
+      "title": "Small models are eating the world while everyone chases frontier performance"
+    },
+    {
+      "date": "2026-03-05",
+      "file": "2026-03-05-the-execution-layer-is-where-ai-agents-go-to-die.md",
+      "title": "The execution layer is where AI agents go to die"
+    },
+    {
+      "date": "2026-03-06",
+      "file": "2026-03-06-tool-calling-is-just-function-calls-with-marketing-budget.md",
+      "title": "Tool calling is just function calls with marketing budget"
+    },
+    {
+      "date": "2026-03-07",
+      "file": "2026-03-07-on-device-inference-just-became-the-only-game-worth-playing.md",
+      "title": "On-device inference just became the only game worth playing"
+    },
+    {
+      "date": "2026-03-08",
+      "file": "2026-03-08-runtime-validation-is-the-new-unit-testing.md",
+      "title": "Runtime validation is the new unit testing"
+    },
+    {
+      "date": "2026-03-09",
+      "file": "2026-03-09-production-fragility-is-the-real-ai-alignment-problem.md",
+      "title": "Production fragility is the real AI alignment problem"
+    },
+    {
+      "date": "2026-03-10",
+      "file": "2026-03-10-uncertainty-estimation-is-just-production-monitoring-dressed.md",
+      "title": "Uncertainty estimation is just production monitoring dressed up as science"
+    },
+    {
+      "date": "2026-03-11",
+      "file": "2026-03-11-meta-agents-are-just-configuration-files-with-delusions-of-g.md",
+      "title": "Meta-agents are just configuration files with delusions of grandeur"
+    },
+    {
+      "date": "2026-03-12",
+      "file": "2026-03-12-multimodal-embeddings-are-just-search-engines-cosplaying-as-.md",
+      "title": "Multimodal embeddings are just search engines cosplaying as intelligence"
+    },
+    {
+      "date": "2026-03-13",
+      "file": "2026-03-13-self-designing-agents-are-just-fancy-templates-pretending-to.md",
+      "title": "Self-designing agents are just fancy templates pretending to be clever"
+    },
+    {
+      "date": "2026-03-13",
+      "file": "2026-03-13-streaming-agents-prove-planning-is-dead.md",
+      "title": "Streaming agents prove planning is dead"
+    },
+    {
+      "date": "2026-03-14",
+      "file": "2026-03-14-research-loops-are-just-adhd-for-algorithms.md",
+      "title": "Research loops are just ADHD for algorithms"
+    },
+    {
+      "date": "2026-03-15",
+      "file": "2026-03-15-type-safety-is-the-new-prompt-engineering.md",
+      "title": "Type safety is the new prompt engineering"
+    },
+    {
+      "date": "2026-03-16",
+      "file": "2026-03-16-governance-systems-are-just-enterprise-bureaucracy-with-llm-.md",
+      "title": "Governance systems are just enterprise bureaucracy with LLM lipstick"
+    },
+    {
+      "date": "2026-03-17",
+      "file": "2026-03-17-residual-connections-are-holding-transformers-back.md",
+      "title": "Residual connections are holding transformers back"
+    },
+    {
+      "date": "2026-03-18",
+      "file": "2026-03-18-context-databases-are-just-filesystems-pretending-to-be-revo.md",
+      "title": "Context databases are just filesystems pretending to be revolutionary"
+    },
+    {
+      "date": "2026-03-19",
+      "file": "2026-03-19-security-frameworks-are-just-theatre-for-the-real-problem.md",
+      "title": "Security frameworks are just theatre for the real problem"
+    },
+    {
+      "date": "2026-03-20",
+      "file": "2026-03-20-infrastructure-abstractions-are-the-real-ai-safety-problem.md",
+      "title": "Infrastructure abstractions are the real AI safety problem"
+    },
+    {
+      "date": "2026-03-21",
+      "file": "2026-03-21-agent-swarms-are-just-distributed-systems-with-commitment-is.md",
+      "title": "Agent swarms are just distributed systems with commitment issues"
+    },
+    {
+      "date": "2026-03-22",
+      "file": "2026-03-22-confidence-scores-are-just-anxiety-for-algorithms.md",
+      "title": "Confidence scores are just anxiety for algorithms"
+    },
+    {
+      "date": "2026-03-23",
+      "file": "2026-03-23-production-deployment-is-the-new-frontier-research.md",
+      "title": "Production deployment is the new frontier research"
+    },
+    {
+      "date": "2026-03-24",
+      "file": "2026-03-24-reasoning-phases-are-just-expensive-preprocessing-with-delus.md",
+      "title": "Reasoning phases are just expensive preprocessing with delusions of intelligence"
+    },
+    {
+      "date": "2026-03-25",
+      "file": "2026-03-25-parameter-efficiency-is-just-premature-optimisation-disguise.md",
+      "title": "Parameter efficiency is just premature optimisation disguised as innovation"
+    },
+    {
+      "date": "2026-03-26",
+      "file": "2026-03-26-memory-compression-is-just-bandwidth-denial-pretending-to-be.md",
+      "title": "Memory compression is just bandwidth denial pretending to be breakthrough"
+    },
+    {
+      "date": "2026-03-27",
+      "file": "2026-03-27-voice-models-are-the-new-graphics-cards.md",
+      "title": "Voice models are the new graphics cards"
+    },
+    {
+      "date": "2026-03-28",
+      "file": "2026-03-28-real-time-voice-models-just-made-chatbots-obsolete.md",
+      "title": "Real-time voice models just made chatbots obsolete"
+    },
+    {
+      "date": "2026-03-29",
+      "file": "2026-03-29-rollout-infrastructure-just-became-the-new-model-training.md",
+      "title": "Rollout infrastructure just became the new model training"
+    },
+    {
+      "date": "2026-03-30",
+      "file": "2026-03-30-automated-evolution-is-just-hyperparameter-tuning-with-exist.md",
+      "title": "Automated evolution is just hyperparameter tuning with existential dread"
+    },
+    {
+      "date": "2026-03-31",
+      "file": "2026-03-31-latency-budgets-are-the-new-moore.md",
+      "title": "Latency budgets are the new Moore"
+    },
+    {
+      "date": "2026-04-01",
+      "file": "2026-04-01-production-standardisation-is-eating-research-velocity-for-b.md",
+      "title": "Production standardisation is eating research velocity for breakfast"
+    },
+    {
+      "date": "2026-04-02",
+      "file": "2026-04-02-enterprise-ai-is-just-expensive-autocomplete-with-a-complian.md",
+      "title": "Enterprise AI is just expensive autocomplete with a compliance wrapper"
+    },
+    {
+      "date": "2026-04-03",
+      "file": "2026-04-03-open-source-reasoning-models-just-made-the-api-economy-irrel.md",
+      "title": "Open source reasoning models just made the API economy irrelevant"
+    },
+    {
+      "date": "2026-04-04",
+      "file": "2026-04-04-token-taxes-are-just-cloud-computing.md",
+      "title": "Token taxes are just cloud computing"
+    },
+    {
+      "date": "2026-04-05",
+      "file": "2026-04-05-local-inference-is-just-hoarding-with-better-marketing.md",
+      "title": "Local inference is just hoarding with better marketing"
+    },
+    {
+      "date": "2026-04-06",
+      "file": "2026-04-06-self-optimising-agents-are-just-therapy-for-terrible-enginee.md",
+      "title": "Self-optimising agents are just therapy for terrible engineers"
+    },
+    {
+      "date": "2026-04-07",
+      "file": "2026-04-07-compact-models-are-just-flagship-models-admitting-defeat.md",
+      "title": "Compact models are just flagship models admitting defeat"
+    },
+    {
+      "date": "2026-04-08",
+      "file": "2026-04-08-tool-calling-just-turned-function-composition-into-a-runtime.md",
+      "title": "Tool calling just turned function composition into a runtime circus"
+    },
+    {
+      "date": "2026-04-09",
+      "file": "2026-04-09-multi-agent-frameworks-are-just-microservices-with-hallucina.md",
+      "title": "Multi-agent frameworks are just microservices with hallucination problems"
+    },
+    {
+      "date": "2026-04-10",
+      "file": "2026-04-10-specialised-compute-is-just-admitting-general-intelligence-w.md",
+      "title": "Specialised compute is just admitting general intelligence was never the goal"
+    },
+    {
+      "date": "2026-04-11",
+      "file": "2026-04-11-knowledge-distillation-is-just-academic-procrastination-disg.md",
+      "title": "Knowledge distillation is just academic procrastination disguised as optimisation"
+    },
+    {
+      "date": "2026-04-12",
+      "file": "2026-04-12-edge-inference-is-just-cloud-denial-pretending-to-be-innovat.md",
+      "title": "Edge inference is just cloud denial pretending to be innovation"
+    },
+    {
+      "date": "2026-04-13",
+      "file": "2026-04-13-command-line-interfaces-just-became-the-universal-agent-prot.md",
+      "title": "Command-line interfaces just became the universal agent protocol"
+    },
+    {
+      "date": "2026-04-14",
+      "file": "2026-04-14-physics-simulators-just-became-the-new-gpus.md",
+      "title": "Physics simulators just became the new GPUs"
+    },
+    {
+      "date": "2026-04-15",
+      "file": "2026-04-15-browser-automation-just-became-the-missing-piece-of-the-ai-a.md",
+      "title": "Browser automation just became the missing piece of the AI agent puzzle"
+    },
+    {
+      "date": "2026-04-16",
+      "file": "2026-04-16-memory-systems-are-just-databases-with-identity-crises.md",
+      "title": "Memory systems are just databases with identity crises"
+    },
+    {
+      "date": "2026-04-17",
+      "file": "2026-04-17-screen-recording-just-turned-every-ai-agent-into-a-surveilla.md",
+      "title": "Screen recording just turned every AI agent into a surveillance nightmare"
+    },
+    {
+      "date": "2026-04-18",
+      "file": "2026-04-18-debug-logs-just-became-the-most-valuable-training-data-in-te.md",
+      "title": "Debug logs just became the most valuable training data in tech"
+    },
+    {
+      "date": "2026-04-19",
+      "file": "2026-04-19-testing-frameworks-just-became-ai.md",
+      "title": "Testing frameworks just became AI"
+    },
+    {
+      "date": "2026-04-20",
+      "file": "2026-04-20-cross-datacenter-inference-just-split-the-monolith-that-neve.md",
+      "title": "Cross-datacenter inference just split the monolith that never should have been one"
+    },
+    {
+      "date": "2026-04-21",
+      "file": "2026-04-21-agent-swarms-are-just-distributed-systems-we-forgot-how-to-d.md",
+      "title": "Agent swarms are just distributed systems we forgot how to debug"
+    },
+    {
+      "date": "2026-04-22",
+      "file": "2026-04-22-synthetic-data-generation-is-just-admitting-we-never-learned.md",
+      "title": "Synthetic data generation is just admitting we never learned to collect the right data"
+    },
+    {
+      "date": "2026-04-23",
+      "file": "2026-04-23-agent-deployment-just-solved-the-distribution-problem-we-pre.md",
+      "title": "Agent deployment just solved the distribution problem we pretended didn"
+    },
+    {
+      "date": "2026-04-24",
+      "file": "2026-04-24-agent-benchmarks-are-just-unit-tests-for-unpredictable-syste.md",
+      "title": "Agent benchmarks are just unit tests for unpredictable systems"
+    },
+    {
+      "date": "2026-04-25",
+      "file": "2026-04-25-compute-deals-just-became-the-new-talent-poaching.md",
+      "title": "Compute deals just became the new talent poaching"
+    },
+    {
+      "date": "2026-04-26",
+      "file": "2026-04-26-massive-datasets-just-killed-the-visualisation-industry.md",
+      "title": "Massive datasets just killed the visualisation industry"
+    },
+    {
+      "date": "2026-04-27",
+      "file": "2026-04-27-ai-agents-just-turned-economics-into-a-debugging-problem.md",
+      "title": "AI agents just turned economics into a debugging problem"
+    },
+    {
+      "date": "2026-04-28",
+      "file": "2026-04-28-time-aware-models-just-made-everything-else-obsolete.md",
+      "title": "Time-aware models just made everything else obsolete"
+    },
+    {
+      "date": "2026-04-29",
+      "file": "2026-04-29-agentic-coding-models-just-made-software-engineering-a-spect.md",
+      "title": "Agentic coding models just made software engineering a spectator sport"
+    },
+    {
+      "date": "2026-04-30",
+      "file": "2026-04-30-code-assistants-just-turned-programming-into-pair-programmin.md",
+      "title": "Code assistants just turned programming into pair programming with a know-it-all"
+    },
+    {
+      "date": "2026-05-01",
+      "file": "2026-05-01-model-distillation-just-turned-training-into-intellectual-pr.md",
+      "title": "Model distillation just turned training into intellectual property laundering"
+    },
+    {
+      "date": "2026-05-02",
+      "file": "2026-05-02-sparse-autoencoders-just-turned-interpretability-into-featur.md",
+      "title": "Sparse autoencoders just turned interpretability into feature engineering"
+    },
+    {
+      "date": "2026-05-03",
+      "file": "2026-05-03-remote-agents-just-made-the-desktop-obsolete.md",
+      "title": "Remote agents just made the desktop obsolete"
+    },
+    {
+      "date": "2026-05-04",
+      "file": "2026-05-04-billion-dollar-valuations-just-turned-ai-companies-into-perf.md",
+      "title": "Billion-dollar valuations just turned AI companies into performance art"
+    },
+    {
+      "date": "2026-05-05",
+      "file": "2026-05-05-training-data-just-became-a-protection-racket.md",
+      "title": "Training data just became a protection racket"
+    },
+    {
+      "date": "2026-05-06",
+      "file": "2026-05-06-webhooks-just-turned-every-ai-model-into-a-notification-addi.md",
+      "title": "Webhooks just turned every AI model into a notification addiction"
+    },
+    {
+      "date": "2026-05-07",
+      "file": "2026-05-07-speculative-decoding-just-turned-inference-into-a-confidence.md",
+      "title": "Speculative decoding just turned inference into a confidence game"
+    },
+    {
+      "date": "2026-05-08",
+      "file": "2026-05-08-networking-protocols-just-became-the-new-cuda-moats.md",
+      "title": "Networking protocols just became the new CUDA moats"
+    },
+    {
+      "date": "2026-05-09",
+      "file": "2026-05-09-spec-driven-development-just-turned-ai-coding-agents-into-ac.md",
+      "title": "Spec-driven development just turned AI coding agents into actual engineers"
+    },
+    {
+      "date": "2026-05-10",
+      "file": "2026-05-10-single-checkpoints-just-turned-model-deployment-into-a-versi.md",
+      "title": "Single checkpoints just turned model deployment into a version control nightmare"
+    },
+    {
+      "date": "2026-05-11",
+      "file": "2026-05-11-cost-aware-routing-just-turned-llm-apis-into-a-commodity-pri.md",
+      "title": "Cost-aware routing just turned LLM APIs into a commodity pricing problem"
+    },
+    {
+      "date": "2026-05-12",
+      "file": "2026-05-12-memory-bandwidth-just-became-the-new-cuda-bottleneck.md",
+      "title": "Memory bandwidth just became the new CUDA bottleneck"
+    },
+    {
+      "date": "2026-05-13",
+      "file": "2026-05-13-model-compilers-just-turned-optimisation-into-a-black-art-no.md",
+      "title": "Model compilers just turned optimisation into a black art nobody understands"
+    },
+    {
+      "date": "2026-05-14",
+      "file": "2026-05-14-training-optimisers-just-became-the-most-important-job-nobod.md",
+      "title": "Training optimisers just became the most important job nobody talks about"
+    },
+    {
+      "date": "2026-05-15",
+      "file": "2026-05-15-inference-harnesses-just-turned-model-improvement-into-a-con.md",
+      "title": "Inference harnesses just turned model improvement into a configuration management problem"
+    },
+    {
+      "date": "2026-05-16",
+      "file": "2026-05-16-repository-level-intelligence-just-turned-codebases-into-kno.md",
+      "title": "Repository-level intelligence just turned codebases into knowledge graphs nobody knows how to query"
+    },
+    {
+      "date": "2026-05-17",
+      "file": "2026-05-17-training-checkpoints-just-became-live-production-systems.md",
+      "title": "Training checkpoints just became live production systems"
+    },
+    {
+      "date": "2026-05-18",
+      "file": "2026-05-18-quantisation-just-turned-model-deployment-into-digital-archa.md",
+      "title": "Quantisation just turned model deployment into digital archaeology"
+    },
+    {
+      "date": "2026-05-19",
+      "file": "2026-05-19-privacy-frameworks-just-turned-edge-computing-into-security-.md",
+      "title": "Privacy frameworks just turned edge computing into security theatre"
+    },
+    {
+      "date": "2026-05-20",
+      "file": "2026-05-20-programming-languages-just-became-middleware-for-ai-compiler.md",
+      "title": "Programming languages just became middleware for AI compilers"
+    },
+    {
+      "date": "2026-05-22",
+      "file": "2026-05-22-multimodal-models-just-turned-apis-into-museum-pieces.md",
+      "title": "Multimodal models just turned APIs into museum pieces"
+    },
+    {
+      "date": "2026-05-23",
+      "file": "2026-05-23-agent-memory-just-turned-every-conversation-into-a-liability.md",
+      "title": "Agent memory just turned every conversation into a liability"
+    },
+    {
+      "date": "2026-05-24",
+      "file": "2026-05-24-memory-architectures-just-turned-ai-agents-into-hoarders.md",
+      "title": "Memory architectures just turned AI agents into hoarders"
+    },
+    {
+      "date": "2026-05-26",
+      "file": "2026-05-26-authentication-protocols-just-turned-ai-agents-into-digital-.md",
+      "title": "Authentication protocols just turned AI agents into digital refugees"
+    },
+    {
+      "date": "2026-05-27",
+      "file": "2026-05-27-knowledge-just-became-a-plumbing-problem.md",
+      "title": "Knowledge just became a plumbing problem"
+    },
+    {
+      "date": "2026-05-28",
+      "file": "2026-05-28-modular-training-just-turned-neural-networks-into-lego-block.md",
+      "title": "Modular training just turned neural networks into LEGO blocks"
+    },
+    {
+      "date": "2026-05-29",
+      "file": "2026-05-29-infrastructure-companies-just-became-the-real-ai-kingmakers.md",
+      "title": "Infrastructure companies just became the real AI kingmakers"
+    },
+    {
+      "date": "2026-05-30",
+      "file": "2026-05-30-tool-search-just-turned-agent-frameworks-into-library-manage.md",
+      "title": "Tool search just turned agent frameworks into library management systems"
+    },
+    {
+      "date": "2026-05-31",
+      "file": "2026-05-31-training-stacks-just-turned-model-development-into-plumbing.md",
+      "title": "Training stacks just turned model development into plumbing"
+    },
+    {
+      "date": "2026-06-01",
+      "file": "2026-06-01-governance-layers-just-turned-ai-agents-into-bureaucrats.md",
+      "title": "Governance layers just turned AI agents into bureaucrats"
+    },
+    {
+      "date": "2026-06-02",
+      "file": "2026-06-02-training-efficiency-just-became-a-hardware-marketing-scheme.md",
+      "title": "Training efficiency just became a hardware marketing scheme"
+    },
+    {
+      "date": "2026-06-03",
+      "file": "2026-06-03-fine-tuning-tutorials-just-turned-model-training-into-paint-.md",
+      "title": "Fine-tuning tutorials just turned model training into paint-by-numbers"
+    },
+    {
+      "date": "2026-06-04",
+      "file": "2026-06-04-on-device-inference-just-turned-the-cloud-into-expensive-nos.md",
+      "title": "On-device inference just turned the cloud into expensive nostalgia"
+    },
+    {
+      "date": "2026-06-05",
+      "file": "2026-06-05-open-weights-just-became-the-new-venture-capital.md",
+      "title": "Open weights just became the new venture capital"
+    },
+    {
+      "date": "2026-06-06",
+      "file": "2026-06-06-hybrid-routing-just-turned-your-laptop-into-a-schizophrenic-.md",
+      "title": "Hybrid routing just turned your laptop into a schizophrenic cloud terminal"
+    },
+    {
+      "date": "2026-06-07",
+      "file": "2026-06-07-command-line-interfaces-just-turned-ai-agents-into-unix-phil.md",
+      "title": "Command line interfaces just turned AI agents into Unix philosophers"
+    },
+    {
+      "date": "2026-06-08",
+      "file": "2026-06-08-command-line-agents-just-turned-every-developer-into-a-syste.md",
+      "title": "Command-line agents just turned every developer into a system administrator"
+    },
+    {
+      "date": "2026-06-09",
+      "file": "2026-06-09-security-scanning-just-turned-ai-model-repositories-into-haz.md",
+      "title": "Security scanning just turned AI model repositories into hazmat disposal sites"
+    },
+    {
+      "date": "2026-06-10",
+      "file": "2026-06-10-real-time-streaming-just-turned-ai-into-a-conversational-arm.md",
+      "title": "Real-time streaming just turned AI into a conversational arms race"
+    },
+    {
+      "date": "2026-06-11",
+      "file": "2026-06-11-same-model-different-masks-just-turned-ai-safety-into-market.md",
+      "title": "Same model, different masks just turned AI safety into marketing theatre"
+    },
+    {
+      "date": "2026-06-21",
+      "file": "2026-06-21-agents-that-learn-from-their-own-mistakes-are-more-dangerous.md",
+      "title": "Agents That Learn From Their Own Mistakes Are More Dangerous Than Agents That Don"
+    },
+    {
+      "date": "2026-06-22",
+      "file": "2026-06-22-government-bans-are-free-marketing-for-ai-labs.md",
+      "title": "Government Bans Are Free Marketing for AI Labs"
+    },
+    {
+      "date": "2026-06-23",
+      "file": "2026-06-23-agent-loops-are-the-distributed-systems-problem-nobody-wante.md",
+      "title": "Agent Loops Are the Distributed Systems Problem Nobody Wanted Back"
+    },
+    {
+      "date": "2026-06-24",
+      "file": "2026-06-24-organisational-memory-is-the-new-moat-nobody-meant-to-build.md",
+      "title": "Organisational Memory Is the New Moat Nobody Meant to Build"
+    },
+    {
+      "date": "2026-06-25",
+      "file": "2026-06-25-document-parsing-just-became-a-solved-problem-nobody-noticed.md",
+      "title": "Document Parsing Just Became a Solved Problem Nobody Noticed"
+    },
+    {
+      "date": "2026-06-26",
+      "file": "2026-06-26-speculative-decoding-just-made-inference-speed-a-red-herring.md",
+      "title": "Speculative Decoding Just Made Inference Speed a Red Herring"
+    },
+    {
+      "date": "2026-06-27",
+      "file": "2026-06-27-benchmarks-are-just-vibes-with-extra-steps.md",
+      "title": "Benchmarks Are Just Vibes With Extra Steps"
+    },
+    {
+      "date": "2026-06-28",
+      "file": "2026-06-28-the-chip-stack-is-the-new-model-stack.md",
+      "title": "The Chip Stack Is the New Model Stack"
+    },
+    {
+      "date": "2026-06-29",
+      "file": "2026-06-29-governments-are-now-the-biggest-bottleneck-in-ai-deployment.md",
+      "title": "Governments Are Now the Biggest Bottleneck in AI Deployment"
+    },
+    {
+      "date": "2026-06-30",
+      "file": "2026-06-30-the-billable-hour-was-already-dying-ai-just-brought-the-coff.md",
+      "title": "The Billable Hour Was Already Dying. AI Just Brought the Coffin."
+    },
+    {
+      "date": "2026-07-01",
+      "file": "2026-07-01-cheap-models-are-eating-the-ai-market-from-the-bottom-up.md",
+      "title": "Cheap Models Are Eating the AI Market From the Bottom Up"
+    },
+    {
+      "date": "2026-07-02",
+      "file": "2026-07-02-hidden-flags-and-token-bloat-trust-is-now-a-pricing-problem.md",
+      "title": "Hidden Flags and Token Bloat: Trust Is Now a Pricing Problem"
+    },
+    {
+      "date": "2026-07-03",
+      "file": "2026-07-03-models-are-getting-smarter-and-needing-less-hand-holding-tha.md",
+      "title": "Models Are Getting Smarter and Needing Less Hand-Holding. That Should Worry Prompt Engineers."
+    }
+  ]
+}

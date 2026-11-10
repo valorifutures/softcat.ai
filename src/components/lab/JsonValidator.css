@@ -1,0 +1,43 @@
+.json-validator { --json-accent: #d6c8ef; --json-border: #393740; }
+.json-validator button { cursor: pointer; min-height: 44px; border: 1px solid #504959; border-radius: 6px; padding: .6rem .8rem; color: #e4ddee; font: .73rem var(--font-sans); }
+.json-validator button:disabled { opacity: .5; cursor: default; }
+.json-validator button:hover:enabled { background: #292331; }
+.json-examples { padding: clamp(1.2rem, 3vw, 1.8rem); border: 1px solid #645472; border-radius: 10px; background: #1c1724; }
+.json-eyebrow { font: .65rem var(--font-mono); letter-spacing: .1em; color: var(--json-accent); margin-bottom: .6rem; }
+.json-validator h2 { font-size: 1.4rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.35; color: #eeebf2; }
+.json-examples p:not(.json-eyebrow) { font-size: .82rem; line-height: 1.7; color: #c1b8ce; margin-top: .65rem; max-width: 80ch; }
+.json-preset-list, .json-example-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.json-preset-list button[aria-pressed="true"] { background: #d6c8ef; color: #22152c; border-color: #d6c8ef; }
+.json-example-actions button { border-color: transparent; text-decoration: underline; text-underline-offset: 4px; padding-left: 0; padding-right: 1rem; }
+.json-editors { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.75rem 0 1rem; }
+.json-editor { min-width: 0; }
+.json-editor-heading { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin-bottom: .5rem; }
+.json-editor label { font-size: .8rem; font-weight: 500; }
+.json-editor label span { color: #a69caf; font-weight: 400; }
+.json-editor-heading button { border-color: transparent; color: #c9b8df; font-size: .7rem; }
+.json-editor textarea { width: 100%; min-height: 380px; border: 1px solid #4a4252; border-radius: 7px; padding: 1rem; font: .8rem/1.65 var(--font-mono); resize: vertical; background: #101017; color: #e0dbe6; tab-size: 2; }
+.json-editor textarea:focus-visible { outline: 2px solid var(--json-accent); outline-offset: 3px; }
+.json-editor > p { color: #b0a7bc; font-size: .7rem; line-height: 1.6; margin-top: .5rem; }
+.json-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; }
+.json-actions .json-validate { display: flex; gap: 1.5rem; align-items: center; color: #22152c; background: #d6c8ef; border-color: #d6c8ef; font-weight: 600; padding: .8rem 1.2rem; }
+.json-actions .json-validate:hover:enabled { background: #e6dbf7; }
+.json-actions > span { color: #b0a7bc; font-size: .7rem; }
+.json-working, .json-notice { color: var(--json-accent); font-size: .8rem; margin-top: 1rem; }
+.json-report { border: 1px solid #766442; border-radius: 8px; padding: 1.5rem; margin-top: 1.5rem; background: #1c1916; }
+.json-report-pass { border-color: #607949; background: #171e15; }
+.json-report-pass .json-eyebrow { color: #c4dda9; }
+.json-report-fail, .json-report-json-error, .json-report-schema-error { border-color: #865761; background: #21181d; }
+.json-report-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+.json-report-heading > div { flex: 1 1 250px; min-width: 0; }
+.json-report-heading p:not(.json-eyebrow), .json-result-limit { color: #c4bdc9; font-size: .8rem; line-height: 1.7; margin-top: .7rem; overflow-wrap: anywhere; }
+.json-error-count { font-size: .75rem; color: #d1b8c2; margin: 1.5rem 0 .5rem; }
+.json-error-list { list-style: none; }
+.json-error-list li { border-top: 1px solid #49373e; padding: .9rem 0; display: grid; grid-template-columns: minmax(100px, 1fr) 2fr auto; gap: .5rem 1rem; align-items: baseline; }
+.json-error-path { color: #eec5cc; font: .75rem/1.6 var(--font-mono); overflow-wrap: anywhere; }
+.json-error-list p { color: #e5d9de; font-size: .8rem; line-height: 1.6; overflow-wrap: anywhere; }
+.json-error-list span { color: #baa4ae; font: .6rem var(--font-mono); overflow-wrap: anywhere; }
+.json-method { margin-top: 1.75rem; border-top: 1px solid var(--json-border); padding-top: 1rem; font-size: .8rem; color: #c0b7cc; }
+.json-method summary { cursor: pointer; min-height: 44px; color: #d6c8ef; }
+.json-method p { line-height: 1.75; margin: .65rem 0; max-width: 92ch; }
+.json-method a { text-decoration: underline; text-underline-offset: 3px; color: #d6c8ef; }
+@media (max-width: 700px) { .json-editors { grid-template-columns: 1fr; } .json-editor textarea { min-height: 270px; font-size: 1rem; } .json-error-list li { grid-template-columns: 1fr; } .json-actions > span { width: 100%; } }

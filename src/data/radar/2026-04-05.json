@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-05",
+  "featured": [
+    {
+      "id": "ph-autoagent",
+      "name": "AutoAgent",
+      "tagline": "Open-source library that lets AI engineer and optimise its own agent harness overnight.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, someone's automating the tedious prompt-tuning loop that every AI engineer knows too well. This could be the breakthrough that makes agent development less about endless tweaking and more about actual progress.",
+      "ph_url": "https://www.marktechpost.com/2026/04/05/meet-autoagent-the-open-source-library-that-lets-an-ai-engineer-and-optimize-its-own-agent-harness-overnight/",
+      "maker": "Open Source",
+      "featured": true,
+      "added_at": "2026-04-05T06:00:00Z"
+    },
+    {
+      "id": "ph-hybro-hub",
+      "name": "Hybro Hub",
+      "tagline": "Platform for running local OpenClaw together with remote agents in an open network.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "The hybrid local-remote agent approach is spot on for enterprise use cases. Running sensitive operations locally while tapping into cloud capabilities when needed could solve the privacy versus performance trade-off.",
+      "ph_url": "https://github.com/hybroai/hybro-hub",
+      "maker": "Hybro AI",
+      "featured": true,
+      "added_at": "2026-04-05T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-tokencap",
+      "name": "Tokencap",
+      "tagline": "Token budget enforcement across your AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Token costs can spiral out of control with autonomous agents, and this addresses a real pain point. Simple concept, but essential infrastructure for anyone running multi-agent systems at scale.",
+      "ph_url": "https://github.com/pykul/tokencap",
+      "maker": "Pykul",
+      "featured": false,
+      "added_at": "2026-04-05T07:00:00Z"
+    },
+    {
+      "id": "ph-docmason",
+      "name": "DocMason",
+      "tagline": "Agent knowledge base for local complex office files.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Enterprise document processing that stays on-premise is exactly what compliance-heavy industries need. The focus on complex office files suggests they're tackling the messy reality of corporate document chaos.",
+      "ph_url": "https://github.com/jetxu-llm/docmason",
+      "maker": "JetXu",
+      "featured": false,
+      "added_at": "2026-04-05T07:30:00Z"
+    },
+    {
+      "id": "ph-gremlin-machine",
+      "name": "Gremlin in the Machine",
+      "tagline": "A SysAdmin/Terminal AI Agent for system administration tasks.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Terminal-based AI agents for sysadmin work could be genuinely useful for DevOps teams. The proof will be whether it can handle the unpredictable nature of system administration without breaking things.",
+      "ph_url": "https://github.com/milankazarka/gitm",
+      "maker": "Milan Kazarka",
+      "featured": false,
+      "added_at": "2026-04-05T08:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Running local OpenClaw together with remote agents in an open network",
+      "points": 8,
+      "comments": 4,
+      "summary": "Hybrid platform for running AI agents both locally and remotely. Addresses privacy and performance concerns by keeping sensitive operations local while leveraging cloud resources.",
+      "hn_url": "https://news.ycombinator.com/item?id=47641487"
+    },
+    {
+      "title": "Show HN: Local-first resume generator with in-browser PDF rendering",
+      "points": 7,
+      "comments": 3,
+      "summary": "Resume builder that runs entirely in the browser with PDF generation. Privacy-focused approach to document creation without server-side dependencies.",
+      "hn_url": "https://news.ycombinator.com/item?id=47643845"
+    },
+    {
+      "title": "Show HN: Tokencap \u2013 Token budget enforcement across your AI agents",
+      "points": 7,
+      "comments": 0,
+      "summary": "Budget control system for AI agent token usage. Prevents runaway costs in autonomous agent deployments through enforced spending limits.",
+      "hn_url": "https://news.ycombinator.com/item?id=47639207"
+    },
+    {
+      "title": "Show HN: DocMason \u2013 Agent Knowledge Base for local complex office files",
+      "points": 6,
+      "comments": 0,
+      "summary": "Local knowledge base system for enterprise document processing. Focuses on complex office file formats while maintaining data privacy.",
+      "hn_url": "https://news.ycombinator.com/item?id=47640770"
+    },
+    {
+      "title": "Towards end-to-end automation of AI research",
+      "points": 6,
+      "comments": 0,
+      "summary": "Academic research on fully automated AI research processes. Explores how AI systems could design, execute and analyse their own experiments.",
+      "hn_url": "https://news.ycombinator.com/item?id=47645696"
+    }
+  ]
+}

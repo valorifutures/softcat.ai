@@ -1,0 +1,116 @@
+{
+  "date": "2026-06-30",
+  "featured": [
+    {
+      "id": "ph-micro-agent",
+      "name": "Micro-Agent",
+      "tagline": "Multi-agent collaboration inside vLLM that beats frontier model performance.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "vLLM's Micro-Agent framework lets smaller models collaborate inside a single API call to outperform larger frontier models. The core idea is agent-level parallelism at inference time, not just bigger weights. Worth watching closely if you care about cost-efficient performance.",
+      "ph_url": "https://vllm.ai/blog/2026-06-29-micro-agent-frontier-models",
+      "maker": "vLLM",
+      "featured": true,
+      "added_at": "2026-06-30T06:00:00Z"
+    },
+    {
+      "id": "ph-agentic-orchestrator",
+      "name": "Agentic Orchestrator",
+      "tagline": "A terminal UI for managing long-running coding agents from DoorDash.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "DoorDash open-sourced a TUI for supervising coding agents that run for extended periods. It fills a real gap, most agent tooling assumes short tasks but production workloads are not like that. Built from genuine internal need, which is always a good sign.",
+      "ph_url": "https://github.com/doordash-oss/agentic-orchestrator",
+      "maker": "DoorDash OSS",
+      "featured": true,
+      "added_at": "2026-06-30T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-vi\u0431\u0435\u0440aven",
+      "name": "VibeRaven",
+      "tagline": "Production workflow tooling for AI coding agents.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "VibeRaven is trying to bring structure to the chaos of running coding agents in real workflows. It sits between the agent and your codebase, adding guardrails and sequencing. Early stage but the problem it is solving is real and growing fast.",
+      "ph_url": "https://github.com/ohad6k/VibeRaven",
+      "maker": "ohad6k",
+      "featured": false,
+      "added_at": "2026-06-30T06:30:00Z"
+    },
+    {
+      "id": "ph-fognitix",
+      "name": "Fognitix",
+      "tagline": "AI browser running parallel autonomous agents across browser tabs.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Fognitix puts multiple autonomous agents to work in parallel inside a browser environment. The pitch is that you delegate multi-step web tasks and agents handle them concurrently. Still early, but the parallel browser-agent pattern is one to watch.",
+      "ph_url": "https://www.fognitix.com/",
+      "maker": "Fognitix",
+      "featured": false,
+      "added_at": "2026-06-30T06:30:00Z"
+    },
+    {
+      "id": "ph-exfault",
+      "name": "Exfault",
+      "tagline": "Agentic mobile app pentesting tool.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Exfault automates mobile app penetration testing using an AI agent approach. Mobile security testing is time-consuming and specialist-heavy, so agent-driven tooling here could be genuinely useful. Worth a look if you are building or auditing mobile apps.",
+      "ph_url": "https://www.exfault.com/",
+      "maker": "Exfault",
+      "featured": false,
+      "added_at": "2026-06-30T06:30:00Z"
+    },
+    {
+      "id": "ph-reference-mcp",
+      "name": "Reference MCP",
+      "tagline": "MCP server that lets AI agents search each other's past sessions.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Reference MCP gives agents a shared memory layer by indexing past sessions and making them searchable across agents. It is a small but sharp idea for anyone building multi-agent systems where context continuity matters. The MCP pattern makes it easy to drop in.",
+      "ph_url": "https://github.com/kuberwastaken/reference",
+      "maker": "kuberwastaken",
+      "featured": false,
+      "added_at": "2026-06-30T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Micro-Agent: Beat Frontier Models with Collaboration Inside Model API",
+      "points": 69,
+      "comments": 20,
+      "summary": "vLLM's Micro-Agent approach uses multiple collaborating agents within a single model API call to outperform larger frontier models. The idea is coordinated inference rather than brute-force scale. It is an open-source release from the vLLM team and already generating solid discussion.",
+      "hn_url": "https://news.ycombinator.com/item?id=48722802"
+    },
+    {
+      "title": "Show HN: Agentic Orchestrator, a TUI for long-running coding agents",
+      "points": 8,
+      "comments": 0,
+      "summary": "DoorDash open-sourced a terminal UI built internally for managing coding agents that run long tasks. It addresses a practical gap in the current agent tooling ecosystem, most tools assume short bursts, not extended autonomous runs. Clean open-source release from a real engineering team.",
+      "hn_url": "https://news.ycombinator.com/item?id=48727448"
+    },
+    {
+      "title": "Show HN: VibeRaven \u2013 Production workflows for AI coding agents",
+      "points": 7,
+      "comments": 2,
+      "summary": "VibeRaven adds workflow structure around AI coding agents to make them production-ready. It targets the gap between a demo agent and one you can actually rely on in a real codebase. Early project but pointing at a genuine pain point.",
+      "hn_url": "https://news.ycombinator.com/item?id=48717113"
+    },
+    {
+      "title": "Show HN: I built Exfault, agentic mobile app pentesting tool",
+      "points": 6,
+      "comments": 0,
+      "summary": "Exfault automates mobile app security testing using an agentic approach. It is aimed at developers and security teams who need to run penetration tests without deep specialist knowledge at every step. Niche but well-timed given how little AI tooling exists in mobile security.",
+      "hn_url": "https://news.ycombinator.com/item?id=48719261"
+    },
+    {
+      "title": "Show HN: Reference MCP \u2013 let your AI agents search each other's past sessions",
+      "points": 5,
+      "comments": 0,
+      "summary": "Reference MCP is a Model Context Protocol server that indexes past agent sessions and makes them searchable by other agents. It is a lightweight approach to giving multi-agent systems shared memory without a heavy infrastructure setup. Useful for anyone building persistent agent pipelines.",
+      "hn_url": "https://news.ycombinator.com/item?id=48718055"
+    }
+  ]
+}

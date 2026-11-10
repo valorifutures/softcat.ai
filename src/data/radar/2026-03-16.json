@@ -1,0 +1,116 @@
+{
+  "date": "2026-03-16",
+  "featured": [
+    {
+      "id": "ph-attention-residuals",
+      "name": "Attention Residuals",
+      "tagline": "Depth-wise attention mechanism replacing fixed residual mixing in Transformers.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Moonshot AI is questioning one of the most fundamental assumptions in Transformer architecture. Instead of blindly adding all previous layer outputs, their approach lets each layer decide what to attend to from the past. This could be the kind of architectural breakthrough that makes current scaling laws obsolete.",
+      "ph_url": "https://www.marktechpost.com/2026/03/15/moonshot-ai-releases-%f0%9d%91%a8%f0%9d%92%95%f0%9d%92%95%f0%9d%92%86%f0%9d%92%8f%f0%9d%92%95%f0%9d%92%8a%f0%9d%92%90%f0%9d%92%8f-%f0%9d%91%b9%f0%9d%92%86%f0%9d%92%94%f0%9d%92%8a%f0%9d%92%85/",
+      "maker": "Moonshot AI",
+      "featured": true,
+      "added_at": "2026-03-16T06:00:00Z"
+    },
+    {
+      "id": "ph-granite-4-speech",
+      "name": "Granite 4.0 1B Speech",
+      "tagline": "Compact multilingual speech model for edge AI and translation pipelines.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "IBM is betting that enterprises want speech models they can actually deploy without burning through cloud budgets. At 1B parameters, this targets the sweet spot where latency matters more than benchmarks. The multilingual ASR and bidirectional translation could make this the Swiss Army knife for edge speech applications.",
+      "ph_url": "https://www.marktechpost.com/2026/03/15/ibm-ai-releases-granite-4-0-1b-speech-as-a-compact-multilingual-speech-model-for-edge-ai-and-translation-pipelines/",
+      "maker": "IBM",
+      "featured": true,
+      "added_at": "2026-03-16T06:15:00Z"
+    },
+    {
+      "id": "ph-openviking",
+      "name": "OpenViking",
+      "tagline": "Filesystem-based context database for AI agent memory and retrieval.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Finally, someone is treating agent context like the structured data it should be instead of throwing everything into a vector soup. The filesystem paradigm makes sense for organising memory, skills, and resources in a way that scales. This could be the missing piece for long-running agent deployments.",
+      "ph_url": "https://www.marktechpost.com/2026/03/15/meet-openviking-an-open-source-context-database-that-brings-filesystem-based-memory-and-retrieval-to-ai-agent-systems-like-openclaw/",
+      "maker": "Volcengine",
+      "featured": true,
+      "added_at": "2026-03-16T06:30:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-goal-md",
+      "name": "Goal.md",
+      "tagline": "Goal-specification file format for autonomous coding agents.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "A simple markdown format for giving coding agents clear objectives and constraints. It's the kind of unglamorous infrastructure work that makes agent collaboration actually functional. The standardisation could help solve the chaos of different agent prompting approaches.",
+      "ph_url": "https://github.com/jmilinovich/goal-md",
+      "maker": "jmilinovich",
+      "featured": false,
+      "added_at": "2026-03-16T06:45:00Z"
+    },
+    {
+      "id": "ph-agentmailr",
+      "name": "AgentMailr",
+      "tagline": "Dedicated email inboxes for AI agents.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "AI agents need proper email identities for business workflows, and this solves it without the compliance headaches of using personal accounts. Simple concept, but essential for agent-driven automation. The kind of boring infrastructure that enables interesting applications.",
+      "ph_url": "https://www.agentmailr.com/",
+      "maker": "AgentMailr",
+      "featured": false,
+      "added_at": "2026-03-16T07:00:00Z"
+    },
+    {
+      "id": "ph-buxo-ai",
+      "name": "Buxo.ai",
+      "tagline": "Calendly alternative where LLM decides which slots to show.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Instead of showing all available times, an LLM picks the best slots based on context and preferences. It's a clever use case for making scheduling actually intelligent rather than just automated. Could be the start of AI-native business tools that think before they act.",
+      "ph_url": "https://buxo.ai",
+      "maker": "Buxo",
+      "featured": false,
+      "added_at": "2026-03-16T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Open-source playground to red-team AI agents with exploits published",
+      "points": 25,
+      "comments": 6,
+      "summary": "A testing ground for finding vulnerabilities in AI agents, with published exploits for researchers. Essential infrastructure for making agent security less of an afterthought. The open-source approach could accelerate defensive research across the industry.",
+      "hn_url": "https://news.ycombinator.com/item?id=47392677"
+    },
+    {
+      "title": "Show HN: Goal.md, a goal-specification file for autonomous coding agents",
+      "points": 21,
+      "comments": 6,
+      "summary": "A markdown format for giving coding agents clear objectives and constraints. Simple standardisation that could make agent collaboration more predictable. The kind of boring infrastructure work that enables better agent workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47390228"
+    },
+    {
+      "title": "Built a 1.3M-line agent-native OS in Rust while homeless. What now?",
+      "points": 10,
+      "comments": 11,
+      "summary": "Someone built a massive operating system designed specifically for AI agents whilst living rough. The technical achievement is impressive, but the story highlights both the potential and precarity in AI development. A reminder that innovation doesn't always come from well-funded labs.",
+      "hn_url": "https://news.ycombinator.com/item?id=47388478"
+    },
+    {
+      "title": "Show HN: AgentMailr \u2013 dedicated email inboxes for AI agents",
+      "points": 7,
+      "comments": 5,
+      "summary": "Proper email identities for AI agents without compliance headaches. Solves a boring but essential problem for agent-driven business workflows. The kind of infrastructure that enables more sophisticated agent applications.",
+      "hn_url": "https://news.ycombinator.com/item?id=47386367"
+    },
+    {
+      "title": "Show HN: Calendly alternative where LLM decides which slots to show",
+      "points": 6,
+      "comments": 1,
+      "summary": "An LLM picks the best calendar slots based on context rather than showing everything available. Smart scheduling that thinks before presenting options. Could be the start of AI-native business tools that add actual intelligence.",
+      "hn_url": "https://news.ycombinator.com/item?id=47386113"
+    }
+  ]
+}

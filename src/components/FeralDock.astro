@@ -1,0 +1,31 @@
+<div class="feral-dock" data-feral-dock><slot /></div>
+
+<style>
+  :global(html) { scroll-padding-bottom: calc(var(--feral-dock-height, 11rem) + 1rem); }
+  .feral-dock {
+    box-sizing: border-box;
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    max-height: 45vh;
+    max-height: 45svh;
+    overflow-y: auto;
+    padding: 1.5rem 1rem calc(1rem + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(transparent, var(--feral-background) 1rem);
+    touch-action: pan-y pinch-zoom;
+  }
+</style>
+
+<script>
+  // Reserve the actual wrapped controls, including font and viewport changes.
+  const dock = document.querySelector<HTMLElement>('[data-feral-dock]');
+  if (dock) {
+    const reserveSpace = () => document.documentElement.style.setProperty('--feral-dock-height', `${Math.ceil(dock.getBoundingClientRect().height)}px`);
+    reserveSpace();
+    new ResizeObserver(reserveSpace).observe(dock);
+  }
+</script>

@@ -1,0 +1,143 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SearchOverlay from '../components/SearchOverlay.tsx';
+import { CF_BEACON_TOKEN, ANALYTICS_ENABLED } from '../consts';
+import '../styles/global.css';
+import '../styles/workshop.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  breadcrumbs?: Array<{name: string, url: string}>;
+  type?: string;
+  ogImage?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = 'SOFT CAT .ai',
+  description = 'Smart Outputs From Trained Conversational AI Technology. AI experiments, useful tools and a public notebook.',
+  breadcrumbs,
+  type = 'website',
+  ogImage = '/og-default.png',
+  canonicalPath = Astro.url.pathname,
+} = Astro.props;
+
+const pageTitle = title === 'SOFT CAT .ai' ? title : `${title} | SOFT CAT .ai`;
+const ogImageUrl = `https://softcat.ai${ogImage}`;
+const canonicalUrl = new URL(canonicalPath, 'https://softcat.ai').href;
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "SOFT CAT .ai",
+  "url": "https://softcat.ai",
+  "description": "Where trained AI becomes useful output.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Valori",
+    "url": "https://softcat.ai"
+  }
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SOFT CAT .ai",
+  "url": "https://softcat.ai",
+  "description": "Smart Outputs From Trained Conversational AI Technology. AI experiments, useful tools and a public notebook.",
+  "knowsAbout": [
+    "artificial intelligence",
+    "large language models",
+    "AI agents",
+    "prompt engineering",
+    "AI infrastructure",
+    "machine learning"
+  ]
+};
+
+const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://softcat.ai"},
+    ...breadcrumbs.map((crumb, i) => ({
+      "@type": "ListItem",
+      "position": i + 2,
+      "name": crumb.name,
+      "item": `https://softcat.ai${crumb.url}`
+    }))
+  ]
+} : null;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="SOFT CAT .ai" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="alternate" type="application/rss+xml" title="SOFT CAT .ai" href="/feed.xml" />
+    <link rel="alternate" type="text/plain" title="LLMs.txt" href="/llms.txt" />
+    <title>{pageTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    {breadcrumbSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    )}
+    <slot name="head" />
+    {ANALYTICS_ENABLED && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: CF_BEACON_TOKEN })}
+      ></script>
+    )}
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <Header />
+    <SearchOverlay client:load />
+    <main id="main-content" class="flex-1" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import { relativeAge, recordState } from '../lib/pipeline-status.mjs';
+      function refreshRecords() {
+        document.querySelectorAll<HTMLElement>('[data-relative-time]').forEach((element) => {
+          element.textContent = relativeAge(element.dataset.relativeTime);
+        });
+        document.querySelectorAll<HTMLElement>('[data-run-state]').forEach((element) => {
+          const state = recordState({ timestamp: element.dataset.timestamp, status: element.dataset.status }, Number(element.dataset.threshold) || 36);
+          element.textContent = state.label;
+          element.dataset.tone = state.tone;
+        });
+      }
+      refreshRecords();
+      window.setInterval(refreshRecords, 60_000);
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshRecords(); });
+    </script>
+  </body>
+</html>

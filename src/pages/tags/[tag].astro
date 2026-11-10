@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { tagDotClass } from '../../utils/tagColor';
+import { getTaggedContent } from '../../lib/tagged-content';
+
+export async function getStaticPaths() {
+  const entries = await getTaggedContent();
+  const tags = [...new Set(entries.flatMap(entry => entry.tags))];
+  return tags.map(tag => ({ params: { tag }, props: { tag, entries: entries.filter(entry => entry.tags.includes(tag)) } }));
+}
+const { tag, entries } = Astro.props;
+const kinds = ['Notebook', 'Thoughts', 'Prompts', 'Tool write-ups', 'Glossary', 'News archive'];
+const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+<BaseLayout title={`#${tag}`} description={`Writing, prompts, tool write-ups and glossary terms tagged ${tag}.`}>
+  <div class="tag-page workshop-shell">
+    <header><a href="/tags" class="text-link">← All tags</a><p class="eyebrow">BROWSE THE WORKSHOP</p><h1>#{tag}</h1><p>{entries.length} {entries.length === 1 ? 'entry' : 'entries'} across writing, prompts, tool write-ups and glossary terms.</p></header>
+    {kinds.map(kind => {
+      const group = entries.filter(entry => entry.kind === kind).sort((a, b) => (b.date?.valueOf() || 0) - (a.date?.valueOf() || 0) || a.title.localeCompare(b.title));
+      return group.length > 0 && <section aria-label={kind}><div class="tag-section-heading"><h2>{kind}</h2><span>{group.length}</span></div>{group.map(entry => <article><div class="tag-entry-top"><a href={entry.href}><h3>{entry.title}</h3><p>{entry.summary}</p></a><div>{entry.date && <time datetime={entry.date.toISOString()}>{fmt(entry.date)}</time>}{entry.status && <span class="tag-entry-status">{entry.status}</span>}</div></div><div class="tag-entry-tags">{entry.tags.map(item => <a href={`/tags/${item}`} class="tag-badge" aria-current={item === tag ? 'page' : undefined}><span class={`tag-dot ${tagDotClass(item)}`}></span>{item}</a>)}</div></article>)}</section>;
+    })}
+  </div>
+</BaseLayout>
+<style>
+  .tag-page { max-width: 900px; padding-block: 3.5rem 5rem; }
+  header { margin-bottom: 3rem; }
+  header > .eyebrow { margin-top: 1.5rem; }
+  h1 { font: 600 clamp(2rem, 5vw, 3.3rem)/1.2 var(--font-sans); letter-spacing: -0.045em; color: #edf0e7; margin-block: 0.8rem 1.2rem; overflow-wrap: anywhere; }
+  header > p:not(.eyebrow) { color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.85; }
+  section { margin-top: 2.7rem; }
+  .tag-section-heading { display: flex; justify-content: space-between; gap: 1rem; align-items: center; margin-bottom: 1.3rem; }
+  h2 { color: #dce5d1; font-size: 1.25rem; font-weight: 500; letter-spacing: -0.025em; }
+  .tag-section-heading > span { color: #a8b49b; font: 0.65rem var(--font-mono); }
+  article { border-top: 1px solid #333c2c; padding: 1.3rem 0; }
+  article:last-child { border-bottom: 1px solid #333c2c; }
+  .tag-entry-top { display: flex; align-items: start; justify-content: space-between; gap: 1.5rem; }
+  .tag-entry-top > a { min-width: 0; }
+  .tag-entry-top > div { flex-shrink: 0; text-align: right; }
+  h3 { color: #e3e8dc; font-size: 1rem; font-weight: 500; line-height: 1.65; }
+  .tag-entry-top a:hover h3 { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 3px; }
+  .tag-entry-top p { color: #aab3a1; font-size: 0.83rem; line-height: 1.85; margin-top: 0.5rem; }
+  time, .tag-entry-status { display: block; font: 0.65rem/1.8 var(--font-mono); color: #a7b497; }
+  .tag-entry-status { margin-top: 0.5rem; }
+  .tag-entry-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  @media (max-width: 600px) { .tag-entry-top { flex-direction: column; gap: 0.7rem; } .tag-entry-top > div { text-align: left; } }
+</style>

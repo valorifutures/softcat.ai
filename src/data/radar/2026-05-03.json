@@ -1,0 +1,104 @@
+{
+  "date": "2026-05-03",
+  "featured": [
+    {
+      "id": "ph-kame",
+      "name": "KAME",
+      "tagline": "Real-time speech-to-speech with injected LLM knowledge.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Sakana AI cracked the latency problem that kills most voice AI products. Their tandem architecture injects LLM smarts into speech without the usual delays, which could finally make AI conversations feel natural instead of awkward ping-pong matches.",
+      "ph_url": "https://www.marktechpost.com/2026/05/03/sakana-ai-introduces-kame-a-tandem-speech-to-speech-architecture-that-injects-llm-knowledge-in-real-time/",
+      "maker": "Sakana AI",
+      "featured": true,
+      "added_at": "2026-05-03T06:00:00Z"
+    },
+    {
+      "id": "ph-flue",
+      "name": "Flue",
+      "tagline": "TypeScript framework for building AI agents.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, a proper TypeScript framework for agent development instead of cobbling together Python scripts and hoping they work. The sandbox approach could solve the reliability nightmares that plague most agent implementations.",
+      "ph_url": "https://flueframework.com/",
+      "maker": "Flue Framework",
+      "featured": true,
+      "added_at": "2026-05-03T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-custom-voices",
+      "name": "xAI Custom Voices",
+      "tagline": "Voice cloning from one minute of speech.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "xAI's Custom Voices brings production-ready voice cloning to developers with minimal training data. The one-minute requirement makes this practical for real applications, not just demos.",
+      "ph_url": "https://the-decoder.com/xais-new-custom-voices-feature-turns-a-minute-of-speech-into-a-usable-voice-clone/",
+      "maker": "xAI",
+      "featured": false,
+      "added_at": "2026-05-03T06:30:00Z"
+    },
+    {
+      "id": "ph-mljar-studio",
+      "name": "Mljar Studio",
+      "tagline": "Local AI data analyst that saves analysis as notebooks.",
+      "logo_url": "",
+      "category": "Data Tools",
+      "why_radar": "Local AI data analysis that outputs proper notebooks instead of black box results. Smart move keeping everything on-device for sensitive datasets whilst maintaining reproducible workflows.",
+      "ph_url": "https://mljar.com/",
+      "maker": "Mljar",
+      "featured": false,
+      "added_at": "2026-05-03T06:45:00Z"
+    },
+    {
+      "id": "ph-mimo-v25-pro",
+      "name": "MiMo-V2.5-Pro",
+      "tagline": "Open-weight coding model matching Claude Opus performance.",
+      "logo_url": "",
+      "category": "AI Coding",
+      "why_radar": "Xiaomi's MiMo-V2.5-Pro delivers Claude Opus-level coding whilst being fully open-weight and burning 4x less compute. The autonomous multi-hour coding sessions could reshape how we think about AI pair programming.",
+      "ph_url": "https://the-decoder.com/xiaomis-open-weight-mimo-v2-5-pro-takes-aim-at-claude-opus-with-hours-long-autonomous-coding/",
+      "maker": "Xiaomi",
+      "featured": false,
+      "added_at": "2026-05-03T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Flue is a TypeScript framework for building the next generation of agents",
+      "points": 89,
+      "comments": 51,
+      "summary": "A new TypeScript framework designed specifically for AI agent development. Promises better reliability and developer experience compared to existing Python-heavy tooling.",
+      "hn_url": "https://news.ycombinator.com/item?id=47988501"
+    },
+    {
+      "title": "Show HN: Mljar Studio \u2013 local AI data analyst that saves analysis as notebooks",
+      "points": 65,
+      "comments": 10,
+      "summary": "Local AI-powered data analysis tool that maintains reproducible workflows by saving results as proper notebooks. Keeps sensitive data on-device whilst providing intelligent analysis.",
+      "hn_url": "https://news.ycombinator.com/item?id=47985077"
+    },
+    {
+      "title": "Show HN: Large Scale Article Extract of Newspapers 1730s-1960s",
+      "points": 46,
+      "comments": 18,
+      "summary": "Massive digitised newspaper archive spanning over two centuries. Useful dataset for historical AI research and natural language processing applications.",
+      "hn_url": "https://news.ycombinator.com/item?id=47984614"
+    },
+    {
+      "title": "Preliminary Findings on AI Automation from Worker Evaluations",
+      "points": 6,
+      "comments": 0,
+      "summary": "Research paper examining how workers evaluate AI automation in their roles. Early findings on acceptance patterns and productivity impacts.",
+      "hn_url": "https://news.ycombinator.com/item?id=47990033"
+    },
+    {
+      "title": "Show HN: Which public repos are friendliest to an AI coding agent?",
+      "points": 5,
+      "comments": 0,
+      "summary": "Tool that analyses GitHub repositories to determine how well they work with AI coding agents. Useful for developers building agent-assisted workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47989464"
+    }
+  ]
+}

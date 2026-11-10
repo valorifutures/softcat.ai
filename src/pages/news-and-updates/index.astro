@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { tagDotClass } from '../../utils/tagColor';
+
+const entries = (await getCollection('news-and-updates'))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const mostRecent = entries[0]?.data.date;
+const lastPublished = mostRecent?.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+
+<BaseLayout title="AI news archive" description="Historical AI news digests with their original dates. This is not a current news feed." breadcrumbs={[{name: 'AI news archive', url: '/news-and-updates'}]}>
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <header class="mb-8">
+      <a href="/" class="font-mono text-sm text-text-muted hover:text-neon-cyan transition-colors mb-4 inline-block">&larr; home</a>
+      <h1 class="font-mono text-3xl font-bold text-text-bright glow-green">AI news archive</h1>
+      <p class="text-text-muted mt-2">Earlier AI digests, kept with their original publication dates. This series is no longer updated.</p>
+      <aside class="mt-5 border-l-2 border-neon-amber bg-neon-amber/5 p-4 text-sm leading-relaxed text-text-muted" aria-label="Historical news notice">
+        <p>{lastPublished ? <>The last published digest is dated <time datetime={mostRecent?.toISOString()}>{lastPublished}</time>.</> : 'No published digests are currently recorded.'} These posts are historical reporting, not verified current news. Check the original publisher before relying on a claim or an external link.</p>
+        <p class="mt-2">For new work, use the <a class="text-neon-cyan underline underline-offset-4" href="/notebook">notebook</a> or inspect <a class="text-neon-cyan underline underline-offset-4" href="/research">our research</a>.</p>
+      </aside>
+    </header>
+    <div class="section-banner mb-6" style="height: 180px; --banner-accent: rgba(78, 203, 143, 0.12); --banner-accent-mid: rgba(78, 203, 143, 0.04)" aria-hidden="true"></div>
+    <div class="glow-divider mb-10" style="--divider-color: rgba(78, 203, 143, 0.15)"></div>
+
+    {entries.length === 0 ? (
+      <div class="bg-surface border border-surface-light rounded-lg p-8 text-center">
+        <p class="font-mono text-sm text-text-muted">
+          <span class="text-neon-green">&#9679;</span> awaiting first transmission...
+        </p>
+      </div>
+    ) : (
+      <div class="grid gap-5 ambient-glow" style="--glow-color: rgba(78, 203, 143, 0.035); --glow-color-alt: rgba(90, 184, 212, 0.025)">
+        {entries.map((entry, index) => (
+          <div
+            class="relative glass-card rounded-xl card-glow card-glow-green card-lift group animate-stagger border-l-2 border-l-neon-green/40 overflow-hidden"
+            style={`--stagger-index: ${index}`}
+          >
+            <a href={`/news-and-updates/${entry.id}`} class="block p-6 md:p-7">
+              <div class="flex items-start justify-between gap-4">
+                <div class="min-w-0">
+                  <h2 class="font-mono text-base font-bold text-text-bright group-hover:text-neon-green transition-colors">
+                    {entry.data.title}
+                  </h2>
+                  <p class="text-sm text-text-muted mt-2 leading-relaxed">{entry.data.summary}</p>
+                </div>
+                <time
+                  datetime={entry.data.date.toISOString()}
+                  class="font-mono text-xs text-text-muted shrink-0"
+                >
+                  {entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
+                </time>
+              </div>
+            </a>
+            {entry.data.tags.length > 0 && (
+              <div class="flex flex-wrap gap-2 px-6 md:px-7 pb-5">
+                {entry.data.tags.map((tag) => (
+                  <a href={`/tags/${tag}`} class="tag-badge">
+                    <span class={`tag-dot ${tagDotClass(tag)}`}></span>
+                    {tag}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>

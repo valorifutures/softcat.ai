@@ -1,0 +1,92 @@
+{
+  "date": "2026-03-18",
+  "featured": [
+    {
+      "id": "ph-openshell",
+      "name": "OpenShell",
+      "tagline": "Secure runtime environment for autonomous AI agents.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "NVIDIA's answer to the biggest blocker for enterprise AI agents: security. While everyone races to build autonomous systems, OpenShell tackles the unglamorous but critical problem of safe execution. This could be the difference between agents staying in demos or actually running production workloads.",
+      "ph_url": "https://www.marktechpost.com/2026/03/18/nvidia-ai-open-sources-openshell-a-secure-runtime-environment-for-autonomous-ai-agents/",
+      "maker": "NVIDIA",
+      "featured": true,
+      "added_at": "2026-03-18T06:00:00Z"
+    },
+    {
+      "id": "ph-unsloth-studio",
+      "name": "Unsloth Studio",
+      "tagline": "No-code interface for LLM fine-tuning with 70% less VRAM usage.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Fine-tuning just got democratised. Unsloth Studio removes the CUDA environment headaches and slashes memory requirements, making custom model training accessible to teams without ML engineering resources. The no-code approach could finally make fine-tuning as routine as deploying web apps.",
+      "ph_url": "https://www.marktechpost.com/2026/03/17/unsloth-ai-releases-studio-a-local-no-code-interface-for-high-performance-llm-fine-tuning-with-70-less-vram-usage/",
+      "maker": "Unsloth AI",
+      "featured": true,
+      "added_at": "2026-03-18T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-enterpriseops-gym",
+      "name": "EnterpriseOps-Gym",
+      "tagline": "High-fidelity benchmark for evaluating agentic planning in enterprise settings.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "ServiceNow built the enterprise agent benchmark we actually needed. Unlike academic toy problems, this captures the messy reality of corporate workflows with persistent state changes and access controls. Essential for anyone serious about deploying agents in business environments.",
+      "ph_url": "https://www.marktechpost.com/2026/03/18/servicenow-research-introduces-enterpriseops-gym-a-high-fidelity-benchmark-designed-to-evaluate-agentic-planning-in-realistic-enterprise-settings/",
+      "maker": "ServiceNow Research",
+      "featured": false,
+      "added_at": "2026-03-18T06:30:00Z"
+    },
+    {
+      "id": "ph-fireclaw",
+      "name": "FireClaw",
+      "tagline": "Open-source proxy defending AI agents from prompt injection.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Another entry in the growing stack of agent security tools. FireClaw positions itself as a runtime guardrail specifically for prompt injection attacks. The open-source approach is refreshing in a space dominated by proprietary solutions, though execution will determine if it can match enterprise-grade alternatives.",
+      "ph_url": "https://github.com/raiph-ai/fireclaw",
+      "maker": "Raiph AI",
+      "featured": false,
+      "added_at": "2026-03-18T06:45:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: March Madness Bracket Challenge for AI Agents Only",
+      "points": 64,
+      "comments": 40,
+      "summary": "A competitive bracket challenge where only AI agents can participate in predicting March Madness outcomes. Novel way to benchmark agent reasoning capabilities in a fun, real-world prediction task with clear success metrics.",
+      "hn_url": "https://news.ycombinator.com/item?id=47412015"
+    },
+    {
+      "title": "Launch an autonomous AI agent with sandboxed execution in 2 lines of code",
+      "points": 36,
+      "comments": 13,
+      "summary": "OnPrem library simplifies agent deployment to just two lines of Python code while providing sandboxed execution environments. Addresses the complexity barrier that keeps many developers from experimenting with autonomous agents.",
+      "hn_url": "https://news.ycombinator.com/item?id=47420493"
+    },
+    {
+      "title": "I built a runtime guardrail that stops AI agents from doing dumb things",
+      "points": 9,
+      "comments": 1,
+      "summary": "Developer shares their approach to preventing agent failures through runtime monitoring and intervention. Part of the growing ecosystem of tools focused on making AI agents more reliable in production environments.",
+      "hn_url": "https://news.ycombinator.com/item?id=47421451"
+    },
+    {
+      "title": "Show HN: Score your GitHub repo for AI coding agents",
+      "points": 6,
+      "comments": 3,
+      "summary": "Twill AI's tool evaluates how well-structured repositories are for AI coding assistants to understand and work with. Useful for teams optimising their codebases for AI-assisted development workflows.",
+      "hn_url": "https://news.ycombinator.com/item?id=47419038"
+    },
+    {
+      "title": "Show HN: N0x \u2013 LLM inference, agents, RAG, Python exec in browser, no back end",
+      "points": 7,
+      "comments": 0,
+      "summary": "Browser-based platform running LLM inference, agent frameworks, and Python execution entirely client-side. Interesting approach to removing server dependencies for AI development, though performance and model size limitations likely apply.",
+      "hn_url": "https://news.ycombinator.com/item?id=47421950"
+    }
+  ]
+}

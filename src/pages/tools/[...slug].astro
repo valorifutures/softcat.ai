@@ -1,0 +1,15 @@
+---
+import ToolGuide from '../../components/ToolGuide.astro';
+import RetiredTool from '../../components/RetiredTool.astro';
+import { getCollection } from 'astro:content';
+import review from '../../data/tool-retirements.json';
+export async function getStaticPaths() {
+  const entries = (await getCollection('tools')).filter(entry => !entry.data.draft);
+  return [
+    ...entries.map(entry => ({ params: { slug: entry.id }, props: { entry } })),
+    ...review.entries.map(retirement => ({ params: { slug: retirement.id }, props: { retirement } })),
+  ];
+}
+const { entry, retirement } = Astro.props;
+---
+{retirement ? <RetiredTool retirement={retirement} /> : <ToolGuide entry={entry!} />}

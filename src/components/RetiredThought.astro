@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import review from '../data/editorial-retirements.json';
+import { retirementSourceUrl } from '../lib/editorial-retirements.mjs';
+interface Props { retirement: typeof review.entries[number]; }
+const { retirement } = Astro.props;
+const reason = review.reasons[retirement.reason as keyof typeof review.reasons];
+const fmt = (date: string) => new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+<BaseLayout title="Retired essay" description="This earlier SOFT CAT essay was removed during an editorial review. Its publication date, reason for removal and original source remain recorded.">
+  <Fragment slot="head"><meta name="robots" content="noindex, follow" /></Fragment>
+  <article class="retired-thought workshop-shell">
+    <a href="/thoughts/review" class="text-link">← The removal record</a>
+    <p class="eyebrow">EDITORIAL RECORD / RETIRED ESSAY</p>
+    <h1>We took this<br /><em>essay off the shelf.</em></h1>
+    <p class="retired-date">Published <time datetime={retirement.date}>{fmt(retirement.date)}</time> · Retired <time datetime={retirement.retiredAt}>{fmt(retirement.retiredAt)}</time></p>
+    <section class="retired-reason" aria-labelledby="retired-reason-heading"><h2 id="retired-reason-heading">Why it was removed</h2><p>{reason}</p></section>
+    <div class="retired-original"><p class="eyebrow">ORIGINAL TITLE</p><blockquote>{retirement.title}</blockquote><p>The earlier text is preserved in Git history. It is available as a record of the experiment, with its original wording.</p><a href={retirementSourceUrl(retirement)} class="text-link">Read the preserved source <span aria-hidden="true">↗</span></a></div>
+    <div class="retired-next"><p>For work with examples and results, start with <a href="/notebook">the notebook</a>. To try something yourself, open <a href="/tools">the tools</a>.</p><p>Find a problem with this decision? <a href="/contact">Suggest a correction</a>.</p></div>
+  </article>
+</BaseLayout>
+<style>
+  .retired-thought { max-width: 850px; padding-block: 3.5rem 5rem; }
+  .retired-thought > .eyebrow { margin-top: 2.2rem; }
+  h1 { font: 600 clamp(2.5rem, 6vw, 4rem)/1.15 var(--font-sans); letter-spacing: -0.05em; color: #eeeee5; margin: 1.1rem 0 1.5rem; }
+  h1 em { color: var(--workshop-lime); font-style: normal; }
+  .retired-date { color: var(--color-text-muted); font: 0.7rem/1.9 var(--font-mono); }
+  .retired-reason { border-left: 2px solid #b9ae7e; background: #1b1d14; padding: 1.4rem 1.5rem; margin-block: 2rem; }
+  h2 { color: #e6e8d9; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.7rem; }
+  .retired-reason p, .retired-original > p:not(.eyebrow), .retired-next p { font-size: 0.88rem; line-height: 1.9; color: #b7bdaf; max-width: 690px; }
+  .retired-original { border-top: 1px solid #363c2f; padding-top: 2rem; }
+  blockquote { font: 500 1.4rem/1.55 var(--font-sans); letter-spacing: -0.02em; margin: 0.9rem 0 1rem; color: #d9ddcf; }
+  .retired-original .text-link { margin-top: 0.8rem; }
+  .retired-next { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #363c2f; }
+  .retired-next p { margin-bottom: 0.8rem; }
+  .retired-next a { color: var(--workshop-lime); text-decoration: underline; text-underline-offset: 3px; }
+</style>

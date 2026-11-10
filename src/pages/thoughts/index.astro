@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import retirements from '../../data/editorial-retirements.json';
+
+const entries = (await getCollection('thoughts')).filter(entry => !entry.data.draft && !entry.data.tags.includes('field-notes'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const corrections = entries.filter(entry => entry.data.correction)
+  .sort((a, b) => b.data.correction!.date.valueOf() - a.data.correction!.date.valueOf());
+const otherEssays = entries.filter(entry => !entry.data.correction);
+const months = [...new Set(otherEssays.map(entry => entry.data.date.toISOString().slice(0, 7)))];
+const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+<BaseLayout title="Thoughts & corrections" description="Revised essays, visible corrections and the record of an unsourced series removed from SOFT CAT. Follow the notebook for current work.">
+  <div class="thoughts-shell">
+    <header><a href="/notebook" class="thoughts-back">← The build notebook</a><p class="thoughts-eyebrow">THE LONGER RECORD</p><h1>Thoughts &amp; corrections.</h1><p>Earlier writing that still has a useful point, revised where its claims went beyond the evidence. Corrections explain what changed and link to the earlier text.</p><p>For documented experiments and maintenance, start with <a href="/notebook">the notebook</a>.</p></header>
+    <aside class="thoughts-removals"><p class="thoughts-eyebrow">ALSO PART OF THE RECORD</p><h2>{retirements.entries.length} essays removed.</h2><p>We retired the unsourced automated series and three weak early opinions. Their old URLs explain the decision, and the original text remains in Git history.</p><a href="/thoughts/review">Read the removal record ↗</a></aside>
+    {corrections.length > 0 && <section class="thoughts-corrections" aria-labelledby="corrections-heading"><div><p class="thoughts-eyebrow">CHANGING OUR MINDS IN PUBLIC</p><h2 id="corrections-heading">The correction record</h2></div><div>{corrections.map(entry => <a href={`/thoughts/${entry.id}`}><div><h3>{entry.data.title}</h3><p>{entry.data.correction!.summary}</p><span class="thoughts-original">Originally published {fmt(entry.data.date)}</span></div><time datetime={entry.data.correction!.date.toISOString()}>Corrected <br />{fmt(entry.data.correction!.date)}</time></a>)}</div></section>}
+    {otherEssays.length > 0 && <section class="thoughts-archive" aria-labelledby="thoughts-archive-heading"><div class="thoughts-archive-heading"><h2 id="thoughts-archive-heading">Other retained essays</h2><span>{otherEssays.length} essays</span></div><p>This is an archive of opinions, not a current model or product guide. An unchanged entry has not been reverified by appearing here.</p>{months.map((month, index) => {
+      const group = otherEssays.filter(entry => entry.data.date.toISOString().startsWith(month));
+      return <details open={index === 0} class="thoughts-month"><summary><span>{new Date(`${month}-01T00:00:00Z`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })}</span><span>{group.length} essays</span></summary><div>{group.map(entry => <a href={`/thoughts/${entry.id}`}><time datetime={entry.data.date.toISOString()}>{fmt(entry.data.date)}</time><div><h3>{entry.data.title}</h3>{entry.data.correction && <span class="thoughts-corrected">Correction recorded</span>}</div><span aria-hidden="true">↗</span></a>)}</div></details>;
+    })}</section>}
+  </div>
+</BaseLayout>
+<style>
+  .thoughts-shell { max-width: 960px; margin: auto; padding: 4rem 1.5rem 6rem; }
+  .thoughts-back { color: #bacbb0; font: .75rem var(--font-mono); display: inline-block; margin-bottom: 2.5rem; }
+  .thoughts-eyebrow { font: .65rem var(--font-mono); letter-spacing: .1em; color: #c7d8ae; margin-bottom: .8rem; }
+  h1 { font-size: clamp(2.25rem, 6vw, 3.3rem); font-weight: 650; letter-spacing: -.05em; color: #eeeee5; line-height: 1.15; }
+  header > p:not(.thoughts-eyebrow) { color: #b8b9be; max-width: 75ch; font-size: .95rem; line-height: 1.85; margin-top: 1.2rem; }
+  header > p a { text-decoration: underline; color: #c7d8ae; text-underline-offset: 4px; }
+  h2 { color: #eeeee5; font-weight: 600; font-size: 1.35rem; letter-spacing: -.025em; }
+  .thoughts-removals { padding: 1.5rem; margin-top: 2rem; border: 1px solid #3c4830; border-radius: 0.4rem; background: #171d12; }
+  .thoughts-removals > p:not(.thoughts-eyebrow) { color: #b8c1ad; font-size: .85rem; line-height: 1.85; margin-top: .8rem; }
+  .thoughts-removals a { display: inline-flex; align-items: center; min-height: 44px; margin-top: .5rem; color: var(--workshop-lime); font-size: .8rem; }
+  .thoughts-original { display: block; color: #a8b49b; font: .62rem/1.8 var(--font-mono); margin-top: .55rem; }
+  .thoughts-corrections { border: 1px solid #555340; background: #1a1b16; border-radius: 10px; padding: 1.6rem; margin: 2.5rem 0 3.5rem; }
+  .thoughts-corrections > div:first-child { margin-bottom: 1.4rem; }
+  .thoughts-corrections a { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; border-top: 1px solid #393e31; padding: 1rem 0; }
+  .thoughts-corrections h3 { color: #e6e9dc; font-size: .95rem; font-weight: 550; line-height: 1.5; }
+  .thoughts-corrections p:not(.thoughts-eyebrow) { font-size: .77rem; color: #b8bcae; line-height: 1.7; margin-top: .4rem; }
+  .thoughts-corrections time { font: .65rem/1.7 var(--font-mono); color: #c1c9af; }
+  .thoughts-archive-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem; }
+  .thoughts-archive-heading > span { font: .7rem var(--font-mono); color: #b9bcb0; }
+  .thoughts-archive > p { color: #aeb2b5; font-size: .78rem; line-height: 1.75; margin: 1rem 0 1.5rem; }
+  .thoughts-month { border-top: 1px solid #373b35; }
+  .thoughts-month:last-child { border-bottom: 1px solid #373b35; }
+  .thoughts-month summary { cursor: pointer; padding: 1.2rem .25rem; color: #dce5d0; }
+  .thoughts-month summary span:first-child { margin-left: .5rem; font-size: .95rem; }
+  .thoughts-month summary span:last-child { float: right; color: #a8b29f; font: .65rem var(--font-mono); margin-top: .4rem; }
+  .thoughts-month a { display: grid; grid-template-columns: 100px 1fr auto; align-items: baseline; gap: 1rem; padding: 1rem .25rem; border-top: 1px solid #272b2c; }
+  .thoughts-month h3 { font-size: .85rem; color: #d6d9d2; line-height: 1.65; }
+  .thoughts-month time { font: .6rem/1.8 var(--font-mono); color: #a4aca7; }
+  .thoughts-month a > span { color: #b9cda7; }
+  .thoughts-corrected { display: inline-block; color: #d9c295; font: .6rem var(--font-mono); margin-top: .5rem; }
+  .thoughts-corrections a:hover h3, .thoughts-month a:hover h3 { color: #d2f39b; }
+  @media (max-width: 560px) { .thoughts-corrections { padding: 1.2rem; } .thoughts-corrections a { grid-template-columns: 1fr; gap: .5rem; } .thoughts-corrections time br { display: none; } .thoughts-month a { grid-template-columns: 1fr auto; gap: .4rem; } .thoughts-month time { grid-column: 1 / -1; } }
+</style>

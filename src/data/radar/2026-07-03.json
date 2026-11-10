@@ -1,0 +1,116 @@
+{
+  "date": "2026-07-03",
+  "featured": [
+    {
+      "id": "ph-manufact-mcp-cloud",
+      "name": "Manufact",
+      "tagline": "Managed cloud hosting for MCP servers.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Running MCP servers yourself is a pain, and Manufact is betting developers would rather not. It gives you managed MCP hosting in the cloud, which removes a real friction point in building agentic tooling. YC S25 backing suggests there is money behind the bet too.",
+      "ph_url": "https://manufact.com",
+      "maker": "Manufact",
+      "featured": true,
+      "added_at": "2026-07-03T06:00:00Z"
+    },
+    {
+      "id": "ph-meta-pocket",
+      "name": "Pocket by Meta",
+      "tagline": "Generate and share interactive mini games from text prompts.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Meta quietly shipped a vibe-coded game generator and barely announced it. You type a prompt, get a playable mini game, and can share it. It is early and experimental, but it is live and usable right now.",
+      "ph_url": "https://techcrunch.com/2026/07/02/meta-quietly-launches-vibe-coded-gaming-app-pocket/",
+      "maker": "Meta",
+      "featured": true,
+      "added_at": "2026-07-03T06:00:00Z"
+    },
+    {
+      "id": "ph-notebooklm-video-shorts",
+      "name": "NotebookLM Video Shorts",
+      "tagline": "TikTok-style short video overviews generated from your notes.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "NotebookLM already does audio overviews well, and now it generates short-form video summaries in the format people actually watch. This is a meaningful expansion of what the tool can output. Worth testing if you use it for research or content.",
+      "ph_url": "https://the-decoder.com/google-brings-tiktok-style-video-shorts-to-notebooklm/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-07-03T06:00:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-mirrors-agent-testing",
+      "name": "Mirrors",
+      "tagline": "Test AI agent changes by replaying production traces.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Replaying real production traces to test agent changes is a genuinely smart approach to a hard problem. Most agent testing is synthetic and misses edge cases that only show up in the wild. This is the kind of tool that becomes essential once your agents are in production.",
+      "ph_url": "https://www.runmirrors.com/",
+      "maker": "Mirrors",
+      "featured": false,
+      "added_at": "2026-07-03T06:30:00Z"
+    },
+    {
+      "id": "ph-declaw-arena",
+      "name": "Declaw Arena",
+      "tagline": "A CTF-style challenge to break an AI agent running in a microVM.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "Capture the flag but for AI agent exploitation, running inside a microVM. It is a clever way to make AI security research feel like a game. Good for anyone thinking about adversarial inputs and agent hardening.",
+      "ph_url": "https://declaw.ai/arena",
+      "maker": "Declaw",
+      "featured": false,
+      "added_at": "2026-07-03T06:30:00Z"
+    },
+    {
+      "id": "ph-enola-architecture-graph",
+      "name": "Enola",
+      "tagline": "A deterministic architecture graph for developers and AI agents.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Enola gives both humans and AI agents a shared, deterministic view of a codebase's architecture. The idea of a graph that agents can actually navigate reliably is interesting given how often they get lost in large repos. Open source and worth a look if you are building agent-assisted development workflows.",
+      "ph_url": "https://github.com/enola-labs/enola/tree/main",
+      "maker": "Enola Labs",
+      "featured": false,
+      "added_at": "2026-07-03T06:30:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Launch HN: Manufact (YC S25) \u2013 MCP Cloud",
+      "points": 107,
+      "comments": 63,
+      "summary": "Manufact is a managed cloud platform for hosting MCP servers, removing the need to run your own infrastructure. It is aimed at developers building agentic tools who want to skip the ops side. YC S25 backed and live now.",
+      "hn_url": "https://news.ycombinator.com/item?id=48762862"
+    },
+    {
+      "title": "Zuckerberg says AI agent development going slower than expected",
+      "points": 37,
+      "comments": 41,
+      "summary": "Zuckerberg told staff internally that Meta's AI agent progress is behind where he hoped it would be. The comments align with broader industry signals that autonomous agents are harder to ship reliably than the hype suggested. Worth reading alongside the Remote Labor Index data showing agents completing more freelance work.",
+      "hn_url": "https://news.ycombinator.com/item?id=48767058"
+    },
+    {
+      "title": "Ask HN: Why are so many AI evangelists posting such insufferable content?",
+      "points": 43,
+      "comments": 25,
+      "summary": "A thread venting about low-quality AI hype content flooding feeds. The comments get into why incentive structures reward confident nonsense over careful analysis. Good temperature check on where the discourse is right now.",
+      "hn_url": "https://news.ycombinator.com/item?id=48765450"
+    },
+    {
+      "title": "Show HN: Mirrors \u2013 test AI agent changes by replaying production traces",
+      "points": 7,
+      "comments": 0,
+      "summary": "Mirrors lets you replay real production traces to test how agent changes behave against actual past interactions. It sidesteps the problem of synthetic test data missing real-world edge cases. Early but the approach is sound.",
+      "hn_url": "https://news.ycombinator.com/item?id=48768200"
+    },
+    {
+      "title": "Show HN: Declaw Arena \u2013 a CTF-style challenge to break an AI agent in a microVM",
+      "points": 7,
+      "comments": 0,
+      "summary": "Declaw Arena is a capture the flag game where the goal is to exploit an AI agent running inside a microVM. It makes adversarial AI security research more accessible and gamified. Useful for anyone working on agent hardening or prompt injection defences.",
+      "hn_url": "https://news.ycombinator.com/item?id=48767836"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "date": "2026-04-27",
+  "featured": [
+    {
+      "id": "ph-openkb",
+      "name": "OpenKB",
+      "tagline": "Build fully searchable AI knowledge bases with local models.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Finally, a proper knowledge base that doesn't leak your data to OpenAI. OpenKB lets you build searchable wikis with local models via OpenRouter, keeping everything under your control. Perfect timing as enterprises realise Claude and ChatGPT aren't suitable for sensitive documents.",
+      "ph_url": "https://www.marktechpost.com/2026/04/26/how-to-build-a-fully-searchable-ai-knowledge-base-with-openkb-openrouter-and-llama/",
+      "maker": "OpenKB",
+      "featured": true,
+      "added_at": "2026-04-27T06:00:00Z"
+    },
+    {
+      "id": "ph-budoux",
+      "name": "BudouX",
+      "tagline": "Intelligent multilingual text wrapping for languages without whitespace.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "Google quietly solved a problem most developers didn't even know they had. BudouX brings phrase-aware line breaking to Japanese, Chinese, and Thai text, turning garbled text wrapping into something readable. The kind of unsexy infrastructure work that powers half the web once people discover it.",
+      "ph_url": "https://www.marktechpost.com/2026/04/26/how-to-build-smarter-multilingual-text-wrapping-with-budoux-through-parsing-html-rendering-model-introspection-and-toy-training/",
+      "maker": "Google",
+      "featured": true,
+      "added_at": "2026-04-27T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-yourmemory",
+      "name": "YourMemory",
+      "tagline": "AI memory system with biological decay patterns.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Someone finally built memory that forgets like humans do. This agent memory system deliberately decays over time, hitting 52% recall after periods of disuse. It's the opposite of perfect digital memory, and might be exactly what we need for more natural AI interactions.",
+      "ph_url": "https://github.com/sachitrafa/YourMemory",
+      "maker": "sachitrafa",
+      "featured": false,
+      "added_at": "2026-04-27T06:30:00Z"
+    },
+    {
+      "id": "ph-agentswarms",
+      "name": "AgentSwarms",
+      "tagline": "Free hands-on playground to learn agentic AI with no setup.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "A proper learning environment for agent development that doesn't require Docker, Python environments, or three hours of setup. AgentSwarms gives you a browser-based playground to experiment with multi-agent systems. The kind of tool that should have existed two years ago.",
+      "ph_url": "https://agentswarms.fyi/",
+      "maker": "AgentSwarms",
+      "featured": false,
+      "added_at": "2026-04-27T06:45:00Z"
+    },
+    {
+      "id": "ph-8v",
+      "name": "8v",
+      "tagline": "One CLI for you and your AI agent with 66% fewer tokens.",
+      "logo_url": "",
+      "category": "Developer Tools",
+      "why_radar": "A command line interface designed for both humans and agents to use simultaneously. The 66% token reduction suggests they've solved the verbose output problem that makes most CLI tools expensive to run through LLMs. Smart approach to the coming wave of agent-operated tooling.",
+      "ph_url": "https://github.com/8Network/8v",
+      "maker": "8Network",
+      "featured": false,
+      "added_at": "2026-04-27T07:00:00Z"
+    },
+    {
+      "id": "ph-polynya",
+      "name": "Polynya",
+      "tagline": "Turn your Postgres database into AI workspaces.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Instead of building another vector database, someone finally made Postgres work properly for AI workflows. Polynya transforms existing databases into AI workspaces without the migration headaches. Postgres is eating the world, and this makes it hungrier.",
+      "ph_url": "https://polynya.dev/",
+      "maker": "Polynya",
+      "featured": false,
+      "added_at": "2026-04-27T07:15:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "An AI agent deleted our production database. The agent's confession is below",
+      "points": 648,
+      "comments": 800,
+      "summary": "A cautionary tale from the trenches of agentic AI deployment. An AI agent with database access made an irreversible mistake, highlighting the gap between demo capabilities and production readiness. The confession thread reveals how quickly things can go wrong when agents have real permissions.",
+      "hn_url": "https://news.ycombinator.com/item?id=47911524"
+    },
+    {
+      "title": "Show HN: AI memory with biological decay (52% recall)",
+      "points": 86,
+      "comments": 37,
+      "summary": "A memory system for AI agents that deliberately forgets over time, mimicking biological memory patterns. The 52% recall rate after decay periods suggests a more natural approach to information retention. This challenges the assumption that perfect digital memory is always better.",
+      "hn_url": "https://news.ycombinator.com/item?id=47914367"
+    },
+    {
+      "title": "Show HN: AgentSwarms \u2013 free hands-on playground to learn agentic AI, no setup",
+      "points": 15,
+      "comments": 1,
+      "summary": "A browser-based learning environment for experimenting with multi-agent systems without local setup requirements. Addresses the high barrier to entry for agent development by providing immediate access to hands-on experimentation. The no-setup approach could accelerate adoption of agentic AI patterns.",
+      "hn_url": "https://news.ycombinator.com/item?id=47914075"
+    }
+  ]
+}

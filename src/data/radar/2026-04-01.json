@@ -1,0 +1,104 @@
+{
+  "date": "2026-04-01",
+  "featured": [
+    {
+      "id": "ph-trl-v1",
+      "name": "TRL v1.0",
+      "tagline": "Unified post-training stack for SFT, reward modeling, DPO, and GRPO workflows.",
+      "logo_url": "",
+      "category": "AI Infrastructure",
+      "why_radar": "Hugging Face just standardised the messy world of post-training with a production-ready framework. This is the PyTorch moment for model alignment, turning research experiments into reproducible engineering. Every team doing RLHF will want this.",
+      "ph_url": "https://www.marktechpost.com/2026/04/01/hugging-face-releases-trl-v1-0-a-unified-post-training-stack-for-sft-reward-modeling-dpo-and-grpo-workflows/",
+      "maker": "Hugging Face",
+      "featured": true,
+      "added_at": "2026-04-01T06:00:00Z"
+    },
+    {
+      "id": "ph-veo-3-1-lite",
+      "name": "Veo 3.1 Lite",
+      "tagline": "Low cost, high speed video generation via the Gemini API.",
+      "logo_url": "",
+      "category": "AI Platforms",
+      "why_radar": "Google finally solved the video generation pricing problem with a model that cuts costs by more than half. This could be the breakthrough that moves AI video from demos to actual products. The race to the bottom on video pricing just accelerated.",
+      "ph_url": "https://www.marktechpost.com/2026/03/31/google-ai-releases-veo-3-1-lite-giving-developers-low-cost-high-speed-video-generation-via-the-gemini-api/",
+      "maker": "Google AI",
+      "featured": true,
+      "added_at": "2026-04-01T06:15:00Z"
+    }
+  ],
+  "picks": [
+    {
+      "id": "ph-lfm2-5-350m",
+      "name": "LFM2.5-350M",
+      "tagline": "Compact 350M parameter model trained on 28T tokens with scaled reinforcement learning.",
+      "logo_url": "",
+      "category": "AI Research",
+      "why_radar": "Liquid AI is proving that intelligence density matters more than parameter count. This tiny model challenges the scaling orthodoxy with better training rather than bigger weights. Smart move when everyone else is chasing gigantic models.",
+      "ph_url": "https://www.marktechpost.com/2026/03/31/liquid-ai-released-lfm2-5-350m-a-compact-350m-parameter-model-trained-on-28t-tokens-with-scaled-reinforcement-learning/",
+      "maker": "Liquid AI",
+      "featured": false,
+      "added_at": "2026-04-01T06:30:00Z"
+    },
+    {
+      "id": "ph-pardus-browser",
+      "name": "Pardus Browser",
+      "tagline": "Browser designed specifically for AI agents without Chromium bloat.",
+      "logo_url": "",
+      "category": "AI Agents",
+      "why_radar": "Finally, someone built a browser that agents can actually use without the overhead of human-focused features. This could become essential infrastructure as agents move beyond text into web automation. The anti-Chromium approach is refreshing.",
+      "ph_url": "https://github.com/JasonHonKL/PardusBrowser/tree/main",
+      "maker": "JasonHonKL",
+      "featured": false,
+      "added_at": "2026-04-01T06:45:00Z"
+    },
+    {
+      "id": "ph-cai-framework",
+      "name": "CAI Cybersecurity Framework",
+      "tagline": "Framework for building cybersecurity AI agents with tools, guardrails, and workflows.",
+      "logo_url": "",
+      "category": "AI Security",
+      "why_radar": "A proper framework for cybersecurity agents with the guardrails and handoffs that actually matter in production. Most agent frameworks ignore security completely, so this fills a real gap. The multi-agent orchestration looks solid.",
+      "ph_url": "https://www.marktechpost.com/2026/03/29/how-to-build-advanced-cybersecurity-ai-agents-with-cai-using-tools-guardrails-handoffs-and-multi-agent-workflows/",
+      "maker": "CAI",
+      "featured": false,
+      "added_at": "2026-04-01T07:00:00Z"
+    }
+  ],
+  "hn_top5": [
+    {
+      "title": "Show HN: Pardus Browser- a browser for AI agents without Chromium",
+      "points": 16,
+      "comments": 8,
+      "summary": "A purpose-built browser for AI agents that strips away human-centric features. Could become essential infrastructure as agents move into web automation tasks.",
+      "hn_url": "https://news.ycombinator.com/item?id=47585192"
+    },
+    {
+      "title": "Show HN: CargoWall \u2013 eBPF Firewall for GitHub Actions",
+      "points": 14,
+      "comments": 2,
+      "summary": "An eBPF-based firewall specifically designed for GitHub Actions. Addresses security concerns in CI/CD pipelines with kernel-level monitoring.",
+      "hn_url": "https://news.ycombinator.com/item?id=47588383"
+    },
+    {
+      "title": "Reverse engineering GTA San Andreas with autonomous LLM agents",
+      "points": 9,
+      "comments": 1,
+      "summary": "Demonstration of LLM agents working together to reverse engineer game code. Shows the potential for AI in complex software analysis tasks.",
+      "hn_url": "https://news.ycombinator.com/item?id=47595048"
+    },
+    {
+      "title": "Show HN: DeepTable \u2013 an API that converts messy Excel files into structured data",
+      "points": 7,
+      "comments": 0,
+      "summary": "API service that transforms unstructured Excel data into clean, structured formats. Tackles the universal problem of messy spreadsheet data ingestion.",
+      "hn_url": "https://news.ycombinator.com/item?id=47588776"
+    },
+    {
+      "title": "AI Agent virtual cards with Privacy",
+      "points": 6,
+      "comments": 1,
+      "summary": "Virtual payment cards designed for AI agents to make autonomous purchases. Privacy.com extends their service into the agent economy.",
+      "hn_url": "https://news.ycombinator.com/item?id=47594202"
+    }
+  ]
+}
