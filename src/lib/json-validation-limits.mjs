@@ -1,2 +1,0 @@
-export const JSON_INPUT_LIMIT = 1_000_000;
-export const JSON_VALIDATION_TIMEOUT = 2500;
