@@ -15,6 +15,11 @@ const successRuns = recentRuns.filter((run) => run.status === 'success').length;
 const costedRuns = recentRuns.filter((run) => run.cost_usd != null);
 const totalCost = costedRuns.reduce((sum, run) => sum + run.cost_usd, 0);
 const lastRun = newestRun(runs);
+const latestPriceRun = newestRun(runs, (run) => run.bot === 'model_bot' && run.job === 'prices');
+const recoveredPriceRun = latestPriceRun
+  && timestamp(latestPriceRun.timestamp) > Date.parse('2026-11-09T23:59:59Z')
+  && (latestPriceRun.items_published ?? 0) > 0
+  ? latestPriceRun : null;
 const dates = [...new Set(runs.slice(0, 100).map((run) => new Date(run.timestamp).toISOString().slice(0, 10)))].slice(0, 14);
 const jobLabel = (run: any) => run.job ? ` · ${run.job}` : '';
 const currentSchedule = [
@@ -48,8 +53,11 @@ const currentSchedule = [
       <p class="text-sm text-text-muted mt-4 leading-relaxed">Completed work appears in the maintenance record, Feral ledger and GitHub checks. The historical bot log below remains separate. News and Radar stay as archives.</p>
       <aside class="mt-6 rounded-lg border border-neon-amber/30 bg-neon-amber/5 p-5 text-sm text-text-muted leading-relaxed" aria-label="9 November 2026 operating note">
         <p class="text-text-primary font-semibold"><time datetime="2026-11-09">9 November 2026</time> operating note</p>
-        <p class="mt-2">Daily maintenance and the Feral council were found paused and resumed. The evidence review was already enabled. The next unattended executions still need a dated result. <a class="text-neon-cyan underline underline-offset-4" href="https://github.com/valorifutures/softcat.ai/blob/main/docs/site-operations.md">Read the operating record ↗</a></p>
-        <p class="mt-2">The scheduled model-price check failed its catalogue completeness guard on 9 November. Only 31 of 39 tracked IDs matched, so publication was skipped. The last recorded successful price job was 4 November. <a class="text-neon-cyan underline underline-offset-4" href="https://github.com/valorifutures/softcat.ai/actions/runs/42632692153">Read the failed job ↗</a> Price records carry their own verification dates.</p>
+        <p class="mt-2">Daily maintenance and the Feral council were found paused and resumed. The evidence review was already enabled. Dated execution evidence appears in the maintenance record and Feral ledger as each schedule runs. <a class="text-neon-cyan underline underline-offset-4" href="https://github.com/valorifutures/softcat.ai/blob/main/docs/site-operations.md">Read the operating record ↗</a></p>
+        <p class="mt-2">The scheduled model-price check failed its catalogue completeness guard on 9 November. Only 31 of 39 tracked IDs matched, so publication was skipped. <a class="text-neon-cyan underline underline-offset-4" href="https://github.com/valorifutures/softcat.ai/actions/runs/42632692153">Read the failed job ↗</a></p>
+        {recoveredPriceRun
+          ? <p class="mt-2">The guard was repaired, and the next recorded check on <RecordedTime value={recoveredPriceRun.timestamp} relative={false} /> published its validated snapshot. {'workflow_url' in recoveredPriceRun && typeof recoveredPriceRun.workflow_url === 'string' && <a class="text-neon-cyan underline underline-offset-4" href={recoveredPriceRun.workflow_url}>Read the successful run ↗</a>} Price records carry their own verification dates.</p>
+          : <p class="mt-2">No later successful price publication is recorded yet. Price records carry their own verification dates.</p>}
       </aside>
     </section>
 
