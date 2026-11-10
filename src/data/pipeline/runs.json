@@ -1342,5 +1342,29 @@
     "models_verified": 29,
     "models_not_listed": 8,
     "workflow_url": "https://github.com/valorifutures/softcat.ai/actions/runs/42785649634"
+  },
+  {
+    "bot": "model_bot",
+    "job": "prices",
+    "runner": "github-actions",
+    "timestamp": "2026-11-10T13:43:06.101Z",
+    "status": "partial",
+    "duration_s": 0.1,
+    "feeds_scanned": 1,
+    "items_found": 465,
+    "items_rejected": 2,
+    "items_published": 1,
+    "model": "",
+    "cost_usd": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "output_files": [
+      "src/data/models.json",
+      "src/data/model-price-snapshot.json"
+    ],
+    "models_checked": 39,
+    "models_verified": 29,
+    "models_not_listed": 8,
+    "workflow_url": "https://github.com/valorifutures/softcat.ai/actions/runs/42827025692"
   }
 ]
