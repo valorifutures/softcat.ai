@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-09T22:54:00Z",
-  "phase": "published-and-pages-verified",
-  "active_branch": null,
+  "updated_at": "2026-11-10T08:44:33Z",
+  "phase": "candidate-validated-awaiting-hosted-checks",
+  "active_branch": "maintenance/price-catalogue-guard-2026-11-10",
   "last_verified_deployment": {
     "sha": "d4173a36cf10495710363a6ce6c6a2e82b95a57c",
     "at": "2026-11-09T22:50:38Z",
@@ -143,7 +143,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "9 November site freshness audit was merged as PR #282 after all hosted tests, then verified through successful GitHub Pages run 42715048084. A focused redirect/sitemap follow-up is prepared separately. Real browser, RSS reader, third-party historical link and paused task execution verification remains open.",
+  "session": "The price-catalogue guard candidate distinguishes a healthy provider catalogue from tracked model retirements. Local checks pass. No price data was written and no scheduled refresh or publication is claimed; hosted review is next.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -852,5 +852,50 @@
       "bot_tests": 141
     },
     "followup": "Exclude old redirect aliases from sitemap while retaining them, and mark /receipt noindex. New generated-site regression test gates the change."
+  },
+  "price_guard_2026_11_10": {
+    "date": "2026-11-10",
+    "status": "validated candidate, not yet published",
+    "branch": "maintenance/price-catalogue-guard-2026-11-10",
+    "base": "7ccfa207dc1805316dcb69f91c89b39cadb61ec8",
+    "problem": "Five scheduled runs failed safely after exact tracked-ID matches fell from 32 to 31 of 39. The previous ratio counted seven already unavailable historical entries against the incomplete-catalogue allowance.",
+    "source_check": {
+      "checked_at": "2026-11-10T08:36:04Z",
+      "source": "https://openrouter.ai/api/v1/models",
+      "catalogue_models": 465,
+      "previous_catalogue_models": 453,
+      "sha256": "a349da119e8a622a8d7c2c101f0d485e0c65eab6287c36745f43653b44f88d49",
+      "unmatched_ids": [
+        "anthropic/claude-opus-4",
+        "anthropic/claude-sonnet-4",
+        "arcee-ai/trinity-large-thinking",
+        "deepseek/deepseek-r1",
+        "google/gemini-2.0-flash-001",
+        "minimax/minimax-m2",
+        "openai/o3-mini",
+        "poolside/laguna-xs.2"
+      ],
+      "endpoint_result": "All eight official per-model endpoint API records returned zero endpoints. MiniMax M2 was the only newly unavailable ID."
+    },
+    "change": "Require at least 80% of the previous catalogue volume and independently bound newly missing previously listed IDs. Preserve historical not-listed roster entries and unknown prices.",
+    "current_catalogue_replay": {
+      "catalogue_models": 465,
+      "catalogue_floor": 363,
+      "tracked_models": 39,
+      "matched": 31,
+      "expected_listed": 32,
+      "expected_listed_matched": 31,
+      "newly_not_listed": 1,
+      "allowed_newly_not_listed": 3,
+      "not_listed": 8,
+      "review_needed": 2,
+      "price_changes": 4
+    },
+    "validation": "227 Node tests, 24 offline publication tests, 141 bot tests, 46 recovery tests and 25 authenticated-boundary tests passed. The 650-page build and offline audit passed with 34,193 internal links, 3,343 assets or metadata references, 413 search entries, 184 content records and zero errors.",
+    "limits": [
+      "The catalogue was fetched once for diagnosis and replayed without writing price data.",
+      "No duplicate refresh, price publication or retired content generator ran.",
+      "Hosted checks, merge, the next scheduled price job and any resulting data or Pages deployment are not yet claimed."
+    ]
   }
 }
