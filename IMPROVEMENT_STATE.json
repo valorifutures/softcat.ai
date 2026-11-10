@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-10T08:44:33Z",
-  "phase": "candidate-validated-awaiting-hosted-checks",
-  "active_branch": "maintenance/price-catalogue-guard-2026-11-10",
+  "updated_at": "2026-11-10T09:04:13Z",
+  "phase": "published-and-pages-verified",
+  "active_branch": null,
   "last_verified_deployment": {
-    "sha": "d4173a36cf10495710363a6ce6c6a2e82b95a57c",
-    "at": "2026-11-09T22:50:38Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/42715048084"
+    "sha": "2634f88d2a1d730908dd05245669b689cb461b70",
+    "at": "2026-11-10T09:03:14Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/42787131841"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -143,7 +143,7 @@
     "Do not fabricate current research or change review dates without reassessing evidence.",
     "The September review retains seven legacy active forecasts with explicit tests and withdraws eight. Their original April claims are preserved separately from our five new predictions."
   ],
-  "session": "The price-catalogue guard candidate distinguishes a healthy provider catalogue from tracked model retirements. Local checks pass. No price data was written and no scheduled refresh or publication is claimed; hosted review is next.",
+  "session": "The price-catalogue guard was repaired, reviewed and published. Its first real workflow run passed, recorded the 10 November snapshot and deployed the checked artifact. A stale Pipeline warning found during live verification was corrected and deployed separately.",
   "verification_limits": [
     "Local browser preview is blocked. Feral was visually and behaviourally checked after successful deployment. Mobile viewport and touch-device coverage remain unverified.",
     "The live Feral download button produced no site error, but the browser tool did not confirm a download event. The independent emitted-client harness verifies exact frozen export bytes.",
@@ -855,7 +855,7 @@
   },
   "price_guard_2026_11_10": {
     "date": "2026-11-10",
-    "status": "validated candidate, not yet published",
+    "status": "published and live Pages verified",
     "branch": "maintenance/price-catalogue-guard-2026-11-10",
     "base": "7ccfa207dc1805316dcb69f91c89b39cadb61ec8",
     "problem": "Five scheduled runs failed safely after exact tracked-ID matches fell from 32 to 31 of 39. The previous ratio counted seven already unavailable historical entries against the incomplete-catalogue allowance.",
@@ -891,11 +891,39 @@
       "review_needed": 2,
       "price_changes": 4
     },
-    "validation": "227 Node tests, 24 offline publication tests, 141 bot tests, 46 recovery tests and 25 authenticated-boundary tests passed. The 650-page build and offline audit passed with 34,193 internal links, 3,343 assets or metadata references, 413 search entries, 184 content records and zero errors.",
+    "validation": "227 Node tests, 24 offline publication tests, 141 bot tests, 46 recovery tests and 25 authenticated-boundary tests passed for the guard. The 650-page build and offline audit passed with 34,193 internal links, 3,343 assets or metadata references, 413 search entries, 184 content records and zero errors. The Pipeline follow-up repeated the Node suite, build and audit locally and passed all three hosted jobs.",
     "limits": [
-      "The catalogue was fetched once for diagnosis and replayed without writing price data.",
-      "No duplicate refresh, price publication or retired content generator ran.",
-      "Hosted checks, merge, the next scheduled price job and any resulting data or Pages deployment are not yet claimed."
-    ]
+      "The guard uses the last successful provider catalogue count as its volume baseline; it does not independently census every provider.",
+      "Two price movements over the automatic threshold remain held for review.",
+      "The repository-owned workflow ran once after the script merge. No manual or duplicate refresh and no retired content generator ran."
+    ],
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/284",
+    "reviewed_head": "11a3a0dea468bf56f03558408fc24cdb14ac8ebe",
+    "merge_sha": "719518fc72a811dc353bf3b3f0d67de70d2fdb07",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/42785253296",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42785649564",
+    "price_workflow": "https://github.com/valorifutures/softcat.ai/actions/runs/42785649634",
+    "published_data_sha": "9bf3128ae0ce6a1968be9d3bec025e2cc208b3a5",
+    "pipeline_followup": {
+      "pull_request": "https://github.com/valorifutures/softcat.ai/pull/285",
+      "merge_sha": "2634f88d2a1d730908dd05245669b689cb461b70",
+      "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42787131841",
+      "outcome": "The live Pipeline recovery note now derives the dated success from the saved run instead of retaining the stale 4 November last-success claim."
+    },
+    "published_snapshot": {
+      "checked_at": "2026-11-10T08:49:45.112Z",
+      "catalogue_models": 465,
+      "catalogue_floor": 363,
+      "tracked_models": 39,
+      "matched": 31,
+      "expected_listed": 32,
+      "expected_listed_matched": 31,
+      "newly_not_listed": 1,
+      "allowed_newly_not_listed": 3,
+      "verified": 29,
+      "not_listed": 8,
+      "review_needed": 2,
+      "price_changes": 4
+    }
   }
 }

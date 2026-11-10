@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 46293)
+Total output lines: 1988
+
 # Improvement log
 
 ## 12 October 2026, Horizon evidence review
@@ -753,139 +756,7 @@ The last live check found that a returning browser still ranked the earlier inde
 The fix passes the production build, the four search regression cases and the full publication audit. Hosted checks apply before merge. Verification after deployment must use the existing browser session that exhibited the stale result, so a clean browser cache cannot conceal the failure. The earlier live checks, desktop-only limitation and disabled recurring loop remain as recorded above.
 
 
-## 13 September 2026, five evidence-responsive scenario clocks
-
-PR #221 passed hosted validation and deployed as b14046fb68e69790f77b71538e82f5b0867b6fd3 in Pages run 34780043251 at 20:13 UTC. The returning browser saw the refreshed Horizon search entry. The maintainer then asked for five countdowns, evidence-driven target movement, CEO thinking and another build, review and release cycle.
-
-The new forest clock band shows all five futures, with a selected lime card. Each counter follows the published timeframe wording. Ranges count to their opening year, then to the end of their final year. By-dates include the whole named year. Indefinite sceptical claims remain undated. Expiry asks for review and never declares an arrival. Pause/resume, visible snapshot labelling, UTC conventions and accessible day counts avoid a false live or precision claim.
-
-The original April definitions and all 15 timeframes were checked against Git commit 3066df13e0493ef1446c9a3e48f307aa8bf30e5f. The append-only clock history preserves that baseline and the actual 13 September evidence review, which retained every window. No movement was invented. The interface distinguishes earlier/later movement, wider/narrower windows and changed thresholds. Partial reviews retain each future’s own evidence date. The validator compares current dates, scope, assessment and sources with their latest history entry and rejects rewritten published records.
-
-Each future now has a CEO question, a next-90-days move for each outlook and a measure of success. Tenfold improvement is a design challenge to test, not a promised gain. The existing timeline is available in an expandable comparison, and sources, limitations, shareable views and AGI definitions are retained. Homepage and search invite visitors into the new clocks.
-
-An open page checks the published clock data on load, every five minutes while visible and on return. HTTP revalidation and append-only payload checks prevent a cached earlier review from rolling back a decision. A failed check retains the last verified data and offers retry. This refreshes published decisions and does not claim continuous research assessment. The recurring improvement loop stays disabled.
-
-Validation: 119 JavaScript tests, 141 bot tests and twelve publication fixtures pass. The data validators, 634-page production build and publication audit pass with 31,662 internal links and 3,262 local assets or metadata references. The actual JSON payload validates, its revision matches its content, and server HTML contains five labelled snapshot clocks. Regression cases cover leap days, UTC boundaries, elapsed windows, changed scope, partial reviews, malformed sources, unrecorded revisions and stale rollback attempts. Local browser preview remains blocked by the browser environment. Live visual and interaction checks follow the passing hosted release. Responsive breakpoints have been inspected in CSS, without claiming mobile device coverage.
-
-
-## 13 September 2026, live clock verification and final review
-
-PR #222 passed every hosted step in run 34782457263 and merged as c0436c48d4a3b011563974f21adc859631d789ce. Pages build and deployment run 34782508824 succeeded at 21:01 UTC. The live forest band shows all five clocks within the desktop page width. Initial snapshot labels become running clocks after hydration and the published review check succeeds.
-
-Pause retained all five counter values while another future was selected. Resume caught up with current time. Enter selected Education, Space selected its optimistic outlook and all five deadlines used the correct final-year convention. Sceptical showed five open-ended labels with the original wording. Each future changed the CEO question and evidence, and pragmatic Education retained its partial-scope notice. The comparison expands to five timeline rows. The review history expands to the preserved wording, threshold, assessment, source and limitation. Browser Back restored the earlier outlook. Copy reported success and an actual paste into site search reproduced the selected URL. Searching for countdown returned Horizon as its sole result.
-
-The final refinement makes expanded history controls say Close, labels the clock windows as editorial beside the counters and removes a build-time review decision from the static method text. That last change prevents an old summary from contradicting newer evidence fetched by an already-open page. Current decisions remain in each future’s live assessment and preserved history. The agent measure now compares results per 100 cases, giving the tenfold design question a consistent baseline.
-
-Horizon validation, all eighteen focused date/history/bookmark tests, the production build and the complete 634-page publication audit pass after these refinements. Hosted checks remain required before the final merge. The already-open agent/optimistic view is retained for the final publication-refresh check. The reviewed dates and evidence are unchanged. Desktop rendering and keyboard interactions were checked, while responsive CSS inspection is not presented as a mobile device test. The recurring loop remains disabled.
-
-
-## 13 September 2026, published-update verification and the last layout fix
-
-PR #223 passed hosted validation in run 34783011652 and merged as fe8966567b88278985a888dab71fbf54c65102f8. Pages run 34783068673 deployed successfully at 21:12 UTC. The agent/optimistic page left open from the earlier release still showed its old success measure. Its Check for a new review action fetched the new measure per 100 cases, announced the published data update and preserved both Agents at work and Optimistic. The page was not reloaded. This verifies delivery of a published briefing update, while date-movement and rollback cases remain covered by the regression fixtures. No date revision was invented for this check.
-
-The reloaded page showed Close for its expanded September history entry and the corrected static method explanation. The final CEO briefing screenshot exposed a layout defect: the flex row could shrink the decorative 90 until its digits wrapped vertically. The final CSS prevents that numeral from shrinking or wrapping and allows the adjacent briefing column to wrap normally. The browser did not expose a mobile viewport, so narrow breakpoints remain a CSS review rather than a device test.
-
-The checkpoint records the verified clock releases and clears active work for handover. The recurring loop remains disabled. The final layout change still goes through the normal production build, publication audit and hosted checks before release.
-
-## 15 September 2026, making the days unmistakable
-
-The maintainer asked for the large number of days to be the centrepiece of each countdown, and authorised useful companion improvements. Each dated card now reads as a day count followed by its destination: the scenario window opening, the window closing or the scenario deadline. Hours, minutes and seconds are smaller. A final partial day displays <1 day, with an accessible label of “Less than 1 day”. Existing UTC arithmetic, inclusive final years, pause/resume, undated outlooks and elapsed-window review states are preserved.
-
-The review line now explicitly says Window unchanged, Deadline unchanged or Still undated, followed by Reviewed and the actual evidence date. The clock note distinguishes time counting down from evidence moving the target. No scenario date, source or historical review was changed.
-
-Copy briefing complements the existing shareable view link. It includes the selected outlook, original date wording, threshold and applicable scope, assumptions, next-90-days move, success measure, assessment and every primary source with its limitations. It carries the selected future’s actual review date and the illustrative-scenario qualification. Clipboard failures expose selectable text. Selection changes, browser history and published data revisions clear stale copy feedback.
-
-Local validation passes: 123 JavaScript tests, 141 bot tests, twelve publication fixtures, all data validators and the 634-page production build. The publication audit passes 31,662 internal links, 3,262 asset and metadata references and 393 search entries. An independent review found no must-fix issue. The supported browser cannot open the local preview (ERR_BLOCKED_BY_CLIENT), so live layout and interaction checks follow the gated deployment. Narrow CSS wrapping was reviewed without claiming a mobile device test. The recurring improvement loop remains disabled.
-
-## 15 September 2026, days release verified live
-
-PR #225 passed every hosted validation step in run 35014721692 and merged as fa54dbd0c1a5298c300316dc44692e86d834c7c3. Pages run 35014825378 completed successfully at 19:39 UTC. The remote feature tree matched the locally tested tree exactly.
-
-The live desktop page shows prominent day totals, quieter residual times, explicit countdown destinations and the recorded 13 September evidence date. All five pragmatic clocks name the window opening. Optimistic clocks name their deadlines and retain inclusive final years. Sceptical clocks remain open-ended with Still undated review labels. Pause retained the five displayed times while Enter selected Education. Resume returned the clocks to running. The default agent view was restored at the end.
-
-Copy briefing reported success for pragmatic Education, and changing the outlook cleared that message. The accompanying regression tests cover every selected action, the education scope qualification, per-future dates and complete source findings and limitations across all 15 briefings. The browser’s virtual clipboard returned no data and rejected the independent paste action, so an actual pasted-content check is not claimed. A temporary local validator field used for that check was restored. No external message or model request was sent.
-
-The page was visually inspected on desktop. Responsive CSS was reviewed, but no mobile device or viewport test was available. The checkpoint records these limits, clears active work and leaves the recurring loop disabled. This final handover only updates the records.
-
-
-## 15 September 2026, clocks for our own predictions
-
-The maintainer clarified that the clocks must count towards our predictions. The previous clocks counted to illustrative scenario boundaries, which did not make an editorial call. The main Horizon page now publishes five explicit forecasts: routine software delivery by the end of 2027, repeatable business agents by 2028, durable tutoring gains by 2029, and our defined general-intelligence and adaptable commercial-robot milestones by 2031. These are our judgements, not years calculated by the sources or claims of consensus.
-
-Each prediction records its complete milestone, year-end deadline, resolution criteria, reasoning, uncertainty, earlier/later signals and primary evidence with limits. Source dates were checked, including the 15 September Salesforce and Agility announcements. Independent editorial review strengthened robotics criteria to require a shared general-purpose control model and new tasks without task-specific control code, preregistered AGI evaluation rules, and comparable non-AI controls in education trials. The numerical resolution thresholds are clearly our own definitions. No old illustrative window is retroactively presented as a prediction.
-
-A new append-only prediction history and data endpoint support the main page. Countdown arithmetic includes the whole final year, preserves a partial final day and asks for review after expiry. A deadline cannot declare success automatically. Published updates preserve selection and reject rewritten or rolled-back history. Old outlooks, their sources, histories and exported links remain at /horizon/scenarios/. Homepage, search and the text edition derive current predictions from the same history. Prediction briefings include the exact test, uncertainty and every source limitation.
-
-Local validation passes: 134 JavaScript tests, 141 bot tests, twelve publication fixtures, all data validators, and the 635-page production build. The publication audit checks 31,768 internal links, 3,268 asset/metadata references and 399 search entries with no errors. Independent UI review checked refresh, browser history, clipboard races, keyboard controls and preserved snapshots, and prompted a direct jump to selected details for narrow layouts. The supported local browser preview remains blocked; gated release and live verification are next. Mobile device coverage and an independent clipboard paste remain unclaimed. The recurring improvement loop remains disabled.
-
-
-## 15 September 2026, our predictions verified live
-
-PR #227 passed all hosted validation steps in run 35020999034 and merged as 114c082d239238ebf610166b1b966dcedad19f6f. Pages run 35023866953 completed successfully at 21:09 UTC. Its remote tree exactly matched the locally tested tree. The final publication audit checks 31,770 internal links and 3,268 assets or metadata references across 635 pages, with no errors.
-
-The existing agent/pragmatic URL now shows our own agent prediction by end-2028. Live desktop screenshots show five prominent day counts with a published forecast year and full milestone on every card. Enter selected Education while the paused times stayed unchanged. Its criteria expanded to the complete trial, control and delayed-assessment requirements. Prediction history expanded to the first call, original criteria, rationale and sources. Robotics, Software creation and General intelligence selected their correct details; browser Back restored Software and resume restarted the clocks. The scenario comparison remains separate, switches to the five original sceptical outlooks and links back to our predictions. The selected-prediction jump reaches a readable detail panel beside the 90-day brief.
-
-Clipboard writes in this browser could remain pending without a status response. The final refinement immediately shows Copying and exposes selectable text if the write has not completed within 1.5 seconds; stale selections still cannot receive earlier copy feedback. The production build and publication audit pass for this refinement. Hosted validation and final fallback verification follow. An actual clipboard paste and mobile device coverage remain unclaimed. The checkpoint records the verified feature deployment and leaves the recurring loop disabled.
-
-
-## 15 September 2026, repairing Feral scroll access
-
-The maintainer reported text running off the bottom of Feral. Drift reproduced the failure in the live browser: the document was taller than the 936px viewport, the ending extended below it, and a wheel scroll left scrollY at zero. Drift and Echo both set body overflow to hidden. Drift also placed a touch-action:none canvas underneath pointer-transparent text, preventing a vertical touch swipe from scrolling even if it missed every star.
-
-Both pages now allow vertical document scrolling. Their independent fixed controls and navigation are gathered in one flex dock. The dock measures its actual height and reserves that space beneath the story, including wrapped controls, font changes and safe-area padding. Its height is capped on short viewports with its own overflow, so it cannot take over the screen. The other Feral pages already use scrollable document flow.
-
-Drift permits vertical touch panning and pinch zoom. Mouse dragging and horizontal touch dragging remain, and the existing two ending buttons are available to touch and keyboard visitors. A cancelled touch drag has no fling velocity. Visible keyboard focus and 44px button targets accompany the controls. Independent review caught and resolved the dock's Astro-scoping box-sizing issue and touch cancellation behaviour.
-
-Local validation passes all 134 JavaScript tests, 141 bot tests, twelve publication fixtures and all data checks. The 635-page production build and audit pass 31,770 internal links and 3,268 asset or metadata references. Local preview access remains blocked by the browser environment, so the full-ending layout and scroll checks follow the gated deployment. No mobile-device test is claimed. The recurring loop remains disabled.
-
-
-## 15 September 2026, Feral scrolling verified live
-
-PR #229 passed hosted validation run 35025780297 and merged as 691a22f9bacf8859af31047d18693219cac78ffa. Pages run 35025879272 completed successfully at 21:30 UTC. The remote source tree matched the tested local tree.
-
-Echo's reveal control exposed the full transmission, and a wheel scroll reached scrollY48. Drift's full ending reached scrollY484. Both final paragraphs ended around y825, above the dock at y872, with 96px of reserved bottom padding. Desktop screenshots confirmed readable final lines, canvas rendering and separated navigation. Drift's computed touch action is pan-y pinch-zoom and both bodies use vertical overflow auto. A cached Drift navigation initially retained the earlier page; a normal reload received the fix.
-
-The live review also exposed an older Drift bug: both inherited clusters arrive outside the refusal band, so its timer selected refusal before the visitor could use the new direct choices. The final guard waits for an actual star grab before physics can commit an ending; buttons still choose directly. Independent review confirmed the counter initialises before the animation loop and reduced-motion behaviour is preserved. Production build and publication audit pass for this refinement, with hosted checks and live direct-choice verification following release.
-
-Narrow wrapping, short-screen caps and touch cancellation were reviewed in source. No mobile viewport/device is exposed by this browser; its zoom shortcut left viewport dimensions unchanged. No mobile-device test is claimed. The checkpoint records the verified scrolling release and leaves the recurring loop disabled.
-
-
-## 15 September 2026, moving recurring work into the cloud
-
-The maintainer turned off the Linux/OpenClaw host and requested a Feral run plus recurring operation of the whole site. Three cloud tasks were created and confirmed enabled: daily maintenance around 08:00 Europe/London from 16 September, a Feral council on Tuesday and Friday afternoons from 18 September, and an evidence review on Monday afternoons from 21 September. The afternoon starts are around 15:00. All three use flexible start windows within an hour. The old overnight task stays paused.
-
-The existing GitHub price snapshot remains at 05:30 UTC and has a successful scheduled run on 15 September. The old Feral Action ran that day and passed council and validation, then failed publishing. Its log was unavailable through the connected API, so the cause is unconfirmed. Recurring Feral now uses independent Codex director, builder and critic agents with the same constitution and trusted gate, followed by normal checked PR publication. The Claude Code workflow is retained as manual-only and defaults to propose, avoiding a second scheduled generator.
-
-Pipeline now distinguishes the four current schedules from the six inactive Python content timers and their unchanged historical records. News and Radar remain archives. The legacy Horizon bot does not maintain the five new predictions. The new evidence task explicitly reviews their criteria, primary sources and counterevidence while preserving history. No execution records or costs were fabricated for future tasks. Operating instructions remove the expired overnight deadline and document ownership, overlap checks, bounded runs and honest publication evidence. A real Feral cycle is being built and reviewed separately, so maintenance files cannot leak into its scoped diff.
-
-Validation passed: 134 JavaScript tests, 141 bot fixtures, 12 publication fixtures, all content/model/Horizon validators and a 635-page build. The offline audit checked 31,773 internal links and 3,268 asset/metadata references with no errors. Independent review found no required changes to scheduling ownership or publication safeguards. Hosted checks, deployment and live schedule verification follow this commit.
-
-
-## 15 September 2026, cloud schedule and Feral cycle verified
-
-PR #231 passed hosted run 35028279865 and deployed in Pages run 35028420982. Live Pipeline shows daily maintenance, Tuesday/Friday Feral, Monday evidence review and the existing daily price job. First future start dates are explicit. Six legacy Python timers are marked inactive and their historical records remain unchanged. A fresh task lookup confirms all three new cloud schedules enabled and the expired overnight task paused.
-
-PR #232 completed the requested real Feral run. A Codex director chose Pocket Weather, a separate builder implemented the fictional twelve-hour weather toy, and an independent critic returned PASS on attempt 1. The final diff contains only the new route, appended manifest entry and appended cycle 6 ledger entry. The trusted gate passed against the exact current base and candidate. All 134 JavaScript tests, 141 bot tests, 12 publication fixtures and data validators passed. The final 636-page build/audit checked 31,779 internal links and 3,270 assets/metadata references with zero errors. Hosted run 35028587178 and Pages run 35028658302 both succeeded.
-
-Live Pocket Weather inspection verified assigning Sun to the first hour, Enter-key stepping, timed playback advancing to hour 7, pause persisting between checks, stepping through hour 12, the completion line and reset restoring the original Fog plan. The page scrolled to 803 px and the entire footer remained reachable. No desktop horizontal overflow was observed. The new creation was checked in the Feral gallery and its cycle 6 ledger. The returning gallery initially showed its cached five-room page; a normal reload showed six creations and the new dated PASS. No mobile-device test is claimed. The three future cloud schedules have not yet had their first execution.
-
-
-## 15 September 2026, counting prediction days
-
-The maintainer clarified that the Horizon clocks should count down the days to each prediction and recalculate when the estimate changes. The matching hours, minutes and seconds were an unhelpful consequence of every target ending at midnight UTC. Main Horizon now shows days only. It recalculates just after UTC midnight, on return to the page and when a new published review arrives. The per-second animation and pause control are removed from this page. The alternative scenario experience is preserved.
-
-A review now reports its target movement as a number of days earlier or later. This compares old and new target dates, excluding ordinary time passing. Milestone changes keep their separate label. The selected prediction explains what sets its day count and whether evidence has moved it yet. Initial forecasts and their entire published history remain unchanged. AGI and robotics still share a day count because their current forecasts share a date.
-
-The underlying helper had discarded the month/day and the validator only admitted year ends. The helper now respects any valid ISO target date through the end of that UTC day. Display, history, copyable briefings and text export preserve a revised date. This allows a future justified review to move by days rather than forcing a whole-year jump. It does not turn broad initial forecasts into claims of day-level precision. Copied briefings include the displayed remaining days with their UTC snapshot time.
-
-Validation passes 138 JavaScript tests, including 14 prediction cases. A 37-day earlier fixture affects only its selected counter, while a separate elapsed day stays out of the recorded evidence shift. Leap days, exact non-December dates, invalid dates, history rewrites, scope changes and the midnight + 1 ms boundary are covered. Independent review caught a rounded-second bug that could otherwise hold the previous day total for a whole day with the new update cadence. All 141 bot tests, 12 publication fixtures, data validators and the 636-page build pass. The offline audit checks 31,781 internal links and 3,270 assets/metadata references with no errors. Built HTML contains five day counters and no sub-day counters. Hosted release and live inspection follow.
-
-
-## 15 September 2026, day counters verified live
-
-PR #234 passed hosted run 35030633590 and deployed successfully in Pages run 35030734134. A normal reload showed five day counters and no hours/minutes/seconds display. The recorded counts were 1,933 for AGI and robotics, 838 for agents, 472 for software and 1,203 for education. The two matching totals reflect their unchanged shared target, which the page now explains.
-
-Enter-key selection opened Software creation with its matching 472-day explanation and 2027 target. A manual review check completed and kept that selection, with the actual original history still visible. Clipboard writing used the selectable-text fallback. Its text contains the correct 472-day count, UTC snapshot, target date, criteria and evidence. No successful clipboard paste is claimed. The live layout had no horizontal overflow. The existing forecast history remains untouched, and the next evidence review can record a justified date change and its numeric day movement.
+## 13 September 2026, five evidence-responsive scenario c…6293 tokens truncated…fied date change and its numeric day movement.
 
 
 ## 18 September 2026, Feral recovery and resumed evidence review
@@ -1950,3 +1821,39 @@ build emitted 650 pages. The offline audit checked 34,193 internal links,
 3,343 local assets or metadata references, 413 search entries and 184 content
 records with no errors. Hosted checks, merge, the next scheduled price run and
 its resulting Pages deployment remain unclaimed until they happen.
+
+### Published outcome
+
+[PR #284](https://github.com/valorifutures/softcat.ai/pull/284) passed all
+three hosted jobs on exact head
+`11a3a0dea468bf56f03558408fc24cdb14ac8ebe` and merged as
+`719518fc72a811dc353bf3b3f0d67de70d2fdb07`. The normal
+[Pages run 42785649564](https://github.com/valorifutures/softcat.ai/actions/runs/42785649564)
+completed successfully.
+
+The merge triggered the repository's single price workflow owner; no manual or
+duplicate refresh was launched. Both its read-only refresh job and separated
+write job passed in
+[run 42785649634](https://github.com/valorifutures/softcat.ai/actions/runs/42785649634).
+It published checked data commit
+`9bf3128ae0ce6a1968be9d3bec025e2cc208b3a5` and deployed the exact validated
+artifact. The saved snapshot records 465 catalogue models, a 363-model floor,
+31 of 32 previously listed IDs matched, one newly unavailable ID, 29 verified
+prices, eight unavailable entries, two large changes held for review and four
+allowed changes. MiniMax M2 is now unknown and `not-listed`; its former price
+was not carried forward.
+
+Live inspection found the new 10 November snapshot and run history on
+`/pipeline/`, but also found a fixed 9 November warning that still called
+4 November the last success. [PR #285](https://github.com/valorifutures/softcat.ai/pull/285)
+replaced that contradiction with a recovery note derived from the latest saved
+price run. It passed the hosted suite, merged as
+`2634f88d2a1d730908dd05245669b689cb461b70`, and
+[Pages run 42787131841](https://github.com/valorifutures/softcat.ai/actions/runs/42787131841)
+completed successfully. Its 650-page build and offline audit again checked
+34,193 internal links and 3,343 asset or metadata references with zero errors.
+
+The public model source is one provider catalogue rather than an independent
+price census. The two changes over the automatic threshold remain deliberately
+held. This maintenance pass did not move a Horizon prediction, generate a
+Feral creation, run a retired Python content timer or revive News or Radar.
