@@ -147,20 +147,20 @@ const charPosition = (index: number) => first.totalWidth ? first.characters[inde
   .register.bottom b { top: 4px; }
   .echo-field { height: 155px; position: relative; border-bottom: 1px solid #aaa294; }
   #echo-arcs { width: 100%; height: 150px; display: block; overflow: visible; }
-  #echo-arcs path { vector-effect: non-scaling-stroke; stroke: #c81720; stroke-width: 1; fill: none; opacity: .65; }
+  #echo-arcs :global(path) { vector-effect: non-scaling-stroke; stroke: #c81720; stroke-width: 1; fill: none; opacity: .65; }
   #echo-count { position: absolute; right: 4px; top: 4px; font: 9px/1.3 'Courier New', monospace; text-transform: uppercase; }
   .specimen-line, .skyline { display: flex; width: 100%; }
   .specimen-line { min-height: 86px; align-items: flex-end; border-bottom: 2px solid #11100d; padding-top: 14px; }
-  .glyph { flex: var(--w) 0 0; min-width: 0; text-align: center; font: clamp(1.1rem, 2vw, 2.2rem)/1 Georgia, serif; overflow: visible; }
-  .glyph.space { border-bottom: 3px dotted #aaa294; height: 5px; }
-  .glyph.punctuation { color: #c81720; }
+  #specimen-line :global(.glyph) { flex: var(--w) 0 0; min-width: 0; text-align: center; font: clamp(1.1rem, 2vw, 2.2rem)/1 Georgia, serif; overflow: visible; }
+  #specimen-line :global(.glyph.space) { border-bottom: 3px dotted #aaa294; height: 5px; }
+  #specimen-line :global(.glyph.punctuation) { color: #c81720; }
   .skyline { height: 76px; align-items: flex-start; border-bottom: 1px solid #aaa294; }
-  .skyline i { flex: var(--w) 0 0; background: #11100d; border-right: 1px solid #f7f3e9; }
-  .skyline .ascender { height: 62px; }
-  .skyline .x-height { height: 41px; }
-  .skyline .descender { height: 56px; transform: translateY(16px); }
-  .skyline .space { height: 5px; margin-top: 36px; background: #aaa294; }
-  .skyline .punctuation { height: 24px; margin-top: 17px; background: #c81720; }
+  #skyline :global(i) { flex: var(--w) 0 0; background: #11100d; border-right: 1px solid #f7f3e9; }
+  #skyline :global(.ascender) { height: 62px; }
+  #skyline :global(.x-height) { height: 41px; }
+  #skyline :global(.descender) { height: 56px; transform: translateY(16px); }
+  #skyline :global(.space) { height: 5px; margin-top: 36px; background: #aaa294; }
+  #skyline :global(.punctuation) { height: 24px; margin-top: 17px; background: #c81720; }
   .pressure { height: 100px; position: relative; border-bottom: 1px solid #aaa294; }
   .pressure > i { position: absolute; top: 0; height: 74px; border-left: 1px solid #11100d; }
   .pressure > i b { position: absolute; top: 77px; left: 3px; white-space: nowrap; font: 8px/1 'Courier New', monospace; font-style: normal; }
@@ -168,8 +168,8 @@ const charPosition = (index: number) => first.totalWidth ? first.characters[inde
   .pressure .balance b { color: #c81720; }
   .pressure .vowel { height: 50px; top: 14px; }
   .pressure .punctuation { height: 34px; top: 30px; border-style: dashed; }
-  .dot { position: absolute; top: 15px; width: 4px; height: 4px; border-radius: 50%; background: #11100d; transform: translateX(-2px); }
-  .punctuation-dot { top: 31px; background: #c81720; }
+  #vowel-dots :global(.dot), #punctuation-dots :global(.dot) { position: absolute; top: 15px; width: 4px; height: 4px; border-radius: 50%; background: #11100d; transform: translateX(-2px); }
+  #punctuation-dots :global(.punctuation-dot) { top: 31px; background: #c81720; }
   .jaw { position: absolute; top: 30px; bottom: 30px; width: 1px; background: #c81720; z-index: 4; pointer-events: none; }
   .jaw > i, .jaw > b { position: absolute; left: -9px; width: 19px; height: 10px; border: 2px solid #c81720; background: #f7f3e9; }
   .jaw > i { top: 0; border-bottom: 0; }

@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { MAX_SPECIMEN, SPECIMENS, clampSpecimen, classify, characterWidth, measureSpecimen, jawBoundary } from './caliper.mjs';
+
+const pageSource = readFileSync(new URL('../../pages/feral/caliper.astro', import.meta.url), 'utf8');
 
 test('authored specimens are bounded, distinct and measurable', () => {
   assert.equal(SPECIMENS.length, 3);
@@ -72,4 +75,17 @@ test('jaw boundaries are finite, bounded and character-exact', () => {
   assert.equal(middle.left, 'a');
   assert.equal(middle.right, 'b');
   assert.deepEqual(jawBoundary(measureSpecimen(''), NaN), { boundary: 0, left: '', right: '', position: 0 });
+});
+
+test('client-created measurement marks retain styles after an interactive render', () => {
+  const dynamicDescendants = [
+    /#specimen-line\s+:global\(\.glyph\)/,
+    /#skyline\s+:global\(i\)/,
+    /#echo-arcs\s+:global\(path\)/,
+    /#vowel-dots\s+:global\(\.dot\)/,
+    /#punctuation-dots\s+:global\(\.dot\)/,
+  ];
+  for (const selector of dynamicDescendants) {
+    assert.match(pageSource, selector, `${selector} must not require Astro's generated scope attribute on its dynamic child`);
+  }
 });
