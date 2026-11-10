@@ -1,17 +1,23 @@
 {
-  "checkedAt": "2026-11-04T13:13:03.218Z",
+  "checkedAt": "2026-11-10T08:49:45.112Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "2068c3a1fa2e1d663991e4bdaab599b2122b341bc1a8536356f6d9c180430f32",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/41836001097",
+  "sourceSha256": "a349da119e8a622a8d7c2c101f0d485e0c65eab6287c36745f43653b44f88d49",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/42785649634",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 453,
+  "catalogueModels": 465,
+  "previousCatalogueModels": 453,
+  "catalogueFloor": 363,
   "trackedModels": 39,
-  "matched": 32,
-  "verified": 30,
-  "notListed": 7,
+  "matched": 31,
+  "expectedListedModels": 32,
+  "expectedListedMatched": 31,
+  "newlyNotListed": 1,
+  "allowedNewlyNotListed": 3,
+  "verified": 29,
+  "notListed": 8,
   "reviewNeeded": 2,
   "unverified": 0,
-  "priceChanges": 0,
+  "priceChanges": 4,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -38,12 +44,12 @@
         "outputPrice": 2.7
       },
       "quoted": {
-        "inputPrice": 0.45,
-        "outputPrice": 2.7
+        "inputPrice": 0.32,
+        "outputPrice": 3.2
       },
       "applied": {
-        "inputPrice": 0.45,
-        "outputPrice": 2.7
+        "inputPrice": 0.32,
+        "outputPrice": 3.2
       },
       "issues": []
     },
@@ -270,20 +276,33 @@
     },
     {
       "id": "meta-llama/llama-4-maverick",
-      "status": "verified",
+      "status": "review-needed",
       "previous": {
         "inputPrice": 0.1875,
         "outputPrice": 0.6525
       },
       "quoted": {
-        "inputPrice": 0.1875,
-        "outputPrice": 0.6525
+        "inputPrice": 0.35,
+        "outputPrice": 1
       },
       "applied": {
         "inputPrice": 0.1875,
         "outputPrice": 0.6525
       },
-      "issues": []
+      "issues": [
+        {
+          "field": "inputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.1875,
+          "quoted": 0.35
+        },
+        {
+          "field": "outputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.6525,
+          "quoted": 1
+        }
+      ]
     },
     {
       "id": "meta-llama/llama-4-scout",
@@ -304,18 +323,18 @@
     },
     {
       "id": "minimax/minimax-m2",
-      "status": "verified",
+      "status": "not-listed",
       "previous": {
         "inputPrice": 0.255,
         "outputPrice": 1.02
       },
       "quoted": {
-        "inputPrice": 0.255,
-        "outputPrice": 1.02
+        "inputPrice": null,
+        "outputPrice": null
       },
       "applied": {
-        "inputPrice": 0.255,
-        "outputPrice": 1.02
+        "inputPrice": null,
+        "outputPrice": null
       },
       "issues": []
     },
@@ -327,12 +346,12 @@
         "outputPrice": 1.2
       },
       "quoted": {
-        "inputPrice": 0.3,
-        "outputPrice": 1.2
+        "inputPrice": 0.21,
+        "outputPrice": 0.84
       },
       "applied": {
-        "inputPrice": 0.3,
-        "outputPrice": 1.2
+        "inputPrice": 0.21,
+        "outputPrice": 0.84
       },
       "issues": []
     },
@@ -423,33 +442,20 @@
     },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b",
-      "status": "review-needed",
+      "status": "verified",
       "previous": {
         "inputPrice": 0.08,
         "outputPrice": 0.45
       },
       "quoted": {
-        "inputPrice": 0.3,
-        "outputPrice": 2.4
+        "inputPrice": 0.075,
+        "outputPrice": 0.4
       },
       "applied": {
-        "inputPrice": 0.08,
-        "outputPrice": 0.45
+        "inputPrice": 0.075,
+        "outputPrice": 0.4
       },
-      "issues": [
-        {
-          "field": "inputPrice",
-          "reason": "delta-over-50-percent",
-          "previous": 0.08,
-          "quoted": 0.3
-        },
-        {
-          "field": "outputPrice",
-          "reason": "delta-over-50-percent",
-          "previous": 0.45,
-          "quoted": 2.4
-        }
-      ]
+      "issues": []
     },
     {
       "id": "openai/gpt-4.1",
