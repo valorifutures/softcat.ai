@@ -1857,3 +1857,35 @@ The public model source is one provider catalogue rather than an independent
 price census. The two changes over the automatic threshold remain deliberately
 held. This maintenance pass did not move a Horizon prediction, generate a
 Feral creation, run a retired Python content timer or revive News or Radar.
+
+## 11 November 2026, Feral correction-attempt contract repair
+
+The previous council exposed a process mismatch rather than a creative defect.
+The constitution and maintainer instruction permit an independent critic review
+followed by up to three safety/deploy correction attempts. The command file and
+trusted gate instead capped the whole sequence at three verdicts, so an honest
+PASS after the third correction was rejected.
+
+[PR #289](https://github.com/valorifutures/softcat.ai/pull/289) aligns the
+command, critic role and trusted gate on one initial verdict plus at most three
+correction verdicts. Regression coverage accepts attempt 4 and rejects attempt
+5. The exact reviewed head `37398920e89a250da70677dc0e7ccecdeabd2659`
+passed [hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/42986402845)
+and merged as `191023b6fb863cf489def27e41a574cfd318b49f`.
+[Pages deployment 42986822510](https://github.com/valorifutures/softcat.ai/actions/runs/42986822510)
+then completed successfully.
+
+Local validation passed 228 Node tests, 24 Python publication tests, 141 bot
+tests, every content/data/Horizon validator, the 650-page production build and
+the offline publication audit. The audit checked 34,193 internal links and
+3,343 local asset or metadata references with zero errors. After deployment,
+the homepage and Feral gallery returned HTTP 200. The gallery still exposes
+cycles 1–11; cycle 12 CALIPER remains unpublished in draft PR #288. No Feral
+creative file or ledger entry changed in this maintenance batch.
+
+The operating guide is present, `.github/workflows/feral.yml` remains
+manual-only, and the operating-contract regression passed. The latest observed
+scheduled price run, 42827025692, succeeded on 10 November. No 11 November run
+was present by 08:29 UTC, so this pass did not launch a duplicate refresh.
+Horizon predictions, News, Radar, retired generators and historical evidence
+were unchanged.
