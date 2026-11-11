@@ -18,11 +18,12 @@ for the whole cycle. Then run the council in order:
 3. **Gate.** Use the `feral-critic` subagent to score the result against the
    safety + deploy rubric ONLY and write its `verdict` into the ledger entry.
 
-4. **Iterate on safety only.** If the critic returns FAIL, send the builder back
-   to fix the *safety/deploy* problem (never to change the art), then re-run the
-   critic. Allow up to 3 build→critic attempts total. After a 3rd FAIL, stop:
-   leave the verdict at FAIL, finish the ledger entry explaining the deadlock,
-   and ship nothing.
+4. **Iterate on safety only.** If the independent critic review returns FAIL,
+   send the builder back to fix the *safety/deploy* problem (never to change the
+   art), then re-run the critic. Allow up to 3 correction passes after that
+   initial review. After the 3rd correction also returns FAIL (the 4th verdict
+   overall), stop: leave the verdict at FAIL, finish the ledger entry explaining
+   the deadlock, and ship nothing.
 
 5. **Finish the ledger.** Append exactly one new cycle, numbered one above the
    previous entry, with the current UTC date. Preserve every earlier entry. The
