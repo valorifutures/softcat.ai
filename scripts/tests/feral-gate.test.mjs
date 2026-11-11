@@ -22,11 +22,18 @@ test('requires a new PASS and preserves earlier records', () => {
 });
 
 test('blocks missing details, skipped cycles, malformed and stale dates', () => {
-  for (const mutate of [x => x.ledger[1].cycle++, x => x.ledger[1].critic.reasons = '', x => x.ledger[1].critic.attempts = 4, x => x.ledger[1].builder.shipped = ['/outside'], x => x.ledger[1].director = null, x => x.ledger[1].date = '2026-02-30', x => x.ledger[1].date = '2026-09-13', x => x.ledger[1].date = '2026-06-30']) {
+  for (const mutate of [x => x.ledger[1].cycle++, x => x.ledger[1].critic.reasons = '', x => x.ledger[1].critic.attempts = 5, x => x.ledger[1].builder.shipped = ['/outside'], x => x.ledger[1].director = null, x => x.ledger[1].date = '2026-02-30', x => x.ledger[1].date = '2026-09-13', x => x.ledger[1].date = '2026-06-30']) {
     const data = fixture(); mutate(data); assert.equal(checkFeralCandidate(data).ok, false);
   }
   const overnight = fixture(); overnight.ledger[1].date = '2026-09-11';
   assert.equal(checkFeralCandidate(overnight).ok, true);
+});
+
+test('accepts the initial critic review plus three safety corrections', () => {
+  const corrected = fixture(); corrected.ledger[1].critic.attempts = 4;
+  assert.equal(checkFeralCandidate(corrected).ok, true);
+  const exhausted = fixture(); exhausted.ledger[1].critic.attempts = 5;
+  assert.match(checkFeralCandidate(exhausted).reason, /one to four verdicts/);
 });
 
 test('recognises no-op and checks both sides of moves via changed paths', () => {

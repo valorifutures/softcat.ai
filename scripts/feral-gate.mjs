@@ -26,7 +26,9 @@ export function checkFeralCandidate({ changed, previous, ledger, today = new Dat
   const age = (Date.parse(`${today}T00:00:00Z`) - parsed.getTime()) / 86_400_000;
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date ?? '') || !Number.isFinite(age) || parsed.toISOString().slice(0, 10) !== date || age < 0 || age > 1 || (prior && date < prior.date)) return { ok: false, reason: 'The new cycle needs a valid current UTC date (today or yesterday for overnight runs).' };
   if (latest.critic?.verdict !== 'PASS') return { ok: false, reason: `Cycle ${latest.cycle} critic verdict is ${latest.critic?.verdict ?? 'missing'}, not PASS.` };
-  if (!hasText(latest.critic.reasons) || !Number.isInteger(latest.critic.attempts) || latest.critic.attempts < 1 || latest.critic.attempts > 3) return { ok: false, reason: 'The critic must record reasons and one to three attempts.' };
+  // One independent review may be followed by up to three safety/deploy
+  // corrections, so an honest record can contain as many as four verdicts.
+  if (!hasText(latest.critic.reasons) || !Number.isInteger(latest.critic.attempts) || latest.critic.attempts < 1 || latest.critic.attempts > 4) return { ok: false, reason: 'The critic must record reasons and one to four verdicts (the initial review plus up to three corrections).' };
   if (![latest.director?.decided, latest.director?.why, latest.builder?.made, latest.builder?.how, latest.mood].every(hasText)) return { ok: false, reason: 'The new cycle needs a complete direction, build record and mood.' };
   if (!Array.isArray(latest.builder.shipped) || !latest.builder.shipped.every(route => typeof route === 'string' && /^\/feral\/[a-z0-9][a-z0-9/-]*$/.test(route))) return { ok: false, reason: 'Shipped routes must be paths inside /feral/.' };
   return { ok: true, cycle: latest.cycle, files: changed.length };

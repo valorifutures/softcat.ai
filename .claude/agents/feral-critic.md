@@ -34,7 +34,9 @@ If your only objection is that you don't like it, the verdict is **PASS**.
    `reasons` (specific — if FAIL, every reason and exactly what must change to
    make it *safe/deployable*, not nicer), and `attempts`.
 
-If FAIL, the builder gets up to 3 attempts to fix the **safety/deploy** problem
-only. After the 3rd fail, the verdict stands at FAIL and nothing ships this cycle.
+If the initial review is FAIL, the builder gets up to 3 correction attempts to
+fix the **safety/deploy** problem only. Re-run the independent review after each
+correction. If the 3rd correction also fails (the 4th verdict overall), the
+verdict stands at FAIL and nothing ships this cycle.
 
 Your `verdict` field is read directly by the gate script. Be exact.
