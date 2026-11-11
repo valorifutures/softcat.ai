@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-10T13:43:06.101Z",
+  "checkedAt": "2026-11-11T12:54:29.075Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "63cbc45064d8406038e0ddd74742c0a27dafd15fc1d13bf2d71deb83e5a22ee3",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/42827025692",
+  "sourceSha256": "2d7ac2423c2fad39aacca529d51cebee9b8088674fe353005d843d1bb3bd33b4",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/43024351062",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 465,
+  "catalogueModels": 469,
   "previousCatalogueModels": 465,
   "catalogueFloor": 372,
   "trackedModels": 39,
@@ -17,7 +17,7 @@
   "notListed": 8,
   "reviewNeeded": 2,
   "unverified": 0,
-  "priceChanges": 0,
+  "priceChanges": 1,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -652,12 +652,12 @@
         "outputPrice": 4.4
       },
       "quoted": {
-        "inputPrice": 1.4,
-        "outputPrice": 4.4
+        "inputPrice": 1.33,
+        "outputPrice": 4.18
       },
       "applied": {
-        "inputPrice": 1.4,
-        "outputPrice": 4.4
+        "inputPrice": 1.33,
+        "outputPrice": 4.18
       },
       "issues": []
     },
