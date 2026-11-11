@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-10T09:04:13Z",
+  "updated_at": "2026-11-11T08:29:09Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "2634f88d2a1d730908dd05245669b689cb461b70",
-    "at": "2026-11-10T09:03:14Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/42787131841"
+    "sha": "191023b6fb863cf489def27e41a574cfd318b49f",
+    "at": "2026-11-11T08:24:45Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/42986822510"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -925,5 +925,20 @@
       "review_needed": 2,
       "price_changes": 4
     }
+  },
+  "feral_gate_repair_2026_11_11": {
+    "date": "2026-11-11",
+    "problem": "The constitution and maintainer contract allowed an independent critic review followed by up to three safety/deploy corrections, but the trusted gate rejected the fourth resulting verdict.",
+    "change": "The command, critic instructions and trusted gate now agree on one initial verdict plus at most three correction verdicts. Attempt 4 is accepted; attempt 5 remains blocked.",
+    "scope": "Maintenance only. No Feral creative file or ledger entry changed, and cycle 12 CALIPER remains unpublished in draft PR #288.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/289",
+    "reviewed_head": "37398920e89a250da70677dc0e7ccecdeabd2659",
+    "merge_sha": "191023b6fb863cf489def27e41a574cfd318b49f",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/42986402845",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/42986822510",
+    "validation": "228 Node tests, 24 Python publication tests, 141 bot tests, all data validators, a 650-page production build and an offline audit of 34,193 internal links and 3,343 asset or metadata references passed with zero errors.",
+    "live_verification": "The homepage and Feral gallery returned HTTP 200 after deployment. Feral still exposes cycles 1–11; no cycle 12 route was published.",
+    "operations_check": "docs/site-operations.md is present, .github/workflows/feral.yml remains manual-only, and the operating-contract regression passed.",
+    "price_status": "Latest observed scheduled price run 42827025692 succeeded on 10 November 2026. No 11 November scheduled run was present by 08:29 UTC; no duplicate refresh was launched."
   }
 }
