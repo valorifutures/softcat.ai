@@ -44,6 +44,15 @@ export function recordState(run, thresholdHours = 36, now = Date.now()) {
   return { label: 'Result unavailable', tone: 'muted' };
 }
 
+export function priceRunDetail(run) {
+  if (run?.bot !== 'model_bot' || run?.job !== 'prices' || run.status !== 'partial') return '';
+  if (!Number.isSafeInteger(run.items_published) || run.items_published < 1) return '';
+  if (!Number.isSafeInteger(run.items_rejected) || run.items_rejected < 1) return '';
+  const published = run.items_published === 1 ? 'Snapshot published' : `${run.items_published} snapshots published`;
+  const held = run.items_rejected === 1 ? '1 check held for review' : `${run.items_rejected} checks held for review`;
+  return `${published} · ${held}`;
+}
+
 export function runsInWindow(runs, end, days = 7) {
   const start = end - days * 86_400_000;
   return runs.filter((run) => {
