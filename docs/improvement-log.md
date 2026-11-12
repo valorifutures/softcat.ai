@@ -1889,3 +1889,43 @@ scheduled price run, 42827025692, succeeded on 10 November. No 11 November run
 was present by 08:29 UTC, so this pass did not launch a duplicate refresh.
 Horizon predictions, News, Radar, retired generators and historical evidence
 were unchanged.
+
+## 12 November 2026, explain partial price publications
+
+The 11 November price workflow completed successfully and published its checked
+snapshot. Two price checks remained held for review, so the recorded run status
+was `partial`. The homepage displayed only “Last run partial”, which hid the
+important distinction between a failed job and a bounded publication.
+
+[PR #291](https://github.com/valorifutures/softcat.ai/pull/291) adds a shared,
+fail-closed explanation for partial price runs. It displays “Snapshot published
+· 2 checks held for review” only when the record identifies the price job,
+records at least one published snapshot and contains a positive held count.
+Other partial jobs keep their generic state. The same explanation now travels
+with matching Pipeline history rows.
+
+The exact reviewed head `74dd89c27ac012e264d78f73dc0a77409b969dbf`
+passed [hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/43185452532)
+and merged as `d4729248af15325d30db47f811fd24ac7773519b`.
+[Pages deployment 43185981153](https://github.com/valorifutures/softcat.ai/actions/runs/43185981153)
+completed successfully. The underlying
+[price workflow 43024351062](https://github.com/valorifutures/softcat.ai/actions/runs/43024351062)
+completed both refresh and publication jobs successfully on 11 November.
+
+Local validation passed 229 Node tests, 24 Python publication tests, 141 bot
+tests, every content/data/Horizon validator, the 650-page production build and
+the offline publication audit. The audit checked 34,193 internal links and
+3,343 local asset or metadata references with zero errors.
+
+Live inspection covered Home, Horizon, Tools, Recipes, Glossary, Pipeline and
+Feral. Each route had one main heading, a footer, no broken images, no duplicate
+IDs and no desktop horizontal overflow. The homepage and a fresh Pipeline
+response showed the new explanation. The browser's previously loaded Pipeline
+response remained cached until a fresh query, so that cached response was not
+claimed as the deployment result.
+
+No pending content marked for publication was found. The operating guide remains
+on main and the legacy Feral workflow remains manual-only. Draft PR #288 still
+holds CALIPER for the separate Feral owner. This pass did not change a Horizon
+prediction, commission a Feral creation, edit archived News or Radar, run a
+retired generator or launch a duplicate price refresh.
