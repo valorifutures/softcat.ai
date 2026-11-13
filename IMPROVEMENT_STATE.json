@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-12T08:51:38Z",
+  "updated_at": "2026-11-13T09:11:22Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "d4729248af15325d30db47f811fd24ac7773519b",
-    "at": "2026-11-12T08:50:53Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/43185981153"
+    "sha": "b3770e7aca859e98b5a8c5f1d50f59fd394976ca",
+    "at": "2026-11-13T09:09:40Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/43398551709"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -126,7 +126,8 @@
     "On 9 November, restored the existing Feral and daily maintenance tasks from paused to enabled, preserving their prompts and Europe/London schedules. Re-read both as enabled after the manual council. The Monday evidence task was already enabled. The separate price job is scheduling but fails its incomplete-catalogue guard; no validation was weakened.",
     "PR #280 shipped Domain & Outage Checker, with real public DNS queries to Cloudflare and Google, a deterministic incident decision aid, five response phases and copyable incident/AI briefs. All PR gates passed and Pages deployed. Live browser DNS and visual interactions still need independent verification.",
     "Prepared 9 November site-wide freshness audit: surfaced dated archives, rebuilt a real publication feed, promoted current tools/Feral, added anti-regression tests and documented gaps. Hosted PR and Pages receipts still pending.",
-    "Site-wide freshness PR #282 was published. CI passed: 225 Node tests, 21 offline publication tests, 141 bot tests, independent research checks. Final build 650 pages, 34,197 internal links, 3,343 local references, zero errors. Pages succeeded at 22:50 UTC. Browser-level interaction was not established."
+    "Site-wide freshness PR #282 was published. CI passed: 225 Node tests, 21 offline publication tests, 141 bot tests, independent research checks. Final build 650 pages, 34,197 internal links, 3,343 local references, zero errors. Pages succeeded at 22:50 UTC. Browser-level interaction was not established.",
+    "PR #293 merged and deployed. Pipeline now reports the percentage of recorded runs with published output instead of treating bounded partial price publications as failures. Live data showed 4 of 4 recent runs published output, with two held checks still explicit."
   ],
   "next": [
     "Finish and verify the focused legacy sitemap/noindex follow-up. Then perform a real-browser and RSS reader pass, including mobile navigation, overlay search, page layouts, DNS provider CORS, clipboard and downloads.",
@@ -955,5 +956,20 @@
     "live_verification": "The homepage and fresh Pipeline response show Snapshot published · 2 checks held for review. Seven key routes had one main heading, a footer, no broken images, no duplicate IDs and no desktop horizontal overflow.",
     "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. The open CALIPER draft PR #288 was left unchanged for the Feral owner.",
     "scope": "No Horizon prediction, Feral creation, archived News or Radar record, retired generator or price publication data was changed."
+  },
+  "maintenance_2026_11_13": {
+    "date": "2026-11-13",
+    "problem": "The Pipeline seven-day card reported 0% successful results even though every recent price run published a validated snapshot while holding two checks for review.",
+    "change": "The card now measures runs with recorded published output and explains that this percentage is separate from overall job health. Existing per-run held-check detail remains visible.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/293",
+    "reviewed_head": "58606986cb0a2a586abf0264c6b82c466ecb34f4",
+    "merge_sha": "b3770e7aca859e98b5a8c5f1d50f59fd394976ca",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/43397933187",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/43398551709",
+    "price_workflow": "https://github.com/valorifutures/softcat.ai/actions/runs/43232107825",
+    "validation": "230 Node tests, 24 Python publication tests, 141 bot tests, all data validators, a 650-page production build and an offline audit of 34,193 internal links and 3,343 asset or metadata references passed with zero errors.",
+    "live_verification": "Pipeline shows four recorded runs and 100% with published output, followed by the partial-run caveat. It has one main heading, no duplicate IDs, no broken images and no desktop horizontal overflow.",
+    "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. Price run 43232107825 passed both jobs; no 13 November run was present at 08:55 UTC and no duplicate was launched. CALIPER draft PR #288 remains with the Feral owner.",
+    "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator or price publication data was changed. Narrow viewport and physical touch rendering were not verified."
   }
 }

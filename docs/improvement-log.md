@@ -1929,3 +1929,40 @@ on main and the legacy Feral workflow remains manual-only. Draft PR #288 still
 holds CALIPER for the separate Feral owner. This pass did not change a Horizon
 prediction, commission a Feral creation, edit archived News or Radar, run a
 retired generator or launch a duplicate price refresh.
+
+## 13 November 2026, report published Pipeline output accurately
+
+The Pipeline seven-day summary counted only records with a broad `success`
+status. Every run in its current window had published a validated price
+snapshot, but each was labelled `partial` because two price checks were held
+for review. The page therefore displayed “0% successful results” beside four
+real publications.
+
+[PR #293](https://github.com/valorifutures/softcat.ai/pull/293) changes the
+summary to count records with a positive `items_published` value. The card now
+says “runs with published output” and explains that this percentage is separate
+from overall job health. The existing per-run text still identifies each
+partial snapshot and its two held checks.
+
+The exact reviewed head `58606986cb0a2a586abf0264c6b82c466ecb34f4`
+passed [hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/43397933187)
+and merged as `b3770e7aca859e98b5a8c5f1d50f59fd394976ca`.
+[Pages run 43398551709](https://github.com/valorifutures/softcat.ai/actions/runs/43398551709)
+completed its recovery, boundary, build and deploy jobs successfully.
+
+Local validation passed 230 Node tests, 24 Python publication tests, 141 bot
+tests, every content/data/Horizon validator, the 650-page production build and
+the offline publication audit. The audit checked 34,193 internal links and
+3,343 local asset or metadata references with zero errors.
+
+The live Pipeline shows four recorded runs and 100% with published output,
+followed by the partial-run caveat. It has one main heading, no duplicate IDs,
+no broken images and no desktop horizontal overflow. Narrow viewport and
+physical touch rendering were not verified in this pass.
+
+The latest observed price workflow, [run 43232107825](https://github.com/valorifutures/softcat.ai/actions/runs/43232107825),
+passed both jobs and published its 12 November checked snapshot. No 13 November
+scheduled price run was present at 08:55 UTC, so no duplicate was launched.
+The operating guide is present and the Feral workflow remains manual-only.
+Draft PR #288 remains with the separate Feral owner. Horizon predictions,
+Feral creative files, archived feeds and retired generators were unchanged.
