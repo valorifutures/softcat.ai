@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 41673)
+Total output lines: 1968
+
 Warning: truncated output (original token count: 46293)
 Total output lines: 1988
 
@@ -657,348 +660,7 @@ Validation: 91 JavaScript tests, 108 bot tests, all three validators and the 885
 
 PR #213 deployed in [run 34734576478](https://github.com/valorifutures/softcat.ai/actions/runs/34734576478) at 03:05 UTC. Live checks rejected an unlabelled prelude and an unsupported tool_calls field before pricing. The growing conversation example produced per-call input estimates of 11, 45 and 71 tokens, with 24 and 16 output tokens and a final input-only call. Its combined supplied text estimate was USD 0.000981. Copy succeeded. Strict JSON preserved a literal role label and an unclosed fence inside one message. Single-request mode also labelled its missing output as input-only. No model call or persistent browser data was created.
 
-The prompt inventory contained 84 templates, including 66 added by bot commits. It included near-duplicate agent validators and KV-cache prompts, requests for numerical reliability or confidence scores without defined measurements, and an extraction template promising clean JSON every time. Retired 72 templates, comprising all 66 generated entries and six earlier templates. This is an editorial decision, not a claim that every template failed.
-
-The remaining twelve tasks were rewritten as worked recipes. Each names its inputs, supplies an example and target, gives explicit checks and explains what a response cannot establish. The examples cover grounded extraction, source summaries, rubric-based answer comparison, tests, code review, debugging, refactoring, prompt reduction, assistant boundaries, accessibility evidence, query plans and text-token costs. They are labelled as targets, not saved responses from a model. Actual fixture checks reproduced the JavaScript boundary and zero-quantity bugs, checked four refactoring cases, reconciled USD 0.0288 of illustrative usage and compared an in-memory SQLite query before and after an index. The SQLite fixture returned the same twenty rows in the same order. No latency gain was measured.
-
-The collection has search and task filters. Recipe pages switch between the reusable prompt and filled example, with clipboard success reported only after copying succeeds. Each can open an editable Workbench draft with its example inputs. Nothing is saved or sent automatically. A public review and 72 noindex retirement notices preserve exact source revisions, blob hashes and originating commits. Dates are labelled as Git history dates because the old templates lacked publication dates. Retired material is absent from active collections, search, tag pages and sitemap.
-
-The prompt bot now proposes exactly two unpublished JSON drafts. Publication metadata is owned by the writer, not accepted from model output. The writer rejects duplicate JSON keys, unexpected fields, truncated batches, retired tasks, existing paths and attempted review-state injection. It validates the whole batch, creates files exclusively and checks the resulting frontmatter before history or Git changes. Failed validation or interrupted writes remove only that batch's files. A competing file is preserved. Run records report zero publications and two proposals. The separate host remains unverified and no paid generation job was run.
-
-Validation: 95 JavaScript tests, 124 bot tests and all three data validators pass. A temporary unpublished fixture was excluded from every built page, search entry, tag route and Workbench payload. The fixture was removed afterwards. The production build has 724 pages, 429 search entries and 245 tag pages. A full crawl checked 33,912 internal links without broken destinations. All 72 prompt source blobs match their frozen revision, and both sets of retirement notices retain one main heading and unique IDs. Live interaction checks follow publication.
-
-## 13 September 2026, the workshop directory and old recommendations
-
-PR #214 deployed in [run 34736228880](https://github.com/valorifutures/softcat.ai/actions/runs/34736228880) at 03:45 UTC. Live recipe filters narrowed regression to one result, then zero with Source work, and restored twelve with Clear filters. Keyboard activation switched the extraction recipe to its filled example. Copy succeeded and its desktop prompt/target layout was inspected. Workbench received the template and both example variables without saving or sending. Saved remained zero. An unknown recipe showed a neutral notice without changing that library. The representative retirement notice preserved its 25 March Git date and exact source. Search found the current collection and review, not the retired validator.
-
-Rebuilt the Tools entrance as a static workshop directory. Eight tool cards state their purpose and data behaviour. A short first lap links a worked extraction recipe, its editable Workbench draft and the JSON checker. Seven tools need no API key. The one connected tool visibly names OpenRouter, the visitor's key and provider charges. Prompt recipes now have a main-navigation link. The unused client-side category filter and weekly feature-rotation module were removed.
-
-Retired the 38-entry external write-up series, comprising 34 bot discoveries and four early recommendations. Most discoveries summarised technology-news articles, while the early entries included first-hand-use claims and strong product verdicts without linked test records. This is a decision to stop maintaining that recommendation directory, not a judgement that the products are bad, unavailable or unsafe. A public review and old-route notices keep every original title, publication date, immutable source revision and blob hash. Historical link-check dates are explicitly HTTP reachability records, not evidence of hands-on testing.
-
-Corrected the three local guides against the implementation. The context guide explains whole-request budgets and separate output caps. The calculator guide removes the unsupported 15 percent token-estimate accuracy claim and records the actual repeated-history example. The site guide replaces its blanket self-maintaining claim with the checked GitHub publishing path and the still-unverified server boundary. Each retains its original publication date, shows a separate September correction and links implementation evidence and earlier text.
-
-The tool bot now accepts a bounded JSON proposal with a supplied source link and writes only a canonical unpublished draft. It rejects model-authored review state, duplicate keys, invented source URLs, truncated responses, retired titles or sources, and existing paths. Failed content validation removes the created draft before history changes. The link verifier skips drafts and cannot promote them. Run records distinguish one proposal from zero publications. No paid generation or external product test was run, and the separate server was not restarted.
-
-Validation: 97 JavaScript tests, 141 bot tests and all three data validators pass. A temporary tool draft stayed out of every built HTML page, search entry, tag route and text export. It was then removed. Clean production output has 632 HTML pages, 392 search entries and 152 tag pages. The full crawl checked 30,534 internal links without broken destinations. All 38 tool source blobs were checked, alongside the 72 prompt and 117 essay records. The new directory, review, guide and retirement pages have one main heading and unique IDs. Live visual and navigation checks follow publication.
-
-## 13 September 2026, a permanent offline publication gate
-
-PR #215 passed CI in run 34737099587 and merged as 4da2cddc3daeb798ebc3a5929e65c90edf531cfa. Its Pages run 34737190807 remained queued for a GitHub-hosted runner during this pass, with no build steps executed. The prior site remained available. This checkpoint does not claim that the directory was already live.
-
-Turned the one-off built-output audits into a repository check. The read-only gate follows local links, fragment targets, redirects, HTML-referenced assets and discovery-index destinations. It detects duplicate IDs, nested links and missing or repeated main headings in the shared site layout. Standalone art rooms retain their own document designs, while their links, assets and IDs are still checked. This is not a claim of complete accessibility or external-link verification.
-
-The content inventory uses the same locked YAML parser as the existing validator. Published records must have built routes. Drafts must not acquire routes or index entries, and removed or draft-only tags must not leave stale output behind. Each retirement notice needs a heading and noindex metadata, must stay out of search, feed and sitemap, and must match its preserved Git blob. A future custom 404 page must also remain outside discovery indexes.
-
-The gate runs after the build in PR validation, normal Pages deployment and the model-price candidate job. It adds no network requests and no write permissions. The price workflow's publishing job remains unchanged. Editing that workflow will also trigger its existing unpaid bootstrap snapshot after merge, subject to runner availability.
-
-Validation: all 97 JavaScript and 141 bot tests pass, along with twelve new standard-library publication fixtures. They exercise broken destinations, missing fragments and assets, path escapes, malformed indexes, nested links, duplicate IDs, draft leaks, stale tags, retirement metadata and source mismatches. Actionlint passes for the three workflows. The actual 632-page build passes 31,471 internal references and 3,246 local asset or metadata references, with 392 search entries, 183 content records and 227 verified retirement notices. The queued deployment and future live checks remain distinct from this offline result.
-
-## 13 September 2026, finishing the publication gate
-
-The maintainer stopped the overnight loop and then authorised completing the pending PRs and a content tidy-up. The recurring loop is disabled. PR #215 has a successful Pages build, but its deploy job remains queued. PR #216 has a queued CI build. GitHub refused to rerun either pending job because it considers the containing runs active. These states do not establish a build failure or a successful deployment.
-
-Added concurrency scoped to each PR so a future revision cancels its own obsolete validation run. Separate PRs remain independent and every validation step is retained. The earlier queued run predates this configuration and is not guaranteed to be cancelled by it. The next real commit receives fresh checks.
-
-Validation of this follow-up: actionlint passed for the updated workflow, all twelve publication-gate fixtures passed, and the production build produced 632 pages. The gate checked 31,471 internal links, 3,246 local assets and metadata references, 392 search entries and all 227 retirement records without errors. Hosted CI is still required before merging.
-
-## 13 September 2026, removing the last misleading demo and finishing the reading paths
-
-PR #216 passed hosted CI in run 34746422029 and merged as 4849b59127f1ca9a71018259344042092eba0120. Pages run 34746575258 succeeded at 08:00 UTC. The earlier PR #215 deployment and PR #216 validation runs also completed successfully. The live Tools page was visually inspected and its DOM confirmed eight tools, the OpenRouter disclosure, three corrected guides and the 38-entry removal record.
-
-Removed the 1,000-line trace renderer. Its hard-coded run date, counts, timings and LIVE status had been promoted by the homepage as recorded activity. The old route now carries a noindex retirement explanation, links to actual pipeline records and preserves the exact earlier source in Git. The homepage card now opens the existing Context Budget Planner. The retired demo is excluded from the sitemap.
-
-The reading export now preserves all seven thought correction notices, all three tool reviews and the examples, checks and limits for all twelve recipes. Original dates and per-entry URLs remain explicit. Illustrative targets are distinguished from recorded model responses, and historical news is labelled as an archive. The export states its scope and excludes drafts. Updated llms.txt and the worker context to reflect the curated directory and recipes.
-
-Added a custom 404 page with working recovery links, removal-record links and the shared keyboard-accessible search control. The publication gate caught a canonical URL pointing to Astro's intermediate /404/ route. The page now declares its actual /404.html canonical path through the shared layout, and stays out of the sitemap and search index.
-
-Validation: 101 JavaScript tests, 141 bot tests and twelve publication-gate fixtures pass. Content, model and Horizon validators pass. The 633-page production build passes 31,558 internal-link checks, 3,256 local asset and metadata checks, all 392 search entries and all 227 preserved retirement records. Export inspection found seven corrections, three reviews and twelve explicit recipe check sets. The local browser preview was blocked by the browser environment, so visual and keyboard checks of the new pages follow deployment. No paid model call was made. The separate server remains unverified.
-
-## 13 September 2026, live verification and a paused handover
-
-PR #217 passed every hosted validation step in run 34746811362 and merged as c1a05997fbd657e637bfc9203e117d837ec27203. Pages run 34746872537 completed successfully at 08:08 UTC. The live homepage opens the Context Budget Planner in place of the trace demo. The old trace URL explains the fixed figures and links to its exact earlier source.
-
-The live text export returns HTTP 200 and contains seven correction notices, three tool reviews, twelve illustrative recipe targets and twelve check sets. A deliberately missing URL returns HTTP 404 with the custom noindex page. Keyboard Tab reaches Skip to content and Enter moves focus to the main region. Enter on the header search control opens the dialog. A nonsense query shows an explicit zero-result message, and context budget finds the tool and its corrected guide.
-
-The desktop recovery page was visually inspected. Its two primary recovery links, one on 404 and one on the trace notice, now use the existing filled button style for a clearer next action. Responsive wrapping and the shared mobile breakpoints were inspected in CSS. An actual mobile browser viewport was not available in this follow-up. This is not recorded as a mobile browser test.
-
-The checkpoint has no active branch. The recurring loop remains disabled, and there is no promise of further unattended execution. The separate bot server and fresh paid model runs remain outside what was verified. The final checkpoint and button classes still pass the normal PR and Pages gates.
-
-## 13 September 2026, making Horizon the main experience
-
-The maintainer approved the interactive Horizon direction and asked for repeated checks, refinement and release. The homepage now leads with Horizon and previews its five futures. The agent decision experiment remains available further down the homepage. The main navigation puts Horizon first.
-
-The new page uses a paper and forest palette, readable rows and a briefing that changes with the selected future and outlook. Equal calendar intervals show explicit ranges. Optimistic deadlines use diamonds. Open-ended sceptical wording remains text, without borrowing the old representative years as precise forecasts. Every future exposes assumptions, blockers, implications, a signal to watch and primary sources with stated limits. Shared URLs preserve the selected future and outlook, including browser history. Copy failure reveals a selectable URL.
-
-The evidence was reassessed against primary research and publisher documentation on 13 September. The April arrival windows remain illustrative scenarios. They were not recalibrated or given fresh probabilities. The education assessment explicitly distinguishes improvement within institutions from the older full replacement threshold. An interactive AGI section compares breadth, economic work and adaptation, with sources and our proposed evidence criteria.
-
-The earlier observations, forecasts, arguments and history now live in the supporting record. Old Horizon fragment links continue to their matching entries, including repaired Now anchors. The earlier five-futures route redirects to Horizon and stays outside search and the sitemap. The unused strip renderer and its uneven-axis helper were removed. Historical source data and dates remain intact.
-
-Validation: the production build has 634 pages. All 108 JavaScript tests, 141 bot tests, twelve publication fixtures and three data validators pass. New regression cases cover vague dates, equal axis intervals, all fifteen shared-view combinations, invalid URL state and date changes without a matching evidence review. The built-site audit checks every internal link, fragment and local asset without errors. The second build and publication audit passed after refinements. Static output includes the default briefing and no-JavaScript reading links. Local browser preview access is blocked by the browser environment, so visual and keyboard checks follow the hosted release. Hosted CI and deployment are still pending at this checkpoint. The recurring loop remains disabled.
-
-## 13 September 2026, live Horizon review and final refinements
-
-PR #219 passed hosted validation in run 34779156310 and merged as 633c8f2027f4dcee0d9cca8c5f61d7d01b107b7a. Pages run 34779219315 completed successfully at 19:57 UTC. The homepage, default map, sceptical presentation, evidence section and AGI definition panel were visually inspected on the live site.
-
-The live briefings and evidence changed with the selected futures. Enter selected General intelligence and Space selected its optimistic outlook. Economic work and adaptation opened their corresponding AGI definitions. An education/sceptical URL opened with the correct selection in a second tab. Browser Back restored the preceding education/pragmatic state. Copy reported success and an actual paste into the local site-search field reproduced the exact AGI/optimistic URL. The browser's clipboard inspection API returned empty despite the successful paste, so the user-visible paste was used as the verification. No external message was sent.
-
-The older scenario fragment redirected to the matching entry in the supporting record. The retired five-futures route preserved a robotics/sceptical query through its redirect. The homepage places the five-future preview beside the main invitation. Search finds the new page, evidence record and review record.
-
-This review exposed misleading presentation of the existing branch data: some counterevidence would accelerate change, even though the panel labelled it as a delay. The final refinement uses “What this assumes” and “What could change this view”. Pragmatic education also states its partial institutional scope beside the broader definition. Existing historical scenario wording is preserved. A Horizon search tag and a new search shortcut put the main experience ahead of supporting records, without changing the search algorithm.
-
-The final refinement passes its production build, eleven focused Horizon/search regression cases, Horizon validation and the complete 634-page publication audit: 31,660 internal links and 3,262 local asset or metadata references. The actual built search index returns `/horizon` first for “horizon”. Hosted gates still apply to this follow-up commit before publication. Responsive wrapping and breakpoints were reviewed in CSS. The browser exposed no mobile viewport, and its zoom shortcut did not change the viewport. No mobile device test is claimed. The checkpoint clears the active branch for handover, with the recurring loop still disabled.
-
-## 13 September 2026, refreshing a returning visitor’s search index
-
-PR #220 passed hosted run 34779709932 and deployed as acb645af72bae1079b0e760f3bc56a6513d8a0ad in Pages run 34779766500 at 20:08 UTC. The live education view shows its partial scope and new counterevidence label. Search offers the new Explore Horizon shortcut.
-
-The last live check found that a returning browser still ranked the earlier index. An independent HTTP revalidation returned the new Horizon tag with status 200, while the index response declared `max-age=600`. The new page was inheriting the previous deployment’s browser-cached JSON. Search now requests HTTP revalidation the first time it loads an index in a page. The existing in-page index, abort behaviour and retry state are retained. This adds no service, persistent storage or new data destination.
-
-The fix passes the production build, the four search regression cases and the full publication audit. Hosted checks apply before merge. Verification after deployment must use the existing browser session that exhibited the stale result, so a clean browser cache cannot conceal the failure. The earlier live checks, desktop-only limitation and disabled recurring loop remain as recorded above.
-
-
-## 13 September 2026, five evidence-responsive scenario c…6293 tokens truncated…fied date change and its numeric day movement.
-
-
-## 18 September 2026, Feral recovery and resumed evidence review
-
-Feral cycle 8 is resolved. [PR #241](https://github.com/valorifutures/softcat.ai/pull/241) published Off Register after the independent critic rejected invalid SVG clipping on attempt 1 and passed the correction on attempt 2. The exact-head gate, 321 tests, hosted validation and [Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/35374303253) passed. Live artwork, nine keyboard axis adjustments, frozen proofs, explicit replacement and the eight-creation index were checked. The browser tool did not confirm the download event. Exact export bytes passed the independently rerun client harness and SVG renderer. The Feral ledger preserves this history. No additional creation was commissioned.
-
-The overlapping evidence pass had deferred. After the maintainer requested the fix and the release completed, we resumed in a separate worktree. All five predictions were compared with their explicit tests using nine retrieved primary pages. We appended an 18 September review, preserving both earlier records and every milestone, resolution rule and target: AGI and robotics end-2031, agents end-2028, software end-2027, education end-2029. All recorded target movements are zero days.
-
-The judgement remains unchanged. Interactive benchmark definitions do not establish our broad human comparison. Response confidence and isolated tool calls do not establish completed workflows. Agility's on-task accuracy is not our all-cycle intervention measure or multi-site operating economics. Prepared coding environments and uncertain productivity estimates do not establish consecutive tickets through seven days of monitoring. One-week tutoring results do not meet eight-week unassisted retention and independent replication. These are limits on the evidence, not proof that progress is absent or a derivation of exact arrival dates.
-
-The benchmark glossary now explains reproducibility and production denominators, preserving its original date. We read the three local guides, the agentic-loop glossary entry and two relevant recipes. Their historical claims and explicit limits do not require a new version. The code-review recipe's zero-quantity failure and correction were executed. The evaluation recipe was checked against its supplied reference. No model output or new tool verification date was fabricated.
-
-Source-access limits: BMW and Nature pages were unavailable through the research tool. Stripe exposed article metadata and a related summary, and a PNAS request returned 403. These were not added as newly verified evidence. Their existing historical records remain untouched. Search discovery was weak, so this review does not claim an exhaustive survey of new research.
-
-Local validation passed all 321 tests, all data validators and the 638-page production build. The offline audit checked 31,795 internal links and 3,278 local assets and metadata references, with no errors. Hosted release and live Horizon/glossary verification follow this preparation record. [PR #242](https://github.com/valorifutures/softcat.ai/pull/242) records the exact hosted checks, deployment and live outcome.
-
-Next priorities are independent cross-domain human evaluations, consecutive workflow and software-ticket denominators, robot intervention and full-cost data across sites, and replicated full-term tutoring trials with delayed unassisted tests. Price snapshots and the legacy generator retirements are unchanged.
-
-## 18 September 2026, evidence review verified live
-
-[PR #242](https://github.com/valorifutures/softcat.ai/pull/242) passed [hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/35375769021) and [Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/35375867261). The deployed commit is `d9fb0e3858d9bbc246822ae3fad38b37a160c147`. An already-open Education view received the new review through its update button, preserved the selection and kept its end-2029 target.
-
-We selected all five predictions on the live page. Each showed the actual 18 September review, zero days added or removed, and all three history entries. Day counts observed on 18 September were 1,930 for AGI and robotics, 835 for agents, 469 for software and 1,200 for education. The glossary retained its 3 April publication date and displayed the separate 18 September editorial review.
-
-Final proofreading identified an ambiguous denominator sentence. This follow-up specifies that failures and manual rescues stay among eligible cases, while excluded work is reported separately. It changes no forecast or source judgement. The existing browser and source-access limits remain recorded in the checkpoint.
-
-## 21 September 2026, bounded progress without a forecast move
-
-We reassessed all five predictions against their explicit resolution rules. Anthropic reports an 11-day, largely autonomous computer-checked formalisation of Fermat's Last Theorem. OpenAI's customer stories report 41,000 Wayfair supplier tickets automated each month and a 65% autonomous resolution rate across supported Circles workflows. Figure reports 56% end-to-end success for three behaviours across 30 unseen homes, compared with 9% without its broad pretraining. These are meaningful signals of bounded progress.
-
-None meets the published forecast tests. The mathematics result is one specialist domain rather than two independent comparisons across ten domains. The workflow stories omit our predeclared consecutive eligible-case, rescue and 90-day reporting across ten organisations. The robot evaluation is vendor-run, below our 95% intervention-free threshold and has no six-month multi-customer economics. The coding evidence does not follow consecutive tickets through deployment and seven days of monitoring. The large tutoring experiment still tests retention after one week, not eight, and has no independent term-long replication.
-
-We therefore retain AGI and robotics at end-2031, agents at end-2028, software at end-2027 and education at end-2029. All milestones and resolution rules remain unchanged. The new history entry records zero days added or removed, and every earlier record is preserved byte-for-byte.
-
-Figure's report also exposed an editorial gap in the zero-shot glossary. Zero-shot can refer to the prompt, task, object or evaluation environment. Helix 2.5 withheld the 30 homes and objects, but still used task-specific adaptation data gathered elsewhere. The glossary now tells readers to inspect what was actually withheld and preserves its original publication date.
-
-We read the current tool guides, the agentic-loop and benchmark glossary entries, and the code-review and model-evaluation recipes. No new behavioural verification was performed, so their review dates remain unchanged. Search discovery did not surface a new qualifying education replication. This is a retrieved primary-source review, not an exhaustive literature survey.
-
-Local validation passed 168 JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators and the 638-page production build. The offline audit checked 31,795 internal links and 3,278 local assets and metadata references with no errors. [PR #244](https://github.com/valorifutures/softcat.ai/pull/244) records the exact hosted release and live Horizon and glossary outcome.
-
-## 21 September 2026, evidence review verified live
-
-[PR #244](https://github.com/valorifutures/softcat.ai/pull/244) passed [required hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/35610709208), merged as `700d04c27286fc55abd3db6c5e5ed72e3f8a8915` and completed its [Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/35610834664).
-
-We selected each forecast on the live Horizon page. All five showed the 21 September review, zero days added or removed and the complete 15, 16, 18 and 21 September history. The observed counts were 1,927 days for AGI and robotics, 832 for agents, 466 for software and 1,197 for education. Robotics kept its end-2031 target while displaying Figure's 56% result and the missing commercial evidence.
-
-The live zero-shot glossary distinguishes prompts, tasks, objects and environments. It links to Figure's evaluation, preserves 3 April as the publication date and shows the separate 21 September editorial review. This browser check covered the desktop experience. No mobile-device or clipboard result is claimed.
-
-
-## 25 September 2026, from reading to a usable result
-
-The maintainer requested a broad design and usefulness review with independent agents. We checked current main, open PRs and Actions. No competing work was active. The latest daily price snapshot, run 36124115562, succeeded. We did not launch another refresh.
-
-Three agents separately reviewed design, Horizon's decision journey and accessibility/behaviour. Their strongest finding was a broken example contract: the extraction recipe expects values and evidence, while the Tools walkthrough landed on the unrelated Classification preset. A new recipe-invoice preset preserves the exact worked target, including a missing date as paired null values. Both the recipe and its Workbench draft link to that contract. The source remains visible because schema success does not establish factual correctness.
-
-Tools now starts with four jobs, make, check, plan and decide. A worked invoice specimen and matching three-step exercise replace the disconnected first lap. Every tool has a concrete takeaway and data behaviour. Horizon now turns its existing 90-day advice into a visitor-written trial brief, with task, owner, baseline, success and stop rules. Each future keeps its own in-memory draft. Copy and text export include the current forecast, actual review date, resolution criteria and evidence limits. Empty fields stay explicitly undecided. No forecast data or review timestamp changed.
-
-The homepage features Off Register's exact existing opening SVG, generated by its published renderer, and links to its printmaking controls. This showcases a published Feral creation without commissioning or modifying a council cycle. The glossary has a clearer home entry, mobile navigation prioritises current sections, and narrow header controls fit more comfortably. Horizon's review card now opens the current prediction history, while the earlier map review remains clearly labelled and accessible.
-
-Local validation passed 151 script JavaScript tests, 27 Feral tests, 141 bot tests, 12 publication fixtures, all data validators and the 638-page build. The browser rejected the local preview with ERR_BLOCKED_BY_CLIENT. Required hosted checks, publication and live visual/behavioural verification follow this preparation record. No mobile-device or successful file-download verification is claimed here.
-
-
-## 25 September 2026, workshop release verified live
-
-[PR #246](https://github.com/valorifutures/softcat.ai/pull/246) passed [required hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/36176220797) on reviewed head `1583a238543635fbbc9c3105244fda57c72934c0`. Main was re-read before publication. The PR merged normally as `0e6c59484343a888db56a9cfff9c19295619568a` and [Pages deployed successfully](https://github.com/valorifutures/softcat.ai/actions/runs/36176391957). The final search refinement adds a direct trial-brief result and clearly labels the earlier map review. Final audit: 638 pages, 31,805 internal links, 3,280 assets/metadata, 403 search entries, no errors.
-
-On live Tools, Enter opened the Plan task anchor and the invoice link selected the matching recipe contract. Its deliberate output produced four constraint failures. The matching example passed. Editing cleared the previous result. An unknown preset fell back to Classification with a visible explanation. The recipe-aware Workbench link points to the original invoice contract and explicitly transfers no input. New prompt clears that context. No model request or browser-library save was made.
-
-The Horizon planner accepted all five fields. Software started with an empty draft, then held a separate test plan. Browser Back restored the full Agents draft. Checking for a published review retained it. Copy reported success and the browser clipboard independently contained the exact entered task, end-2028 target, actual 21 September review and Wayfair source URL. Forecast data stayed unchanged. The download control reported a request, but the browser tool timed out waiting for the file event, so successful download is not claimed.
-
-The homepage displayed Off Register's existing SVG geometry and its actual 18 September publication date. It showed the latest Horizon review and a clear glossary entry. Search for “trial brief” returned the new planner as its sole result. Tools and home had no observed desktop horizontal overflow. [The captured Tools viewport](evidence/2026-09-25-workshop.jpg) records the deployed design.
-
-A returning Horizon page used its earlier cached interface until a normal reload. The refreshed page showed the planner and current history link. The local preview remains blocked, and mobile/touch-device testing remains unverified. The next device pass should verify narrow layouts and real file download. These limits do not alter the passing code, hosted gates or verified desktop interactions.
-
-
-## 25 September 2026, research constitution and first experiment specification
-
-The maintainer requested a fundamental shift towards credible open-source research. Current main was `80fb819da06f0a7fc289539b4abd0e2bce6a3471`, with no open PR, active marker or queued/in-progress Action. A fresh worktree was used. Three independent agents contributed the experiment design, public presentation and governance critique.
-
-A root constitution now defines verifiable cooperation as the research direction. It separates identity, authority, evidence and outcomes, requires reproducible comparisons and published failures, and preserves Horizon history and Feral creative independence. Operating instructions prioritise the next research evidence gate after reliability work. Existing schedules, retired generators, publishing controls and price ownership remain unchanged.
-
-The initial experiment specifies revocation across three agents in two frameworks, unreliable evidence, independent job continuity and a deterministic final-state grader. It is specified, not implemented or run. No research finding, zero-day discovery, upstream acceptance or new paid execution is claimed. The new research component, constitution and experiment specification carry a scoped Apache-2.0 licence. Earlier material requires a provenance review before any broader release. The official licence text was retrieved from Apache.
-
-The public constitution renders the canonical Markdown directly, with section navigation and links to source, programme and licensing scope. Home, About, footer and search expose the new direction without claiming completed research. Independent review found no blocking issue and prompted clearer trusted-base assumptions and structured reports. Narrow layout and keyboard handling were reviewed in source, not on a mobile device.
-
-Local validation passed: 151 script JavaScript tests, 141 bot tests, 12 publication fixtures, all data validators, 639-page production build and offline publication audit. The audit checked 32,481 internal links, 3,286 assets/metadata references and 404 search entries with zero errors. Hosted checks, deployment and live verification are pending at this checkpoint.
-
-Release receipt: [PR #248](https://github.com/valorifutures/softcat.ai/pull/248) passed [hosted validation 36180940341](https://github.com/valorifutures/softcat.ai/actions/runs/36180940341) on exact reviewed head `b4aaca01f5605a62db60d2891d01345a67ceeced`, tree `7088fbf297fdfa248487ee0feb1ec988f466e337`. Current main was unchanged when re-read before normal squash merge `79ee9e3424d3b8e805b8f0c31ae650bf4b6e338c`. [Pages 36181040799](https://github.com/valorifutures/softcat.ai/actions/runs/36181040799) succeeded. The additional 27 existing Feral tests also passed locally, bringing total test coverage in this run to 331 tests.
-
-Live [constitution](https://softcat.ai/constitution/) verification found all ten sections and no broken contents anchors. Enter on section 10 placed its heading at y96. Wheel scrolling reached scrollY4137 with the final footer text at y936 in a 936px viewport. Document width1348 stayed within viewport1363. About and Home show the new mission and explicit specified/not implemented status. Search for constitution returned exactly one correct dated result. A viewport screenshot is saved at `docs/evidence/2026-09-25-constitution.jpg`. These observations cover desktop rendering and navigation, not mobile/touch-device behaviour.
-
-The checkpoint now names the offline synthetic fixture, action queue, script baseline and deterministic grader as the next research gate. No research runner, executed model experiment, independent reproduction, extra Feral cycle, price refresh, paid call or external contribution is claimed. The new constitution is operative through current-main repository instructions. Existing schedules and owners are unchanged.
-
-
-## 25 September 2026, first offline research harness
-
-The maintainer requested continuation from the published research constitution.
-Current main was `6f20e4ed7691709f58a973d1b330ed16457e7188`, with no open PR,
-active marker or queued/in-progress Action. We used a fresh isolated worktree.
-The clean baseline passed 151 script tests, a 639-page build and offline audit.
-
-Separate agents built the simulator, authored the independent grader, reviewed
-both, and prepared the public research page. The original fixture has two jobs
-sharing one specialist role, a delegated Job A chain, independent Job B authority,
-pre-labelled synthetic evidence and an in-memory remediation queue. Revocation
-and queue commits share a central logical order. These are scripted actors,
-not live agents or a test of model diagnostic reasoning.
-
-The final recorded execution accepted four valid conditions and rejected three
-intentionally deficient controls plus 26 seeded wrong outcomes. The raw traces,
-violations, exact Node version and source/fixture/test hashes are retained in
-`research/delegation/results/latest.json`. The runner has no npm dependencies,
-network operation or provider call. Cost remains unknown. It refuses to overwrite
-an existing receipt, and replay verification runs inside the existing hosted gates.
-
-Independent review found real false passes involving missing and misclassified
-probes, unsupported action evidence hidden by a clean report, an expiry denial
-mistaken for revocation, a delegation shortcut, and tampered deterministic
-execution facts ignored by receipt verification. Corrections and regression cases
-are retained. `research/delegation/review.md` records the actual disagreement.
-An initial Astro build failed on a newline expression in the command example.
-That expression was corrected before the passing production build.
-
-The public Research page exposes the recorded receipt, event disclosures,
-deliberate failures, code and reproduction commands. Home, navigation, About,
-constitution links and search distinguish this completed offline gate from the
-future agent experiment. Historical predictions, creative cycles, price ownership
-and retired output remain untouched.
-
-Local validation passed 203 script JavaScript tests, including 52 research tests,
-27 Feral tests, 141 bot tests and 12 publication fixtures, plus every data validator.
-The 640-page build and offline audit passed with 33,159 internal links, 3,292
-assets/metadata references, 405 search entries and zero errors. Hosted release
-and live verification are pending at this preparation checkpoint. No independent
-reproduction or mobile-device verification is claimed.
-
-
-Release receipt: [PR #250](https://github.com/valorifutures/softcat.ai/pull/250)
-passed [hosted validation 36185532836](https://github.com/valorifutures/softcat.ai/actions/runs/36185532836)
-on exact reviewed head `53dc38ba2c9241bf6c850f463244bf4e19ad0008`, tree
-`9b97b5c283b8502bf183d9740524ff750b997424`. The independent critic passed
-bounded gate 2 after rerunning all 52 harness tests, replay verification and
-all 12 source hashes. Main was unchanged when re-read before normal squash
-merge `a0b12ba3fdf6cbe51c44c8bc0d43fccca01de478`.
-[Pages 36185665727](https://github.com/valorifutures/softcat.ai/actions/runs/36185665727)
-succeeded. The recorded receipt's SHA-256 is
-`2098e9db92c6ae54e5722c53717ad1f05f008338886fe539122c55f5d1f8fb33`.
-
-The live [Research page](https://softcat.ai/research/) shows the actual 4/4,
-3/3 and 26/26 counts and 25 September 20:21 UTC execution. Enter opened the
-record anchor at y95.9, the 18-event combined trace and event 10, where A-main
-is denied at commit because it was revoked. Space expanded the global-stop
-failure and exposed Job B's lost completion. Enter on the action-evidence
-substitution case revealed UNSUPPORTED_ACTION_EVIDENCE. All five section
-anchors resolve. Width1348 stayed within viewport1363 with disclosures open.
-Wheel scrolling reached scrollY5912 with the footer at y936.4 in a936px viewport.
-
-Home exposes the new experiment and has no observed desktop overflow. Search
-for delegation returns one Research result. About and the constitution sidebar
-link the completed offline gate while keeping future agent comparisons explicit.
-[The captured Research viewport](evidence/2026-09-25-research-harness.jpg)
-records the deployed design.
-
-Clicking the exact JSON receipt link reached a browser URL-policy block and a
-chrome-error page. We did not bypass it or claim successful live JSON retrieval.
-The generated endpoint, source hashes and deterministic replay passed local and
-hosted gates. Mobile/touch and independent external reproduction remain unverified.
-No model call, extra Feral cycle, price refresh or outside contact occurred.
-The active marker is cleared. The next research gate is reviewed and pinned
-framework adapters, followed by calibration and a frozen disjoint evaluation
-protocol with explicitly configured access and spend limits.
-
-
-## 25 September 2026: real framework recovery, bounded development evidence
-
-The maintainer asked us to continue with the best next useful batch. Main was
-`e48bc805baf53520e8759ad60e31f13eccc74d5a`, with no active marker, open PR or
-queued/in-progress Action. A fresh isolated worktree preserved the earlier work.
-The clean baseline passed 203 script tests, the 640-page build and offline audit.
-
-Separate agents built the durable store, integrated the frameworks, authored
-the independent grader and prepared the public page. A read-only critic
-challenged the implementations and independently executed the nine cases.
-LangGraph 1.2.12 routes work to genuine PydanticAI 2.50.0 tool dispatch in
-separate processes. FunctionModel decisions are fixed. Workers actually exit
-before or after the durable write and fresh processes reconcile the outcome.
-
-The final receipt, recorded at 21:00:40 UTC, accepts six valid cases, rejects
-three deficient controls for their registered causal faults, and detects 32
-named corrupted outcomes. It retains 46 worker process records, 89 local
-FunctionModel requests, zero provider calls and an unknown total execution
-charge. Its SHA-256 is
-`d1fdc8a2da8ed6bf36a89284f079e731d29bdd256c974a4a916246fb38d463f3`.
-All 17 source hashes were independently checked. All 44 runtime packages are
-pinned with exact wheel hashes, and the installation was repeated with hash
-enforcement. The original gate 2 fixture and receipt are byte-for-byte unchanged.
-
-Real development failures and disagreements are retained in
-`research/recovery/review.md`. These include SQLite thread affinity in the
-first synchronous tool callback, controls rejected for the wrong reason,
-wrong but internally consistent remediation payloads, unrelated restarts,
-stale reconciliation, fabricated intermediate reports, false denial reasons,
-impossible process IDs and mismatched tool operations. Corrections have
-specific regressions. Repeated revocation notifications preserve their first
-authoritative order. The critic rechecked the previously escaping mutations.
-
-The public recovery page exposes actual traces, the deliberately broken
-controls, corruption findings, reproduction commands and limits. A new
-isolated read-only CI job installs the hashed dependencies, executes 46 tests
-and reruns the receipt before either PR or Pages builds may proceed. No new
-schedule is added. Horizon history, Feral ownership, price refresh and retired
-feeds remain unchanged.
-
-Local validation passed all 429 tests: 203 script JavaScript, 27 Feral, 141 bot,
-12 publication fixtures and 46 recovery tests. Fresh actual-framework receipt
-verification, data validators, the 641-page production build and offline audit
-passed. The audit checked 33,211 internal links, 3,298 assets/metadata and 406
-search entries with zero errors. Hosted publication and live verification are
-pending at this checkpoint.
-
-This is gate 3 preparation, not model evaluation. SQLite, the worker and
-harness-supplied caller identity remain trusted. The local JSON hand-off is
-not A2A/MCP conformance. Application network guards are not a hostile-code
-sandbox. Before untrusted model decisions, authenticated caller identity and
-the action service need a separately reviewed boundary. No distributed
-guarantee, benchmark generalisation or independent external reproduction is
-claimed. Total execution cost and mobile/touch behaviour remain unverified.
-
-
-Release receipt: [PR #252](https://github.com/valorifutures/softcat.ai/pull/252)
-passed [hosted validation 36189485342](https://github.com/valorifutures/softcat.ai/actions/runs/36189485342)
-on exact reviewed head `04718270be56fdc5985c244c77349c011c71de4d`, tree
-`1dafbfefe968ced6123cb71736feaeb40d617912`. The critic gave PASS on that exact
-tree. Both the isolated recovery job and the full build passed. Main was
-unchanged when re-read before normal squash merge
-`2ce0df15e88d90365993ce996e72ac4b64c602f7`.
-[Pages 36189796296](https://github.com/valorifutures/softcat.ai/actions/runs/36189796296)
-succeeded after another actual-framework recovery rerun, build and audit.
-
-The live [recovery study](https://softcat.ai/research/recovery/) shows the
-actual 6/6, 3/3 and 32/32 results recorded at 21:00 UTC. Enter navigated the
-missing-reply anchor to y96.3, opened all 45 trace events and exposed event 15,
+The prompt inventory contained 84 templates, including 66 added by bot commits. It included near-duplicate agent validators and KV-cache prompts, requests for numerical reliability or confidence scores withou…11673 tokens truncated…posed event 15,
 the genuine exit-74 after the tool ran. Space opened the final queue, matching
 reports and five worker records. The false-success disclosure exposed
 FALSE_SUCCESS and FALSE_CERTAINTY. All five section anchors resolve. Desktop
@@ -1929,3 +1591,40 @@ on main and the legacy Feral workflow remains manual-only. Draft PR #288 still
 holds CALIPER for the separate Feral owner. This pass did not change a Horizon
 prediction, commission a Feral creation, edit archived News or Radar, run a
 retired generator or launch a duplicate price refresh.
+
+## 13 November 2026, report published Pipeline output accurately
+
+The Pipeline seven-day summary counted only records with a broad `success`
+status. Every run in its current window had published a validated price
+snapshot, but each was labelled `partial` because two price checks were held
+for review. The page therefore displayed “0% successful results” beside four
+real publications.
+
+[PR #293](https://github.com/valorifutures/softcat.ai/pull/293) changes the
+summary to count records with a positive `items_published` value. The card now
+says “runs with published output” and explains that this percentage is separate
+from overall job health. The existing per-run text still identifies each
+partial snapshot and its two held checks.
+
+The exact reviewed head `58606986cb0a2a586abf0264c6b82c466ecb34f4`
+passed [hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/43397933187)
+and merged as `b3770e7aca859e98b5a8c5f1d50f59fd394976ca`.
+[Pages run 43398551709](https://github.com/valorifutures/softcat.ai/actions/runs/43398551709)
+completed its recovery, boundary, build and deploy jobs successfully.
+
+Local validation passed 230 Node tests, 24 Python publication tests, 141 bot
+tests, every content/data/Horizon validator, the 650-page production build and
+the offline publication audit. The audit checked 34,193 internal links and
+3,343 local asset or metadata references with zero errors.
+
+The live Pipeline shows four recorded runs and 100% with published output,
+followed by the partial-run caveat. It has one main heading, no duplicate IDs,
+no broken images and no desktop horizontal overflow. Narrow viewport and
+physical touch rendering were not verified in this pass.
+
+The latest observed price workflow, [run 43232107825](https://github.com/valorifutures/softcat.ai/actions/runs/43232107825),
+passed both jobs and published its 12 November checked snapshot. No 13 November
+scheduled price run was present at 08:55 UTC, so no duplicate was launched.
+The operating guide is present and the Feral workflow remains manual-only.
+Draft PR #288 remains with the separate Feral owner. Horizon predictions,
+Feral creative files, archived feeds and retired generators were unchanged.
