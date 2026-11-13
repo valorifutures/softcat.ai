@@ -4,14 +4,14 @@ import RecordedTime from '../components/RecordedTime.astro';
 import RunState from '../components/RunState.astro';
 import allRuns from '../data/pipeline/runs.json';
 import allBots from '../data/pipeline/bots.json';
-import { timestamp, newestRun, overdueHours, runsInWindow, formatRecordedTime, priceRunDetail } from '../lib/pipeline-status.mjs';
+import { timestamp, newestRun, overdueHours, runsInWindow, formatRecordedTime, priceRunDetail, publishedRunCount } from '../lib/pipeline-status.mjs';
 
 const snapshot = new Date();
 const botMap = Object.fromEntries(allBots.map((bot) => [bot.id, bot]));
 const runs = [...allRuns].filter((run) => Number.isFinite(timestamp(run.timestamp)))
   .sort((a, b) => timestamp(b.timestamp) - timestamp(a.timestamp));
 const recentRuns = runsInWindow(runs, snapshot.getTime());
-const successRuns = recentRuns.filter((run) => run.status === 'success').length;
+const publishedRuns = publishedRunCount(recentRuns);
 const costedRuns = recentRuns.filter((run) => run.cost_usd != null);
 const totalCost = costedRuns.reduce((sum, run) => sum + run.cost_usd, 0);
 const lastRun = newestRun(runs);
@@ -72,10 +72,11 @@ const currentSchedule = [
       <p class="text-sm text-text-muted mb-5">Window ending {formatRecordedTime(snapshot.toISOString())}. Counts cover price checks and historical bot records present in this build.</p>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div class="bg-surface border border-surface-light rounded-lg p-5"><div class="font-mono text-2xl text-text-bright">{recentRuns.length}</div><p class="text-sm text-text-muted mt-2">recorded runs</p></div>
-        <div class="bg-surface border border-surface-light rounded-lg p-5"><div class="font-mono text-2xl text-text-bright">{recentRuns.length ? Math.round(successRuns / recentRuns.length * 100) + '%' : '—'}</div><p class="text-sm text-text-muted mt-2">successful results</p></div>
+        <div class="bg-surface border border-surface-light rounded-lg p-5"><div class="font-mono text-2xl text-text-bright">{recentRuns.length ? Math.round(publishedRuns / recentRuns.length * 100) + '%' : '—'}</div><p class="text-sm text-text-muted mt-2">runs with published output</p></div>
         <div class="bg-surface border border-surface-light rounded-lg p-5"><div class="font-mono text-2xl text-text-bright">{costedRuns.length ? '$' + totalCost.toFixed(2) : '—'}</div><p class="text-sm text-text-muted mt-2">recorded API cost (USD)</p></div>
       </div>
       {!recentRuns.length && <p class="mt-4 text-sm text-neon-amber">No bot runs are recorded in this window. The historical log is below.</p>}
+      {!!recentRuns.length && <p class="mt-4 text-xs text-text-muted">A partial run can publish checked output while holding other items for review. This percentage counts recorded output, not overall job health.</p>}
       {!!costedRuns.length && <p class="mt-4 text-xs text-text-muted">Cost data exists for {costedRuns.length} of {recentRuns.length} runs. It excludes hosting and unlogged activity.</p>}
     </section>
 

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { newestRun, recordState, relativeAge, runsInWindow, latestPriceRun, overdueHours, priceRunDetail } from '../../src/lib/pipeline-status.mjs';
+import { newestRun, recordState, relativeAge, runsInWindow, latestPriceRun, overdueHours, priceRunDetail, publishedRunCount } from '../../src/lib/pipeline-status.mjs';
 
 const now = Date.parse('2026-09-12T21:00:00Z');
 const old = { timestamp: '2026-07-03T08:30:48.697123+00:00', status: 'success' };
@@ -50,4 +50,13 @@ test('a partial price publication says what shipped and what was held', () => {
   assert.equal(priceRunDetail({ ...partial, items_rejected: 1 }), 'Snapshot published · 1 check held for review');
   assert.equal(priceRunDetail({ ...partial, bot: 'thought_bot' }), '');
   assert.equal(priceRunDetail({ ...partial, items_rejected: 0 }), '');
+});
+
+test('publication counts use recorded output rather than a broad status label', () => {
+  assert.equal(publishedRunCount([
+    { status: 'partial', items_published: 1 },
+    { status: 'success', items_published: 2 },
+    { status: 'success', items_published: 0 },
+    { status: 'error' },
+  ]), 2);
 });

@@ -61,6 +61,10 @@ export function runsInWindow(runs, end, days = 7) {
   });
 }
 
+export function publishedRunCount(runs) {
+  return runs.filter((run) => Number.isSafeInteger(run.items_published) && run.items_published > 0).length;
+}
+
 export function latestPriceRun(runs) {
   return newestRun(runs, (run) => run.bot === 'model_bot' && run.status === 'success' &&
     (run.job === 'prices' || (!run.job && run.output_files?.includes('src/data/models.json'))));
