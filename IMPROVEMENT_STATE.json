@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-13T09:11:22Z",
+  "updated_at": "2026-11-14T08:23:10Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "b3770e7aca859e98b5a8c5f1d50f59fd394976ca",
-    "at": "2026-11-13T09:09:40Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/43398551709"
+    "sha": "674b18804e56bc9865152f81af2e1ec0b39a1fa4",
+    "at": "2026-11-14T08:23:10Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/43575256876"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -971,5 +971,20 @@
     "live_verification": "Pipeline shows four recorded runs and 100% with published output, followed by the partial-run caveat. It has one main heading, no duplicate IDs, no broken images and no desktop horizontal overflow.",
     "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. Price run 43232107825 passed both jobs; no 13 November run was present at 08:55 UTC and no duplicate was launched. CALIPER draft PR #288 remains with the Feral owner.",
     "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator or price publication data was changed. Narrow viewport and physical touch rendering were not verified."
+  },
+  "maintenance_2026_11_14": {
+    "date": "2026-11-14",
+    "problem": "An unused legacy About component still claimed six systemd bots on the retired Linux host scanned feeds and published AI-written content every morning.",
+    "change": "Removed the unreferenced component so the obsolete operating story cannot be reintroduced. The live About page already describes the current cloud schedules and dated evidence correctly.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/295",
+    "reviewed_head": "c6c3612bf1e91098b3b340859333f2debeb45450",
+    "merge_sha": "674b18804e56bc9865152f81af2e1ec0b39a1fa4",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/43575030176",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/43575256876",
+    "price_workflow": "https://github.com/valorifutures/softcat.ai/actions/runs/43433008625",
+    "validation": "230 Node tests, 24 Python publication tests, 141 bot tests, all content/data/Horizon validators, a 650-page production build and an offline audit of 34,193 internal links and 3,343 asset or metadata references passed with zero errors.",
+    "live_verification": "The deployed About route returned the 14 November build and retained the accurate current operating explanation. Home and Pipeline were also reachable; the affected component had no live importer, so visitor output remained stable.",
+    "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. Price run 43433008625 passed refresh and publication jobs on 13 November; no newer or active price run was observed and no duplicate was launched. CALIPER draft PR #288 remains with the Feral owner.",
+    "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator, pending draft or price publication data was changed. Desktop overflow checks passed on key routes; narrow viewport and physical touch rendering were not verified in this runtime."
   }
 }
