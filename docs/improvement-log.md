@@ -1966,3 +1966,41 @@ scheduled price run was present at 08:55 UTC, so no duplicate was launched.
 The operating guide is present and the Feral workflow remains manual-only.
 Draft PR #288 remains with the separate Feral owner. Horizon predictions,
 Feral creative files, archived feeds and retired generators were unchanged.
+
+## 14 November 2026, remove retired bot-host copy
+
+An unused `src/components/About.astro` still said six systemd bots on the retired
+Linux host scanned feeds and published AI-written content every morning. Nothing
+on current `main` imported the component, while the live About page already
+explained the cloud schedules, dated evidence and possibility of stopped jobs.
+Keeping the stale component made that false operating story easy to restore by
+accident.
+
+[PR #295](https://github.com/valorifutures/softcat.ai/pull/295) removes the
+unreferenced component. The exact reviewed head
+`c6c3612bf1e91098b3b340859333f2debeb45450` passed
+[hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/43575030176)
+and merged as `674b18804e56bc9865152f81af2e1ec0b39a1fa4`.
+[Pages run 43575256876](https://github.com/valorifutures/softcat.ai/actions/runs/43575256876)
+completed its recovery, boundary, build and deploy jobs successfully.
+
+Local validation passed 230 Node tests, 24 Python publication tests, 141 bot
+tests, every content/data/Horizon validator, the 650-page production build and
+the offline publication audit. The audit checked 34,193 internal links and
+3,343 local asset or metadata references with zero errors.
+
+The deployed About route returned the 14 November build and retained the
+accurate current operating explanation. Home and Pipeline were also reachable.
+The removed component had no live importer, so visitor output remained stable.
+Desktop overflow checks passed on key routes. Narrow viewport and physical touch
+rendering were not verified because this runtime could not emulate a narrow
+browser viewport.
+
+The latest observed price workflow,
+[run 43433008625](https://github.com/valorifutures/softcat.ai/actions/runs/43433008625),
+passed both refresh and publication jobs on 13 November. No newer or active
+price run was observed, so no duplicate was launched. The operating guide is on
+`main` and `.github/workflows/feral.yml` remains manual-only. Draft PR #288 still
+holds CALIPER for the separate Feral owner. No pending published draft was
+found. Horizon predictions, Feral creative files, archived News and Radar,
+retired generators and price publication data were unchanged.
