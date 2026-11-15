@@ -13,7 +13,7 @@ class BuiltSiteTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary.name)
-        self.write("index.html", '<main id="main-content"><h1>Home</h1><a href="/guide#part">Guide</a><a href="https://elsewhere.example/missing">External</a><img src="/pixel.svg"></main>')
+        self.write("index.html", '<main id="main-content"><h1>Home</h1><a href="/guide#part">Guide</a><a href="https://elsewhere.example/missing">External</a><img src="/pixel.svg" alt=""></main>')
         self.write("guide/index.html", '<main id="main-content"><h1>Guide</h1><h2 id="part">Part</h2><a name="old-anchor"></a><a href="../">Home</a></main>')
         self.write("pixel.svg", '<svg xmlns="http://www.w3.org/2000/svg"/>')
         self.write("search-index.json", json.dumps([{"url": "/guide#part"}]))
@@ -50,6 +50,32 @@ class BuiltSiteTests(unittest.TestCase):
         errors = self.errors()
         for text in ["duplicate IDs", "nested links", "exactly one h1"]:
             self.assertIn(text, errors)
+
+    def test_accessibility_structure_is_checked_before_publication(self):
+        self.write("index.html", '''
+            <main id="main-content">
+              <h1>Home</h1><h3>Skipped level</h3>
+              <img src="/pixel.svg">
+              <input id="unnamed"><button tabindex="2">Later</button>
+              <textarea aria-labelledby="missing-label"></textarea>
+            </main>
+        ''')
+        errors = self.errors()
+        for text in ["images need alt attributes", "input needs an accessible label", "missing aria-labelledby IDs", "heading levels skip", "positive tabindex"]:
+            self.assertIn(text, errors)
+
+    def test_explicit_wrapped_and_aria_labels_are_valid(self):
+        self.write("index.html", '''
+            <main id="main-content">
+              <h1>Home</h1><h2>Form</h2>
+              <img src="/pixel.svg" alt="">
+              <label for="name">Name</label><input id="name">
+              <label>Notes<textarea></textarea></label>
+              <p id="choice-label">Choice</p><select aria-labelledby="choice-label"><option>One</option></select>
+              <input aria-label="Search">
+            </main>
+        ''')
+        self.assertEqual(self.errors(), "")
 
     def test_redirects_and_encoded_named_fragments_are_checked(self):
         self.write("redirect/index.html", '<meta http-equiv="refresh" content="0; url=/guide#old-anchor">')
