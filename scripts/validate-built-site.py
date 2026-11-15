@@ -18,7 +18,11 @@ class Page(HTMLParser):
     def __init__(self, text):
         super().__init__()
         self.ids, self.named_anchors, self.links, self.assets = [], [], [], []
+        self.labels_for, self.controls, self.missing_alt = set(), [], []
+        self.images = 0
+        self.heading_levels, self.positive_tabindex = [], []
         self.robots, self.h1, self.anchor_depth, self.nested_anchors = [], 0, 0, 0
+        self.label_depth = 0
         self.refresh = None
         self.feed(text)
 
@@ -26,8 +30,29 @@ class Page(HTMLParser):
         data = dict(attributes)
         if "id" in data:
             self.ids.append(data["id"])
-        if tag == "h1":
-            self.h1 += 1
+        if tag in {"h1", "h2", "h3", "h4", "h5", "h6"}:
+            level = int(tag[1])
+            self.heading_levels.append(level)
+            self.h1 += level == 1
+        if tag == "label":
+            self.label_depth += 1
+            if data.get("for"):
+                self.labels_for.add(data["for"])
+        if tag in {"input", "select", "textarea"} and data.get("type", "").lower() != "hidden":
+            self.controls.append({
+                "tag": tag,
+                "id": data.get("id"),
+                "wrapped": self.label_depth > 0,
+                "aria_label": bool(data.get("aria-label", "").strip()),
+                "aria_labelledby": tuple(data.get("aria-labelledby", "").split()),
+            })
+        if tag == "img":
+            self.images += 1
+            if "alt" not in data:
+                self.missing_alt.append(data.get("src", "<inline image>"))
+        tabindex = data.get("tabindex", "").strip()
+        if tabindex.lstrip("+").isdigit() and int(tabindex) > 0:
+            self.positive_tabindex.append(tabindex)
         if tag == "a":
             self.nested_anchors += self.anchor_depth > 0
             self.anchor_depth += 1
@@ -52,6 +77,8 @@ class Page(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "a":
             self.anchor_depth = max(0, self.anchor_depth - 1)
+        if tag == "label":
+            self.label_depth = max(0, self.label_depth - 1)
 
 
 def route_key(url):
@@ -61,7 +88,7 @@ def route_key(url):
 def audit_site(directory, records=(), retirements=(), verify_blob=None):
     root = Path(directory).resolve()
     pages = {path.resolve(): Page(path.read_text(encoding="utf-8")) for path in root.rglob("*.html")}
-    errors, links_checked, assets_checked = [], 0, 0
+    errors, links_checked, assets_checked, accessibility_checked = [], 0, 0, 0
     if not pages:
         errors.append("No built HTML pages found. Run the production build first.")
 
@@ -100,6 +127,20 @@ def audit_site(directory, records=(), retirements=(), verify_blob=None):
             errors.append(f"{relative}: duplicate IDs {duplicates}")
         if page.nested_anchors:
             errors.append(f"{relative}: nested links")
+        if page.missing_alt:
+            errors.append(f"{relative}: images need alt attributes {page.missing_alt}")
+        accessibility_checked += len(page.controls) + len(page.heading_levels) + page.images + len(page.positive_tabindex)
+        for control in page.controls:
+            labelled_by = control["aria_labelledby"]
+            if labelled_by and not all(target in page.ids for target in labelled_by):
+                errors.append(f"{relative}: {control['tag']} references missing aria-labelledby IDs {list(labelled_by)}")
+            if not (control["wrapped"] or control["aria_label"] or labelled_by or control["id"] in page.labels_for):
+                errors.append(f"{relative}: {control['tag']} needs an accessible label")
+        for previous, current in zip(page.heading_levels, page.heading_levels[1:]):
+            if current > previous + 1:
+                errors.append(f"{relative}: heading levels skip from h{previous} to h{current}")
+        if page.positive_tabindex:
+            errors.append(f"{relative}: positive tabindex changes the natural focus order {page.positive_tabindex}")
         # Standalone art rooms have their own document designs. This heading
         # check covers the shared site layout, not a claim of full accessibility.
         if "main-content" in page.ids and page.h1 != 1:
@@ -176,7 +217,7 @@ def audit_site(directory, records=(), retirements=(), verify_blob=None):
     missing = pages.get(root / "404.html")
     if missing and ("noindex" not in missing.robots or "/404" in indexed | sitemap_routes or "/404.html" in indexed | sitemap_routes):
         errors.append("The 404 recovery page must be noindex and outside discovery indexes")
-    return {"htmlPages": len(pages), "internalLinksChecked": links_checked, "localAssetsAndMetadataChecked": assets_checked, "searchEntries": len(search), "contentRecords": len(records), "retirementNotices": len(retirements), "errors": errors}
+    return {"htmlPages": len(pages), "internalLinksChecked": links_checked, "localAssetsAndMetadataChecked": assets_checked, "accessibilityElementsChecked": accessibility_checked, "searchEntries": len(search), "contentRecords": len(records), "retirementNotices": len(retirements), "errors": errors}
 
 
 def main():
