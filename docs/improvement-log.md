@@ -2004,3 +2004,40 @@ price run was observed, so no duplicate was launched. The operating guide is on
 holds CALIPER for the separate Feral owner. No pending published draft was
 found. Horizon predictions, Feral creative files, archived News and Radar,
 retired generators and price publication data were unchanged.
+
+## 15 November 2026, enforce accessibility structure at publication
+
+The offline publication audit checked links, local assets, discovery metadata,
+duplicate IDs and page headings, but it could still publish common structural
+accessibility regressions. [PR #297](https://github.com/valorifutures/softcat.ai/pull/297)
+adds pre-publication failures for images without `alt`, unlabelled form controls,
+broken `aria-labelledby` references, skipped heading levels and positive
+`tabindex` values. Empty alt text remains valid for decorative images, and the
+tests cover explicit, wrapped and ARIA labels.
+
+The exact reviewed head `1ef743daf5bad9d7e4989e7b024f2dfd873364a7`
+passed [hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/43697299938)
+and merged as `fecdd3d35ba12097ff5285097ab31eee2f0bfb8d`.
+[Pages run 43697520798](https://github.com/valorifutures/softcat.ai/actions/runs/43697520798)
+then passed recovery, boundary, build and deploy jobs for that exact merge.
+
+Local validation passed 230 Node tests, 26 Python publication tests, 141 bot
+tests, every content/data/Horizon validator, the 650-page production build and
+the offline publication audit. The audit checked 34,193 internal links, 3,343
+local asset or metadata references and 6,511 accessibility elements with zero
+errors.
+
+Live verification covered Home, Horizon, Tools, Prompts, Glossary, Pipeline and
+Feral. Each had one main heading, no duplicate IDs, no broken images and no
+desktop horizontal overflow. The live footer reported the 15 November 2026,
+09:07 UTC build. Narrow viewport and physical touch rendering were not verified
+because this runtime could not emulate a narrow browser viewport.
+
+The latest price workflow,
+[run 43594806790](https://github.com/valorifutures/softcat.ai/actions/runs/43594806790),
+passed refresh and publication jobs on 14 November; no duplicate was launched.
+The operating guide is on `main` and `.github/workflows/feral.yml` remains
+manual-only. Draft PR #288 still holds CALIPER for the separate Feral owner.
+No pending published draft was found. Horizon predictions, Feral creative files,
+archived News and Radar, retired generators and price publication data were
+unchanged.
