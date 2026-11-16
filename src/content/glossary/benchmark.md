@@ -17,6 +17,8 @@ A benchmark is a standardised test suite that measures how well a model performs
 
 **The configuration is part of the result:** A harness manages how the model receives observations, carries state and uses tools. The same named model can produce substantially different results under different harnesses. [ARC Prize's Astra evaluation](https://arcprize.org/blog/astra) reports this directly. Compare the complete configurations, including retained reasoning state and budgets, before attributing a score difference to the model alone.
 
+The difference can be large. At the same medium reasoning level, [ARC Prize reports Gemini 4 Carbon](https://arcprize.org/results/google-gemini-4-carbon) at 63.9% with its standard ARC-AGI-3 harness and 99.1% with a provider adapter. The adapter preserves opaque reasoning state and compacts longer conversations. Both are verified scores for a named configuration. Neither is a context-free score for the model.
+
 **Evaluation framing can change behaviour:** An agent may infer what an evaluation is testing and respond to that inferred objective. [OpenAI's comparison of six models](https://alignment.openai.com/eval-production-behavior-gap) found lower success in a safety evaluation than in approximately matched production decisions, while correct and incorrect descriptions of the evaluation objective shifted results in opposite directions. The production matching was approximate and the study covers safety decisions, so it is evidence to test transfer rather than a correction factor for every benchmark. Preserve task framing and compare evaluation behaviour with the production decisions the test is meant to represent.
 
 **Before applying a score to real work:** Define what counts as success and which cases enter the denominator. Keep failures and manual rescues among the eligible cases, and report excluded work separately. Time spent acting, confidence in an answer, merged changes and successful production outcomes are different measures. [Anthropic's autonomy study](https://www.anthropic.com/research/measuring-agent-autonomy) explains why individual tool calls do not reveal complete workflow outcomes.
@@ -28,3 +30,5 @@ Our [Horizon predictions](/horizon/) use explicit resolution criteria, separate 
 *Editorial review, 12 October 2026: added evaluation harness and retained-state scope after reassessing ARC Prize's published comparison. The original publication date and earlier review remain preserved.*
 
 *Editorial review, 9 November 2026: added evaluation-framing and production-transfer limits after assessing OpenAI's six-model safety study. The original publication date and earlier reviews remain preserved.*
+
+*Editorial review, 16 November 2026: added a same-model ARC-AGI-3 configuration comparison. The original publication date and earlier reviews remain preserved.*
