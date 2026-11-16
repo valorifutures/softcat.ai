@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-15T09:08:44Z",
+  "updated_at": "2026-11-16T16:13:45Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "fecdd3d35ba12097ff5285097ab31eee2f0bfb8d",
-    "at": "2026-11-15T09:08:44Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/43697520798"
+    "sha": "69564e2c30baf3c230dfcaafbb2907b1aac7276b",
+    "at": "2026-11-16T16:13:45Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/43904548285"
   },
   "maintenance_receipt": {
     "date": "2026-09-16",
@@ -1001,5 +1001,21 @@
     "live_verification": "Pages run 627 passed recovery, boundary, build and deploy jobs for the exact merge. Home, Horizon, Tools, Prompts, Glossary, Pipeline and Feral each had one h1, no duplicate IDs, no broken images and no desktop horizontal overflow. The live footer reported the 15 November 2026 09:07 UTC build.",
     "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. Price run 43594806790 passed refresh and publication jobs on 14 November; no duplicate refresh was launched. CALIPER draft PR #288 remains with the Feral owner.",
     "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator, pending draft or price publication data was changed. Narrow viewport and physical touch rendering were not verified in this runtime."
+  },
+  "horizon_review_2026_11_16": {
+    "date": "2026-11-16",
+    "change": "Appended the twelfth evidence review for all five Horizon predictions and added a same-model ARC-AGI-3 harness comparison to the benchmark glossary. All target dates, milestones and resolution criteria remain unchanged.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/299",
+    "reviewed_head": "d5edcdf7b6d7b142c28e87eb96fa8f5d2ae2a2f2",
+    "merge_sha": "69564e2c30baf3c230dfcaafbb2907b1aac7276b",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/43902938367",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/43904548285",
+    "price_workflow": "https://github.com/valorifutures/softcat.ai/actions/runs/43880534515",
+    "validation": "230 Node tests, 26 Python publication tests, 141 bot tests, all content/data/Horizon validators, a 650-page production build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 6,511 accessibility elements passed with zero errors.",
+    "live_verification": "All five Horizon selectors loaded their own 16 November evidence and 12 preserved records. Horizon and the benchmark glossary each had one h1, no duplicate IDs, no broken images and no desktop horizontal overflow. The glossary showed the 63.9% versus 99.1% configuration comparison.",
+    "evidence_judgement": "ARC-AGI-3, Zurich agents, Apptronik logistics, Anthropic coding and mixed tutoring studies all moved the evidence. None met the matching declared resolution test, so AGI and robotics stay at end-2031, agents at end-2028, software at end-2027 and education at end-2029.",
+    "next_priorities": "Independent multi-domain AGI comparisons; consecutive agent and coding-ticket denominators with failures; six-month robot fleet intervention and cost data; independently replicated delayed unassisted education outcomes.",
+    "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. Price run 43880534515 succeeded and no duplicate was launched. CALIPER draft PR #288 remains with the separate Feral owner.",
+    "scope": "No Feral creation, archived News or Radar record, retired generator, price publication data, tool or recipe changed. Narrow viewport and physical touch rendering were not verified in this runtime."
   }
 }
