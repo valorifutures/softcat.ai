@@ -2041,3 +2041,43 @@ manual-only. Draft PR #288 still holds CALIPER for the separate Feral owner.
 No pending published draft was found. Horizon predictions, Feral creative files,
 archived News and Radar, retired generators and price publication data were
 unchanged.
+
+## 16 November 2026, reassess all five Horizon predictions
+
+We reassessed every Horizon milestone against current primary evidence. Strong
+new results now include a 99.1% ARC-AGI-3 score under Gemini 4 Carbon's provider
+adapter, a Zurich enterprise-agent deployment, an autonomous Apptronik picking
+pilot, high coding-agent contribution reported by Anthropic and two contrasting
+education studies. None meets the matching published resolution criteria, so
+all five target dates remain unchanged. The twelfth review record preserves all
+eleven earlier records and states the counterevidence and limits for each source.
+
+[PR #299](https://github.com/valorifutures/softcat.ai/pull/299) also adds a
+concrete same-model benchmark comparison explaining why harness state and
+compaction are part of the result. The exact reviewed head
+`d5edcdf7b6d7b142c28e87eb96fa8f5d2ae2a2f2` passed
+[hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/43902938367)
+and merged as `69564e2c30baf3c230dfcaafbb2907b1aac7276b`.
+[Pages run 43904548285](https://github.com/valorifutures/softcat.ai/actions/runs/43904548285)
+passed and deployed that exact merge.
+
+Local validation passed 230 Node tests, 26 Python publication tests, 141 bot
+tests, every content/data/Horizon validator, a 650-page production build and the
+offline publication audit. The audit checked 34,193 internal links, 3,343 assets
+or metadata references and 6,511 accessibility elements with zero errors.
+
+Live Horizon verification selected all five forecasts. Each loaded its own new
+evidence and 12 preserved records. Horizon and the benchmark glossary had one
+main heading, no duplicate IDs, no broken images and no desktop horizontal
+overflow. The glossary displayed the new 63.9% versus 99.1% configuration
+comparison. The footer reported the 16 November 2026 16:13 UTC build.
+
+The latest price workflow,
+[run 43880534515](https://github.com/valorifutures/softcat.ai/actions/runs/43880534515),
+completed successfully; no duplicate refresh was launched. The operating guide
+is present and `.github/workflows/feral.yml` remains manual-only. Draft PR #288
+still belongs to the separate Feral owner. No Feral creation, archived News or
+Radar record, retired generator, price publication data, tool or recipe changed.
+Next reviews should seek independent multi-domain AGI comparisons, consecutive
+agent and coding-ticket denominators, six-month robot fleet economics and
+delayed unassisted education outcomes.
