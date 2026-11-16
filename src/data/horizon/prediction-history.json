@@ -1822,5 +1822,139 @@
         "uncertainty": "Benefits may depend heavily on tutor design, subject and student group. Immediate performance with assistance can improve without producing durable independent learning."
       }
     ]
+  },
+  {
+    "id": "predictions-2026-11-16",
+    "date": "2026-11-16",
+    "reason": "We reassessed all five forecasts against current primary sources on 16 November. Stronger benchmark scores, enterprise agent deployments, expanded humanoid trials, high coding-agent contribution and mixed tutoring studies all move the evidence. None satisfies its forecast’s declared resolution criteria. Every target, milestone and criterion stays unchanged, and all eleven earlier entries are preserved.",
+    "records": [
+      {
+        "earlier": "Independent teams reproduce skilled-human performance across newly created domains without task-specific tuning or undisclosed human help.",
+        "evidence": [
+          {
+            "title": "ARC Prize: Gemini 4 Carbon configuration results",
+            "url": "https://arcprize.org/results/google-gemini-4-carbon",
+            "date_label": "10 November 2026, assessed 16 November",
+            "finding": "ARC Prize reports a verified 63.9% ARC-AGI-3 score with its standard harness at medium reasoning and 99.1% with a provider adapter at the same reasoning level. The adapter preserves opaque reasoning state and compacts longer conversations.",
+            "limit": "The large harness-dependent difference makes configuration part of the result. ARC-AGI-3 tests interactive adaptation, not our ten-domain skilled-human comparison, and this is not two independent teams testing one frozen system."
+          }
+        ],
+        "id": "scenario-agi",
+        "later": "Public benchmark gains fail to transfer to fresh tasks, or broad competence continues to depend on specialist retraining and extensive human correction.",
+        "milestone": "A general-purpose AI will independently demonstrate skilled-human performance across a broad set of unfamiliar cognitive tasks.",
+        "rationale": "We retain end-2031. Gemini 4 Carbon is strong new evidence of progress on unfamiliar interactive tasks. The 35-point difference between ARC Prize’s medium-reasoning harness configurations also shows why a headline score is not a system-independent result. One narrow benchmark, even at 99.1%, does not supply the two preregistered teams, ten domains, fresh task sets and skilled-human comparisons in our resolution test.",
+        "resolution": [
+          "Two evaluation teams independent of the model provider test the same frozen general-purpose system on independently created tasks. Each preregisters task-construction rules, scoring and human recruitment before testing, then publishes its protocol, human comparison, tools, time budgets and results.",
+          "Each evaluation covers language, mathematics, coding, factual synthesis, scientific reasoning, visual-spatial reasoning, planning, social reasoning, learning new rules and switching between tasks. Each domain contains at least 100 tasks created after the system was frozen. No task-specific retraining is allowed.",
+          "The system reaches or exceeds the median of relevant skilled adult participants in every domain under the same stated time allowance. This is our operational AGI threshold, not a claim that every definition of AGI has been satisfied."
+        ],
+        "target_date": "2031-12-31",
+        "title": "General intelligence",
+        "uncertainty": "Very uncertain timing. A generalisation breakthrough could bring this forward sharply, while persistent failures on unfamiliar tasks could put it beyond 2031. Our test is a declared working definition, not an industry standard."
+      },
+      {
+        "earlier": "Customer-confirmed 90-day results show high autonomous completion across multiple systems and sectors, including failures and recovery costs.",
+        "evidence": [
+          {
+            "title": "Microsoft and Zurich: enterprise agent deployment",
+            "url": "https://www.microsoft.com/en/customers/story/27588-zurich-microsoft-365-copilot",
+            "date_label": "16 November 2026, assessed 16 November",
+            "finding": "Zurich reports 93% active Copilot adoption among more than 10,000 US employees. Its ZEUS agent reduced Service Desk ticket volume by 20%, while several agents helped save about two months in a 15-month crop programme.",
+            "limit": "This is a selected Microsoft customer story from one organisation. It gives no fixed eligible-case cohort, 90-day per-workflow denominator, autonomous completion share, failure record or evidence of two qualifying workflows at ten organisations."
+          }
+        ],
+        "id": "scenario-agentic-work",
+        "later": "Manual rescue, fragile integrations or operating costs prevent teams expanding beyond isolated queues.",
+        "milestone": "AI agents will run repeatable business workflows across at least ten organisations, with people managing exceptions.",
+        "rationale": "We retain end-2028. Zurich is useful evidence that governed agents can operate at enterprise scale and affect service demand and programme time. It is still one vendor-mediated account and measures adoption and broad outcomes rather than consecutive workflow completion. The public evidence does not meet our ten-organisation, two-workflow, 90-day and 80% autonomous-step test.",
+        "resolution": [
+          "Customer-confirmed or independently evaluated public reports name ten organisations across at least three sectors. Each runs two distinct production workflows spanning at least two business systems.",
+          "Each workflow reports at least 1,000 consecutive eligible cases over at least 90 days. At least 80% finish without a person executing workflow steps. Eligibility, acceptance tests and escalation rules are fixed before the reporting period.",
+          "People may authorise consequential decisions and handle exceptions. Reports include failures and escalations in the denominator. This predicts repeatable operation at ten organisations, not majority adoption or unattended businesses."
+        ],
+        "target_date": "2028-12-31",
+        "title": "Agents at work",
+        "uncertainty": "Timing remains uncertain. Vendor case studies rarely publish consecutive-case failure and intervention data, so the milestone could occur before enough public evidence exists to verify it."
+      },
+      {
+        "earlier": "Customers publish six-month multi-task fleet results, lower intervention rates and repeat purchases supported by full operating costs.",
+        "evidence": [
+          {
+            "title": "GXO and Apptronik: expanded Apollo trials",
+            "url": "https://gxo.com/it/news_article/gxo-apptronik-expand-humanoid-robotics-partnership/",
+            "date_label": "12 November 2026, assessed 16 November",
+            "finding": "GXO reports that an Apollo pilot completed autonomous picking for small consumer goods. The partners have also evaluated more than 50 logistics tasks in Apptronik’s training facility and plan broader live trials from 2027, with a conditional path to as many as 1,000 robots.",
+            "limit": "The wider task evidence comes from a training facility, while scaled deployment is a letter of intent conditional on future KPIs. The report gives no six-month ten-site result, site task mix, intervention rate or full cost per successful task."
+          }
+        ],
+        "id": "scenario-robotics",
+        "later": "Maintenance, low utilisation, teleoperation or poor transfer between tasks keeps the cost of successful work above the existing process.",
+        "milestone": "Adaptable robots will perform several useful jobs routinely across factories and warehouses, with demonstrated operating economics.",
+        "rationale": "We retain end-2031. A customer-confirmed pilot, a wider task library and a proposed Robotics-as-a-Service path strengthen the commercial direction. They also clarify the remaining gap: one narrow live pilot and many training-facility evaluations are not routine multi-task work across ten sites. The announced scale is prospective and conditional, with reliability and economics still undisclosed.",
+        "resolution": [
+          "One commercially available robot platform using a shared general-purpose control model runs for six months at ten production sites belonging to at least three unrelated customers. It performs at least three materially different task families overall and at least two at each site. Customers demonstrate a new task learned from instructions or examples without writing task-specific control code.",
+          "Customer-confirmed reporting shows at least 95% of task cycles completed without human intervention. The reporting period, task mix, failures and supervised or teleoperated time are disclosed.",
+          "Customer-published cost per successful task matches or beats the incumbent process, including maintenance and supervision. This is a commercial-site milestone, not a prediction of routine household humanoids."
+        ],
+        "target_date": "2031-12-31",
+        "title": "Robotics",
+        "uncertainty": "The date is uncertain because reliability, safety and manufacturing must improve together. Strong demonstrations or a product launch would not be enough to count this as achieved."
+      },
+      {
+        "earlier": "Organisations publish consecutive-ticket results with little manual rescue and reliable post-deployment checks.",
+        "evidence": [
+          {
+            "title": "Anthropic: Fable 5.2 coding and internal deployment",
+            "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+            "date_label": "9 November 2026, assessed 16 November",
+            "finding": "Anthropic says Claude now writes more than 90% of changes merged into its core codebase with human guidance. It also reports an agent team migrating a critical production service from Python to Rust.",
+            "limit": "This is provider-reported evidence from one unusually prepared organisation. It does not publish a preregistered consecutive-ticket cohort, manual correction share, failed or rescued tickets, approved deployments, rollbacks or seven days of monitoring."
+          }
+        ],
+        "id": "scenario-software-automation",
+        "later": "Review effort, rollback rates or legacy-system failures prevent agents reliably completing the whole delivery cycle.",
+        "milestone": "Coding agents will take most routine software tickets from specification to monitored production in at least ten organisations, with human approval.",
+        "rationale": "We retain end-2027. More than 90% of merged changes at Anthropic is a substantial signal that coding agents can produce production-bound work at high volume. “With human guidance” leaves the intervention denominator unknown, and merged changes are only part of our milestone. No source yet shows most eligible tickets completing specification, review responses, approved deployment and seven-day monitoring across ten organisations.",
+        "resolution": [
+          "Ten named organisations each publish customer-confirmed or independently evaluated results for at least 100 consecutive eligible tickets over at least 90 days. Eligibility is fixed before assignment: routine fixes or small features estimated at no more than one engineer-day.",
+          "More than half reach implementation, tests, review responses, approved deployment and seven days of monitoring without people writing or correcting the code. Humans still set requirements, review and authorise release.",
+          "Failed deployments, rollbacks and manually rescued tickets remain in the denominator. Merged pull requests alone do not meet the milestone. This does not predict autonomous ownership of all engineering work."
+        ],
+        "target_date": "2027-12-31",
+        "title": "Software creation",
+        "uncertainty": "This is an assertive forecast. Repository preparation, review effort and access to credible post-deployment results could delay verification. The date is our judgement, not a provider's commitment."
+      },
+      {
+        "earlier": "Multi-site trials show replicated gains on delayed, unassisted tests across learner groups.",
+        "evidence": [
+          {
+            "title": "Google and Eedi: 10-week UK mathematics tutoring trial",
+            "url": "https://blog.google/products-and-platforms/products/education/impact-studies-uk-italy/",
+            "date_label": "29 October 2026, assessed 16 November",
+            "finding": "Google reports a randomised trial with more than 1,100 pupils. AI tutoring matched human tutoring on in-platform work and intermediate quizzes, but produced no gain on independent STAR standardised tests during the trial and covered fewer problems than static hints.",
+            "limit": "Human experts reviewed every AI response in real time. The study lasted ten weeks, reports no eight-week post-intervention assessment and does not provide an independent replication or the effect calculation in our milestone."
+          },
+          {
+            "title": "Wang and colleagues: human-centred postgraduate STEM system",
+            "url": "https://www.nature.com/articles/s41598-026-79651-3",
+            "date_label": "16 November 2026, assessed 16 November",
+            "finding": "A peer-reviewed quasi-experiment with 47 postgraduates reports a larger gain in competency scores for a class using retrieval-grounded tutoring, instructor-verified feedback and adaptive project work than for a parallel control class.",
+            "limit": "The allocation was not random, the sample is small and several instructional changes were bundled together. Instructors verified feedback, and the study reports no delayed unassisted outcome after the system was removed."
+          }
+        ],
+        "id": "scenario-education-disruption",
+        "later": "Gains disappear without AI, fail to transfer, or depend on levels of human support that do not scale.",
+        "milestone": "Generative AI tutoring will show repeatable learning gains that last after the AI is put away, across schools or colleges.",
+        "rationale": "We retain end-2029. The UK randomised trial shows useful assisted learning while finding no standardised-test gain, and the new postgraduate study reports a large short-term gain in a small non-randomised, human-in-the-loop setting. Together they strengthen the case for careful tutor design and the countercase that immediate supported performance is not durable learning. Neither provides two independent term-long trials with eight-week unassisted outcomes.",
+        "resolution": [
+          "Two independently evaluated, preregistered randomised trials of generative AI tutoring collectively cover at least 2,000 learners across at least 20 schools or colleges, with an intervention lasting at least one academic term. Each compares against a non-AI control with comparable teaching and learning time.",
+          "Both trials show statistically positive effects on unassisted assessments at least eight weeks after the intervention. Their combined standardised effect is at least 0.2, using an inverse-variance weighted mean of the reported primary outcomes.",
+          "Human teachers and safeguarding remain in place. The reports disclose attrition and assistance. This predicts demonstrated durable learning gains, not the replacement of teachers, schools or credentials."
+        ],
+        "target_date": "2029-12-31",
+        "title": "Education",
+        "uncertainty": "Benefits may depend heavily on tutor design, subject and student group. Immediate performance with assistance can improve without producing durable independent learning."
+      }
+    ]
   }
 ]
