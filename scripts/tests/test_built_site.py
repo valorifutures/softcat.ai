@@ -77,6 +77,32 @@ class BuiltSiteTests(unittest.TestCase):
         ''')
         self.assertEqual(self.errors(), "")
 
+    def test_links_and_buttons_need_accessible_names(self):
+        self.write("index.html", '''
+            <main id="main-content">
+              <h1>Home</h1>
+              <a href="/guide"><span aria-hidden="true">→</span></a>
+              <button><svg aria-hidden="true"></svg></button>
+              <a href="/" aria-labelledby="missing-action-name"></a>
+            </main>
+        ''')
+        errors = self.errors()
+        self.assertIn("a needs an accessible name", errors)
+        self.assertIn("button needs an accessible name", errors)
+        self.assertIn("a references missing aria-labelledby IDs", errors)
+
+    def test_action_text_image_alt_and_aria_names_are_valid(self):
+        self.write("index.html", '''
+            <main id="main-content">
+              <h1>Home</h1>
+              <a href="/guide"><span>Read the guide</span></a>
+              <a href="/"><img src="/pixel.svg" alt="Home"></a>
+              <button aria-label="Open search"><svg aria-hidden="true"></svg></button>
+              <p id="save-name">Save result</p><button aria-labelledby="save-name"></button>
+            </main>
+        ''')
+        self.assertEqual(self.errors(), "")
+
     def test_redirects_and_encoded_named_fragments_are_checked(self):
         self.write("redirect/index.html", '<meta http-equiv="refresh" content="0; url=/guide#old-anchor">')
         self.write("encoded/index.html", '<a href="/guide#%70art">Part</a>')
