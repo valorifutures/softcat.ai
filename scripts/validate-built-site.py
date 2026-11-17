@@ -19,6 +19,9 @@ class Page(HTMLParser):
         super().__init__()
         self.ids, self.named_anchors, self.links, self.assets = [], [], [], []
         self.labels_for, self.controls, self.missing_alt = set(), [], []
+        self.actions, self.open_actions = [], []
+        self.aria_hidden_depth = 0
+        self.tag_stack = []
         self.images = 0
         self.heading_levels, self.positive_tabindex = [], []
         self.robots, self.h1, self.anchor_depth, self.nested_anchors = [], 0, 0, 0
@@ -28,6 +31,11 @@ class Page(HTMLParser):
 
     def handle_starttag(self, tag, attributes):
         data = dict(attributes)
+        starts_hidden = data.get("aria-hidden", "").lower() == "true"
+        if starts_hidden:
+            self.aria_hidden_depth += 1
+        if tag not in {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}:
+            self.tag_stack.append((tag, starts_hidden))
         if "id" in data:
             self.ids.append(data["id"])
         if tag in {"h1", "h2", "h3", "h4", "h5", "h6"}:
@@ -50,6 +58,9 @@ class Page(HTMLParser):
             self.images += 1
             if "alt" not in data:
                 self.missing_alt.append(data.get("src", "<inline image>"))
+            elif data["alt"].strip() and self.aria_hidden_depth == 0:
+                for action in self.open_actions:
+                    action["text"].append(data["alt"])
         tabindex = data.get("tabindex", "").strip()
         if tabindex.lstrip("+").isdigit() and int(tabindex) > 0:
             self.positive_tabindex.append(tabindex)
@@ -60,6 +71,15 @@ class Page(HTMLParser):
                 self.named_anchors.append(data["name"])
             if data.get("href"):
                 self.links.append(data["href"])
+        if tag == "button" or (tag == "a" and data.get("href")):
+            action = {
+                "tag": tag,
+                "text": [],
+                "aria_label": bool(data.get("aria-label", "").strip()),
+                "aria_labelledby": tuple(data.get("aria-labelledby", "").split()),
+            }
+            self.actions.append(action)
+            self.open_actions.append(action)
         if tag in {"script", "img", "source", "video", "audio"} and data.get("src"):
             self.assets.append(data["src"])
         if tag == "video" and data.get("poster"):
@@ -79,6 +99,22 @@ class Page(HTMLParser):
             self.anchor_depth = max(0, self.anchor_depth - 1)
         if tag == "label":
             self.label_depth = max(0, self.label_depth - 1)
+        if tag in {"a", "button"}:
+            for index in range(len(self.open_actions) - 1, -1, -1):
+                if self.open_actions[index]["tag"] == tag:
+                    del self.open_actions[index]
+                    break
+        for index in range(len(self.tag_stack) - 1, -1, -1):
+            if self.tag_stack[index][0] == tag:
+                closed = self.tag_stack[index:]
+                del self.tag_stack[index:]
+                self.aria_hidden_depth = max(0, self.aria_hidden_depth - sum(hidden for _, hidden in closed))
+                break
+
+    def handle_data(self, data):
+        if data.strip() and self.aria_hidden_depth == 0:
+            for action in self.open_actions:
+                action["text"].append(data)
 
 
 def route_key(url):
@@ -136,6 +172,13 @@ def audit_site(directory, records=(), retirements=(), verify_blob=None):
                 errors.append(f"{relative}: {control['tag']} references missing aria-labelledby IDs {list(labelled_by)}")
             if not (control["wrapped"] or control["aria_label"] or labelled_by or control["id"] in page.labels_for):
                 errors.append(f"{relative}: {control['tag']} needs an accessible label")
+        accessibility_checked += len(page.actions)
+        for action in page.actions:
+            labelled_by = action["aria_labelledby"]
+            if labelled_by and not all(target in page.ids for target in labelled_by):
+                errors.append(f"{relative}: {action['tag']} references missing aria-labelledby IDs {list(labelled_by)}")
+            if not ("".join(action["text"]).strip() or action["aria_label"] or labelled_by):
+                errors.append(f"{relative}: {action['tag']} needs an accessible name")
         for previous, current in zip(page.heading_levels, page.heading_levels[1:]):
             if current > previous + 1:
                 errors.append(f"{relative}: heading levels skip from h{previous} to h{current}")
