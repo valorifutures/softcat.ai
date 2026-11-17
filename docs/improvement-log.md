@@ -2081,3 +2081,38 @@ Radar record, retired generator, price publication data, tool or recipe changed.
 Next reviews should seek independent multi-domain AGI comparisons, consecutive
 agent and coding-ticket denominators, six-month robot fleet economics and
 delayed unassisted education outcomes.
+
+## 17 November 2026, require accessible action names
+
+The publication audit could reject an unlabelled form field while still accepting
+an unnamed link or button. That left an icon-only action vulnerable to losing its
+accessible name without failing the release. [PR #301](https://github.com/valorifutures/softcat.ai/pull/301)
+checks link and button text, meaningful image alt text, `aria-label` and valid
+`aria-labelledby` references. Text hidden with `aria-hidden` cannot satisfy the
+check. Regression fixtures cover missing names, missing references and each
+accepted naming method.
+
+The exact reviewed head `b85c9f97173b899b13a71f13162cc77edd665b6e`
+passed [hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/44047144137)
+and merged as `dff065c9dad2230730066b69d17bf64dc22e06d9`.
+[Pages run 44047619215](https://github.com/valorifutures/softcat.ai/actions/runs/44047619215)
+then passed recovery, boundary, build and deploy jobs for that merge.
+
+Local validation passed 230 Node tests, 28 Python publication tests, 141 bot
+tests, every content/data/Horizon validator, the 650-page production build and
+the offline audit. The audit checked 34,193 internal links, 3,343 local assets
+or metadata records and 44,145 accessibility elements with zero errors.
+
+Live verification covered Home, Horizon, Tools, Recipes, Glossary, Pipeline and
+Feral. Each route had one main heading, no duplicate IDs, no broken images and
+no desktop horizontal overflow. Shared-layout routes reported the 17 November
+2026, 08:34 UTC build. Narrow viewport and physical touch rendering remain
+unverified.
+
+The latest observed price workflow,
+[run 43880534515](https://github.com/valorifutures/softcat.ai/actions/runs/43880534515),
+succeeded on 16 November; no duplicate was launched. The operating guide is on
+`main` and `.github/workflows/feral.yml` remains manual-only. Draft PR #288 still
+belongs to the separate Feral owner. No Horizon prediction, Feral creative file,
+archived News or Radar record, retired generator, content review date or price
+data changed in this batch.
