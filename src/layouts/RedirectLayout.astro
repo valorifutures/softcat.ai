@@ -1,0 +1,26 @@
+---
+interface Props {
+  destination: string;
+  label: string;
+}
+
+const { destination, label } = Astro.props;
+const canonical = new URL(destination, Astro.site);
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0;url=${destination}`} />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href={canonical} />
+    <title>{`This address has moved | SOFT CAT`}</title>
+  </head>
+  <body>
+    <main>
+      <h1>This address has moved.</h1>
+      <p>Continue to <a href={destination}>{label}</a>.</p>
+    </main>
+  </body>
+</html>

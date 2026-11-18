@@ -13,8 +13,8 @@ class BuiltSiteTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.root = Path(self.temporary.name)
-        self.write("index.html", '<main id="main-content"><h1>Home</h1><a href="/guide#part">Guide</a><a href="https://elsewhere.example/missing">External</a><img src="/pixel.svg" alt=""></main>')
-        self.write("guide/index.html", '<main id="main-content"><h1>Guide</h1><h2 id="part">Part</h2><a name="old-anchor"></a><a href="../">Home</a></main>')
+        self.write("index.html", '<html lang="en-GB"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Home</title></head><body><main id="main-content"><h1>Home</h1><a href="/guide#part">Guide</a><a href="https://elsewhere.example/missing">External</a><img src="/pixel.svg" alt=""></main></body></html>')
+        self.write("guide/index.html", '<html lang="en-GB"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Guide</title></head><body><main id="main-content"><h1>Guide</h1><h2 id="part">Part</h2><a name="old-anchor"></a><a href="../">Home</a></main></body></html>')
         self.write("pixel.svg", '<svg xmlns="http://www.w3.org/2000/svg"/>')
         self.write("search-index.json", json.dumps([{"url": "/guide#part"}]))
         self.write("feed.xml", '<rss><channel><item><link>https://softcat.ai/guide</link></item></channel></rss>')
@@ -27,6 +27,8 @@ class BuiltSiteTests(unittest.TestCase):
     def write(self, path, content):
         target = self.root / path
         target.parent.mkdir(parents=True, exist_ok=True)
+        if path.endswith(".html") and not content.lstrip().lower().startswith("<html"):
+            content = f'<html lang="en-GB"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Fixture</title></head><body>{content}</body></html>'
         target.write_text(content)
 
     def errors(self, **kwargs):
@@ -62,6 +64,12 @@ class BuiltSiteTests(unittest.TestCase):
         ''')
         errors = self.errors()
         for text in ["images need alt attributes", "input needs an accessible label", "missing aria-labelledby IDs", "heading levels skip", "positive tabindex"]:
+            self.assertIn(text, errors)
+
+    def test_document_language_title_charset_and_mobile_viewport_are_required(self):
+        self.write("index.html", '<html><head><title> </title></head><body><main><h1>Home</h1></main></body></html>')
+        errors = self.errors()
+        for text in ["document needs a language", "document needs a title", "document needs UTF-8 charset metadata", "document needs mobile viewport metadata"]:
             self.assertIn(text, errors)
 
     def test_explicit_wrapped_and_aria_labels_are_valid(self):
