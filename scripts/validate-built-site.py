@@ -24,6 +24,8 @@ class Page(HTMLParser):
         self.tag_stack = []
         self.images = 0
         self.heading_levels, self.positive_tabindex = [], []
+        self.html_lang, self.title_text, self.title_depth = "", [], 0
+        self.charset, self.viewport = "", ""
         self.robots, self.h1, self.anchor_depth, self.nested_anchors = [], 0, 0, 0
         self.label_depth = 0
         self.refresh = None
@@ -38,6 +40,10 @@ class Page(HTMLParser):
             self.tag_stack.append((tag, starts_hidden))
         if "id" in data:
             self.ids.append(data["id"])
+        if tag == "html":
+            self.html_lang = data.get("lang", "").strip()
+        if tag == "title":
+            self.title_depth += 1
         if tag in {"h1", "h2", "h3", "h4", "h5", "h6"}:
             level = int(tag[1])
             self.heading_levels.append(level)
@@ -87,6 +93,10 @@ class Page(HTMLParser):
         if tag == "link" and data.get("href"):
             self.assets.append(data["href"])
         if tag == "meta":
+            if "charset" in data:
+                self.charset = data["charset"].strip().lower()
+            if data.get("name", "").lower() == "viewport":
+                self.viewport = data.get("content", "").strip()
             if data.get("name", "").lower() == "robots":
                 self.robots.extend(token.strip().lower() for token in data.get("content", "").split(","))
             if data.get("http-equiv", "").lower() == "refresh":
@@ -99,6 +109,8 @@ class Page(HTMLParser):
             self.anchor_depth = max(0, self.anchor_depth - 1)
         if tag == "label":
             self.label_depth = max(0, self.label_depth - 1)
+        if tag == "title":
+            self.title_depth = max(0, self.title_depth - 1)
         if tag in {"a", "button"}:
             for index in range(len(self.open_actions) - 1, -1, -1):
                 if self.open_actions[index]["tag"] == tag:
@@ -112,6 +124,8 @@ class Page(HTMLParser):
                 break
 
     def handle_data(self, data):
+        if self.title_depth:
+            self.title_text.append(data)
         if data.strip() and self.aria_hidden_depth == 0:
             for action in self.open_actions:
                 action["text"].append(data)
@@ -165,6 +179,15 @@ def audit_site(directory, records=(), retirements=(), verify_blob=None):
             errors.append(f"{relative}: nested links")
         if page.missing_alt:
             errors.append(f"{relative}: images need alt attributes {page.missing_alt}")
+        accessibility_checked += 4
+        if not page.html_lang:
+            errors.append(f"{relative}: document needs a language")
+        if not "".join(page.title_text).strip():
+            errors.append(f"{relative}: document needs a title")
+        if page.charset != "utf-8":
+            errors.append(f"{relative}: document needs UTF-8 charset metadata")
+        if not page.viewport:
+            errors.append(f"{relative}: document needs mobile viewport metadata")
         accessibility_checked += len(page.controls) + len(page.heading_levels) + page.images + len(page.positive_tabindex)
         for control in page.controls:
             labelled_by = control["aria_labelledby"]
