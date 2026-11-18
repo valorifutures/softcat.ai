@@ -1,23 +1,28 @@
 {
-  "updated_at": "2026-11-17T08:35:00Z",
+  "updated_at": "2026-11-18T08:31:47Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "dff065c9dad2230730066b69d17bf64dc22e06d9",
-    "at": "2026-11-17T08:35:00Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/44047619215"
+    "sha": "1fb357030cdf7a20dd6eb1feff29fb0ce5616f5b",
+    "at": "2026-11-18T08:31:47Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/44267330977"
   },
   "maintenance_receipt": {
-    "date": "2026-11-17",
-    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/301",
-    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44047144137",
-    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44047619215",
-    "outcome": "The publication gate now rejects unnamed links and buttons, including actions whose only content is hidden from assistive technology or whose aria-labelledby target is missing. The current 650-page build passes 44,145 accessibility-element checks.",
+    "date": "2026-11-18",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/303",
+    "reviewed_head": "2c6cd5fb6cc0e03b68e5e0ba913d0e85165bd85a",
+    "merge_sha": "1fb357030cdf7a20dd6eb1feff29fb0ce5616f5b",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44266862815",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44267330977",
+    "outcome": "Four legacy aliases now declare their language, title, UTF-8 encoding and mobile viewport, and retain a heading and fallback link before redirecting. The publication gate enforces the document metadata across all 650 pages.",
+    "validation": "230 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 46,749 accessibility and metadata elements passed.",
     "live_checks": [
-      "Home, Horizon, Tools, Recipes, Glossary, Pipeline and Feral each had one main heading, no duplicate IDs, no broken images and no desktop horizontal overflow.",
-      "The shared-layout routes reported the 17 November 2026, 08:34 UTC deployment."
+      "/now and /status redirected to Pipeline; /lab redirected to Tools; /lab/model-explorer redirected to Model Comparison.",
+      "Each destination had the expected title and h1, en-GB language, mobile viewport, no broken images and no desktop horizontal overflow.",
+      "The deployed Pipeline showed the 18 November 2026, 08:31 UTC build and the 17 November price snapshot."
     ],
-    "price_status": "Latest observed scheduled run 43880534515 succeeded on 16 November. No duplicate refresh launched."
+    "price_status": "Scheduled run 44107124807 succeeded on 17 November and published its validated snapshot. No duplicate refresh launched.",
+    "scope": "No Horizon prediction, Feral creation, archived News or Radar record, retired generator, review date or price data changed."
   },
   "horizon_review_receipt": {
     "date": "2026-09-16",

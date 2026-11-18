@@ -2116,3 +2116,43 @@ succeeded on 16 November; no duplicate was launched. The operating guide is on
 belongs to the separate Feral owner. No Horizon prediction, Feral creative file,
 archived News or Radar record, retired generator, content review date or price
 data changed in this batch.
+
+## 18 November 2026, complete legacy redirect documents
+
+Four legacy aliases were the only pages in the 650-page build without a declared
+language, UTF-8 metadata or a mobile viewport. The default static redirect output
+had a title and fallback link, but it did not carry enough document metadata for
+assistive technology or reliable mobile rendering.
+
+[PR #303](https://github.com/valorifutures/softcat.ai/pull/303) replaces those
+four generated documents with one small shared redirect layout. `/now` and
+`/status` still lead to Pipeline, `/lab` still leads to Tools and
+`/lab/model-explorer` still leads to Model Comparison. Each alias now declares
+`en-GB`, UTF-8 and a mobile viewport, and retains its title, heading, fallback
+link, canonical URL and noindex instruction. The publication audit now rejects
+missing language, title, charset or viewport metadata across every rendered page.
+
+The exact reviewed head `2c6cd5fb6cc0e03b68e5e0ba913d0e85165bd85a` passed
+[hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/44266862815)
+and merged normally as `1fb357030cdf7a20dd6eb1feff29fb0ce5616f5b`.
+[Pages run 44267330977](https://github.com/valorifutures/softcat.ai/actions/runs/44267330977)
+passed recovery, boundary, build and deploy jobs for that merge.
+
+Local validation passed 230 Node tests, 29 Python publication tests, 141 bot
+tests, every content/data/Horizon validator, the 650-page production build and
+the offline audit. The audit checked 34,193 internal links, 3,343 local assets
+or metadata references and 46,749 accessibility and document-metadata elements
+with zero errors.
+
+Live navigation verified all four aliases and their intended destinations. Each
+destination had the expected title and main heading, `en-GB` language, a mobile
+viewport, no broken images and no desktop horizontal overflow. Pipeline showed
+the 18 November 2026, 08:31 UTC build and the price snapshot recorded on
+17 November. Physical touch-device rendering remains unverified.
+
+The scheduled [price run 44107124807](https://github.com/valorifutures/softcat.ai/actions/runs/44107124807)
+succeeded on 17 November and published its validated snapshot. No duplicate was
+launched. The operating guide remains on main and the Feral workflow remains
+manual-only. Draft PR #288 still belongs to the separate Feral owner. No Horizon
+prediction, Feral creation, archived News or Radar record, retired generator,
+content review date or price data changed in this batch.
