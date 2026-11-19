@@ -53,6 +53,14 @@ export function priceRunDetail(run) {
   return `${published} · ${held}`;
 }
 
+export function heldPriceChecks(snapshot) {
+  if (!Array.isArray(snapshot?.checks)) return [];
+  return snapshot.checks.filter((check) => check?.status === 'review-needed' &&
+    typeof check.id === 'string' && check.id.trim() &&
+    ['inputPrice', 'outputPrice'].every((field) =>
+      Number.isFinite(check.previous?.[field]) && Number.isFinite(check.quoted?.[field])));
+}
+
 export function runsInWindow(runs, end, days = 7) {
   const start = end - days * 86_400_000;
   return runs.filter((run) => {

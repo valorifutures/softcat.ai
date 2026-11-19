@@ -4,14 +4,18 @@ import RecordedTime from '../components/RecordedTime.astro';
 import RunState from '../components/RunState.astro';
 import allRuns from '../data/pipeline/runs.json';
 import allBots from '../data/pipeline/bots.json';
-import { timestamp, newestRun, overdueHours, runsInWindow, formatRecordedTime, priceRunDetail, publishedRunCount } from '../lib/pipeline-status.mjs';
+import allModels from '../data/models.json';
+import priceSnapshot from '../data/model-price-snapshot.json';
+import { timestamp, newestRun, overdueHours, runsInWindow, formatRecordedTime, priceRunDetail, heldPriceChecks, publishedRunCount } from '../lib/pipeline-status.mjs';
 
 const snapshot = new Date();
 const botMap = Object.fromEntries(allBots.map((bot) => [bot.id, bot]));
+const modelMap = Object.fromEntries(allModels.map((model) => [model.id, model]));
 const runs = [...allRuns].filter((run) => Number.isFinite(timestamp(run.timestamp)))
   .sort((a, b) => timestamp(b.timestamp) - timestamp(a.timestamp));
 const recentRuns = runsInWindow(runs, snapshot.getTime());
 const publishedRuns = publishedRunCount(recentRuns);
+const heldPrices = heldPriceChecks(priceSnapshot);
 const costedRuns = recentRuns.filter((run) => run.cost_usd != null);
 const totalCost = costedRuns.reduce((sum, run) => sum + run.cost_usd, 0);
 const lastRun = newestRun(runs);
@@ -22,6 +26,9 @@ const recoveredPriceRun = latestPriceRun
   ? latestPriceRun : null;
 const dates = [...new Set(runs.slice(0, 100).map((run) => new Date(run.timestamp).toISOString().slice(0, 10)))].slice(0, 14);
 const jobLabel = (run: any) => run.job ? ` · ${run.job}` : '';
+const priceLabel = (value: number) => '$' + value.toLocaleString('en-US', { maximumFractionDigits: 6 });
+const priceWorkflow = /^https:\/\/github\.com\/valorifutures\/softcat\.ai\/actions\/runs\/\d+$/.test(priceSnapshot.workflowUrl)
+  ? priceSnapshot.workflowUrl : null;
 const currentSchedule = [
   { name: 'Site maintenance', cadence: 'Daily, around 08:00 Europe/London', start: 'From 16 September 2026', description: 'Checks the site, fixes useful small problems and reviews pending work. Changes pass review and publication checks.', href: 'https://github.com/valorifutures/softcat.ai/blob/main/docs/improvement-log.md', link: 'Maintenance record' },
   { name: 'Feral council', cadence: 'Tuesday and Friday, around 15:00 Europe/London', start: 'From 18 September 2026', description: 'One bounded council cycle. New experiments must pass critique and publication checks before they appear.', href: '/feral/#ledger', link: 'Feral ledger' },
@@ -79,6 +86,22 @@ const currentSchedule = [
       {!!recentRuns.length && <p class="mt-4 text-xs text-text-muted">A partial run can publish checked output while holding other items for review. This percentage counts recorded output, not overall job health.</p>}
       {!!costedRuns.length && <p class="mt-4 text-xs text-text-muted">Cost data exists for {costedRuns.length} of {recentRuns.length} runs. It excludes hosting and unlogged activity.</p>}
     </section>
+
+    {!!heldPrices.length && <section class="mb-12" aria-labelledby="held-prices-heading">
+      <h2 id="held-prices-heading" class="font-mono text-lg text-text-bright mb-2">Price changes held for review</h2>
+      <p class="text-sm text-text-muted mb-5 max-w-3xl leading-relaxed">These latest catalogue quotes crossed the automatic change limit. Earlier values remain in the record, but these models stay out of calculators until the change is reviewed.</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        {heldPrices.map((check) => <article class="rounded-lg border border-neon-amber/30 bg-neon-amber/5 p-5">
+          <h3 class="font-mono text-base text-text-bright">{modelMap[check.id]?.name ?? check.id}</h3>
+          <p class="mt-1 break-all font-mono text-xs text-text-muted">{check.id}</p>
+          <dl class="mt-4 grid gap-3 text-sm">
+            <div class="flex flex-wrap items-baseline justify-between gap-2"><dt class="text-text-muted">Input USD / 1M</dt><dd class="font-mono text-text-primary"><span class="line-through text-text-muted">{priceLabel(check.previous.inputPrice)}</span> → {priceLabel(check.quoted.inputPrice)}</dd></div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2"><dt class="text-text-muted">Output USD / 1M</dt><dd class="font-mono text-text-primary"><span class="line-through text-text-muted">{priceLabel(check.previous.outputPrice)}</span> → {priceLabel(check.quoted.outputPrice)}</dd></div>
+          </dl>
+        </article>)}
+      </div>
+      <p class="mt-4 text-xs text-text-muted leading-relaxed">Checked <RecordedTime value={priceSnapshot.checkedAt} relative={false} /> against OpenRouter's public catalogue. The automatic limit is a change greater than {priceSnapshot.maxAutoDelta * 100}%. {priceWorkflow && <a class="text-neon-cyan underline underline-offset-4" href={priceWorkflow}>Inspect the snapshot run ↗</a>}</p>
+    </section>}
 
     <section class="mb-12" aria-labelledby="roster-heading">
       <h2 id="roster-heading" class="font-mono text-lg text-text-bright mb-2">Price checks and historical bots</h2>
