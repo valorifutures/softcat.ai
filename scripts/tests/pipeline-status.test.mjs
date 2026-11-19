@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { newestRun, recordState, relativeAge, runsInWindow, latestPriceRun, overdueHours, priceRunDetail, publishedRunCount } from '../../src/lib/pipeline-status.mjs';
+import { newestRun, recordState, relativeAge, runsInWindow, latestPriceRun, overdueHours, priceRunDetail, heldPriceChecks, publishedRunCount } from '../../src/lib/pipeline-status.mjs';
 
 const now = Date.parse('2026-09-12T21:00:00Z');
 const old = { timestamp: '2026-07-03T08:30:48.697123+00:00', status: 'success' };
@@ -50,6 +50,17 @@ test('a partial price publication says what shipped and what was held', () => {
   assert.equal(priceRunDetail({ ...partial, items_rejected: 1 }), 'Snapshot published · 1 check held for review');
   assert.equal(priceRunDetail({ ...partial, bot: 'thought_bot' }), '');
   assert.equal(priceRunDetail({ ...partial, items_rejected: 0 }), '');
+});
+
+test('held price details expose only complete review-needed comparisons', () => {
+  const held = { id: 'example/held', status: 'review-needed', previous: { inputPrice: 1, outputPrice: 2 }, quoted: { inputPrice: 2, outputPrice: 4 } };
+  assert.deepEqual(heldPriceChecks({ checks: [
+    held,
+    { ...held, id: 'example/verified', status: 'verified' },
+    { ...held, id: '', status: 'review-needed' },
+    { ...held, id: 'example/incomplete', quoted: { inputPrice: null, outputPrice: 4 } },
+  ] }), [held]);
+  assert.deepEqual(heldPriceChecks(null), []);
 });
 
 test('publication counts use recorded output rather than a broad status label', () => {
