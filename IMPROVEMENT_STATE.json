@@ -1,28 +1,28 @@
 {
-  "updated_at": "2026-11-18T08:31:47Z",
+  "updated_at": "2026-11-19T09:00:29Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "1fb357030cdf7a20dd6eb1feff29fb0ce5616f5b",
-    "at": "2026-11-18T08:31:47Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/44267330977"
+    "sha": "8be060b5e934f7e37ffd108a7e2d5b269d76fb59",
+    "at": "2026-11-19T09:00:29Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/44492108431"
   },
   "maintenance_receipt": {
-    "date": "2026-11-18",
-    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/303",
-    "reviewed_head": "2c6cd5fb6cc0e03b68e5e0ba913d0e85165bd85a",
-    "merge_sha": "1fb357030cdf7a20dd6eb1feff29fb0ce5616f5b",
-    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44266862815",
-    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44267330977",
-    "outcome": "Four legacy aliases now declare their language, title, UTF-8 encoding and mobile viewport, and retain a heading and fallback link before redirecting. The publication gate enforces the document metadata across all 650 pages.",
-    "validation": "230 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 46,749 accessibility and metadata elements passed.",
+    "date": "2026-11-19",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/305",
+    "reviewed_head": "13bf0fb9e06be1b19eb5a411747c5488a964d893",
+    "merge_sha": "8be060b5e934f7e37ffd108a7e2d5b269d76fb59",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44491647184",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44492108431",
+    "outcome": "Pipeline now identifies the two complete price changes held for review, shows retained and quoted input/output rates, the check time, automatic threshold and exact workflow receipt. Both models remain excluded from calculators and no price value changed.",
+    "validation": "231 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,753 accessibility/document elements passed.",
     "live_checks": [
-      "/now and /status redirected to Pipeline; /lab redirected to Tools; /lab/model-explorer redirected to Model Comparison.",
-      "Each destination had the expected title and h1, en-GB language, mobile viewport, no broken images and no desktop horizontal overflow.",
-      "The deployed Pipeline showed the 18 November 2026, 08:31 UTC build and the 17 November price snapshot."
+      "The canonical /pipeline/ route showed both held-price cards, all four retained-versus-quoted comparisons, the 18 November 2026 14:28 UTC check time, the greater-than-50% rule and the exact price-run link.",
+      "The live route reported the 19 November 2026 09:00 UTC build with no duplicate IDs, broken images or desktop horizontal overflow.",
+      "An initially cached pre-release response revalidated to the current canonical document before verification. Narrow viewport and physical touch rendering were not verified."
     ],
-    "price_status": "Scheduled run 44107124807 succeeded on 17 November and published its validated snapshot. No duplicate refresh launched.",
-    "scope": "No Horizon prediction, Feral creation, archived News or Radar record, retired generator, review date or price data changed."
+    "price_status": "Scheduled run 44324635490 passed refresh and publication jobs on 18 November and directly deployed its checked snapshot. No duplicate refresh launched.",
+    "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator, review date or price data changed. Draft PR #288 remains with the separate Feral owner."
   },
   "horizon_review_receipt": {
     "date": "2026-09-16",
@@ -1021,5 +1021,20 @@
     "next_priorities": "Independent multi-domain AGI comparisons; consecutive agent and coding-ticket denominators with failures; six-month robot fleet intervention and cost data; independently replicated delayed unassisted education outcomes.",
     "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. Price run 43880534515 succeeded and no duplicate was launched. CALIPER draft PR #288 remains with the separate Feral owner.",
     "scope": "No Feral creation, archived News or Radar record, retired generator, price publication data, tool or recipe changed. Narrow viewport and physical touch rendering were not verified in this runtime."
+  },
+  "maintenance_2026_11_19": {
+    "date": "2026-11-19",
+    "problem": "Pipeline reported that two price checks were held but did not identify the models or expose the retained and quoted rates.",
+    "change": "A fail-closed panel now renders complete review-needed comparisons from the saved snapshot with the check time, automatic threshold and exact workflow receipt.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/305",
+    "reviewed_head": "13bf0fb9e06be1b19eb5a411747c5488a964d893",
+    "merge_sha": "8be060b5e934f7e37ffd108a7e2d5b269d76fb59",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44491647184",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44492108431",
+    "price_workflow": "https://github.com/valorifutures/softcat.ai/actions/runs/44324635490",
+    "validation": "231 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,753 accessibility/document elements passed.",
+    "live_verification": "The canonical Pipeline showed both held models, all four comparisons, the recorded check and threshold, exact workflow link, no duplicate IDs, broken images or desktop overflow.",
+    "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. Price run 44324635490 passed; no duplicate refresh launched. CALIPER draft PR #288 remains with the separate Feral owner.",
+    "scope": "No Horizon prediction, Feral creative file, archived feed, retired generator, review date or price data changed. Narrow viewport and physical touch rendering were not verified."
   }
 }
