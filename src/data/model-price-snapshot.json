@@ -1,12 +1,12 @@
 {
-  "checkedAt": "2026-11-19T14:38:38.556Z",
+  "checkedAt": "2026-11-20T14:17:26.971Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "3270cfdb637d585eb706023e642b8d2b296192ae1ffc2e20da6bfa0285d587d7",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/44545938911",
+  "sourceSha256": "26a7cbcbb4e3ac78d6db2234c7c1183e8e691deffa7144960a530bc0fbb64e65",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/44751989145",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 479,
-  "previousCatalogueModels": 478,
-  "catalogueFloor": 383,
+  "catalogueModels": 477,
+  "previousCatalogueModels": 479,
+  "catalogueFloor": 384,
   "trackedModels": 39,
   "matched": 31,
   "expectedListedModels": 31,
@@ -17,7 +17,7 @@
   "notListed": 8,
   "reviewNeeded": 2,
   "unverified": 0,
-  "priceChanges": 1,
+  "priceChanges": 0,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -648,8 +648,8 @@
       "id": "z-ai/glm-5.1",
       "status": "verified",
       "previous": {
-        "inputPrice": 1.4,
-        "outputPrice": 4.4
+        "inputPrice": 1.19,
+        "outputPrice": 3.74
       },
       "quoted": {
         "inputPrice": 1.19,
