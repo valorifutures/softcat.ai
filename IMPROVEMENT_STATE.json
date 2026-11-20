@@ -1,27 +1,27 @@
 {
-  "updated_at": "2026-11-19T09:00:29Z",
+  "updated_at": "2026-11-20T09:06:11Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "8be060b5e934f7e37ffd108a7e2d5b269d76fb59",
-    "at": "2026-11-19T09:00:29Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/44492108431"
+    "sha": "a342cd8f79e833e2ca350ec8a91f0414ecda92c0",
+    "at": "2026-11-20T09:06:11Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/44707471503"
   },
   "maintenance_receipt": {
-    "date": "2026-11-19",
-    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/305",
-    "reviewed_head": "13bf0fb9e06be1b19eb5a411747c5488a964d893",
-    "merge_sha": "8be060b5e934f7e37ffd108a7e2d5b269d76fb59",
-    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44491647184",
-    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44492108431",
-    "outcome": "Pipeline now identifies the two complete price changes held for review, shows retained and quoted input/output rates, the check time, automatic threshold and exact workflow receipt. Both models remain excluded from calculators and no price value changed.",
-    "validation": "231 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,753 accessibility/document elements passed.",
+    "date": "2026-11-20",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/307",
+    "reviewed_head": "31409fd0cc4e817348b8ccea02b88bdbc9e7fcd3",
+    "merge_sha": "a342cd8f79e833e2ca350ec8a91f0414ecda92c0",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44707037111",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44707471503",
+    "outcome": "Pipeline now lists complete verified price changes that actually reached calculators. GLM-5.1 shows the previous and applied input/output rates, recorded check time and exact source workflow; incomplete, unchanged or held records fail closed. No price data was edited in this maintenance batch.",
+    "validation": "232 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,756 accessibility/document elements passed with zero errors.",
     "live_checks": [
-      "The canonical /pipeline/ route showed both held-price cards, all four retained-versus-quoted comparisons, the 18 November 2026 14:28 UTC check time, the greater-than-50% rule and the exact price-run link.",
-      "The live route reported the 19 November 2026 09:00 UTC build with no duplicate IDs, broken images or desktop horizontal overflow.",
-      "An initially cached pre-release response revalidated to the current canonical document before verification. Narrow viewport and physical touch rendering were not verified."
+      "The canonical /pipeline/ route showed one published GLM-5.1 change: input $1.40 to $1.19 and output $4.40 to $3.74, with the 19 November 2026 14:38 UTC check and exact workflow link.",
+      "The two held-price cards and all four retained-versus-quoted comparisons remained visible, preserving the existing review quarantine.",
+      "The canonical route had no duplicate IDs, broken images or desktop horizontal overflow. Narrow viewport and physical touch rendering were not verified."
     ],
-    "price_status": "Scheduled run 44324635490 passed refresh and publication jobs on 18 November and directly deployed its checked snapshot. No duplicate refresh launched.",
+    "price_status": "Scheduled run 44545938911 passed refresh and publication jobs on 19 November. Its saved snapshot recorded one verified applied change and two held changes; no duplicate refresh launched.",
     "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator, review date or price data changed. Draft PR #288 remains with the separate Feral owner."
   },
   "horizon_review_receipt": {
@@ -1036,5 +1036,20 @@
     "live_verification": "The canonical Pipeline showed both held models, all four comparisons, the recorded check and threshold, exact workflow link, no duplicate IDs, broken images or desktop overflow.",
     "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. Price run 44324635490 passed; no duplicate refresh launched. CALIPER draft PR #288 remains with the separate Feral owner.",
     "scope": "No Horizon prediction, Feral creative file, archived feed, retired generator, review date or price data changed. Narrow viewport and physical touch rendering were not verified."
+  },
+  "maintenance_2026_11_20": {
+    "date": "2026-11-20",
+    "problem": "Pipeline exposed the two catalogue changes held for review but did not show the verified change that the same snapshot had published into calculators.",
+    "change": "A fail-closed panel now lists complete verified applied changes with previous and applied input/output rates, check time and the exact workflow receipt. GLM-5.1 moved from $1.40/$4.40 to $1.19/$3.74.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/307",
+    "reviewed_head": "31409fd0cc4e817348b8ccea02b88bdbc9e7fcd3",
+    "merge_sha": "a342cd8f79e833e2ca350ec8a91f0414ecda92c0",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44707037111",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44707471503",
+    "price_workflow": "https://github.com/valorifutures/softcat.ai/actions/runs/44545938911",
+    "validation": "232 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,756 accessibility/document elements passed with zero errors.",
+    "live_verification": "The canonical Pipeline showed the one verified applied change and its exact source run. The two held changes remained quarantined. It had no duplicate IDs, broken images or desktop horizontal overflow.",
+    "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. The latest scheduled price workflow passed; no duplicate refresh was launched. CALIPER draft PR #288 remains with the separate Feral owner.",
+    "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator, review date or price data changed. Narrow viewport and physical touch rendering were not verified."
   }
 }

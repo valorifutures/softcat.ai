@@ -2199,3 +2199,44 @@ on main and `.github/workflows/feral.yml` remains manual-only. Draft PR #288 sti
 belongs to the separate Feral owner. No Horizon prediction, Feral creative file,
 archived News or Radar record, retired generator, review date or price data
 changed in this maintenance batch.
+
+## 20 November 2026, show verified published price changes
+
+The 19 November price snapshot published one verified catalogue change while
+holding two larger changes for review. Pipeline exposed the held decisions but
+not the change that actually reached its calculators, so a visitor could not
+reconcile the saved snapshot with the current prices from the site itself.
+
+[PR #307](https://github.com/valorifutures/softcat.ai/pull/307) adds a
+fail-closed published-changes panel from the saved snapshot. It accepts only
+complete `verified` records whose previous and applied rates differ, and shows
+the model, both comparisons, check time and exact workflow receipt. GLM-5.1
+moved from $1.40 input and $4.40 output to $1.19 and $3.74. Unchanged,
+incomplete and held records do not enter the panel. No price data was edited in
+this maintenance batch.
+
+The exact reviewed head `31409fd0cc4e817348b8ccea02b88bdbc9e7fcd3`
+passed [hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/44707037111)
+with no review findings and merged normally as
+`a342cd8f79e833e2ca350ec8a91f0414ecda92c0`.
+[Pages run 44707471503](https://github.com/valorifutures/softcat.ai/actions/runs/44707471503)
+passed recovery, boundary, build and deploy jobs for that merge.
+
+Local validation passed 232 JavaScript tests, 29 Python publication tests, 141
+bot tests, every content/data/Horizon validator, the 650-page production build
+and the offline audit. The audit checked 34,193 internal links, 3,343 local
+assets or metadata references and 46,756 accessibility and document elements
+with zero errors.
+
+The live canonical Pipeline showed the one verified GLM-5.1 change, its
+19 November 2026 14:38 UTC check and exact snapshot-run link. Both held-price
+cards and all four retained-versus-quoted comparisons remained visible. The
+route had no duplicate IDs, broken images or desktop horizontal overflow.
+Narrow viewport and physical touch rendering were not verified.
+
+The scheduled [price run 44545938911](https://github.com/valorifutures/softcat.ai/actions/runs/44545938911)
+passed refresh and publication jobs on 19 November. No duplicate refresh was
+launched. The operating guide remains on main and `.github/workflows/feral.yml`
+remains manual-only. Draft PR #288 still belongs to the separate Feral owner.
+No Horizon prediction, Feral creative file, archived News or Radar record,
+retired generator, review date or price data changed in this batch.
