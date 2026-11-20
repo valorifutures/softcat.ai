@@ -6,7 +6,7 @@ import allRuns from '../data/pipeline/runs.json';
 import allBots from '../data/pipeline/bots.json';
 import allModels from '../data/models.json';
 import priceSnapshot from '../data/model-price-snapshot.json';
-import { timestamp, newestRun, overdueHours, runsInWindow, formatRecordedTime, priceRunDetail, heldPriceChecks, publishedRunCount } from '../lib/pipeline-status.mjs';
+import { timestamp, newestRun, overdueHours, runsInWindow, formatRecordedTime, priceRunDetail, heldPriceChecks, appliedPriceChanges, publishedRunCount } from '../lib/pipeline-status.mjs';
 
 const snapshot = new Date();
 const botMap = Object.fromEntries(allBots.map((bot) => [bot.id, bot]));
@@ -16,6 +16,7 @@ const runs = [...allRuns].filter((run) => Number.isFinite(timestamp(run.timestam
 const recentRuns = runsInWindow(runs, snapshot.getTime());
 const publishedRuns = publishedRunCount(recentRuns);
 const heldPrices = heldPriceChecks(priceSnapshot);
+const appliedPrices = appliedPriceChanges(priceSnapshot);
 const costedRuns = recentRuns.filter((run) => run.cost_usd != null);
 const totalCost = costedRuns.reduce((sum, run) => sum + run.cost_usd, 0);
 const lastRun = newestRun(runs);
@@ -86,6 +87,22 @@ const currentSchedule = [
       {!!recentRuns.length && <p class="mt-4 text-xs text-text-muted">A partial run can publish checked output while holding other items for review. This percentage counts recorded output, not overall job health.</p>}
       {!!costedRuns.length && <p class="mt-4 text-xs text-text-muted">Cost data exists for {costedRuns.length} of {recentRuns.length} runs. It excludes hosting and unlogged activity.</p>}
     </section>
+
+    {!!appliedPrices.length && <section class="mb-12" aria-labelledby="applied-prices-heading">
+      <h2 id="applied-prices-heading" class="font-mono text-lg text-text-bright mb-2">Verified price changes published</h2>
+      <p class="text-sm text-text-muted mb-5 max-w-3xl leading-relaxed">These latest catalogue changes passed the automatic checks and updated the prices used by our calculators.</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        {appliedPrices.map((check) => <article class="rounded-lg border border-neon-green/30 bg-neon-green/5 p-5">
+          <h3 class="font-mono text-base text-text-bright">{modelMap[check.id]?.name ?? check.id}</h3>
+          <p class="mt-1 break-all font-mono text-xs text-text-muted">{check.id}</p>
+          <dl class="mt-4 grid gap-3 text-sm">
+            <div class="flex flex-wrap items-baseline justify-between gap-2"><dt class="text-text-muted">Input USD / 1M</dt><dd class="font-mono text-text-primary"><span class="line-through text-text-muted">{priceLabel(check.previous.inputPrice)}</span> → {priceLabel(check.applied.inputPrice)}</dd></div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2"><dt class="text-text-muted">Output USD / 1M</dt><dd class="font-mono text-text-primary"><span class="line-through text-text-muted">{priceLabel(check.previous.outputPrice)}</span> → {priceLabel(check.applied.outputPrice)}</dd></div>
+          </dl>
+        </article>)}
+      </div>
+      <p class="mt-4 text-xs text-text-muted leading-relaxed">Checked <RecordedTime value={priceSnapshot.checkedAt} relative={false} /> against OpenRouter's public catalogue. {priceWorkflow && <a class="text-neon-cyan underline underline-offset-4" href={priceWorkflow}>Inspect the snapshot run ↗</a>}</p>
+    </section>}
 
     {!!heldPrices.length && <section class="mb-12" aria-labelledby="held-prices-heading">
       <h2 id="held-prices-heading" class="font-mono text-lg text-text-bright mb-2">Price changes held for review</h2>

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { newestRun, recordState, relativeAge, runsInWindow, latestPriceRun, overdueHours, priceRunDetail, heldPriceChecks, publishedRunCount } from '../../src/lib/pipeline-status.mjs';
+import { newestRun, recordState, relativeAge, runsInWindow, latestPriceRun, overdueHours, priceRunDetail, heldPriceChecks, appliedPriceChanges, publishedRunCount } from '../../src/lib/pipeline-status.mjs';
 
 const now = Date.parse('2026-09-12T21:00:00Z');
 const old = { timestamp: '2026-07-03T08:30:48.697123+00:00', status: 'success' };
@@ -61,6 +61,18 @@ test('held price details expose only complete review-needed comparisons', () => 
     { ...held, id: 'example/incomplete', quoted: { inputPrice: null, outputPrice: 4 } },
   ] }), [held]);
   assert.deepEqual(heldPriceChecks(null), []);
+});
+
+test('published price details expose only complete verified changes', () => {
+  const changed = { id: 'example/changed', status: 'verified', previous: { inputPrice: 1, outputPrice: 2 }, applied: { inputPrice: 0.8, outputPrice: 1.6 } };
+  assert.deepEqual(appliedPriceChanges({ checks: [
+    changed,
+    { ...changed, id: 'example/same', applied: changed.previous },
+    { ...changed, id: 'example/held', status: 'review-needed' },
+    { ...changed, id: '', status: 'verified' },
+    { ...changed, id: 'example/incomplete', applied: { inputPrice: null, outputPrice: 1.6 } },
+  ] }), [changed]);
+  assert.deepEqual(appliedPriceChanges(null), []);
 });
 
 test('publication counts use recorded output rather than a broad status label', () => {
