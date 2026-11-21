@@ -2240,3 +2240,48 @@ launched. The operating guide remains on main and `.github/workflows/feral.yml`
 remains manual-only. Draft PR #288 still belongs to the separate Feral owner.
 No Horizon prediction, Feral creative file, archived News or Radar record,
 retired generator, review date or price data changed in this batch.
+
+## 21 November 2026, keep outage reports consistent with live DNS evidence
+
+A real visitor replay found that the Domain and Outage Checker could say “No
+live checks were performed” in an incident brief immediately before appending
+fresh Cloudflare and Google DNS observations. The individual DNS results were
+accurate and already limited their claim, but the combined report contradicted
+itself.
+
+[PR #309](https://github.com/valorifutures/softcat.ai/pull/309) makes incident
+briefs and AI prompts acknowledge when public DNS observations are included,
+while retaining the explicit limit that no website or app availability check
+was performed. A regression covers both outputs. The exact reviewed head
+`d80d77b1ef6be1f3d6fd1539c7753ff7b35b49d7` passed
+[hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/44883864038)
+with no review findings and merged normally as
+`cab25895db8dbf32a9837b512c38da1a64e4ecc6`.
+[Pages run 44884103307](https://github.com/valorifutures/softcat.ai/actions/runs/44884103307)
+passed recovery, boundary, build and deployment for that exact merge.
+
+Local validation passed 233 JavaScript tests, 29 Python publication tests, 141
+bot tests, every content/data/Horizon validator, the 650-page production build
+and the offline audit. The audit checked 34,193 internal links, 3,343 local
+assets or metadata references and 46,753 accessibility and document elements
+with zero errors.
+
+On the deployed route, keyboard submission for `example.com` produced
+interpretable replies for all ten Cloudflare and Google DNS queries and retained
+the statement that DNS does not prove availability. The fictional one-app
+triage then produced a 2,070-character report that acknowledged its live DNS
+evidence, kept the availability limit and contained no contradictory no-check
+claim. Copy matched the preview exactly and Save .txt completed a download. A
+deliberately missing subdomain produced a bounded no-address result before
+publication. The footer reported the 21 November 2026 08:18 UTC build. A forced
+partial-resolver failure, narrow viewport and physical touch remain unverified.
+
+The scheduled [price run 44751989145](https://github.com/valorifutures/softcat.ai/actions/runs/44751989145)
+succeeded on 20 November and published its validated snapshot: 477 catalogue
+models, 39 tracked, 31 matched, 29 verified, eight not listed, two needing
+review and no price changes. No duplicate refresh was launched. The operating
+guide remains on main and `.github/workflows/feral.yml` remains manual-only.
+Draft PR #288 still belongs to the separate Feral owner. No Horizon prediction,
+Feral creative file, archived News or Radar record, retired generator, review
+date or price data changed in this batch.
+

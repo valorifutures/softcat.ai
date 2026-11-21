@@ -1,27 +1,28 @@
 {
-  "updated_at": "2026-11-20T09:06:11Z",
+  "updated_at": "2026-11-21T08:20:50Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "a342cd8f79e833e2ca350ec8a91f0414ecda92c0",
-    "at": "2026-11-20T09:06:11Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/44707471503"
+    "sha": "cab25895db8dbf32a9837b512c38da1a64e4ecc6",
+    "at": "2026-11-21T08:20:50Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/44884103307"
   },
   "maintenance_receipt": {
-    "date": "2026-11-20",
-    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/307",
-    "reviewed_head": "31409fd0cc4e817348b8ccea02b88bdbc9e7fcd3",
-    "merge_sha": "a342cd8f79e833e2ca350ec8a91f0414ecda92c0",
-    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44707037111",
-    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44707471503",
-    "outcome": "Pipeline now lists complete verified price changes that actually reached calculators. GLM-5.1 shows the previous and applied input/output rates, recorded check time and exact source workflow; incomplete, unchanged or held records fail closed. No price data was edited in this maintenance batch.",
-    "validation": "232 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,756 accessibility/document elements passed with zero errors.",
+    "date": "2026-11-21",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/309",
+    "reviewed_head": "d80d77b1ef6be1f3d6fd1539c7753ff7b35b49d7",
+    "merge_sha": "cab25895db8dbf32a9837b512c38da1a64e4ecc6",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44883864038",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44884103307",
+    "outcome": "Outage incident briefs and AI prompts now acknowledge appended live public DNS observations instead of claiming no live checks occurred, while preserving the explicit limit that DNS did not check website or app availability.",
+    "validation": "233 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,753 accessibility/document elements passed with zero errors.",
     "live_checks": [
-      "The canonical /pipeline/ route showed one published GLM-5.1 change: input $1.40 to $1.19 and output $4.40 to $3.74, with the 19 November 2026 14:38 UTC check and exact workflow link.",
-      "The two held-price cards and all four retained-versus-quoted comparisons remained visible, preserving the existing review quarantine.",
-      "The canonical route had no duplicate IDs, broken images or desktop horizontal overflow. Narrow viewport and physical touch rendering were not verified."
+      "The live browser submitted example.com with Enter; both Cloudflare and Google returned interpretable replies for all ten DNS queries, and the page continued to say that DNS does not prove website or app availability.",
+      "The live incident brief acknowledged its appended public DNS observations, retained the website/app availability limit and no longer contained the contradictory claim that no live checks were performed.",
+      "Copy returned the exact 2,070-character preview and Save .txt completed a download. A deliberately missing subdomain produced a bounded no-address result before publication.",
+      "The deployed footer reported the 21 November 2026 08:18 UTC build. Narrow viewport, physical touch and a forced partial-resolver network failure were not verified."
     ],
-    "price_status": "Scheduled run 44545938911 passed refresh and publication jobs on 19 November. Its saved snapshot recorded one verified applied change and two held changes; no duplicate refresh launched.",
+    "price_status": "Scheduled run 44751989145 passed on 20 November and published its validated snapshot: 477 catalogue models, 39 tracked, 31 matched, 29 verified, 8 not listed, 2 review-needed and no price changes. No duplicate refresh launched.",
     "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator, review date or price data changed. Draft PR #288 remains with the separate Feral owner."
   },
   "horizon_review_receipt": {
@@ -819,7 +820,8 @@
       "No AI provider call or claims of website availability",
       "Incident output remains in browser unless copied or downloaded"
     ],
-    "next": "Verify the actual browser journey, including partial DNS failure, then record the results."
+    "next": "Verify a forced partial-resolver failure plus narrow viewport and physical touch behaviour.",
+    "live_followup_2026_11_21": "Live DNS, keyboard submission, fictional triage, exact clipboard output and text download were verified after PR #309. The report contradiction found during that journey was fixed and rechecked on the deployed build."
   },
   "site_audit_2026_11_09": {
     "basis": "Main deploy 2117355d87d7ebb4d4eb47c415d5d608ca7a7dd3, GitHub run 42707125740; offline audit: 647 pages, 33384 internal links, 3328 local refs, zero errors",
@@ -1051,5 +1053,20 @@
     "live_verification": "The canonical Pipeline showed the one verified applied change and its exact source run. The two held changes remained quarantined. It had no duplicate IDs, broken images or desktop horizontal overflow.",
     "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. The latest scheduled price workflow passed; no duplicate refresh was launched. CALIPER draft PR #288 remains with the separate Feral owner.",
     "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator, review date or price data changed. Narrow viewport and physical touch rendering were not verified."
+  },
+  "maintenance_2026_11_21": {
+    "date": "2026-11-21",
+    "problem": "A live visitor could run the public DNS comparison, load a triage example and receive a report saying no live checks were performed immediately before the fresh DNS observations.",
+    "change": "Incident briefs and AI prompts now use the presence of a DNS report to describe the included public DNS evidence and the exact availability limit. A regression covers both output paths.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/309",
+    "reviewed_head": "d80d77b1ef6be1f3d6fd1539c7753ff7b35b49d7",
+    "merge_sha": "cab25895db8dbf32a9837b512c38da1a64e4ecc6",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44883864038",
+    "pages_deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44884103307",
+    "price_workflow": "https://github.com/valorifutures/softcat.ai/actions/runs/44751989145",
+    "validation": "233 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,753 accessibility/document elements passed with zero errors.",
+    "live_verification": "The live browser submitted example.com with Enter; both Cloudflare and Google returned interpretable replies for all ten DNS queries, and the page continued to say that DNS does not prove website or app availability. The live incident brief acknowledged its appended public DNS observations, retained the website/app availability limit and no longer contained the contradictory claim that no live checks were performed. Copy returned the exact 2,070-character preview and Save .txt completed a download. A deliberately missing subdomain produced a bounded no-address result before publication. The deployed footer reported the 21 November 2026 08:18 UTC build. Narrow viewport, physical touch and a forced partial-resolver network failure were not verified.",
+    "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. The latest scheduled price workflow passed; no duplicate refresh was launched. CALIPER draft PR #288 remains with the separate Feral owner.",
+    "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator, review date or price data changed. Draft PR #288 remains with the separate Feral owner."
   }
 }
