@@ -1,23 +1,23 @@
 {
-  "checkedAt": "2026-11-20T14:17:26.971Z",
+  "checkedAt": "2026-11-21T13:39:44.211Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "26a7cbcbb4e3ac78d6db2234c7c1183e8e691deffa7144960a530bc0fbb64e65",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/44751989145",
+  "sourceSha256": "6fb5297f13a563fd7d668dd68268de53281225ee30d96ee5406e2ec8ea589995",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/44909948420",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 477,
-  "previousCatalogueModels": 479,
-  "catalogueFloor": 384,
+  "catalogueModels": 476,
+  "previousCatalogueModels": 477,
+  "catalogueFloor": 382,
   "trackedModels": 39,
   "matched": 31,
   "expectedListedModels": 31,
   "expectedListedMatched": 31,
   "newlyNotListed": 0,
   "allowedNewlyNotListed": 3,
-  "verified": 29,
+  "verified": 28,
   "notListed": 8,
-  "reviewNeeded": 2,
+  "reviewNeeded": 3,
   "unverified": 0,
-  "priceChanges": 0,
+  "priceChanges": 2,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -197,12 +197,12 @@
         "outputPrice": 1.14
       },
       "quoted": {
-        "inputPrice": 0.29,
-        "outputPrice": 1.14
+        "inputPrice": 0.25,
+        "outputPrice": 1
       },
       "applied": {
-        "inputPrice": 0.29,
-        "outputPrice": 1.14
+        "inputPrice": 0.25,
+        "outputPrice": 1
       },
       "issues": []
     },
@@ -340,20 +340,33 @@
     },
     {
       "id": "minimax/minimax-m2.7",
-      "status": "verified",
+      "status": "review-needed",
       "previous": {
         "inputPrice": 0.21,
         "outputPrice": 0.84
       },
       "quoted": {
-        "inputPrice": 0.21,
-        "outputPrice": 0.84
+        "inputPrice": 0.6,
+        "outputPrice": 1.8
       },
       "applied": {
         "inputPrice": 0.21,
         "outputPrice": 0.84
       },
-      "issues": []
+      "issues": [
+        {
+          "field": "inputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.21,
+          "quoted": 0.6
+        },
+        {
+          "field": "outputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.84,
+          "quoted": 1.8
+        }
+      ]
     },
     {
       "id": "mistralai/mistral-large-2512",
@@ -652,12 +665,12 @@
         "outputPrice": 3.74
       },
       "quoted": {
-        "inputPrice": 1.19,
-        "outputPrice": 3.74
+        "inputPrice": 1.4,
+        "outputPrice": 4.4
       },
       "applied": {
-        "inputPrice": 1.19,
-        "outputPrice": 3.74
+        "inputPrice": 1.4,
+        "outputPrice": 4.4
       },
       "issues": []
     },
