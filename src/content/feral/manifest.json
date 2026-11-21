@@ -108,5 +108,15 @@
     "concept_by": "feral-director",
     "type": "game",
     "born": "2026-11-09"
+  },
+  {
+    "slug": "caliper",
+    "title": "CALIPER",
+    "blurb": "Put one line on the bench. Measure its visible structure. Leave its meaning alone.",
+    "route": "/feral/caliper",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "instrument",
+    "born": "2026-11-10"
   }
 ]
