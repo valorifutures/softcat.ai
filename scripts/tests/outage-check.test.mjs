@@ -108,3 +108,14 @@ test('export distinguishes reported facts and unknown causes', () => {
   assert.match(prompt, /Do not invent a root cause/);
   assert.match(update, /Cause: not confirmed/);
 });
+
+test('export describes live DNS observations without claiming an availability check', () => {
+  const answers = { scope: 'group', symptom: 'one-service', comparison: 'fails' };
+  const result = assessOutage(answers);
+  const brief = formatBrief(answers, result, true);
+  const prompt = formatAiPrompt(answers, result, true);
+  assert.match(brief, /Live public DNS observations are included below/);
+  assert.match(brief, /no website or app availability check was performed/);
+  assert.doesNotMatch(brief, /No live checks were performed/);
+  assert.match(prompt, /Live public DNS observations are included below/);
+});
