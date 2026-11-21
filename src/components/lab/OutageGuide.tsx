@@ -45,8 +45,8 @@ export default function OutageGuide({ domainReport = '' }: { domainReport?: stri
   }
 
   const exportedText = assessment
-    ? (activeExport === 'brief' ? formatBrief(answers, assessment)
-      : activeExport === 'prompt' ? formatAiPrompt(answers, assessment)
+    ? (activeExport === 'brief' ? formatBrief(answers, assessment, Boolean(domainReport))
+      : activeExport === 'prompt' ? formatAiPrompt(answers, assessment, Boolean(domainReport))
       : formatUpdate(answers, assessment)) + (domainReport ? '\n\n' + domainReport : '')
     : '';
 

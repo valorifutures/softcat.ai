@@ -213,11 +213,13 @@ function clean(value, max = 600) {
   return String(value ?? '').trim().slice(0, max);
 }
 
-export function formatBrief(answers, assessment) {
+export function formatBrief(answers, assessment, includesDnsObservations = false) {
   if (!assessment) return '';
   const lines = [
     'OUTAGE FIRST AID | OBSERVATION BRIEF',
-    'Prepared using SOFT CAT. No live checks were performed.',
+    includesDnsObservations
+      ? 'Prepared using SOFT CAT. Live public DNS observations are included below; no website or app availability check was performed.'
+      : 'Prepared using SOFT CAT. No live checks were performed.',
     '',
     'What people reported (not independently verified)',
     'Affected: ' + labelOf('scope', answers.scope),
@@ -244,7 +246,7 @@ export function formatBrief(answers, assessment) {
   return lines.join('\n');
 }
 
-export function formatAiPrompt(answers, assessment) {
+export function formatAiPrompt(answers, assessment, includesDnsObservations = false) {
   if (!assessment) return '';
   return [
     'Help me investigate an internet or app problem. Use plain UK English.',
@@ -257,7 +259,7 @@ export function formatAiPrompt(answers, assessment) {
     'Do not invent a root cause, outage scope, provider notice or recovery time.',
     '',
     'REPORT START',
-    formatBrief(answers, assessment),
+    formatBrief(answers, assessment, includesDnsObservations),
     'REPORT END',
   ].join('\n');
 }
