@@ -1,29 +1,29 @@
 {
-  "updated_at": "2026-11-21T08:20:50Z",
+  "updated_at": "2026-11-22T08:53:14Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "cab25895db8dbf32a9837b512c38da1a64e4ecc6",
-    "at": "2026-11-21T08:20:50Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/44884103307"
+    "sha": "44403ba16eeeccfeec504f3f849bba7430e485a3",
+    "at": "2026-11-22T08:53:14Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45004698231"
   },
   "maintenance_receipt": {
-    "date": "2026-11-21",
-    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/309",
-    "reviewed_head": "d80d77b1ef6be1f3d6fd1539c7753ff7b35b49d7",
-    "merge_sha": "cab25895db8dbf32a9837b512c38da1a64e4ecc6",
-    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/44883864038",
-    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/44884103307",
-    "outcome": "Outage incident briefs and AI prompts now acknowledge appended live public DNS observations instead of claiming no live checks occurred, while preserving the explicit limit that DNS did not check website or app availability.",
-    "validation": "233 JavaScript tests, 29 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,753 accessibility/document elements passed with zero errors.",
+    "date": "2026-11-22",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/311",
+    "reviewed_head": "6a5a78a9528457f164e326b352ed7c3181953eb6",
+    "merge_sha": "44403ba16eeeccfeec504f3f849bba7430e485a3",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45004481303",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45004698231",
+    "outcome": "Pipeline now labels 05:30 UTC as the configured price target, cites GitHub's documented delay and drop behaviour for scheduled workflows, and makes the dated run receipts the execution record. The unsupported one-hour execution-window claim is removed.",
+    "validation": "233 JavaScript tests, 30 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page production build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,759 accessibility/document elements passed with zero errors.",
     "live_checks": [
-      "The live browser submitted example.com with Enter; both Cloudflare and Google returned interpretable replies for all ten DNS queries, and the page continued to say that DNS does not prove website or app availability.",
-      "The live incident brief acknowledged its appended public DNS observations, retained the website/app availability limit and no longer contained the contradictory claim that no live checks were performed.",
-      "Copy returned the exact 2,070-character preview and Save .txt completed a download. A deliberately missing subdomain produced a bounded no-address result before publication.",
-      "The deployed footer reported the 21 November 2026 08:18 UTC build. Narrow viewport, physical touch and a forced partial-resolver network failure were not verified."
+      "The deployed Pipeline showed the configured 05:30 UTC target, the schedule-not-guarantee explanation, the dated-receipt rule and the official GitHub troubleshooting link. The old one-hour claim was absent.",
+      "The two applied changes (DeepSeek V3 and GLM 5.1), three held reviews (Llama 4 Maverick, MiniMax M2.7 and GLM-5) and latest workflow receipt remained visible.",
+      "The live desktop route had one main landmark, no broken images and no horizontal overflow.",
+      "Physical touch and narrow-viewport rendering were not verified. The managed local Chromium environment blocked browser startup at socket creation."
     ],
-    "price_status": "Scheduled run 44751989145 passed on 20 November and published its validated snapshot: 477 catalogue models, 39 tracked, 31 matched, 29 verified, 8 not listed, 2 review-needed and no price changes. No duplicate refresh launched.",
-    "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator, review date or price data changed. Draft PR #288 remains with the separate Feral owner."
+    "price_status": "Scheduled run 44909948420 passed on 21 November: 476 catalogue models, 39 tracked, 31 matched, 28 verified, 8 not listed, 3 review-needed and 2 applied price changes. The 22 November 05:30 target had no run receipt by the maintenance pass; this was not treated as a failure or refreshed manually.",
+    "scope": "No Horizon prediction or review date, Feral creative file, archived News or Radar record, retired generator or price data changed. The Feral GitHub workflow remains manual-only and docs/site-operations.md remains on main."
   },
   "horizon_review_receipt": {
     "date": "2026-09-16",
