@@ -3,6 +3,57 @@ Total output lines: 1988
 
 # Improvement log
 
+## 22 November 2026, scheduled-workflow receipt clarity
+
+The pass began from exact main `6ecd06f21a136e6b448c23671b62eb737108404a`
+in a fresh isolated checkout. There was no open pull request, current active-work
+marker or overlapping site run. `docs/site-operations.md` remains on main and
+the Feral GitHub workflow remains manual-only. No legacy generator, Feral cycle
+or duplicate price refresh was started.
+
+Pipeline's own recent receipts disproved its claim that cloud start times vary
+by at most one hour: the configured 05:30 UTC price job had recently started
+roughly seven to nine hours later. The page now describes 05:30 UTC as the
+configured target, cites [GitHub's scheduled-workflow troubleshooting
+guidance](https://docs.github.com/en/actions/how-tos/troubleshoot-workflows#scheduled-workflows-running-at-unexpected-times)
+and says that the dated receipts show what actually ran. GitHub documents that
+scheduled workflows can be delayed under load and may be dropped. A regression
+test rejects the removed one-hour promise.
+
+The latest completed price receipt remained
+[run 44909948420](https://github.com/valorifutures/softcat.ai/actions/runs/44909948420):
+476 catalogue models, 39 tracked, 31 matched, 28 verified, eight not listed,
+three review-needed and two applied changes. DeepSeek V3 moved from 0.29/1.14
+to 0.25/1 and GLM 5.1 from 1.19/3.74 to 1.4/4.4. Llama 4 Maverick, MiniMax M2.7
+and GLM-5 remained held because their deltas exceeded the automatic guard. The
+22 November 05:30 target had no receipt during this pass; no failure or fresh
+snapshot was invented and no duplicate refresh was launched.
+
+All content, data and Horizon validators passed, along with 233 JavaScript
+tests, 141 bot tests and 30 Python publication tests. The 650-page production
+build and offline audit passed with 34,193 internal links, 3,343 asset or
+metadata references, 46,759 accessibility and document elements, 413 search
+entries, 184 content records and 227 retirements, with zero errors.
+
+[PR #311](https://github.com/valorifutures/softcat.ai/pull/311) passed the
+[hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/45004481303)
+on exact independently reviewed head
+`6a5a78a9528457f164e326b352ed7c3181953eb6`. Main was re-read unchanged
+before normal squash merge
+`44403ba16eeeccfeec504f3f849bba7430e485a3`. The resulting
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/45004698231)
+succeeded.
+
+The live Pipeline showed the configured target, schedule-not-guarantee
+explanation, official GitHub link, two applied changes, three held reviews and
+latest workflow receipt. It had one main landmark, no broken images and no
+desktop horizontal overflow. Physical touch and narrow-viewport rendering were
+not verified; managed local Chromium was blocked at socket creation.
+
+No Horizon target or review date, Feral creative file, archived News or Radar
+record, retired generator or price data changed.
+
+
 ## 12 October 2026, Horizon evidence review
 
 Current main was `38d40f6982cc7ae490ccee74da694191155d1211`, with no open
