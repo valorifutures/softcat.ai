@@ -61,6 +61,13 @@ class ArchiveClarityTests(unittest.TestCase):
         self.assertIn("domain checker", home)
         self.assertIn(current_creation["title"].lower(), home)
 
+    def test_pipeline_does_not_promise_an_execution_window(self):
+        content = self.text("/pipeline")
+        self.assertIn("schedule times are targets, not execution guarantees", content)
+        self.assertIn("scheduled workflows can be delayed under load", content)
+        self.assertIn("the dated receipts below show what actually ran", content)
+        self.assertNotIn("vary by up to an hour", content)
+
 
 if __name__ == "__main__":
     unittest.main()
