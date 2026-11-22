@@ -34,7 +34,7 @@ const currentSchedule = [
   { name: 'Site maintenance', cadence: 'Daily, around 08:00 Europe/London', start: 'From 16 September 2026', description: 'Checks the site, fixes useful small problems and reviews pending work. Changes pass review and publication checks.', href: 'https://github.com/valorifutures/softcat.ai/blob/main/docs/improvement-log.md', link: 'Maintenance record' },
   { name: 'Feral council', cadence: 'Tuesday and Friday, around 15:00 Europe/London', start: 'From 18 September 2026', description: 'One bounded council cycle. New experiments must pass critique and publication checks before they appear.', href: '/feral/#ledger', link: 'Feral ledger' },
   { name: 'Evidence review', cadence: 'Monday, around 15:00 Europe/London', start: 'From 21 September 2026', description: 'Reviews our five predictions against primary evidence, checks model records and considers useful prompt and tool updates.', href: '/horizon/', link: 'Our predictions' },
-  { name: 'Model price snapshots', cadence: 'Daily at 05:30 UTC', start: 'Existing GitHub Actions schedule', description: 'Checks tracked prices against the public provider catalogue. Validated changes are published with their actual check dates.', href: 'https://github.com/valorifutures/softcat.ai/actions/workflows/model-prices.yml', link: 'Price-check runs' },
+  { name: 'Model price snapshots', cadence: 'Configured daily at 05:30 UTC', start: 'Existing GitHub Actions schedule', description: 'Checks tracked prices against the public provider catalogue. Validated changes are published with their actual check dates.', href: 'https://github.com/valorifutures/softcat.ai/actions/workflows/model-prices.yml', link: 'Price-check runs' },
 ];
 ---
 <BaseLayout title="Pipeline" description="SOFT CAT's current cloud schedule, published run records and recorded API costs.">
@@ -48,7 +48,7 @@ const currentSchedule = [
 
     <section class="mb-10" aria-labelledby="schedule-heading">
       <h2 id="schedule-heading" class="font-mono text-lg text-text-bright mb-2">Current schedule</h2>
-      <p class="text-sm text-text-muted mb-5 max-w-3xl leading-relaxed">These schedules were first configured on <time datetime="2026-09-15">15 September 2026</time>. Cloud start times can vary by up to an hour. A configured schedule does not prove an unattended run.</p>
+      <p class="text-sm text-text-muted mb-5 max-w-3xl leading-relaxed">These schedules were first configured on <time datetime="2026-09-15">15 September 2026</time>. Schedule times are targets, not execution guarantees. <a class="text-neon-cyan underline underline-offset-4" href="https://docs.github.com/en/actions/how-tos/troubleshoot-workflows#scheduled-workflows-running-at-unexpected-times">GitHub documents that scheduled workflows can be delayed under load and may be dropped ↗</a>. The dated receipts below show what actually ran.</p>
       <div class="grid md:grid-cols-2 gap-4">
         {currentSchedule.map((job) => <article class="rounded-lg border border-neon-green/20 bg-surface p-5">
           <h3 class="font-mono text-base text-text-bright">{job.name}</h3>
