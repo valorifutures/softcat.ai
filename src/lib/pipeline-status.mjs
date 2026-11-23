@@ -39,9 +39,21 @@ export function recordState(run, thresholdHours = 36, now = Date.now()) {
   if (time > now + 60_000) return { label: 'Check timestamp', tone: 'amber' };
   if (run.status === 'error') return { label: 'Last run failed', tone: 'red' };
   if (now - time > thresholdHours * 3_600_000) return { label: 'No recent run recorded', tone: 'amber' };
-  if (run.status === 'partial') return { label: 'Last run partial', tone: 'amber' };
+  if (run.status === 'partial') return {
+    label: runStatusLabel(run) === 'published with review holds' ? 'Published with review holds' : 'Last run partial',
+    tone: 'amber',
+  };
   if (run.status === 'success') return { label: 'Last run succeeded', tone: 'green' };
   return { label: 'Result unavailable', tone: 'muted' };
+}
+
+export function runStatusLabel(run) {
+  if (run?.status === 'partial' && Number.isSafeInteger(run.items_published) && run.items_published > 0 &&
+    Number.isSafeInteger(run.items_rejected) && run.items_rejected > 0) return 'published with review holds';
+  if (run?.status === 'success') return 'succeeded';
+  if (run?.status === 'error') return 'failed';
+  if (run?.status === 'partial') return 'partial';
+  return 'status unavailable';
 }
 
 export function priceRunDetail(run) {

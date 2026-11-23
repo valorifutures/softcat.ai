@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { newestRun, recordState, relativeAge, runsInWindow, latestPriceRun, overdueHours, priceRunDetail, heldPriceChecks, appliedPriceChanges, publishedRunCount } from '../../src/lib/pipeline-status.mjs';
+import { newestRun, recordState, relativeAge, runsInWindow, latestPriceRun, overdueHours, priceRunDetail, heldPriceChecks, appliedPriceChanges, publishedRunCount, runStatusLabel } from '../../src/lib/pipeline-status.mjs';
 
 const now = Date.parse('2026-09-12T21:00:00Z');
 const old = { timestamp: '2026-07-03T08:30:48.697123+00:00', status: 'success' };
@@ -47,9 +47,13 @@ test('a successful roster proposal cannot refresh the pricing timestamp', () => 
 test('a partial price publication says what shipped and what was held', () => {
   const partial = { bot: 'model_bot', job: 'prices', status: 'partial', items_published: 1, items_rejected: 2 };
   assert.equal(priceRunDetail(partial), 'Snapshot published · 2 checks held for review');
+  assert.equal(runStatusLabel(partial), 'published with review holds');
+  assert.equal(recordState({ ...partial, timestamp: '2026-09-12T20:30:00Z' }, 36, now).label, 'Published with review holds');
   assert.equal(priceRunDetail({ ...partial, items_rejected: 1 }), 'Snapshot published · 1 check held for review');
   assert.equal(priceRunDetail({ ...partial, bot: 'thought_bot' }), '');
   assert.equal(priceRunDetail({ ...partial, items_rejected: 0 }), '');
+  assert.equal(runStatusLabel({ ...partial, items_rejected: 0 }), 'partial');
+  assert.equal(recordState({ status: 'partial', timestamp: '2026-09-12T20:30:00Z' }, 36, now).label, 'Last run partial');
 });
 
 test('held price details expose only complete review-needed comparisons', () => {
