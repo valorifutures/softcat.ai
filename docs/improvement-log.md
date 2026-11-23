@@ -1,7 +1,50 @@
-Warning: truncated output (original token count: 46293)
-Total output lines: 1988
-
 # Improvement log
+
+## 23 November 2026, price publication status
+
+The pass began from exact main `9d465cb1e6025159fc614beda32aabd903f65ee6`
+in a fresh isolated checkout. There was no open pull request, current active-work
+marker or overlapping site run. `docs/site-operations.md` remains on main and
+the Feral GitHub workflow remains manual-only. No legacy generator, Feral cycle
+or duplicate price refresh was started.
+
+The latest [scheduled price run](https://github.com/valorifutures/softcat.ai/actions/runs/45028005632)
+passed its refresh and publication jobs on 22 November: 476 catalogue models,
+39 tracked, 31 matched, 28 verified, eight not listed, three held for review
+and no applied price changes. Pipeline exposed the exact held models and counts,
+but labelled this successful bounded publication only as partial. It now says
+published with review holds when the receipt contains positive published and
+rejected counts. Generic partial runs retain their generic status, and the raw
+receipt, counts and comparisons are unchanged.
+
+All content, data and Horizon validators passed, along with 233 JavaScript
+tests, 141 bot tests and 30 Python publication tests. The 650-page production
+build and offline audit passed with 34,193 internal links, 3,343 asset or
+metadata references, 46,755 accessibility and document elements, 413 search
+entries, 184 content records and 227 retirements, with zero errors.
+
+[PR #313](https://github.com/valorifutures/softcat.ai/pull/313) passed the
+[hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/45149765303)
+on exact reviewed head `6752bbdb6060e608feccb692ca479793686fdefc`.
+Main was re-read unchanged before normal squash merge
+`beae9cd62c010dc6d81d8c3e93281c5017363f61`. The resulting
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/45150180281)
+passed recovery, authority-boundary, build, offline publication and deploy jobs.
+
+The live Pipeline says `published with review holds` on the active price record
+and run history, followed by `Snapshot published · 3 checks held for review`.
+Llama 4 Maverick, MiniMax M2.7 and GLM-5 remain visible as held comparisons.
+The page has one h1, one main landmark, no broken images, duplicate IDs,
+unnamed controls or desktop horizontal overflow.
+
+Before the change, Home, Horizon, Tools, Prompts, Research, Feral, Outage Check
+and Glossary passed the same desktop structure, asset, control-name and overflow
+checks. Physical touch and narrow-viewport rendering were not verified.
+
+No Horizon target or review date, Feral creative file, archived News or Radar
+record, retired generator or price data changed. This checkpoint also removes
+two connector truncation artefacts that preceded the log title; every dated
+entry remains intact.
 
 ## 22 November 2026, scheduled-workflow receipt clarity
 
