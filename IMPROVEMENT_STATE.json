@@ -1,28 +1,28 @@
 {
-  "updated_at": "2026-11-22T08:53:14Z",
+  "updated_at": "2026-11-23T09:52:11Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "44403ba16eeeccfeec504f3f849bba7430e485a3",
-    "at": "2026-11-22T08:53:14Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45004698231"
+    "sha": "beae9cd62c010dc6d81d8c3e93281c5017363f61",
+    "at": "2026-11-23T09:52:11Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45150180281"
   },
   "maintenance_receipt": {
-    "date": "2026-11-22",
-    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/311",
-    "reviewed_head": "6a5a78a9528457f164e326b352ed7c3181953eb6",
-    "merge_sha": "44403ba16eeeccfeec504f3f849bba7430e485a3",
-    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45004481303",
-    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45004698231",
-    "outcome": "Pipeline now labels 05:30 UTC as the configured price target, cites GitHub's documented delay and drop behaviour for scheduled workflows, and makes the dated run receipts the execution record. The unsupported one-hour execution-window claim is removed.",
-    "validation": "233 JavaScript tests, 30 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page production build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,759 accessibility/document elements passed with zero errors.",
+    "date": "2026-11-23",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/313",
+    "reviewed_head": "6752bbdb6060e608feccb692ca479793686fdefc",
+    "merge_sha": "beae9cd62c010dc6d81d8c3e93281c5017363f61",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45149765303",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45150180281",
+    "outcome": "Pipeline now labels a price snapshot that published checked output while retaining uncertain comparisons as published with review holds. The evidence-aware wording is limited to receipts with positive published and rejected counts; raw status, counts and held comparisons remain unchanged.",
+    "validation": "233 JavaScript tests, 30 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 650-page production build and an offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,755 accessibility/document elements passed with zero errors.",
     "live_checks": [
-      "The deployed Pipeline showed the configured 05:30 UTC target, the schedule-not-guarantee explanation, the dated-receipt rule and the official GitHub troubleshooting link. The old one-hour claim was absent.",
-      "The two applied changes (DeepSeek V3 and GLM 5.1), three held reviews (Llama 4 Maverick, MiniMax M2.7 and GLM-5) and latest workflow receipt remained visible.",
-      "The live desktop route had one main landmark, no broken images and no horizontal overflow.",
-      "Physical touch and narrow-viewport rendering were not verified. The managed local Chromium environment blocked browser startup at socket creation."
+      "The deployed Pipeline says Last recorded prices: 22 Nov 2026, 13:32 UTC · published with review holds and its run history uses the same evidence-aware wording.",
+      "Snapshot published · 3 checks held for review remained visible with Llama 4 Maverick, MiniMax M2.7 and GLM-5.",
+      "Pipeline had one h1, one main landmark, no broken images, duplicate IDs, unnamed controls or desktop horizontal overflow.",
+      "Home, Horizon, Tools, Prompts, Research, Feral, Outage Check and Glossary passed the same desktop structure, asset, control-name and overflow checks before the change. Physical touch and narrow-viewport rendering were not verified."
     ],
-    "price_status": "Scheduled run 44909948420 passed on 21 November: 476 catalogue models, 39 tracked, 31 matched, 28 verified, 8 not listed, 3 review-needed and 2 applied price changes. The 22 November 05:30 target had no run receipt by the maintenance pass; this was not treated as a failure or refreshed manually.",
+    "price_status": "Scheduled run 45028005632 passed on 22 November: 476 catalogue models, 39 tracked, 31 matched, 28 verified, 8 not listed, 3 review-needed and 0 price changes. Its refresh and publication jobs succeeded. No duplicate refresh was launched.",
     "scope": "No Horizon prediction or review date, Feral creative file, archived News or Radar record, retired generator or price data changed. The Feral GitHub workflow remains manual-only and docs/site-operations.md remains on main."
   },
   "horizon_review_receipt": {
