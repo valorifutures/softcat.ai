@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-23T09:52:11Z",
+  "updated_at": "2026-11-23T16:13:13Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "beae9cd62c010dc6d81d8c3e93281c5017363f61",
-    "at": "2026-11-23T09:52:11Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45150180281"
+    "sha": "31aff3e9e5db350554e9e93ceb93d2c93987fc78",
+    "at": "2026-11-23T16:13:13Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45212837190"
   },
   "maintenance_receipt": {
     "date": "2026-11-23",
@@ -1068,5 +1068,29 @@
     "live_verification": "The live browser submitted example.com with Enter; both Cloudflare and Google returned interpretable replies for all ten DNS queries, and the page continued to say that DNS does not prove website or app availability. The live incident brief acknowledged its appended public DNS observations, retained the website/app availability limit and no longer contained the contradictory claim that no live checks were performed. Copy returned the exact 2,070-character preview and Save .txt completed a download. A deliberately missing subdomain produced a bounded no-address result before publication. The deployed footer reported the 21 November 2026 08:18 UTC build. Narrow viewport, physical touch and a forced partial-resolver network failure were not verified.",
     "operations_check": "docs/site-operations.md is present and .github/workflows/feral.yml remains manual-only. The latest scheduled price workflow passed; no duplicate refresh was launched. CALIPER draft PR #288 remains with the separate Feral owner.",
     "scope": "No Horizon prediction, Feral creative file, archived News or Radar record, retired generator, review date or price data changed. Draft PR #288 remains with the separate Feral owner."
+  },
+  "horizon_review_2026_11_23": {
+    "date": "2026-11-23",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/315",
+    "reviewed_head": "83974f0232e69ab91f10396bf34bfb2e91492a39",
+    "merge_sha": "31aff3e9e5db350554e9e93ceb93d2c93987fc78",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45212183710",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45212837190",
+    "outcome": "All five forecasts were reassessed against current primary sources. Stronger benchmark, human-comparison and production-agent evidence did not meet any declared resolution test, so every target, milestone and criterion stayed unchanged. One dated event was appended and all twelve earlier events were preserved exactly.",
+    "validation": "184 Markdown files and 39 model records plus 9 tool records passed their validators; 233 JavaScript, 30 Python publication and 141 bot tests passed; 89 Horizon references passed with no errors or warnings; the 650-page production build and offline audit of 34,193 internal links, 3,343 assets or metadata references and 46,761 accessibility elements passed with zero errors.",
+    "live_verification": [
+      "All five selectors showed Reviewed 23 Nov 2026, Date unchanged, the original deadline and no days added or removed.",
+      "Each selected evidence panel showed the new review date and each history panel showed 13 published records.",
+      "The live page had one h1, one main landmark, no broken images, duplicate IDs or desktop horizontal overflow; all search and trial fields had explicit labels."
+    ],
+    "targets": {
+      "general_intelligence": "2031-12-31",
+      "agents_at_work": "2028-12-31",
+      "robotics": "2031-12-31",
+      "software_creation": "2027-12-31",
+      "education": "2029-12-31"
+    },
+    "next_review_priorities": "Seek independent frozen-system cross-domain evaluations; consecutive-case autonomous workflow denominators across customers; six-month multi-site robot economics and intervention data; ten-organisation software lifecycle results including rollbacks; and replicated delayed unassisted tutoring outcomes.",
+    "scope": "No glossary, guide, tool, prompt, Feral file, price data, legacy generator or archived News/Radar output changed. Relevant benchmark, agentic-loop, evaluation and code-review guidance was checked and did not need a new review date."
   }
 }
