@@ -1956,5 +1956,160 @@
         "uncertainty": "Benefits may depend heavily on tutor design, subject and student group. Immediate performance with assistance can improve without producing durable independent learning."
       }
     ]
+  },
+  {
+    "id": "predictions-2026-11-23",
+    "date": "2026-11-23",
+    "reason": "We reassessed all five forecasts against current primary sources on 23 November. Independent capability and benchmark evidence, a production agent factory, a new autonomous-work product, continued prospective robot trials and a randomised tutoring study sharpen the evidence and its limits. None meets a forecast’s declared resolution criteria. Every target, milestone and criterion stays unchanged, and all twelve earlier entries are preserved.",
+    "records": [
+      {
+        "earlier": "Independent teams reproduce skilled-human performance across newly created domains without task-specific tuning or undisclosed human help.",
+        "evidence": [
+          {
+            "title": "ARC Prize: GPT-6.2 Astra configuration results",
+            "url": "https://arcprize.org/results/openai-gpt-6-2-astra",
+            "date_label": "17 November 2026, assessed 23 November",
+            "finding": "ARC Prize reports 98.5% on ARC-AGI-1 and 95.8% on ARC-AGI-2 at max reasoning. On ARC-AGI-3 at the same level, it reports 70.3% with the standard harness and 99.8% with the provider adapter.",
+            "limit": "The same-model harness gap remains large. ARC-AGI-3 covers 25 interactive environments, not two independent preregistered teams testing one frozen system across our ten domains and 1,000 fresh tasks."
+          },
+          {
+            "title": "METR: Q4 2026 capability measurement update",
+            "url": "https://metr.org/blog/2026-11-20-q4-2026-capability-update/",
+            "date_label": "20 November 2026, assessed 23 November",
+            "finding": "METR reports that frontier models usually match or outperform its recruited skilled humans on selected coding and optimisation tasks. Where larger expert pools exist, models rank highly but do not always beat the top experts.",
+            "limit": "The tasks cover a selected part of AI R&D. Human baselines were sparse, expensive and subject to recruitment limits. This is not a ten-domain general-intelligence evaluation."
+          }
+        ],
+        "id": "scenario-agi",
+        "later": "Public benchmark gains fail to transfer to fresh tasks, or broad competence continues to depend on specialist retraining and extensive human correction.",
+        "milestone": "A general-purpose AI will independently demonstrate skilled-human performance across a broad set of unfamiliar cognitive tasks.",
+        "rationale": "We retain end-2031. GPT-6.2 Astra and METR’s human comparisons are strong evidence of rapid progress on unfamiliar interactive tasks, coding and optimisation. The ARC result still changes sharply with the harness, while METR’s tasks cover a selected part of AI R&D and use limited human baselines. No source supplies two preregistered teams testing one frozen system across our ten domains, so the evidence does not justify moving the date.",
+        "resolution": [
+          "Two evaluation teams independent of the model provider test the same frozen general-purpose system on independently created tasks. Each preregisters task-construction rules, scoring and human recruitment before testing, then publishes its protocol, human comparison, tools, time budgets and results.",
+          "Each evaluation covers language, mathematics, coding, factual synthesis, scientific reasoning, visual-spatial reasoning, planning, social reasoning, learning new rules and switching between tasks. Each domain contains at least 100 tasks created after the system was frozen. No task-specific retraining is allowed.",
+          "The system reaches or exceeds the median of relevant skilled adult participants in every domain under the same stated time allowance. This is our operational AGI threshold, not a claim that every definition of AGI has been satisfied."
+        ],
+        "target_date": "2031-12-31",
+        "title": "General intelligence",
+        "uncertainty": "Very uncertain timing. A generalisation breakthrough could bring this forward sharply, while persistent failures on unfamiliar tasks could put it beyond 2031. Our test is a declared working definition, not an industry standard."
+      },
+      {
+        "earlier": "Customer-confirmed 90-day results show high autonomous completion across multiple systems and sectors, including failures and recovery costs.",
+        "evidence": [
+          {
+            "title": "OpenAI: Performance Factory production workflow",
+            "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
+            "date_label": "19 November 2026, assessed 23 November",
+            "finding": "OpenAI reports more than 1,700 performance investigations and over 600 root causes in just over three months. Agents investigate, propose fixes and check recovery after deployment, while tasks persist across hand-offs.",
+            "limit": "This is one organisation and one performance workflow. Engineers review proposed changes and decide what ships. The report does not give fixed eligibility, autonomous completion, failure and escalation denominators for two workflows at ten organisations."
+          },
+          {
+            "title": "Microsoft: Autopilot rollout at Ignite 2026",
+            "url": "https://www.microsoft.com/en-us/copilot/blog/2026/11/17/copilot-at-microsoft-ignite-expanding-whats-possible-with-intelligence-built-for-work/",
+            "date_label": "17 November 2026, assessed 23 November",
+            "finding": "Microsoft says Autopilot is beginning to roll out to Frontier customers. It describes persistent recurring work across Teams, Outlook and documents, with an Entra agent identity, named manager, scoped access and logged actions.",
+            "limit": "This is a product description and early rollout, not a customer-confirmed 90-day result. It publishes no consecutive case cohort, autonomous completion share, intervention rate, failures or rescue cost."
+          }
+        ],
+        "id": "scenario-agentic-work",
+        "later": "Manual rescue, fragile integrations or operating costs prevent teams expanding beyond isolated queues.",
+        "milestone": "AI agents will run repeatable business workflows across at least ten organisations, with people managing exceptions.",
+        "rationale": "We retain end-2028. OpenAI’s production record shows a stateful agent workflow operating for more than three months, and Microsoft’s Autopilot makes identity, scoped access, audit and named management explicit. The first is one workflow at one organisation with a person deciding what ships. The second is an early product rollout without customer outcome denominators. Neither meets our ten-organisation, two-workflow and 80% autonomous-step test.",
+        "resolution": [
+          "Customer-confirmed or independently evaluated public reports name ten organisations across at least three sectors. Each runs two distinct production workflows spanning at least two business systems.",
+          "Each workflow reports at least 1,000 consecutive eligible cases over at least 90 days. At least 80% finish without a person executing workflow steps. Eligibility, acceptance tests and escalation rules are fixed before the reporting period.",
+          "People may authorise consequential decisions and handle exceptions. Reports include failures and escalations in the denominator. This predicts repeatable operation at ten organisations, not majority adoption or unattended businesses."
+        ],
+        "target_date": "2028-12-31",
+        "title": "Agents at work",
+        "uncertainty": "Timing remains uncertain. Vendor case studies rarely publish consecutive-case failure and intervention data, so the milestone could occur before enough public evidence exists to verify it."
+      },
+      {
+        "earlier": "Customers publish six-month multi-task fleet results, lower intervention rates and repeat purchases supported by full operating costs.",
+        "evidence": [
+          {
+            "title": "GXO and Apptronik: expanded Apollo trials",
+            "url": "https://investors.gxo.com/news-releases/news-release-details/gxo-and-apptronik-expand-partnership-scale-humanoid-deployment",
+            "date_label": "12 November 2026, reassessed 23 November",
+            "finding": "GXO reports one completed autonomous-picking pilot, more than 50 task evaluations in Apptronik’s training facility and plans for broader live warehouse trials from 2027. A conditional path could scale to 1,000 robots.",
+            "limit": "The wider tasks were evaluated in a training facility and future deployment depends on performance, safety and operational KPIs. No six-month ten-site result, intervention rate or full cost per successful task is published."
+          }
+        ],
+        "id": "scenario-robotics",
+        "later": "Maintenance, low utilisation, teleoperation or poor transfer between tasks keeps the cost of successful work above the existing process.",
+        "milestone": "Adaptable robots will perform several useful jobs routinely across factories and warehouses, with demonstrated operating economics.",
+        "rationale": "We retain end-2031. A fresh primary-source search found no later operational report that changes the evidence assessed last week. GXO and Apptronik still provide a useful customer-confirmed pilot, task library and conditional route to scale. The wider live trials begin in 2027, and the source still lacks ten-site, six-month, intervention and full-cost results. No date change is justified.",
+        "resolution": [
+          "One commercially available robot platform using a shared general-purpose control model runs for six months at ten production sites belonging to at least three unrelated customers. It performs at least three materially different task families overall and at least two at each site. Customers demonstrate a new task learned from instructions or examples without writing task-specific control code.",
+          "Customer-confirmed reporting shows at least 95% of task cycles completed without human intervention. The reporting period, task mix, failures and supervised or teleoperated time are disclosed.",
+          "Customer-published cost per successful task matches or beats the incumbent process, including maintenance and supervision. This is a commercial-site milestone, not a prediction of routine household humanoids."
+        ],
+        "target_date": "2031-12-31",
+        "title": "Robotics",
+        "uncertainty": "The date is uncertain because reliability, safety and manufacturing must improve together. Strong demonstrations or a product launch would not be enough to count this as achieved."
+      },
+      {
+        "earlier": "Organisations publish consecutive-ticket results with little manual rescue and reliable post-deployment checks.",
+        "evidence": [
+          {
+            "title": "OpenAI: Performance Factory production workflow",
+            "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
+            "date_label": "19 November 2026, assessed 23 November",
+            "finding": "OpenAI reports a production regression workflow that investigates alerts, proposes fixes, waits for human review and deployment, then checks whether performance returned to baseline. It tracked more than 1,700 investigations and root caused over 600 cases in just over three months.",
+            "limit": "The published denominator is investigations, not consecutive eligible software tickets. It does not state how many fixes reached production without people correcting code, or report failed deployments, rollbacks and manual rescues."
+          },
+          {
+            "title": "OpenAI: research acceleration task measurements",
+            "url": "https://openai.com/index/research-acceleration-jagged-frontier/",
+            "date_label": "18 November 2026, assessed 23 November",
+            "finding": "OpenAI reports autonomous success rising to 46% on research tasks estimated at two to four human hours and 35% on four-to-eight-hour tasks. Its task breakdown reports 79% for monitoring training runs, 35% for launching them and 25% for inference-serving code.",
+            "limit": "These are internal research tasks, not preregistered routine tickets carried through approved deployment and seven days of monitoring. The report does not supply the ten-organisation lifecycle denominator in our test."
+          }
+        ],
+        "id": "scenario-software-automation",
+        "later": "Review effort, rollback rates or legacy-system failures prevent agents reliably completing the whole delivery cycle.",
+        "milestone": "Coding agents will take most routine software tickets from specification to monitored production in at least ten organisations, with human approval.",
+        "rationale": "We retain end-2027 as an assertive forecast. OpenAI now reports both measured gains on bounded research tasks and a production workflow that spans diagnosis, proposed code, human review, deployment and recovery checks. This is closer to our full lifecycle than a merged-code count. It remains one organisation, people decide what ships, and the sources do not publish consecutive eligible tickets, manual corrections, failed deployments or rollbacks across ten organisations.",
+        "resolution": [
+          "Ten named organisations each publish customer-confirmed or independently evaluated results for at least 100 consecutive eligible tickets over at least 90 days. Eligibility is fixed before assignment: routine fixes or small features estimated at no more than one engineer-day.",
+          "More than half reach implementation, tests, review responses, approved deployment and seven days of monitoring without people writing or correcting the code. Humans still set requirements, review and authorise release.",
+          "Failed deployments, rollbacks and manually rescued tickets remain in the denominator. Merged pull requests alone do not meet the milestone. This does not predict autonomous ownership of all engineering work."
+        ],
+        "target_date": "2027-12-31",
+        "title": "Software creation",
+        "uncertainty": "This is an assertive forecast. Repository preparation, review effort and access to credible post-deployment results could delay verification. The date is our judgement, not a provider's commitment."
+      },
+      {
+        "earlier": "Multi-site trials show replicated gains on delayed, unassisted tests across learner groups.",
+        "evidence": [
+          {
+            "title": "Ennion and colleagues: AI tutoring and academic challenge",
+            "url": "https://bera-journals.onlinelibrary.wiley.com/doi/10.1111/bjet.70100",
+            "date_label": "13 November 2026, assessed 23 November",
+            "finding": "A randomised experiment with 149 students at one English sixth-form college compared human tutoring, a generative AI tutor and internet search during one 90-minute mathematics session. The AI group reported more effort and difficulty than the human-tutor group in the second section, while later challenge-seeking did not differ by condition.",
+            "limit": "The study examines behavioural and affective responses during one session. It does not estimate a term-long learning effect or test unassisted achievement eight weeks after the tutor is removed."
+          },
+          {
+            "title": "Google and Eedi: 10-week UK mathematics tutoring trial",
+            "url": "https://blog.google/products-and-platforms/products/education/impact-studies-uk-italy/",
+            "date_label": "29 October 2026, reassessed 23 November",
+            "finding": "Google reports a randomised trial with more than 1,100 pupils. AI tutoring matched human tutoring on in-platform work and intermediate quizzes, but produced no gain on independent STAR standardised tests during the trial.",
+            "limit": "Human experts reviewed every AI response in real time. The study lasted ten weeks, reports no eight-week post-intervention assessment and does not provide an independent replication or the combined effect required by our milestone."
+          }
+        ],
+        "id": "scenario-education-disruption",
+        "later": "Gains disappear without AI, fail to transfer, or depend on levels of human support that do not scale.",
+        "milestone": "Generative AI tutoring will show repeatable learning gains that last after the AI is put away, across schools or colleges.",
+        "rationale": "We retain end-2029. The new sixth-form experiment adds randomised evidence about how students respond to difficult work with an AI tutor. It found a distinct pattern of effort and difficulty, not a durable learning effect. The stronger 10-week school trial still found no standardised-test gain and used real-time human review. Neither provides two independent term-long trials with eight-week unassisted outcomes, so the target stays unchanged.",
+        "resolution": [
+          "Two independently evaluated, preregistered randomised trials of generative AI tutoring collectively cover at least 2,000 learners across at least 20 schools or colleges, with an intervention lasting at least one academic term. Each compares against a non-AI control with comparable teaching and learning time.",
+          "Both trials show statistically positive effects on unassisted assessments at least eight weeks after the intervention. Their combined standardised effect is at least 0.2, using an inverse-variance weighted mean of the reported primary outcomes.",
+          "Human teachers and safeguarding remain in place. The reports disclose attrition and assistance. This predicts demonstrated durable learning gains, not the replacement of teachers, schools or credentials."
+        ],
+        "target_date": "2029-12-31",
+        "title": "Education",
+        "uncertainty": "Benefits may depend heavily on tutor design, subject and student group. Immediate performance with assistance can improve without producing durable independent learning."
+      }
+    ]
   }
 ]
