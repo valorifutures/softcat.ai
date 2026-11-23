@@ -1,5 +1,67 @@
 # Improvement log
 
+## 23 November 2026, Horizon evidence review
+
+The review began from exact main `031880359599f16178f24a6536d50397057363fb`
+in a fresh isolated checkout. There was no open pull request, current active-work
+marker or running Action. The five forecasts were reassessed against their
+declared milestones and resolution criteria using current primary sources.
+
+GPT-6.2 Astra's ARC results and METR's Q4 human comparison strengthen the case
+for rapid progress on unfamiliar interactive tasks, coding and optimisation.
+They do not provide two independent preregistered evaluations of one frozen
+system across the ten domains in the site's general-intelligence test. OpenAI's
+Performance Factory provides a three-month production agent record, while
+Microsoft's Autopilot describes persistent work, scoped identity and audit.
+Neither publishes the ten-organisation consecutive-case denominators required
+by the agents forecast.
+
+GXO and Apptronik still report a completed pilot and prospective wider live
+trials, without six-month ten-site economics or intervention rates. OpenAI's
+software evidence reaches diagnosis, proposed fixes, human-reviewed deployment
+and recovery checks, but remains one organisation without the site's
+consecutive-ticket and rollback denominator. A new randomised sixth-form
+tutoring study measures effort, difficulty and challenge-seeking during one
+session, not durable unassisted learning. Google's larger ten-week trial still
+reports no independent standardised-test gain and used real-time human review.
+
+None of the five resolution tests is met. General intelligence remains
+31 December 2031, agents at work 31 December 2028, robotics 31 December 2031,
+software creation 31 December 2027 and education 31 December 2029. One
+23 November event was appended; all twelve earlier events were preserved
+exactly. Relevant benchmark and agentic-loop glossary entries, evaluation and
+code-review recipes, and the tool and prompt review pages already cover the
+material limits, so no unrelated wording or review timestamp changed.
+
+All content, tool-data and Horizon-reference validators passed with no errors
+or warnings, along with 233 JavaScript tests, 30 Python publication tests and
+141 bot tests. The 650-page build and offline audit passed 34,193 internal
+links, 3,343 asset or metadata references and 46,761 accessibility elements
+with zero errors.
+
+[PR #315](https://github.com/valorifutures/softcat.ai/pull/315) passed the
+[hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/45212183710)
+on exact reviewed head `83974f0232e69ab91f10396bf34bfb2e91492a39`.
+Main was re-read unchanged before normal squash merge
+`31aff3e9e5db350554e9e93ceb93d2c93987fc78`. The resulting
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/45212837190)
+passed recovery, authority-boundary, build, offline publication and deploy jobs.
+
+Live verification exercised all five selectors. Each showed the 23 November
+review, original deadline, `Date unchanged`, zero days added or removed and
+13 published history records. Horizon had one h1, one main landmark, no broken
+images, duplicate IDs or desktop horizontal overflow, and every search or trial
+field had an explicit label.
+
+Next reviews should look for independent frozen-system cross-domain evaluation;
+consecutive-case autonomous workflow results across customers; six-month
+multi-site robot economics and intervention data; software lifecycle outcomes
+including rollbacks across ten organisations; and replicated delayed,
+unassisted tutoring outcomes.
+
+No Feral file, price data, legacy generator or archived News/Radar output
+changed, and no duplicate price refresh was launched.
+
 ## 23 November 2026, price publication status
 
 The pass began from exact main `9d465cb1e6025159fc614beda32aabd903f65ee6`
