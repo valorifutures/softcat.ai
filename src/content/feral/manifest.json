@@ -108,5 +108,15 @@
     "concept_by": "feral-director",
     "type": "game",
     "born": "2026-11-09"
+  },
+  {
+    "slug": "as-you-leave",
+    "title": "AS YOU LEAVE.",
+    "blurb": "Walk through an empty house. Every room you leave disappears, taking every unchosen doorway with it.",
+    "route": "/feral/as-you-leave",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "interactive",
+    "born": "2026-11-24"
   }
 ]
