@@ -1,20 +1,20 @@
 {
-  "checkedAt": "2026-11-23T16:22:50.976Z",
+  "checkedAt": "2026-11-24T16:13:27.357Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "4cd244342efbcea8e0c9409e6b5946fbd65638ad760a3049e876dde118b342dd",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/45215787514",
+  "sourceSha256": "de4807cf096c785ecc122ae6d0754dd8c4f0ecd1cf351c82abc9f3f08e037a56",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/45434539382",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 477,
-  "previousCatalogueModels": 476,
-  "catalogueFloor": 381,
+  "catalogueModels": 470,
+  "previousCatalogueModels": 477,
+  "catalogueFloor": 382,
   "trackedModels": 39,
-  "matched": 31,
+  "matched": 30,
   "expectedListedModels": 31,
-  "expectedListedMatched": 31,
-  "newlyNotListed": 0,
+  "expectedListedMatched": 30,
+  "newlyNotListed": 1,
   "allowedNewlyNotListed": 3,
-  "verified": 28,
-  "notListed": 8,
+  "verified": 27,
+  "notListed": 9,
   "reviewNeeded": 3,
   "unverified": 0,
   "priceChanges": 1,
@@ -57,8 +57,8 @@
       "id": "qwen/qwen3.6-35b-a3b",
       "status": "verified",
       "previous": {
-        "inputPrice": 0.1,
-        "outputPrice": 0.9
+        "inputPrice": 0.05,
+        "outputPrice": 0.7
       },
       "quoted": {
         "inputPrice": 0.05,
@@ -438,18 +438,18 @@
     },
     {
       "id": "moonshotai/kimi-k2",
-      "status": "verified",
+      "status": "not-listed",
       "previous": {
         "inputPrice": 0.57,
         "outputPrice": 2.3
       },
       "quoted": {
-        "inputPrice": 0.57,
-        "outputPrice": 2.3
+        "inputPrice": null,
+        "outputPrice": null
       },
       "applied": {
-        "inputPrice": 0.57,
-        "outputPrice": 2.3
+        "inputPrice": null,
+        "outputPrice": null
       },
       "issues": []
     },
