@@ -97,7 +97,7 @@ shipped items are recorded in the ledger below rather than renumbered away.
 
 ---
 
-## 13. Build-time warning for radar day-files missing from disk
+## 13. Build-time warning for radar day-files missing from disk — shipped 2026-11-24
 
 **What:** `src/pages/radar/[date].astro` resolves the day-file via `import.meta.glob` and sets `dayData = null` when no file matches a manifest date. There is no build-time signal — the page just renders empty. A manifest entry that points at a pruned or never-written day-file should warn (or fail) at build.
 
@@ -110,3 +110,5 @@ shipped items are recorded in the ledger below rather than renumbered away.
 **Context:** Split out of #12, where it was folded into the relational-refines batch but not actually addressed. Lives on the radar side, not the horizon schema, so it didn't fit PR #144.
 
 **Depends on:** Nothing — can be done any time. Cheap.
+
+**Outcome:** The Radar build now checks every retained manifest date against an exact archived day-file path and fails with the missing dates. Route and index lookup use the same exact matcher, with regression tests for missing and misleading filenames.
