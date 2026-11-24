@@ -1,0 +1,306 @@
+---
+import { START, ROOMS, ROOM_BY_ID, CONNECTIONS, connectionId } from '../../content/feral/as-you-leave.mjs';
+
+const first = ROOM_BY_ID[START];
+const doors = [
+  { a: 'vestibule', b: 'hall', d: 'M 215 560 L 265 560' },
+  { a: 'hall', b: 'front-room', d: 'M 188 290 L 226 290' },
+  { a: 'hall', b: 'dining-room', d: 'M 260 290 L 300 290' },
+  { a: 'hall', b: 'stair', d: 'M 160 390 L 160 438' },
+  { a: 'dining-room', b: 'kitchen', d: 'M 380 290 L 426 290' },
+  { a: 'kitchen', b: 'pantry', d: 'M 337 480 L 382 480' },
+  { a: 'kitchen', b: 'scullery', d: 'M 421 480 L 468 480' },
+  { a: 'stair', b: 'landing', d: 'M 52 550 L 128 550 M 706 550 L 794 550' },
+  { a: 'landing', b: 'back-bedroom', d: 'M 728 290 L 774 290' },
+  { a: 'landing', b: 'box-room', d: 'M 820 320 L 820 368' },
+  { a: 'landing', b: 'bathroom', d: 'M 680 400 L 680 448' },
+].map(door => ({ ...door, id: connectionId(door.a, door.b) }));
+---
+
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS YOU LEAVE | Feral</title>
+    <meta name="description" content="Walk through an empty house. Every room you leave disappears from its fixed plan, sealing the way back." />
+    <link rel="canonical" href="https://softcat.ai/feral/as-you-leave/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip" href="#room">Skip to the current room</a>
+    <div class="page">
+      <nav aria-label="Location"><span>FERAL / 012</span><span>AN EMPTY HOUSE</span></nav>
+      <header>
+        <h1>AS YOU<br />LEAVE.</h1>
+        <p>Choose an open doorway.<br />The room behind you will go.</p>
+      </header>
+
+      <main id="main">
+        <section class="plan-section" aria-labelledby="plan-title">
+          <div class="plan-heading"><h2 id="plan-title">The house</h2><span>Ground floor / Upstairs</span></div>
+          <div class="plan-scroll" tabindex="0" aria-label="Scrollable floor plan">
+            <div class="plan" id="plan">
+              <svg viewBox="0 0 1000 720" aria-hidden="true">
+                <rect class="floor-outline" x="20" y="80" width="470" height="600" />
+                <rect class="floor-outline" x="510" y="80" width="470" height="600" />
+                <text class="floor-label" x="20" y="52">GROUND FLOOR</text>
+                <text class="floor-label" x="510" y="52">UPSTAIRS</text>
+                {ROOMS.map(room => <g class:list={['room-shell', { current: room.id === START }]} data-shell={room.id}>
+                  <rect x={room.plan.x} y={room.plan.y} width={room.plan.width} height={room.plan.height} />
+                </g>)}
+                {doors.map(door => <path class:list={['door', { available: door.a === START || door.b === START }]} data-connection={door.id} data-a={door.a} data-b={door.b} d={door.d} />)}
+                <path class="stair-marks" d="M 50 510 l 28 -28 l 28 28 l 28 -28 M 706 510 l 28 -28 l 28 28 l 28 -28" />
+                <path class="outside-door" data-exit="back-step" d="M 490 570 L 490 624" />
+              </svg>
+              {ROOMS.map(room => <button
+                type="button"
+                class:list={['room-button', { current: room.id === START }]}
+                data-room-button={room.id}
+                style={`--x:${room.plan.x};--y:${room.plan.y};--w:${room.plan.width};--h:${room.plan.height}`}
+                aria-label={room.id === START ? `Current room: ${room.name}` : room.name}
+                aria-current={room.id === START ? 'location' : undefined}
+                disabled
+              ><span>{room.name}</span></button>)}
+              <span class="outside-label">BACK<br />STEP</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="room" id="room" aria-labelledby="room-name">
+          <div id="room-content">
+            <p class="eyebrow">You are in</p>
+            <h2 id="room-name" tabindex="-1">{first.name}</h2>
+            <div class="evidence" id="evidence">
+              {first.lines.map(line => <p>{line}</p>)}
+            </div>
+            <div class="choices-block">
+              <p class="choice-label" id="choice-label">The open doorway</p>
+              <div class="choices" id="choices" aria-labelledby="choice-label">
+                <button type="button" disabled><span>Hall</span><small>Enter</small></button>
+              </div>
+            </div>
+          </div>
+          <div class="end" id="end" hidden>
+            <a href="/feral/">Leave</a>
+            <button id="again" type="button">Walk again</button>
+          </div>
+          <p class="notice" id="notice" role="status" aria-live="polite" aria-atomic="true"></p>
+        </section>
+      </main>
+
+      <noscript><p class="no-script">The house is shown from its vestibule. JavaScript is needed to choose a doorway; the plan does not change without it.</p></noscript>
+      <footer><span>Nothing is kept between walks.</span><span>Original text and plan.</span></footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { color-scheme: light; background: #20211e; color: #e9e4da; }
+  :global(body) { margin: 0; font: 1rem/1.5 system-ui, sans-serif; }
+  :global(button), :global(a) { font: inherit; }
+  :global(button) { cursor: pointer; }
+  :global(button:disabled) { cursor: default; }
+  :global(a) { color: inherit; text-underline-offset: 5px; }
+  :global(:focus-visible) { outline: 3px solid #c66f45; outline-offset: 4px; }
+  :global([hidden]) { display: none !important; }
+  .page { max-width: 1500px; margin: auto; padding: 0 clamp(1rem, 4vw, 4rem); }
+  .skip { position: absolute; z-index: 20; top: -100px; left: 1rem; padding: .7rem 1rem; background: #f1ecdf; color: #20211e; }
+  .skip:focus { top: 1rem; }
+  nav, footer { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: #aaa99f; font: .68rem/1.4 ui-monospace, monospace; letter-spacing: .08em; }
+  nav { padding: 1.2rem 0; border-bottom: 1px solid #55564f; }
+  header { display: flex; justify-content: space-between; gap: 2rem; align-items: flex-end; padding: clamp(2.5rem, 7vw, 6rem) 0 clamp(2rem, 5vw, 4rem); }
+  h1 { margin: 0; color: #f1ecdf; font: 500 clamp(4rem, 11vw, 10rem)/.77 Georgia, serif; letter-spacing: -.075em; }
+  header p { margin: 0 0 .35rem; max-width: 24ch; color: #bbb9af; font: .78rem/1.7 ui-monospace, monospace; }
+  main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 360px); gap: clamp(1.5rem, 4vw, 4.5rem); align-items: start; }
+  .plan-heading { display: flex; justify-content: space-between; gap: 1rem; color: #aaa99f; font: .64rem/1.5 ui-monospace, monospace; letter-spacing: .08em; }
+  .plan-heading h2 { margin: 0; color: #e9e4da; font: inherit; text-transform: uppercase; }
+  .plan-scroll { overflow-x: auto; padding: .65rem 0 1rem; scrollbar-color: #77786f #2a2b27; }
+  .plan { position: relative; width: 100%; min-width: 720px; aspect-ratio: 1000 / 720; background: #292a26; }
+  .plan svg { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+  .floor-outline { fill: #242521; stroke: #77786f; stroke-width: 2; }
+  .floor-label { fill: #aaa99f; font: 17px ui-monospace, monospace; letter-spacing: 2px; }
+  .room-shell rect { fill: #d5d0c3; stroke: #34352f; stroke-width: 3; transition: fill .38s ease, opacity .38s ease; }
+  .room-shell.current rect { fill: #e9e2d3; }
+  .room-shell.adjacent rect { fill: #ddd4c0; }
+  .room-shell.departed rect { fill: #242521; stroke: #34352f; }
+  .room-shell.closing rect { animation: withdraw .46s cubic-bezier(.65, 0, .8, .5) both; }
+  .door { fill: none; stroke: #d5d0c3; stroke-width: 10; transition: stroke .25s ease; }
+  .door.available { stroke: #c66f45; }
+  .door.sealed { stroke: #34352f; stroke-width: 3; }
+  .door.sealing { animation: seal .46s ease both; }
+  .stair-marks { fill: none; stroke: #777165; stroke-width: 3; }
+  .outside-door { fill: none; stroke: #34352f; stroke-width: 3; }
+  .outside-door.available { stroke: #c66f45; stroke-width: 10; }
+  .outside-door.sealing { animation: seal .46s ease both; }
+  .room-button { position: absolute; left: calc(var(--x) * .1%); top: calc(var(--y) * .1388889%); width: calc(var(--w) * .1%); height: calc(var(--h) * .1388889%); z-index: 2; border: 0; border-radius: 0; padding: .35rem; background: transparent; color: #53534c; font: 650 clamp(.56rem, 1vw, .82rem)/1.15 ui-monospace, monospace; text-align: center; }
+  .room-button span { display: inline-block; max-width: 10ch; }
+  .room-button.current { color: #20211e; }
+  .room-button.adjacent { color: #7c351d; text-decoration: underline; text-underline-offset: 4px; }
+  .room-button.adjacent:hover { background: rgb(198 111 69 / .13); }
+  .room-button.departed { color: transparent; }
+  .room-button.closing { animation: name-away .38s ease both; }
+  .outside-label { position: absolute; z-index: 3; left: 49.5%; top: 81%; color: #77786f; font: .55rem/1.25 ui-monospace, monospace; letter-spacing: .05em; }
+  .room { min-height: 520px; border-top: 1px solid #77786f; padding-top: 1.2rem; }
+  .eyebrow, .choice-label { margin: 0; color: #aaa99f; font: .65rem/1.5 ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; }
+  .room h2 { margin: 1.6rem 0 2.6rem; color: #f1ecdf; font: 500 clamp(2.6rem, 5vw, 4.8rem)/.95 Georgia, serif; letter-spacing: -.045em; }
+  .evidence { min-height: 10rem; }
+  .evidence :global(p) { max-width: 29ch; margin: 0 0 1.15rem; font: 1.08rem/1.65 Georgia, serif; }
+  .choices-block { margin-top: 2.5rem; }
+  .choice-label { padding-bottom: .65rem; border-bottom: 1px solid #55564f; }
+  .choices { display: grid; gap: .5rem; padding-top: .65rem; }
+  .choices :global(button), .end a, .end button { min-height: 52px; display: flex; justify-content: space-between; align-items: center; gap: 1rem; border: 1px solid #77786f; border-radius: 0; padding: .75rem .9rem; background: transparent; color: #e9e4da; text-decoration: none; text-align: left; }
+  .choices :global(button:hover), .end a:hover, .end button:hover { border-color: #c66f45; background: #2c2a25; }
+  .choices :global(small) { color: #aaa99f; font: .62rem/1.5 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; }
+  .choices :global(button.exit) { border-color: #a95735; }
+  .end { display: grid; gap: .7rem; padding-top: 4rem; }
+  .end a, .end button { width: 100%; }
+  .end a::after { content: '↗'; }
+  .end button::after { content: '↺'; }
+  .notice { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  .no-script { border: 1px solid #c66f45; padding: 1rem; max-width: 52rem; }
+  footer { margin-top: 4rem; padding: 1.2rem 0 1.8rem; border-top: 1px solid #55564f; }
+  @keyframes withdraw { to { fill: #242521; opacity: .08; } }
+  @keyframes name-away { to { color: transparent; transform: scale(.96); } }
+  @keyframes seal { from { stroke: #c66f45; stroke-width: 10; } to { stroke: #34352f; stroke-width: 3; } }
+  @media (max-width: 980px) {
+    main { grid-template-columns: 1fr; }
+    .room { min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .75fr); gap: 2rem; }
+    .end { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; padding-top: 1rem; }
+    .evidence { min-height: 0; }
+  }
+  @media (max-width: 620px) {
+    header { display: block; }
+    header p { margin-top: 1.5rem; }
+    .plan { min-width: 700px; }
+    .room { display: block; }
+    .room h2 { margin-bottom: 1.8rem; }
+    .evidence { min-height: 0; }
+    .choices-block { margin-top: 2rem; }
+    .end { display: grid; grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .room-shell rect, .door { transition: none; }
+    .room-shell.closing rect, .room-button.closing, .door.sealing, .outside-door.sealing { animation: none; }
+  }
+</style>
+
+<script>
+  import {
+    ROOMS, ROOM_BY_ID, createWalk, roomChoices, exitChoices, enterRoom,
+    takeExit, isDeadEnd, closeDeadEnd, connectionId,
+  } from '../../content/feral/as-you-leave.mjs';
+
+  const get = (id: string) => document.getElementById(id)!;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const shells = new Map([...document.querySelectorAll<SVGGElement>('[data-shell]')].map(node => [node.dataset.shell!, node]));
+  const roomButtons = new Map([...document.querySelectorAll<HTMLButtonElement>('[data-room-button]')].map(node => [node.dataset.roomButton!, node]));
+  const doors = [...document.querySelectorAll<SVGPathElement>('[data-connection]')];
+  const outsideDoor = document.querySelector<SVGPathElement>('[data-exit="back-step"]')!;
+  const choicesNode = get('choices');
+  const roomContent = get('room-content');
+  const end = get('end');
+  const main = get('main');
+  const skip = document.querySelector<HTMLAnchorElement>('.skip')!;
+  let walk = createWalk();
+  let busy = false;
+
+  function choiceButton(label: string, small: string, action: () => void, className = '') {
+    const button = document.createElement('button');
+    button.type = 'button';
+    if (className) button.className = className;
+    const name = document.createElement('span'); name.textContent = label;
+    const direction = document.createElement('small'); direction.textContent = small;
+    button.append(name, direction);
+    button.addEventListener('click', action);
+    return button;
+  }
+
+  function begin(kind: 'room' | 'exit' | 'dead', target?: string) {
+    if (busy || walk.outcome || !walk.current) return;
+    busy = true;
+    const leaving = walk.current;
+    shells.get(leaving)?.classList.add('closing');
+    roomButtons.get(leaving)?.classList.add('closing');
+    choicesNode.querySelectorAll('button').forEach(button => { (button as HTMLButtonElement).disabled = true; });
+    if (kind === 'room' && target) document.querySelector<SVGPathElement>(`[data-connection="${connectionId(leaving, target)}"]`)?.classList.add('sealing');
+    if (kind === 'exit') outsideDoor.classList.add('sealing');
+    const commit = () => {
+      if (kind === 'room' && target) enterRoom(walk, target);
+      if (kind === 'exit' && target) takeExit(walk, target);
+      if (kind === 'dead') closeDeadEnd(walk);
+      busy = false;
+      render();
+      if (walk.outcome) end.querySelector<HTMLElement>('a, button')?.focus();
+      else get('room-name').focus();
+    };
+    if (motion.matches) commit(); else window.setTimeout(commit, 470);
+  }
+
+  function render() {
+    const gone = new Set(walk.departed);
+    const adjacent = new Set(roomChoices(walk));
+    for (const room of ROOMS) {
+      const shell = shells.get(room.id)!;
+      const button = roomButtons.get(room.id)!;
+      shell.className.baseVal = 'room-shell';
+      shell.classList.toggle('departed', gone.has(room.id));
+      shell.classList.toggle('current', room.id === walk.current);
+      shell.classList.toggle('adjacent', adjacent.has(room.id));
+      button.className = 'room-button';
+      button.classList.toggle('departed', gone.has(room.id));
+      button.classList.toggle('current', room.id === walk.current);
+      button.classList.toggle('adjacent', adjacent.has(room.id));
+      button.disabled = !adjacent.has(room.id) || busy;
+      button.querySelector('span')!.textContent = gone.has(room.id) ? '' : room.name;
+      button.removeAttribute('aria-current');
+      if (room.id === walk.current) {
+        button.setAttribute('aria-current', 'location');
+        button.setAttribute('aria-label', `Current room: ${room.name}`);
+      } else if (adjacent.has(room.id)) button.setAttribute('aria-label', `Enter ${room.name}`);
+      else if (gone.has(room.id)) button.setAttribute('aria-label', 'Closed part of the plan');
+      else button.setAttribute('aria-label', room.name);
+      button.onclick = adjacent.has(room.id) ? () => begin('room', room.id) : null;
+    }
+    for (const door of doors) {
+      const a = door.dataset.a!, b = door.dataset.b!;
+      const sealed = gone.has(a) || gone.has(b);
+      const available = !sealed && (walk.current === a && adjacent.has(b) || walk.current === b && adjacent.has(a));
+      door.className.baseVal = 'door';
+      door.classList.toggle('sealed', sealed);
+      door.classList.toggle('available', available);
+    }
+    const exits = exitChoices(walk);
+    outsideDoor.className.baseVal = 'outside-door';
+    outsideDoor.classList.toggle('available', exits.some(exit => exit.id === 'back-step'));
+    roomContent.hidden = Boolean(walk.outcome);
+    end.hidden = !walk.outcome;
+    skip.hidden = Boolean(walk.outcome);
+    main.classList.toggle('ended', Boolean(walk.outcome));
+    if (walk.outcome) {
+      choicesNode.replaceChildren();
+      get('notice').textContent = 'The walk has ended.';
+      return;
+    }
+    const current = ROOM_BY_ID[walk.current];
+    get('room-name').textContent = current.name;
+    const evidence = get('evidence');
+    evidence.replaceChildren(...current.lines.map((line: string) => {
+      const paragraph = document.createElement('p'); paragraph.textContent = line; return paragraph;
+    }));
+    const buttons = roomChoices(walk).map(id => choiceButton(ROOM_BY_ID[id].name, 'Enter', () => begin('room', id)));
+    buttons.push(...exits.map(exit => choiceButton(exit.label, 'Outside', () => begin('exit', exit.id), 'exit')));
+    if (isDeadEnd(walk)) buttons.push(choiceButton('Close this door', 'End the walk', () => begin('dead')));
+    choicesNode.replaceChildren(...buttons);
+    get('choice-label').textContent = isDeadEnd(walk) ? 'No other doorway opens' : buttons.length === 1 ? 'The open doorway' : 'The open doorways';
+    get('notice').textContent = `${current.name}. ${current.lines.join(' ')} ${isDeadEnd(walk) ? 'No other doorway opens.' : 'Choose an open doorway.'}`;
+  }
+
+  get('again').addEventListener('click', () => {
+    if (busy) return;
+    walk = createWalk();
+    render();
+    get('room-name').focus();
+  });
+  render();
+</script>
