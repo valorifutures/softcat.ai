@@ -1,5 +1,49 @@
 # Improvement log
 
+## 24 November 2026, Radar archive integrity
+
+The pass began from exact main `ff3b3a49e358071bb82d10b633b2a249deae16fa`
+in a fresh isolated checkout. There was no open pull request, current active-work
+marker or running Action. `docs/site-operations.md` remains on main and the
+Feral GitHub workflow remains manual-only. No legacy generator, Feral cycle or
+duplicate price refresh was started.
+
+The retained Radar manifest and all 73 archived day files currently agree, but
+the dated route used a substring match and silently rendered an empty page if a
+manifest file went missing. Publication now checks every retained date against
+an exact JSON filename and fails the production build with every missing date.
+The archive index and dated routes share the same exact matcher. Three regression
+tests cover a complete archive, a missing date and a misleading filename. A
+controlled missing-file build failed with the exact date, then the restored
+archive built cleanly. No archived record changed and Radar remains inactive.
+
+All content, tool-data and Horizon-reference validators passed with no errors or
+warnings, along with 236 JavaScript tests and 30 Python publication tests. The
+650-page production build and offline audit passed 34,193 internal links, 3,343
+asset or metadata references and 46,764 accessibility elements with zero errors.
+
+[PR #317](https://github.com/valorifutures/softcat.ai/pull/317) passed the
+[hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/45354175552)
+and independent code review with no findings on exact head
+`a336332591cb4f6b6d31b845824e979f345e57f5`. Main was re-read unchanged before
+normal squash merge `f3866af1d9af28c8897f49959611f682bf73a9b1`. The resulting
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/45354612623)
+passed recovery, authority-boundary, build, offline publication and deploy jobs.
+
+The live Radar archive and 3 July 2026 edition loaded from the 24 November
+08:18 UTC build with all six products, the historical notice and exact
+previous-day navigation. The missing-data fallback was absent. Both routes had
+one h1, one main landmark, no broken images and no desktop horizontal overflow.
+The archive also had no duplicate IDs or unnamed controls. Physical touch and
+narrow-viewport rendering were not verified.
+
+The latest price owner remains successful
+[run 45215787514](https://github.com/valorifutures/softcat.ai/actions/runs/45215787514):
+477 catalogue models, 39 tracked, 31 matched, 28 verified, eight not listed,
+three held for review and one applied Qwen3.6 35B A3B price change. No Horizon
+prediction or review date, Feral creative file, archived content, retired
+generator or price data changed.
+
 ## 23 November 2026, Horizon evidence review
 
 The review began from exact main `031880359599f16178f24a6536d50397057363fb`
