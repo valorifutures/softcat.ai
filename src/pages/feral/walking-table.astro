@@ -1,0 +1,257 @@
+---
+import { HIPS, OPENING_OFFSETS, tablePose } from '../../content/feral/walking-table.mjs';
+const opening = tablePose(0);
+const points = (leg) => `${leg.hip.x},${leg.hip.y} ${leg.knee.x},${leg.knee.y} ${leg.foot.x},${leg.foot.y}`;
+---
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Walking Table | Feral</title>
+    <meta name="description" content="Six legs, one handle and no destination. An invented, hand-cranked table linkage." />
+    <link rel="canonical" href="https://softcat.ai/feral/walking-table/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip" href="#handle-controls">Skip to the handle controls</a>
+    <div class="sheet">
+      <nav aria-label="Feral navigation"><a href="/feral/">The other rooms ↗</a><span>Feral / 013</span></nav>
+      <header><h1>THE WALKING<br />TABLE</h1><p>It has six legs.<br />It is still a table.</p></header>
+      <main>
+        <section class="machine" aria-label="The walking table">
+          <div class="drawing-label"><span>01 / A stationary expedition</span><span id="angle-reading">Handle 000°</span></div>
+          <svg id="drawing" viewBox="0 0 1000 570" role="group" aria-label="Six articulated table legs and a hand crank" aria-describedby="crank-help">
+            <defs><pattern id="paper-grid" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#d6c9ab" /></pattern></defs>
+            <rect width="1000" height="570" fill="url(#paper-grid)" />
+            <path class="floor" d="M130 523 H814" />
+            <g id="legs">
+              {[1, 3, 5, 0, 2, 4].map(index => {
+                const leg = opening[index];
+                return <g data-leg={index} class:list={['leg', index % 2 ? 'far-leg' : 'near-leg']}>
+                  <ellipse class="foot-path" cx={HIPS[index].x} cy={HIPS[index].y + 188} rx="48" ry="24" />
+                  <polyline class="timber" data-timber points={points(leg)} />
+                  <line class="pushrod" data-rod x1={leg.pin.x} y1={leg.pin.y} x2={leg.knee.x} y2={leg.knee.y} />
+                  <circle class="axle" cx={leg.hip.x} cy={leg.hip.y} r="21" />
+                  <line class="eccentric" data-eccentric x1={leg.hip.x} y1={leg.hip.y} x2={leg.pin.x} y2={leg.pin.y} />
+                  <circle class="pin" data-pin cx={leg.pin.x} cy={leg.pin.y} r="5" />
+                  <circle class="joint" data-knee cx={leg.knee.x} cy={leg.knee.y} r="7" />
+                  <path class="shoe" data-shoe d={`M${leg.foot.x - 14} ${leg.foot.y} h28`} />
+                  <text class="leg-number" data-number x={leg.foot.x} y={leg.foot.y + 27} text-anchor="middle">{index + 1}</text>
+                </g>;
+              })}
+            </g>
+            <path class="beam" d="M210 271 H735" />
+            <path class="drive" d="M226 278 H795 V319 H870" />
+            <path class="table-top" d="M172 222 H763 L783 244 H188 Z" />
+            <path class="table-edge" d="M188 244 H783 V261 H188 Z" />
+            <g class="cup" aria-hidden="true"><path d="M510 170 h44 l-5 49 h-34 Z" /><path class="cup-handle" d="M554 180 c28 -2 23 30 -3 28" /><ellipse cx="532" cy="170" rx="22" ry="5" /><path class="steamless" d="M511 225 h47" /></g>
+            <g id="crank" role="slider" tabindex="-1" aria-disabled="true" aria-label="Hand crank angle" aria-valuemin="0" aria-valuemax="359" aria-valuenow="0" aria-valuetext="0 degrees" aria-describedby="crank-help">
+              <circle class="crank-hit" cx="870" cy="319" r="88" />
+              <circle class="crank-ring" cx="870" cy="319" r="69" />
+              <path class="crank-mark" d="M870 239 V247 M870 391 V399 M790 319 H798 M942 319 H950" />
+              <g id="handle-arm"><path class="handle-arm" d="M870 319 H932" /><circle class="handle-grip" cx="932" cy="319" r="14" /><circle class="handle-highlight" cx="932" cy="319" r="5" /></g>
+              <circle class="crank-centre" cx="870" cy="319" r="12" />
+            </g>
+            <text class="crank-caption" x="870" y="439" text-anchor="middle">TURN HERE</text>
+          </svg>
+          <p id="crank-help">Drag the handle around its centre. Or focus it and use the arrow keys, 5° at a time, 20° with Shift.</p>
+        </section>
+        <section class="controls" id="handle-controls" aria-label="Mechanism controls">
+          <div class="handle-panel">
+            <h2>Turn the handle.<br />Rearrange the trouble.</h2>
+            <label for="handle-angle">Handle angle <output id="handle-value" for="handle-angle">0°</output></label>
+            <input id="handle-angle" type="range" min="0" max="359" step="1" value="0" disabled />
+            <div class="buttons"><button type="button" id="turn" disabled>Turn once ↻</button><button type="button" id="stop" disabled>Stop</button><button type="button" id="reset" disabled>Start again</button></div>
+            <p id="motion-note">One turn takes just over two seconds. Manual turning works in either direction.</p>
+            <p id="notice" role="status" aria-atomic="true">The table is holding its opening pose.</p>
+          </div>
+          <fieldset disabled id="offset-controls"><legend>Six opinions about when to move</legend><div class="offset-grid">{OPENING_OFFSETS.map((offset, index) => <div class="offset"><label for={`offset-${index}`}>Leg {index + 1} <output id={`offset-value-${index}`} for={`offset-${index}`}>{offset}°</output></label><input id={`offset-${index}`} data-offset={index} type="range" min="0" max="359" step="1" value={offset} /></div>)}</div><p>Each offset changes one leg's place in the turn.</p></fieldset>
+        </section>
+        <noscript><p class="no-script">This is the opening pose. JavaScript is needed to turn the table's handle. The controls are inactive.</p></noscript>
+      </main>
+      <footer><p>An invented linkage drawing, not an engineering or physics model.<br />Original geometry. Nothing saved or sent. The cup is staying there.</p><a href="/feral/#ledger">The council's record ↗</a></footer>
+    </div>
+  </body>
+</html>
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { color-scheme: light; background: #f3ead3; color: #24221e; }
+  :global(body) { margin: 0; font: 1rem/1.5 system-ui, sans-serif; }
+  :global(a) { color: inherit; text-underline-offset: 4px; }
+  :global(button), :global(input) { font: inherit; }
+  :global(button) { cursor: pointer; }
+  :global(button:disabled) { opacity: .4; cursor: default; }
+  :global(:focus-visible) { outline: 3px solid #2257a1; outline-offset: 5px; }
+  :global([hidden]) { display: none !important; }
+  .sheet { max-width: 1500px; margin: auto; padding: 0 clamp(1rem, 4vw, 4rem); }
+  .skip { position: absolute; top: -100px; left: 1rem; z-index: 3; padding: 1rem; background: #24221e; color: #f3ead3; }
+  .skip:focus { top: 1rem; }
+  nav, footer { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font: .73rem/1.6 ui-monospace, monospace; }
+  nav { padding: 1.1rem 0; border-bottom: 1px solid #bdb197; }
+  nav a { text-decoration: none; }
+  header { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; padding: 2.7rem 0 1.5rem; }
+  h1 { font-size: clamp(2.4rem, 7.8vw, 7.8rem); line-height: .87; font-weight: 950; letter-spacing: -.07em; margin: 0; }
+  header p { font-size: clamp(1.1rem, 2.1vw, 2rem); line-height: 1.2; letter-spacing: -.03em; margin: 0 0 .2rem; }
+  .machine { border: 1px solid #bdb197; }
+  .drawing-label { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; padding: .65rem 1rem; border-bottom: 1px solid #d5c9ae; font: .67rem/1.4 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .05em; }
+  svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .floor { fill: none; stroke: #b7ab92; stroke-width: 1; stroke-dasharray: 3 6; }
+  .timber { fill: none; stroke: #272520; stroke-width: 18; stroke-linejoin: round; stroke-linecap: round; }
+  .far-leg .timber, .far-leg .shoe { stroke: #777367; }
+  .far-leg .foot-path { opacity: .6; }
+  .foot-path { fill: none; stroke: #be513d; stroke-width: 1; stroke-dasharray: 3 5; opacity: .4; }
+  .axle { fill: #f3ead3; stroke: #c13f29; stroke-width: 2; }
+  .pushrod { stroke: #c13f29; stroke-width: 4; }
+  .eccentric { stroke: #c13f29; stroke-width: 5; stroke-linecap: round; }
+  .pin { fill: #f3ead3; stroke: #c13f29; stroke-width: 2; }
+  .joint { fill: #c13f29; stroke: #f3ead3; stroke-width: 2; }
+  .shoe { stroke: #272520; stroke-width: 9; stroke-linecap: round; }
+  .leg-number { font: 13px ui-monospace, monospace; fill: #494338; }
+  .beam { stroke: #272520; stroke-width: 12; }
+  .drive { stroke: #c13f29; stroke-width: 3; fill: none; }
+  .table-top { fill: #302b23; }
+  .table-edge { fill: #171714; }
+  .cup { fill: #285da8; }
+  .cup ellipse { fill: #1c4278; }
+  .cup-handle { fill: none; stroke: #285da8; stroke-width: 8; }
+  .steamless { fill: none; stroke: #a89a7c; stroke-width: 2; }
+  #crank { touch-action: none; cursor: grab; }
+  #crank:active { cursor: grabbing; }
+  #crank:focus-visible .crank-ring { stroke: #2257a1; stroke-width: 5; }
+  .crank-hit { fill: transparent; }
+  .crank-ring { fill: #eee1c2; stroke: #c13f29; stroke-width: 2; pointer-events: none; }
+  .crank-mark { fill: none; stroke: #665a47; stroke-width: 1; pointer-events: none; }
+  .handle-arm { stroke: #c13f29; stroke-width: 13; stroke-linecap: round; }
+  .handle-grip { fill: #25231e; }
+  .handle-highlight { fill: #f3ead3; }
+  .crank-centre { fill: #c13f29; stroke: #f3ead3; stroke-width: 3; }
+  .crank-caption { font: 12px ui-monospace, monospace; letter-spacing: 2px; fill: #665a47; }
+  #crank-help { border-top: 1px solid #d5c9ae; padding: .8rem 1rem; margin: 0; font-size: .78rem; }
+  .controls { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); padding: 2.2rem 0; }
+  h2 { font-size: clamp(1.5rem, 2.6vw, 2.3rem); letter-spacing: -.04em; line-height: 1.1; margin: 0 0 1.5rem; }
+  label { display: flex; justify-content: space-between; gap: .5rem; font: .8rem/1.5 ui-monospace, monospace; }
+  output { color: #a33322; }
+  input[type=range] { display: block; width: 100%; margin: .65rem 0 1rem; min-height: 28px; accent-color: #b73522; cursor: pointer; }
+  .buttons { display: flex; flex-wrap: wrap; gap: .5rem; }
+  button { background: transparent; color: inherit; border: 1px solid #756b57; padding: .65rem .9rem; min-height: 44px; }
+  #turn { color: #f7eed9; background: #b73522; border-color: #b73522; }
+  button:hover:not(:disabled) { background: #e2d4b7; }
+  #turn:hover:not(:disabled) { background: #922b1b; }
+  #motion-note, #notice, fieldset p { font-size: .75rem; margin: .8rem 0 0; }
+  #notice { min-height: 1.5em; color: #9d3020; }
+  fieldset { padding: 0; margin: 0; min-width: 0; border: 0; }
+  legend { font-size: 1rem; font-weight: 700; padding: 0 0 1.5rem; }
+  .offset-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem 1.5rem; }
+  .offset { min-width: 0; }
+  footer { border-top: 1px solid #bdb197; padding: 1.2rem 0 2rem; align-items: flex-start; }
+  footer p { margin: 0; }
+  .no-script { border: 1px solid #b73522; padding: 1rem; }
+  @media(max-width: 650px) { header { display: block; padding-top: 2rem; } header p { margin-top: 1.2rem; } .controls { grid-template-columns: 1fr; } .drawing-label { font-size: .6rem; } #crank-help { font-size: .72rem; } }
+</style>
+<script>
+  import { OPENING_OFFSETS, tablePose, wrap, revolutionAt, pointerDelta, TURN_DURATION } from '../../content/feral/walking-table.mjs';
+  const drawing = document.querySelector<SVGSVGElement>('#drawing')!;
+  const crank = document.querySelector<SVGGElement>('#crank')!;
+  const handle = document.querySelector<HTMLInputElement>('#handle-angle')!;
+  const turn = document.querySelector<HTMLButtonElement>('#turn')!;
+  const stopButton = document.querySelector<HTMLButtonElement>('#stop')!;
+  const reset = document.querySelector<HTMLButtonElement>('#reset')!;
+  const offsetControls = document.querySelector<HTMLFieldSetElement>('#offset-controls')!;
+  const offsetsInputs = Array.from(document.querySelectorAll<HTMLInputElement>('[data-offset]'));
+  const notice = document.querySelector<HTMLElement>('#notice')!;
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  let angle = 0;
+  let offsets = [...OPENING_OFFSETS];
+  let frame = 0;
+  let running = false;
+  let animationStart = 0;
+  let startingAngle = 0;
+  let pointer: { id: number; last: number } | null = null;
+  function render() {
+    const legs = tablePose(angle, offsets);
+    legs.forEach((leg, index) => {
+      const group = document.querySelector<SVGGElement>(`[data-leg="${index}"]`)!;
+      group.querySelector('[data-timber]')!.setAttribute('points', `${leg.hip.x},${leg.hip.y} ${leg.knee.x},${leg.knee.y} ${leg.foot.x},${leg.foot.y}`);
+      const rod = group.querySelector('[data-rod]')!;
+      rod.setAttribute('x1', String(leg.pin.x)); rod.setAttribute('y1', String(leg.pin.y)); rod.setAttribute('x2', String(leg.knee.x)); rod.setAttribute('y2', String(leg.knee.y));
+      const eccentric = group.querySelector('[data-eccentric]')!;
+      eccentric.setAttribute('x2', String(leg.pin.x)); eccentric.setAttribute('y2', String(leg.pin.y));
+      for (const [selector, point] of [['[data-pin]', leg.pin], ['[data-knee]', leg.knee]] as const) {
+        group.querySelector(selector)!.setAttribute('cx', String(point.x)); group.querySelector(selector)!.setAttribute('cy', String(point.y));
+      }
+      group.querySelector('[data-shoe]')!.setAttribute('d', `M${leg.foot.x - 14} ${leg.foot.y} h28`);
+      group.querySelector('[data-number]')!.setAttribute('x', String(leg.foot.x)); group.querySelector('[data-number]')!.setAttribute('y', String(leg.foot.y + 27));
+    });
+    document.querySelector('#handle-arm')!.setAttribute('transform', `rotate(${angle} 870 319)`);
+    const rounded = Math.min(359, Math.floor(wrap(angle)));
+    handle.value = String(rounded);
+    document.querySelector('#handle-value')!.textContent = `${rounded}°`;
+    document.querySelector('#angle-reading')!.textContent = `Handle ${String(rounded).padStart(3, '0')}°`;
+    crank.setAttribute('aria-valuenow', String(rounded)); crank.setAttribute('aria-valuetext', `${rounded} degrees`);
+    turn.disabled = running || motion.matches;
+    stopButton.disabled = !running;
+  }
+  function stop(message?: string) {
+    const hadStopFocus = document.activeElement === stopButton;
+    if (frame) cancelAnimationFrame(frame);
+    frame = 0; running = false;
+    render();
+    if (message) notice.textContent = message;
+    if (hadStopFocus) (motion.matches ? handle : turn).focus();
+  }
+  function manual(value: number) { stop(); angle = wrap(value); render(); }
+  function tick(time: number) {
+    if (!running) return;
+    const result = revolutionAt(startingAngle, time - animationStart, TURN_DURATION);
+    angle = result.angle;
+    if (result.done) { const hadStopFocus = document.activeElement === stopButton; running = false; frame = 0; render(); notice.textContent = 'One turn. Still here.'; if (hadStopFocus) turn.focus(); return; }
+    render(); frame = requestAnimationFrame(tick);
+  }
+  function endPointer() {
+    const released = pointer; pointer = null;
+    if (released && crank.hasPointerCapture(released.id)) crank.releasePointerCapture(released.id);
+  }
+  function pointerAngle(event: PointerEvent) {
+    const matrix = drawing.getScreenCTM();
+    if (!matrix) return null;
+    const p = new DOMPoint(event.clientX, event.clientY).matrixTransform(matrix.inverse());
+    if (Math.hypot(p.x - 870, p.y - 319) < 12) return null;
+    return Math.atan2(p.y - 319, p.x - 870) * 180 / Math.PI;
+  }
+  crank.addEventListener('pointerdown', event => {
+    if (!event.isPrimary || event.button !== 0) return;
+    const at = pointerAngle(event); if (at === null) return;
+    event.preventDefault(); stop(); endPointer(); crank.focus();
+    pointer = { id: event.pointerId, last: at }; crank.setPointerCapture(event.pointerId);
+    notice.textContent = 'Turning by hand.';
+  });
+  crank.addEventListener('pointermove', event => {
+    if (!pointer || pointer.id !== event.pointerId) return;
+    const at = pointerAngle(event); if (at === null) return;
+    angle = wrap(angle + pointerDelta(pointer.last, at)); pointer.last = at; render();
+  });
+  for (const eventName of ['pointerup', 'pointercancel', 'lostpointercapture']) crank.addEventListener(eventName, () => { if (pointer) { endPointer(); notice.textContent = 'Holding this pose.'; } });
+  crank.addEventListener('keydown', event => {
+    const step = event.shiftKey ? 20 : 5;
+    const changes: Record<string, number> = { ArrowRight: step, ArrowUp: step, ArrowLeft: -step, ArrowDown: -step };
+    if (event.key in changes) { event.preventDefault(); endPointer(); manual(angle + changes[event.key]); notice.textContent = 'Holding this pose.'; }
+    else if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); endPointer(); manual(event.key === 'Home' ? 0 : 359); notice.textContent = 'Holding this pose.'; }
+  });
+  handle.addEventListener('input', () => { const value = handle.valueAsNumber; endPointer(); manual(value); notice.textContent = 'Holding this pose.'; });
+  offsetsInputs.forEach((input, index) => input.addEventListener('input', () => {
+    const value = wrap(input.valueAsNumber); endPointer(); stop(); offsets[index] = value; document.querySelector(`#offset-value-${index}`)!.textContent = `${value}°`; render(); notice.textContent = `Leg ${index + 1} has a different opinion.`;
+  }));
+  turn.addEventListener('click', () => {
+    if (motion.matches || running) return;
+    endPointer(); running = true; startingAngle = angle; animationStart = performance.now(); render(); notice.textContent = 'One turn in progress.'; stopButton.focus(); frame = requestAnimationFrame(tick);
+  });
+  stopButton.addEventListener('click', () => { stop('Holding this pose.'); turn.focus(); });
+  reset.addEventListener('click', () => { endPointer(); stop(); angle = 0; offsets = [...OPENING_OFFSETS]; offsetsInputs.forEach((input, index) => { input.value = String(offsets[index]); document.querySelector(`#offset-value-${index}`)!.textContent = `${offsets[index]}°`; }); render(); notice.textContent = 'The opening arrangement. Six legs, as before.'; });
+  function motionChanged() { endPointer(); stop(); document.querySelector('#motion-note')!.textContent = motion.matches ? 'Reduced motion: turn the handle by hand, with its keys or slider. Automatic turning is off.' : 'One turn takes just over two seconds. Manual turning works in either direction.'; }
+  motion.addEventListener('change', motionChanged);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) { endPointer(); stop('Holding while the room is out of view.'); } });
+  window.addEventListener('pagehide', () => { endPointer(); stop(); });
+  crank.setAttribute('tabindex', '0'); crank.setAttribute('aria-disabled', 'false');
+  handle.disabled = false; reset.disabled = false; offsetControls.disabled = false;
+  motionChanged(); render();
+</script>
