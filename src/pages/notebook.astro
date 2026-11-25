@@ -6,7 +6,7 @@ const entries = (await getCollection('thoughts')).filter((entry) => !entry.data.
 ---
 <BaseLayout title="Notebook" description="Field notes from maintaining SOFT CAT with AI: decisions, experiments, failures and what changed.">
   <div class="workshop-shell notebook-page">
-    <header><p class="eyebrow accent-green">THE PUBLIC BUILD DIARY</p><h1>Working notes.</h1><p>What we tried, what happened, and what we changed. Written from the work, with links to the evidence.</p></header>
+    <header><p class="eyebrow accent-green">THE PUBLIC BUILD DIARY</p><h1>Working notes.</h1><p>This is where we write up what we tried, what surprised us and what we changed as a result. Each note links back to the work.</p></header>
     <div class="notebook-entries">{entries.map((entry, index) => <a class="notebook-feature" href={`/thoughts/${entry.id}`}>
       <div class="notebook-date"><span>FIELD NOTE {String(entries.length - index).padStart(2, '0')}</span><time datetime={entry.data.date.toISOString()}>{entry.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time></div>
       <div><h2>{entry.data.title}</h2><p>{entry.data.summary}</p><span class="text-link">Read the entry →</span></div>

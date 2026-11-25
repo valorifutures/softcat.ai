@@ -11,17 +11,17 @@ const targetDate = (value: string) => new Date(`${value}T00:00:00Z`).toLocaleDat
   <div class="hero-copy">
     <p class="eyebrow"><span class="status-square" aria-hidden="true"></span> AN INDEPENDENT AI WORKSHOP</p>
     <h1>Understand what’s <em>next.</em><br />Try what works.</h1>
-    <p class="hero-description">Explore what AI might do next.<br class="hidden sm:block" /> Inspect what we have tested.<br class="hidden sm:block" /> Try it for yourself.</p>
+    <p class="hero-description">We build things with AI and share what happens when we try them. You can use the tools yourself and see the evidence behind our predictions.</p>
     <div class="hero-actions">
       <a href="/horizon" class="workshop-button primary">Explore Horizon <span aria-hidden="true">↗</span></a>
       <a href="/tools" class="workshop-button quiet">Try the tools <span aria-hidden="true">→</span></a>
     </div>
-    <p class="hero-footnote">BUILT WITH AI. KEPT OPEN TO INSPECTION.</p>
+    <p class="hero-footnote">WE PUBLISH OUR CODE AND TEST RECORDS</p>
   </div>
   <div class="hero-horizon">
     <div class="hero-horizon-top"><span>HORIZON</span><span>LATEST REVIEW <time datetime={latestReview.date}>{targetDate(latestReview.date)}</time></span></div>
-    <h2>Our predictions.<br />Five countdowns.</h2>
-    <p class="hero-horizon-label">Our target date for each defined milestone</p>
+    <h2>When will AI reach these five milestones?</h2>
+    <p class="hero-horizon-label">Choose a milestone to see why we picked its date.</p>
     <ul>{futures.map((future, index) => <li><a href={`/horizon?future=${future.key}`}><span class="hero-future-number" aria-hidden="true">0{index + 1}</span><span>{future.title}</span><time class="hero-future-date" datetime={future.target_date}>{targetDate(future.target_date)}</time><span aria-hidden="true">↗</span></a></li>)}</ul>
     <div class="hero-horizon-bottom"><span>Evidence can change our prediction.</span><a href="/horizon#horizon-decision">Build your 90-day trial brief →</a></div>
   </div>

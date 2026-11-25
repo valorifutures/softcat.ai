@@ -54,11 +54,11 @@ const points = (leg) => `${leg.hip.x},${leg.hip.y} ${leg.knee.x},${leg.knee.y} $
             </g>
             <text class="crank-caption" x="870" y="439" text-anchor="middle">TURN HERE</text>
           </svg>
-          <p id="crank-help">Drag the handle around its centre. Or focus it and use the arrow keys, 5° at a time, 20° with Shift.</p>
+          <p id="crank-help">Drag the handle around its centre, or focus it and use the arrow keys. Each press turns it 5°, or 20° if you hold Shift.</p>
         </section>
         <section class="controls" id="handle-controls" aria-label="Mechanism controls">
           <div class="handle-panel">
-            <h2>Turn the handle.<br />Rearrange the trouble.</h2>
+            <h2>Turn the handle to see how the table walks.</h2>
             <label for="handle-angle">Handle angle <output id="handle-value" for="handle-angle">0°</output></label>
             <input id="handle-angle" type="range" min="0" max="359" step="1" value="0" disabled />
             <div class="buttons"><button type="button" id="turn" disabled>Turn once ↻</button><button type="button" id="stop" disabled>Stop</button><button type="button" id="reset" disabled>Start again</button></div>

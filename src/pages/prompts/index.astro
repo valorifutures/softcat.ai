@@ -10,7 +10,7 @@ const prompts = entries.map(entry => ({ id: entry.id, title: entry.data.title, d
 ---
 <BaseLayout title="Prompt recipes" description="A small collection of prompts with defined inputs, worked examples and explicit checks. Inspect the template, edit an example and judge the result.">
   <div class="recipe-index workshop-shell">
-    <header><a href="/tools" class="text-link">← Tools</a><p class="eyebrow">SMALL TASKS. VISIBLE CHECKS.</p><h1>Give the prompt<br /><em>a job you can check.</em></h1><p>{entries.length} revised recipes with sample inputs, target results and explicit checks. Start with an example, adapt the template and inspect the answer.</p></header>
+    <header><a href="/tools" class="text-link">← Tools</a><p class="eyebrow">PROMPT RECIPES</p><h1>Give the prompt<br /><em>a job you can check.</em></h1><p>Each of the {entries.length} recipes gives you an example to try and shows what a good answer would contain. Adapt the prompt to your own task, then use the checks to judge what comes back.</p></header>
     <aside class="recipe-review-link"><span>THE COLLECTION GOT SMALLER</span><p>We retired {retirements.entries.length} earlier templates, including overlapping validators and unsupported scoring promises. Their original URLs now link to preserved source history.</p><a href="/prompts/review">Read the collection review ↗</a></aside>
     <PromptFilter prompts={prompts} client:load />
     <p class="recipe-index-note">These are starting points, not guarantees of model behaviour. A worked example is a target to inspect, not a claim that a model produced it. Specific code or arithmetic checks are labelled where they were performed.</p>
