@@ -307,6 +307,8 @@ const horizonRetired = defineCollection({
     confidence_last_reviewed: isoDate,
     retired_at: isoDate,
     retirement_reason: z.string().min(1),
+    withdrawal_basis: z.enum(['undefined-test', 'insufficient-evidence', 'contradicted']).optional(),
+    reconsider_when: z.string().min(1).optional(),
   }).strict()),
 });
 

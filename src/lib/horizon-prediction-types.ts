@@ -1,5 +1,13 @@
 import type { Evidence } from './horizon-types';
 
+export type ReviewReading = {
+  case_for_change: string;
+  challenge: string;
+  judgement: string;
+  reconsider: string;
+  source_urls: string[];
+};
+
 export type PredictionRecord = {
   id: string;
   title: string;
@@ -11,6 +19,7 @@ export type PredictionRecord = {
   earlier: string;
   later: string;
   evidence: Evidence[];
+  decision?: ReviewReading;
 };
 export type PredictionEvent = { id: string; date: string; reason: string; records: PredictionRecord[] };
 export type PredictionData = { schema: number; revision: string; history: PredictionEvent[] };

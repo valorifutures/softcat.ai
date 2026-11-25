@@ -60,6 +60,20 @@ targets only for documented reasons. Review dates require actual reassessment.
 Current predictions and alternative scenarios remain separate. Link reachability
 alone is not a new editorial verification of a tool or guide.
 
+During the Monday evidence review, have one reviewer argue the strongest sourced case
+for a change and a second reviewer challenge it against the published test. Preserve
+the source of each argument. Two reviewers citing one report still have one source.
+For each reassessed prediction, append its `decision` with `case_for_change`,
+`challenge`, `judgement`, `reconsider` and `source_urls`. Use URLs already in that
+record’s evidence. Explain why a date held or why the chosen change fits the evidence.
+Distinguish a changed milestone from a changed date. If a second reviewer did not
+participate, say so in the review reason. The site displays the editorial decision
+without attributing historical reviews to agents. The November 2026 readings in
+`review-readings.json` summarise a specific existing event. New decisions belong
+in new history entries. When a claim is actually withdrawn, preserve its original
+text, date and reason. Record its withdrawal basis and a concrete reconsideration
+test when one exists. A retained deadline does not retire a claim.
+
 The maintainer adopted the root research constitution on 25 September 2026.
 After urgent reliability work, maintenance can advance one bounded gate in
 `docs/research-programme.md`. The offline development harness is implemented under `research/delegation/`.

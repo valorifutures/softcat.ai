@@ -112,6 +112,13 @@ export function predictionBriefing(history, id, brief, now) {
   ].join('\n\n');
 }
 
+// A reading can cite only evidence preserved in this particular review.
+export function validReviewReading(reading, evidence) {
+  return reading && ['case_for_change', 'challenge', 'judgement', 'reconsider'].every(key => text(reading[key]))
+    && Array.isArray(evidence) && Array.isArray(reading.source_urls) && reading.source_urls.length > 0
+    && reading.source_urls.every(url => safeSource(url) && evidence.some(source => source?.url === url));
+}
+
 export function validatePredictionHistory(history, today = new Date().toISOString().slice(0, 10), previousHistory = []) {
   const errors = [];
   if (!Array.isArray(history) || !history.length) return ['Prediction history needs a first published prediction for all five futures.'];
@@ -131,6 +138,7 @@ export function validatePredictionHistory(history, today = new Date().toISOStrin
       if (!futureIds.has(record.id) || reviewed.has(record.id)) errors.push(`Prediction history entry ${index}: unknown or repeated future.`);
       reviewed.add(record.id);
       for (const key of ['title', 'milestone', 'rationale', 'uncertainty', 'earlier', 'later']) if (!text(record[key])) errors.push(`${record.id}: missing or malformed ${key}.`);
+      if ('decision' in record && !validReviewReading(record.decision, record.evidence)) errors.push(`${record.id}: decision needs all four arguments and sources from this review.`);
       if (!predictionDate(record.target_date)) errors.push(`${record.id}: prediction target_date must be a real ISO date (YYYY-MM-DD).`);
       if (!Array.isArray(record.resolution) || !record.resolution.length || record.resolution.some(item => !text(item))) errors.push(`${record.id}: explicit resolution criteria are required.`);
       if (!Array.isArray(record.evidence) || !record.evidence.length) errors.push(`${record.id}: direct evidence and its limits are required.`);

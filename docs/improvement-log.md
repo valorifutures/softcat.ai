@@ -1,5 +1,20 @@
 # Improvement log
 
+## 25 November 2026, the reasoning behind the five clocks
+
+Each Horizon clock now opens a sourced reading of its latest published decision.
+The first five readings describe the 23 November record. Its dates, tests and
+history are preserved. New reviews can publish both arguments and the judgement
+in the same append-only record. The Graveyard exposes the eight actual withdrawals,
+their original claims and the evidence that might warrant a fresh look.
+
+The production build generated 652 pages, including the concurrent Feral release. All 238 JavaScript tests, 31 Python
+publication tests, 141 bot tests, data validators and the offline publication
+audit passed. Browser checks opened and closed each explanation by keyboard and
+followed the Graveyard link to the memory forecast. The six-month change exists
+only in a test fixture. The next evidence review should record its two arguments
+and cite the sources preserved with each decision.
+
 ## 25 November 2026, AI research discovery integrity
 
 The pass began from exact main `bca62d68b1723c6cfc9f011b27030d3a6925b9dc`

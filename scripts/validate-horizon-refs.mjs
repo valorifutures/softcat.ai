@@ -23,7 +23,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { retiredThoughtReferenceError } from '../src/lib/editorial-retirements.mjs';
 import { FUTURES, STANCES } from '../src/lib/horizon-explorer.mjs';
 import { validateClockPayload } from '../src/lib/horizon-clocks.mjs';
-import { validatePredictionPayload } from '../src/lib/horizon-predictions.mjs';
+import { validatePredictionPayload, validReviewReading } from '../src/lib/horizon-predictions.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -101,6 +101,14 @@ try {
   const predictionHistory = readJson(join(ROOT, predictionPath));
   const predictionPayload = { schema: 1, revision: '0'.repeat(64), history: predictionHistory };
   errors.push(...validatePredictionPayload(predictionPayload));
+  const readings = readJson(join(HORIZON_DIR, 'review-readings.json'));
+  for (const [eventId, entries] of Object.entries(readings)) {
+    const event = predictionPayload.history.find(item => item.id === eventId);
+    for (const [id, reading] of Object.entries(entries)) {
+      const record = event?.records.find(item => item.id === id);
+      if (!validReviewReading(reading, record?.evidence)) errors.push(`Review reading does not match the evidence for ${eventId}/${id}.`);
+    }
+  }
   const refs = new Set(['HEAD']);
   if (git(['for-each-ref', '--format=%(refname)', 'refs/remotes/origin/main'])) refs.add('origin/main');
   if (process.env.GITHUB_EVENT_PATH) {
