@@ -1,21 +1,21 @@
 {
-  "checkedAt": "2026-11-24T16:13:27.357Z",
+  "checkedAt": "2026-11-25T15:57:25.008Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "de4807cf096c785ecc122ae6d0754dd8c4f0ecd1cf351c82abc9f3f08e037a56",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/45434539382",
+  "sourceSha256": "28a102104d00c1b34bd0257b7ae5c63842a09b8c9cc2f07a4177a7b6e9465354",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/45649926188",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 470,
-  "previousCatalogueModels": 477,
-  "catalogueFloor": 382,
+  "catalogueModels": 472,
+  "previousCatalogueModels": 470,
+  "catalogueFloor": 376,
   "trackedModels": 39,
   "matched": 30,
-  "expectedListedModels": 31,
+  "expectedListedModels": 30,
   "expectedListedMatched": 30,
-  "newlyNotListed": 1,
+  "newlyNotListed": 0,
   "allowedNewlyNotListed": 3,
-  "verified": 27,
+  "verified": 26,
   "notListed": 9,
-  "reviewNeeded": 3,
+  "reviewNeeded": 4,
   "unverified": 0,
   "priceChanges": 1,
   "checks": [
@@ -55,20 +55,27 @@
     },
     {
       "id": "qwen/qwen3.6-35b-a3b",
-      "status": "verified",
+      "status": "review-needed",
       "previous": {
         "inputPrice": 0.05,
         "outputPrice": 0.7
       },
       "quoted": {
-        "inputPrice": 0.05,
-        "outputPrice": 0.7
+        "inputPrice": 0.1,
+        "outputPrice": 0.89
       },
       "applied": {
         "inputPrice": 0.05,
-        "outputPrice": 0.7
+        "outputPrice": 0.89
       },
-      "issues": []
+      "issues": [
+        {
+          "field": "inputPrice",
+          "reason": "delta-over-50-percent",
+          "previous": 0.05,
+          "quoted": 0.1
+        }
+      ]
     },
     {
       "id": "anthropic/claude-fable-5",
@@ -440,8 +447,8 @@
       "id": "moonshotai/kimi-k2",
       "status": "not-listed",
       "previous": {
-        "inputPrice": 0.57,
-        "outputPrice": 2.3
+        "inputPrice": null,
+        "outputPrice": null
       },
       "quoted": {
         "inputPrice": null,
