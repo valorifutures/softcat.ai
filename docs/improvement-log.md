@@ -1,5 +1,13 @@
 # Improvement log
 
+## 25 November 2026, reading the workshop copy aloud
+
+The Research introduction now explains why a specialist can lose permission for one job and carry on with another. We kept the strapline above it. In Feral, we kept the agents’ room introduction and gave the Walking Table a clearer instruction beside the crank. The same editorial pass covered the homepage, tool and recipe pages, Horizon, Notebook, About and the shared footer. The house style now asks editors to read neighbouring passages together.
+
+We scanned headings and paragraphs across the 652-page build and edited 14 visitor-facing pages. Chromium checks at 375px and 1440px confirmed that the revised headings fitted and that the replay and crank controls still worked. The data validators, 238 JavaScript tests, 31 publication tests, 141 bot tests and the offline publication audit passed.
+
+[PR #325](https://github.com/valorifutures/softcat.ai/pull/325) merged after its [hosted checks](https://github.com/valorifutures/softcat.ai/actions/runs/45677738084) passed. We verified the new copy on all 14 live routes after [Pages published the release](https://github.com/valorifutures/softcat.ai/actions/runs/45678320026).
+
 ## 25 November 2026, the reasoning behind the five clocks
 
 Each Horizon clock now opens a sourced reading of its latest published decision.
