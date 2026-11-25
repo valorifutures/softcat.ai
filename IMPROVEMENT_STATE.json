@@ -1,27 +1,27 @@
 {
-  "updated_at": "2026-11-24T08:20:18Z",
+  "updated_at": "2026-11-25T08:40:48Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "f3866af1d9af28c8897f49959611f682bf73a9b1",
-    "at": "2026-11-24T08:20:18Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45354612623"
+    "sha": "d59f3acf4778752e11bab9762bf37e6fc3f2412b",
+    "at": "2026-11-25T08:40:48Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45578028616"
   },
   "maintenance_receipt": {
-    "date": "2026-11-24",
-    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/317",
-    "reviewed_head": "a336332591cb4f6b6d31b845824e979f345e57f5",
-    "merge_sha": "f3866af1d9af28c8897f49959611f682bf73a9b1",
-    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45354175552",
-    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45354612623",
-    "outcome": "Radar publication now fails when any retained manifest date lacks its exact archived JSON file. The archive index and dated routes share exact filename matching, so a misleading partial filename cannot satisfy the check.",
-    "validation": "236 JavaScript tests, 30 Python publication tests, every content/data/Horizon validator, the 650-page production build and an offline audit of 34,193 internal links, 3,343 assets or metadata records and 46,764 accessibility elements passed with zero errors. A controlled missing-file build failed with the exact missing date before the archive was restored and rebuilt.",
+    "date": "2026-11-25",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/320",
+    "reviewed_head": "08d2fed2071d29fde818f389d9a695b10f43f7ba",
+    "merge_sha": "d59f3acf4778752e11bab9762bf37e6fc3f2412b",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45577546137",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45578028616",
+    "outcome": "AI discovery now exposes the current open research programme with bounded stage language. The publication audit fails closed when llms.txt or llms-full.txt is absent, contains no SOFT CAT URL or points to a missing local route or fragment.",
+    "validation": "237 JavaScript tests, 31 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 651-page production build and an offline audit of 34,434 internal links, 3,347 assets or metadata records and 46,789 accessibility elements passed with zero errors. The text-manifest audit added coverage for 235 internal URLs.",
     "live_checks": [
-      "The Radar archive and 3 July 2026 edition loaded from the 24 November 08:18 UTC Pages build with all six products and the historical notice.",
-      "The dated edition did not render its missing-data fallback and retained its exact previous-day navigation.",
-      "Both routes had one h1, one main landmark, no broken images and no desktop horizontal overflow; the archive had no duplicate IDs or unnamed controls. Physical touch and narrow-viewport rendering were not verified."
+      "The Pages deployment for merge d59f3acf4778752e11bab9762bf37e6fc3f2412b completed successfully.",
+      "The live llms.txt returned HTTP 200 and contained the bounded research note, research index, all three experiment routes and constitution link.",
+      "All 416 indexed live routes returned successful responses in the pre-publication crawl. Physical touch and narrow-viewport rendering were not verified."
     ],
-    "price_status": "Scheduled run 45215787514 passed on 23 November: 477 catalogue models, 39 tracked, 31 matched, 28 verified, 8 not listed, 3 review-needed and 1 applied price change. Qwen3.6 35B A3B changed from $0.10/$0.90 to $0.05/$0.70 per million tokens. No duplicate refresh was launched.",
+    "price_status": "The latest visible price-owner run 45434539382 passed on 24 November. A 25 November scheduled run was not yet visible when this pass completed, so no fresh price publication is claimed and no duplicate refresh was launched.",
     "scope": "No Horizon prediction or review date, Feral creative file, archived News or Radar record, retired generator or price data changed. The Feral GitHub workflow remains manual-only and docs/site-operations.md remains on main."
   },
   "horizon_review_receipt": {
@@ -1107,6 +1107,23 @@
       "Both routes had one h1, one main landmark, no broken images and no desktop horizontal overflow; the archive had no duplicate IDs or unnamed controls. Physical touch and narrow-viewport rendering were not verified."
     ],
     "price_status": "Scheduled run 45215787514 passed on 23 November: 477 catalogue models, 39 tracked, 31 matched, 28 verified, 8 not listed, 3 review-needed and 1 applied price change. Qwen3.6 35B A3B changed from $0.10/$0.90 to $0.05/$0.70 per million tokens. No duplicate refresh was launched.",
+    "scope": "No Horizon prediction or review date, Feral creative file, archived News or Radar record, retired generator or price data changed. The Feral GitHub workflow remains manual-only and docs/site-operations.md remains on main."
+  },
+  "maintenance_2026_11_25": {
+    "date": "2026-11-25",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/320",
+    "reviewed_head": "08d2fed2071d29fde818f389d9a695b10f43f7ba",
+    "merge_sha": "d59f3acf4778752e11bab9762bf37e6fc3f2412b",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45577546137",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45578028616",
+    "outcome": "AI discovery now exposes the current open research programme with bounded stage language. The publication audit fails closed when llms.txt or llms-full.txt is absent, contains no SOFT CAT URL or points to a missing local route or fragment.",
+    "validation": "237 JavaScript tests, 31 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 651-page production build and an offline audit of 34,434 internal links, 3,347 assets or metadata records and 46,789 accessibility elements passed with zero errors. The text-manifest audit added coverage for 235 internal URLs.",
+    "live_checks": [
+      "The Pages deployment for merge d59f3acf4778752e11bab9762bf37e6fc3f2412b completed successfully.",
+      "The live llms.txt returned HTTP 200 and contained the bounded research note, research index, all three experiment routes and constitution link.",
+      "All 416 indexed live routes returned successful responses in the pre-publication crawl. Physical touch and narrow-viewport rendering were not verified."
+    ],
+    "price_status": "The latest visible price-owner run 45434539382 passed on 24 November. A 25 November scheduled run was not yet visible when this pass completed, so no fresh price publication is claimed and no duplicate refresh was launched.",
     "scope": "No Horizon prediction or review date, Feral creative file, archived News or Radar record, retired generator or price data changed. The Feral GitHub workflow remains manual-only and docs/site-operations.md remains on main."
   }
 }
