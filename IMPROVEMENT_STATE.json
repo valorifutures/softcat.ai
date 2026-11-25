@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-25T18:10:31Z",
+  "updated_at": "2026-11-25T18:48:09Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "1e5e4b23664987c4f9df03b1ea6d7d83a0b14a02",
-    "at": "2026-11-25T18:10:31Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45671609776"
+    "sha": "916358064b8c4f0e2fdb797d93c2f6c25e8818b0",
+    "at": "2026-11-25T18:48:09Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45678320026"
   },
   "maintenance_receipt": {
     "date": "2026-11-25",
@@ -1139,5 +1139,14 @@
     "live_verification": "All five explanations opened and closed by keyboard on the live site. The archived memory claim showed its withdrawal reason and reconsideration test. All 13 original review events remained in the public data.",
     "next_review": "Existing Monday evidence task updated to request an advocate and challenger. Next scheduled window starts 30 November 2026 at 15:00 Europe/London.",
     "limitations": "No timed comprehension study or physical handset test was completed."
+  },
+  "workshop_copy_2026_11_25": {
+    "status": "Published and verified",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/325",
+    "merge_sha": "916358064b8c4f0e2fdb797d93c2f6c25e8818b0",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45678320026",
+    "scope": "Scanned the rendered headings and paragraphs across 652 pages. Edited 14 visitor-facing pages and the shared footer. Updated STYLE.md.",
+    "verification": "238 JavaScript tests, 31 Python publication tests, 141 bot tests and all data validators passed. The built-site audit reported no errors. Chromium checks covered all 14 edited routes at 375px and 1440px, including the replay and keyboard crank. The revised text was then checked on all 14 live routes.",
+    "editorial_note": "Read neighbouring headings and introductions together. Keep the straplines that add character and explain the work in the sentences around them."
   }
 }
