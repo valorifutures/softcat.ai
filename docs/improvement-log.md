@@ -1,5 +1,52 @@
 # Improvement log
 
+## 25 November 2026, AI research discovery integrity
+
+The pass began from exact main `bca62d68b1723c6cfc9f011b27030d3a6925b9dc`
+in a fresh isolated checkout. There was no open pull request, current active-work
+marker or running Action. `docs/site-operations.md` remains on main and the
+Feral GitHub workflow remains manual-only. No legacy generator, Feral cycle or
+duplicate price refresh was started.
+
+The production site, all 416 indexed routes and the repository baseline were
+healthy. The most useful gap was in an authoritative discovery surface:
+`llms.txt` omitted the current open research programme, while the offline
+publication audit did not validate local links in either AI-facing text
+manifest. The manifest now links the research index, all three recorded
+experiments and the constitution, with explicit language that the work does not
+yet constitute a remote-model evaluation, production-security guarantee or
+independent external reproduction. Publication now fails if `llms.txt` or
+`llms-full.txt` is missing, contains no SOFT CAT URL or points to a missing local
+route or fragment. Three negative publication fixtures and one discovery
+regression test cover those cases.
+
+All content, tool-data and Horizon-reference validators passed with no errors or
+warnings, along with 237 JavaScript tests, 31 Python publication tests and 141
+bot tests. The 651-page production build and offline audit passed 34,434
+internal links, 3,347 asset or metadata references and 46,789 accessibility
+elements with zero errors. The new manifest checks account for 235 additional
+internal text-manifest links.
+
+[PR #320](https://github.com/valorifutures/softcat.ai/pull/320) passed the
+[hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/45577546137)
+and independent code review with no findings on exact head
+`08d2fed2071d29fde818f389d9a695b10f43f7ba`. Main was re-read unchanged before
+normal squash merge `d59f3acf4778752e11bab9762bf37e6fc3f2412b`. The resulting
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/45578028616)
+completed successfully for that commit.
+
+The live `llms.txt` returned HTTP 200 and contained the bounded research note,
+research index, all three experiment routes and constitution link. Each linked
+local research route was already included in the successful 416-route live
+sitemap crawl. Physical touch and narrow-viewport rendering were not verified.
+
+The latest visible price owner remains successful
+[run 45434539382](https://github.com/valorifutures/softcat.ai/actions/runs/45434539382)
+from 24 November. The 25 November scheduled run was not yet visible when this
+pass completed, so no fresh price publication is claimed and no duplicate
+refresh was launched. No Horizon prediction or review date, Feral creative file,
+archived content, retired generator or price data changed.
+
 ## 24 November 2026, Radar archive integrity
 
 The pass began from exact main `ff3b3a49e358071bb82d10b633b2a249deae16fa`
