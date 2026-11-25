@@ -15,6 +15,15 @@ followed the Graveyard link to the memory forecast. The six-month change exists
 only in a test fixture. The next evidence review should record its two arguments
 and cite the sources preserved with each decision.
 
+[PR #323](https://github.com/valorifutures/softcat.ai/pull/323) merged after the
+[required checks](https://github.com/valorifutures/softcat.ai/actions/runs/45671100321).
+[Pages published the release](https://github.com/valorifutures/softcat.ai/actions/runs/45671609776).
+We opened and dismissed each live explanation by keyboard. We followed the
+[Graveyard link](https://softcat.ai/horizon/review/#graveyard) and checked the
+memory entry. The forecast data still has its original 13 review events.
+We updated the existing Monday evidence task. Its next scheduled review is
+30 November. A physical handset and timed reader-comprehension test remain unverified.
+
 ## 25 November 2026, AI research discovery integrity
 
 The pass began from exact main `bca62d68b1723c6cfc9f011b27030d3a6925b9dc`

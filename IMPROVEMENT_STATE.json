@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-25T17:59:01Z",
+  "updated_at": "2026-11-25T18:10:31Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "d59f3acf4778752e11bab9762bf37e6fc3f2412b",
-    "at": "2026-11-25T08:40:48Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45578028616"
+    "sha": "1e5e4b23664987c4f9df03b1ea6d7d83a0b14a02",
+    "at": "2026-11-25T18:10:31Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45671609776"
   },
   "maintenance_receipt": {
     "date": "2026-11-25",
@@ -1129,8 +1129,15 @@
   "horizon_reading_release": {
     "date": "2026-11-25",
     "evidence_review": "2026-11-23",
-    "status": "Feature validated before publication",
+    "status": "Published and verified",
     "scope": "Five date explanations, eight historical withdrawals and the Monday evidence review contract. Forecast history is unchanged.",
-    "verification": "238 JavaScript tests, 31 publication tests, 141 bot tests, data checks, 652-page build, offline audit and keyboard checks for all five clocks."
+    "verification": "238 JavaScript tests, 31 publication tests, 141 bot tests, data checks, 652-page build, offline audit and keyboard checks for all five clocks.",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/323",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45671100321",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45671609776",
+    "merge_sha": "1e5e4b23664987c4f9df03b1ea6d7d83a0b14a02",
+    "live_verification": "All five explanations opened and closed by keyboard on the live site. The archived memory claim showed its withdrawal reason and reconsideration test. All 13 original review events remained in the public data.",
+    "next_review": "Existing Monday evidence task updated to request an advocate and challenger. Next scheduled window starts 30 November 2026 at 15:00 Europe/London.",
+    "limitations": "No timed comprehension study or physical handset test was completed."
   }
 }
