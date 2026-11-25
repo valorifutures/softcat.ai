@@ -146,7 +146,7 @@ export default function HorizonPredictions({ initialData, initialNow, briefs }: 
             <span class="hz-clock-change">{shortMovement(latest.movement)}{latest.movement.kind === 'scope' && latest.movement.dateChangeLabel && <span>{latest.movement.dateChangeLabel}</span>}<span>Reviewed <time dateTime={record.reviewed_at}>{formatClockDate(record.reviewed_at)}</time></span></span>
           </button>
             <button type="button" class="hz-why-trigger" popovertarget={`why-${key}`} aria-label={`Why this date for ${record.title}?`} onClick={() => choose(key)}>Why this date?</button>
-            <HorizonReviewReading entry={latest} future={key} />
+            <HorizonReviewReading entry={latest} future={key} ready={ready} />
           </div>;
         })}
       </div>

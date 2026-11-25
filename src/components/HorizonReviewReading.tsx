@@ -23,7 +23,7 @@ export function ReviewArguments({ reading, record }: { reading?: ReviewReading; 
   </>;
 }
 
-export default function HorizonReviewReading({ entry, future }: { entry: Review; future: string }) {
+export default function HorizonReviewReading({ entry, future, ready }: { entry: Review; future: string; ready: boolean }) {
   const { record, previous, movement } = entry;
   const target = formatClockDate(record.target_date);
   const moved = previous && previous.target_date !== record.target_date;
@@ -35,6 +35,7 @@ export default function HorizonReviewReading({ entry, future }: { entry: Review;
     {moved && <p class="hz-date-change">Previously {formatClockDate(previous.target_date)} · {movement.dateChangeLabel}</p>}
     {movement.kind === 'scope' && <p class="hz-date-change">We also revised the milestone or its test.</p>}
     <ReviewArguments record={record} reading={reviewReading(entry.id, record)} />
-    <a class="hz-full-record" href={`/horizon/?future=${future}#horizon-prediction-history`} onClick={event => event.currentTarget.closest<HTMLElement>('[popover]')?.hidePopover()}>Read the full review history</a>
+    {ready ? <a class="hz-full-record" href={`/horizon/?future=${future}#horizon-prediction-history`} onClick={event => event.currentTarget.closest<HTMLElement>('[popover]')?.hidePopover()}>Read the full review history</a>
+      : <a class="hz-full-record" href="/horizon/prediction-data.json">Read all published reviews as data</a>}
   </div>;
 }
