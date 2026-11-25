@@ -239,3 +239,19 @@ test('copyable brief retains a reviewed exact date and an optional dated day-cou
   assert.doesNotMatch(predictionBriefing(history, agentId, brief, NaN), /Countdown snapshot/);
   assert.match(predictionBriefing(history, agentId, brief, Date.parse('2028-05-08T00:00:00Z')), /Review due\. Prediction deadline elapsed/);
 });
+
+test('a six-month delay retains its comparison and the decision cites this review', () => {
+  const before = initial[0].records[0];
+  const decision = { case_for_change: 'Fixture case.', challenge: 'Fixture counterargument.', judgement: 'Two quarters to fix and retest.', reconsider: 'Independent replication.', source_urls: [before.evidence[0].url] };
+  const after = { ...before, target_date: '2029-06-30', decision };
+  const history = [...initial, { id: 'fixture-delay', date: '2026-09-16', reason: 'Fictional review.', records: [after] }];
+  const entry = predictionHistory(history, before.id).at(-1);
+  assert.equal(entry.previous.target_date, '2028-12-31');
+  assert.equal(entry.movement.dateChangeLabel, '181 days later');
+  assert.equal(entry.record.decision.judgement, decision.judgement);
+  assert.deepEqual(validatePredictionHistory(history, '2026-09-16', initial), []);
+  for (const invalid of [{ ...decision, challenge: ' ' }, { ...decision, source_urls: [] }, { ...decision, source_urls: ['https://example.org/other-review'] }]) {
+    const bad = { ...history[1], records: [{ ...after, decision: invalid }] };
+    assert.match(validatePredictionHistory([...initial, bad], '2026-09-16').join(' '), /decision needs/);
+  }
+});

@@ -116,3 +116,23 @@
 }
 .hz-clear .hz-prediction-detail .hz-guide-uncertainty { font-size: .8rem; line-height: 1.7; margin-top: 1.5rem; color: var(--hz-muted); }
 .hz-guide-uncertainty strong { display: block; font-size: .74rem; font-weight: 600; color: var(--hz-accent); margin-bottom: .35rem; }
+
+.hz-clock-item { display: flex; flex-direction: column; min-width: 0; }
+.hz-clock-item .hz-clock { flex: 1; }
+.hz-clock-item .hz-why-trigger { min-height: 44px; padding: .42rem .7rem; text-align: left; font-size: .9rem; color: #ecf4e5; background: #263625; border: 1px solid #71856d; text-decoration: underline; text-underline-offset: .2em; }
+.hz-clock-item .hz-why-trigger:hover { background: #374c35; }
+.hz-reading-popover { position: fixed; inset: 0; margin: auto; width: min(37rem, calc(100% - 1.5rem)); max-height: 86vh; max-height: 86dvh; height: fit-content; overflow: auto; overscroll-behavior: contain; padding: clamp(1rem, 3vw, 1.8rem); border: 1px solid #809073; color: #203018; background: #f6f6ed; box-shadow: 0 .8rem 3rem #17241540; text-align: left; }
+.hz-reading-popover::backdrop { background: #101b15b8; }
+.hz-reading-top { display: flex; gap: .8rem; align-items: center; justify-content: space-between; color: #40553b; font: .83rem/1.5 var(--font-mono); }
+.hz-reading-top button { min-height: 44px; padding-inline: .5rem; text-decoration: underline; }
+.hz-reading-popover h2 { font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.12; letter-spacing: -.035em; margin: .55rem 0 1rem; color: #203018; }
+.hz-date-change { margin-bottom: .7rem; font-weight: 600; }
+.hz-arguments { margin: 0; }
+.hz-arguments > div { padding-block: .55rem; border-top: 1px solid #bdc8b6; }
+.hz-arguments dt { font-size: .9rem; font-weight: 650; color: #34502f; }
+.hz-arguments dd { font-size: 1rem; line-height: 1.5; margin: .18rem 0 0; }
+.hz-reading-links { display: grid; margin-top: .5rem; }
+.hz-reading-links a, .hz-full-record { display: inline-flex; align-items: center; min-height: 44px; color: #284c26; text-decoration: underline; text-underline-offset: .2em; }
+.hz-history-arguments { margin-block: .8rem; }
+.hz-history-arguments > summary { cursor: pointer; min-height: 44px; align-content: center; }
+@media (min-width: 701px) { .hz-reader-page .hz-reading { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

@@ -1,0 +1,39 @@
+{
+  "predictions-2026-11-23": {
+    "scenario-agi": {
+      "case_for_change": "GPT-6.2 Astra scored 99.8% on ARC-AGI-3 with OpenAI’s adapter.",
+      "challenge": "With the standard setup, the same model scored 70.3%. The result depends on how the test runs.",
+      "judgement": "One set of interactive tasks gives us too little evidence about performance across all ten domains.",
+      "reconsider": "Two independent teams test the same frozen system on fresh tasks and reproduce skilled-human performance across the ten domains.",
+      "source_urls": ["https://arcprize.org/results/openai-gpt-6-2-astra"]
+    },
+    "scenario-agentic-work": {
+      "case_for_change": "OpenAI tracked over 1,700 performance investigations in just over three months. Its workflow found root causes in more than 600.",
+      "challenge": "Engineers decide what ships. How many cases finished without anyone stepping in? The report leaves that open.",
+      "judgement": "One workflow shows that agents can investigate real problems. We need evidence that teams can repeat this across organisations.",
+      "reconsider": "Customers publish 90 days of case logs across multiple systems. The logs count manual rescues, failures and completed cases.",
+      "source_urls": ["https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/"]
+    },
+    "scenario-robotics": {
+      "case_for_change": "GXO completed a warehouse picking pilot. Apptronik evaluated more than 50 tasks in its training facility.",
+      "challenge": "The wider warehouse trials are planned for 2027. We still lack six months of operating costs and intervention records across ten sites.",
+      "judgement": "The pilot makes wider use plausible. Field results will show whether robots can switch jobs economically.",
+      "reconsider": "Customers publish six months of results for several jobs, including human interventions and the full cost per successful task.",
+      "source_urls": ["https://investors.gxo.com/news-releases/news-release-details/gxo-and-apptronik-expand-partnership-scale-humanoid-deployment"]
+    },
+    "scenario-software-automation": {
+      "case_for_change": "OpenAI’s agents investigate a slowdown, propose code changes and check performance after deployment.",
+      "challenge": "People decide which fixes ship. The report counts investigations and leaves open how often eligible tickets needed manual corrections or rollbacks.",
+      "judgement": "We have evidence for several steps of delivery at one organisation. Reliable completion across ten organisations remains an open question.",
+      "reconsider": "Teams publish consecutive eligible tickets, including failed deployments, rollbacks and the work people did to rescue a change.",
+      "source_urls": ["https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/"]
+    },
+    "scenario-education-disruption": {
+      "case_for_change": "In a randomised sixth-form study, students using the AI tutor reported more effort and difficulty during part of a maths session.",
+      "challenge": "The session lasted 90 minutes. The study did not test what students could do unaided eight weeks later.",
+      "judgement": "Effort during a lesson tells us little about how much learning lasts after the tutor goes away.",
+      "reconsider": "Two independent trials find learning gains on delayed, unaided tests after at least a term of tutoring.",
+      "source_urls": ["https://bera-journals.onlinelibrary.wiley.com/doi/10.1111/bjet.70100"]
+    }
+  }
+}

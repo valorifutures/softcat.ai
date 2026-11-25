@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T08:40:48Z",
+  "updated_at": "2026-11-25T17:59:01Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
@@ -1125,5 +1125,12 @@
     ],
     "price_status": "The latest visible price-owner run 45434539382 passed on 24 November. A 25 November scheduled run was not yet visible when this pass completed, so no fresh price publication is claimed and no duplicate refresh was launched.",
     "scope": "No Horizon prediction or review date, Feral creative file, archived News or Radar record, retired generator or price data changed. The Feral GitHub workflow remains manual-only and docs/site-operations.md remains on main."
+  },
+  "horizon_reading_release": {
+    "date": "2026-11-25",
+    "evidence_review": "2026-11-23",
+    "status": "Feature validated before publication",
+    "scope": "Five date explanations, eight historical withdrawals and the Monday evidence review contract. Forecast history is unchanged.",
+    "verification": "238 JavaScript tests, 31 publication tests, 141 bot tests, data checks, 652-page build, offline audit and keyboard checks for all five clocks."
   }
 }

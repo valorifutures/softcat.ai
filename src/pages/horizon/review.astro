@@ -5,6 +5,11 @@ import review from '../../data/horizon/review-2026-09-12.json';
 const active = await getCollection('horizonNext');
 const retired = await getCollection('horizonRetired');
 const archive = await getCollection('horizonNowArchive');
+const basisLabels = {
+  'undefined-test': 'The test was unclear',
+  'insufficient-evidence': 'Evidence was missing',
+  'contradicted': 'Evidence contradicted the claim',
+};
 const original = new Map(review.original_forecasts.map(item => [item.id, item]));
 ---
 <BaseLayout title="Horizon: the review record" description="What we kept, revised and withdrew from the Horizon Map, with original claims and reasons.">
@@ -29,11 +34,12 @@ const original = new Map(review.original_forecasts.map(item => [item.id, item]))
         <div class="record-body"><p class="label">Original claim · 11 April 2026</p><blockquote>{original.get(entry.data.id)?.why_it_matters}</blockquote><p class="label">Review · 12 September 2026</p><p>{entry.data.review_note}</p><a href={`/horizon/record#${entry.data.id}`}>Current claim, sources and resolution test ↗</a></div>
       </details>)}
     </section>
-    <section aria-labelledby="withdrawn-title">
-      <div class="section-label"><h2 id="withdrawn-title">Withdrawn</h2><span>These no longer count as active forecasts.</span></div>
+    <section id="graveyard" aria-labelledby="withdrawn-title">
+      <div class="section-label"><h2 id="withdrawn-title">The Graveyard</h2><span>{retired.length} withdrawn forecasts</span></div>
+      <p class="graveyard-intro">These forecasts came from the earlier Horizon map. Open one to see what we claimed, why we withdrew it and what might earn it another look.</p>
       {retired.map(entry => <details class="record" id={entry.data.id}>
-        <summary><span>{entry.data.title}</span><small>Withdrawn · {entry.data.retired_at}</small></summary>
-        <div class="record-body"><p>{entry.data.retirement_reason}</p><p class="label">Original claim · {entry.data.added}</p><blockquote>{entry.data.why_it_matters}</blockquote></div>
+        <summary><span>{entry.data.title}</span><small>{entry.data.withdrawal_basis ? basisLabels[entry.data.withdrawal_basis] : 'Withdrawn'} · {entry.data.retired_at}</small></summary>
+        <div class="record-body"><p class="label">Original claim · {entry.data.added}</p><blockquote>{entry.data.why_it_matters}</blockquote><p class="label">Why we withdrew it · {entry.data.retired_at}</p><p>{entry.data.retirement_reason}</p>{entry.data.reconsider_when && <><p class="label">What would earn a fresh look?</p><p>{entry.data.reconsider_when}</p></>}</div>
       </details>)}
     </section>
     <section aria-labelledby="archive-title">
@@ -69,6 +75,8 @@ const original = new Map(review.original_forecasts.map(item => [item.id, item]))
   .method p { margin: 1rem 0; max-width: 780px; }
   section { margin: 3rem 0; }
   .section-label { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem; margin-bottom: 1.2rem; color: #bfc1c8; }
+  #graveyard { scroll-margin-top: 6rem; }
+  .graveyard-intro { max-width: 64ch; color: #c4c6cf; line-height: 1.7; margin-bottom: 1rem; }
   .record { border-top: 1px solid #343744; scroll-margin-top: 6rem; }
   summary { cursor: pointer; padding: 1.2rem .2rem; color: #e8e5dd; }
   summary small { display: block; margin: .35rem 0 0 1.1rem; color: #bbcbb6; }

@@ -4,6 +4,7 @@ import { CLOCK_REFRESH_MS, formatClockDate } from '../lib/horizon-clocks.mjs';
 import { latestPredictions, predictionBriefing, predictionCaption, predictionClock, predictionHistory, predictionTargetLabel, validatePredictionPayload } from '../lib/horizon-predictions.mjs';
 import type { CurrentPrediction, PredictionData } from '../lib/horizon-prediction-types';
 import type { DecisionBrief, Evidence } from '../lib/horizon-types';
+import HorizonReviewReading, { ReviewArguments, reviewReading } from './HorizonReviewReading';
 import HorizonTrialPlanner from './HorizonTrialPlanner';
 import guides from '../data/horizon/reader-guides.json';
 import { matchingPredictionGuide, shortMovement } from '../lib/horizon-reader.mjs';
@@ -134,7 +135,7 @@ export default function HorizonPredictions({ initialData, initialNow, briefs }: 
           const caption = predictionCaption(clock);
           const latest = predictionHistory(data.history, id).at(-1)!;
           const cardGuide = matchingPredictionGuide(record, guides);
-          return <button type="button" key={key} class="hz-clock" disabled={!ready} aria-pressed={future === key} aria-controls="horizon-prediction horizon-decision horizon-evidence horizon-prediction-history" aria-label={`${record.title}. Our prediction: ${predictionTargetLabel(record)}. ${record.milestone} ${caption.summary}. ${latest.movement.label}. Explore this prediction.`} onClick={() => choose(key)}>
+          return <div class="hz-clock-item" key={key}><button type="button" class="hz-clock" disabled={!ready} aria-pressed={future === key} aria-controls="horizon-prediction horizon-decision horizon-evidence horizon-prediction-history" aria-label={`${record.title}. Our prediction: ${predictionTargetLabel(record)}. ${record.milestone} ${caption.summary}. ${latest.movement.label}. Explore this prediction.`} onClick={() => choose(key)}>
             <span class="hz-clock-top"><span>0{index + 1}</span><span aria-hidden="true">{future === key ? 'Selected ✓' : 'Explore ↗'}</span></span>
             <span class="hz-clock-title">{record.title}</span>
             <span class={`hz-clock-face ${clock.target === null ? 'hz-clock-undated' : ''}`} aria-hidden="true">
@@ -143,7 +144,10 @@ export default function HorizonPredictions({ initialData, initialNow, briefs }: 
             <span class="hz-prediction-date"><strong>{predictionTargetLabel(record)}</strong></span>
             <span class="hz-prediction-milestone">{cardGuide?.headline || record.milestone}</span>
             <span class="hz-clock-change">{shortMovement(latest.movement)}{latest.movement.kind === 'scope' && latest.movement.dateChangeLabel && <span>{latest.movement.dateChangeLabel}</span>}<span>Reviewed <time dateTime={record.reviewed_at}>{formatClockDate(record.reviewed_at)}</time></span></span>
-          </button>;
+          </button>
+            <button type="button" class="hz-why-trigger" popovertarget={`why-${key}`} aria-label={`Why this date for ${record.title}?`} onClick={() => choose(key)}>Why this date?</button>
+            <HorizonReviewReading entry={latest} future={key} />
+          </div>;
         })}
       </div>
       <p class="hz-clock-note"><strong>Time reduces the count. Evidence can move the date.</strong> We record the reason for every change. <a href="#horizon-prediction-history">See the review history ↓</a></p>
@@ -184,5 +188,6 @@ export default function HorizonPredictions({ initialData, initialNow, briefs }: 
 }
 
 function HistoryEntry({ entry }: { entry: ReturnType<typeof predictionHistory>[number] }) {
-  return <details class="hz-history-entry"><summary><time dateTime={entry.date}>{formatClockDate(entry.date)}</time><span class="hz-history-movement">{shortMovement(entry.movement)}</span><span class="hz-history-window">{predictionTargetLabel(entry.record)}</span><span class="hz-history-open"><span>Read ↓</span><span>Close ↑</span></span></summary><div class="hz-history-body"><p>{entry.reason}</p>{entry.previous && <p><strong>Change at this review: </strong>{entry.movement.label}.{entry.movement.kind === 'scope' && entry.movement.dateChangeLabel && ` ${entry.movement.dateChangeLabel}.`} This change excludes the days that passed between reviews.</p>}<p><strong>Our prediction: </strong>{entry.record.milestone}</p><p><strong>Deadline: </strong>{formatClockDate(entry.record.target_date)}</p><p><strong>The full test</strong></p><ol class="hz-resolution-list">{entry.record.resolution.map((item: string) => <li key={item}>{item}</li>)}</ol><p><strong>Why we chose this date: </strong>{entry.record.rationale}</p><p><strong>Uncertainty: </strong>{entry.record.uncertainty}</p><p><strong>Earlier: </strong>{entry.record.earlier}</p><p><strong>Later: </strong>{entry.record.later}</p><Sources evidence={entry.record.evidence} /></div></details>;
+  const reading = reviewReading(entry.id, entry.record);
+  return <details class="hz-history-entry"><summary><time dateTime={entry.date}>{formatClockDate(entry.date)}</time><span class="hz-history-movement">{shortMovement(entry.movement)}</span><span class="hz-history-window">{predictionTargetLabel(entry.record)}</span><span class="hz-history-open"><span>Read ↓</span><span>Close ↑</span></span></summary><div class="hz-history-body"><p>{entry.reason}</p>{reading && <details class="hz-history-arguments"><summary>Why this date?</summary><ReviewArguments reading={reading} record={entry.record} /></details>}{entry.previous && <p>{entry.previous.target_date !== entry.record.target_date && <>Previous deadline: {formatClockDate(entry.previous.target_date)}. </>}<strong>Change at this review: </strong>{entry.movement.label}.{entry.movement.kind === 'scope' && entry.movement.dateChangeLabel && ` ${entry.movement.dateChangeLabel}.`} This change excludes the days that passed between reviews.</p>}<p><strong>Our prediction: </strong>{entry.record.milestone}</p><p><strong>Deadline: </strong>{formatClockDate(entry.record.target_date)}</p><p><strong>The full test</strong></p><ol class="hz-resolution-list">{entry.record.resolution.map((item: string) => <li key={item}>{item}</li>)}</ol><p><strong>Why we chose this date: </strong>{entry.record.rationale}</p><p><strong>Uncertainty: </strong>{entry.record.uncertainty}</p><p><strong>Earlier: </strong>{entry.record.earlier}</p><p><strong>Later: </strong>{entry.record.later}</p><Sources evidence={entry.record.evidence} /></div></details>;
 }
