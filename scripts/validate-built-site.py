@@ -251,6 +251,20 @@ def audit_site(directory, records=(), retirements=(), verify_blob=None):
         except (OSError, ElementTree.ParseError, ValueError) as error:
             errors.append(f"Invalid or missing {path.name}: {error}")
 
+    # AI discovery manifests are public navigation surfaces too. Validate every
+    # absolute SOFT CAT URL they publish so a renamed or retired route cannot
+    # leave an apparently authoritative text index pointing at a 404.
+    for path in [root / "llms.txt", root / "llms-full.txt"]:
+        try:
+            text = path.read_text(encoding="utf-8")
+            urls = re.findall(r"https://softcat\.ai[^\s<>()\[\]{}\"'`]+", text)
+            if not urls:
+                raise ValueError("no SOFT CAT URLs")
+            for value in urls:
+                check(value.rstrip(".,;:"), ORIGIN + "/", path.name)
+        except (OSError, UnicodeError, ValueError) as error:
+            errors.append(f"Invalid or missing {path.name}: {error}")
+
     expected_tags = {"/tags/" + tag for record in records if not record["draft"] for tag in record["tags"]}
     for record in records:
         route = record["route"]

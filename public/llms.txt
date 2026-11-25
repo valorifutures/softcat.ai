@@ -2,6 +2,18 @@
 
 > Smart Outputs From Trained Conversational AI Technology. An independent AI workshop by Valori, with useful tools, inspectable experiments and a public notebook.
 
+## Open research
+
+SOFT CAT investigates whether AI agents can cooperate while preserving authority, evidence and honest outcome reporting. The published work is open and reproducible. It currently covers recorded local experiments, not a remote-model evaluation, production-security guarantee or independent external reproduction.
+
+- [Research overview and recorded offline harness](https://softcat.ai/research)
+- [Can the agent still act? A guided recorded replay](https://softcat.ai/research/can-it-act)
+- [Authenticated action boundary: local mutual-TLS tests](https://softcat.ai/research/boundary)
+- [Framework recovery: deterministic LangGraph and PydanticAI paths](https://softcat.ai/research/recovery)
+- [Research constitution and claim standard](https://softcat.ai/constitution)
+- [Research programme and evidence gates](https://github.com/valorifutures/softcat.ai/blob/main/docs/research-programme.md)
+- [Apache-2.0 research source](https://github.com/valorifutures/softcat.ai/tree/main/research)
+
 ## Workshop
 
 - [Home](https://softcat.ai/)

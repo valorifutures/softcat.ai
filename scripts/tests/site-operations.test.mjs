@@ -31,3 +31,12 @@ test('the publishing guide retains its original date and points to operating evi
   assert.match(guide, /configured schedule does not prove/);
   assert.match(guide, /six legacy Python content timers stay inactive/);
 });
+
+test('AI discovery leads to the current research work without overstating its stage', () => {
+  const manifest = read('public/llms.txt');
+  for (const route of ['/research', '/research/can-it-act', '/research/boundary', '/research/recovery', '/constitution']) {
+    assert.match(manifest, new RegExp(`https://softcat\\.ai${route}(?:\\)|\\n)`));
+  }
+  assert.match(manifest, /recorded local experiments/);
+  assert.match(manifest, /not a remote-model evaluation, production-security guarantee or independent external reproduction/);
+});

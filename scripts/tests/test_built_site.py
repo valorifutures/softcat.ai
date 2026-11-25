@@ -20,6 +20,8 @@ class BuiltSiteTests(unittest.TestCase):
         self.write("feed.xml", '<rss><channel><item><link>https://softcat.ai/guide</link></item></channel></rss>')
         self.write("sitemap-index.xml", '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://softcat.ai/sitemap-0.xml</loc></sitemap></sitemapindex>')
         self.write("sitemap-0.xml", '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://softcat.ai/guide</loc></url></urlset>')
+        self.write("llms.txt", '[Guide](https://softcat.ai/guide)')
+        self.write("llms-full.txt", 'URL: https://softcat.ai/guide#part')
 
     def tearDown(self):
         self.temporary.cleanup()
@@ -158,6 +160,14 @@ class BuiltSiteTests(unittest.TestCase):
         self.write("feed.xml", "<unclosed>")
         self.assertIn("Invalid or missing search index", self.errors())
         self.assertIn("Invalid or missing feed.xml", self.errors())
+
+    def test_ai_discovery_manifests_need_local_urls_that_resolve(self):
+        self.write("llms.txt", '[Missing](https://softcat.ai/missing)')
+        self.assertIn("llms.txt: missing destination", self.errors())
+        self.write("llms.txt", "No published URL")
+        self.assertIn("Invalid or missing llms.txt", self.errors())
+        (self.root / "llms-full.txt").unlink()
+        self.assertIn("Invalid or missing llms-full.txt", self.errors())
 
     def test_discovery_indexes_reject_wrong_formats_and_nonlocal_search_urls(self):
         for url in ["javascript:alert(1)", "https://elsewhere.example/", "//elsewhere.example/"]:
