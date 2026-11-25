@@ -118,5 +118,15 @@
     "concept_by": "feral-director",
     "type": "interactive",
     "born": "2026-11-24"
+  },
+  {
+    "slug": "walking-table",
+    "title": "THE WALKING TABLE",
+    "blurb": "Six legs, one handle and no destination. Rearrange the trouble, then turn it over.",
+    "route": "/feral/walking-table",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "kinetic-toy",
+    "born": "2026-11-25"
   }
 ]
