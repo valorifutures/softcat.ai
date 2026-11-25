@@ -18,15 +18,15 @@ const legacyIds = [...new Set([...past, ...now, ...next, ...debates, ...scenario
   <div class="horizon-page hz-reader-page"><div class="hz-shell">
     <header class="hz-hero">
       <div><p class="hz-label">Horizon / The SOFT CAT .ai forecast</p><h1>Five AI predictions.<br /><span>Your next move.</span></h1></div>
-      <div class="hz-hero-intro"><p><strong>What could change? When? What can you do now?</strong></p><p>Explore our five predictions. Check the evidence. Choose one task to test with your team.</p><nav class="hz-hero-links" aria-label="Explore Horizon"><a class="hz-hero-primary" href="#horizon-decision">Build a 90-day trial <span aria-hidden="true">↗</span></a><a href="#agi-question">Is AGI already here? ↓</a></nav></div>
+      <div class="hz-hero-intro"><p><strong>When might these changes reach your team?</strong></p><p>See why we chose each date, then use the evidence to plan a task your team could try in the next 90 days.</p><nav class="hz-hero-links" aria-label="Explore Horizon"><a class="hz-hero-primary" href="#horizon-decision">Build a 90-day trial <span aria-hidden="true">↗</span></a><a href="#agi-question">Is AGI already here? ↓</a></nav></div>
     </header>
     <HorizonPredictions client:load initialData={horizonPredictionData} initialNow={Date.now()} briefs={briefs} />
     <HorizonDefinition client:load reviewedAt={review.reviewed_at} />
     <section class="hz-reading" aria-label="Go deeper into Horizon">
       <a href="/horizon/record#now"><p class="hz-label">The wider record</p><h2>Explore the signals</h2><p>Read earlier observations and their sources. Each entry has its own date.</p><span>Open the record ↗</span></a>
-      <a href="/horizon/scenarios/"><p class="hz-label">Other possible futures</p><h2>Compare scenarios</h2><p>Explore optimistic, pragmatic and sceptical views. See how different assumptions change the outcome.</p><span>Compare the possibilities ↗</span></a>
+      <a href="/horizon/scenarios/"><p class="hz-label">Other possible futures</p><h2>Compare scenarios</h2><p>See how the outlook changes when we make optimistic, pragmatic or sceptical assumptions.</p><span>Compare the possibilities ↗</span></a>
       <a href="/horizon/review/#graveyard"><p class="hz-label">Withdrawn forecasts</p><h2>The Graveyard</h2><p>Read the original claims, why we withdrew them and what would earn a fresh look.</p><span>Explore the withdrawals ↗</span></a>
-      <a href="#horizon-prediction-history"><p class="hz-label">Our earlier predictions</p><h2>Check our record</h2><p>See what we predicted and why. Read every later review, including decisions to keep the date.</p><span>See what changed ↑</span></a>
+      <a href="#horizon-prediction-history"><p class="hz-label">Our earlier predictions</p><h2>Check our record</h2><p>Follow each prediction from our original reasoning through later reviews, including the times we kept the date.</p><span>See what changed ↑</span></a>
     </section>
     <details class="hz-method" id="method">
       <summary>How the clocks work</summary>

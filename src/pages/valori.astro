@@ -4,8 +4,8 @@ import '../styles/project-pages.css';
 const places = [
   { n: '00', title: 'Research you can inspect', href: '/research', text: 'Our first offline harness tests delegated permissions and task-scoped revocation. Inspect the recorded trace, challenge the grader and run it yourself.' },
   { n: '01', title: 'Tools you can try', href: '/tools', text: 'Check a public domain, build a prompt or inspect dated model prices. Each tool explains its limits.' },
-  { n: '02', title: 'A notebook with receipts', href: '/notebook', text: 'Dated accounts of changes, tests and mistakes. The source history lets you inspect what changed.' },
-  { n: '03', title: 'Room for uncertainty', href: '/horizon', text: 'Five predictions with explicit milestones, evidence and resolution criteria. Their history stays visible when our judgement changes.' },
+  { n: '02', title: 'A notebook with receipts', href: '/notebook', text: 'We write up changes, tests and mistakes as they happen, with links to the source history.' },
+  { n: '03', title: 'Room for uncertainty', href: '/horizon', text: 'Each of our five predictions says what would count as success. You can follow the evidence and see when we changed our minds.' },
   { n: '04', title: 'The odd experiment', href: '/feral', text: 'Agent-made creations, their briefs and recorded review decisions. An experiment can be interesting before it is useful.' },
 ];
 ---
@@ -14,19 +14,19 @@ const places = [
     <header class="project-intro">
       <div>
         <p class="eyebrow">ABOUT THE PROJECT / VALORI</p>
-        <h1>Open research.<br />Useful experiments.<br /><em>Evidence to inspect.</em></h1>
-        <p class="project-lead">We want cooperation between AI agents to be verifiable. Who had authority, what supported a decision and what actually happened should be open to inspection.</p>
+        <h1>What goes on at <em>SOFT CAT?</em></h1>
+        <p class="project-lead">When AI agents work together, we want to know who gave them permission, what they based a decision on and what happened when they acted. We publish the records so you can see for yourself.</p>
         <p class="project-copy">Valori is the anonymous collective behind SOFT CAT. Our research began on 25 September 2026 with a constitution, an experiment specification and an offline harness. The first recorded execution uses a deterministic script and synthetic data. Agent comparisons remain ahead.</p>
         <a class="text-link" href="/constitution">Read our constitution <span aria-hidden="true">→</span></a>
       </div>
       <aside class="project-name-card" aria-label="What SOFT CAT stands for">
         <p class="eyebrow">A NAME TO WORK TOWARDS</p>
         <p class="project-acronym"><strong>S</strong>mart<br /><strong>O</strong>utputs<br /><strong>F</strong>rom<br /><strong>T</strong>rained<br /><strong>C</strong>onversational<br /><strong>A</strong>I<br /><strong>T</strong>echnology</p>
-        <p>Useful is the aim.<br />Curiosity gets a seat too.</p>
+        <p>We make room for things we want to try, even when we don’t yet know what they’re good for.</p>
       </aside>
     </header>
     <section class="project-section" aria-labelledby="inside-heading">
-      <div class="project-section-title"><p class="eyebrow">FIND YOUR WAY IN</p><h2 id="inside-heading">Something to try.<br />Something to question.</h2></div>
+      <div class="project-section-title"><p class="eyebrow">FIND YOUR WAY IN</p><h2 id="inside-heading">Where to start in the workshop</h2></div>
       <div class="project-link-list">{places.map((place) => <a href={place.href}><span class="eyebrow">{place.n}</span><div><h3>{place.title}</h3><p>{place.text}</p></div><span aria-hidden="true">↗</span></a>)}</div>
     </section>
     <section class="project-section" aria-labelledby="standards-heading">

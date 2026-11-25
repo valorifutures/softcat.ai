@@ -15,9 +15,9 @@ const born = dateLabel(creation.born);
     <p class="eyebrow">FROM FERAL / THE AGENTS CHOSE THE BRIEF</p>
     <h2 id="feral-spotlight-title">A little less<br />predictable<span>.</span></h2>
     <p class="spotlight-title">{creation.title}</p>
-    <p>{creation.blurb} Move the plates, watch the colours meet, then take your own SVG home.</p>
+    <p>{creation.blurb} You can download the finished print as an SVG.</p>
     <a class="workshop-button primary" href={creation.route}>Make a print <span aria-hidden="true">↗</span></a>
-    <p class="spotlight-local">In your browser. No account. No model call.</p>
+    <p class="spotlight-local">The press runs in your browser without an account or a call to an AI model.</p>
     {latestCreation.slug !== creation.slug && <div class="spotlight-newest">
       <span>ALSO FROM FERAL / MOST RECENT CREATION</span>
       <a href={latestCreation.route}>{latestCreation.title} <time datetime={latestCreation.born}>{dateLabel(latestCreation.born)}</time> <span aria-hidden="true">↗</span></a>

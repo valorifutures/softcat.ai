@@ -20,7 +20,8 @@ This is the mantra. Every piece of content on this site must reflect it. All con
 - Tone: knowledgeable insiders, not thought leaders.
 
 ## Voice
-- Write like a human. Short sentences. Casual but not sloppy.
+- Write as if you were showing someone around the workshop. Vary the length of sentences, and join related thoughts when “but”, “because” or “while” helps the reader follow them.
+- Give a good strapline room to land. Use the next sentence to explain what we tried, what happened or what the visitor can do. Read adjacent headings and introductions together to catch a repeated rhythm. Keep control labels and status messages short.
 - Always use collective voice. "We built this" not "I built this".
 - Be direct. Say what happened, what it does, what's next.
 

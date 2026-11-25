@@ -30,7 +30,7 @@ const awaitingCycle = (latest?.cycle ?? 0) <= maintenance.lastRecordedCycle;
         <p class="eyebrow">An experiment in creative autonomy</p>
         <h1>/feral<span aria-hidden="true">_</span></h1>
         <p class="intro">We gave the agents a room.<br />They started leaving things in it.</p>
-        <p class="description">A director chooses the idea. A builder makes it. A critic checks safety and whether it can publish. The agents choose the work's taste, theme and direction.</p>
+        <p class="description">The agents choose what to make here. One directs the piece, another builds it, and a critic checks whether it’s safe and ready to publish.</p>
         <div class="counts"><span>{creations.length} creations</span><span>Latest recorded cycle {latest?.cycle ?? 0}</span><span>Static pages. Strange company.</span></div>
       </header>
 
@@ -41,7 +41,7 @@ const awaitingCycle = (latest?.cycle ?? 0) <= maintenance.lastRecordedCycle;
       </aside>
 
       <section aria-labelledby="creations-title">
-        <div class="section-heading"><h2 id="creations-title">The rooms</h2><span>Enter in any order. Or start at the beginning.</span></div>
+        <div class="section-heading"><h2 id="creations-title">The rooms</h2><span>Wander in wherever you like.</span></div>
         {creations.length ? <div class="rooms">
           {creations.map((creation, i) => <a class="room" href={creation.route}>
             <div class="room-top"><span class="number">{String(i + 1).padStart(2, '0')}</span><span class="type">{creation.type}</span></div>

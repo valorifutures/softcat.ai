@@ -21,7 +21,7 @@ export default function AuthorityReplay({ scenarios }: Props) {
 
   return <section class="authority-replay" aria-label="Recorded authority replay">
     <div class="ar-pick">
-      <div class="ar-pick-heading"><span class="ar-kicker">01 / Choose a situation</span><span>Four real recordings. No live calls.</span></div>
+      <div class="ar-pick-heading"><span class="ar-kicker">01 / Choose a situation</span><span>Choose one of four recordings to replay it without making a live call.</span></div>
       <div class="ar-scenarios" role="group" aria-label="Recorded situations">
         {scenarios.map((item, index) => <button type="button" aria-pressed={index === selected} disabled={!ready} onClick={() => choose(index)}><span class="ar-scenario-number">0{index + 1}</span>{item.label}</button>)}
       </div>

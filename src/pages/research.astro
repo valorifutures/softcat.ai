@@ -21,21 +21,21 @@ const commands = [
   'node research/delegation/run.mjs',
 ].join('\n');
 ---
-<BaseLayout title="Research: delegated authority" description="Revoke one job. Keep the other working. Inspect SOFT CAT's first offline research harness, its synthetic execution trace, deliberately wrong outcomes and open source.">
+<BaseLayout title="Research: delegated authority" description="Two jobs share a specialist. Follow SOFT CAT's offline experiment to see what happened when we withdrew permission for one job and checked the queue.">
   <div class="workshop-shell research-page">
-    <aside class="research-followup" aria-label="Start with the recorded replay"><div><p class="eyebrow">NEW HERE? FOLLOW ONE REQUEST.</p><h2>Can the agent still act?</h2><p>Permission withdrawn. A request repeated. A reply lost. Follow four recorded situations and see what actually changed.</p></div><a class="text-link" href="/research/can-it-act/">Start the recorded replay <span aria-hidden="true">→</span></a></aside>
+    <aside class="research-followup" aria-label="Start with the recorded replay"><div><p class="eyebrow">NEW HERE? FOLLOW ONE REQUEST.</p><h2>Can the agent still act?</h2><p>Explore four recordings to see what the service does when permission changes, a request repeats or a reply goes missing.</p></div><a class="text-link" href="/research/can-it-act/">Start the recorded replay <span aria-hidden="true">→</span></a></aside>
     <header class="research-hero">
       <div class="research-intro">
         <p class="eyebrow">OPEN RESEARCH / EXPERIMENT 001</p>
         <h1>Revoke one job.<br /><em>Keep the other<br class="desktop-break" /> working.</em></h1>
-        <p class="research-lead">Permission must survive a hand-off. So must the ability to take it away.</p>
-        <p>Our first offline harness gives two jobs access to one shared specialist role, revokes one job and checks the final state. It uses a deterministic script and synthetic evidence.</p>
+        <p class="research-lead">The same specialist works on both jobs, but it needs separate permission for each one. Can we withdraw permission for one job and let it carry on with the other?</p>
+        <p>We tested this offline with a fixed script and synthetic evidence, then checked which requests reached the queue.</p>
         <div class="research-actions"><a href="#record" class="workshop-button primary">Inspect the record <span aria-hidden="true">↓</span></a><a href={source} class="text-link">Read the source <span aria-hidden="true">↗</span></a></div>
       </div>
       <aside class="receipt-card" aria-labelledby="receipt-heading">
         <div class="receipt-top"><span>EXECUTION RECEIPT</span><span>GATE 02</span></div>
-        <h2 id="receipt-heading">Offline harness.</h2>
-        <p class="receipt-kind">Synthetic data. Scripted roles.<br />Recorded execution, not a live system.</p>
+        <h2 id="receipt-heading">Results of the offline test</h2>
+        <p class="receipt-kind">These figures come from a recorded run in which a script played each role using synthetic data.</p>
         <dl class="receipt-metrics">
           <div><dt>Valid scenarios accepted</dt><dd>{receipt.summary.validPassed}<span> / {receipt.summary.validTotal}</span></dd></div>
           <div><dt>Seeded wrong outcomes rejected</dt><dd>{receipt.summary.negativeRejected}<span> / {receipt.summary.negativeTotal}</span></dd></div>
@@ -46,24 +46,24 @@ const commands = [
       </aside>
     </header>
 
-    <aside class="research-followup" aria-label="The next research artefact"><div><p class="eyebrow">THE NEXT ARTEFACT / RECOVERY</p><h2>A lost reply is not a failed action.</h2><p>Two framework runtimes, fixed decisions and a worker restart. Inspect what happens between a durable write and a missing acknowledgement.</p></div><a class="text-link" href="/research/recovery/">Inspect the recovery study <span aria-hidden="true">→</span></a></aside>
+    <aside class="research-followup" aria-label="The next research artefact"><div><p class="eyebrow">THE NEXT ARTEFACT / RECOVERY</p><h2>A lost reply is not a failed action.</h2><p>We restarted a worker after it had saved a request but before its reply arrived. See how two frameworks handled that gap with the same scripted decisions.</p></div><a class="text-link" href="/research/recovery/">Inspect the recovery study <span aria-hidden="true">→</span></a></aside>
 
     <aside class="research-followup" aria-label="Authenticated action boundary"><div><p class="eyebrow">CONTINUING THE EXPERIMENT / IDENTITY</p><h2>Identity is not permission.</h2><p>A separate service checks the caller before checking the action. Inspect the local mutual-TLS tests, denied requests and durable outcomes.</p></div><a class="text-link" href="/research/boundary/">Inspect the boundary study <span aria-hidden="true">→</span></a></aside>
 
     <nav class="research-sections" aria-label="Research page sections"><a href="#contract">The contract</a><a href="#record">Execution record</a><a href="#grader">Challenge the grader</a><a href="#reproduce">Run it yourself</a><a href="#limits">What is still open</a></nav>
 
     <section id="contract" class="research-section" aria-labelledby="contract-heading">
-      <div class="section-heading"><p class="eyebrow">01 / THE CONTRACT</p><h2 id="contract-heading">Same specialist.<br />Different authority.</h2><p>A synthetic incident needs a remediation request. The only write is to a simulated local queue. Nothing acts on a real network.</p></div>
+      <div class="section-heading"><p class="eyebrow">01 / THE CONTRACT</p><h2 id="contract-heading">How the specialist gets permission for each job</h2><p>In this test the specialist can add a repair request to a simulated queue. The queue is local, so the request never changes a real network.</p></div>
       <div class="contract-content">
-        <div class="job-lane revoked"><div><span class="eyebrow">JOB A / DELEGATED</span><h3>Stop at revocation.</h3><p>Coordinator → investigator → specialist</p></div><p class="lane-outcome">No later queue commit</p></div>
-        <div class="job-lane allowed"><div><span class="eyebrow">JOB B / SEPARATELY AUTHORISED</span><h3>Keep legitimate work moving.</h3><p>A separate grant to the same specialist</p></div><p class="lane-outcome">Valid request can complete</p></div>
+        <div class="job-lane revoked"><div><span class="eyebrow">JOB A / DELEGATED</span><h3>Permission passes down the chain</h3><p>Coordinator → investigator → specialist</p></div><p class="lane-outcome">No later queue commit</p></div>
+        <div class="job-lane allowed"><div><span class="eyebrow">JOB B / SEPARATELY AUTHORISED</span><h3>The specialist has its own grant for job B</h3><p>Job B can still go ahead after we revoke job A.</p></div><p class="lane-outcome">Valid request can complete</p></div>
         <p class="contract-caption">Required behaviour, not live status. All roles are scripted in one process. Revocation and queue commits share a single ordered boundary.</p>
         <div class="evidence-note"><h3>Two documents can still be one source.</h3><p>The fixture includes a false conclusion and an instruction to exceed authority. Another document repeats that source. The harness records their shared origin so repetition cannot become independent corroboration. Distinct origins do not establish truth either.</p></div>
       </div>
     </section>
 
     <section id="record" class="research-section" aria-labelledby="record-heading">
-      <div class="section-heading"><p class="eyebrow">02 / EXECUTION RECORD</p><h2 id="record-heading">Inspect the outcome.<br />Then the trace.</h2><p>The grader checks events, reports and the final queue. A role saying “done” is not enough.</p><a class="text-link" href="/research/receipt.json">Open the exact JSON receipt <span aria-hidden="true">↗</span></a></div>
+      <div class="section-heading"><p class="eyebrow">02 / EXECUTION RECORD</p><h2 id="record-heading">Which requests reached the queue?</h2><p>The grader checks events, reports and the final queue. A role saying “done” is not enough.</p><a class="text-link" href="/research/receipt.json">Open the exact JSON receipt <span aria-hidden="true">↗</span></a></div>
       <div class="record-content">
         <div class="scenario-grid">{validRuns.map(run => <article class="scenario-card"><p class="eyebrow">{name(run.condition)}</p><h3 class:list={[{ 'grade-failed': !run.grade.passed }]}>{run.grade.passed ? 'Accepted' : 'Rejected'}</h3><p>{run.trace.queue.length} queue {run.trace.queue.length === 1 ? 'commit' : 'commits'} · {run.trace.events.length} recorded events</p><details><summary>Inspect scenario</summary><p class="record-id">Run: {run.id}</p><pre tabindex="0" aria-label={`${name(run.condition)} grade and final queue`}><code>{JSON.stringify({ grade: run.grade, queue: run.trace.queue, reports: run.trace.reports }, null, 2)}</code></pre></details></article>)}</div>
         {combined && <details class="trace-disclosure"><summary><span><strong>Open the combined trace</strong><small>Unreliable evidence and revocation together</small></span><span>{combined.trace.events.length} events</span></summary><p class="trace-note">Event order is logical sequence within the simulator. It is not a measurement of distributed propagation latency. Expand an event to inspect its exact recorded fields.</p><ol class="event-list">{combined.trace.events.map((event, index) => <li><span class="event-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><details><summary>{eventTitle(event)}</summary><pre tabindex="0" aria-label={`Recorded event ${index + 1}`}><code>{eventDetail(event)}</code></pre></details></li>)}</ol></details>}
@@ -77,12 +77,12 @@ const commands = [
     </section>
 
     <section id="reproduce" class="research-section" aria-labelledby="reproduce-heading">
-      <div class="section-heading"><p class="eyebrow">04 / RUN IT YOURSELF</p><h2 id="reproduce-heading">An open receipt.<br />A runnable check.</h2><p>The harness uses Node.js 24 built-ins. It runs locally without model keys, network requests or a package installation.</p><a class="text-link" href={source}>Source and instructions <span aria-hidden="true">↗</span></a></div>
+      <div class="section-heading"><p class="eyebrow">04 / RUN IT YOURSELF</p><h2 id="reproduce-heading">How to repeat the check</h2><p>The harness uses Node.js 24 built-ins. It runs locally without model keys, network requests or a package installation.</p><a class="text-link" href={source}>Source and instructions <span aria-hidden="true">↗</span></a></div>
       <div class="reproduce-content"><p>From a checkout of <a href="https://github.com/valorifutures/softcat.ai">the repository</a>:</p><pre tabindex="0" aria-label="Commands to verify the recorded harness"><code>{commands}</code></pre><p>The last command emits a fresh JSON receipt. Verification compares deterministic results and recorded source hashes. A replay is not a fresh agent evaluation.</p><dl class="environment"><div><dt>Recorded Node</dt><dd>{receipt.environment.node}</dd></div><div><dt>Platform</dt><dd>{receipt.environment.platform} / {receipt.environment.arch}</dd></div><div><dt>Research licence</dt><dd><a href="https://github.com/valorifutures/softcat.ai/blob/main/research/LICENSE">Apache-2.0</a></dd></div></dl><details class="manifest-disclosure"><summary>Inspect the execution manifest</summary><pre tabindex="0" aria-label="Recorded execution manifest"><code>{JSON.stringify(receipt.manifest, null, 2)}</code></pre></details></div>
     </section>
 
     <section id="limits" class="research-section limits-section" aria-labelledby="limits-heading">
-      <div class="section-heading"><p class="eyebrow">05 / THE BOUNDARY</p><h2 id="limits-heading">What this does<br />not establish.</h2><p>The useful next step is the one the evidence supports.</p></div>
+      <div class="section-heading"><p class="eyebrow">05 / THE BOUNDARY</p><h2 id="limits-heading">What this does<br />not establish.</h2></div>
       <div class="limits-content"><ul><li><strong>No live agent comparison.</strong> No models or agent frameworks ran in this harness. There is no measured swarm advantage.</li><li><strong>No diagnostic reasoning.</strong> Sources carry pre-labelled diagnosis and remediation fields. The script applies a fixed voting rule. This tests provenance handling, not model susceptibility to malicious instructions.</li><li><strong>No distributed security guarantee.</strong> The simulator, issuer, enforcement boundary, ordering and grader are trusted. A compromised host is outside the threat model.</li><li><strong>No held-out benchmark.</strong> This is a development fixture with known faults. Its counts do not estimate performance on unseen incidents.</li><li><strong>No zero-day claim.</strong> The faults and malicious instructions are synthetic. No third-party system was tested.</li><li><strong>No free-compute claim.</strong> There are no model calls. Execution still uses computing resources, and no monetary execution cost is measured.</li></ul><div class="next-gate"><p class="eyebrow">NEXT EVIDENCE GATE</p><h3>Real adapters. Frozen comparisons.</h3><p>Implement independently built agent frameworks and a single-agent baseline, calibrate budgets on development fixtures, then freeze a disjoint evaluation set before collecting results. Model access and spending need their own authorisation.</p><a class="text-link" href={programme}>Read the registered programme <span aria-hidden="true">↗</span></a></div><p class="research-charter">Our <a href="/constitution">constitution</a> sets the standard: claims stay within the evidence, and failed runs stay in the record.</p></div>
     </section>
   </div>
