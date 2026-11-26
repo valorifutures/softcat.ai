@@ -92,7 +92,7 @@ jobs:
       cancel-in-progress: false
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -129,4 +129,14 @@ jobs:
       # GITHUB_TOKEN pushes do not start deploy.yml. Deploy the already checked
       # artifact here, without rebuilding or running source with write access.
       - id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      # Creating a Pages deployment can fail on a transient GitHub API 5xx
+      # after the checked commit has already reached main. Retry this final,
+      # serialised publication step once. A second failure still fails the job.
+      - name: Wait before one Pages retry
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+      - id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v5
