@@ -22,6 +22,25 @@ test('the GitHub price snapshot retains its daily schedule and bounded writer', 
   assert.equal(workflow.jobs.publish.needs, 'refresh');
 });
 
+test('the price owner retries one transient Pages publication failure', () => {
+  const workflow = yaml.load(read('.github/workflows/model-prices.yml'));
+  const publish = workflow.jobs.publish;
+  const deployment = publish.steps.find(step => step.id === 'deployment');
+  const wait = publish.steps.find(step => step.name === 'Wait before one Pages retry');
+  const retry = publish.steps.find(step => step.id === 'deployment_retry');
+
+  assert.equal(deployment.uses, 'actions/deploy-pages@v5');
+  assert.equal(deployment['continue-on-error'], true);
+  assert.equal(wait.if, "steps.deployment.outcome == 'failure'");
+  assert.equal(wait.run, 'sleep 30');
+  assert.equal(retry.if, "steps.deployment.outcome == 'failure'");
+  assert.equal(retry.uses, 'actions/deploy-pages@v5');
+  assert.equal(
+    publish.environment.url,
+    '${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}',
+  );
+});
+
 test('the publishing guide retains its original date and points to operating evidence', () => {
   const guide = read('src/content/tools/softcat-site.md');
   const metadata = yaml.load(/^---\n([\s\S]*?)\n---/.exec(guide)[1]);
