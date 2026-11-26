@@ -1,5 +1,51 @@
 # Improvement log
 
+## 26 November 2026, recover transient price deployments
+
+The pass began from exact main `f82a2ec87cef513d3847b63dceeb1f321047e7c5`
+in a fresh isolated checkout. There was no open pull request or current active-work
+marker. `docs/site-operations.md` remains on main and the Feral GitHub workflow
+remains manual-only. No legacy generator, Feral cycle or manual price refresh
+was started.
+
+The previous price-owner run validated its catalogue and fast-forwarded the
+checked data commit, then GitHub's Pages API returned an immediate HTTP 500 while
+creating the deployment. Later site releases carried that data live, but the
+owner correctly remained red. The publish job now waits 30 seconds and retries
+the final Pages action once when that first step fails. Catalogue validation,
+the preserved candidate, allowed paths, normal fast-forward and single workflow
+owner are unchanged. A second Pages failure still fails the job. An operating-
+contract test fixes the retry count, condition and environment URL fallback.
+
+All content, tool-data and Horizon-reference validators passed with no errors or
+warnings, along with 239 JavaScript tests, 31 Python publication tests and 141
+bot tests. The 652-page production build and offline audit passed 34,447
+internal links, 3,351 asset or metadata references and 46,843 accessibility
+elements with zero errors. All 417 indexed live routes returned HTTP 200 after
+two transient tag-route responses cleared on immediate individual recheck.
+
+[PR #327](https://github.com/valorifutures/softcat.ai/pull/327) passed the
+[hosted gates](https://github.com/valorifutures/softcat.ai/actions/runs/45786116820)
+and independent code review with no findings on exact head
+`40dc27e8d084b84be01c62b5ed685973a1b99ca9`. Main was re-read unchanged before
+normal squash merge `3ef115d65f44c84a35b607624eb64ec27c37ddb6`. The resulting
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/45786538883)
+completed successfully.
+
+The workflow-file push then exercised the price owner without a manual rerun.
+[Run 45786538903](https://github.com/valorifutures/softcat.ai/actions/runs/45786538903)
+validated 474 catalogue models and 39 tracked models, with 30 matched, 26
+verified, nine not listed and four held for review. No price changed. Its exact
+candidate commit `b0d203c` reached main and the checked artifact deployed. The
+first Pages attempt succeeded, so the new retry was skipped as designed rather
+than falsely claimed as a live failure-path test.
+
+The live model comparison and pipeline routes returned HTTP 200. Both showed the
+26 November refresh, and Pipeline exposed the exact workflow record. No Horizon
+prediction or review date, editorial content, Feral creative file, archive or
+retired generator changed. Physical touch and narrow-viewport rendering were
+not rechecked because this batch changes only workflow control flow.
+
 ## 25 November 2026, reading the workshop copy aloud
 
 The Research introduction now explains why a specialist can lose permission for one job and carry on with another. We kept the strapline above it. In Feral, we kept the agents’ room introduction and gave the Walking Table a clearer instruction beside the crank. The same editorial pass covered the homepage, tool and recipe pages, Horizon, Notebook, About and the shared footer. The house style now asks editors to read neighbouring passages together.
