@@ -1,5 +1,50 @@
 # Improvement log
 
+## 27 November 2026, keep the Pipeline recovery receipt historical
+
+The pass began from exact main `ec5f422a2b4b9549eb0c29807f4f0aaa24b42c3f`
+in a fresh isolated checkout. There was no open pull request or current active-work
+marker. `docs/site-operations.md` remains on main and the Feral GitHub workflow
+remains manual-only. No legacy generator, Feral cycle or manual price refresh
+was started.
+
+Pipeline's dated 9 November operating note selected the newest successful model-
+price snapshot. That made its supposed recovery date and workflow link move every
+day, erasing the distinction between the first successful follow-up and the
+current price check. The note now selects the first qualifying publication after
+the incident: 10 November 2026 at 08:49 UTC, exact run 42785649634. A regression
+test proves a newer record cannot displace that receipt. The current price panel
+continues to show the latest independent snapshot.
+
+All content, tool-data and Horizon-reference validators passed with no errors or
+warnings, along with 240 JavaScript tests, 31 Python publication tests and 141
+bot tests. The 652-page production build and offline audit passed 34,447
+internal links, 3,351 asset or metadata references and 46,844 accessibility
+elements with zero errors. All 417 indexed live routes returned successful 2xx
+range responses.
+
+[PR #329](https://github.com/valorifutures/softcat.ai/pull/329) passed the
+[hosted gate](https://github.com/valorifutures/softcat.ai/actions/runs/45967876600)
+on exact reviewed head `2b5843e466cd05d99e4ceaf5eecf486cbeb51446`.
+Main was re-read unchanged before normal squash merge
+`d2121ed67bd9d72bd499ff9e39e6435a1324af45`. The resulting
+[Pages deployment](https://github.com/valorifutures/softcat.ai/actions/runs/45968260749)
+completed successfully.
+
+The live Pipeline showed the fixed first-later recovery time and linked exact run
+42785649634, while the current price panel separately linked latest run
+45851208281. At a 1,363-pixel browser viewport the page had one h1, one main
+landmark, no duplicate IDs and no horizontal overflow. It emitted no site
+console warning or error; one unrelated browser-extension metadata error was
+excluded. Physical touch and a narrow live viewport were not available for
+recheck.
+
+The latest scheduled [price run](https://github.com/valorifutures/softcat.ai/actions/runs/45851208281)
+passed on 26 November with 475 catalogue models, 39 tracked, 30 matched, 26
+verified, nine not listed, four held for review and no price changes. No Horizon
+prediction or review date, editorial content, Feral creative file, archive,
+price data or retired generator changed.
+
 ## 26 November 2026, recover transient price deployments
 
 The pass began from exact main `f82a2ec87cef513d3847b63dceeb1f321047e7c5`
