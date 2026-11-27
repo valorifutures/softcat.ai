@@ -1,28 +1,28 @@
 {
-  "updated_at": "2026-11-26T08:52:57Z",
+  "updated_at": "2026-11-27T08:53:26Z",
   "phase": "published-and-pages-verified",
   "active_branch": null,
   "last_verified_deployment": {
-    "sha": "b0d203cbc0254078df38f08b80bc25dadc8b155b",
-    "at": "2026-11-26T08:52:57Z",
-    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45786538903"
+    "sha": "d2121ed67bd9d72bd499ff9e39e6435a1324af45",
+    "at": "2026-11-27T08:49:22Z",
+    "url": "https://github.com/valorifutures/softcat.ai/actions/runs/45968260749"
   },
   "maintenance_receipt": {
-    "date": "2026-11-26",
-    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/327",
-    "reviewed_head": "40dc27e8d084b84be01c62b5ed685973a1b99ca9",
-    "merge_sha": "3ef115d65f44c84a35b607624eb64ec27c37ddb6",
-    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45786116820",
-    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45786538883",
-    "outcome": "The price owner now retries its final Pages publication once after a transient first failure while retaining the exact checked candidate, bounded writer and fatal second failure.",
-    "validation": "239 JavaScript tests, 31 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 652-page production build and offline audit of 34,447 internal links, 3,351 assets or metadata references and 46,843 accessibility elements passed. All 417 indexed live routes ultimately returned HTTP 200; two transient tag-route 503 responses cleared on immediate recheck.",
+    "date": "2026-11-27",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/329",
+    "reviewed_head": "2b5843e466cd05d99e4ceaf5eecf486cbeb51446",
+    "merge_sha": "d2121ed67bd9d72bd499ff9e39e6435a1324af45",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45967876600",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45968260749",
+    "outcome": "Pipeline's dated 9 November price-recovery receipt now selects the first successful later publication. New daily snapshots can no longer rewrite that historical date or workflow link.",
+    "validation": "240 JavaScript tests, 31 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 652-page production build and offline audit of 34,447 internal links, 3,351 assets or metadata references and 46,844 accessibility elements passed with zero errors. All 417 indexed live routes returned successful 2xx range responses.",
     "live_checks": [
-      "The normal Pages deployment 45786538883 passed for merge 3ef115d65f44c84a35b607624eb64ec27c37ddb6.",
-      "The price-owner run 45786538903 passed with 474 catalogue models, 39 tracked, 30 matched, 26 verified, nine not listed, four held for review and no price changes. Its checked candidate b0d203cbc0254078df38f08b80bc25dadc8b155b reached main and deployed.",
-      "The live model comparison and pipeline routes returned HTTP 200 with the 26 November refresh; Pipeline exposed exact run 45786538903. The first deploy succeeded, so the new failure-path retry was skipped and is not claimed as live-exercised."
+      "The Pages deployment 45968260749 passed for merge d2121ed67bd9d72bd499ff9e39e6435a1324af45.",
+      "The live Pipeline showed the fixed first-later recovery time of 10 November 2026 at 08:49 UTC and linked exact run 42785649634, while the current price panel separately linked run 45851208281.",
+      "At a 1,363-pixel live browser viewport, Pipeline had one h1, one main landmark, no duplicate IDs and no horizontal overflow. The page emitted no site console warning or error; the browser extension emitted one unrelated metadata error."
     ],
-    "price_status": "Run 45786538903 passed on 26 November: 474 catalogue models, 39 tracked, 30 matched, 26 verified, nine not listed, four held for review and zero price changes. No manual duplicate refresh was launched.",
-    "scope": "No Horizon prediction or review date, editorial content, Feral creative file, archive or retired generator changed. The Feral workflow remains manual-only and docs/site-operations.md remains on main. Physical touch and narrow-viewport rendering were not rechecked because the batch changes only workflow control flow."
+    "price_status": "Scheduled run 45851208281 passed on 26 November: 475 catalogue models, 39 tracked, 30 matched, 26 verified, nine not listed, four held for review and zero price changes. No manual duplicate refresh was launched.",
+    "scope": "No Horizon prediction or review date, editorial content, Feral creative file, archive, price data or retired generator changed. The Feral workflow remains manual-only and docs/site-operations.md remains on main. Physical touch and a narrow live viewport were not available for recheck; the production and offline publication audits passed."
   },
   "horizon_review_receipt": {
     "date": "2026-09-16",
@@ -1165,5 +1165,22 @@
     ],
     "price_status": "Run 45786538903 passed on 26 November: 474 catalogue models, 39 tracked, 30 matched, 26 verified, nine not listed, four held for review and zero price changes. No manual duplicate refresh was launched.",
     "scope": "No Horizon prediction or review date, editorial content, Feral creative file, archive or retired generator changed. The Feral workflow remains manual-only and docs/site-operations.md remains on main. Physical touch and narrow-viewport rendering were not rechecked because the batch changes only workflow control flow."
+  },
+  "maintenance_2026_11_27": {
+    "date": "2026-11-27",
+    "pull_request": "https://github.com/valorifutures/softcat.ai/pull/329",
+    "reviewed_head": "2b5843e466cd05d99e4ceaf5eecf486cbeb51446",
+    "merge_sha": "d2121ed67bd9d72bd499ff9e39e6435a1324af45",
+    "hosted_checks": "https://github.com/valorifutures/softcat.ai/actions/runs/45967876600",
+    "deployment": "https://github.com/valorifutures/softcat.ai/actions/runs/45968260749",
+    "outcome": "Pipeline's dated 9 November price-recovery receipt now selects the first successful later publication. New daily snapshots can no longer rewrite that historical date or workflow link.",
+    "validation": "240 JavaScript tests, 31 Python publication tests, 141 bot tests, every content/data/Horizon validator, the 652-page production build and offline audit of 34,447 internal links, 3,351 assets or metadata references and 46,844 accessibility elements passed with zero errors. All 417 indexed live routes returned successful 2xx range responses.",
+    "live_checks": [
+      "The Pages deployment 45968260749 passed for merge d2121ed67bd9d72bd499ff9e39e6435a1324af45.",
+      "The live Pipeline showed the fixed first-later recovery time of 10 November 2026 at 08:49 UTC and linked exact run 42785649634, while the current price panel separately linked run 45851208281.",
+      "At a 1,363-pixel live browser viewport, Pipeline had one h1, one main landmark, no duplicate IDs and no horizontal overflow. The page emitted no site console warning or error; the browser extension emitted one unrelated metadata error."
+    ],
+    "price_status": "Scheduled run 45851208281 passed on 26 November: 475 catalogue models, 39 tracked, 30 matched, 26 verified, nine not listed, four held for review and zero price changes. No manual duplicate refresh was launched.",
+    "scope": "No Horizon prediction or review date, editorial content, Feral creative file, archive, price data or retired generator changed. The Feral workflow remains manual-only and docs/site-operations.md remains on main. Physical touch and a narrow live viewport were not available for recheck; the production and offline publication audits passed."
   }
 }
