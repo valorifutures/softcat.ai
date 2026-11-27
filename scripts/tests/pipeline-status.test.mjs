@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { newestRun, recordState, relativeAge, runsInWindow, latestPriceRun, overdueHours, priceRunDetail, heldPriceChecks, appliedPriceChanges, publishedRunCount, runStatusLabel } from '../../src/lib/pipeline-status.mjs';
+import { newestRun, firstRunAfter, recordState, relativeAge, runsInWindow, latestPriceRun, overdueHours, priceRunDetail, heldPriceChecks, appliedPriceChanges, publishedRunCount, runStatusLabel } from '../../src/lib/pipeline-status.mjs';
 
 const now = Date.parse('2026-09-12T21:00:00Z');
 const old = { timestamp: '2026-07-03T08:30:48.697123+00:00', status: 'success' };
@@ -14,6 +14,14 @@ test('newest record is selected by instant, regardless of input order or offset'
   const later = { timestamp: '2026-09-12T20:30:00Z' };
   const earlier = { timestamp: '2026-09-12T21:00:00+01:00' };
   assert.equal(newestRun([later, earlier, { timestamp: 'bad' }]), later);
+});
+
+test('a dated recovery receipt keeps the first later run when newer records arrive', () => {
+  const first = { timestamp: '2026-11-10T08:49:45Z', bot: 'model_bot', items_published: 1 };
+  const newer = { timestamp: '2026-11-26T15:39:25Z', bot: 'model_bot', items_published: 1 };
+  const failed = { timestamp: '2026-11-10T08:00:00Z', bot: 'model_bot', items_published: 0 };
+  assert.equal(firstRunAfter([newer, failed, first], '2026-11-09T23:59:59Z', (run) => run.items_published > 0), first);
+  assert.equal(firstRunAfter([first], 'bad date'), null);
 });
 
 test('missing and future timestamps never look recent or successful', () => {

@@ -6,7 +6,7 @@ import allRuns from '../data/pipeline/runs.json';
 import allBots from '../data/pipeline/bots.json';
 import allModels from '../data/models.json';
 import priceSnapshot from '../data/model-price-snapshot.json';
-import { timestamp, newestRun, overdueHours, runsInWindow, formatRecordedTime, priceRunDetail, heldPriceChecks, appliedPriceChanges, publishedRunCount, runStatusLabel } from '../lib/pipeline-status.mjs';
+import { timestamp, newestRun, firstRunAfter, overdueHours, runsInWindow, formatRecordedTime, priceRunDetail, heldPriceChecks, appliedPriceChanges, publishedRunCount, runStatusLabel } from '../lib/pipeline-status.mjs';
 
 const snapshot = new Date();
 const botMap = Object.fromEntries(allBots.map((bot) => [bot.id, bot]));
@@ -20,11 +20,8 @@ const appliedPrices = appliedPriceChanges(priceSnapshot);
 const costedRuns = recentRuns.filter((run) => run.cost_usd != null);
 const totalCost = costedRuns.reduce((sum, run) => sum + run.cost_usd, 0);
 const lastRun = newestRun(runs);
-const latestPriceRun = newestRun(runs, (run) => run.bot === 'model_bot' && run.job === 'prices');
-const recoveredPriceRun = latestPriceRun
-  && timestamp(latestPriceRun.timestamp) > Date.parse('2026-11-09T23:59:59Z')
-  && (latestPriceRun.items_published ?? 0) > 0
-  ? latestPriceRun : null;
+const recoveredPriceRun = firstRunAfter(runs, '2026-11-09T23:59:59Z',
+  (run) => run.bot === 'model_bot' && run.job === 'prices' && (run.items_published ?? 0) > 0);
 const dates = [...new Set(runs.slice(0, 100).map((run) => new Date(run.timestamp).toISOString().slice(0, 10)))].slice(0, 14);
 const jobLabel = (run: any) => run.job ? ` · ${run.job}` : '';
 const priceLabel = (value: number) => '$' + value.toLocaleString('en-US', { maximumFractionDigits: 6 });
@@ -64,7 +61,7 @@ const currentSchedule = [
         <p class="mt-2">Daily maintenance and the Feral council were found paused and resumed. The evidence review was already enabled. Dated execution evidence appears in the maintenance record and Feral ledger as each schedule runs. <a class="text-neon-cyan underline underline-offset-4" href="https://github.com/valorifutures/softcat.ai/blob/main/docs/site-operations.md">Read the operating record ↗</a></p>
         <p class="mt-2">The scheduled model-price check failed its catalogue completeness guard on 9 November. Only 31 of 39 tracked IDs matched, so publication was skipped. <a class="text-neon-cyan underline underline-offset-4" href="https://github.com/valorifutures/softcat.ai/actions/runs/42632692153">Read the failed job ↗</a></p>
         {recoveredPriceRun
-          ? <p class="mt-2">The guard was repaired, and the next recorded check on <RecordedTime value={recoveredPriceRun.timestamp} relative={false} /> published its validated snapshot. {'workflow_url' in recoveredPriceRun && typeof recoveredPriceRun.workflow_url === 'string' && <a class="text-neon-cyan underline underline-offset-4" href={recoveredPriceRun.workflow_url}>Read the successful run ↗</a>} Price records carry their own verification dates.</p>
+          ? <p class="mt-2">The guard was repaired, and the first later recorded check on <RecordedTime value={recoveredPriceRun.timestamp} relative={false} /> published its validated snapshot. {'workflow_url' in recoveredPriceRun && typeof recoveredPriceRun.workflow_url === 'string' && <a class="text-neon-cyan underline underline-offset-4" href={recoveredPriceRun.workflow_url}>Read the successful run ↗</a>} Price records carry their own verification dates.</p>
           : <p class="mt-2">No later successful price publication is recorded yet. Price records carry their own verification dates.</p>}
       </aside>
     </section>
