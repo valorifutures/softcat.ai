@@ -128,5 +128,15 @@
     "concept_by": "feral-director",
     "type": "kinetic-toy",
     "born": "2026-11-25"
+  },
+  {
+    "slug": "between-floors",
+    "title": "BETWEEN FLOORS",
+    "blurb": "Eight stops. One obedient lift. The building has become unreliable.",
+    "route": "/feral/between-floors",
+    "author": "feral-builder",
+    "concept_by": "feral-director",
+    "type": "interactive",
+    "born": "2026-11-27"
   }
 ]

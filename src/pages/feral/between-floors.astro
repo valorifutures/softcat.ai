@@ -1,0 +1,271 @@
+---
+import { FLOORS } from '../../content/feral/between-floors.mjs';
+---
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Between Floors | Feral</title>
+    <meta name="description" content="A working lift for eight storeys the building cannot explain." />
+    <link rel="canonical" href="https://softcat.ai/feral/between-floors/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip" href="#lift-panel">Skip to the lift panel</a>
+    <div class="building">
+      <nav aria-label="Feral navigation"><a href="/feral/">The other rooms ↗</a><span>Feral / 014</span></nav>
+      <header>
+        <p class="overline">A vertical arrangement</p>
+        <h1>BETWEEN<br />FLOORS</h1>
+        <p class="intro">Eight stops.<br />One obedient machine.<br />No admitted building.</p>
+      </header>
+      <main>
+        <section class="lift" aria-labelledby="lift-title">
+          <h2 id="lift-title" class="sr-only">Lift car and landings</h2>
+          <div class="car">
+            <div class="ceiling" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="indicator" aria-live="polite"><span>FLOOR</span><strong id="indicator">G</strong><small id="direction">—</small></div>
+            <div class="threshold">
+              <div class="landings" id="landings">
+                {FLOORS.map((floor) => <article class:list={['landing', `scene-${floor.scene}`]} data-floor-scene={floor.id} hidden={floor.id !== 'G'} aria-labelledby={`landing-${floor.id}`}>
+                  <div class="tableau" aria-hidden="true">
+                    {floor.scene === 'boilers' && <><div class="boiler one"></div><div class="boiler two"></div><div class="pipe p1"></div><div class="pipe p2"></div></>}
+                    {floor.scene === 'lobby' && <><div class="revolver"><b></b><b></b><b></b></div><div class="mat"></div><div class="desk"></div></>}
+                    {floor.scene === 'staples' && <><div class="drawer d1">A–F</div><div class="drawer d2">G–M</div><div class="drawer d3">N–Z</div><div class="staple"></div></>}
+                    {floor.scene === 'telephone' && <><div class="phone"><i></i><b></b></div><div class="pulse"></div><div class="cord"></div></>}
+                    {floor.scene === 'rain' && <><div class="tray"></div>{[0,1,2,3,4,5,6].map((n) => <i class={`drop drop-${n}`}></i>)}</>}
+                    {floor.scene === 'carpet' && <>{Array.from({ length: 12 }, (_, n) => <i class={`sample sample-${n}`}></i>)}<div class="archive-label">CONCRETE</div></>}
+                    {floor.scene === 'window' && <><div class="wall-window"><i></i><i></i><i></i><i class="warm"></i></div><div class="radiator"></div></>}
+                    {floor.scene === 'roof' && <><div class="roofline"></div><div class="vent v1"></div><div class="vent v2"></div><div class="ceiling-tile"></div></>}
+                  </div>
+                  <div class="landing-copy"><p class="floor-name" id={`landing-${floor.id}`}><span>{floor.label}</span>{floor.name}</p><p>{floor.lines[0]}<br />{floor.lines[1]}</p></div>
+                </article>)}
+              </div>
+              <div class="doors" id="doors" aria-hidden="true"><div class="door left"></div><div class="door right"></div></div>
+            </div>
+            <div class="floor-strip" aria-hidden="true"></div>
+          </div>
+          <aside class="panel" id="lift-panel" aria-label="Lift controls">
+            <div class="panel-brand"><span>BETWEEN FLOORS</span><small>STAGE LIFT · NOT A PHYSICAL MODEL</small></div>
+            <div class="floor-buttons" id="floor-buttons">{[...FLOORS].reverse().map((floor) => <button type="button" class="floor-button" data-floor={floor.id} aria-label={`${floor.label}, ${floor.name}`} disabled><span>{floor.label}</span><small>{floor.name}</small></button>)}</div>
+            <div class="door-controls"><button type="button" id="open" disabled><span aria-hidden="true">◀│▶</span> Open doors</button><button type="button" id="close" disabled><span aria-hidden="true">▶│◀</span> Close doors</button></div>
+            <button type="button" id="stop" class="stop" disabled>Hold the lift</button>
+            <p id="status" role="status" aria-atomic="true">The doors are open at G.</p>
+          </aside>
+        </section>
+        <p class="instruction">Choose a floor. The lift will close, travel one indicator at a time and open again. A fingerprint means only that you have been there during this visit.</p>
+        <noscript><p class="no-script">The lift is open at G. JavaScript is needed to operate the panel; the controls remain inactive.</p></noscript>
+      </main>
+      <footer><p>Original tableaux. No sound, tracking, storage or network requests.<br />This is a stage mechanism, not an emergency or engineering interface.</p><a href="/feral/#ledger">The council's record ↗</a></footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(html) { color-scheme: dark; background: #151716; color: #e6e2d7; }
+  :global(body) { margin: 0; min-width: 280px; font: 1rem/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; background: radial-gradient(circle at 55% 38%, #2d302e 0, #171918 48rem); }
+  :global(a) { color: inherit; text-underline-offset: 4px; }
+  :global(button) { font: inherit; }
+  :global(button:focus-visible), :global(a:focus-visible) { outline: 3px solid #ffca62; outline-offset: 4px; }
+  :global([hidden]) { display: none !important; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .skip { position: absolute; left: 1rem; top: -6rem; z-index: 20; padding: .8rem 1rem; background: #ffca62; color: #111; }
+  .skip:focus { top: 1rem; }
+  .building { width: min(1440px, 100%); margin: auto; padding: 0 clamp(1rem, 4vw, 4rem); }
+  nav, footer { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: .72rem; letter-spacing: .06em; }
+  nav { border-bottom: 1px solid #474b47; padding: 1rem 0; }
+  nav a { text-decoration: none; }
+  header { display: grid; grid-template-columns: 1fr auto; gap: 0 2rem; align-items: end; padding: clamp(2rem, 6vw, 5rem) 0 2rem; }
+  .overline { grid-column: 1 / -1; margin: 0 0 .7rem; color: #aaa89f; font-size: .72rem; text-transform: uppercase; letter-spacing: .2em; }
+  h1 { margin: 0; font: 900 clamp(3.5rem, 10vw, 9rem)/.78 system-ui, sans-serif; letter-spacing: -.08em; }
+  .intro { margin: 0 0 .3rem; color: #c5c2b8; font-size: clamp(.85rem, 1.5vw, 1.1rem); }
+  .lift { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 340px); gap: clamp(1rem, 3vw, 3rem); align-items: stretch; }
+  .car { position: relative; min-width: 0; padding: 1.2rem clamp(.6rem, 2vw, 1.5rem) 1.5rem; border: 2px solid #77776f; border-radius: .3rem .3rem 0 0; background: linear-gradient(90deg, #595c58, #85877f 8%, #5b5e5a 29%, #777a74 50%, #565955 72%, #85877f 91%, #555853); box-shadow: inset 0 0 0 5px #292b29, 0 1rem 4rem #0008; }
+  .ceiling { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12%; height: 24px; padding: 4px 12%; margin: -1.2rem -.2rem 1rem; background: #242624; transform: perspective(100px) rotateX(-7deg); transform-origin: top; }
+  .ceiling i { background: #ece5c4; box-shadow: 0 0 14px #f9edb988; }
+  .indicator { width: min(240px, 52%); min-height: 66px; margin: 0 auto 1rem; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: .45rem .7rem; border: 2px solid #24231f; background: #11120f; box-shadow: inset 0 0 18px #000; }
+  .indicator span { grid-row: 1 / 3; color: #7c7767; font-size: .56rem; letter-spacing: .2em; }
+  .indicator strong { color: #ffc04d; font: 700 2rem/1 system-ui; text-shadow: 0 0 10px #ff9f1c; }
+  .indicator small { color: #d18e2f; text-align: center; line-height: 1; }
+  .threshold { position: relative; min-height: clamp(440px, 56vw, 650px); overflow: hidden; border: 7px solid #353734; border-bottom-width: 12px; background: #0c0d0c; box-shadow: 0 0 0 3px #99988e, inset 0 0 40px #000; }
+  .landings, .landing { position: absolute; inset: 0; }
+  .landing { display: grid; grid-template-rows: 1fr auto; background: #242622; overflow: hidden; }
+  .tableau { position: relative; min-height: 0; overflow: hidden; }
+  .landing-copy { position: relative; z-index: 2; padding: 1rem clamp(1rem, 3vw, 2rem); background: #e1ddd0; color: #1c1d1b; border-top: 1px solid #87877e; display: grid; grid-template-columns: minmax(130px, .7fr) 1fr; gap: 1rem; align-items: end; }
+  .landing-copy p { margin: 0; }
+  .floor-name { font-weight: 700; text-transform: uppercase; }
+  .floor-name span { display: block; color: #995f25; font: 900 2rem/1 system-ui; }
+  .landing-copy p:last-child { font: .8rem/1.5 system-ui, sans-serif; }
+  .doors { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+  .door { position: absolute; top: 0; bottom: 0; width: 50.5%; background: repeating-linear-gradient(90deg, transparent 0 44px, #24272455 45px 46px), linear-gradient(100deg, #747873, #a0a39a 12%, #626661 40%, #91958d 75%, #5f635f); border: 1px solid #3c3f3b; transition: transform 420ms cubic-bezier(.64,.02,.36,.98); }
+  .door::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 42%, #fff2 48%, transparent 54%); }
+  .door.left { left: 0; transform: translateX(-100%); }
+  .door.right { right: 0; transform: translateX(100%); }
+  .doors.closed .left, .doors.closing .left { transform: translateX(0); }
+  .doors.closed .right, .doors.closing .right { transform: translateX(0); }
+  .floor-strip { height: 22px; margin: .9rem 12% 0; background: repeating-linear-gradient(90deg, #302e2a 0 8px, #24231f 8px 16px); border: 1px solid #111; }
+  .panel { padding: 1.2rem; border: 2px solid #817c6f; background: linear-gradient(100deg, #6a685f, #8c887b 13%, #5d5c55 45%, #777469 74%, #55534c); box-shadow: inset 0 0 0 5px #32332f, 0 1rem 3rem #0006; }
+  .panel-brand { padding: .65rem; margin-bottom: 1rem; border: 1px solid #3d3d38; background: #d2c9ab; color: #25251f; }
+  .panel-brand span, .panel-brand small { display: block; }
+  .panel-brand span { font-weight: 800; letter-spacing: .08em; }
+  .panel-brand small { margin-top: .2rem; font-size: .53rem; }
+  .floor-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
+  button { min-height: 48px; border: 1px solid #292925; color: #e8e3d5; background: #373833; cursor: pointer; }
+  button:hover:not(:disabled) { background: #494a43; }
+  button:disabled { cursor: default; opacity: .52; }
+  .floor-button { position: relative; display: grid; grid-template-columns: 2.5rem 1fr; align-items: center; gap: .3rem; padding: .35rem; text-align: left; }
+  .floor-button > span { width: 2.15rem; height: 2.15rem; display: grid; place-items: center; border-radius: 50%; border: 2px solid #b9b39f; background: #20211e; font: 700 1rem system-ui; }
+  .floor-button small { font-size: .52rem; line-height: 1.25; }
+  .floor-button.selected > span { color: #ffd46f; border-color: #ffc04d; box-shadow: 0 0 11px #ffad27; }
+  .floor-button.visited::after { content: ''; position: absolute; left: 1.08rem; top: .65rem; width: 1.1rem; height: 1.35rem; border-radius: 50%; background: radial-gradient(ellipse, #ddd4b91f, transparent 68%); transform: rotate(-23deg); }
+  .door-controls { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin-top: .7rem; }
+  .door-controls button { padding: .35rem; font-size: .65rem; }
+  .door-controls span { display: block; font-size: 1rem; }
+  .stop { width: 100%; margin-top: .55rem; border-color: #6e2720; color: #ffd7c6; background: #612d27; }
+  #status { min-height: 3.1em; margin: .9rem 0 0; color: #f5e7be; font-size: .67rem; }
+  .instruction { max-width: 72ch; margin: 1.2rem 0 3rem; color: #aaa89f; font-size: .75rem; }
+  .no-script { border: 1px solid #ffca62; padding: 1rem; }
+  footer { padding: 1.2rem 0 2.5rem; border-top: 1px solid #474b47; color: #aaa89f; }
+  footer p { margin: 0; }
+  /* B */
+  .scene-boilers .tableau { background: linear-gradient(#252926, #181b19); }
+  .boiler { position: absolute; bottom: 12%; width: 25%; height: 64%; border-radius: 48% 48% 8% 8%; border: 5px solid #6d736d; background: linear-gradient(90deg,#323632,#696e68 45%,#292d29); box-shadow: inset 0 0 0 8px #282b28; }
+  .boiler.one { left: 17%; } .boiler.two { right: 17%; height: 55%; }
+  .boiler::before { content:''; position:absolute; width:30%; aspect-ratio:1; border:4px solid #1b1d1b; border-radius:50%; left:35%; top:25%; background:#393d39; }
+  .pipe { position:absolute; border:9px solid #747a73; border-bottom:0; border-radius:18px 18px 0 0; }
+  .p1 { left:22%; top:4%; width:56%; height:30%; } .p2 { left:5%; top:30%; width:18%; height:50%; }
+  /* G */
+  .scene-lobby .tableau { background: linear-gradient(90deg,#b6ad98,#d4c9ae 49%,#aaa18e 50%,#c6bca4); perspective:600px; }
+  .revolver { position:absolute; left:34%; top:8%; width:32%; height:82%; border:8px solid #383c3a; border-radius:48% 48% 0 0; transform:rotateX(1deg); background:#78919755; }
+  .revolver b { position:absolute; left:48%; top:0; width:4%; height:100%; background:#363a38; transform-origin:bottom; }
+  .revolver b:nth-child(2){ transform:rotate(58deg); } .revolver b:nth-child(3){ transform:rotate(-58deg); }
+  .mat { position:absolute; left:29%; bottom:3%; width:42%; height:13%; transform:perspective(140px) rotateX(55deg); background:repeating-linear-gradient(90deg,#3a3934 0 3px,#262722 3px 6px); }
+  .desk { position:absolute; right:4%; bottom:13%; width:18%; height:31%; background:#4f4638; border-top:12px solid #302a22; }
+  /* 1 */
+  .scene-staples .tableau { background:#a8a692; }
+  .drawer { position:absolute; left:16%; width:68%; height:18%; padding:.8rem; border:4px solid #4d514d; background:#777b73; color:#232521; font-size:.65rem; }
+  .d1{top:12%}.d2{top:34%}.d3{top:56%}.drawer::after{content:'';position:absolute;left:43%;top:35%;width:14%;height:23%;border:2px solid #323431;background:#aaa99b}
+  .staple { position:absolute; left:48%; bottom:8%; width:30px; height:19px; border:3px solid #d4d1c3; border-bottom:0; transform:rotate(18deg) skewX(-10deg); filter:drop-shadow(2px 4px 2px #3338); }
+  /* half */
+  .scene-telephone .tableau { background:radial-gradient(circle at 52% 45%,#333331,#111 70%); }
+  .phone { position:absolute; left:33%; top:26%; width:34%; height:34%; border-radius:20px; background:#aaa69b; box-shadow:0 14px 30px #000; }
+  .phone i { position:absolute; left:-10%; top:-25%; width:120%; height:35%; border-radius:35px; background:#d0ccc0; box-shadow:inset 0 0 0 8px #8e8a80; transform:rotate(-4deg); }
+  .phone b { position:absolute; left:41%; top:31%; width:18%; aspect-ratio:1; border-radius:50%; border:6px dotted #454642; }
+  .cord { position:absolute; left:50%; top:60%; width:22%; height:31%; border-left:4px solid #858178; border-bottom:4px solid #858178; border-radius:0 0 0 55%; }
+  .pulse { position:absolute; left:17%; right:17%; bottom:12%; height:1px; background:#725d40; box-shadow:0 0 9px #d5943e; }
+  /* 2 */
+  .scene-rain .tableau { background:linear-gradient(#d1cbb9,#888b83); }
+  .tray { position:absolute; left:17%; bottom:10%; width:66%; height:12%; border:8px solid #424743; border-top-width:3px; background:#526a70; transform:perspective(180px) rotateX(42deg); }
+  .drop { position:absolute; bottom:22%; width:3px; height:12%; background:linear-gradient(transparent,#d5f1f4); animation:rise 2s infinite ease-in; }
+  .drop-0{left:25%;animation-delay:-.2s}.drop-1{left:34%;animation-delay:-1.1s}.drop-2{left:43%;animation-delay:-.7s}.drop-3{left:52%;animation-delay:-1.6s}.drop-4{left:61%;animation-delay:-.4s}.drop-5{left:69%;animation-delay:-1.3s}.drop-6{left:76%;animation-delay:-.9s}
+  @keyframes rise { from{transform:translateY(0) scaleY(.3);opacity:0} 30%{opacity:.8} to{transform:translateY(-250%) scaleY(1);opacity:0} }
+  /* 3 */
+  .scene-carpet .tableau { background:#d4c8ae; display:grid; grid-template-columns:repeat(4,1fr); gap:4%; padding:8% 10% 15%; }
+  .sample { min-width:0; background:#735f4d; box-shadow:3px 5px 0 #67584a; }
+  .sample-1,.sample-8{background:#8b7762}.sample-2,.sample-10{background:#66574b}.sample-3{background:#96846a}.sample-4,.sample-11{background:#554940}.sample-5{background:#a18f72}.sample-6{background:#796452}.sample-7{background:#8a6e57}.sample-9{background:#695f54}
+  .archive-label { position:absolute; left:10%; bottom:4%; padding:.25rem .55rem; border:2px solid #332c25; color:#332c25; font-size:.65rem; transform:rotate(-2deg); }
+  /* 4 */
+  .scene-window .tableau { background:#161b20; }
+  .wall-window { position:absolute; inset:12% 18% 14%; display:grid; grid-template-columns:1fr 1fr; border:9px solid #080b0d; background:#202a33; gap:7px; }
+  .wall-window i { background:#172027; }.wall-window .warm { background:linear-gradient(145deg,#ffe4a3,#c8782f); box-shadow:0 0 50px #e79c46aa; }
+  .radiator { position:absolute; left:34%; bottom:5%; width:32%; height:13%; border:5px solid #434a4b; background:repeating-linear-gradient(90deg,#7b817e 0 9px,#3c4140 9px 13px); }
+  /* 5 */
+  .scene-roof .tableau { background:linear-gradient(#a8a69a 0 18%,#5e6664 18% 76%,#373c3a 76%); }
+  .roofline { position:absolute; left:0; right:0; bottom:24%; height:9%; background:#292e2d; transform:skewY(-2deg); }
+  .vent { position:absolute; bottom:30%; width:14%; height:24%; background:#9ca19c; border:5px solid #3e4442; }
+  .vent::before { content:'';position:absolute;left:18%;right:18%;top:-22%;height:24%;background:#727874;border:4px solid #3e4442; }
+  .v1{left:22%}.v2{right:22%;height:17%}
+  .ceiling-tile { position:absolute; left:0; right:0; top:0; height:18%; background:repeating-linear-gradient(90deg,transparent 0 15%,#777 15.2% 15.6%),repeating-linear-gradient(0deg,#c3c0b5 0 47%,#888 48% 50%); }
+  @media (max-width: 760px) {
+    header { grid-template-columns: 1fr; } .intro { margin-top: 1.2rem; }
+    .lift { grid-template-columns: 1fr; } .panel { max-width: 520px; width: 100%; justify-self: center; }
+    .threshold { min-height: 500px; }
+  }
+  @media (max-width: 440px) {
+    .building { padding-inline: .65rem; } h1 { font-size: clamp(3.1rem, 21vw, 5rem); }
+    .car { padding-inline: .45rem; } .threshold { min-height: 440px; }
+    .landing-copy { grid-template-columns: 1fr; gap: .4rem; padding: .8rem; }
+    .floor-button small { font-size: .48rem; } .panel { padding: .75rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  }
+</style>
+
+<script>
+  import { DOOR_MS, FLOOR_ORDER, FLOORS, STEP_MS, floorById, liftPlan, markVisited } from '../../content/feral/between-floors.mjs';
+  const doors = document.querySelector<HTMLElement>('#doors')!;
+  const indicator = document.querySelector<HTMLElement>('#indicator')!;
+  const direction = document.querySelector<HTMLElement>('#direction')!;
+  const status = document.querySelector<HTMLElement>('#status')!;
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-floor]'));
+  const openButton = document.querySelector<HTMLButtonElement>('#open')!;
+  const closeButton = document.querySelector<HTMLButtonElement>('#close')!;
+  const stopButton = document.querySelector<HTMLButtonElement>('#stop')!;
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  let current = 'G';
+  let target = 'G';
+  let visited: readonly string[] = ['G'];
+  let timers: number[] = [];
+  let moving = false;
+  let doorsOpen = true;
+  let selectedButton: HTMLButtonElement | null = null;
+
+  function clearTimers() { timers.forEach((timer) => window.clearTimeout(timer)); timers = []; }
+  function later(fn: () => void, delay: number) { const timer = window.setTimeout(fn, delay); timers.push(timer); }
+  function label(id: string) { return floorById(id)?.label ?? '—'; }
+  function showLanding(id: string) {
+    document.querySelectorAll<HTMLElement>('[data-floor-scene]').forEach((scene) => { scene.hidden = scene.dataset.floorScene !== id; });
+  }
+  function setDoor(open: boolean, transient = false) {
+    doorsOpen = open;
+    doors.className = 'doors';
+    if (!open) doors.classList.add(transient ? 'closing' : 'closed');
+    openButton.disabled = moving || open;
+    closeButton.disabled = moving || !open;
+  }
+  function paintPanel() {
+    buttons.forEach((button) => {
+      const id = button.dataset.floor!;
+      button.disabled = moving;
+      button.classList.toggle('selected', id === target && moving);
+      button.classList.toggle('visited', visited.includes(id));
+    });
+    stopButton.disabled = !moving;
+  }
+  function arrive(id: string) {
+    clearTimers(); current = id; target = id; moving = false; visited = markVisited(visited, id);
+    indicator.textContent = label(id); direction.textContent = '—'; showLanding(id); setDoor(true); paintPanel();
+    const floor = floorById(id)!; status.textContent = `Doors open at ${floor.label}. ${floor.name}.`;
+    selectedButton?.focus(); selectedButton = null;
+  }
+  function hold(reason = 'The lift is holding.') {
+    if (!moving) return;
+    clearTimers(); moving = false; target = current; direction.textContent = '■'; setDoor(false); paintPanel();
+    status.textContent = `${reason} Indicator ${label(current)}. The doors remain closed.`;
+    openButton.disabled = false; stopButton.disabled = true; openButton.focus(); selectedButton = null;
+  }
+  function ride(id: string, source: HTMLButtonElement) {
+    if (moving || !floorById(id)) return;
+    const plan = liftPlan(current, id, { reducedMotion: motion.matches });
+    target = id; selectedButton = source;
+    if (motion.matches) { arrive(id); return; }
+    moving = true; paintPanel(); setDoor(false, true); status.textContent = `Doors closing for ${label(id)}.`; stopButton.focus();
+    const startIndex = FLOOR_ORDER.indexOf(current); const endIndex = FLOOR_ORDER.indexOf(id);
+    direction.textContent = endIndex > startIndex ? '▲' : endIndex < startIndex ? '▼' : '■';
+    plan.path.slice(1).forEach((floor, index) => later(() => {
+      current = floor; indicator.textContent = label(floor); status.textContent = `Passing ${label(floor)}.`;
+    }, DOOR_MS + ((index + 1) * STEP_MS)));
+    later(() => { status.textContent = `Arriving at ${label(id)}.`; arrive(id); }, plan.durationMs - DOOR_MS);
+  }
+  buttons.forEach((button) => button.addEventListener('click', () => ride(button.dataset.floor!, button)));
+  stopButton.addEventListener('click', () => hold());
+  openButton.addEventListener('click', () => { if (moving) return; visited = markVisited(visited, current); showLanding(current); setDoor(true); paintPanel(); status.textContent = `Doors open at ${label(current)}.`; });
+  closeButton.addEventListener('click', () => { if (moving) return; setDoor(false, true); status.textContent = `Doors closed at ${label(current)}.`; openButton.focus(); });
+  function motionChanged() { if (moving) arrive(target); }
+  motion.addEventListener('change', motionChanged);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) hold('The lift stopped while out of view.'); });
+  window.addEventListener('pagehide', () => { clearTimers(); moving = false; });
+  buttons.forEach((button) => { button.disabled = false; }); openButton.disabled = true; closeButton.disabled = false; paintPanel();
+</script>
