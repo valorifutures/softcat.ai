@@ -9,6 +9,13 @@ export function newestRun(runs, predicate = () => true) {
     .reduce((latest, run) => !latest || timestamp(run.timestamp) > timestamp(latest.timestamp) ? run : latest, null);
 }
 
+export function firstRunAfter(runs, after, predicate = () => true) {
+  const boundary = timestamp(after);
+  if (!Number.isFinite(boundary)) return null;
+  return runs.filter((run) => Number.isFinite(timestamp(run.timestamp)) && timestamp(run.timestamp) > boundary && predicate(run))
+    .reduce((first, run) => !first || timestamp(run.timestamp) < timestamp(first.timestamp) ? run : first, null);
+}
+
 export function formatRecordedTime(value) {
   const time = timestamp(value);
   if (!Number.isFinite(time)) return 'Date unavailable';
