@@ -6,7 +6,7 @@ import allRuns from '../data/pipeline/runs.json';
 import allBots from '../data/pipeline/bots.json';
 import allModels from '../data/models.json';
 import priceSnapshot from '../data/model-price-snapshot.json';
-import { timestamp, newestRun, firstRunAfter, overdueHours, runsInWindow, formatRecordedTime, priceRunDetail, heldPriceChecks, appliedPriceChanges, publishedRunCount, runStatusLabel } from '../lib/pipeline-status.mjs';
+import { timestamp, newestRun, firstRunAfter, overdueHours, runsInWindow, formatRecordedTime, priceRunDetail, heldPriceChecks, appliedPriceChanges, newlyPricedModels, publishedRunCount, runStatusLabel } from '../lib/pipeline-status.mjs';
 
 const snapshot = new Date();
 const botMap = Object.fromEntries(allBots.map((bot) => [bot.id, bot]));
@@ -17,6 +17,7 @@ const recentRuns = runsInWindow(runs, snapshot.getTime());
 const publishedRuns = publishedRunCount(recentRuns);
 const heldPrices = heldPriceChecks(priceSnapshot);
 const appliedPrices = appliedPriceChanges(priceSnapshot);
+const newPrices = newlyPricedModels(priceSnapshot);
 const costedRuns = recentRuns.filter((run) => run.cost_usd != null);
 const totalCost = costedRuns.reduce((sum, run) => sum + run.cost_usd, 0);
 const lastRun = newestRun(runs);
@@ -95,6 +96,22 @@ const currentSchedule = [
           <dl class="mt-4 grid gap-3 text-sm">
             <div class="flex flex-wrap items-baseline justify-between gap-2"><dt class="text-text-muted">Input USD / 1M</dt><dd class="font-mono text-text-primary"><span class="line-through text-text-muted">{priceLabel(check.previous.inputPrice)}</span> → {priceLabel(check.applied.inputPrice)}</dd></div>
             <div class="flex flex-wrap items-baseline justify-between gap-2"><dt class="text-text-muted">Output USD / 1M</dt><dd class="font-mono text-text-primary"><span class="line-through text-text-muted">{priceLabel(check.previous.outputPrice)}</span> → {priceLabel(check.applied.outputPrice)}</dd></div>
+          </dl>
+        </article>)}
+      </div>
+      <p class="mt-4 text-xs text-text-muted leading-relaxed">Checked <RecordedTime value={priceSnapshot.checkedAt} relative={false} /> against OpenRouter's public catalogue. {priceWorkflow && <a class="text-neon-cyan underline underline-offset-4" href={priceWorkflow}>Inspect the snapshot run ↗</a>}</p>
+    </section>}
+
+    {!!newPrices.length && <section class="mb-12" aria-labelledby="new-prices-heading">
+      <h2 id="new-prices-heading" class="font-mono text-lg text-text-bright mb-2">Verified prices newly available</h2>
+      <p class="text-sm text-text-muted mb-5 max-w-3xl leading-relaxed">These tracked models previously had no published rates in our catalogue. The latest check supplied both input and output prices, so our calculators can now use them.</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        {newPrices.map((check) => <article class="rounded-lg border border-neon-green/30 bg-neon-green/5 p-5">
+          <h3 class="font-mono text-base text-text-bright">{modelMap[check.id]?.name ?? check.id}</h3>
+          <p class="mt-1 break-all font-mono text-xs text-text-muted">{check.id}</p>
+          <dl class="mt-4 grid gap-3 text-sm">
+            <div class="flex flex-wrap items-baseline justify-between gap-2"><dt class="text-text-muted">Input USD / 1M</dt><dd class="font-mono text-text-primary">{priceLabel(check.applied.inputPrice)}</dd></div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2"><dt class="text-text-muted">Output USD / 1M</dt><dd class="font-mono text-text-primary">{priceLabel(check.applied.outputPrice)}</dd></div>
           </dl>
         </article>)}
       </div>
