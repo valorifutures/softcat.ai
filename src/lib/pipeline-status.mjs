@@ -89,6 +89,14 @@ export function appliedPriceChanges(snapshot) {
     ['inputPrice', 'outputPrice'].some((field) => check.previous[field] !== check.applied[field]));
 }
 
+export function newlyPricedModels(snapshot) {
+  if (!Array.isArray(snapshot?.checks)) return [];
+  return snapshot.checks.filter((check) => check?.status === 'verified' &&
+    typeof check.id === 'string' && check.id.trim() &&
+    ['inputPrice', 'outputPrice'].every((field) =>
+      check.previous?.[field] === null && Number.isFinite(check.applied?.[field])));
+}
+
 export function runsInWindow(runs, end, days = 7) {
   const start = end - days * 86_400_000;
   return runs.filter((run) => {
