@@ -1,23 +1,23 @@
 {
-  "checkedAt": "2026-11-27T15:29:38.634Z",
+  "checkedAt": "2026-11-28T14:27:39.748Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "sourceSha256": "a20fb545f402bb25ca6f18db4990cd3fa855c71b04b3a74e48e2ffbe2addd9a3",
-  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/46025323284",
+  "sourceSha256": "0cc164cba495609852c5576cc00b002c7f7fbf5b25fc0d3ffd6396c7bcadef57",
+  "workflowUrl": "https://github.com/valorifutures/softcat.ai/actions/runs/46154741186",
   "maxAutoDelta": 0.5,
-  "catalogueModels": 477,
-  "previousCatalogueModels": 475,
-  "catalogueFloor": 380,
+  "catalogueModels": 476,
+  "previousCatalogueModels": 477,
+  "catalogueFloor": 382,
   "trackedModels": 39,
   "matched": 31,
-  "expectedListedModels": 30,
-  "expectedListedMatched": 30,
+  "expectedListedModels": 31,
+  "expectedListedMatched": 31,
   "newlyNotListed": 0,
   "allowedNewlyNotListed": 3,
   "verified": 27,
   "notListed": 8,
   "reviewNeeded": 4,
   "unverified": 0,
-  "priceChanges": 1,
+  "priceChanges": 0,
   "checks": [
     {
       "id": "qwen/qwen-2.5-72b-instruct",
@@ -447,8 +447,8 @@
       "id": "moonshotai/kimi-k2",
       "status": "verified",
       "previous": {
-        "inputPrice": null,
-        "outputPrice": null
+        "inputPrice": 0.57,
+        "outputPrice": 2.3
       },
       "quoted": {
         "inputPrice": 0.57,
