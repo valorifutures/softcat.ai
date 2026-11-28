@@ -2655,3 +2655,47 @@ Draft PR #288 still belongs to the separate Feral owner. No Horizon prediction,
 Feral creative file, archived News or Radar record, retired generator, review
 date or price data changed in this batch.
 
+
+## 28 November 2026, show a model's first verified prices
+
+The 27 November price owner published one verified price change: Kimi K2 moved
+from explicit unavailable rates to $0.57 input and $2.30 output per million
+tokens. The calculators used the new values, but Pipeline only rendered changes
+with an earlier numeric comparison. Its public receipt therefore omitted the one
+change the saved snapshot reported.
+
+[PR #332](https://github.com/valorifutures/softcat.ai/pull/332) adds a separate,
+fail-closed panel for first verified prices. A record appears only when both
+prior rates are explicitly null, both applied rates are finite and the snapshot
+marks the check verified. Missing, partial and review-held records stay out. The
+panel shows the model, both rates, actual check time and exact workflow receipt.
+
+The exact reviewed head `3052f7e3755d673c9914b5ca562a1908b81ae96e`
+passed [hosted validation](https://github.com/valorifutures/softcat.ai/actions/runs/46127990355)
+with no review findings and merged normally as
+`b2fdb3392c4e00999945e126479926d52ec58a50`.
+[Pages run 46128205704](https://github.com/valorifutures/softcat.ai/actions/runs/46128205704)
+passed boundary, recovery, build and deployment for that merge.
+
+Local validation passed 241 JavaScript tests, 31 Python publication tests, 141
+bot tests, every content/data/Horizon validator, the 653-page production build
+and the offline audit. The audit checked 34,454 internal links, 3,355 assets or
+metadata references and 46,873 accessibility and document elements with zero
+errors. All 418 indexed live routes returned successful range responses without
+redirects.
+
+The live Pipeline showed Kimi K2 at $0.57 input and $2.3 output, checked on
+27 November 2026 at 15:29 UTC, with the exact price-run link. The live Model
+Comparison filter returned the same rates and a $1.72 estimate for its visible
+default workload. At a 1,363-pixel viewport both routes had one h1, no duplicate
+IDs, broken images or document-level horizontal overflow. No site-origin console
+warning or error appeared. Narrow-viewport and physical-touch rendering remain
+unverified.
+
+The scheduled [price run 46025323284](https://github.com/valorifutures/softcat.ai/actions/runs/46025323284)
+passed on 27 November: 477 catalogue models, 39 tracked, 31 matched, 27 verified,
+eight not listed, four held for review and one newly available verified price.
+No duplicate refresh was launched. The operating guide remains on main and the
+Feral workflow remains manual-only. No Horizon prediction, review date, Feral
+creative file, archive, retired generator, editorial content or price datum
+changed in this maintenance batch.
